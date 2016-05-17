@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>AspectJ by seradiazpin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">AspectJ</h1>
+      <h2 class="project-tagline">Tutorial de Aspectj</h2>
+      <a href="https://github.com/seradiazpin/paradigmas-de-programacion" class="btn">View on GitHub</a>
+      <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="aspectj" class="anchor" href="#aspectj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h1>
+
+<p>AspectJ es una extensión de AOP para Java.
+Fue creado en PARC(Palo Alto Research Center) por el equipo Xerox PARC, liderado por  Gregor Kiczales.
+Ampliamente usado como estándar de la POA.
+Se caracteriza por su simplicidad y usabilidad.</p>
+
+<h2>
+<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h2>
+
+<ul>
+<li>Facilita/mejora la modularidad de los desarrollos de software.</li>
+<li>El código es organizado y comprimido</li>
+<li>Es reutilizable</li>
+<li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
+<li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
+</ul>
+
+<h2>
+<a id="lenguaje" class="anchor" href="#lenguaje" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguaje</h2>
+
+<h3>
+<a id="aspect" class="anchor" href="#aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h3>
+
+<p>Es la unidad central de Aspectj, se puede colocar en un archivo .aj.
+Contiene el código que expresa las reglas de los crosscutting.
+Un aspecto es una unidad de modularización en AOP como las clases son en OOP.</p>
+
+<div class="highlight highlight-source-aspectj"><pre>    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect</span> {
+    <span class="pl-c">//CODIGO</span>
+    }</pre></div>
+
+<h3>
+<a id="pointcut" class="anchor" href="#pointcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h3>
+
+<p>Una palabra del lenguaje que selecciona los puntos interesantes (join points) y colecta el contexto de este punto.
+Selecciona puntos interesantes de la ejecución.
+Pueden ser llamadas, ejecuciones, instanciar objetos, constructores, manejo de excepciones.</p>
+
+<div class="highlight highlight-source-aspectj"><pre>    pointcut nombreDePunto()<span class="pl-k">:</span> execution(<span class="pl-k">*</span> <span class="pl-smi">Clase</span><span class="pl-k">.</span>metodo(<span class="pl-k">..</span>));</pre></div>
+
+<h4>
+<a id="tipos-de-point-cuts" class="anchor" href="#tipos-de-point-cuts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tipos de point cuts</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/puntos1.png" alt="tabla de pointcut">
+<img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/punto2.png" alt="tabla de pointcut"></p>
+
+<p><a href="https://eclipse.org/aspectj/doc/next/progguide/index.html">Mas informacion</a></p>
+
+<h3>
+<a id="advice" class="anchor" href="#advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice</h3>
+
+<p>Código que se ejecutará cuando se llegue al pointcut este se puede definir de diferentes maneras.
+Existen tres tipos de advice: </p>
+
+<ul>
+<li>before ()</li>
+<li>after ()</li>
+<li>around ()</li>
+</ul>
+
+<h4>
+<a id="before" class="anchor" href="#before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Before</h4>
+
+<p>Se ejecuta  antes de cada join point.</p>
+
+<div class="highlight highlight-source-aspectj"><pre>    before() <span class="pl-k">:</span> nombreDePunto(){
+        <span class="pl-c">//CODIGO</span>
+    }</pre></div>
+
+<h4>
+<a id="after" class="anchor" href="#after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>After</h4>
+
+<p>Se ejecuta después de cada join point.
+Puede de tres tipos:</p>
+
+<ul>
+<li>returning</li>
+<li>throwing
+Y el por defecto en el cual se ejecuta sin importar si retorna o lanza una excepción.</li>
+</ul>
+
+<div class="highlight highlight-source-aspectj"><pre>    after()<span class="pl-k">:</span> nombreDePunto() {
+    <span class="pl-c">//CODIGO</span>
+    }
+
+    after() returning() <span class="pl-k">:</span> nombreDePunto(){
+    <span class="pl-c">//CODIGO</span>
+    }
+
+    after() throwing() <span class="pl-k">:</span> nombreDePunto() {
+    <span class="pl-c">//CODIGO</span>
+    }</pre></div>
+
+<h4>
+<a id="around" class="anchor" href="#around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Around</h4>
+
+<p>Se ejecuta en lugar de el join point.
+Debe ser declarado con un tipo de retorno.
+El código del join point se puede ejecutar usando la palabra
+<code>proceed();</code></p>
+
+<div class="highlight highlight-source-aspectj"><pre>    <span class="pl-k">void</span> around() <span class="pl-k">:</span> nombreDePunto() {
+    <span class="pl-c">//CODIGO</span>
+    }
+    <span class="pl-k">void</span> around() <span class="pl-k">:</span> nombreDePunto() {
+    <span class="pl-c">//CODIGO</span>
+    <span class="pl-c1">proceed</span>();
+    <span class="pl-c">//CODIGO</span>
+    }</pre></div>
+
+<h4>
+<a id="atributos-de-los-advice" class="anchor" href="#atributos-de-los-advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Atributos de los advice</h4>
+
+<p><code>thisJoinPoint</code> : Representa el join point en el cual el advice se está ejecutando.
+<code>thisJoinPointStaticPart</code> : equivalente a <code>thisJoinPoint.getStaticPart()</code> pero consume menos recursos.
+<code>thisEnclosingJoinPointStaticPart</code> : la parte estatica de la dinamica que encierra el join point.</p>
+
+<h3>
+<a id="sintaxis-de-anotaciones" class="anchor" href="#sintaxis-de-anotaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sintaxis de anotaciones</h3>
+
+<h4>
+<a id="aspect-1" class="anchor" href="#aspect-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/aspect.png" alt="aspect"></p>
+
+<h4>
+<a id="pointcut-1" class="anchor" href="#pointcut-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/pointcut.png" alt="pointcut"></p>
+
+<h4>
+<a id="advice-before" class="anchor" href="#advice-before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice before</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/before.png" alt="before"></p>
+
+<h4>
+<a id="advice-after" class="anchor" href="#advice-after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice after</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/after.png" alt="after"></p>
+
+<h4>
+<a id="advice-around" class="anchor" href="#advice-around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice around</h4>
+
+<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
+
+<h3>
+<a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplos</h3>
+
+<p>A continuación veremos un ejemplo en el cual podremos ver la funcionalidad en un ejemplo sencillo.</p>
+
+<h4>
+<a id="clase-testasp" class="anchor" href="#clase-testasp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clase TestAsp</h4>
+
+<p>La clase en la cual tenemos unos cuantos metodos y un main.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">class</span> <span class="pl-en">TestAsp</span> {
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">metodo1</span>(<span class="pl-k">int</span> <span class="pl-v">numero</span>){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Este es el metodo que recibe un numero, numero-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>numero);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">metodo1</span>(<span class="pl-k">int</span> <span class="pl-v">numero</span>,<span class="pl-smi">String</span> <span class="pl-v">string</span>){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Este es el metodo que recibe un numero y una cadena, <span class="pl-pds">"</span></span>
+                <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>numero-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>numero<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>, cadena-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>string);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">metodo2</span>(<span class="pl-k">int</span> <span class="pl-v">numero</span>){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Este es el metodo2 que recibe un numero, numero-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>numero);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">metodo3</span>(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Este es el metodo3 no recibe nada<span class="pl-pds">"</span></span>);
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">main</span>(<span class="pl-k">String</span>[] <span class="pl-v">args</span>) {
+        <span class="pl-smi">TestAsp</span> asp <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">TestAsp</span>();
+        asp<span class="pl-k">.</span>metodo1(<span class="pl-c1">1</span>);
+        asp<span class="pl-k">.</span>metodo1(<span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">"</span>HOLA<span class="pl-pds">"</span></span>);
+        asp<span class="pl-k">.</span>metodo2(<span class="pl-c1">1</span>);
+        <span class="pl-c">//asp.metodo2(1);</span>
+        asp<span class="pl-k">.</span>metodo3();
+
+        <span class="pl-k">try</span>{
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-c1">1</span><span class="pl-k">/</span><span class="pl-c1">0</span>);
+        }<span class="pl-k">catch</span>(<span class="pl-smi">Exception</span> e){
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>No se puede dividir en 0<span class="pl-pds">"</span></span>);
+        }
+    }
+}</pre></div>
+
+<h4>
+<a id="aspect-aspect" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect Aspect</h4>
+
+<p>Nuestro aspecto con algunos puntos de corte para ver su funcion.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect</span> {
+
+    <span class="pl-k">static</span> <span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">pointcut</span> <span class="pl-en">all</span>() : <span class="pl-c1">call</span>(<span class="pl-k">*</span> <span class="pl-smi">TestAsp</span><span class="pl-k">.</span><span class="pl-k">*</span>(<span class="pl-k">..</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">cut_metodo1</span>() : <span class="pl-c1">call</span>(<span class="pl-k">*</span> <span class="pl-smi">TestAsp</span><span class="pl-k">.</span><span class="pl-k">*</span>1(<span class="pl-k">..</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">cut_metodo2</span>() : <span class="pl-c1">call</span>(<span class="pl-k">*</span> <span class="pl-smi">TestAsp</span><span class="pl-k">.</span><span class="pl-k">*</span>2(<span class="pl-k">..</span>)) <span class="pl-k">&amp;&amp;</span> <span class="pl-k">if</span>(i <span class="pl-k">&lt;=</span> 2);
+    <span class="pl-k">pointcut</span> <span class="pl-en">cut_metodo1_int</span>() : <span class="pl-c1">call</span>(<span class="pl-k">*</span> <span class="pl-smi">TestAsp</span><span class="pl-k">.</span><span class="pl-k">*</span>1(<span class="pl-k">int</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">cut_metodo1_IyS</span>() : <span class="pl-c1">call</span>(<span class="pl-k">*</span> <span class="pl-smi">TestAsp</span><span class="pl-k">.</span><span class="pl-k">*</span>1(<span class="pl-k">int</span>,<span class="pl-smi">String</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">exception</span>(): <span class="pl-c1">handler</span>(<span class="pl-smi">Exception</span>);
+    <span class="pl-k">pointcut</span> <span class="pl-en">inita</span>(): <span class="pl-c1">initialization</span>(<span class="pl-smi">TestAsp</span><span class="pl-k">.</span>new());
+
+
+    <span class="pl-k">before</span>() : exception(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Alguien dividio por 0!<span class="pl-pds">"</span></span>);
+    };
+    <span class="pl-k">before</span>() : inita(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Entrando al constructor <span class="pl-pds">"</span></span><span class="pl-k">+</span>thisJoinPoint<span class="pl-k">.</span>getSignature());
+    };
+
+    <span class="pl-k">after</span>() : cut_metodo1(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Despues de entrar al metodo 1, x-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>i);
+        i<span class="pl-k">++</span>;
+    }
+    <span class="pl-k">after</span>() : cut_metodo2(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Despues de entrar al metodo 2, x-&gt;<span class="pl-pds">"</span></span><span class="pl-k">+</span>i);
+        i<span class="pl-k">++</span>;
+    }
+    <span class="pl-k">after</span>() : cut_metodo1_int(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Despues de entrar al metodo 1, con entero<span class="pl-pds">"</span></span>);
+    }
+    <span class="pl-k">after</span>() : cut_metodo1_IyS(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Despues de entrar al metodo 1, con entero y string<span class="pl-pds">"</span></span>);
+    }
+    <span class="pl-k">void</span> <span class="pl-k">around</span>() : all() {
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------------------<span class="pl-pds">"</span></span>);
+        <span class="pl-c1">proceed</span>();
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------------------<span class="pl-pds">"</span></span>);
+    }
+}</pre></div>
+
+<h2>
+<a id="tutorial" class="anchor" href="#tutorial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TUTORIAL</h2>
+
+<p>A partir de una aplicación de un banco se desea implementar un Log de transacciones y un sistema de login mediante programación orientada a aspectos.
+Para esto se tienen las siguientes clases en las cuales se implementa la funcionalidad sencilla de un banco.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">Bank</span> {
+
+    <span class="pl-k">static</span> <span class="pl-k">ArrayList&lt;<span class="pl-smi">User</span>&gt;</span> users <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-k">ArrayList&lt;&gt;</span>();
+    <span class="pl-k">private</span> <span class="pl-k">static</span> <span class="pl-smi">Scanner</span> input <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Scanner</span>(<span class="pl-smi">System</span><span class="pl-k">.</span>in);
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">initBank</span>(){
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(<span class="pl-c1">1</span>,<span class="pl-s"><span class="pl-pds">"</span>Usuario1<span class="pl-pds">"</span></span>,<span class="pl-c1">1</span>,<span class="pl-c1">0.0</span>));
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(<span class="pl-c1">2</span>,<span class="pl-s"><span class="pl-pds">"</span>Usuario2<span class="pl-pds">"</span></span>,<span class="pl-c1">2</span>,<span class="pl-c1">10000.0</span>));
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(<span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">"</span>Usuario3<span class="pl-pds">"</span></span>,<span class="pl-c1">3</span>,<span class="pl-c1">1000000.0</span>));
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(<span class="pl-c1">4</span>,<span class="pl-s"><span class="pl-pds">"</span>Usuario4<span class="pl-pds">"</span></span>,<span class="pl-c1">4</span>,<span class="pl-c1">500.0</span>));
+
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">main</span>(<span class="pl-k">String</span>[] <span class="pl-v">args</span>) {
+        <span class="pl-k">int</span> opcion <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+        initBank();
+        <span class="pl-k">while</span>(opcion <span class="pl-k">!=</span> <span class="pl-c1">5</span>){
+            opcion <span class="pl-k">=</span> menu();
+        };
+
+    }
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">int</span> <span class="pl-en">menu</span>(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Banco AspectJ<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>1 - Crear Usuario<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>2 - Hacer Transaccion<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>3 - Retirar dinero<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>4 - Ver usuarions<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>5 - Salir<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+        <span class="pl-k">int</span> option <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Opcion<span class="pl-pds">"</span></span>));
+        <span class="pl-k">switch</span> (option) {
+        <span class="pl-k">case</span> <span class="pl-c1">1</span><span class="pl-k">:</span>
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>CREAR USUARIO<span class="pl-pds">"</span></span>);
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+            createUser();
+        <span class="pl-k">break</span>;
+        <span class="pl-k">case</span> <span class="pl-c1">2</span><span class="pl-k">:</span>
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Hacer transaccion<span class="pl-pds">"</span></span>);
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+             makeTransaction(); 
+        <span class="pl-k">break</span>;
+        <span class="pl-k">case</span> <span class="pl-c1">3</span><span class="pl-k">:</span>
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Retirar dinerro<span class="pl-pds">"</span></span>);
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+             myMoney();
+        <span class="pl-k">break</span>;
+        <span class="pl-k">case</span> <span class="pl-c1">4</span><span class="pl-k">:</span>
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Ver Usuarios<span class="pl-pds">"</span></span>);
+            viewUsers();
+        <span class="pl-k">break</span>;
+        <span class="pl-k">case</span> <span class="pl-c1">5</span><span class="pl-k">:</span>
+        <span class="pl-k">break</span>;
+        <span class="pl-k">default</span><span class="pl-k">:</span>
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Opcion incorrecta<span class="pl-pds">"</span></span>);
+            <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">return</span> option;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span>  <span class="pl-smi">String</span> <span class="pl-en">readConsole</span>(<span class="pl-smi">String</span> <span class="pl-v">mensaje</span>){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(mensaje);  
+        <span class="pl-smi">String</span> inputText;
+        inputText <span class="pl-k">=</span> input<span class="pl-k">.</span>nextLine();           
+        <span class="pl-k">return</span> inputText;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">createUser</span>(){
+        <span class="pl-smi">String</span> nombre <span class="pl-k">=</span> readConsole(<span class="pl-s"><span class="pl-pds">"</span>Nombre :<span class="pl-pds">"</span></span>);
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Id: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(users<span class="pl-k">.</span>size(),nombre,id,money));
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">makeTransaction</span>(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">+</span> money);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">myMoney</span>(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">-</span> money);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">viewUsers</span>(){
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+        <span class="pl-k">for</span>(<span class="pl-smi">User</span> u<span class="pl-k">:</span>users){  
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(u);
+        }
+        <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>------------------------------------<span class="pl-pds">"</span></span>);
+    }
+
+
+}</pre></div>
+
+<p>Adicionalmente se tiene la siguiente clase la cual representa a los usuarios de este banco.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">package</span> <span class="pl-smi">BankLogic</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">User</span> {
+    <span class="pl-k">private</span> <span class="pl-k">int</span> key;
+    <span class="pl-k">private</span> <span class="pl-smi">String</span> name;
+    <span class="pl-k">private</span> <span class="pl-k">int</span> id;
+    <span class="pl-k">private</span> <span class="pl-k">double</span> money;
+
+
+    <span class="pl-k">public</span> <span class="pl-en">User</span>(<span class="pl-k">int</span> <span class="pl-v">key</span>, <span class="pl-smi">String</span> <span class="pl-v">name</span>, <span class="pl-k">int</span> <span class="pl-v">id</span>, <span class="pl-k">double</span> <span class="pl-v">money</span>){
+        <span class="pl-v">this</span><span class="pl-k">.</span>key <span class="pl-k">=</span> key;
+        <span class="pl-v">this</span><span class="pl-k">.</span>name <span class="pl-k">=</span> name;
+        <span class="pl-v">this</span><span class="pl-k">.</span>id <span class="pl-k">=</span> id;
+        <span class="pl-v">this</span><span class="pl-k">.</span>money <span class="pl-k">=</span> money;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">int</span> <span class="pl-en">getKey</span>() {
+        <span class="pl-k">return</span> key;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setKey</span>(<span class="pl-k">int</span> <span class="pl-v">key</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>key <span class="pl-k">=</span> key;
+    }
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getName</span>() {
+        <span class="pl-k">return</span> name;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setName</span>(<span class="pl-smi">String</span> <span class="pl-v">name</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>name <span class="pl-k">=</span> name;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">int</span> <span class="pl-en">getId</span>() {
+        <span class="pl-k">return</span> id;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setId</span>(<span class="pl-k">int</span> <span class="pl-v">id</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>id <span class="pl-k">=</span> id;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">double</span> <span class="pl-en">getMoney</span>() {
+        <span class="pl-k">return</span> money;
+    }
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setMoney</span>(<span class="pl-k">double</span> <span class="pl-v">money</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>money <span class="pl-k">=</span> money;
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">toString</span>() {
+        <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">"</span>User [key=<span class="pl-pds">"</span></span><span class="pl-k">+</span>key<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>, name=<span class="pl-pds">"</span></span> <span class="pl-k">+</span> name <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>, id=<span class="pl-pds">"</span></span> <span class="pl-k">+</span> id <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>, money=<span class="pl-pds">"</span></span> <span class="pl-k">+</span> money <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>]<span class="pl-pds">"</span></span>;
+    }
+
+
+
+
+}</pre></div>
+
+<h3>
+<a id="aspectos" class="anchor" href="#aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspectos</h3>
+
+<p>Se implementaran dos aspectos uno llamado <code>Login</code> y otro llamado <code>Log</code>.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Login</span> {
+
+}
+</pre></div>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Log</span> {
+
+}</pre></div>
+
+<p>Ahora devemos identificar los join points de nuestra aplicacion para poder iplementar los Pointcuts en los aspectos.</p>
+
+<h3>
+<a id="identificacion-de-los-puntos-de-corte-de-los-aspectos" class="anchor" href="#identificacion-de-los-puntos-de-corte-de-los-aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identificacion de los puntos de corte de los aspectos</h3>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> makeTransaction(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">+</span> money);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> myMoney(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">-</span> money);
+    }</pre></div>
+
+<p>Esta es la funcionalidad que queremos guardar en el log de transacciones.</p>
+
+<div class="highlight highlight-source-java"><pre>       <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> makeTransaction(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">+</span> money);
+    }
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> myMoney(){
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Key: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero a consignar: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>setMoney(users<span class="pl-k">.</span>get(id<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">.</span>getMoney() <span class="pl-k">-</span> money);
+    }
+        <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> createUser(){
+        <span class="pl-smi">String</span> nombre <span class="pl-k">=</span> readConsole(<span class="pl-s"><span class="pl-pds">"</span>Nombre :<span class="pl-pds">"</span></span>);
+        <span class="pl-k">int</span> id <span class="pl-k">=</span> <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Id: <span class="pl-pds">"</span></span>));
+        <span class="pl-k">double</span> money <span class="pl-k">=</span> <span class="pl-smi">Double</span><span class="pl-k">.</span>valueOf(readConsole(<span class="pl-s"><span class="pl-pds">"</span>Dinero: <span class="pl-pds">"</span></span>));
+        users<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">User</span>(users<span class="pl-k">.</span>size(),nombre,id,money));
+    }</pre></div>
+
+<p>Esta es la funcionalidad que queremos aplicarle un login.
+Aunque hay join point que son comunes por buena practica los viviremos en dos aspectos.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Log</span> {
+    <span class="pl-k">pointcut</span> <span class="pl-en">logActions</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>make<span class="pl-k">*</span>(<span class="pl-k">..</span>))
+                        <span class="pl-k">||</span><span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>my<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+
+}</pre></div>
+
+<p>En el primer punto de corte queremos capturar los metodos que comiensen con make y my.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Login</span> {
+    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Log</span> {
+        <span class="pl-k">pointcut</span> <span class="pl-en">transaction</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>make<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+            <span class="pl-k">pointcut</span> <span class="pl-en">money</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>my<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+            <span class="pl-k">pointcut</span> <span class="pl-en">user</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>create<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+    }
+}</pre></div>
+
+<p>Queremos capturar las distintos tipos de transacciones.
+Posteriormente agregamos los advices que queremos en los dos aspectos con su funcionalidad correspondiente.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Log</span> {
+    <span class="pl-smi">File</span> file <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">File</span>(<span class="pl-s"><span class="pl-pds">"</span>log.txt<span class="pl-pds">"</span></span>);
+    <span class="pl-smi">Calendar</span> cal <span class="pl-k">=</span> <span class="pl-en">Calendar.getInstance</span>();
+    <span class="pl-k">pointcut</span> <span class="pl-en">transaction</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>make<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">money</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>my<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+    <span class="pl-k">pointcut</span> <span class="pl-en">user</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>create<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+
+    <span class="pl-k">after</span>() : transaction(){
+        writeFile(<span class="pl-s"><span class="pl-pds">"</span>Transaccion realisada <span class="pl-pds">"</span></span><span class="pl-k">+</span>cal<span class="pl-k">.</span>getTime());
+    }
+    <span class="pl-k">after</span>() : money(){
+        writeFile(<span class="pl-s"><span class="pl-pds">"</span>Dinero retirado <span class="pl-pds">"</span></span><span class="pl-k">+</span>cal<span class="pl-k">.</span>getTime());
+        }
+    <span class="pl-k">after</span>() : user(){
+        writeFile(<span class="pl-s"><span class="pl-pds">"</span>Usuario creado <span class="pl-pds">"</span></span><span class="pl-k">+</span>cal<span class="pl-k">.</span>getTime());
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">writeFile</span>(<span class="pl-smi">String</span> <span class="pl-v">mensaje</span>){
+        <span class="pl-k">try</span> {
+
+            <span class="pl-smi">String</span> content <span class="pl-k">=</span> mensaje;
+
+
+
+            <span class="pl-c">// if file doesnt exists, then create it</span>
+            <span class="pl-k">if</span> (<span class="pl-k">!</span>file<span class="pl-k">.</span>exists()) {
+                file<span class="pl-k">.</span>createNewFile();
+            }
+
+            <span class="pl-smi">FileWriter</span> fw <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">FileWriter</span>(file<span class="pl-k">.</span>getAbsoluteFile());
+            <span class="pl-smi">BufferedWriter</span> bw <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">BufferedWriter</span>(fw);
+            bw<span class="pl-k">.</span>write(content);
+            bw<span class="pl-k">.</span>close();
+
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Done<span class="pl-pds">"</span></span>);
+
+        } <span class="pl-k">catch</span> (<span class="pl-smi">IOException</span> e) {
+            e<span class="pl-k">.</span>printStackTrace();
+        }
+    }
+}</pre></div>
+
+<p>Queremos que escribir el los se realice depues de que la transacción se haya realizado, por esta razón elegimos after.</p>
+
+<div class="highlight highlight-source-aspectj"><pre><span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Login</span> {
+        <span class="pl-k">private</span> <span class="pl-k">static</span> <span class="pl-smi">Scanner</span> input <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Scanner</span>(<span class="pl-smi">System</span><span class="pl-k">.</span>in);
+        <span class="pl-k">pointcut</span> <span class="pl-en">needLogin</span>():<span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>make<span class="pl-k">*</span>(<span class="pl-k">..</span>))
+                            <span class="pl-k">||</span><span class="pl-c1">execution</span>(<span class="pl-k">void</span> <span class="pl-smi">Bank</span><span class="pl-k">.</span>my<span class="pl-k">*</span>(<span class="pl-k">..</span>));
+
+        <span class="pl-k">before</span>():needLogin(){
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Es necesario logiarce<span class="pl-pds">"</span></span>);
+            readConsole(<span class="pl-s"><span class="pl-pds">"</span>Nombre: <span class="pl-pds">"</span></span>);
+            readConsole(<span class="pl-s"><span class="pl-pds">"</span>Id: <span class="pl-pds">"</span></span>);
+        }
+
+        <span class="pl-k">public</span> <span class="pl-k">static</span>  <span class="pl-smi">String</span> <span class="pl-en">readConsole</span>(<span class="pl-smi">String</span> <span class="pl-v">mensaje</span>){
+            <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(mensaje);  
+            <span class="pl-smi">String</span> inputText;
+            inputText <span class="pl-k">=</span> input<span class="pl-k">.</span>nextLine();           
+            <span class="pl-k">return</span> inputText;
+        }
+
+}</pre></div>
+
+<p>Queremos que el login sea antes de la transacción se haya realizado, por esta razón elegimos before.
+Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
+
+<p>Finalmente este código nos agrega la funcionalidad de un login antes de las transacciones y un registro de sus actividades en un archivo.</p>
+
+<p><a href="https://github.com/JeffersonH44/AspectJExamples">Mas ejemplos</a></p>
+
+<h2>
+<a id="expocicion-para-lenguajes-de-programacion-" class="anchor" href="#expocicion-para-lenguajes-de-programacion-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Expocicion para lenguajes de programacion-</em>
+</h2>
+
+<p>Integrantes</p>
+
+<ul>
+<li>Sergio Alejandro Diaz Pinilla</li>
+<li>Pedro Luis Monroy Garces</li>
+<li>Jefferson Javier Hernández Panqueba</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/seradiazpin/paradigmas-de-programacion">AspectJ</a> is maintained by <a href="https://github.com/seradiazpin">seradiazpin</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
