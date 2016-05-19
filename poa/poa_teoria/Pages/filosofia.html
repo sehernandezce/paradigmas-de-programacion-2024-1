@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Programacion Orientada a Aspectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+    <h2 class="project-tagline"></h2>
+
+    <a href="/POA_teoria/index.html" class="btn">Inicio</a>
+    <a href="/POA_teoria/Pages/historia.html" class="btn">Historia</a>
+    <a href="/POA_teoria/Pages/evolucion.html" class="btn">Conceptos Claves</a>
+    <a href="/POA_teoria/Pages/ventajasydesventajas.html" class="btn">Ventajas y Desventajas</a>
+    <a href="/POA_teoria/Pages/lenguajes.html" class="btn">Lenguajes</a>
+    <a href="/POA_teoria/Pages/aplicaciones.html" class="btn">Aplicaciones</a>
+
+</section>
+
+<section class="main-content">
+<h1>
+<a id="filosofía-del-paradigma" class="anchor" href="#filosof%C3%ADa-del-paradigma" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filosofía del Paradigma.</h1>
+
+<h2>
+<a id="generalidades" class="anchor" href="#generalidades" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generalidades</h2>
+
+<p>Debemos comenzar con el hecho de que existe un gran debate en cuanto a si la <em>programación orientada a aspectos</em> es o no un paradigma, muchas personas afirman el que es solamente una extensión de la <em>programación orientada a objetos</em>. Por contraparte, existen las personas que definen la <em>programación orientada a aspectos</em> como un paradigma nuevo que, aunque sigue a <em>POO</em> y por ende soporta la clasificación por objetos, no necesariamente debe hacerlo, es decir, idealmente <em>POA</em> es aplicable a otros paradigmas como podría ser la descomposición funcional. En nuestro caso, decidimos tomar la <em>programación orientada a aspectos</em> como un paradigma.</p>
+
+<h3>
+<a id="objetivo-principal" class="anchor" href="#objetivo-principal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivo Principal</h3>
+
+<p>La <em>programación orientada a aspectos</em> tiene como objetivo principal: "brindar un contexto al programador que permita separar claramente componentes y aspectos, separando componentes entre sí, aspectos entre sí, y aspectos de componentes, a través de mecanismos que hagan posible abstraerlos y componerlos para producir el sistema completo."</p>
+
+<p><img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/Table.jpg" alt=""></p>
+
+<h3>
+<a id="las-6-cs-de-mehmet-aksit" class="anchor" href="#las-6-cs-de-mehmet-aksit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Las "6 C's" de Mehmet Aksit</h3>
+
+<p>Las 6 "C's" son un conjunto de conceptos propuestos por Mehmet Aksit y son las bases a la hora de generar software con programación orientada a aspectos. Una primera aproximación a lo que son los conceptos base de la misma:</p>
+
+<ol>
+<li>Entrecruzado (<strong>C</strong>rosscutting): El entrecruzado se basa en encapsular los conceptos transversales que existen en el código tradicional para luego entrecruzarlo con la funcionalidad principal que por ende también queda encapsulada. Éste entrecruzado hace que ambas, funcionalidad y aspectos queden totalmente funcionales sin necesidad de repetición de código.
+<img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/cross.jpg" alt="">
+</li>
+<li>
+<strong>C</strong>anónico: Los conceptos transversales deben ser implementados de manera estable y completa, totalmente independientes entre ellos.</li>
+<li>
+<strong>C</strong>omposición: La implementación del modelo debe proveer factores de calidad, como adaptabilidad, reusabilidad y extensibilidad.</li>
+<li>
+<strong>C</strong>lausura: La implementación debe mantener la totalidad de los factores de calidad del diseño en la etapa de implementación para evitar problemas con los conceptos de funcionalidad y configuración. </li>
+<li>
+<strong>C</strong>omputabilidad: El software generado por la implementación orientada a aspectos debe ser funcional y ejecutable.</li>
+<li>
+<strong>C</strong>ertificabilidad: Los modelos de diseño e implementación deben ser evaluables en cada parte del proceso de desarrollo e implementación, además de ser controlable para aumentar o mantener la calidad del modelo.</li>
+</ol>
+
+<h3>
+<a id="las-4-ss-de-harold-ossher" class="anchor" href="#las-4-ss-de-harold-ossher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Las "4 S's" de Harold Ossher:</h3>
+
+<p>Las 4 S's se refieren a separación exitosa de conceptos por Harold Ossher y son las siguientes:</p>
+
+<ol>
+<li>
+<strong>S</strong>imultáneo: Los conceptos y composiciones importantes deben poder coexistir dentro del modelo completo sin interrumpirse.</li>
+<li>Auto-contenido (<strong>S</strong>elf-contained): Cada módulo debe declarar sus dependencias, con el objetivo de poder entender cada módulo por separado.</li>
+<li>
+<strong>S</strong>imétrico: Todos los conceptos deben ser encapsulados de la misma manera en cada módulo diferente, todo esto con el fin de obtener una mayor confiabilidad en la composición.</li>
+<li>Espontáneo (<strong>S</strong>pontaneous): Al agregar nuevos conceptos, la encapsulación, integración e identificación debe ser sencilla, incluyendo los conceptos que surjan en la etapa de implementación.</li>
+</ol>
+
+
+</section>
+
+</body>
+</html>
