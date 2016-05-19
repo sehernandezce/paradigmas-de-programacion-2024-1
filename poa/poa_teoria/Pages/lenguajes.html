@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Programacion Orientada a Aspectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+    <h2 class="project-tagline"></h2>
+
+    <a href="/POA_teoria/index.html" class="btn">Inicio</a>
+    <a href="/POA_teoria/Pages/historia.html" class="btn">Historia</a>
+    <a href="/POA_teoria/Pages/filosofia.html" class="btn">Filosofía del Paradigma</a>
+    <a href="/POA_teoria/Pages/ventajasydesventajas.html" class="btn">Ventajas y desventajas</a>
+    <a href="/POA_teoria/Pages/aplicaciones.html" class="btn">Aplicaciones</a>
+
+</section>
+
+<section class="main-content">
+    <h1>
+        <a id="programaciÓn-orientada-a-aspectos" class="anchor" href="#programaci%C3%93n-orientada-a-aspectos" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>LENGUAJES DE PROGRAMACIÓN.
+    </h1>
+    <h2>
+        <a id="JPAL" class="anchor" href="#jpal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> JPAL</h2>
+    <p>
+        Esta herramienta enfatiza en los <strong>puntos de enlace</strong>, ya que  son especificados
+        independientemente del lenguaje base. Debido al término en inglés <strong>Junction Point</strong>,
+        JPAL significa <strong>Junction Point Aspect Language</strong>, en español, Lenguaje de Aspectos basados
+        en Puntos de Enlace.</p>
+    <p>
+        El tejedor JPAL  genera un esquema  llamado <strong>Esquema del Tejedor</strong>. El cual desarrolló un mecanismo que automáticamente
+        conecta el código base con los programas de aspectos en puntos de control(<strong>acciones</strong>).</p>
+
+    <p> El Esquema del Tejedor genera código que invoca, cuando es alcanzado en ejecución, las acciones
+        correspondientes para permitir la ejecución de los programas de aspectos. Con lo cual se genera una vinculación
+        dinámica con los programas de aspectos, y hace posible modificar en tiempos de ejecución los
+        programas de aspectos. Sin embargo, esta solución no es lo suficientemente poderosa como para agregar
+        o reemplazar programas de aspectos en ejecución. Para tal efecto se agrega al Esquema del Tejedor una
+        entidad llamada <strong>Administrador de Programas de Aspectos (APA)</strong>, el cual puede registrar un nuevo aspecto
+        de una aplicación y  llamar a métodos de aspectos registrados. Es implementado como una librería dinámica
+        que almacena los aspectos y permite dinámicamente agregar, quitar o modificar aspectos, y mandar mensajes a
+        dichos aspectos. </p>
+    <p>
+        El Esquema Tejedor y APA se comunican mediante protocolo de comunicación entre procesos. La arquitectura  de este lenguaje es la
+        siguiente:
+    </p>
+    <img src="/POA_teoria/Images/JPAL.png">
+    <h2>
+        <a id="D" class="anchor" href="#D" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>D</h2>
+    <p>D es un <strong>ambiente de lenguajes de aspectos</strong> para la programación distribuida.  Se denomina ambiente de lenguajes debido a
+        que integra dos lenguajes,
+        <strong>COOL</strong>, para controlar la sincronización de hilos, y <strong>RIDL</strong>, para programar la interacción
+        entre componentes remotos. Estos dos lenguajes se diseñaron de manera independiente de un lenguaje componente.
+        Sin embargo establecen un número de condiciones sobre este.</p>
+
+    <p>El diseño de D es semi-independiente del lenguaje componente, debido a que impone requerimientos
+        sobre el lenguaje que también satisfacen los lenguajes orientados a objetos. Gracias a esto,
+        el lenguaje componente puede ser cualquiera mientras sea orientado a objetos. Por lo tanto,
+        podría ser implementado con C++, Smalltalk, CLOS, Java o Eiffel. </p>
+    <h3>
+        <a id="COOL" class="anchor" href="#COOL" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>COOL</h3>
+    <p>
+        Los programas en <strong>COOL</strong> son comprendidos por un conjunto de módulos <strong>coordinadores</strong>.
+        Estos módulos se asocian a las clases por medio del nombre, sin embargo, un mismo coordinador podría coordinar más de una clase.
+        Mínimamente se puede sincronizar un método, y para declarar un corrdinador, se debe describir la estrategia de coordinación.</p>
+
+    <p>
+        Los coordinadores no son clases, utilizan un lenguaje diferente, por lo tanto tampoco pueden ser instanciados. Su asociación
+        a las instancias de las clases se realiza automáticamente, utilizando un protocolo bien definido para su relación.</p>
+
+    <p>Los coordinadores tienen conocimiento de las clases que coordinan para definir la mejor estrategia
+        de coordinación posible. Sin embargo, las clases no tienen conocimiento de los aspectos,
+        es decir que dentro de una clase no es posible nombrar a un coordinador.</p>
+
+    <p> La asociación entre los objetos y los coordinadores es uno-a-uno por defecto y recibe
+        el nombre de coordinación “<strong>per object</strong>”. Sin embargo, un coordinador también puede asociarse
+        con todos los objetos de una o más clases y recibe el nombre de coordinación “<strong>per class</strong>”. .</p>
+    <p>
+        Protocolo de coordinación entre un módulo coordinador y un objeto.
+    </p>
+
+    <img src="/POA_teoria/Images/COOL.png">
+    <p>
+        El siguiente sería un aspecto implementado en COOL para la verificación en una cola circular.
+    </p>
+
+    <img src="/POA_teoria/Images/COOLE.png">
+    <h3>
+        <a id="RIDL" class="anchor" href="#RIDL" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RIDL</h3>
+    <p>
+        RIDL (<strong>Remote Interaction and Data transfers aspect Language</strong>) es un lenguaje de aspectos de
+        dominio específico que maneja la transferencia de datos entre diferentes espacios de ejecución.</p>
+    <p>
+        Un programa RIDL consiste de un conjunto de módulos de <strong>portales</strong>. Los módulos de portales o directamente
+        portales se asocian con las clases por el nombre. Un portal es el encargado de manejar la interacción remota
+        y la transferencia de datos de la clase asociada a él, y puede asociarse como máximo a una clase.
+        La unidad mínima de interacción remota es el método.</p>
+    <p>
+        La declaración de los portales identifica clases cuyas instancias pueden
+        invocarse desde <strong>espacios remotos</strong>. Dichas instancias se llaman objetos remotos.
+        La declaración de un portal identifica qué métodos de una clase serán exportados sobre￼￼
+        la red. En el portal estos métodos se llaman operaciones remotas. Para cada una de
+        estas operaciones se describe qué objetos remotos esperan y qué datos enviarán a los llamadores.</p>
+    <p>
+        Los portales no son clases, al igual que los coordinadores en COOL, no pueden ser instanciados
+        y sirven para un propósito muy específico. Tampoco son tipos en el sentido estricto de la palabra.
+        Un portal se asocia automáticamente con una instancia de la clase en el momento que una referencia
+        a esa instancia se exporta fuera del espacio donde la instancia fue creada. Durante el tiempo de vida
+        de la instancia esta relación se mantiene mediante un protocolo bien definido.</p>
+    <p>
+        Este último punto establece una dependencia explícita entre los portales y la
+        relaciones estructurales completas de las clases. Esta dependencia expone la necesidad
+        de controlar la transferencia de datos entre los distintos espacios de ejecución.
+    </p>
+
+    <img src="/POA_teoria/Images/RIDL.png">
+
+    <h2>
+        <a id="AspectC" class="anchor" href="#AspectC" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectC</h2>
+    <p>
+        AspectC es un lenguaje de aspectos de propósito general que extiende C, es un subconjunto de
+        AspectJ <strong>sin ningún soporte para la programación orientada a objetos o módulos explícitos</strong>.
+        El código de aspectos, conocido como <strong>aviso</strong>, interactúa con la funcionalidad básica en los límites
+        de una llamada a una función, y puede ejecutarse antes, después, o durante dicha llamada. Los elementos
+        centrales del lenguaje tienen como objetivo señalar llamadas de funciones particulares, acceder a los
+        parámetros de dichas llamadas, y adherir avisos a ellas.</p>
+    <p>
+        Los <strong>puntos de corte</strong> en AspectC toman las siguientes formas:
+    <ul>
+        <li><strong>Llamadas a una función</strong>: call(f(arg)), captura todas las llamadas a la
+            función f con un argumento.</li>
+        <li>
+            <strong>Durante el flujo de control</strong>: cflow(cualquier corte), captura el
+            contexto de ejecución dinámico del corte.
+        </li>
+        <li>
+            <strong>Referencias a una variable</strong>: varref(nombre_variable), captura las
+            referencias a la variable nombre_variable.
+        </li>
+    </ul>
+
+        Todos los cortes se pueden describir utilizando expresiones lógicas,
+        aumentando la expresividad del lenguaje: el operador “y”(&&), el operador “o” (||), y el
+        operador de negación(!). Un ejemplo sería: call(f(arg)) || call(h(arg)), con lo cual se captura las l
+        lamadas a la función f o las llamadas a la función g.
+
+    </p>
+    <p>
+        Como el lenguaje C es de naturaleza estática, el tejedor de AspectC es estático.
+    </p>
+    <h2>
+        <a id="AspectC++" class="anchor" href="#AspectC++" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectC++</h2>
+    <p>
+        AspectC++ es un lenguaje de aspectos de propósito general que extiende el lenguaje C++ para soportar el manejo de aspectos.
+        En este lenguaje los <strong>puntos de enlace</strong> son puntos en el código componente donde los aspectos pueden interferir.
+        Los puntos de
+        enlaces son capaces de referir a <strong>código, tipos, objetos, y flujos de control.</strong></p>
+    <p>
+        Las <strong>expresiones de corte</strong> son utilizadas para identificar un conjunto de puntos de enlaces.
+        Se componen a partir de los <strong>designadores de corte</strong> y un conjunto de operadores algebraicos.
+        La declaración de los avisos es utilizada para especificar código que debe ejecutarse en
+        los puntos de enlace determinados por la expresión de corte.</p>
+    <p>
+        La información del contexto del punto de enlace puede exponerse mediante cortes con argumentos
+        y expresiones que contienen identificadores en vez de nombres de tipos, todas las veces que se necesite.
+        Diferentes tipos de aviso pueden ser declarados, permitiendo que el aspecto introduzca comportamiento
+        en diferentes momentos: el aviso después (<strong>after advice</strong>), el aviso antes (<strong>before advice</strong>) y el aviso durante (<strong>around advice</strong>).
+        Los aspectos en AspectC++ implementan en forma modular los conceptos entrecruzados y son extensiones del concepto de
+        clase en C++. Además de atributos y métodos, los aspectos pueden contener declaraciones de avisos. Los aspectos
+        pueden derivarse de clases y aspectos, pero no es posible derivar una clase de un aspecto.
+    </p>
+
+    <img src="/POA_teoria/Images/Aspectc++.png">
+    <h2>
+        <a id="AspectJ" class="anchor" href="#AspectJ" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h2>
+<p>
+    Extensión Java del proyecto Eclipse para soportar el manejo de aspectos agregando a la semántica de Java las cuatro entidades ya descritas:
+    <ul>
+    <li>
+        Puntos de enlace.
+    </li>
+    <li>
+        Puntos de corte.
+
+    </li>
+    <li>
+        Advices(Consejos).
+    </li>
+    <li>
+        Instrucciones y declaraciones.
+    </li>
+</ul>
+
+
+</p>
+    <p>Algunas ventajas de este lenguaje son:
+        <ul>
+    <li>
+        Permite modelar referencias transversales.
+    </li>
+    <li>
+        Ofrece ventajas de modularidad.
+    </li>
+    <li>
+        Soporta tejido dinámico y estático.
+    </li>
+    </ul>
+    Sin embargo, algunas posibles desventajas son:
+    <ul>
+    <li>
+        El programador necesita de una herramienta para poder comprender la funcionalidad completa del sistema.
+    </li>
+        <li>
+            Los diseñadores deben reconocer los aspectos de un sistema, por lo que el modelado, planificación y control son mucho más importantes en la fase de desarrollo.
+        </li>
+</ul>
+
+    <img src="/POA_teoria/Images/ASPECTJ.png">
+    <p>
+        El siguiente es un ejemplo implementado en AspectJ para registro de transacciones bancarias.
+    </p>
+
+    <img src="/POA_teoria/Images/EjA.png">
+
+    <h2>
+        <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectS</h2>
+    <p>
+        AspectS, un lenguaje de aspectos de propósito general, utiliza el modelo de
+        lenguaje de <strong>AspectJ</strong> y ayuda a descubrir la relación que hay entre los aspectos y
+        los ambientes dinámicos. Soporta programación en un <strong>metanivel</strong>, manejando el fenómeno
+        de <strong>Código Mezclado</strong> a través de módulos de <strong>aspectos relacionados</strong>. Está implementado en
+        <strong>Squeak </strong>sin cambiar la sintaxis, ni la máquina virtual.</p>
+    <p>
+        En este lenguaje los aspectos se implementan a través de clases y sus instancias actúan
+        como un objeto, respetando el principio de uniformidad. Un aspecto puede contener un conjunto
+        de receptores, enviadores o clases enviadoras. Estos objetos se agregan o se remueven por el
+        cliente y serán usados por el proceso de tejer en ejecución para determinar si el comportamiento debe activarse o no.
+    </p>
+    <p>
+        Los tipos de <strong>avisos</strong> definibles en AspectS son:
+    <ul>
+        <li>Antes y después de la invocación a un
+            (<strong>AsBeforeAfterAdvice</strong>).
+        </li>
+        <li>
+            Para manejo de excepciones(<strong>AsHandlerAdvice</strong>).
+        </li>
+        <li>
+            Durante la invocación de un método(<strong>AsAroundAdvice</strong>).
+        </li>
+    </ul>
+    </p>
+    <p>
+        Un <strong>calificador de avisos (AsAdviceQualifier)</strong> es usado para controlar la selección del aviso apropiado.
+        Es similar al concepto de designadores de cortes de AspectJ.</p>
+    <p>
+        Utiliza un tejedor dinámico que transforma el sistema base de acuerdo a lo especificado en los aspectos.
+        El código tejido se basa en el <strong>MethodWrapper</strong> y la meta-programación. MethodWrapper es un mecanismo que
+        permite introducir código que es ejecutado antes, después o durante la ejecución de un método.</p>
+    <p>
+        El proceso de tejer sucede cada vez que una instancia de aspectos es instalada.
+        Para revertir los efectos de un aspecto al sistema, el aspecto debe ser desinstalado.
+        A este proceso se lo conoce como “destejer”, del inglés unweaving. El tejido de AspectS
+        es completamente dinámico ya que ocurre en ejecución.
+    </p>
+
+</section>
+</body>
+</html>

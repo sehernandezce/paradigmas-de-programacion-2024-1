@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Programacion Orientada a Aspectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/POA_teoria/stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+    <h2 class="project-tagline"></h2>
+    <a href="/POA_teoria/index.html" class="btn">Inicio</a>
+    <a href="/POA_teoria/Pages/historia.html" class="btn">Historia</a>
+    <a href="/POA_teoria/Pages/filosofia.html" class="btn">Filosofía del Paradigma</a>
+    <a href="/POA_teoria/Pages/evolucion.html" class="btn">Conceptos Claves</a>
+    <a href="/POA_teoria/Pages/lenguajes.html" class="btn">Lenguajes</a>
+    <a href="/POA_teoria/Pages/aplicaciones.html" class="btn">Aplicaciones</a>
+
+</section>
+
+ <section class="main-content">
+
+<h2>
+<a id="ventajas-y-desventajas" class="anchor" href="#ventajas-y-desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>VENTAJAS Y DESVENTAJAS</h2>
+
+<h3>
+<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>VENTAJAS</strong>
+</h3>
+
+<ul>
+<li>Ayuda a superar los problemas causados por: <strong>Código Mezclado(Code Tangling)</strong> y <strong>Código Diseminado(Code Scattering)</strong>
+</li>
+</ul>
+
+<hr>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/scattering_tangling.png?raw=true" alt=""></p>
+
+<p><em>Se entiende como <strong>Código Mezclado</strong> como en un mismo módulo de un sistema de software puedan simultáneamente convivir más de un requerimiento. Esta múltiple existencia de requerimientos lleva a la presencia conjunta de elementos de implementación de más de un requerimiento, resultando en un Código Mezclado.</em></p>
+
+<p><em>El <strong>Código Diseminado</strong> se refiere a como los requerimientos están esparcidos sobre varios módulos, la implementación resultante también queda diseminada sobre esos módulos.</em></p>
+
+<hr>
+
+<ul>
+<li><p><strong>Implementación modularizada:</strong> POA logra separar cada concepto con mínimo acoplamiento, resultando en implementaciones  modularizadas aún en la presencia de conceptos que se entrecruzan. Esto lleva a un código más limpio, menos duplicado, más fácil de entender y de mantener.</p></li>
+<li><p><strong>Mayor evolucionabilidad:</strong> La separación de conceptos permite agregar nuevos aspectos, modificar y / o remover aspectos existentes fácilmente.</p></li>
+</ul>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/evolucion-social.jpg?raw=true" alt=""></p>
+
+<ul>
+<li><p><strong>Capacidad de retrasar las decisiones de diseño:</strong> para requerimientos actuales o que surjan en el futuro, permite, luego, <em>implementarlos separadamente, e incluirlos automáticamente en el sistema.</em></p></li>
+<li><p><strong>Resuelve el dilema del arquitecto:</strong> ¿Cuántos recursos invertir en el diseño? ¿Cuándo es “demasiado diseño”?</p></li>
+<li><p><strong>Mayor reusabilidad:</strong> Al ser implementados separadamente, tiene mayor probabilidades de ser reusados en otros sistemas con requerimientos similares. </p></li>
+</ul>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/code_reusability.jpg?raw=true" alt=""></p>
+
+<ul>
+<li><p><strong>Divide y vencerás:</strong> Al separar la funcionalidad básica de los aspectos, se aplica con mayor intensidad el principio de dividir y conquistar.</p></li>
+<li><p><strong>N-dimensiones:</strong> Ahora se tiene la posibilidad de implementar el sistema con las dimensiones que sean necesarias, no una única dimensión ”sobrecargada”.</p></li>
+<li><p><strong>Mínimo acoplamiento y máxima cohesión:</strong> Se genera una mejor implementación de un sistema si realizamos cada una de sus partes por separado y los unimos de una manera estrecha en donde estas partes, en este caso los aspectos interactúen adecuadamente.</p></li>
+</ul>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/minimo_acoplamiento_maxima_cohesion.png?raw=true" alt=""></p>
+
+<h3>
+<a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>DESVENTAJAS</strong>
+</h3>
+
+<ul>
+<li><p><strong>Posibles choques entre el código funcional (expresado en el lenguaje componente) y el código de aspectos (expresados en los lenguajes de aspectos):</strong> Usualmente estos choques nacen de la necesidad de violar el encapsulamiento para implementar los diferentes aspectos, sabiendo de antemano el riesgo potencial que se corre al utilizar estas prácticas.</p></li>
+<li><p><strong>Posibles choques entre los aspectos:</strong> El ejemplo clásico es tener dos aspectos que trabajan perfectamente por separado pero al aplicarlos conjuntamente resultan en un comportamiento anormal. </p></li>
+</ul>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/choque.png?raw=true" alt=""></p>
+
+<ul>
+<li>
+<strong>Posibles choques entre el código de aspectos y los mecanismos del lenguaje:</strong> Uno de los ejemplos más conocidos de este problema es la anomalía de herencia. Dentro del contexto de la POA, el término puede ser usado para indicar la dificultad de heredar el código de un aspecto en la presencia de herencia.</li>
+</ul>
+
+<p><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/herencia.png?raw=true" alt=""></p>
+
+</section>
+
+</body>
+</html>
