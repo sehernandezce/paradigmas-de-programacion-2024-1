@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Paralelismo en Julia</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+
+  <!---menu--->
+  <link rel="stylesheet" href="css/superfish.css" media="screen">
+  <script src="js/jquery-1.9.0.min.js"></script>
+  <script src="js/hoverIntent.js"></script>
+  <script src="js/superfish.js"></script>
+  <script>
+	// initialise plugins
+	jQuery(function(){
+		jQuery('#example').superfish({
+			//useClick: true
+		});
+	});
+  </script>
+</head>
+<body>
+<div class="header-wrap">
+  <div class="logo">
+    <h1>Julia</h1>
+  </div>
+  <div class="menu"> <img src="images/menu-left.png" alt="image"/>
+    <ul class="sf-menu" id="example">
+        <li><a href="index.html">Programación paralela</a></li>
+    </ul>
+    <img src="images/menu-right.png" alt="image"/> </div>
+</div>
+<!---header-wrap--->
+<div class="clear"></div>
+<div class="banner-wrap">
+  <div class="banner">
+	  <p>
+        Como primer paso se recomienda instalar Julia, Jupyter y IJulia (en la sección de <b>otros recursos</b> puede encontrarse documentación al respecto).
+      </p>
+	  <br>
+      <p>
+        Existen varias formas de realizar computación paralela, pasando por <a href="http://www.nvidia.com/object/cuda_home_new.html">CUDA</a> y <a href="http://openmp.org/wp/">OpenMP</a>, pero se decidió tomar Julia por su integración con los notebooks de Jupyter y la no limitante del hardware.
+      </p>
+	  <br>
+      <p>
+        En la siguiente sección se presentan dos notebooks, uno contextualizando el lenguaje como tal y el otro explicando el uso del paralelismo en este lenguaje.
+      </p>
+  </div>
+</div>
+<!---banner--->
+<div class="page-wrap">
+  <div class="wrap">
+    <div class="box marRight40">
+      <div class="panel">
+        <div class="title">
+          <h1>Introducción a Julia</h1>
+          <h2>Notebook introductorio</h2>
+        </div>
+        <div class="content">
+          <p>Notebook que explica el lenguaje de programación Julia, pasando por estructuras de control, estructuras de datos entre otras cosas.</p>
+          <div class="button"><a href="http://nbviewer.jupyter.org/github/maasencioh/paradigmas-de-programacion/blob/progparalela/progparalela/Getting_Started_Julia.ipynb">Ver</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="panel">
+        <div class="title">
+          <h1>Paralelismo en Julia</h1>
+          <h2>Notebook de paralelismo</h2>
+        </div>
+        <div class="content">
+          <p>Notebook que explica como realizar el paralelismo, pasando por el for paralelo, envío de trabajos a trabajadores, paso de datos de trabajadores.</p>
+          <div class="button"><a href="http://nbviewer.jupyter.org/github/maasencioh/paradigmas-de-programacion/blob/progparalela/progparalela/Parallel.ipynb">Ver</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<!---page-wrap-end--->
+<div class="footer-wrap">
+  <div class="footer">
+    <div class="panel marRight30">
+      <div class="title">
+        <h1>Otros recursos</h1>
+      </div>
+      <div class="content">
+		  <ul>
+            <li><a href="http://julialang.org/">Página Julia</a></li>
+            <li><a href="http://julialang.org/downloads/">Instalar Julia</a></li>
+            <li><a href="http://jupyter.readthedocs.io/en/latest/install.html">Instalar Jupyter</a></li>
+            <li><a href="http://docs.julialang.org/en/stable/manual/parallel-computing/">Julia sobre computación paralela</a></li>
+            <li><a href="https://github.com/JuliaLang/IJulia.jl">IJupyter</a></li>
+          </ul>
+      </div>
+    </div>
+    <div class="panel marRight30">
+		<div class="title">
+          <h1>Desarrolladores</h1>
+        </div>
+        <div class="content">
+  		  <ul>
+              <li>Miguel Angel Asencio Hurtado</li>
+              <li>Gabriel Giovany Gonzalez Galindo</li>
+              <li>Edwar Leyder Pastas Morales</li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<!---footer-wrap--->
+<div class="clear"></div>
+<div class="copyright-wrap">
+  <div class="copyright">
+    <div class="content">
+      <p>© 2016 All Rights Reserved  | <a href="#" class="link">Privacy Policy</a>&nbsp;&nbsp;
+        Designed by :<a href="www.alltemplateneeds.com."> www.alltemplateneeds.com.</a>&nbsp;&nbsp;
+        Images From:<a href="www.photorack.net" class="link"> www.photorack.net</a></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
