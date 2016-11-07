@@ -13,9 +13,7 @@
     <section class="page-header">
       <h1 class="project-name">Prolog</h1>
       <h2 class="project-tagline"></h2>
-      <a href="https://github.com/mppinedav/prolog" class="btn">View on GitHub</a>
-      <a href="https://github.com/mppinedav/prolog/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/mppinedav/prolog/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages" class="btn">View on GitHub</a>
     </section>
 
     <section class="main-content">
@@ -66,7 +64,7 @@ Los números reales se pueden representar con la notación decimal (ejemplo 1.34
 </ul>
 </li>
 <li><p><strong>Variables:</strong> Las variables en Prolog se representan mediante cadenas formadas por letras, dígitos y el símbolo
-de subrayado, pero es importante que inicien por una letra minúscula o por el símbolo de subrayado _ (ejemplo X, Y, Resultado, _nombre, _).</p></li>
+de subrayado,también con una letra mayúscula en su inicio, una excepción es la variable anónima ‘_’. (ejemplo X, Y, Resultado, _nombre, _).</p></li>
 <li><p><strong>Estructuras:</strong> Son términos compuestos por otros términos. Se construyen mediante un símbolo de función, denominado
 <strong>functor</strong> que se define con un átomo, seguido entre paréntesis, por una conjunto de términos separados por comas, denominados argumentos (Ejemplos: fecha(10,mayo,2011), punto(X,Y), recta(punto(11,21), punto(31,25))).
 OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functor y el paréntesis abierto antes de los argumentos. Por ejemplo, <em>punto (X,Y)</em> no es una estructura compuesta correcta y generará un error de compilación.</p></li>
@@ -75,7 +73,7 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
 <h2>
 <a id="22-programa" class="anchor" href="#22-programa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2 Programa</h2>
 
-<p>Los programas en Prolog son programas lógicos definidos, y están compuestos por una serie de cláusulas de Horn positivas, es decir, hechos y reglas. </p>
+<p>Los programas en Prolog son programas lógicos definidos, este se basa en un conocimiento base para solucionar consultas así como inferir información y el conocimiento lo representamos mediante cláusulas de Horn positivas. Las cláusulas son hechos o reglas , están compuestas usualmente de predicados. </p>
 
 <p>La mayoría de los programas Prolog están organizados en cuatro secciones principales:</p>
 
@@ -96,6 +94,14 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/prolog2.png?raw=true">
 </p>
 
+<p>Para el caso que se quiera poder trabajar desde la propia máquina se debe realizar los siguiente:</p>
+<ul>
+<li><strong>Windows:</strong>Se usa el IDE Swi-Prolog, es el mismo que podemos encontrar online, pero en este caso podemos tenerlo en la máquina local y poder trabajar desde ahí. <a href="http://www.swi-prolog.org/download/stable">Enlace de descarga</a> </li>
+<li><strong>Linux:</strong> Para poder instalarlo debemos seguir los pasos que encontraremos en el siguiente link <a href="https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html">enlace</a>, los comandos que se encontraran allí se deben ejecutar por consola. En este caso no hay un IDE que nos permita correr el codigo con un solo botón,
+  para si queremos ejecutar código prolog, debemos primero escribir el código con un editor de texto y guardar los archivos con extensión “.pl” . Luego de esto por medio de la consola accedemos a la carpeta donde se encuentran guardados los archivos y estando allí ejecutamos el comando “prolog”,
+  esto nos permitirá acceder a la consola de prolog previamente instalada. Ahora para poder ejecutar un programa, debemos poner en consola “ [ “nombre_archivo.pl” ]. “ ,  luego ya podemos usar las “reglas” que se hayan programado.</li>
+</ul>
+
 <h1>
 <a id="3-hechos" class="anchor" href="#3-hechos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Hechos</h1>
 
@@ -104,6 +110,15 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/hechos.png?raw=true">
 </p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/lcvptfecc1p3am0/hechos1.png?dl=1">
+</p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/fidqag5rt0wodqw/hechos2.png?dl=1">
+</p>
+
 
 <p>Los hechos pueden construir propiedades o relaciones. Cuando están compuestos por un único argumento (monádicos), se dice que es una propiedad. Cuando se forman con dos o más argumentos (poliádicos), construyen relaciones. Existe una serie de reglas que se deben tener presentes al momento de definir un predicado.</p>
 
@@ -136,13 +151,36 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
      progenitor(patricia,jaime).    %Hecho 6
 </code></pre>
 
+<p> Otro ejemplo de familias</p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/d1huz0huc8751t6/hechos-familias-padre.png?dl=1">
+</p>
+<br/>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/gc7cc7cve06xpbz/hechos-familias-madre.png?dl=1">
+</p>
+
+<p>Reglas para poder hallar relación familiar.</p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/4o7xev6pyn83ph6/reglas-familias-1.png?dl=1">
+</p>
+<br/>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/3jt827zfjuj0aew/reglas-familias-2.png?dl=1">
+</p>
+
+
 <h1>
 <a id="4-consultas" class="anchor" href="#4-consultas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Consultas</h1>
 
 <p>Sobre un conjunto de hechos se pueden definir realizar una serie de preguntas para extraer conocimiento de la base de datos generada por los hechos. Comienzan con un signo de interrogación seguido de un guión <strong>?-</strong> y terminan en punto.
 Ante una consulta, Prolog intenta hacer un <em>matching</em> sobre la base de conocimiento. </p>
 
-<p>Las respuestas a una consulta puede ser <strong>true</strong>, <strong>false</strong> o los elementos que pueden tomar una variable definida. Un ejemplo simple de una consulta puede ser:</p>
+<p>Cuando en una consulta se tiene más de una alternativa Prolog devuelve la primera ocurrencia, se obtienen las demás insertando el token punto y coma. Las respuestas a una consulta puede ser <strong>true</strong>, <strong>false</strong> o los elementos que pueden tomar una variable definida. Un ejemplo simple de una consulta puede ser:</p>
 
 <pre><code>     ?-progenitor(patricia,jaime).
 </code></pre>
@@ -310,6 +348,20 @@ Para determinar un antepasado de forma recursiva necesitamos dos casos: El caso 
 
 <h1>
 <a id="6--backtracking" class="anchor" href="#6--backtracking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6.  Backtracking</h1>
+
+<p> Prolog siempre está consultando “la base del conocimiento”, para verificar que hechos son verdaderos y que nos permitirá la construcción de las posibles reglas. Para aquello en problemas de recursión, prolog se devuelve hasta que encuentra que un hecho base es verdadero y de ahí construye la respuesta.</p>
+
+<p>En el siguiente ejemplo podemos ver que si consultamos K(Y), donde Y puede ser “a” o “b”. En este caso prolog va ir a lo más profundo del árbol en busca de los “hechos” , para ver como establecimos la base del conocimiento. Así se puede ver que h(a), da error dado a que no se encuentra en los hechos y en cambio retorna h(b) hasta K(Y)  y por último Y tomaría el valor de “b”.</p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/8s8sse6w54lhpw6/backtrack1.png?dl=1">
+</p>
+
+<p> Ejemplo práctico de cómo hallar el factorial de un número .</p>
+<p align="center">
+<img src="https://www.dropbox.com/s/szx7v7m5bqdg9ce/factorial.png?dl=1">
+</p>
+
 
 <p>Considerando el siguiente ejemplo, vamos a entender cómo hace Prolog para verificar cuándo se cumple una regla.</p>
 
@@ -543,7 +595,13 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/aritmetico.png?raw=true"></p>
-         
+
+<p>Cuando se quiere comparar expresiones(ej:predicados, términos complejos) se añade un @ inmediatamente después dela primera expresión (X@<Y)</p>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/maupbizx2p1pfcf/%40eg.png?dl=1">
+</p>
+
 
 <p>Los siguientes predicados predefinidos comparan términos haciendo una evaluación
 de expresiones:</p>
@@ -769,13 +827,13 @@ de expresiones:</p>
      [a,b,c] = [X,Y|Z]
      X = a
      Y = b
-     Z = [c] 
+     Z = [c]
 
-     [a,b,c] = [X,Y,Z|Cola] 
+     [a,b,c] = [X,Y,Z|Cola]
      X = a
      Y = b
      Z = c
-     Cola = [ ] 
+     Cola = [ ]
 </code></pre>
 
 <h2>
@@ -832,7 +890,28 @@ El esquema general es:</p>
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/lista6.png?raw=true"></p></li>
 <li><p>f). Sumar los elementos de una lista
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/lista7.png?raw=true"></p></li>
+<li><p>g.)Reglas basicas aplicadas a las listas. <img src="https://www.dropbox.com/s/k67kkt5mv0o8set/final-lista.png?dl=1"></p></li>
+<li><p>i.) Algoritmo para ordenar una lista usando Merge Sort. <img src="https://www.dropbox.com/s/jfafc4jipmvf9jo/merge-sort.png?dl=1"></p></li>
 </ul>
+
+<h2>
+<a id="93-funciones-predefinidas" class="anchor" href="#93-funciones-predefinidas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9.3 Funciones predefinidas</h2>
+<ul>
+<li><strong>Append: </strong>Permite concatenar dos listas, obtener sublistas y generar todas las combinaciones de listas
+<p align="center">
+<img src="https://www.dropbox.com/s/bp5t1c7zy9i50os/append.png?dl=1">
+</p>
+</li>
+
+<li><strong>Member: </strong>Esta función es muy útil para “iterar” sobre la lista así como revisar si un item pertence a la lista.
+<p align="center">
+<img src="https://www.dropbox.com/s/jc6zfbij6i3gch9/member.png?dl=1">
+</p>
+</li>
+<li><strong>Length: </strong>Permite obtener la longitud de una lista</li>
+<li><strong>Sort: </strong>Permite ordenar una lista</li>
+</ul>
+
 
 <h1>
 <a id="10-arboles" class="anchor" href="#10-arboles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10. Arboles</h1>
@@ -851,7 +930,7 @@ El esquema general es:</p>
 
 <pre><code> binary_tree(void).                       %caso base
  binary_tree(t(K,L,R)) :-                 %caso recursivo
-                         binary_tree(L), 
+                         binary_tree(L),
                          binary_tree(R).
 </code></pre>
 </li>
@@ -874,7 +953,7 @@ El esquema general es:</p>
 <p><strong>Inorder:</strong></p>
 
 <pre><code> inorder(nil, []).
- inorder(t(K,L,R), List):-inorder(L,LL), 
+ inorder(t(K,L,R), List):-inorder(L,LL),
                           inorder(R, LR),
                           append(LL, [K|LR],List).
 </code></pre>
@@ -882,7 +961,7 @@ El esquema general es:</p>
 <li>
 <p><strong>Preorder:</strong></p>
 
-<pre><code> preorder(nil, []). 
+<pre><code> preorder(nil, []).
  preorder(t(K,L,R), List):-preorder(L,LL),
                            preorder(R, LR),
                            append([K|LL], LR, List).
@@ -891,10 +970,10 @@ El esquema general es:</p>
 <li>
 <p><strong>Postorder:</strong></p>
 
-<pre><code> postorder(nil, []). 
- postorder(t(K,L,R), List):-postorder(L,LL), 
+<pre><code> postorder(nil, []).
+ postorder(t(K,L,R), List):-postorder(L,LL),
                             postorder(R, LR),
-                            append(LL, LR,R1), 
+                            append(LL, LR,R1),
                             append(R1, [K], List).
 </code></pre>
 </li>
@@ -904,6 +983,25 @@ El esquema general es:</p>
 
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/arbolrecorrido.png?raw=true"></p>
+
+<h2>
+<a id="101-representacion2" class="anchor" href="#101-representacion2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10.1 Otra representación de arboles </h2>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/z1qtngic04h5wwq/arbol1.png?dl=1">
+</p>
+
+<br/>
+<p align="center">
+<img src="https://www.dropbox.com/s/7td41b1q4n31ujw/arbol2.png?dl=1">
+</p>
+
+<br/>
+<p align="center">
+<img src="https://www.dropbox.com/s/3br5j9mu16r899b/Arbol-ejemplo.png?dl=1">
+</p>
+
+
 
 <h1>
 <a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplo Grafos</h1>
@@ -921,6 +1019,11 @@ El esquema general es:</p>
 <h1>
 <a id="12-ejemplo-autómatas" class="anchor" href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>12. Ejemplo Autómatas</h1>
 
+<p align="center">
+<img src="https://www.dropbox.com/s/xuq8yd5phq0ekq0/automatas1.png?dl=1">
+</p>
+
+
 <p>Implementar un AFD en prolog que acepte el lenguaje determinado por el siguiente autómata:</p>
 
 <p align="center">
@@ -930,7 +1033,7 @@ El esquema general es:</p>
 
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata1.png?raw=true"></p>
- 
+
 
 <p>Vamos a verificar la anterior definición con una cadena que sí sea aceptada por el autómata. En este caso probaremos para la cadena <strong>[b,b,a,a,b,a,b]</strong>, verificando que es una cadena aceptada.</p>
 
@@ -942,22 +1045,39 @@ El esquema general es:</p>
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata3.png?raw=true"></p>
 
+<h1>
+<a id="13-Aplicaciones" class="anchor" href="#13-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Aplicaciones</h1>
+
+
+<p align="center">
+<img src="https://www.dropbox.com/s/awoodott3tfz6ta/Aplicaciones.png?dl=1">
+</p>
+
+<h1>
+<a id="14-Des-Ven" class="anchor" href="#14-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Desventajas / Ventajas</h1>
+
+<p align="center">
+<img src="https://www.dropbox.com/s/ebl5btplkviw02b/des-ven.png?dl=1">
+</p>
+
+
 <hr>
 
 <h2>
-<a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. Todos los ejercicios trabajados pueden encontrarlos en este <a href="http://swish.swi-prolog.org/p/tutorialprolog.swinb">notebook</a>
+<a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. Los ejercicios trabajados pueden encontrarlos en este <a href="http://swish.swi-prolog.org/p/tutorialprolog.swinb">notebook</a>
 </h2>
 
 <p>Este tutorial fue desarrollado por Mónica Pineda, Jorge Bonilla y Diego Poveda.</p>
+<p>Colaboradores : Jaime Andres Vargas y Jonathan Alberto Ortiz</p>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/mppinedav">mppinedav</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
     </section>
 
-  
+
   </body>
 </html>
