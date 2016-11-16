@@ -34,11 +34,16 @@
 		Los LOA son  aquellos  lenguajes  que permiten separar  la definición de  la  funcionalidad 
 		“principal” de la definición de los diferentes aspectos. Los LOA deben satisfacer varias propiedades deseables:
 	</p>
+	 <ul>
+        <li>Debe  ser  claramente  identificable.</li>
+        <li>Debe  auto  contenerse.</li>
+        <li>Debe ser ser  fácilmente  modificable.</li>
+		<li>No  deben  interferir  entre  ellos</li>
+		<li>No  deben interferir  con  los  mecanismos  usados para definir o mejorar la funcionalidad principal como la herencia</li>
+    </ul>
 	<p align="justify">
-		Debe  ser  claramente  identificable,  auto  contenerse,  ser  fácilmente  modificables, no  deben  interferir  entre  ellos,  y  tampoco  
-		interferir  con  los  mecanismos  usados para definir y evolucionar la funcionalidad principal, como la herencia. Los  LOA  distinguen  dos  
-		enfoques  diferentes en  el  diseño  de  los  lenguajes orientados a aspectos: los lenguajes orientados a aspectos de dominio específico y 
-		los lenguajes orientados a aspectos de propósito general.
+		Los  LOA  distinguen  dos  enfoques  diferentes en  el  diseño  de  los  lenguajes orientados a aspectos: los lenguajes orientados a 
+		aspectos de dominio específico y los lenguajes orientados a aspectos de propósito general.
 	</p>
 	<p align="justify">
 		Los LOA  de  dominio  específico han  sido  diseñados  para  soportar  algún  tipo particular  de  aspectos,  como  por  ejemplo  la  concurrencia,
@@ -46,34 +51,27 @@
 		representar los conceptos específicos del aspecto a un nivel de representación más elevado.
 	</p>
 	<p align="justify">
-		Algunos de estos lenguajes necesitan imponer restricciones en el lenguaje base, de manera de poder garantizar que las incumbencias que son tratadas 
-		en los aspectos no   pueden   ser   programadas   en   los   componentes,   evitando   de   esta   manera inconsistencias  o  funcionamientos  no  deseados. 
+		Algunos de estos lenguajes necesitan imponer restricciones en el lenguaje base, para garantizar que las incumbencias que son tratadas 
+		en los aspectos no puedan   ser   programadas   en   los   componentes,   evitando   de   esta   manera inconsistencias  o  funcionamientos  no  deseados. 
 		Por  ejemplo,  si  el  lenguaje  de aspectos  se  especializa  en  la  concurrencia  o  sincronización,  puede  requerir  que sean deshabilitadas las 
 		primitivas del lenguaje base que puedan ser utilizadas para estas  funciones  (un  ejemplo  de  este  tipo  de  LOA  es  COOL,  el  cual  se  describirá más adelante).
 	</p>
 	<p align="justify">
 		Los LOA  de  propósitos  generales han  sido  diseñados  para  soportar  cualquier tipo  de  aspectos.  Este  tipo  de  lenguajes  no  pueden  imponer  
 		restricciones  en  el lenguaje base. Generalmente tienen el mismo nivel de abstracción que el lenguaje base,  y  soportan  las  mismas  instrucciones  
-		o  primitivas,  ya  que,  en  principio, cualquier  código  debería  poderse  escribir  en  los  aspectos  desarrollados  con  estos 14 lenguajes  
+		o  primitivas dellenguaje base,  ya  que,  en  principio, cualquier  código  debería  poderse  escribir  en  los  aspectos  desarrollados  con  estos lenguajes  
 		(un  ejemplo  de  este  tipo  de  LOA  es  AspectJ,  el  cual  se  describirá  más adelante).
 	</p>
 	<p align="justify">
-		Los LOA de propósitos general tienen la clara ventaja de ser, tal como su nombre indica,  generales,  capaces  de  ser  utilizados  para  desarrollar 
-		con  ellos  cualquier tipo de aspecto. Sin embargo, tienen también una desventaja de que no garantizan la  separación  de  funcionalidades.  Al  no  poder 
-		restringir  las  instrucciones  o primitivas en la programación de los componentes, no puede garantizarse que las tareas  que  deberían  programarse  como  
-		aspectos  no  sean  programados  dentro  de los componentes. Esto queda librado al programador.
+		Los LOA de propósitos general tienen la clara ventaja de tener la capacidad de ser  utilizados  para  desarrollar 
+		con  ellos  cualquier tipo de aspecto. Sin embargo, tienen también una desventaja ya que no garantizan la  separación  de  funcionalidades.  Al  no  poder 
+		restringir  las  instrucciones  o primitivas en la programación de los componentes, no puede garantizarse que los aspectos  no  serán  programados  dentro  
+		de los componentes. Esto queda a libertad del programador.
 	</p>
 	<p align="justify">
 		Los LOA de dominio específico fuerzan a programar las tareas de aspectos dentro de  éstos,  ya  que  en  el  lenguaje  base  se  restringe  el  uso  de  las  
-		instrucciones relacionadas con las funcionalidades de aspectos.
+		instrucciones que tienen relación con la funcionalidad de los aspectos.
 	</p>
-	<p align="justify">
-		De   esta   manera   se   ha   resaltado   los   criterios   y   contenidos   científicos   que proporcionan estos  autores  en  su  documento,  en  especial 
-		sobre  los  lenguajes orientados  a  aspectos;  son  de  tal  interés  e  importancia  que  los  he  ubicado  en  la tesis  porque  sirven  de  fuente  de  
-		conocimiento  y  guía  para  el  desarrollo  de  la aplicación. El saber diferenciar los distintos lenguajes de Programación Orientada a  Aspectos  que  existen  
-		y  que  papel  desempeñan,  facilitan  el  trabajo  de  un investigador del POA.
-	</p>
-	
     <h2>
         <a id="JPAL" class="anchor" href="#jpal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> JPAL</h2>
     <p align="justify">
@@ -199,6 +197,10 @@
         lamadas a la función f o las llamadas a la función g.
 
     </p>
+	
+	
+	
+	
     <p align="justify">
         Como el lenguaje C es de naturaleza estática, el tejedor de AspectC es estático.
     </p>
@@ -321,21 +323,63 @@
 		
 	<h2>
         <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MALAJ</h2>
-    <p align="justify">
-		MALAJ  (Multi  Aspect  Language  for  Java)  es  un  LOA  de  dominio  especifico 
-		focalizado  en  la  sincronización  y  reubicación.  MALAJ  sigue  la  misma  filosofía 
-		que  COOL  y  RIDL,  indicando  que  la  flexibilidad  ganada  con  los  LOA  de propósito  general  
-		pueden  potencialmente  llevar  a  conflictos  con  los  principios básicos  de  la  POO.  
-		Por  esta  razón  MALAJ  propone  un  LOA  de  dominio específico  donde  varios  aspectos  
-		puedan  ser  resueltos  cada  uno  especializado  en su propia “incumbencia”. 
-	</p>
-    <p align="justify">
-        Tal  como  lo  indica  su  nombre,  el  lenguaje  base  es  Java,  pero  en  una  versión restringida 
-		en la que se ha eliminado la palabra reservadas “synchronized” así como  los  métodos “wait”, “notify”,  
-		y “notifyall”,  en  forma  similar  a  lo  que sucede  con  COOL.  El  propósito  final  de  los  
-		creadores de  MALAJ  es  cubrir  un gran espectro de aspectos específicos.
-    </p>
-	
+		<p align="justify">
+			MALAJ (Multi  Aspect  Language  for  Java)  es   un   lenguaje   orientado   a   aspectos   de   dominio   específico. 
+			Define constructores lingüísticos separados para cada aspecto de dominio específico, 
+			donde  el  código  de  los  aspectos  tiene  una  visibilidad  limitada  del  código  funcional,  
+			reduciendo  los  posibles  conflictos  con  las  características  lingüísticas  tradicionales  y  
+			también, con el principio de encapsulación. 
+		</p>
+		<p align="justify">			
+			Malaj se concentra principalmente en  dos  aspectos:  sincronización  y  relocación.  Puede  verse  como  un  
+			sucesor de los lenguajes COOL y RIDL por su filosofía, enfatizando la necesidad de 
+			restringir  la  visibilidad  de  los  aspectos,  y  reglas  claras  de  composición  con  los  
+			constructores  tradicionales.  Para  cada  aspecto,  provee  un    constructor  lingüístico  
+			distinto, limitando así la visibilidad del aspecto sobre el módulo funcional asociado a 
+			él.  Esto  último  se  logra  al  estudiar  cuidadosamente  la  relación  entre  el  código  
+			funcional y un aspecto dado. 
+		</p>    
+		<p align="justify">			
+		    El  lenguaje  base  de  Malaj  es  una  versión  restringida  de  Java,  donde  se  han  
+			removido   los   servicios   que   proveen   los   aspectos   mencionados.   Los   servicios   
+			removidos  son:  la  palabra  clave  synchronized,  y  los  métodos  wait,  notify,  and  
+			notifyAll.
+		</p>
+		<p align="justify">						
+			Para el aspecto de sincronización Malaj provee el constructor <i>guardian</i>. Cada 
+			guardián  es  una  unidad  distinta  con  su  propio  nombre,  y  se  asocia  con  una  clase  en  
+			particular  (esto  es,  “vigila”  esa  clase)  y  expresa  la  sincronización  de  un  conjunto  
+			relacionado  de  métodos  de  esa  clase,  es  decir,  que  el  guardián  de  una  clase <i>V</i> 
+			representa  básicamente  el  conjunto  de  métodos  sincronizados  de <i>V</i> .  Los guardianes 
+			no pueden acceder a los elementos privados de la clase que vigilan, y el acceso a los 
+			atributos   públicos   y   protegidos   se   limita   a   un   acceso   de   sólo   lectura.   El   
+			comportamiento adicional en un guardián para un método  <i>m</i> de  la clase asociada se 
+			especifica introduciendo código que se ejecutará antes o después de  <i>m</i>, a través de las 
+			cláusulas  before  y  after.  Una  última  característica  de  los  guardianes  es  que    pueden  
+			heredarse. Para reducir el problema de anomalía de herencia las cláusulas before 
+			y after en una clase pueden referirse a las cláusulas before y after de su clase padre a 
+			través de la sentencia  <i>super</i>. 
+		</p>
+		<p align="justify">	
+			El aspecto de relocación involucra el movimiento de objetos entre sitios en un 
+			ambiente  de  redes.  Este  tipo  de  relación  es  claramente  dinámico.  Para  este  aspecto  
+			Malaj  provee  el  constructor  <i> relocator </i>,  que  llamaremos  relocador.
+			Un  relocador  será  una  unidad  diferente  con  su  propio  nombre,  y  se  asocia  con  una  clase  en  particular.  
+			Las  acciones  de  relocación  pueden  ejecutarse  antes  o  después  de  la  ejecución  de  un  
+			método.  Para  modelar  este  comportamiento,  el  relocador  brinda  cláusulas  before  y  
+			after, que permiten la especificación deseada. También la visibilidad del relocator es 
+			limitada. Como el constructor guardián, un relocador puede heredarse, y las cláusulas 
+			before y after en una clase pueden referirse a las cláusulas before y after de su clase 
+			padre  a  través  de  la  sentencia <i>super</i>,  y  así  reducir  el  impacto  de  la  anomalía  de  
+			herencia. 
+		</p>
+		<p align="justify">	
+			Como  conclusión  Malaj  provee  una  solución  intermedia  entre  flexibilidad  y  
+			poder  por  un  lado,  y  entendimiento  y  facilidad  de  cambio  por  el  otro.  No  permite  
+			describir  cualquier  aspecto,  pero  sí  captura  el  comportamiento  de  dos  conceptos  
+			relacionados  con  el  código  funcional. 
+		</p>				
+
 	
 	
 	<h2>
