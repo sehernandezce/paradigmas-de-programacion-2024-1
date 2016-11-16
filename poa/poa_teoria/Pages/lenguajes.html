@@ -322,7 +322,7 @@
 		
 		
 	<h2>
-        <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MALAJ</h2>
+        <a id="MALAJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MALAJ</h2>
 		<p align="justify">
 			MALAJ (Multi  Aspect  Language  for  Java)  es   un   lenguaje   orientado   a   aspectos   de   dominio   específico. 
 			Define constructores lingüísticos separados para cada aspecto de dominio específico, 
@@ -331,7 +331,7 @@
 			también, con el principio de encapsulación. 
 		</p>
 		<p align="justify">			
-			Malaj se concentra principalmente en  dos  aspectos:  sincronización  y  relocación.  Puede  verse  como  un  
+			Se concentra principalmente en  dos  aspectos:  sincronización  y  relocación.  Puede  verse  como  un  
 			sucesor de los lenguajes COOL y RIDL por su filosofía, enfatizando la necesidad de 
 			restringir  la  visibilidad  de  los  aspectos,  y  reglas  claras  de  composición  con  los  
 			constructores  tradicionales.  Para  cada  aspecto,  provee  un    constructor  lingüístico  
@@ -342,16 +342,18 @@
 		<p align="justify">			
 		    El  lenguaje  base  de  Malaj  es  una  versión  restringida  de  Java,  donde  se  han  
 			removido   los   servicios   que   proveen   los   aspectos   mencionados.   Los   servicios   
-			removidos  son:  la  palabra  clave  synchronized,  y  los  métodos  wait,  notify,  and  
-			notifyAll.
+			removidos  son:  la  palabra  clave  synchronized,  y  los  métodos  <i>wait</i>,  <i>notify</i>,  and  
+			<i>notifyAll</i>.
 		</p>
 		<p align="justify">						
-			Para el aspecto de sincronización Malaj provee el constructor <i>guardian</i>. Cada 
+			Para el aspecto de sincronización Malaj provee el constructor <i><strong>guardian</strong></i>. Cada 
 			guardián  es  una  unidad  distinta  con  su  propio  nombre,  y  se  asocia  con  una  clase  en  
 			particular  (esto  es,  “vigila”  esa  clase)  y  expresa  la  sincronización  de  un  conjunto  
 			relacionado  de  métodos  de  esa  clase,  es  decir,  que  el  guardián  de  una  clase <i>V</i> 
-			representa  básicamente  el  conjunto  de  métodos  sincronizados  de <i>V</i> .  Los guardianes 
-			no pueden acceder a los elementos privados de la clase que vigilan, y el acceso a los 
+			representa  básicamente  el  conjunto  de  métodos  sincronizados  de <i>V</i> .  
+		</p>
+		<p align="justify">						
+			Los guardianes no pueden acceder a los elementos privados de la clase que vigilan, y el acceso a los 
 			atributos   públicos   y   protegidos   se   limita   a   un   acceso   de   sólo   lectura.   El   
 			comportamiento adicional en un guardián para un método  <i>m</i> de  la clase asociada se 
 			especifica introduciendo código que se ejecutará antes o después de  <i>m</i>, a través de las 
@@ -363,7 +365,7 @@
 		<p align="justify">	
 			El aspecto de relocación involucra el movimiento de objetos entre sitios en un 
 			ambiente  de  redes.  Este  tipo  de  relación  es  claramente  dinámico.  Para  este  aspecto  
-			Malaj  provee  el  constructor  <i> relocator </i>,  que  llamaremos  relocador.
+			Malaj  provee  el  constructor  <i><strong>relocator</strong></i>,  que  llamaremos  relocador.
 			Un  relocador  será  una  unidad  diferente  con  su  propio  nombre,  y  se  asocia  con  una  clase  en  particular.  
 			Las  acciones  de  relocación  pueden  ejecutarse  antes  o  después  de  la  ejecución  de  un  
 			método.  Para  modelar  este  comportamiento,  el  relocador  brinda  cláusulas  before  y  
@@ -383,17 +385,10 @@
 	
 	
 	<h2>
-        <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HyperJ</h2>
+        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HyperJ</h2>
     <p align="justify">
 		La aproximación por Ossher y Tarr sobre la separación multidimensional de conceptos (MDSOC)  
-		es llamada hyperspaces, y como soporte se construyó la herramienta HyperJ en Java. Para  
-		analizar  con mayor profundidad HyperJ es necesario introducir primero cierta terminología relativa a MDSOC:
-	</p>
-    <p align="justify">
-        Un espacio  de  concepto concentra  todas  las  unidades,  es  decir  todos  los constructores sintácticos 
-		del lenguaje, en un cuerpo de software, como una librería. Organiza las unidades en ese cuerpo de software
-		para separar todos los conceptos importantes, describe las interrelaciones entre los conceptos e indica cómo los 
-		componentes del software y el resto del sistema pueden construirse a partir de las unidades que especifican los conceptos.
+		es llamada hyperspaces, y como soporte se construyó la herramienta HyperJ en Java (ver <a src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/filosofia.html#msdoc">Separación multidimensional de conceptos</a>) .
 	</p>
 	<p align="justify">
 		En HyperJ un hiperespacio (hyperspace) es un espacio de concepto especialmente estructurado para soportar la 
