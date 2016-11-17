@@ -65,6 +65,32 @@
 	</p>
 	<script src="http://ideone.com/e.js/g0PhhN" type="text/javascript"></script>
 	
+	<h2>
+		<span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplo 2 - Cuenta Bancaria - AspectJ
+	</h2>
+	
+	<p align="justify">
+		Para el siguiente ejemplo vamos a implementar una clase que será una version sencilla de una cuenta de banco. 
+		Esta clase tiene un atributo que indica el saldo actual de la cuenta, y tres metodos que realizan un deposito, 
+		una transaccion y un retiro. Ademas se requiere que cada vez que se realice un movimiento bancario se registre 
+		el tiempo en el que se realizó.
+	</p>
+	<script src="http://ideone.com/e.js/d5l1Wa" type="text/javascript"></script>
+	
+	<p align="justify">
+		Nuevamente podemos ver la mezcla de las funcionalidades en el codigo, ya que los metodos no solo estan haciendo 
+		su funcionalidad(realizar un movimiento bancario) sino que tambien estan tomando el tiempo en el que se realizan. 
+		Para solucionar esto vamos a implementar un aspecto que va a cumplir con la funcion de registrar cada movimiento 
+		que se realice y el tiempo de este.
+	</p>
+	<script src="http://ideone.com/e.js/0zEkZT" type="text/javascript"></script>
+	
+	<p align="justify">
+		Y asi logramos abstraer esos conceptos que son transversales a la funcionalidad basica del programa y conseguimos 
+		dejar mas limpio el codigo principal.
+	</p>
+	<script src="http://ideone.com/e.js/nj1iuv" type="text/javascript"></script>
+	
 	<footer class="site-footer">
 		<span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
 		<span class="site-footer-credits">This page was created by Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>
