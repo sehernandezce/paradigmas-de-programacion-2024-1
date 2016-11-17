@@ -15,6 +15,121 @@ a {
   a:hover {
     text-decoration: underline; }
 
+.caja_contenido {
+    background-color: #10bb70;
+    border: 1px solid #666699;
+    border-radius: 60px;
+    text-align: center;
+    font-family: sans-serif !important;   
+    width: 95%; 
+    height: 45pt;
+    color: black;
+    margin-left: 5%;
+}
+
+.caja_contenido:hover{    
+      box-shadow: 0px 0px 30px blue;
+      padding: 1px;
+      border: 0.5px solid green;
+      transform: scale(1.2);
+}
+
+.menu_flotante{
+    background-color: #61afe8;
+    border: 1px solid white;
+    margin: 0;
+    text-align: center;
+    width: 125pt;
+    height: 30pt;
+    color: black;
+    font-weight: bold;
+}
+.menu_flotante:hover{
+    box-shadow: 0px 0px 30px #7ad4f5;
+    padding: 1px;
+    border: 0px solid green;
+    transform: scale(1.2);
+}
+a{
+    color: black;
+}
+h1{
+    font-size: 45pt;
+}
+
+h2{
+    font-size: 30pt;
+
+}
+
+h3{
+    font-size: 35pt;
+}
+
+h4{
+    font-size: 25pt;
+}
+
+ul li:hover{
+    color: #1146c1;
+}
+p, ul{
+    color: black;
+}
+
+.p_justificado{
+	text-align: justify;
+}
+
+.p_centrado{
+	text-align: center;
+}
+
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #0eb55e;
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+}
+
+.zoom_1_4:hover{
+	transform: scale(1.4);
+}
+
+.img_100{ 
+    height: 100px;
+    width: 100px;
+}
+
+.img_flotante {
+    position: fixed;
+    float: left;
+    top: 150px;
+    left: 40px;
+}
+
+
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
