@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
@@ -13,15 +13,13 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Concurrent.GitHub.io by JhonEmmanuelTorres</title>
+    <title>Programación concurrente</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1>Concurrent.GitHub.io</h1>
-        <h2>For Everyone</h2>
-        <a href="https://github.com/JhonEmmanuelTorres/Concurrent.github.io" class="button"><small>View project on</small> GitHub</a>
+        <h1>Programación concurrente</h1>
       </div>
     </header>
 
@@ -29,7 +27,25 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>
-<a id="programación-concurrente" class="anchor" href="#programaci%C3%B3n-concurrente" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programación Concurrente</h1>
+<a id="indice" class="anchor" href="#indice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Índice</h1>
+
+<ol>
+<li><a href="#filosofía">Filosofía</a></li>
+<li><a href="#definición">Definición</a></li>
+<li><a href="#proceso">Proceso</a></li>
+<li><a href="#hilo">Hilo</a></li>
+<li><a href="#multiprogramación">Multiprogramación</a></li>
+<li><a href="#multiproceso">Multiproceso</a></li>
+<li><a href="#sincronizacion">Sincronización</a></li>
+<li><a href="#notebook">Notebook sincronización</a></li>
+<li><a href="#planificacion">Planificación</a></li>
+<li><a href="#aplicaciones">Aplicaciones</a></li>
+<li><a href="#lenguajes">Lenguajes</a></li>
+<li><a href="#presentacion">Presentación</a></li>
+<li><a href="#taller">Taller</a></li>
+</ol>
+
+<div class="text-justify">
 
 <h1>
 <a id="filosofía" class="anchor" href="#filosof%C3%ADa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filosofía</h1>
@@ -37,21 +53,18 @@
 <p>Es la división de  un problema en subproblemas  que se solucionan de forma individual, para crear un programa o aplicación que no se vea afectada en tiempo real</p>
 
 <h1>
-<a id="definición" class="anchor" href="#definici%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Definición:</h1>
+<a id="definición" class="anchor" href="#definici%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Definición</h1>
 
 <p>Hace referencia a las técnicas de programación que son utilizadas para expresar la concurrencia entre tareas y solución de los problemas de comunicación y sincronización entre procesos</p>
-
-<h1>
-<a id="conceptos-clave" class="anchor" href="#conceptos-clave" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Conceptos clave</h1>
-
-<p>Para entender el funcionamiento, a nivel de sistema operativo,de la programación concurrente, es necesario tener claro que es un proceso, y como se representa en la máquina, para ello vamos a ver que es un proceso:</p>
 
 <h1>
 <a id="proceso" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proceso</h1>
 
 <p>Un proceso no solamente es el código de un programa,un proceso tiene un <strong>contador de programa</strong> el cual es un registro del computador que indica la dirección de la siguiente instrucción que será ejecutada por el proceso, <strong>Pila de proceso</strong> Esta contiene datos temporales tales como: Los parametros de las funciones, direcciones de retorno, variables locales , … , <strong>Sección de datos</strong> la cual contiene datos tales como las variables locales, Heap: Cúmulo de memoria que es la memoria que se asigna dinámicamente al proceso n tiempo de ejecución</p>
 
+<div class="center">
 <p><img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_01_Process_Memory.jpg" alt=""></p>
+</div>
 
 <p><strong>Note</strong> que un programa por sí sólo no es un proceso, ya que este es una entidad pasiva que contiene una lista de instrucciones almacenadas en disco ( archivo ejecutable),  mientras que un proceso es una entidad activa, el cual cumple todas las características descritas anteriormente.</p>
 
@@ -63,9 +76,10 @@ Cuando un proceso es ejecutado este cambia de estados, los estados que todo proc
 <li><p><strong>Corriendo</strong>:        Se están ejecutando las instrucciones.</p></li>
 <li><p><strong>Espera</strong>:        El proceso está esperando que algún evento ocurra.</p></li>
 <li><p><strong>Preparado</strong>:    El proceso está esperando ser asignado al procesador.</p></li>
-<li><p><strong>Terminado</strong>:    El proceso a terminado la ejecución.
-<img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_02_ProcessState.jpg" alt=""></p></li>
+<li><p><strong>Terminado</strong>:    El proceso a terminado la ejecución. </p></li>
 </ul>
+
+<img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_02_ProcessState.jpg" alt=""></p></li>
 
 <p><strong>PCB ( Bloque de control de proceso )</strong>
 Cada proceso se representa en el sistema operativo mediante el PCB, entre los elementos de información que este contiene se encuentran:</p>
@@ -78,7 +92,9 @@ Cada proceso se representa en el sistema operativo mediante el PCB, entre los el
 <li><p><strong>Información de gestión de memoria</strong>: Tablas de paginas , tablas de segmentos, dependiendo los mecanismos de gestión del S.O</p></li>
 </ul>
 
+<div class="center">
 <p><img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_03_PCB.jpg" alt=""></p>
+</div>
 
 <h1>
 <a id="hilo" class="anchor" href="#hilo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hilo</h1>
@@ -108,7 +124,7 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 <a id="programacion-paralela-y-concurrente" class="anchor" href="#programacion-paralela-y-concurrente" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programacion Paralela y Concurrente</h1>
 
 <h2>
-<a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relacion</h2>
+<a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relación</h2>
 
 <p>Multiples procesos pueden ser ejecutados al mismo tiempo. En otra palabras, la programacion concurrente se comporta igual que la paralela cuando tenemos un sistema multiprocesador en el cual cada unidad de procesamiento ejecuta un proceso o hilo. En la imagen inferior podemos ver que el la unidad de procesamiento 2 y 3 se comportan igual.</p>
 
@@ -123,9 +139,11 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p>Cuando tenemos varios procesos o hilos en la ejecucion, en muchos casos no queremos que estos se ejecuten al mismo tiempo. El mecanismo que controla el orden de ejecucion de determinadas tareas lo llamamos <strong>SINCRONIZACION</strong>.</p>
 
-<p><em><strong>Porque el algunos casos no queremos que los hilos se ejecuten al mismo tiempo?</strong></em></p>
+<p><em><strong>¿Por qué el algunos casos no queremos que los hilos se ejecuten al mismo tiempo?</strong></em></p>
 
+<div class="center">
 <p><img src="http://www.blogdepsicologia.com/wp-content/uploads/2015/06/ansiedad-2.jpg" alt=""></p>
+</div>
 
 <h2>
 <a id="problema-del-lector---escritor" class="anchor" href="#problema-del-lector---escritor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema del Lector - Escritor</h2>
@@ -135,7 +153,9 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 <h2>
 <a id="problema-de-los-filosofos-que-cenan" class="anchor" href="#problema-de-los-filosofos-que-cenan" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema de los filosofos que cenan</h2>
 
+<div class="center">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/An_illustration_of_the_dining_philosophers_problem.png/200px-An_illustration_of_the_dining_philosophers_problem.png" alt=""></p>
+</div>
 
 <p>Cada filósofo pueda tomar los tenedores que están a su izquierda o derecha, para poder comer el filósofo de tener los dos tenedores. Si cualquier filósofo toma los dos tenedores entonces los que están al lado queda en espera. Hay un tenedor y los dos filósofos compiten por tomarlo y uno queda sin tenedores. </p>
 
@@ -143,53 +163,14 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p>Como podemos hacer para que los filósofos no se mueran de hambre?. Interesante no, el problema en sí tiene muchas soluciones pero solo vamos a enunciar una: Un filosofo toma los dos tenedores y se los demas hacen una cola alrededor de la mesa para saber cual es el siguiente hasta que todos acaban.</p>
 
-<h1>
-<a id="metodos-de-sincronización" class="anchor" href="#metodos-de-sincronizaci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metodos de Sincronización</h1>
+<h2>Métodos de sincronización y comunicación</h2>
+<p>Los métodos de sincronización y comunicación se explican de mejor forma mediante el uso del notebook, pues los temas se explican con el uso python y C++.</p>
 
-<p>Hay muchos metodos de sincronizacion vamos a mostrar los mas importantes.</p>
-
-<ul>
-<li>Semaforos</li>
-<li>Tuberias</li>
-<li>Paso de mensaje</li>
-</ul>
+<a id="notebook"></a>
+<h3><a href="http://nbviewer.jupyter.org/url/ferestrepoca.github.io/paradigmas-de-programacion/tree/gh-pages/progconcurrente/concurrente_teoria/notebook/ProgConcurrente.ipynb">Notebook</a></h3>
 
 <h2>
-<a id="semaforos" class="anchor" href="#semaforos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semaforos</h2>
-
-<p>Son variables que almacenan un valor entero y en la que hay tres operaciones básicas: inicialización, incremento y decremento. Las tres operaciones son atómicas, lo que significa que durante la ejecución nunca se va a interrumpir el proceso. Con estas operaciones constituyen unos métodos para permitir o restringir el acceso a la sección crítica.</p>
-
-<ul>
-<li>Se inicializa con un valor entero mayor que cero generalmente uno</li>
-<li>Se hace un decremento. Después se evalúa si el valor del semáforo es menor o igual a cero esta función se bloquea</li>
-<li>Se hace un incremento. Si el valor del semáforo es mayor que cero, el proceso bloqueado será desbloqueado</li>
-</ul>
-
-<h2>
-<a id="mutex" class="anchor" href="#mutex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mutex</h2>
-
-<p>Es la implementación a más alto nivel teniendo en cuenta el software y hardware se suele utilizar:</p>
-
-<ul>
-<li>Semaforos</li>
-<li>Monitores</li>
-<li>Paso de mensajes</li>
-<li>Pipes</li>
-<li>Bloqueos recursivo</li>
-<li>Bloqueos temporizados</li>
-</ul>
-
-<p>Se suelen utilizar los siguientes métodos generales:</p>
-
-<ul>
-<li>Iniciar Mutex</li>
-<li>Bloquear seccion critica</li>
-<li>Desbloquear seccion critica</li>
-<li>Destruir Mutex</li>
-</ul>
-
-<h1>
-<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h1>
+<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h2>
 
 <ul>
 <li>Mejor rendimiento en un sistema monoprocesador</li>
@@ -198,13 +179,78 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 <li>Mejor aprovechamiento de la CPU</li>
 </ul>
 
-<h1>
-<a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h1>
+<h2>
+<a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h2>
 
 <ul>
 <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
 <li>En programas con pocas instrucciones en mas lento</li>
 <li>Desarrollo</li>
+</ul>
+
+
+<h1>
+<a id="planificacion" class="anchor" href="#planificacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Planificación</h1>
+
+Estrategia de los sistemas operativos con la que se es posible compartir la CPU entre los diferentes procesos alojados en memoria.
+La planificación es un manejo de colas con el objetivo de maximizar el uso de recursos y minimizar retardos.
+
+<h2>Tipos de planificación</h2>
+
+<h3>Planificación a corto plazo</h3>
+<ul>
+<li>Determina cuáles programas son admitidos al sistema para la ejecución.</li>
+<li>El objetivo principal es mantener una mezcla balanceada de tareas, como los límites de entrada/salida y de procesador.</li>
+<li>Controla el nivel de multiprogramación.</li>
+</ul>
+
+<h3>Planificación a mediano plazo</h3>
+También conocido como CPU scheduler o dispatcher. Su principal objetivo es incrementar el rendimiento del sistema acorde a un criterio definido.
+<br><b>Dispatch latency:</b>  Tiempo que toma entre parar un proceso y empezar otro.
+
+<h3>Planificación a largo plazo</h3>
+<ul>
+<li>Hace parte del swapping del sistema.</li>
+<li>Agrega y remueve procesos de memoria.</li>
+<li>Reduce el nivel de multiprogramación del sistema.</li>
+</ul>
+
+<h2>Cambios de contexto</h2>
+
+Mecanismo para almacenar y restaurar el estado de un proceso.
+
+<ul>
+<li>Registers</li>
+<li>Stack pointer</li>
+<li>Program counter</li>
+</ul>
+
+<div class="center">
+<p><img src="https://www.tutorialspoint.com/operating_system/images/context_switch.jpg" alt="Cambio de contexto"></p>
+</div>
+
+<h2>Criterios de planificación</h2>
+
+<ul>
+<li>Utilización de CPU</li>
+<li>Throughput</li>
+<li>Tiempo de vuelta</li>
+<li>Tiempo de espera</li>
+<li>Tiempo de respuesta</li>
+</ul>
+
+<h2>Algoritmos de planificación</h2>
+
+<div class="text-justify">
+<p>El principal objetivo de los algoritmos de planificación asignar tiempos de ejecución a los procesos del sistema para optimizar uno o más aspectos del mismo.</p>
+</div>
+
+<ul>
+<li>First-Come, First-Served (FCFS)</li>
+<li>Shortest-Job-First (SJF)</li>
+<li>Priority Scheduling</li>
+<li>Round Robin (RR)</li>
+<li>Multiple-Level Queues</li>
 </ul>
 
 <h1>
@@ -416,6 +462,16 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
 </blockquote>
 
 <h1>
+<a id="presentacion" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Presentación</h1>
+<a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIOTNrUWlWXzBjNmc">Enlace</a>
+ 
+<h1>
+<a id="taller" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Taller</h1>
+<a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIcEZQX2ttZU1mVFk">Enlace</a> 
+
+
+
+<h1>
 <a id="referencias" class="anchor" href="#referencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Referencias</h1>
 
 <ul>
@@ -430,6 +486,8 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
 <li>Abraham Silberschatz-Operating System Concepts (9th,2012.12)</li>
 </ul>
 
+</div>
+
 <h1>
 <a id="intregrantes" class="anchor" href="#intregrantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intregrantes</h1>
 
@@ -437,20 +495,22 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
 <li>Jhon Emmanuel Torres</li>
 <li>Raul Ramirez Penagos</li>
 <li>Diego Rodriguez</li>
+<li>Fabian David Conejo</li>
+<li>Milder Hernandez</li>
 </ul>
         </section>
 
         <aside id="sidebar">
-          <a href="https://github.com/JhonEmmanuelTorres/Concurrent.github.io/zipball/master" class="button">
+          <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/archive/gh-pages.zip" class="button">
             <small>Download</small>
             .zip file
           </a>
-          <a href="https://github.com/JhonEmmanuelTorres/Concurrent.github.io/tarball/master" class="button">
+          <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/archive/gh-pages.tar.gz" class="button">
             <small>Download</small>
             .tar.gz file
           </a>
 
-          <p class="repo-owner"><a href="https://github.com/JhonEmmanuelTorres/Concurrent.github.io"></a> is maintained by <a href="https://github.com/JhonEmmanuelTorres">JhonEmmanuelTorres</a>.</p>
+          <p class="repo-owner"><a href="http://ferestrepoca.github.io/paradigmas-de-programacion/"></a> is maintained by <a href="http://dis.unal.edu.co/~ferestrepoca/">Felipe Restrepo.</a></p>
 
           <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
