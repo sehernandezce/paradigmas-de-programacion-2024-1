@@ -10,6 +10,25 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
+      
+   
+
+    <div class="img_flotante hidden-xs">
+        <p class="menu_flotante"><a href="#aspectj">AspectJ</a></p>
+        <p class="menu_flotante"><a href="#compatibilidad">Compatibilidad</a></p>
+        <p class="menu_flotante"><a href="#semantica">Semantica</a></p>
+        <p class="menu_flotante"><a href="#ventajas">Ventajas</a></p>
+        <p class="menu_flotante"><a href="#desventajas">Desventajas</a></p>
+        <p class="menu_flotante"><a href="#compiladores">Compiladores</a></p>
+        <p class="menu_flotante"><a href="#extends">Herencia</a></p>
+        <p class="menu_flotante"><a href="#pointcut">PointCut</a></p>
+        <p class="menu_flotante"><a href="#advice">Advice</a></p>
+        <p class="menu_flotante"><a href="#sintaxis-de-anotaciones">Sintaxis</a></p>
+        <p class="menu_flotante"><a href="#java8">Repaso Java</a></p>
+        <p class="menu_flotante"><a href="#ejemplos">Ejemplos</a></p>
+        <p class="menu_flotante"><a href="#tutorial">Tutorial</a></p>
+
+    </div> 
     <section class="page-header">
       <h1 class="project-name">AspectJ</h1>
       <h2 class="project-tagline">Tutorial de Aspectj</h2>
@@ -17,36 +36,105 @@
       <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
     </section>
-
+      
     <section class="main-content">
-      <h1>
-<a id="aspectj" class="anchor" href="#aspectj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h1>
+        
+      <h1 class="p_centrado"><a id="aspectj" class="anchor " href="#aspectj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h1>
+        <p>AspectJ es una extensión de AOP para Java.Fue creado en PARC(Palo Alto Research Center) por el equipo Xerox PARC, liderado por  Gregor Kiczales.Ampliamente usado como estándar de la POA.Se caracteriza por su simplicidad y usabilidad.</p>
+        
+        <!-- Inicio compatibilidad -->
+        <h2><a id="compatibilidad" class="anchor" href="#compatibilidad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibilidad</h2>
+        <p>AspectJ es una extensión compatible de Java para facilitar el uso de aspectos por parte de los programadores de Java. Por compatible se entiende:</p>
 
-<p>AspectJ es una extensión de AOP para Java.
-Fue creado en PARC(Palo Alto Research Center) por el equipo Xerox PARC, liderado por  Gregor Kiczales.
-Ampliamente usado como estándar de la POA.
-Se caracteriza por su simplicidad y usabilidad.</p>
+        <p class="caja_contenido"><strong>Compatibilidad base: </strong>Todos los programas válidos de Java deben ser programas válidos de AspectJ.</p>
+        
+        <p class="caja_contenido"><strong>Compatibilidad de plataforma: </strong> Todos los programas válidos de AspectJ deben correr sobre la máquina virtual estándar de Java</p>
+        
+        <p class="caja_contenido"><strong>Compatibilidad de programación: </strong>La programación en AspectJ debe ser una extensión natural de la programación en Java.</p>     
+        
+        <p>Esta última meta fue una de las guías más importante a la hora de tomar decisiones sobre el lenguaje. Es estáticamente tipado y usa el sistema de tipos estático de Java.</p>
 
-<h2>
-<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h2>
+        <img src="tutorial/images/compatibilidad.PNG">
+        <!-- Fin compatibilidad -->
+        
+        <!-- Inicio de semantica -->
+        <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica</h2>
+        <p>Extiende Java para soportar el manejo de aspectos agregando a la semántica de Java cuatro entidades principales.</p>
 
-<ul>
-<li>Facilita/mejora la modularidad de los desarrollos de software.</li>
-<li>El código es organizado y comprimido</li>
-<li>Es reutilizable</li>
-<li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
-<li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
-</ul>
+        <button class="accordion"><strong>Los puntos de enlace</strong></button>
+        <div class="panel">
+            <p>Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
+        </div>
 
-<h2>
-<a id="lenguaje" class="anchor" href="#lenguaje" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguaje</h2>
+        <button class="accordion"><strong>Los cortes</strong></button>
+        <div class="panel">
+            <p>Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
+        </div>
 
-<h3>
-<a id="aspect" class="anchor" href="#aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h3>
+        <button class="accordion"><strong>Los avisos</strong></button>
+        <div class="panel">
+            <p>Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
+        </div>
 
-<p>Es la unidad central de Aspectj, se puede colocar en un archivo .aj.
-Contiene el código que expresa las reglas de los crosscutting.
-Un aspecto es una unidad de modularización en AOP como las clases son en OOP.</p>
+        <button class="accordion"><strong>Las introducciones y declaraciones</strong></button>
+        <div class="panel">
+            <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. Esta última entidad es estática porque afecta la signatura estática del programa.</p>
+        </div>
+        <!-- Fin semantica -->
+
+        <!-- Inicio Ventajas -->
+        <h2><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas </h2>
+    <ul>
+        <li>Facilita/mejora la modularidad de los desarrollos de software.</li>
+        <li>El código es organizado y comprimido</li>
+        <li>Es reutilizable</li>
+        <li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
+        <li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
+    </ul>
+        <!-- Fin Ventajas -->
+        
+        <!-- Inicio desventajas -->
+        <h2><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Desventajas</h2>
+    <ul>
+        <li>Puede introducir nuevos errores y fallas de seguridad si no se implementa adecuadamente</li>
+        <li>El paradigma puede emplearse mal quitando y/o delegando responsabilidades a ciertas clases</li>
+        <li>Los Aspectos pueden ser mal utilizados. Un programador puede implementar una falsa funcionalidad en cualquier estado del desarrollo y afectar a un amplio rango del sistema.</li>
+    </ul>
+        <!-- Fin desventajas -->
+    
+        <!-- Inicio compíladores -->
+        <h2><a id="compiladores" class="anchor" href="#compiladores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Compiladores diseñados para AspectJ</h2>
+        <p>Los dos principales compiladores para AspectJ son:</p>
+    <ul>
+        <li><strong>ajc</strong> ajc parte de las herramientas soportadas por el proyecto Eclipse,</li>
+        <li><strong>abc</strong> que es un compilador, que optimiza y es extensible, producido en aspectbench.org.</li>
+    </ul>
+        <!-- Fin compiladores -->
+        
+        <!-- Inicio extends -->
+        <h2><a id="extends" class="anchor" href="#extends" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extends, implements</h2>
+        
+        <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
+        <p>La siguientes son unas reglas a tener en cuenta:</p>
+    <ul>
+        <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
+        <li>Una clase no puede extender un aspecto.</li>    
+        <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
+    </ul>
+        <!-- Fin extends -->
+        
+        <!-- Inicio objetivos -->
+        <h2><a id="objetivos" class="anchor" href="#objetivos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivos</h2>
+        
+        <p>La intención de AspectJ es ser un LOA práctico, que provea un conjunto sólido y maduro de características orientadas a aspectos, compatible con Java para aprovechar su popularidad.</p>
+        <!-- Fin objetivos -->
+        
+        
+        <h2><a id="lenguaje" class="anchor" href="#lenguaje" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguaje</h2>
+        
+        <h3><a id="aspect" class="anchor" href="#aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h3>
+
+        <p>Es la unidad central de Aspectj, se puede colocar en un archivo .aj.Contiene el código que expresa las reglas de los crosscutting.Un aspecto es una unidad de modularización en AOP como las clases son en OOP.</p>
 
 <div class="highlight highlight-source-aspectj"><pre>    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect</span> {
     <span class="pl-c">//CODIGO</span>
@@ -67,7 +155,11 @@ Pueden ser llamadas, ejecuciones, instanciar objetos, constructores, manejo de e
 <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/puntos1.png" alt="tabla de pointcut">
 <img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/punto2.png" alt="tabla de pointcut"></p>
 
+    
 <p><a href="https://eclipse.org/aspectj/doc/next/progguide/index.html">Mas informacion</a></p>
+        
+<h2>PointCut Pattern </h2>
+<img src="tutorial/images/point_cut.PNG">
 
 <h3>
 <a id="advice" class="anchor" href="#advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice</h3>
@@ -166,6 +258,57 @@ El código del join point se puede ejecutar usando la palabra
 
 <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
 
+<h3>
+<a id="java8" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java 8</h3>
+<h4>Streams </h4>
+<p>Estos son nuevas abtracciones que nos permiten tener flujos de datos sobre los cuales aplicaremos diversas operaciones, ya sea desde filtros hata operaciones complejas como implementar un Map-Reduce</p>
+<pre>
+<code>Map<String, Long> result = jm.getLines().parallelStream().map(e -> {
+			String[] split = e.split("\\s");
+			Map<String, Long> map = new HashMap<>();
+			for (String cad : split) {
+				if (map.containsKey(cad)) {
+					map.put(cad, map.get(cad) + 1L);
+				} else {
+					map.put(cad, 1L);
+				}
+			}
+			return map;
+		}).reduce((m1, m2) -> JavaMethods.fussion(m1, m2)).get();
+		result.forEach((k, v) -> System.out.println("k: " + k + " : " + v));</code>
+		</pre>
+<p>En este caso dado un stream de lineas de texto <code>jm.getLines()</code> mapeamos cada linea como un mapa de la palabra y su frecuencia
+para la reduccion o la operacion de agregacion usamos una expresion lambda que hace referencia a una interfaz funcional donde definimos la operacion 
+de agregacion: <code>(m1, m2) -> JavaMethods.fussion(m1, m2)</code> la cual fusiona 2 mapas en uno solo, finalmente imprimirmos 
+las llaves y valores encontrados usando el <code>forEach</code> de los mapas en vez de usar el tradicional <code>Entry&lt;K,V&gt;</code>
+</p>
+<p>muestra de la funcion Fussion</p>
+<pre>
+<code>
+private static Map<String, Long> fussion(Map<String, Long> map1, Map<String, Long> map2) {
+		Map<String, Long> result = new HashMap<>(map1);
+		map2.forEach((k, v) -> result.merge(k, v, Long::sum));
+		return result;
+	}
+</code>
+</pre>
+<p>Observamos el uso de una interfaz funcional en <code>Long::sum</code> la cual llamamos haciendo uso del ::</p>
+<h4>Muestra de Streams Infinitos</h4>
+<pre>
+<code>
+	private static void calcPrimes(long n) {
+		LongStream.iterate(lastKnow, i -> i + 1).filter(i -> {
+			for (Long prime : primes) {
+				if (i % prime == 0) {
+					return false;
+				}
+			}
+			return true;
+		}).limit(n).forEach(primes::add);
+	}
+</code>
+</pre>
+<p>Para mas informacion consulta el siguiente <a class="pl-k" href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">enlace</a></p>
 <h3>
 <a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplos</h3>
 
@@ -546,25 +689,49 @@ Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
 
 <p><a href="https://github.com/JeffersonH44/AspectJExamples">Mas ejemplos</a></p>
 
-<h2>
-<a id="expocicion-para-lenguajes-de-programacion-" class="anchor" href="#expocicion-para-lenguajes-de-programacion-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Expocicion para lenguajes de programacion-</em>
-</h2>
+        <h2><a id="Contribuidores" class="anchor" href="#eContribuidores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Contribuidores</em></h2>
 
-<p>Integrantes</p>
+        <p>2016-1</p>
+        <ul>
+            <li>Sergio Alejandro Diaz Pinilla</li>
+            <li>Pedro Luis Monroy Garces</li>
+            <li>Jefferson Javier Hernández Panqueba</li>
+        </ul>
+        <p>2016-2</p>
+        <ul>
+            <li>Juan Rodriguez Duran</li>
+            <li>Johann Triana Olaya</li>
+            <li>Jonatan Parra Toro</li>
+        </ul>
 
-<ul>
-<li>Sergio Alejandro Diaz Pinilla</li>
-<li>Pedro Luis Monroy Garces</li>
-<li>Jefferson Javier Hernández Panqueba</li>
-</ul>
+        <h2>
+        <a id="bibliografia" class="anchor" href="#bibliografia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Bibliografia</em></h2>
+            <ul>
+                <li>Libro: Mariano Lorente López, Fernando Asteasuain, Bernardo Ezequiel Contreras. (2005). Programemos en AspectJ.</li>
+                <li>https://sistemasacademico.uniandes.edu.co/~miso4204/dokuwiki/lib/exe/fetch.php?media=temas:aspectj.pdf</li>
+                <li>http://ldc.usb.ve/~yudith/docencia/ci-4822/presentacionPOA.pdf</li>
+                <li>https://es.wikipedia.org/wiki/AspectJ</li>
+                <li>https://eclipse.org/aspectj/</li>
+            </ul>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/seradiazpin/paradigmas-de-programacion">AspectJ</a> is maintained by <a href="https://github.com/seradiazpin">seradiazpin</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/seradiazpin/paradigmas-de-programacion">AspectJ</a> is maintained by programming languages course at UNAL.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-
+        
     </section>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].onclick = function(){
+                this.classList.toggle("active");
+                this.nextElementSibling.classList.toggle("show");
+            }
+        }
+    </script>
 
   
   </body>
