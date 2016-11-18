@@ -93,6 +93,38 @@
     </div>
     <br>
     <div>
+        <h2 id="filosofia">Filosofía</h2>
+        <h3>¿Que es comoputación paralela?</h3>
+        <p>En el sentido más simple, la computación paralela es el uso simultáneo de múltiples recursos computacionales
+             para resolver un problema computacional:
+        </p>
+        <ul>
+            <li>
+                <p>
+                    Un problema se divide en partes discretas que se pueden resolver simultáneamente
+
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Cada parte se descompone en una serie de instrucciones
+                </p>
+            </li>
+            <li>
+                <p>
+                    Las instrucciones de cada parte se ejecutan simultáneamente en diferentes procesadores
+                </p>
+            </li>
+            <li>
+                <p>
+                    Se emplea un mecanismo global de control/coordinación
+                </p>
+            </li>
+        </ul>
+        
+    </div>
+    <div>
         <h2 id="historia">Breve historia</h2>
         <p>El interés por la computación paralela se remonta a finales de los años 50. Este interés se vio expresado en
             forma de supercomputadores, que aparecieron en los años 60 y 70. Estos computadores tenían procesadores de
@@ -167,6 +199,15 @@
 
                 </p>
             </li>
+            
+            <li>
+                <p>
+                    <b>Hilos:</b>
+                    Un proceso pesado puede convertirse en varios procesos livianos ejecutados de
+                manera concurrente. Cada uno de estos procesos se conoce como hilos. Se comunican entre ellos a través de la memoria global
+
+                </p>
+            </li>
 
             <li>
                 <p>
@@ -206,6 +247,13 @@
                     paralela están fuertemente asociados a la manera en que los procesos o hilos intercambian
                     información, y esto depende de cómo está organizada la memoria en el hardware.
 
+                </p>
+            </li>
+            <li>
+                <p>
+                    <b>Speedup:</b>
+                    Es un proceso para aumentar el rendimiento entre dos sistemas procesando el mismo problema.
+                    Es la mejora en la velocidad de ejecución de una tarea ejecutada en dos arquitecturas similares con diferentes recursos.
                 </p>
             </li>
         </ul>
@@ -327,7 +375,18 @@
             <li>Enviar y recibir!</li>
 
         </ul>
+        
+        <h3>Hibrido memoria distribuida-comopartida</h3>
 
+        <ul>
+            <li>Es la combinación entre memoria compartida y memoria distribuida, con sus ventajas en común.</li>
+
+            <li>Su principal ventaja es su escalabilidad.</li>
+
+            <li>Su principal desventaja es que la complejidad de programación aumenta.
+            </li>
+        </ul>
+        
         <h3>Datos en paralelo</h3>
 
         <ul>
@@ -446,7 +505,15 @@
             <li>
                 <a href="http://lsi.ugr.es/jmantas/pdp/tutoriales/tutorial_mpi.php?tuto=03_pi">http://lsi.ugr.es/jmantas/pdp/tutoriales/tutorial_mpi.php?tuto=03_pi</a>
             </li>
-
+            
+            <li>
+                <a href="https://computing.llnl.gov/tutorials/openMP/">https://computing.llnl.gov/tutorials/openMP/</a>
+            </li>
+            
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Parallel_computing">https://en.wikipedia.org/wiki/Parallel_computing</a>
+            </li>
+            
             <li>
                 Rauber, T., & Runger, G. (n.d.). Parallel programming: For multicore and cluster systems. Springer
                 Books.
@@ -467,7 +534,8 @@
     </div>
 
     <p>
-        Integrantes: Fabián Bernal, Camilo Albarracín y Juan Gaona
+        Integrantes: Fabián Bernal, Camilo Albarracín y Juan Gaona. 
+        Luis Alejandro Giraldo León
     </p>
 
 </div><!-- /.container -->
