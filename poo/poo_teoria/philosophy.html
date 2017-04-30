@@ -1,0 +1,374 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <title> Paradigma de la programación orientada a objetos  </title>
+</head>
+
+<body>
+<div class="todo">
+    <ul class="menu">
+        <li><a class="menu-item" href="index.html">Programación Orientada a Objetos</a>
+            <ul>
+				<li><a class="menu-item1" href="index.html#intro">¿Qué es?</a></li>
+                <li><a class="menu-item1" href="index.html#history">Historia</a></li>
+                <li><a class="menu-item1" href="index.html#evolution">Evolución</a></li>
+                <li><a class="menu-item1" href="index.html#advantage_disadvantage">Ventajas y desventajas</a></li>
+                <li><a class="menu-item1" href="index.html#languages">Lenguajes</a></li>
+            </ul>
+        </li>
+        <li><a class="menu-item" href="concepts.html">Conceptos Clave</a>
+			<ul>
+				<li><a class="menu-item1" href="concepts.html#abstraccion">Abstracción</a></li>
+                <li><a class="menu-item1" href="concepts.html#modularidad">Modularidad</a></li>
+                <li><a class="menu-item1" href="concepts.html#encapsulamiento">Encapsulamiento</a></li>
+                <li><a class="menu-item1" href="concepts.html#herencia">Herencia</a></li>
+                <li><a class="menu-item1" href="concepts.html#polimorfismo">Polimorfismo</a></li>
+            </ul>
+		</li>
+		<li><a class="menu-item" href="philosophy.html">Filosofía y Principios</a>
+			<ul>
+				<li><a class="menu-item1" href="philosophy.html#filosofia">Filosofía</a></li>
+                <li><a class="menu-item1" href="philosophy.html#principios">Principios</a></li>
+                <li><a class="menu-item1" href="philosophy.html#buenaspracticas">Buenas prácticas</a></li>
+            </ul>
+		</li>
+		<li><a class="menu-item" href="examples.html" id="">Ejemplos interactivos</a>
+			<ul>
+				<li><a class="menu-item1" href="examples.html#clases">Clases</a></li>
+				<li><a class="menu-item1" href="examples.html#encapsulamiento">Encapsulamiento</a></li>
+				<li><a class="menu-item1" href="examples.html#herencia">Herencia</a></li>
+				<li><a class="menu-item1" href="examples.html#polimorfismo">Polimorfismo</a></li>
+			</ul>
+		</li>
+		
+		<li><a class="menu-item" href="applications.html">Aplicaciones</a></li>
+        <li><a class="menu-item" href="slides.html">Presentaciones y referencias</a>
+			<ul>
+				<li><a class="menu-item1" href="slides.html#slides">Presentaciones</a></li>
+				<li><a class="menu-item1" href="slides.html#referencias">Referencias y bibliografía</a></li>
+			</ul>
+		</li>
+    </ul>
+
+    <div class="empty">Empty</div>
+    <div class="container">
+        <h1 class="titulo">
+			<strong><center>Programación Orientada a Objetos </center></strong>
+        </h1>
+		<hr>
+		<br>
+
+    <section id="filosofia">
+        <h2> <strong id="philosophy1">Filosofía</strong> </h2>
+        <h3>
+        <div align="justify">
+		El paradigma de la programación orientada a objetos es la implementación del pensamiento orientado a objetos en la programación. <br><br>
+        POO nos dice: <br><br>
+        <ul style="list-style-type: circle;">
+            <li>Pensar todo en términos de objetos.</li>
+            <li>Representar los objetos de la forma más cercana a cómo expresamos las cosas en la vida real.</li>
+            <li>Dar prioridad a los objetos y no a la funcionalidad.</li>
+            <li>Pensar en el propósito general del programa como un todo antes de subdividirlo.</li>
+            <li>Los programas se definen en términos de objetos, propiedades, métodos, y la interacción (comunicación) entre objetos.</li>
+            <br>
+        </ul>
+        </div>
+        </h3>
+        <h3>Ejemplo de pensamiento orientado a objetos : </h3>
+        <center>
+            <img src="images/philosophy.png">
+        </center>
+		 
+		<div align="justify">
+		<h3>
+		En este ejemplo, se tiene la abstracción de que el objeto <i>Carro</i> tiene diferentes propiedades o características tal como la marca, el color, el modelo,
+		el peso que corresponden a los <a href="concepts.html#atributos"><u>atributos</u></a> del objeto y ciertas
+		funcionalidades o procedimientos como encender, acelerar y frenar que son los <a href="concepts.html#metodos"><u>métodos</u></a> del objeto.
+		</h3>
+		</div>
+        <h3>El mundo visto por un programador orientado a objetos : </h3>
+        <center>
+            <img src="images/poo.png" alt="Photo" height=400 border=0 hspace=0>
+        </center>
+		<br>
+		<br>
+        <h2> <strong id="principios">Principios</strong> </h2>
+        <h3>
+        <div align="justify"><b>SOLID:</b> Es un acrónimo mnemónico introducido por Robert C. Martín a comienzos de la década del 2000 que representa cinco
+		principios básicos de la programación orientada a objetos y el diseño. Cuando estos principios se aplican en conjunto es más probable que un desarrollador
+		cree un sistema que sea más fácil de mantener y ampliar con el tiempo. Los principios SOLID son guías que pueden ser aplicadas en el desarrollo de software 
+		para eliminar código sucio provocando que el programador tenga que refactorizar el código fuente hasta que sea legible y extensible.
+        </div>
+		<br>
+		<center>
+				 <img src="images/robert.png" alt="Photo" id="ventajas" >
+				 <h6>Robert Cecil Martin</h6>
+		</center>
+		
+		
+        <br>
+        <ul style="list-style-type: circle;">
+            <li>Principio de una sola responsabilidad</li>
+            <li>Principio abierto/cerrado </li>
+            <li>Principio de sustitución Liskov </li>
+            <li>Principio de segregación de interfaz </li>
+            <li>Principio de Inversión de dependencia </li>
+        </ul>
+        </h3>
+		<br>
+		
+        <h2> <strong>Principio de una sola responsabilidad</strong> </h2>
+        <h3>
+        <div align="justify">Cada clase debe tener una única responsabilidad, y esta debe estar contenida únicamente esa la clase. Así:
+        </div>
+        <ul style="list-style-type: circle;">
+            <li>Una clase debería tener sólo una razón para cambiar.</li>
+            <li>Cada responsabilidad es el eje del cambio.</li>
+            <li>Para contener la propagación del cambio, se deben separar las responsabilidades.</li>
+            <li>Si una clase asume más de una responsabilidad, será más sensible al cambio y las responsabilidades tendrán acoplamiento.</li>
+        </ul>
+        Ejemplo:<br/><br/>
+        <center>
+            <img src="images/singleresponsibility1.png">
+        </center><br/>
+        <div align="justify">
+        Se tiene la clase Rectángulo que tiene las siguientes responsabilidades: calcular el area y dibujar, como se puede observar son responsabilidades
+		totalmente diferentes, es decir la clase Rectángulo no tiene una responsabilidad concreta y específica.
+        </div><br/>
+        La solución a este mal diseño es aplicar el principio de única responsabilidad, para ello lo que se hace es
+        <b>delegar</b> la responsabilidad de dibujar a otra clase llamada RectanguloGrafico y de esta forma ya se tienen clases con una responsabilidad bien
+		definida:<br/><br/>
+        <center>
+            <img src="images/singleresponsibility2.png">
+        </center>
+        </h3>
+		<br>
+        <h2> <strong>Principio abierto/cerrado</strong> </h2>
+        <h3>
+        <div align="justify">
+        Este principio establece que una entidad de software (clase, módulo, función, etc.) debe quedar abierta para su extensión, pero cerrada para su modificación.
+		Es decir, se debe poder extender el comportamiento de tal entidad pero sin modificar su código fuente.<br/><br>
+        Una clase está cerrada, dado que puede ser compilada, almacenada en una librería y usada por otras clases.
+		Pero también está abierta, dado que a partir de ella podríamos crear nuevas subclases que incorporaran características nuevas. 
+		Y al crear una subclase, no hay ninguna necesidad de modificar la superclase.<br><br>
+        </div>
+        <ul style="list-style-type: circle;">
+            <li>Se dice que un módulo está abierto si se puede extender.</li>
+            <li>Se dice que un módulo queda cerrado si no se puede modificar por otros módulos.</li>
+            <li>Si un cambio impacta a varios modulos, entonces la aplicacion no está bien diseñada.</li>
+            <li>Se deben diseñar modulos que nunca cambien para reutilizarlos más adelante a través de su extensión (<a href="concepts.html#herencia">herencia</a>).</li>
+        </ul>
+        Ejemplo:<br/><br/>
+        <center>
+            <img src="images/open-closed1.png">
+        </center><br/><br/>
+        <div align="justify">
+            En este ejemplo se debe calcular el bono que recibiran los programadores y los gerentes, como se logra ver en la imagen eso se hace mediante una sentencia switch,
+			lo cual es ineficiente ya que si existiera más tipos de empleados, por ejemplo 100, este bloque switch se llenaría de 100 casos lo cual dificultaría el
+			mantenimiento del codigo.<br/><br/>
+            La solución a este mal diseño es aplicar el principio de abierto/cerrado, para ello lo que hacemos es extender el comportamiento de la clase Empleado, y
+			crear el método Calcular bono en la clase Empleado para que todos los subtipos de Empleado puedan redefinir este metodo:<br/><br/>
+        </div>
+        <center>
+            <img src="images/open-closed2.png">
+        </center>
+        </h3>
+		<br>
+        <h2> <strong>Principio de sustitución Liskov</strong> </h2>
+        <h3>
+        <div align="justify">
+        Los objetos de un programa deberían ser reemplazables por instancias de sus subtipos sin alterar el correcto funcionamiento del programa.
+        </div>
+        <ul style="list-style-type: circle;">
+            <li>Cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas.</li>
+            <li>Funciones que usen punteros o referencias a clases base deben poder usar objetos de clases derivadas sin saberlo.</li>
+        </ul>
+        Ejemplo:<br/>
+        <center>
+            <img src="images/liskov.png">
+        </center>
+        <br/><br/>
+        <div align="justify">
+        Se puede ver que al lado izquierdo de la imagen que se quiere calcular el bono para programador y gerente, pero en dado caso que hayan 100 tipos de empleados
+		este metodo se llenaría de 100 sentencias if lo cual es ineficiente pues esto dificultaria el mantenimiento del codigo.<br/><br/>
+        Una alternativa a este mal diseño es aplicar el principio de sustitucion de Liskov, para ello lo que hacemos es recorrer la lista de todos los empleados 
+		y como tenemos que calcular el bono a todo tipo de empleado y los bonos pueden ser diferentes para cada tipo de empleado entonces dejamos que cada empleado
+		implemente su comportamiento, en otras palabras, se permite que todos los tipos de empleados llamen al metodo calcular bono, 
+		pero cada uno implementará ese método de acuerdo al sueldo que reciba. En ultimas, se ha aplicado el concepto de polimorfismo de subtipos.
+        </div>
+		<br>
+        </h3>
+        <h2> <strong>Principio de segregación de interfaz</strong> </h2>
+        <h3>
+        <div align="justify">
+        Este principio hace referencia a que muchas interfaces cliente específicas son mejores que una interfaz de propósito general.
+        </div>
+        <div align="justify">
+        <ul style="list-style-type: circle;">
+            <li>Este principio se aplica a una interfaz amplia y compleja para dividirla en otras más pequeñas y específicas, de tal forma que cada cliente use
+			sólo aquella que necesite, pudiendo así ignorar al resto. A este tipo de interfaces reducidas se les llama "interfaces de rol".</li>
+            <li>Los clientes de un programa dado sólo deberían conocer los métodos que realmente van usar, y no aquellos que no necesitan usar.</li>
+            <li>Fue concebido para mantener a un sistema desacoplado respecto a los sistemas de los que depende, y así resulte más fácil refactorizarlo, modificarlo y redesplegarlo.</li>
+        </ul>
+        Ejemplo:<br/>
+        <center>
+            <img src="images/segregation1.png">
+        </center><br/><br/>
+        <div align="justify">
+        Se puede visualizar que la clase Escorpión al extender de la clase abstracta Animal, se debería alimentar y acariciar al objeto, lo cual en este contexto
+		sería fatal pues el escorpión es un animal peligroso que no se debe acariciar y tan solo se debería alimentar.<br/><br/>
+        La solución a este inconveniente es aplicar el principio de segregación de la interfaz, este nos permitirá que la clase escorpión no se vea obligada
+		a tener que implementar todos los comportamientos de un animal, sino que implemente un comportamiento específico. Para ello lo que se hace es dividir
+		los métodos de la clase Animal para que de esta forma el animal solo se pueda alimentar y en definitiva la clase Escorpión pueda implementar solo este
+		comportamiento particular.<br/><br/>
+        </div>
+        <center>
+            <img src="images/segregation2.png">
+        </center>
+		
+        </h3>
+		<br>
+        <h2> <strong>Principio de inversión de dependencias</strong> </h2>
+        <h3>
+        <div align="justify">
+        Este principio establece:
+        </div>
+        <ul style="list-style-type: circle;">
+            <li>Los módulos de alto nivel no deben depender de los módulos de bajo nivel. Ambos deben depender de abstracciones.</li>
+            <li>Las abstracciones no deben depender de los detalles. Los detalles deben depender de abstracciones.</li>
+        </ul>
+        Puede implementarse con: inyeccion de dependencias o inversion del control.<br/><br/>
+        Ejemplo:<br/><br/>
+        Imaginemos que tenemos una cesta de compra que lo que hace es almacenar la información y llamar al método de pago para que ejecute la operación. Nuestro código sería algo así:<br/><br/>
+        <center>
+            <img src="images/inversion1.png">
+        </center><br/><br/>
+        <div align="justify">
+        Aquí estamos incumpliendo el principio. Una clase de más alto nivel, como es ShoppingBasket (cesta de compra), está dependiendo de otras de alto
+		nivel las cuales son: SqlDatabase (Base de datos) y CreditCard (tarjeta de credito), y luego se encarga de crear objetos de estas clases y después
+		utilizarlos.<br/><br>
+        Si se quieren añadir métodos de pago o enviar la información a un servidor en vez de guardarla en una base de datos local, no hay forma de hacer todo esto
+		sin desmontar toda la lógica. ¿Cómo lo solucionamos? El primer paso es dejar de depender de clases. Se tienen que definir interfaces que definan el 
+		comportamiento que debe dar una clase para poder funcionar como mecanismo de persistencia o como método de pago.<br/><br/>
+        </div>
+        <center>
+            <img src="images/inversion2.png">
+        </center><br/><br/>
+        <div align="justify">
+        ¿Se nota la diferencia? Ahora ya no hay dependencia de la implementación particular que uno decida. Pero aún tenemos que seguir instanciándolo en ShoppingBasket.
+        Nuestro segundo paso es invertir las dependencias. Vamos a hacer que estos objetos se pasen por constructor.<br/><br/>
+        </div>
+        <center>
+            <img src="images/inversion3.png">
+        </center><br/><br/>
+        De esta forma ya se tendría implementado el principio de inversion de dependencias.
+        </h3>
+
+    </section>
+	<br>
+	<section >
+            
+            <h2> <strong id="buenaspracticas">Buenas Prácticas</strong> </h2>
+            <h3>
+			<b>Patrones de Diseño</b><br> <br>Los patrones de diseño buscan dar solución a problemas comunes en la programación.<br><br>
+            <b>Tipos de patrones</b>
+            <ul>
+                <li>Patrones creacionales.</li>
+                <li>Patrones estructurales.</li>
+                <li>Patrones de comportamiento.</li>
+            </ul>
+
+            <center>
+                <h3><b>Patrones creacionales</b></h3></center>
+            <h3><b>Singleton</b></h3>
+            <center>
+			<h3><b>Problema</b></h3>
+            <br>
+			
+            <img src="images/singleton.png" >
+			</center>
+            <h3>
+			<br>
+            <br> Si cada objeto de la clase <i>Session</i> crea una instancia de <i>Database</i> se puede sobrecargar la base de datos.
+            <br>
+            <br>
+            <b>Solución 1:</b> Usar una variable global del tipo <i>Database</i> a la que todos tengan acceso. <br>
+            <br>
+            <img src="images/x_icon.jpg" class="symbol" width="15px"> Las variables globales no son deseadas.
+            <br>
+            <br>
+            <b>Solución 2</b><br><br>
+			<center>
+            <img src="images/solucion-singleton.png" width="450px" id="ventajas">
+            <br>
+			<br>
+			</center>
+            <img src="images/check.png" class="symbol" width="15px"> Garantiza que sólo haya una instancia.
+            <br>
+            <img src="images/check.png" class="symbol" width="15px"> El código es intuitivo.
+            <br>
+            <img src="images/x_icon.jpg" class="symbol" width="15px"> Se debe evitar la clonación.
+            <br>
+            <img src="images/x_icon.jpg" class="symbol" width="15px"> El constructor debe ser privado o protegido.
+			
+            <br>
+            <br>
+            <center>
+                <h3><b>Patrones estructurales</b></h3></center>
+            <h3><b>Proxy</b></h3>
+            <h3>
+			<b>Problema</b><br>
+            <br> Un editor que puede incluir imágenes dentro de un documento. Se requiere que la apertura del documento sea rápida pero las imágenes son muy grandes para ser cargadas rápidamente.
+            <br>
+            <br>
+            <b>Solución</b><br><br>
+			<center>
+            <img src="images/solucion-proxy.png" width="450px" id="ventajas">
+			</center>
+            <br>
+			</h3>
+			</h3>
+			</h3>
+        </section>
+	
+	
+	
+	
+
+
+    </div>
+
+    <div class="footer" >
+        <center>
+            <a href="index.html">Paradigma</a> |
+            <a href="concepts.html">Conceptos </a> |
+			<a href="philosophy.html">Filosofía</a> |
+            <a href="examples.html">Ejemplos</a> |
+            <a href="applications.html">Aplicaciones</a> |
+			<a href="slides.html">Referencias</a> 
+        </center>
+        <br>
+		<div class="footer-text" >
+		<center>
+			Creado y modificado por: Laura Álvarez, Helmer Avendaño, Yeison García, Sebastián Morales, <br>
+			Edwin Bohórquez, Santiago Hernandez, Sebastián Moreno, Cristian Orjuela
+			<br>
+			<br>
+			 <p>Copyright &copy; Paradigmas de Programación - UNAL 2017</p>
+		
+		</center>
+		</div>
+    </div>
+
+    <script src="js/jquery.js">
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+	</div>
+</body>
+
+</html>
