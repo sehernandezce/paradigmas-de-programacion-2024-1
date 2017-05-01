@@ -45,7 +45,7 @@
 				<li><a class="menu-item1" href="examples.html#polimorfismo">Polimorfismo</a></li>
 			</ul>
 		</li>
-		
+
 		<li><a class="menu-item" href="applications.html">Aplicaciones</a></li>
         <li><a class="menu-item" href="slides.html">Presentaciones y referencias</a>
 			<ul>
@@ -70,38 +70,40 @@
             <ul style="list-style-type: circle;">
 			<h3>
 			<div class="row">
-				<div class="left"> 
+				<div class="left">
 					<li>Abstracción</li>
 						<ul>
 							<li>Clase</li>
 							<li>Atributo</li>
 							<li>Método</li>
 							<li>Objeto - Instancia</li>
-							<li>Mensaje</li>
+
 							<li>Diagramas de <br>clases</li>
 						</ul>
+          <li>Mensaje</li>
 					<li>Constructor</li>
-					
-					
-					
+
+
+
 				</div>
-				<div class="right"> 
-					<li>Métodos de acceso</li>
+				<div class="right">
+          <li>Métodos de acceso</li>
 					<li>Clase Abstracta</li>
 					<li>Interfaz</li>
+
 					<li>Modificadores de acceso</li>
 					<li>Modularidad</li>
 					<li>Encapsulamiento</li>
 					<li>Herencia</li>
 					<li>Polimorfismo</li>
 				</div>
-				
+
 			</div>
             </ul>
             <br />
 
 			<h3>
-			<div align="justify"><strong  id="abstraccion">Abstracción </strong><br><br> 
+			<div align="justify"><strong  id="abstraccion">Abstracción </strong><br><br>
 			La abstracción es un proceso de interpretación y diseño que implica reconocer y enfocarse en las características importantes de una
 			situación u objeto, y filtrar o ignorar todas las particularidades no esenciales.
             <ul style="list-style-type: circle;">
@@ -110,34 +112,34 @@
                 <li>Hay que centrarse en lo que es y lo que hace un objeto, antes de decidir cómo debería ser implementado.</li>
                 <li>Se hace énfasis en el qué hace más que en el cómo lo hace</li>
             </ul>
-			
+
 			<br>
             <center><img src="images/Abstraccion.jpg" alt="Photo" border=0 hspace=0 id="ventajas"></center>
             <br />
             Ejemplo: Imaginemos que queremos aplicar la abstracción a las aves:<br/><br/>
             <b>Objeto</b>: Pajaro <br/><br/>
-            <b>Caracteristicas:</b> 
+            <b>Caracteristicas:</b>
             <ul style="list-style-type: circle;">
                 <li>Pico</li>
                 <li>Alas</li>
                 <li>Patas</li>
                 <li>Plumas</li>
             </ul>
-            <b>Funcionalidades:</b> 
+            <b>Funcionalidades:</b>
             <ul style="list-style-type: circle;">
                 <li>Volar</li>
                 <li>Picar</li>
-                <li>Aterrizar</li>                            
+                <li>Aterrizar</li>
             </ul>
             <br/>
 			</h3>
-      	
+
 			<h3>
             <div align="justify"><strong id="clase">Clase </strong><br>La clase es un modelo o prototipo que define las variables y métodos
 			comunes a todos los objetos de cierta clase. También se puede mencionar que una clase es una plantilla genérica para un conjunto de
 			objetos de similares características. Una clase define el estado y el comportamiento que todos los objetos creados a partir de esa
-			clase tendrán.<br/>                
-           
+			clase tendrán.<br/>
+
 			</div><br/>
             Ejemplo:<br/><br/>
             <center>
@@ -148,53 +150,53 @@
                 <img src="images/classjava.png">
             </center><br/><br/>
             Ejemplo desarrollado en C++:<br/><br/>
-            <center> 
+            <center>
                 <img src="images/classc++.png">
             </center><br/><br/>
             Ejemplo desarrollado en Python:<br/><br/>
             <center>
                 <img src="images/classpython.png">
             </center><br/><br/>
-			
-			<div align="justify" id="atributos"> 
+
+			<div align="justify" id="atributos">
 				<strong>Atributos:</strong> Es una característica de un objeto, que ayuda a definir su estructura y permite diferenciarlo de otros objetos.
 				Se define con un identificador y un tipo, el cual indica los valores que puede almacenar. El conjunto de valores de los campos definen
-				el estado del objeto. 
+				el estado del objeto.
 			</div>
 			<br>
-			
-			<div align="justify" id="metodos"> 
-				<strong>Métodos:</strong> Los métodos son los comportamientos o conductas de un objeto y permite identificar la forma en que actúa respecto a su entorno 
+
+			<div align="justify" id="metodos">
+				<strong>Métodos:</strong> Los métodos son los comportamientos o conductas de un objeto y permite identificar la forma en que actúa respecto a su entorno
 				o respecto a otros objetos. Además, representa una operación o función que un objeto realiza. El conjunto de los métodos de un objeto determinan el
 				comportamiento general del objeto.
 			</div>
 			<br>
-			
+
 			<center>
                 <img src="images/atributo.png" id="ventajas">
             </center><br/><br/>
-			
-			
+
+
             <div align="justify"><strong> Objeto: </strong> Los objetos de software, al igual que los objetos del mundo real, también tienen características
 			y comportamientos. Un objeto de software mantiene sus características en uno o más atributos e implementa su comportamiento con métodos.<br /> <br>
             <ul style="list-style-type: circle;">
-                <li>Es una entidad real o abstracta, con un papel definido en el dominio del problema.</li> 
-                <li>Un objeto es una instancia de una clase, que tiene: identidad, estado(atributos) y comportamiento(metodos).</li> 
+                <li>Es una entidad real o abstracta, con un papel definido en el dominio del problema.</li>
+                <li>Un objeto es una instancia de una clase, que tiene: identidad, estado(atributos) y comportamiento(metodos).</li>
             </ul>
             Para el ejemplo anterior de la Clase UniversityStudent (Estudiante universitario), la creacion de objetos se haria de la siguiente forma:<br/><br/>
             <center>
                 <img src="images/objects.png">
-            </center>            
+            </center>
             </div><br/><br/>
-			
-			<div align="justify"><strong> Instancia: </strong> Es la particularización, realización específica u ocurrencia de una determinada clase, 
+
+			<div align="justify"><strong> Instancia: </strong> Es la particularización, realización específica u ocurrencia de una determinada clase,
 			entidad o prototipo. Una instancia de una clase es un objeto.<br /> <br>
-			
+
 			Ejemplo:
 			<br>
 			<center>
                 <img src="images/claseanimal.png">
-            </center> 
+            </center>
 			<br>
 			<br>
 			Si se tiene la anterior clase <i>Animal</i>, se podría crear una instancia de esa clase como un objeto.
@@ -212,28 +214,17 @@
 			<br>
 			Como se puede observar, la clase <i>Estudiante</i> tiene una instancia de la clase <i>Nota</i> como atributo (<u>evaluación</u>).
 			<br><br><br>
-			
-			
-			
-			
-            <div align="justify"><strong> Mensaje: </strong> 
-            Un mensaje es una comunicación dirigida desde un objeto A ordenando a otro objeto B que ejecute uno de sus métodos con ciertos parámetros asociados al evento que lo generó.<br /> 
-            Los mensaje son los que permiten la comunicacion entre objetos.<br/>
-            Ejemplo:<br/><br/>
-            <center>
-                <img src="images/mensaje.png" id="ventajas">
-            </center>            
-            </div>
-			<br><br>
-			<div align="justify"><strong> Diagramas de clases:</strong> 
+
+
+			<div align="justify"><strong> Diagramas de clases:</strong>
             Cuando se está planteando el diseño y el modelo de los objetos mediante la abstracción, existe una forma de plasmar esos prototipos a través de un
 			diagrama de clases. Formalmente, se describe como un tipo de diagrama de estructura estática que representa la estructura de un sistema mostrando las clases,
 			sus atributos, operaciones (o métodos), y las relaciones entre los objetos.
-			
+
 			<br/><br/>
             <center>
                 <img src="images/diagramaclase.png" id="ventajas">
-            </center>            
+            </center>
 			<br>
 			En los diagramas de clase, se tienen notaciones que son comunes dentro del lenguaje de modelado unificado (UML). Por ejemplo, la <a href="herencia">herencia</a> se dibuja
 			mediante un triángulo donde su eje superior apunta a la clase padre. La visibilidad de los atributos que tiene la clases se denota con un + (público), - (protegido),
@@ -244,14 +235,23 @@
 			Para este ejemplo concretamente, la clase <i>Empleado</i> y la clase <i>Cliente</i> heredan de la clase <i>Persona</i>. Todos los atributos de las clases son
 			privados, como se detalla en la clase <i>Persona</i> con el signo negativo antes de nombre y edad. Además, existe una relación de composición entre la
 			clase <i>Empleado</i> y la clase <i>Empresa</i>, es decir, si un objeto <i>Empresa</i> deja de existir, la clase <i>Empleado</i> también va a dejar de existir.
-			
+
             </div>
+            <br>
 			<br>
-			
-			
-			
-			
-			
+      <div align="justify"><strong> Mensaje: </strong>
+      Un mensaje es una comunicación dirigida desde un objeto A ordenando a otro objeto B que ejecute uno de sus métodos con ciertos parámetros asociados al evento que lo generó.<br />
+      Los mensaje son los que permiten la comunicacion entre objetos.<br/>
+      Ejemplo:<br/><br/>
+      <center>
+          <img src="images/mensaje.png" id="ventajas">
+      </center>
+      </div>
+      <br><br>
+
+
+
+
             <br/><br/>
             <div align="justify"><strong>Constructor: </strong>Cuando se crea un objeto es necesario inicializar sus variables con valores coherentes. Esto se hace por medio de un constructor que tiene las siguientes características: Se llama igual que la clase. No devuelve nada. Pueden existir varios, pero siguiendo las reglas de la sobrecarga de funciones. De entre los que existan, tan sólo uno se ejecutará al crear un objeto de la clase.
                 <br /> </div>
@@ -261,7 +261,7 @@
                 <h5>Constructor en Python y Constructor en PHP</h5>
                 <br>
             </center>
-       
+
 			<br>
 			<div align="justify"><strong>Métodos de acceso: </strong> Son los métodos o funciones que permiten obtener o modificar los atributos de un objeto. Además,
 			estos métodos tienen la limitación de proveer información acerca del estado de un objeto específicamente sus propiedades.
@@ -273,38 +273,38 @@
 			 En el ejemplo anterior se pueden visualizar dos métodos de acceso de la clase <i>CuentaBancaria</i>. El método <i>getNumeroCuenta()</i> retorna
 			 el atributo numeroCuenta y no tiene ninguna otra especialidad. El método <i>setNumeroCuenta(String numeroCuenta)</i> actualiza el atributo
 			 numeroCuenta de acuerdo al valor pasado por parámetro.
-			 
-			 
+
+
 			 <br /> </div>
-			
-			
-			
-			
+
+
+
+
 			<br>
             <div align="justify"><strong>Clase Abstracta: </strong> Este tipo de clases nos permiten crear "métodos generales", que recrean un comportamiento común,
 			pero sin especificar cómo lo hacen. A nivel de código tiene por particularidad que algunos de sus métodos no tienen &ldquo;cuerpo de declaración&ldquo;.
 			<br/><br>
             <ul style="list-style-type: circle;">
-                <li>Una clase que declara la existencia de métodos pero no la implementación de dichos métodos (o sea, las llaves { } y las sentencias entre ellas), se considera una clase abstracta.</li> 
-                <li>Una clase es declarada abstracta cuando no es posible crear instancias de ella.</li> 
-                <li>Una clase debe ser declarada abstracta si posee al menos un método declarada abstracto.</li> 
-                <li>Un método abstracto es aquel que no posee implementación.</li> 
-            </ul>    
+                <li>Una clase que declara la existencia de métodos pero no la implementación de dichos métodos (o sea, las llaves { } y las sentencias entre ellas), se considera una clase abstracta.</li>
+                <li>Una clase es declarada abstracta cuando no es posible crear instancias de ella.</li>
+                <li>Una clase debe ser declarada abstracta si posee al menos un método declarada abstracto.</li>
+                <li>Un método abstracto es aquel que no posee implementación.</li>
+            </ul>
 			<br>
             <center><img src="images/AbsInt.png" alt="Photo" border=0 hspace=0 id="ventajas">
                 <h5>Clases abstractas vs Interfaces</h5>
             </center>
-            <br/> 
+            <br/>
             </div>
             <br/>
             <div align="justify"><strong>Interfaz: </strong> Es un conjunto de métodos abstractos y de constantes cuya funcionalidad es la de determinar
 			el funcionamiento de una clase, es decir, funciona como un molde o como una plantilla. También es una descripción de las acciones que un objeto
 			puede hacer. En programación orientada a objetos una interfaz X describe todas las funciones que un objeto debe tener para poder ser un X.<br/><br>
             <ul style="list-style-type: circle;">
-                <li>Una interface es una variante de una clase abstracta con la condición de que todos sus métodos deben ser abstractos. Si la interface va a tener atributos, éstos deben llevar las palabras reservadas static final y con un valor inicial ya que funcionan como constantes por lo que, por convención, su nombre va en mayúsculas.</li> 
-                <li>Una clase implementa una o más interfaces (separadas con comas ",") con la palabra reservada implements.</li> 
+                <li>Una interface es una variante de una clase abstracta con la condición de que todos sus métodos deben ser abstractos. Si la interface va a tener atributos, éstos deben llevar las palabras reservadas static final y con un valor inicial ya que funcionan como constantes por lo que, por convención, su nombre va en mayúsculas.</li>
+                <li>Una clase implementa una o más interfaces (separadas con comas ",") con la palabra reservada implements.</li>
                 <li>La principal diferencia entre interface y abstract es que una interface proporciona un mecanismo de encapsulación de los protocolos de los métodos sin forzar al usuario a utilizar la herencia.</li>
-            </ul>  
+            </ul>
             Ejemplo:<br/><br>
             <center>
 				<img src="images/interfaz.png" id="ventajas" >
@@ -312,33 +312,33 @@
             </div>
             <br/>
             <br />
-			Un ejemplo de uso de una interfaz se presenta en la siguiente imagen a través de un diagrama de clases, donde 
+			Un ejemplo de uso de una interfaz se presenta en la siguiente imagen a través de un diagrama de clases, donde
 			las clases <i>InstrumentoMusical</i> y <i>Sirena</i> implementan de la interfaz <i>Sonoro</i> que cuenta con la declaración del
-			método <b>sonar(volumen: int)</b>.<br><br>			
+			método <b>sonar(volumen: int)</b>.<br><br>
 			<center>
-				<img src="images/interface2.png" id="ventajas" >
+				<img src="images/interface22.png" id="ventajas" >
 			</center>
 			<br>
 			<br>
-            
+
             <div align="justify"><strong>Modificadores de acceso: </strong> Son palabras claves de los lenguajes de programación orientado
 			a objetos para configurar la accesibilidad a las clases, m&eacute;todos o propiedades.
                 <br /> </div>
             <br>
             <center><img src="images/Acceso.png" alt="Photo" border=0 hspace=0 id="ventajas"></center>
             <br />
-			
-			
+
+
 			 <div align="justify"><strong id="modularidad">Modularidad </strong>
 			<br>
 			<br>La modularidad es la propiedad que permite dividir una aplicación en partes
-			más pequeñas ( llamadas módulos ), cada una de las cuales debe ser tan independiente como sea posible de la aplicación en sí y 
+			más pequeñas ( llamadas módulos ), cada una de las cuales debe ser tan independiente como sea posible de la aplicación en sí y
 			de las restantes partes.<br/><br/>
             <center>
 			<img src="images/modularidad.png" id="ventajas">
-			</center>           
+			</center>
 			<br>
-			En el lenguaje de programación Java y en algunos entornos de desarrollo integrado (IDE), la modularidad radica en la separación de 
+			En el lenguaje de programación Java y en algunos entornos de desarrollo integrado (IDE), la modularidad radica en la separación de
 			todos los posibles paquetes de código. La siguiente imagen muestra la división que se hace a partir de una aplicación base o un servicio
 			general, que se divide en diferentes módulos con un propósito especial y finalmente un subdivición en pequeños paquetes de código que integran
 			las clases.
@@ -346,17 +346,17 @@
 			<br/>
 			<center>
 			<img src="images/modujava.png" id="ventajas">
-			</center>     			
-            <br/> 
+			</center>
+            <br/>
             </div>
             <br/>
-			
-			
-            <div align="justify" ><strong id="encapsulamiento">Encapsulamiento: </strong><br/> 
+
+
+            <div align="justify" ><strong id="encapsulamiento">Encapsulamiento: </strong><br/>
             <ul style="list-style-type: circle;">
                 <li>Es la propiedad que permite asegurar que la información de un objeto está oculta del mundo exterior.</li>
                 <li>El encapsulamiento consiste en agrupar en una Clase las características(atributos) con un acceso privado y los comportamientos (métodos) con un acceso público.</li>
-                <li>Acceder o modificar los miembros de una clase a través de sus métodos.</li>                            
+                <li>Acceder o modificar los miembros de una clase a través de sus métodos.</li>
             </ul>
             <center><img src="images/Encapsulamiento.jpg" alt="Photo" border=0 hspace=0 id="ventajas"></center><br/>
             Ejemplo: <br/>
@@ -382,9 +382,9 @@
             </center><br/>
             </div>
             <br />
-			
-			
-           
+
+
+
             <div align="justify" ><strong id="herencia"> Herencia: </strong>
                 Es una propiedad que permite crear clases a partir de otras ya existentes, obteniendo características (métodos y atributos) similares a los ya existentes.En otras palabras la nueva clase (subclase o clase derivada) puede utilizar la misma implementación de su superclase (clase base) o especificar una nueva implementación.
             <ul style="list-style-type: circle;">
@@ -393,7 +393,7 @@
                 <li>Nos permite compartir automáticamente métodos y datos entre clases, subclases y objetos. Por ejemplo: Si declaramos una clase párrafo derivada de un clase texto todos los métodos y variables asociadas con la clase texto son automáticamente heredados por la subclase párrafo.</li>
             </ul><br>
             <center><img src="images/Herencia.jpg" id="ventajas"></center>
-            <br/> 
+            <br/>
 			<br>
             <b>Herencia simple</b>: Es cuando una clase hereda de sólo una clase base.<br/><br>
             <center>
@@ -418,7 +418,7 @@
             </center>
             </div>
             <br/>
-            <div align="justify"><strong id="polimorfismo">Polimorfismo: </strong>Son comportamientos diferentes, asociados a objetos distintos, 
+            <div align="justify"><strong id="polimorfismo">Polimorfismo: </strong>Son comportamientos diferentes, asociados a objetos distintos,
 			pueden compartir el mismo nombre; al llamarlos por ese nombre se utilizará el comportamiento correspondiente al objeto que se est&eacute; usando.
                 <br />
             </div>
@@ -450,21 +450,21 @@
 			En el lenguaje de programación <b>ABAP4</b> también se permite la sobrecarga de métodos como un tipo de polimorfismo.
 			<br><br>
 			 <center>
-				<img src="images/abap1.png" id="ventajas">
+				<img src="images/abap11.png" id="ventajas">
 			</center>
 			<br>
-			En el ejemplo anterior tenemos la clase <i>Empleado</i> y se desea realizar la sobrecarga del método <b>modificarNombre</b>. Este tipo de 
-			polimorfismo se implementa como se muestra en la siguiente imagen, el método recibe un parámetro <u>i_nombre</u> para una funcionalidad 
+			En el ejemplo anterior tenemos la clase <i>Empleado</i> y se desea realizar la sobrecarga del método <b>modificarNombre</b>. Este tipo de
+			polimorfismo se implementa como se muestra en la siguiente imagen, el método recibe un parámetro <u>i_nombre</u> para una funcionalidad
 			específica y como segunda medida, el método recibe dos parámetros <u>i_nombre</u> y <u>i_apellido</u> para otro procedimiento en particular.
 			<br><br>
 			 <center>
-				<img src="images/abap2.png" id="ventajas">
+				<img src="images/abap22.png" id="ventajas">
 			</center>
-			
-			
+
+
 			<br><br>
-            
-            <b>Polimorfismo paramétrico</b>: El polimorfismo paramétrico permite que las funciones y las clases puedan escribirse de forma genérica, de tal manera que pueda manipular los datos de la misma manera sin importar el tipo.Ejemplos: 
+
+            <b>Polimorfismo paramétrico</b>: El polimorfismo paramétrico permite que las funciones y las clases puedan escribirse de forma genérica, de tal manera que pueda manipular los datos de la misma manera sin importar el tipo.Ejemplos:
             <ul style="list-style-type: circle;">
                 <li>C++ - Templates</li>
                 <li>Java - Generics</li>
@@ -484,7 +484,7 @@
 			<a href="philosophy.html">Filosofía</a> |
             <a href="examples.html">Ejemplos</a> |
             <a href="applications.html">Aplicaciones</a> |
-			<a href="slides.html">Referencias</a> 
+			<a href="slides.html">Referencias</a>
         </center>
         <br>
 		<div class="footer-text" >
@@ -494,7 +494,7 @@
 			<br>
 			<br>
 			 <p>Copyright &copy; Paradigmas de Programación - UNAL 2017</p>
-		
+
 		</center>
 		</div>
     </div>
