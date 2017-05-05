@@ -36,3 +36,10 @@ h2 {
 h3 {
   font-size: 30px;
 }
+.references ul li{
+  list-style-type: disc !important;
+  list-style-position: inside !important;
+  padding-left: 30px !important;
+  position: inside !important;
+  display: list-item !important;
+}
