@@ -1,0 +1,45 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.custom-blue {
+  background-color: #3f5378 !important;
+}
+.custom-orange{
+  background-color: #ff9800 !important;
+}
+.main-content{
+  width: 70%;
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 35px;
+}
+h3 {
+  font-size: 30px;
+}
+.references ul li{
+  list-style-type: disc !important;
+  list-style-position: inside !important;
+  padding-left: 30px !important;
+  position: inside !important;
+  display: list-item !important;
+}
