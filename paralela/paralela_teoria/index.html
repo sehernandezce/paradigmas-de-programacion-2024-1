@@ -40,9 +40,18 @@
 								<li><a href="#seven">Arquitectura</a></li>
 								<li><a href="#eight">Sincronización</a></li>
 								<li><a href="#nine">Balanceador de carga</a></li>
+							
+								<!--APORTE MIGUEL CORTES-OSMAR CASTILLO-->
+								<li><a href="#thirteen">Tipos de paralelismo</a></li>
+								<li><a href="#fourteen">Medidas de rendimiento</a></li>
+								<li><a href="#fifteen">Lenguajes de programacion</a></li>
+								<li><a href="#sixteen">Aplicaciones</a></li>
+								<!--FIN APORTE MIGUEL CORTES-OSMAR CASTILLO-->
 								<li><a href="#ten">OpenMP</a></li>
 								<li><a href="#eleven">Presentación y taller</a></li>
 								<li><a href="#twelve">Bibliografía</a></li>
+
+
 							</ol>
 					</section>					
 				</div>
@@ -586,7 +595,241 @@
 					</div>
 				</div>
 			</section>
+
+			<!--APORTES MIGUEL CORTES -OSMAR CASTILLO-->
+
+
+			<section id="thirteen" class="wrapper style2 alt">		
+					<div class="inner">	
+						<div class="spotlight">						
+							<div class="contentmo">
+								<h2>Tipos de paralelismo</h2>
+									<h3>Paralelismo a nivel de bit:</h3> 
+
+									<p class="pjustify">
+										Se habla de paralelismo al nivel de bit, cuanto se aumenta el tamaño de la cadenna a procesar,este aumento reduce el numero de intrucciones que tiene que ejecutar el procesador en variables cuyos tamaños sean mayores a la longitud de la cadena.
+
+									</p>
+									
+							</div>
+							<div class="contentmo">
+							<br>
+								<h3>Paralelismo a nivel de instrucción</h3>
+								<p class="pjustify"> 
+									Este tipo de paralelismo consiste en cambiar el orden de las diferentes intrucciones de un programa y juntarlas en gurpos para posteriormente ser ejecutados en paralelo sin alterar el resultado final del programa.
+								</p>
+								
+							</div>
+						</div>
+						<div class="spotlight">						
+							<div class="contentmo">
+							<br>
+								<h3>Paralelismo de datos</h3> 
+								<p class="pjustify">
+									El paralelismo a nivel de datos es ampliamente usado, en esta clasificacion, los datos de entrada se distribuyen en los diferentes procesadores y cada uno realiza la misma acción sobre el conjunto de datos que le fue asignado. Un ejemplo claro de esto es la suma de dos vectores, donde cada elmenteo del vector A se suma 1 a 1 con cada elemento del vector B.
+								</p>
+							</div>
+							<div class="contentmo">
+								<h3>Paralelismo de tareas</h3>
+								<p class="pjustify">
+									 
+									Basicamente este tipo de paralelismo consiste en asignar una tarea a cada procesador; estas tareas ueden ser completamente diferentes y se les puede aplicar cualquier operacion.
+									<br>
+									<br>
+									<br>
+							
+								</p>
+							</div>
+						</div>
+
+					</div>
+			</section>
+
+			<section id="fourteen" class="wrapper style2 alt">		
+					<div class="inner">	
+						<div class="spotlight">						
+							<div class="content">
+								<h2>Medidas de rendimiento</h2>
+									<h3>Tiempo de respuesta</h3> 
+
+									<p class="pjustify">
+										Es el tiempo que tarda en ejecucion el programa A.
+									</p>
+									
+							</div>
+							<div class="image">
+								<img src="images/formula1.png" alt=""  width="140"/>
+							</div>
+						
+						</div>
+						<div class="spotlight">						
+							<div class="content">
+					
+								<h3>MIPS - MFLOPS</h3>
+								<p class="pjustify"> 
+									MIPS - Millones de operaciones por segundo.
+									MFLOPS - Millones de operaciones de punto flotante por segundo.
+								</p>
+								
+							</div>
+
+							<div class="image">
+								<img src="images/formula2.png" alt=""  width="140"/>
+							</div>
+						</div>
+
+						<div class="spotlight">						
+							<div class="content">
+					
+								<h3>Eficiencia</h3>
+								<p class="pjustify"> 
+									La eficiencia del programa se mide en el costo de ejecucion.
+								</p>
+								
+							</div>
+
+							<div class="image">
+								<img src="images/formula3.png" alt=""  width="140"/>
+							</div>
+						</div>
+
+						<div class="spotlight">						
+							<div class="content">
+					
+								<h3>SpeedUp</h3>
+								<p class="pjustify"> 
+									El SpeedUp resresenta la ganacia que se obtiene en la version paralela del programa respecto a la version secuencial del mimo.
+								</p>
+								
+							</div>
+
+							<div class="image">
+								<img src="images/formula4.png" alt=""  width="140"/>
+							</div>
+						</div>
+
+						<div class="spotlight">						
+							<div class="content">
+					
+								<h2>Ley de Amdahl</h2>
+								<p class="pjustify"> 
+									El incremento de velocidad de un programa utilizando múltiples procesadores en computación paralela está limitada por la fracción secuencial del programa. Sea f el porcentaje paralelizado del programa expresado en decimal, la ley de Amdahl dice que llega un punto en el cual sin importar que el numero de procesadores sea muy alto , el speedup se va a comportar de manera lineal ; esto de acuerdo al porcentaje que este paralelizado el codigo. El speedup de un programa con un fragmento paralelizado se calcula con :
+								</p>
+
+								<div class="image">
+									<img src="images/formula5.png" alt=""  width="140"/>
+								</div>
+
+								
+							</div>
+
+							<div class="image">
+								<img src="images/graficaAmdahl.png" alt=""  width="150"/>
+							</div>
+
+
+						</div>
+
+					</div>
+			</section>	
+		
+			<section id="fifteen" class="wrapper style2 alt">		
+					<div class="inner">	
+						<div class="spotlight">						
+							<div class="contentmo2">
+								<h2>Lenguajes de programacion</h2>
+
+								<div class="imagemo">
+									<img src="images/Biblioteca.png" alt=""  />
+								</div>
+								<div class="imagemo">
+									<img src="images/API.png" alt=""  />
+								</div>
+								<div class="imagemo">
+									<img src="images/Lenguajes.png" alt=""  />
+								</div>
+								
+							
+							</div>
+							
+						</div>
+					</div>
+			</section>	
+
+
+			<section id="sixteen" class="wrapper style2 alt">		
+				<div class="inner">	
+					<div class="spotlight">	
+										
+						<div class="content">
+							<h2>Aplicaciones</h2>
+							<b>Computación grafica</b>
+							<p>Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente entre las tareas</p>
+							</p>							
+						</div>
+						<div class="image">
+							<iframe width="450" height="315" src="https://www.youtube.com/embed/-P28LKWTzrI" frameborder="0" allowfullscreen></iframe>
+						</div>
+						
+					</div>
+					<div class="spotlight">	
+						<div class="image">
+							<img src="images/LHC.jpg" alt="" />
+						</div>					
+						<div class="content">
+							<h2>Aproximación y cálculo de constantes y/o funciones numéricas.</h2>
+							<p> Worldwide LHC Computing Grid (WLCG) es una colaboración global de centros de computación. Fue lanzado en 2002 para proporcionar un recurso para almacenar, distribuir y analizar los 15 petabytes (15 millones de gigabytes) de datos generados cada año por el Large Hadron Collider (LHC).</p>
+								
+							</p>							
+						</div>						
+					</div>
+
+					<div class="spotlight">	
+										
+						<div class="content">
+							<h2>Predicción del clima y cambio climático</h2>
+							<p> Uno de los primeros usos exitosos de la computación paralela fue la predicción del tiempo. La información, como la temperatura, la humedad y las precipitaciones, se ha recolectado y utilizado para predecir el clima durante más de 500 años. En 1904, el físico y meteorólogo noruego Vilhelm Bjerknes propuso un modelo de ecuaciones diferenciales para la predicción meteorológica que incluía siete variables, incluyendo temperatura, lluvia y humedad.</p>
+								
+							</p>							
+						</div>
+
+						<div class="image">
+							<img src="images/NOAA.png" alt="" />
+						</div>							
+					</div>
+
+					<div class="spotlight">	
+						<div class="image">
+							<img src="images/multi.jpg" alt="" />
+						</div>					
+						<div class="content">
+							<h2>Análisis de imágenes multiespectro</h2>
+							<p> Las imágenes satelitales consisten en grandes cantidades de datos. Por ejemplo, las imágenes Landsat 7 consta de siete tablas de datos, donde cada entrada en una tabla representa una longitud de onda magnética diferente (azul, verde, rojo o infrarrojo térmico) para un píxel de 30 metros cuadrados de la superficie de la Tierra.</p>
+								
+							</p>							
+						</div>						
+					</div>
+
+					<div class="spotlight">	
+										
+						<div class="content">
+							<h2>Astronomía</h2>
+							<p> Hay muchas aplicaciones de los supercomputadores a la astronomía, incluyendo el uso de un supercomputador para simular eventos en el futuro, o pasado, para probar teorías astronómicas. La Universidad de Minnesota Supercomputer Center simuló lo que una explosión de supernova que se origina en el borde de una gigantesca nube de gas molecular interestelar parecería 650 años después de la explosión.</p>
+								
+							</p>							
+						</div>
+
+						<div class="image">
+							<img src="images/astronomia.png" alt="" />
+						</div>							
+					</div>
+				
+				</div>
+			</section>
+		<!--FIN APORTES MIGUEL CORTES -OSMAR CASTILLO-->
 			
+
+
 			<section id="ten" class="wrapper style2 alt">		
 				<div class="inner">
 					<div class="spotlight">	
@@ -807,11 +1050,60 @@ int main(int argc, char *argv[])
 							Intro to parallel programming. <a
 								href="https://www.udacity.com/course/intro-to-parallel-programming--cs344">Udacity course</a>.
 						</li>
+
+						<li>
+							Whitson, G. P. (2016). Parallel Computing. Salem Press Encyclopedia Of Science,
+						</li>
+
+						<li>
+							Presentaciones profesor Cesar Pedraza - Computación paralela y Distribuida
+						</li>
+
+						<li>
+							<a href="https://www.cs.purdue.edu/homes/ayg/book/Slides/">https://www.cs.purdue.edu/homes/ayg/book/Slides/</a>
+						</li>
+
+						<li>
+							<a href="https://computing.llnl.gov/tutorials/parallel_comp/">https://computing.llnl.gov/tutorials/parallel_comp/</a>
+						</li>
+
+						<li>
+							<a href="http://web.mit.edu/vex/www/Parallel.pdf">http://web.mit.edu/vex/www/Parallel.pdf</a>
+						</li>
+
+						<li>
+							<a href="http://web.mit.edu/vex/www/Parallel.pdf"></a>
+						</li>
+
+						<li>
+							<a href="http://hdl.handle.net/10045/25282">http://hdl.handle.net/10045/25282</a>
+						</li>
+
+						<li>
+							<a href="https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html">https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html</a>
+						</li>
+
+						<li>
+							<a href="https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela">https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela</a>
+						</li>
+
+						<li>
+							<a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/07_ModelosDeProgramacionParalela.pdf">http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/07_ModelosDeProgramacionParalela.pdf</a>
+						</li>
+
+						<li>
+							<a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf">http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf</a>
+						</li>
+
 					</ol>
     
 				</div>
 			</section>
 
+
+
+		
+		
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="copyright">
@@ -828,3 +1120,17 @@ int main(int argc, char *argv[])
 
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
