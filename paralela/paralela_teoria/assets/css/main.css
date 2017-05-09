@@ -3344,3 +3344,29 @@
 			}
 
 		}
+
+
+/*APORTES MIGUEL CORTES - OSMAR CASTILLO*/
+		.spotlight .contentmo {
+			padding: 2em 3em 0.1em 3em;
+			width: 50%;
+		}
+
+		.spotlight .contentmo2 {
+			padding: 2em 3em 0.1em 3em;
+			width: 80%;
+			margin-left: 10%;
+		} 
+		.pjustify{
+			text-align: justify;
+
+		}
+		.imagemo{
+			width: 100%;
+		}
+		.imagemo img{
+			margin-top: 20px;
+			width: 60%;
+			margin-left: 20%;
+
+		}
