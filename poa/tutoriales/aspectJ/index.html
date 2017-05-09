@@ -61,49 +61,149 @@
         
         <!-- Inicio de semantica -->
         <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica</h2>
-        <p>Extiende Java para soportar el manejo de aspectos agregando a la semántica de Java cuatro entidades principales.</p>
+        <img src="tutorial/images/HOW_IS_FORMED.png">
+        <p>En sí, AspectJ funciona extiendiendo a Java como Base para soportar el manejo de aspectos y clases, agregando a la semántica de Java cuatro entidades principales.</p>
 
-        <button class="accordion"><strong>Los puntos de enlace</strong></button>
+        <button class="accordion"><strong>Los puntos de enlace (Join Points)</strong></button>
         <div class="panel">
             <p>Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
         </div>
 
-        <button class="accordion"><strong>Los cortes</strong></button>
+        <button class="accordion"><strong>Los cortes (Point Cuts)</strong></button>
         <div class="panel">
             <p>Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
         </div>
 
-        <button class="accordion"><strong>Los avisos</strong></button>
+        <button class="accordion"><strong>Los avisos (Advices)</strong></button>
         <div class="panel">
             <p>Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
         </div>
 
-        <button class="accordion"><strong>Las introducciones y declaraciones</strong></button>
+        <button class="accordion"><strong>Las introducciones y declaraciones (Inter-Type Declarations)</strong></button>
         <div class="panel">
-            <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. Esta última entidad es estática porque afecta la signatura estática del programa.</p>
+            <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. <br>Esta última entidad es estática porque afecta la signatura estática del programa.</p>
         </div>
         <!-- Fin semantica -->
 
-        <!-- Inicio Ventajas -->
-        <h2><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas </h2>
-    <ul>
-        <li>Facilita/mejora la modularidad de los desarrollos de software.</li>
-        <li>El código es organizado y comprimido</li>
-        <li>Es reutilizable</li>
-        <li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
-        <li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
-    </ul>
-        <!-- Fin Ventajas -->
+        <!-- Inicio Semantica de Declaración -->
+        <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica De Declaración</h2>
+        <h5><p><b>[ privileged ] Modifiers aspect Id [ extends Type ] [ implements TypeList ] [ Per Clause ] { Body } </b></p></h5>
+
+        <p>Un Aspecto puede ser declarado como cualquier clase de Java, con su id, con la palabra reservada "aspect", con sus respectivos modifiers para modificar el acceso y comportamiento de la clase, e introduciendo nuevos elementos a la semántica de cómo funcionan y van a interactuar con respecto a las demás clases de nuestro proyecto. De estas nos enfocaremos en 3 en especial debido a su particularidad con los Aspectos: <b>[ privileged ], [extends Type], [implements TypeList ]</b> y <b>[Per Clause]</b></p>
+        <button class="accordion"><strong>[ privileged ]</strong></button>
+        <div class="panel">
+            <br>
+            <p>Un modifier especial que, como su nombre nos lo indica, le dará privilegios al aspecto, esto significa que nos permitirá poder acceder a métodos y atributos privados de clases y aséctps externos.</p>
+            <div class="highlight highlight-source-aspectj"><pre>
+<span class="pl-k">public</span> <span class="pl-smi">class</span> <span class="pl-en">C</span> {
+<span class="pl-k">   private int</span> <span class="pl-smi">C.i =</span><span class="pl-c1"> 0</span>;
+<span class="pl-k">   private int </span><span class="pl-smi">my_nums(){</span>
+<span class="pl-k">      return</span><span class="pl-c1"> 5</span><span class="pl-smi">;</span>
+<span class="pl-smi">   }</span>
+}
+
+<span class="pl-k">privileged</span> <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect</span> {
+<span class="pl-k">   private int</span> <span class="pl-smi">C.i =</span><span class="pl-c1"> 9</span>;
+<span class="pl-k">   public int </span><span class="pl-smi">sum(){</span>
+<span class="pl-k">      int</span> <span class="pl-smi">g=C.my_nums()+C.i;</span> 
+<span class="pl-smi">      System.out.println(g);</span> <span class="pl-c"> //Me imprime 14</span>
+<span class="pl-smi">   }</span>
+}
+<img src="tutorial/images/key.png" width="100" height="100" alt="Key">
+            </pre></div>
+        </div>
+
+        <button class="accordion"><strong>[extends Type], [implements TypeList ]</strong></button>
+        <div class="panel">
+        <br>
+        <img src="tutorial/images/extends.png">
         
-        <!-- Inicio desventajas -->
-        <h2><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Desventajas</h2>
-    <ul>
-        <li>Puede introducir nuevos errores y fallas de seguridad si no se implementa adecuadamente</li>
-        <li>El paradigma puede emplearse mal quitando y/o delegando responsabilidades a ciertas clases</li>
-        <li>Los Aspectos pueden ser mal utilizados. Un programador puede implementar una falsa funcionalidad en cualquier estado del desarrollo y afectar a un amplio rango del sistema.</li>
-    </ul>
-        <!-- Fin desventajas -->
-    
+        <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
+        <p>La siguientes son unas reglas a tener en cuenta:</p>
+        <ul>
+            <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
+            <li>Una clase no puede extender un aspecto.</li>    
+            <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
+        </ul>
+
+        <pre><code class="language-java"><span class="hljs-class"><span class="pl-k">class</span> <span class="pl-en">C0</span></span>{
+    <span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-smi">i</span>;
+
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">"Hello World"</span>);
+    }
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">j</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">2</span>+<span class="pl-c1">6</span>);
+    }
+}
+<span class="pl-k">aspect</span> <span class="pl-en">A0</span> <span class="pl-k">extends</span> <span class="pl-en">C0</span>{
+    <span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-smi">i</span>;
+    @Override
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">"Hello Universe"</span>);
+    }
+}
+<span class="hljs-comment">/*****************/</span>
+@Abstract
+<span class="pl-k">aspect</span> <span class="pl-en">A1</span>{
+    <span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-smi">i</span>;
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">"Hello World"</span>);
+    }
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">j</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">2</span>+<span class="pl-c1">6</span>);
+    }
+}
+<span class="pl-k">aspect</span> <span class="pl-en">A2</span> <span class="pl-k">extends</span> <span class="pl-en">A1</span>{
+    <span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-smi">i</span>;
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">"Hello Universe"</span>);
+    }
+}
+<span class="hljs-comment">/*****************/</span>
+<span class="hljs-class"><span class="pl-k">interface</span> <span class="pl-en">I1</span></span>{
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">"Hello World"</span>);
+    }
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">j</span><span class="hljs-params">()</span></span>{
+        <span class="pl-smi">System.out.println</span>(<span class="pl-c1">2</span>+<span class="pl-c1">6</span>);
+    }
+}
+<span class="pl-k">aspect</span> <span class="pl-en">A3</span> <span class="pl-k">implements</span> <span class="pl-en">I1</span>{
+    <span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-smi">i</span>;
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">u</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-smi">j</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+         
+        </div>
+        <button class="accordion"><strong>[ Per Clause ]</strong></button>
+
+        <div class="panel">
+        <br>
+        <p>Los Aspectos originalmente se originan como singleton. Sin embargo, pueden haber varias formas de crear diversas instancias del mismo acceso, según su objeto asociado, su posición de ejecución, entre otras. Las <b>Per Clause</b> son quienes se encargan de modificar los Aspectos para poder tener más control sobre la cantidad y comportamiento de los Aspectos</p>
+        <img src="tutorial/images/perclauses.png">
+        <div class="highlight highlight-source-aspectj"><pre>    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect</span> <span class="pl-k">issingleton()</span> {
+         <span class="pl-c">//CODIGO</span>
+    }
+    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect1</span> <span class="pl-k">perthis( <span class="pl-smi">nombreDePointcut()</span> )</span> {
+        pointcut nombreDePunto()<span class="pl-k">:</span> execution(<span class="pl-k">*</span> <span class="pl-smi">Clase</span><span class="pl-k">.</span>metodo(<span class="pl-k">..</span>));
+    }
+    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect2</span> <span class="pl-k">pertarget( <span class="pl-smi">nombreDePointcut()</span> )</span> {
+        pointcut nombreDePunto()<span class="pl-k">:</span> execution(<span class="pl-k">*</span> <span class="pl-smi">Clase</span><span class="pl-k">.</span>metodo(<span class="pl-k">..</span>));
+    }
+    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect3</span> <span class="pl-k">percflow( <span class="pl-smi">nombreDePointcut()</span> )</span> {
+        pointcut nombreDePunto()<span class="pl-k">:</span> execution(<span class="pl-k">*</span> <span class="pl-smi">Clase</span><span class="pl-k">.</span>metodo(<span class="pl-k">..</span>));
+    }
+    <span class="pl-k">public</span> <span class="pl-smi">aspect</span> <span class="pl-en">Aspect4</span> <span class="pl-k">percflowbelow( <span class="pl-smi">nombreDePointcut()</span> )</span> {
+        pointcut nombreDePunto()<span class="pl-k">:</span> execution(<span class="pl-k">*</span> <span class="pl-smi">Clase</span><span class="pl-k">.</span>metodo(<span class="pl-k">..</span>));
+    }</pre></div>
+    <p>Sin embargo, no se recomienda mezclar varios de estos métodos debido a que pueden llegar a inteferir con flujos ajenos de los distintos Aspectos.</p>
+        </div>
+        <!-- Fin Semantica de Declaración -->
+
+
+
         <!-- Inicio compíladores -->
         <h2><a id="compiladores" class="anchor" href="#compiladores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Compiladores diseñados para AspectJ</h2>
         <p>Los dos principales compiladores para AspectJ son:</p>
@@ -113,17 +213,7 @@
     </ul>
         <!-- Fin compiladores -->
         
-        <!-- Inicio extends -->
-        <h2><a id="extends" class="anchor" href="#extends" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extends, implements</h2>
-        
-        <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
-        <p>La siguientes son unas reglas a tener en cuenta:</p>
-    <ul>
-        <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
-        <li>Una clase no puede extender un aspecto.</li>    
-        <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
-    </ul>
-        <!-- Fin extends -->
+
         
         <!-- Inicio objetivos -->
         <h2><a id="objetivos" class="anchor" href="#objetivos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivos</h2>
@@ -179,7 +269,7 @@ Existen tres tipos de advice: </p>
 <a id="before" class="anchor" href="#before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Before</h4>
 
 <p>Se ejecuta  antes de cada join point.</p>
-
+<img src="tutorial/images/Before.png">
 <div class="highlight highlight-source-aspectj"><pre>    before() <span class="pl-k">:</span> nombreDePunto(){
         <span class="pl-c">//CODIGO</span>
     }</pre></div>
@@ -191,9 +281,13 @@ Existen tres tipos de advice: </p>
 Puede de tres tipos:</p>
 
 <ul>
-<li>returning</li>
-<li>throwing
-Y el por defecto en el cual se ejecuta sin importar si retorna o lanza una excepción.</li>
+</li><b>Defecto:</b> el cual retorna sin importar el resultado.</li>
+<img src="tutorial/images/After.png">
+<li><b>Returning:</b> Me realiza la acción únicamente si finalizó correctamente y/o me retornó el valor (Este Advice también puede servir con JointPoints que sean voids). Este returning me permite también utilizar los valores retornados por los JoinPoints para utilizarlos en los advices.</li>
+<img src="tutorial/images/AfterRet.png">
+<li><b>Throwing:</b> Me realiza la acción únicamente si la acción del PointCut finalizó lanzando una acción o un resultado como una excepción.</li>
+<img src="tutorial/images/AfterThrow.png">
+
 </ul>
 
 <div class="highlight highlight-source-aspectj"><pre>    after()<span class="pl-k">:</span> nombreDePunto() {
@@ -204,18 +298,25 @@ Y el por defecto en el cual se ejecuta sin importar si retorna o lanza una excep
     <span class="pl-c">//CODIGO</span>
     }
 
+    after() returning(Type X) <span class="pl-k">:</span> nombreDePunto(){
+    <span class="pl-c">//CODIGO</span>
+    }
+
     after() throwing() <span class="pl-k">:</span> nombreDePunto() {
     <span class="pl-c">//CODIGO</span>
     }</pre></div>
 
 <h4>
 <a id="around" class="anchor" href="#around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Around</h4>
-
+<br>
 <p>Se ejecuta en lugar de el join point.
 Debe ser declarado con un tipo de retorno.
-El código del join point se puede ejecutar usando la palabra
+<img src="tutorial/images/Around.png"></p>
+<p>El código del join point se puede ejecutar usando la palabra
 <code>proceed();</code></p>
-
+<br>
+<img src="tutorial/images/AroundProceed.png">
+<br>
 <div class="highlight highlight-source-aspectj"><pre>    <span class="pl-k">void</span> around() <span class="pl-k">:</span> nombreDePunto() {
     <span class="pl-c">//CODIGO</span>
     }
@@ -689,7 +790,30 @@ Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
 
 <p>Finalmente este código nos agrega la funcionalidad de un login antes de las transacciones y un registro de sus actividades en un archivo.</p>
 
+
 <p><a href="https://github.com/JeffersonH44/AspectJExamples">Mas ejemplos</a></p>
+
+    <h2><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas y Desventajas de AspectJ </h2>
+
+    <!-- Inicio Ventajas -->
+    <h4><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas </h4>
+    <ul>
+        <li>Facilita/mejora la modularidad de los desarrollos de software.</li>
+        <li>El código es organizado y comprimido</li>
+        <li>Es reutilizable</li>
+        <li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
+        <li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
+    </ul>
+        <!-- Fin Ventajas -->
+        
+        <!-- Inicio desventajas -->
+        <h4><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Desventajas</h4>
+    <ul>
+        <li>Puede introducir nuevos errores y fallas de seguridad si no se implementa adecuadamente</li>
+        <li>El paradigma puede emplearse mal quitando y/o delegando responsabilidades a ciertas clases</li>
+        <li>Los Aspectos pueden ser mal utilizados. Un programador puede implementar una falsa funcionalidad en cualquier estado del desarrollo y afectar a un amplio rango del sistema.</li>
+    </ul>
+        <!-- Fin desventajas -->
 
  <h4><a href="presentacion.pdf">Enlace a la presentación</h4>
   <h4><a href="taller.pdf">Enlace al taller</h4>
@@ -708,6 +832,12 @@ Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
             <li>Juan Rodriguez Duran</li>
             <li>Johann Triana Olaya</li>
             <li>Jonatan Parra Toro</li>
+        </ul>
+
+        <p>2017-1</p>
+        <ul>
+            <li>Juan Sebastián Martínez Beltrán</li>
+            <li>Andrés Felipe Sánchez Lemus</li>
         </ul>
 
         <h2>
