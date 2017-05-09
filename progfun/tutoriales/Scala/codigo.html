@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejemplos Scala</title>
+    <style>
+      div.cod{
+        background: #e6e6e6;
+        opacity: 0.8;
+        padding: 1em 1em 1em 1em;
+        margin: 1em 2em 1em 2em;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+      }
+      body{
+        background-image: url("imagenes/s.png");
+        background-size: contain;
+        background-repeat: repeat-y;
+      }
+      h1,h2{
+        color: white;
+      }
+      a{
+        margin-left: 1em;
+        color: #660066;
+      }
+      table,th,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      table tr:nth-child(even) {
+          background-color: #eee;
+      }
+      table tr:nth-child(odd) {
+         background-color:#fff;
+      }
+      table th {
+          background-color: black;
+          color: white;
+          border: white;
+      }
+      pre{
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scala Tutorial</h1>
+    <h2>Lenguaje Scala</h2>
+    <div class="cod">
+      <p>
+        Para dar inicio al lenguaje Scala el mejor
+        ejemplo de programación es el clásico hola mundo,
+        en este ejemplo tenemos un objeto sencillo con su
+         metodo obligatorio main(), en el cual se imprimirá
+          un "Hello world!" sencillo, en donde se notan similitudes con java.
+          En Scala es opcional el punto y coma(;)
+      </p>
+    <pre><code>
+      object HelloWorld {
+        def main(args: Array[String]) {
+          println("Hello, world!")
+        }
+      }
+    </code></pre>
+    <a href="
+https://goo.gl/3qaClW" target="_blank">ejemplo en compilador online</a>
+  </div>
+  <h2>Variables</h2>
+  <div class="cod">
+    <p>
+      En Scala las variables puden ser mutables o inmutables declarándolas
+      con la palabra reservada <i>var</i> o <i>val</i> correspondientemente.
+      Se puede declarar variables sin indicar el tipo(inferencia en tipo de variable):
+    </p>
+    <pre><code>
+      val o val VariableName : DataType = [Initial Value]
+    </code></pre>
+    <a href="
+https://goo.gl/vBeM6H" target="_blank">ejemplo en compilador online</a>
+  </div>
+  <h2>Condicionales</h2>
+  <div class="cod" >
+      <i>if.. else</i>
+      <p>La sentencia <i>if..else</i> es parecido que en java</p>
+      <pre><code>
+        if(Boolean_expression 1){
+           //Executes when the Boolean expression 1 is true
+        } else if(Boolean_expression 2){
+           //Executes when the Boolean expression 2 is true
+        } else if(Boolean_expression 3){
+           //Executes when the Boolean expression 3 is true
+        } else {
+           //Executes when the none of the above condition is true.
+        }
+      </code></pre>
+      <a href="
+  https://goo.gl/goEZQ6" target="_blank">ejemplo en compilador online</a>
+  </div>
+  <div class="cod">
+    <i>match.. case</i>
+    <p>
+      El equivalente al <i>switch..case</i> de java.
+      La variable a evaluar va antes de  <i>match</i>.
+      permite comparación con distintos tipos de datos.
+      <i>case _</i> es el respectivo <i>default</i> de java.
+      <pre><code>
+        variable match{
+          case opcion => code
+          case _ => code default
+        }
+      </code></pre>
+      <a href="
+  https://goo.gl/N7W3la" target="_blank">ejemplo en compilador online</a>
+    </div>
+    <h2>Bucles</h2>
+    <div class="cod">
+    <i>while</i>
+    <pre><code>
+      while(condition){
+         statement(s);
+      }
+    </code></pre>
+    <a href="https://goo.gl/r0ncGF" target="_blank">ejemplo en compilador online</a>
+    </div>
+    <div class="cod">
+      <i>do..while</i>
+      <pre><code>
+        do {
+           statement(s);
+        }
+        while( condition );
+      </code></pre>
+      <a href="https://goo.gl/1XjKTs" target="_blank">ejemplo en compilador online</a>
+    </div>
+    <div class="cod">
+      <i>for</i>
+      <p>Para definir el rango hay varias opciones: <i> to j</i>
+        es inclusivo, <i> until j</i> es exclusivo,
+        podemos iterar sobre varias variables(equivalente a for anidados),
+        también se puede iterar sobre colecciones y con salto con <i>by k</i>.
+      </p>
+      <pre><code>
+        for( var x <- Range ){
+           statement(s);
+        }
+      </code></pre>
+        <a href="https://goo.gl/Cih7Ka" target="_blank">ejemplo en compilador online</a>
+        <p>
+          Algo muy útil que tiene vaya es el <i>for</i> con filtros,
+          esto nos ahorra escribiendo <i>if</i> dentro del <i>for</i>.
+        </p>
+        <pre><code>
+        for( var x <- List
+              if condition1; if condition2...
+           ){
+           statement(s);
+        }
+        </code></pre>
+        <a href="https://goo.gl/bG07Ts" target="_blank">ejemplo en compilador online</a>
+        <p>
+          Si lo que se quiere es guardar los valores del loop se puede usar <i>yield</i>
+        </p>
+        <pre><code>
+          var retVal = for{ var x <- List
+             if condition1; if condition2...
+          }
+          yield x
+        </code></pre>
+        <a href="https://goo.gl/mlezYz" target="_blank">ejemplo en compilador online</a>
+    </div>
+    <h2>Colecciones</h2>
+    <div class="cod">
+      <h3>Listas</h3>
+      <p>
+        Esparecido a los arrays de java con la diferencia que son inmutables y
+         representan una lista de enlaces en vez de arreglos planos.
+      </p>
+      <pre><code>
+        val nombreLista: List[tipo] = List(valores)
+      </code></pre>
+      <table>
+        <tr><th>Métodos básicos</th><th>Descripción</th></tr>
+        <tr>
+          <td>head</td><td>Retorna en primer elemento</td>
+        </tr>
+        <tr>
+          <td>tail</td><td>Retorna todos los elementos exceptuando el primero</td>
+        </tr>
+        <tr>
+          <td>isEmpty</td><td>Retorna verdaddero si es vacío</td>
+        </tr>
+      </table>
+      <a href="https://goo.gl/jDQp1k" target="_blank">ejemplo en compilador online</a>
+      <h3>Sets</h3>
+      <p>
+        Es una colección de elementos no duplicados, puede ser mutable o inmutable,
+         para uso mutable es necesario importar la clase <i>scala.collection.mutable.Set</i>.
+      </p>
+      <pre><code>
+        var s : Set[tipo] = Set()
+
+        var s : Set[tipo] = Set(valores)
+
+        var s = Set(valores)
+      </code></pre>
+      <table>
+        <tr><th>Métodos básicos</th><th>Descripción</th></tr>
+        <tr>
+          <td>head</td><td>Retorna en primer elemento</td>
+        </tr>
+        <tr>
+          <td>tail</td><td>Retorna todos los elementos exceptuando el primero</td>
+        </tr>
+        <tr>
+          <td>isEmpty</td><td>Retorna verdaddero si es vacío</td>
+        </tr>
+      </table>
+      <a href="https://goo.gl/7sOeSo" target="_blank">ejemplo en compilador online</a>
+      <h3>Maps</h3>
+      <p>
+        Colecciones de pares de llave/valor donde las llaves son únicas,
+        también llamados tablas hash, puedes ser mutables o inmutables,
+        para usar de manera mutable se debe importar la clase <i>scala.collection.mutable.Map</i>
+      </p>
+      <pre><code>
+        var A:Map[tipoLlave,tipoValor] = Map()
+        A + = (llave -> valor)
+      </code></pre>
+      <table>
+        <tr><th>Métodos básicos</th><th>Descripción</th></tr>
+        <tr>
+          <td>keys</td><td>Retorna un iterable sobre cada llave</td>
+        </tr>
+        <tr>
+          <td>values</td><td>Retorna un iterable sobre casa valor</td>
+        </tr>
+        <tr>
+          <td>isEmpty</td><td>Retorna verdaddero si es vacío</td>
+        </tr>
+      </table>
+      <a href="https://goo.gl/v8YGn3" target="_blank">ejemplo en compilador online</a>
+      <h3>Tuplas</h3>
+      <p>
+        Colección de un número fijo de items que pueden ser de distinto tipo pero son inmutables,
+        para acceder a un item se usa <i> t._n</i> para el item <i>n</i>.
+      </p>
+      <pre><code>
+        val t = (item1, item2, item3)
+
+        val t = new Tuple3(item1, item2, item3)
+      </code></pre>
+      <a href="https://goo.gl/ZabJwA" target="_blank">ejemplo en compilador online</a>
+      <h3>Opciones</h3>
+      <p>
+        Contenedor de cero o un elemento de un tipo dado.
+        Puede ser objeto   <i>Some[T]</i> o <i>None</i>
+        La colección Options es la que define el retorno de los diferentes
+        metodos usados en Scala, y tiene diferentes retornos dependiendo
+        el método.
+      </p>
+      <pre><code>
+        def findPerson(key: Int): Option[Person]
+      </code></pre>
+      <a href="https://goo.gl/AyyBGV" target="_blank">ejemplo en compilador online</a>
+      <h3>Iterables</h3>
+      <p>
+        No es propiamente una colección, sino una forma de
+        acceder a los elementos de una colección uno por uno.
+      </p>
+      <a href="https://goo.gl/KBLhlN" target="_blank">ejemplo en compilador online</a>
+
+
+    </div>
+    <h2>Funciones</h2>
+    <div class="cod">
+      <p>
+        Scala tiene funciones y métodos con una diferencia menor.
+        Un método en Scala es una parte de una clase que tiene un nombre,
+        una firma, opcionalmente algunas anotaciones, y algún bytecode,
+        y una función en Scala es un objeto completo que se puede asignar a una variable.
+        En otras palabras, una función que se define como miembro de algún objeto, se llama un método.
+      </p>
+      <pre><code>
+        def functionName ([list of parameters]) : [return type] = {
+           function body
+           return [expr]
+        }
+      </code></pre>
+      <a href="https://goo.gl/Frmf7b" target="_blank">ejemplo en compilador online</a>
+      <h3>Call-by-name</h3>
+      <p>
+        Tiene como mecanismo pasar un bloque de código como llamada,
+        y cada vez que la llamada accesa a un parámetro este código de
+        bloque es ejecutado.
+        Esto quiere decir que se define el parámetro de una función como otra función
+        que será llamada cada vez que se necesite el parámetro.
+      </p>
+      <pre><code>
+        funcion(otraFuncion())
+      </code></pre>
+      <a href="https://goo.gl/P5EHWz" target="_blank">ejemplo en compilador online</a>
+      <br>
+      <h3>Función con argumentos variables</h3>
+      <p>
+        Scala permite indicar a una función que el último parámetro de la
+        función puede repetirse, permitiendo como parámetro listas con tamaño
+        variable a una función, ejecutando dicha entrada de forma
+        deseada.
+      </p>
+      <pre><code>
+        def nombreFuncion( args:tipoDato* )
+      </code></pre>
+      <a href="https://goo.gl/EnBvT5" target="_blank">ejemplo en compilador online</a>
+      <br>
+      <h3>Parámetros por defecto</h3>
+      <p>
+        Scala permite especificar valores por defecto para parámetros de
+        función, en cuyo caso el parámetro puede ser omitido
+        opcionalmente al llamar la función, y se utilizarán los valores de
+        los parámetros marcados por defecto.
+         def addInt( a:Int = 5, b:Int = 7 )
+      </p>
+      <pre><code>
+        def nombreFuncion ( var1: tipo1 = valor1, var2: tipo2 = valor2 )
+      </code></pre>
+      <a href="https://goo.gl/GRJ8np" target="_blank">ejemplo en compilador online</a>
+      <br>
+      <h3>Funciones anidadas</h3>
+      <p>
+        Scala permite definir funciones dentro de otras funciones, estas son llamadas funciones locales.
+      </p>
+      <pre><code>
+        def nombreFuncion1 ([parametros funcion1 ]) : [tipo de retorno1] = {
+             def nombreFuncion2([parametros funcion2]): [tipo de retorno2]={
+               ...
+             }
+             ...
+          }
+      </code></pre>
+      <a href="https://goo.gl/EvLJsS" target="_blank">ejemplo en compilador online</a>
+      <h3>Funciones parcialmente aplicadas</h3>
+      <p>
+        Cuando se invoca una función puede
+        no ser necesario pasar siempre los argumentos, sobre todo si
+        algunos de estos se repiten.
+        Así se crea una función que encapsula otra, y manda unos
+        parámetros por defecto y otros directamente.
+      </p>
+      <pre><code>
+        val nombreVariable = nombreFuncion(parametro, _ : tipoDato)
+        nombreVariable(parametro de tipoDato)
+      </code></pre>
+      <a href="https://goo.gl/QtEFZ3" target="_blank">ejemplo en compilador online</a>
+      <h3>Funciones con argumentos nombrados</h3>
+      <p>
+        Permite pasar a una función argumentos en diferente orden a los declarados.
+      </p>
+      <pre><code>
+        def nombreFuncion( nombreVariable1: TipoDato1, nombreVariable2: TipoDato2 ) = {
+        ...
+       }
+       nombreFuncion(nombreVariablex = valorx, nombreVariablex = valorx);
+      </code></pre>
+      <a href="https://goo.gl/SCByRo" target="_blank">ejemplo en compilador online</a>
+      <h3>Funciones recursivas</h3>
+      <p>
+        Scala soporta recursión de funciones muy bien, esto quiere decir que
+        una función puede llamarse a sí misma repetidamente.
+      </p>
+      <pre><code>
+        def nombreFuncion(nombreVariable: tipoDato): tipoRetorno = {
+            ...
+            nombrefuncion(valorParametro)
+         }
+      </code></pre>
+      <a href="https://goo.gl/6dm4rN" target="_blank">ejemplo en compilador online</a>
+      <h3>Funciones de orden superior</h3>
+      <p>
+        Nos permite pasar funciones como argumentos y/o retornarlos
+        como resultado, las funciones son valores de primera clase.
+        Dichas funciones que reciben o retornan otras funciones son las
+        llamas de Orden Superior.
+        Las funciones de primera clase sólo manejan datos  simple como
+        enteros, longs, listas, etc.
+        Toma el valor <i>v</i> y le aplica la funcion <i>f</i>:
+      </p>
+      <pre><code>
+        nombreFuncion1(nombreFuncion2, valorParametro)
+        def nombreFuncion2(f: tipoParametro => tipoFuncion2, v: tipoPArametro){
+          ...
+        }
+      </code></pre>
+      <a href="https://goo.gl/0zzAEB" target="_blank">ejemplo en compilador online</a>
+      <h3>Funciones anónimas</h3>
+      <p>
+        También llamadas funciones literales, al momento de ejecutarse
+        son instanciadas en objetos llamados valores de función.
+        Simplemente son funciones que al ejecutar el programa son
+        guardadas en objetos tipo var.
+      </p>
+      <pre><code>
+        var nombreFuncion = (nombreParametro: tipoParametro) => operacion
+      </code> </pre>
+      <a href="https://goo.gl/CXPAAA" target="_blank">ejemplo en compilador online</a>
+      <h3>Currificación</h3>
+      <p>
+        Trata de hacer la sintaxis de funciones más sencilla de escribir.
+        Re definición de parámetros: Minimizar parámetros entrantes a función,
+        o reacomodación de sintaxis:
+      </p>
+      <pre><code>
+        def nombreFuncion(s1: tipoDato)(s2: tipoDato) = s1 + s2
+
+        def nombreFuncion(s1: tipoDato) = (s2: tipoDato) => s1 + s2
+      </code></pre>
+      <a href="https://goo.gl/hfHuWX" target="_blank">ejemplo en compilador online</a>
+    </div>
+    <h2>Clases</h2>
+  <div class="cod">
+    <p>
+    En este ejemplo la clase punto define dos variables <i>x</i>y <i>y</i>
+    el método <i>move</i>:
+    </p>
+    <pre><code>
+      class Point(val xc: Int, val yc: Int) {
+         var x: Int = xc
+         var y: Int = yc
+
+         def move(dx: Int, dy: Int) {
+            x = x + dx
+            y = y + dy
+            println ("Point x location : " + x);
+            println ("Point y location : " + y);
+         }
+      }
+
+      object Demo {
+         def main(args: Array[String]) {
+            val pt = new Point(10, 20);
+
+            // Move to a new location
+            pt.move(10, 10);
+         }
+      }
+    </code></pre>
+    <a href="https://goo.gl/LJwJfh">ejemplo en compilador online</a>
+  </div>
+  </body>
+</html>
