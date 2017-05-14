@@ -71,7 +71,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="./index.html" class="btn btn-primary btn-lg"><font color="white"><span class="glyphicon glyphicon-home"></span> TUTORIAL DE OPENMP</font></a>
+          <a href="./index.html" class="btn btn-primary btn-lg"><font color="white"><span class="glyphicon glyphicon-home"></span> INICIO</font></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
@@ -102,7 +102,6 @@ int main(){
   
     int numeroProcesadores = omp_get_num_procs();
     omp_set_num_threads(numeroHilos);
-
     printf("Este computador usa %d procesador(es)\n", numeroProcesadores);
     printf("En este ejemplo se desea usar %d hilo(s)\n", omp_get_max_threads());
     printf("En este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
@@ -157,6 +156,226 @@ Acabo de salir de la seccion paralela
 En este momento se esta(n) ejecutando 1 hilo(s)</pre>
       <br>
       <p>Como se pudo observar en las 2 ejecuciones del código usado para este ejemplo, antes y después de pasar por la sección paralela, se ejecuta un solo hilo, denominado <i>hilo maestro</i>, y en la sección paralela se ejecuta el número de hilos que se deseaban usar. También es importante destacar que los hilos se identifican por un número entero entre 0 y n - 1, donde n indica el número de hilos; además, el hilo maestro se identifica por el número 0.</p>
+      <br>
+      <h2 class="margin">Ejemplo intermedio (Serie de Leibniz)</h2>
+      <p>En este ejemplo, se desea calcular el número &pi; &asymp; 3.14159265 por medio de la serie de Leibiz de forma secuencial y de forma paralela con varias maneras de implementación (Paralela sencilla, Paralela con ciclos for optimizados, Paralela con seccion crítica atómica y Paralela con sección crítica general). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la serie de Leibniz de forma tradicional; luego, de forma paralela se divide la serie original en varias subseries para que los hilos cálculen los resultados numéricos de estas subseries, sumar los resultados y mostrar la respuesta.</p>
+      <br>
+      <p>En términos de implementación, de forma secuencial se implementa la serie de Leibniz por medio de un ciclo for limitado por un número de iteraciones que entre mayor sea, más se aproxima al resultado verdadero pero implicará una mayor inversión de tiempo, y para controlar el signo según la definición de la serie de Leibniz, se usa una variable booleana cuyo valor se invierte en cada iteración para evitar el uso de funciones que calculen potencias de números, esto ayuda a mejorar la eficiencia en tiempo, para este ejemplo.</p>
+      <br>
+      <p>En términos de implementación, además de usar algunas variables de entorno de OpenMP, para la implementación de la forma paralela sencilla, se usará la directiva <i>parallel</i> para la ejecución de forma paralela, con variables compartidas y privadas para que cada hilo calcule su parte de la serie y guarde su resultado en una posición de una variable que es compartida para todos los hilos, y para combinar resultados, se calcula la sumatoria de los valores calculados por cada hilo que fueron almacenados previamente, y se muestra el resultado.</p>
+      <br>
+      <p>Para la implementación de la forma paralela con ciclos for optimizados, se usarán las directivas <i>parallel</i> para ejecución de forma paralela y <i>for</i> en cada ciclo for presente en la implementación (Para el cálculo de las subseries, el uso de esta directiva se encarga de repartir las iteraciones según el número de hilos disponibles y para el cálculo de la respuesta del problema, se aprovecha esta directiva para que realice la suma de los valores calculados por cada hilo, más rápidamente).</p>
+      <br>
+      <p>Para la implementación de la forma paralela con secciones críticas generales, se usarán las directivas <i>parallel</i> para ejecución de forma paralela, donde cada hilo dispone de una variable donde almacena el resultado de la subserie que le corresponda y <i>critical</i> para indicar con un mensaje el número del hilo que está accediendo a la sección crítica y para que el hilo aporte su resultado de la subserie que le haya correspondido, a la respuesta de este problema; para esta acción es importante que un solo hilo la realice a la vez, debido a que es necesario sincronizar los hilos en programación paralela y se observa que debido a esto, los hilos pueden competir por el acceso a un recurso y esto se debe controlar.</p>
+      <br>
+      <p>Para la implementación de la forma paralela con secciones críticas atómicas, se parte de la descripción de la implementación de la forma paralela con secciones críticas generales, usando la directiva <i>atomic</i> en vez de la directiva <i>critical</i>, tomando en cuenta las secciones críticas atómicas solo toman una instrucción y no una secuencia de varias instrucciones como pasa en las secciones críticas generales.</p>
+      <br>
+      <p>El código usado para la implementación de forma secuencial es el siguiente:</p>
+      <pre align="left">#include &ltstdio.h&gt
+
+int main(){
+  double respuesta = 0.0;
+  long numeroIteraciones;
+  printf("Ingresar el numero de iteraciones: ");
+  scanf("%ld", &numeroIteraciones);
+
+  bool esIndicePar = true;
+  for(long indice = 0; indice <= numeroIteraciones; indice++){
+    if(esIndicePar == true){
+      respuesta += 4.0 / (2.0 * indice + 1.0);
+    }else{
+      respuesta -= 4.0 / (2.0 * indice + 1.0);
+    }
+    esIndicePar = !esIndicePar;
+  }
+  
+  printf("La respuesta es: %f\n", respuesta);
+  return 0;
+}</pre>
+      <br>
+      <p>El código usado para la implementación de forma paralela sencilla es el siguiente:</p>
+      <pre align="left">#include &ltstdio.h&gt
+#include "omp.h"
+
+int main(){
+    int numeroHilos = 4, idHilo;
+    omp_set_num_threads(numeroHilos);
+    double respuesta = 0.0, sumasParciales[numeroHilos];
+    long numeroIteraciones;
+    printf("Ingresar el numero de iteraciones: ");
+    scanf("%ld", &numeroIteraciones);
+
+    #pragma omp parallel private(idHilo) shared(sumasParciales)
+    {
+        int idHilo = omp_get_thread_num();
+        sumasParciales[idHilo] = 0.0;
+        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+            if(indice % 2 == 0){
+                sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
+            }else{
+                sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
+            }
+        }
+    }
+    for(int indice = 0; indice < numeroHilos; indice++){
+        respuesta += sumasParciales[indice];
+    }
+    
+    printf("La respuesta es: %.8f\n", respuesta);
+    return 0;
+}</pre>
+      <br>
+      <p>El código usado para la implementación de forma paralela con ciclos for optimizados es el siguiente:</p>
+      <pre align="left">#include &ltstdio.h&gt
+#include "omp.h"
+
+int main(){
+    int numeroHilos = 4, idHilo;
+    omp_set_num_threads(numeroHilos);
+    double respuesta = 0.0, sumasParciales[numeroHilos];
+    long numeroIteraciones;
+    printf("Ingresar el numero de iteraciones: ");
+    scanf("%ld", &numeroIteraciones);
+
+    #pragma omp parallel private(idHilo) shared(sumasParciales)
+    {
+        int idHilo = omp_get_thread_num();
+        sumasParciales[idHilo] = 0.0;
+        #pragma omp for
+        for(long indice = idHilo; indice < numeroIteraciones; indice++){
+            if(indice % 2 == 0){
+                sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
+            }else{
+                sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
+            }
+        }
+    }
+
+    #pragma omp for
+    for(int indice = 0; indice < numeroHilos; indice++){
+        respuesta += sumasParciales[indice];
+    }
+
+    printf("La respuesta es: %.8f\n", respuesta);
+    return 0;
+}</pre>
+      <br>
+      <p>El código usado para la implementación de forma paralela con secciones críticas generales es el siguiente:</p>
+      <pre align="left">#include &ltstdio.h&gt
+#include "omp.h"
+
+int main(){
+    int numeroHilos = 4, idHilo;
+    omp_set_num_threads(numeroHilos);
+    double respuesta = 0.0;
+    long numeroIteraciones;
+    printf("Ingresar el numero de iteraciones: ");
+    scanf("%ld", &numeroIteraciones);
+
+    #pragma omp parallel
+    {
+        int idHilo = omp_get_thread_num();
+        double sumaParcial = 0.0;
+        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+            if(indice % 2 == 0){
+                sumaParcial += 4.0 / (2.0 * indice + 1.0);
+            }else{
+                sumaParcial -= 4.0 / (2.0 * indice + 1.0);
+            }
+        }
+
+        #pragma omp critical
+        {
+          printf("El hilo %d esta entrando en la seccion critica\n", idHilo);
+          respuesta += sumaParcial;
+        }
+    }
+
+    printf("La respuesta es: %.8f\n", respuesta);
+    return 0;
+}</pre>
+      <br>
+      <p>El código usado para la implementación de forma paralela con secciones críticas atómicas es el siguiente:</p>
+      <pre align="left">#include &ltstdio.h&gt
+#include "omp.h"
+
+int main(){
+    int numeroHilos = 4, idHilo;
+    omp_set_num_threads(numeroHilos);
+    double respuesta = 0.0;
+    long numeroIteraciones;
+    printf("Ingresar el numero de iteraciones: ");
+    scanf("%ld", &numeroIteraciones);
+
+    #pragma omp parallel
+    {
+        int idHilo = omp_get_thread_num();
+        double sumaParcial = 0.0;
+        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+            if(indice % 2 == 0){
+                sumaParcial += 4.0 / (2.0 * indice + 1.0);
+            }else{
+                sumaParcial -= 4.0 / (2.0 * indice + 1.0);
+            }
+        }
+
+        #pragma omp atomic
+        respuesta += sumaParcial;
+    }
+
+    printf("La respuesta es: %.8f\n", respuesta);
+    return 0;
+}</pre>
+      <br>
+      <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 4 hilos para la solución de este problema. Se quiere conocer la aproximación al número &pi; &asymp; 3.14159265 por medio de la serie de Leibniz para 1000000000 = 10<sup>9</sup> iteraciones, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
+      <br>
+      <p>Para la ejecución de este ejemplo en la implementación de forma secuencial, se tiene el siguiente resultado:</p>
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
+La respuesta es: 3.14159265
+
+real  0m12.102s
+user  0m9.900s
+sys   0m0.004s</pre>
+      <br>
+      <p>Para la ejecución de este ejemplo en la implementación de forma paralela sencilla, se tiene el siguiente resultado:</p>
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
+La respuesta es: 3.14159265
+
+real  0m8.064s
+user  0m21.828s
+sys   0m0.008s</pre>
+      <br>
+      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con ciclos for optimizados, se tiene el siguiente resultado:</p>
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
+La respuesta es: 3.14159265
+
+real  0m5.200s
+user  0m11.612s
+sys   0m0.012s</pre>
+      <br>
+      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas generales, se tiene el siguiente resultado:</p>
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
+El hilo 2 esta entrando en la seccion critica
+El hilo 1 esta entrando en la seccion critica
+El hilo 3 esta entrando en la seccion critica
+El hilo 0 esta entrando en la seccion critica
+La respuesta es: 3.14159265
+
+real  0m4.823s
+user  0m10.540s
+sys   0m0.008s</pre>
+      <br>
+      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas atómicas, se tiene el siguiente resultado:</p>
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
+La respuesta es: 3.14159265
+
+real  0m4.898s
+user  0m10.652s
+sys   0m0.000s</pre>
+      <br>
+      <p>En la implementación de la serie de Leibniz de forma secuencial, se toman 12.102 segundos mientras que para la implementación de forma paralela sencilla, se toman 8.064 segundos, para la implementación de forma paralela con ciclos for optimizados, se toman 5.200 segundos, para la implementación de forma paralela con secciones críticas generales, se toman 4.823 segundos y para la implementación de forma paralela con secciones críticas atómicas, se toman 4.898 segundos. Luego, se puede inferir que el paralelismo en problemas matemáticos como sumatorias, productorias o en general, problemas concurrentes permite mejorar la eficiencia respecto a tiempo dependiendo de cómo cómo se construyen los subproblemas y en qué forma se combinan las soluciones a los subproblemas para obtener la solución al problema original.</p>
+      <br>
+      <p>Como se pudo observar, en los resultados de tiempo de ejecución del problema de la serie de Leibniz, se tuvieron mejores resultados usando la directiva de ciclos for optimizados y definiendo explícitamente secciones críticas, el uso de este tipo de directivas junto a una buena planeación de problemas concurrentes según el modelo de ejecución fork-join permite mayor eficiencia en tiempo aunque se gasten más recursos a nivel computacional.</p>
       <br>
       <h2 class="margin">Ejemplo avanzado (Sucesión de Fibonacci)</h2>
       <p>En este ejemplo, se desea calcular un número de la sucesión de Fibonacci de 4 formas (Secuencial: De forma recursiva y con la fórmula matemática, Paralela: De forma recursiva y con la fórmula matemática). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la sucesión de Fibonacci como una función recursiva y con su fórmula matemática; luego, de forma paralela, como el caso recursivo de la sucesión de Fibonacci está dado por <i>fibonacci(n - 1) + fibonacci(n - 2)</i>, se quiere que un solo hilo calcule <i>fibonacci(n - 1)</i> y otro hilo calcule <i>fibonacci(n - 2)</i> para después sumar los resultados y mostrar la respuesta.</p>
@@ -319,7 +538,6 @@ user  0m0.000s
 sys   0m0.000s</pre>
       <br>
       <p>En la implementación de la sucesión de Fibonacci de forma secuencial, se puede notar que para la definición recursiva de esta sucesión, se toman 8.751 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.703 segundos. Luego, en la implementación de la sucesión de Fibonacci de forma paralela, se puede notar que para la definición recursiva de esta sucesión, se toman 4.867 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.603 segundos. Luego, se puede inferir que el paralelismo en funciones recursivas permite mejorar la eficiencia respecto a tiempo, donde el llamado a la misma función se tenga que hacer al menos 2 veces como en este caso (<i>fibonacci(n - 1) + fibonacci(n - 2)</i>) para notar esta mejoría en tiempo de ejecución.</p>
-      <br>
     </div>
 
     <footer class="container-fluid bg-4 text-center">
