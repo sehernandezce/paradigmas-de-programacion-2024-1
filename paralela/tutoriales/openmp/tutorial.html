@@ -117,7 +117,7 @@ int main(){
 }
 </code></pre>
       <br>
-      <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quieren usar 5 hilos, teniendo el siguiente resultado:</p>
+      <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 5 hilos, teniendo el siguiente resultado:</p>
       <pre align="left">Ingresar el numero de hilos: 5
 Este computador usa 4 procesador(es)
 En este ejemplo se desea usar 5 hilo(s)
@@ -133,7 +133,7 @@ Acabo de salir de la seccion paralela
 
 En este momento se esta(n) ejecutando 1 hilo(s)</pre>
     <br>
-    <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quieren usar 10 hilos, teniendo el siguiente resultado:</p>
+    <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 10 hilos, teniendo el siguiente resultado:</p>
       <pre align="left">Ingresar el numero de hilos: 10
 Este computador usa 4 procesador(es)
 En este ejemplo se desea usar 10 hilo(s) !!!
@@ -154,10 +154,10 @@ Acabo de salir de la seccion paralela
 
 En este momento se esta(n) ejecutando 1 hilo(s)</pre>
       <br>
-      <p>Como se pudo observar en las 2 ejecuciones del código usado para este ejemplo, antes y después de pasar por la sección paralela, se ejecuta un solo hilo, denominado <i>hilo maestro</i>, y en la sección paralela se ejecuta el número de hilos que se deseaban usar. También es importante destacar que los hilos se identifican por un número entero entre 0 y n - 1, donde n indica el número de hilos; además, el hilo maestro se identifica por el número 0.</p>
+      <p>Como se pudo observar en las 2 ejecuciones del código usado para este ejemplo, antes y después de pasar por la sección paralela, se ejecuta un solo hilo, denominado <i>hilo maestro</i>, y en la sección paralela se ejecuta el número de hilos que se deseaba usar. También es importante destacar que los hilos se identifican por un número entero entre 0 y n - 1, donde n indica el número de hilos; además, el hilo maestro se identifica por el número 0.</p>
       <br>
       <h2 class="margin">Ejemplo intermedio (Serie de Leibniz)</h2>
-      <p>En este ejemplo, se desea calcular el número &pi; &asymp; 3.14159265 por medio de la serie de Leibiz de forma secuencial y de forma paralela con varias maneras de implementación (Paralela sencilla, Paralela con ciclos for optimizados, Paralela con seccion crítica atómica y Paralela con sección crítica general). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la serie de Leibniz de forma tradicional; luego, de forma paralela se divide la serie original en varias subseries para que los hilos cálculen los resultados numéricos de estas subseries, sumar los resultados y mostrar la respuesta.</p>
+      <p>En este ejemplo, se desea calcular el número &pi; &asymp; 3.14159265 por medio de la serie de Leibiz de forma secuencial y de forma paralela con varias maneras de implementación (Paralela sencilla, Paralela con ciclos for optimizados, Paralela con sección crítica general y Paralela con sección crítica atómica). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la serie de Leibniz de forma tradicional; luego, de forma paralela se divide la serie original en varias subseries para que los hilos calculen los resultados numéricos de estas subseries, sumar los resultados y mostrar la respuesta.</p>
       <br>
       <p>En términos de implementación, de forma secuencial se implementa la serie de Leibniz por medio de un ciclo for limitado por un número de iteraciones que entre mayor sea, más se aproxima al resultado verdadero pero implicará una mayor inversión de tiempo, y para controlar el signo según la definición de la serie de Leibniz, se usa una variable booleana cuyo valor se invierte en cada iteración para evitar el uso de funciones que calculen potencias de números, esto ayuda a mejorar la eficiencia en tiempo, para este ejemplo.</p>
       <br>
@@ -372,7 +372,7 @@ real  0m4.898s
 user  0m10.652s
 sys   0m0.000s</pre>
       <br>
-      <p>En la implementación de la serie de Leibniz de forma secuencial, se toman 12.102 segundos mientras que para la implementación de forma paralela sencilla, se toman 8.064 segundos, para la implementación de forma paralela con ciclos for optimizados, se toman 5.200 segundos, para la implementación de forma paralela con secciones críticas generales, se toman 4.823 segundos y para la implementación de forma paralela con secciones críticas atómicas, se toman 4.898 segundos. Luego, se puede inferir que el paralelismo en problemas matemáticos como sumatorias, productorias o en general, problemas concurrentes permite mejorar la eficiencia respecto a tiempo dependiendo de cómo cómo se construyen los subproblemas y en qué forma se combinan las soluciones a los subproblemas para obtener la solución al problema original.</p>
+      <p>En la implementación de la serie de Leibniz de forma secuencial, se toman 12.102 segundos mientras que para la implementación de forma paralela sencilla, se toman 8.064 segundos, para la implementación de forma paralela con ciclos for optimizados, se toman 5.200 segundos, para la implementación de forma paralela con secciones críticas generales, se toman 4.823 segundos y para la implementación de forma paralela con secciones críticas atómicas, se toman 4.898 segundos. Luego, se puede inferir que el paralelismo en problemas matemáticos como sumatorias, productorias o en general, problemas concurrentes permite mejorar la eficiencia respecto a tiempo dependiendo de cómo se construyen los subproblemas y en qué forma se combinan las soluciones a los subproblemas para obtener la solución al problema original.</p>
       <br>
       <p>Como se pudo observar, en los resultados de tiempo de ejecución del problema de la serie de Leibniz, se tuvieron mejores resultados usando la directiva de ciclos for optimizados y definiendo explícitamente secciones críticas, el uso de este tipo de directivas junto a una buena planeación de problemas concurrentes según el modelo de ejecución fork-join permite mayor eficiencia en tiempo aunque se gasten más recursos a nivel computacional.</p>
       <br>
@@ -536,7 +536,7 @@ real  0m0.629s
 user  0m0.000s
 sys   0m0.000s</pre>
       <br>
-      <p>En la implementación de la sucesión de Fibonacci de forma secuencial, se puede notar que para la definición recursiva de esta sucesión, se toman 8.751 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.703 segundos. Luego, en la implementación de la sucesión de Fibonacci de forma paralela, se puede notar que para la definición recursiva de esta sucesión, se toman 4.867 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.603 segundos. Luego, se puede inferir que el paralelismo en funciones recursivas permite mejorar la eficiencia respecto a tiempo, donde el llamado a la misma función se tenga que hacer al menos 2 veces como en este caso (<i>fibonacci(n - 1) + fibonacci(n - 2)</i>) para notar esta mejoría en tiempo de ejecución.</p>
+      <p>En la implementación de la sucesión de Fibonacci de forma secuencial, se puede notar que para la definición recursiva de esta sucesión, se toman 8.751 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.703 segundos. Luego, en la implementación de la sucesión de Fibonacci de forma paralela, se puede notar que para la definición recursiva de esta sucesión, se toman 4.867 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.629 segundos. Luego, se puede inferir que el paralelismo en funciones recursivas permite mejorar la eficiencia respecto a tiempo, donde el llamado a la misma función se tenga que hacer al menos 2 veces como en este caso (<i>fibonacci(n - 1) + fibonacci(n - 2)</i>) para notar esta mejoría en tiempo de ejecución.</p>
     </div>
 
     <footer class="container-fluid bg-4 text-center">
