@@ -53,7 +53,7 @@
         color: #ffffff;
         border-radius: 2px;
         margin: 0.5cm 3cm 0.5cm 3cm;
-        font-size: 14px;
+        font-size: 15px;
       }
     </style>
   </head>
@@ -95,10 +95,10 @@
       <p>Al inicio de la instalación de MingW, se muestra una ventana en la que se descargarán unos paquetes:</p>
       <img src="./images/instalacion2.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
       <br>
-      <p>Después de que se hayan descargado esos paquetes, aparecerá la siguiente ventana, en la que hay que seleccionar todos los paquetes para que se instalen (Para pedir que se instale un paquete, se oprime clic derecho en un paquete y se selecciona la opción   “Mark for instalation”):</p>
+      <p>Después de que se hayan descargado esos paquetes, aparecerá la siguiente ventana, en la que hay que seleccionar todos los paquetes para que se instalen (Para pedir que se instale un paquete, se oprime clic derecho en un paquete y se selecciona la opción   “Mark for installation”):</p>
       <img src="./images/instalacion3.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
       <br>
-      <p>Después de haber seleccionado todos los paquetes, en la barra de menú, acceder a Installation → Apply Changes y se acepta que se instalen los paquetes. Al finalizar, aparecerá la siguiente ventana y la instalación de MingW finalizará:</p>
+      <p>Después de haber seleccionado todos los paquetes, en la barra de menú, acceder a Installation -> Apply Changes y se acepta que se instalen los paquetes. Al finalizar, aparecerá la siguiente ventana y la instalación de MingW finalizará:</p>
       <img src="./images/instalacion4.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
       <br>
       <p>Es necesario habilitar la librería omp.h en el IDE CodeBlocks para poder usarla. Para ello, es necesario ejecutar CodeBlocks, Ir a Settings -> Compiler en la barra de menú, luego en la ventana que aparece, ubicarse en la pestaña Compiler settings -> Other options, para agregar el texto “-fopenmp” (Sin comillas).</p>
@@ -109,6 +109,8 @@
       <img src="./images/instalacion7.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
       <img src="./images/instalacion8.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="550" height="350">
       <img src="./images/instalacion9.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
+      <br>
+      <p>Después de haber realizado estos pasos, ya se tendrá OpenMP en Windows para el IDE CodeBlocks.</p>
       <br>
       <h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04)</h1>
       <p>Primero, es necesario ejecutar una terminal para instalar el IDE CodeBlocks, por medio de los siguientes comandos:</p>
@@ -126,12 +128,15 @@ sudo apt-get install codeblocks</pre>
       <img src="./images/instalacion10.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="425" height="350">
       <img src="./images/instalacion11.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="225" height="350">
       <br>
+      <p>Después de haber realizado estos pasos, ya se tendrá OpenMP en Linux (Ubuntu 14.04) para el IDE CodeBlocks.</p>
+      <br>
+      <h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04) (Alternativa)</h1>
       <p>Una forma más práctica de trabajo (Para Linux en Ubuntu 14.04), es por medio de compilación por consola de códigos fuente.</p>
       <br>
-      <p>La compilación de programas escritos en C con la librería "omp.h" se realiza con la siguiente estructura:</p>
+      <p>La compilación de programas escritos en lenguaje C con la librería "omp.h" se realiza con la siguiente estructura:</p>
       <pre align="left">gcc &ltNombrePrograma&gt.c -fopenmp</pre>
       <pre align="left">gcc &ltNombrePrograma&gt.c -o &ltNombreEjecutable&gt -fopenmp</pre>
-      <p>La compilación de programas escritos en C++ con la librería "omp.h" se realiza con la siguiente estructura:</p>
+      <p>La compilación de programas escritos en lenguaje C++ con la librería "omp.h" se realiza con la siguiente estructura:</p>
       <pre align="left">g++ &ltNombrePrograma&gt.cpp -fopenmp</pre>
       <pre align="left">g++ &ltNombrePrograma&gt.cpp -o &ltNombreEjecutable&gt -fopenmp</pre>
       <br>
