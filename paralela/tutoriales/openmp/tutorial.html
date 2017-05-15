@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<link type="text/css" rel="stylesheet" href="css/SyntaxHighlighter.css"></link>
-<script language="javascript" src="/wp-content/uploads/tutorial-data/js/shCore.js"></script>
-<script language="javascript" src="/wp-content/uploads/tutorial-data/js/shBrushC++.js"></script>
-<script language="javascript" src="/wp-content/uploads/tutorial-data/js/shBrushJava.js"></script>
+<link rel="stylesheet" href="./styles/atom-one-dark.css">
+<script src="./JavaScript/highlight.pack.js"></script>
 <html lang="en">
   <head>
     <title>Tutorial de OpenMP</title>
@@ -57,11 +55,11 @@
         color: #ffffff;
         border-radius: 2px;
         margin: 1cm 1cm 0cm 1cm;
-        font-size: 14px;
+        font-size: 15px;
       }
     </style>
   </head>
-  
+  <script>hljs.initHighlightingOnLoad();</script>
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container">
@@ -92,7 +90,7 @@
       <br>
       <h2 class="margin">Ejemplo básico (Hola hilos)</h2>
       <p>En este ejemplo, se quiere mostrar un saludo de cierto número de hilos creados y además, se quiere saber cuántos procesadores o núcleos tiene el computador. Para ello, se utilizan las variables de entorno básicas de OpenMP y la directiva <i>parallel</i>, para que de forma paralela cada hilo muestre un mensaje de saludo indicando qué número de hilo es y cuántos hilos se están ejecutando antes, durante y después de que la ejecución del programa pase por la sección paralela. El código usado para este ejemplo es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -116,7 +114,8 @@ int main(){
     
     printf("\nEn este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
     return 0;
-}</pre>
+}
+</code></pre>
       <br>
       <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quieren usar 5 hilos, teniendo el siguiente resultado:</p>
       <pre align="left">Ingresar el numero de hilos: 5
@@ -171,7 +170,7 @@ En este momento se esta(n) ejecutando 1 hilo(s)</pre>
       <p>Para la implementación de la forma paralela con secciones críticas atómicas, se parte de la descripción de la implementación de la forma paralela con secciones críticas generales, usando la directiva <i>atomic</i> en vez de la directiva <i>critical</i>, tomando en cuenta las secciones críticas atómicas solo toman una instrucción y no una secuencia de varias instrucciones como pasa en las secciones críticas generales.</p>
       <br>
       <p>El código usado para la implementación de forma secuencial es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 
 int main(){
   double respuesta = 0.0;
@@ -191,10 +190,10 @@ int main(){
   
   printf("La respuesta es: %f\n", respuesta);
   return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela sencilla es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -223,10 +222,10 @@ int main(){
     
     printf("La respuesta es: %.8f\n", respuesta);
     return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con ciclos for optimizados es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -258,10 +257,10 @@ int main(){
 
     printf("La respuesta es: %.8f\n", respuesta);
     return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con secciones críticas generales es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -293,10 +292,10 @@ int main(){
 
     printf("La respuesta es: %.8f\n", respuesta);
     return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con secciones críticas atómicas es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -325,7 +324,7 @@ int main(){
 
     printf("La respuesta es: %.8f\n", respuesta);
     return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 4 hilos para la solución de este problema. Se quiere conocer la aproximación al número &pi; &asymp; 3.14159265 por medio de la serie de Leibniz para 1000000000 = 10<sup>9</sup> iteraciones, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
       <br>
@@ -385,7 +384,7 @@ sys   0m0.000s</pre>
       <p>En términos de implementación, se usarán algunas funciones de las variables de entorno para indicar el número de hilos que dispone el programa y conocer qué número de hilo hizo algún cálculo, las directivas <i>parallel</i> para ejecución de código de forma paralela, <i>section y sections</i> para indicar secciones de código que se pueden ejecutar de forma paralela pero que un hilo cualquiera, pero solo uno, realice la tarea de la sección que le sea indicada y <i>atomic</i> como sección crítica para que un solo hilo a la vez aporte su respuesta al problema.</p>
       <br>
       <p>El código usado para la implementación de forma secuencial recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 
 long fibonacci(long numero){
   if(numero == 1 || numero == 2){
@@ -401,10 +400,10 @@ int main(){
   scanf("%ld", &numero);
   printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, fibonacci(numero));
   return 0;
-}</pre>
+}</code></pre>
     <br>
       <p>El código usado para la implementación de forma secuencial con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include &ltmath.h&gt
 
 double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
@@ -419,10 +418,10 @@ int main(){
   scanf("%ld", &numero);
   printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, fibonacci(numero));
   return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 long fibonacci(long numero){
@@ -460,10 +459,10 @@ int main(){
 
   printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, respuesta);
   return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include &ltmath.h&gt
 #include "omp.h"
 
@@ -497,7 +496,7 @@ int main(){
 
   printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, respuesta);
   return 0;
-}</pre>
+}</code></pre>
       <br>
       <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 5 hilos aunque solo 2 hilos son necesarios para la solución de este problema. Se quiere conocer el número 45 de la sucesión de Fibonacci, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
       <br>

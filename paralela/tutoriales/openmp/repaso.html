@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="./styles/atom-one-dark.css">
+<script src="./JavaScript/highlight.pack.js"></script>
 <html lang="en">
   <head>
     <title>Tutorial de OpenMP</title>
@@ -53,11 +55,11 @@
         color: #ffffff;
         border-radius: 2px;
         margin: 0.5cm 3cm 0.5cm 3cm;
-        font-size: 14px;
+        font-size: 15px;
       }
     </style>
   </head>
-  
+  <script>hljs.initHighlightingOnLoad();</script>
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container">
@@ -113,17 +115,17 @@
       <p>También denominadas constructores, una directiva de compilador es una forma de sincronización de un bloque de código que se ejecuta de forma paralela, donde se crean hilos según sea necesario, se permite añadir algunas restricciones en la forma de ejecución de dicho bloque de código, y al final se presenta una barrera para la sincronización de los hilos. Las directivas que usa OpenMP son:</p>
       <br>
       <p align="left"><b>parallel</b>: Indica que el bloque del código puede ser ejecutado por varios hilos. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp parallel
+      <pre align="left"><code class="C++">#pragma omp parallel
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>for</b>: Esta directiva es igual a la directiva <i>parallel</i> pero está optimizada para el uso de ciclos for. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp for
+      <pre align="left"><code class="C++">#pragma omp for
 for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>section</b> y <b>sections</b>: Indica que el bloque de código se puede ejecutar en paralelo, pero por un único hilo. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp sections
+      <pre align="left"><code class="C++">#pragma omp sections
 {
   #pragma omp section
   {
@@ -134,46 +136,46 @@ for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
   {
     &ltBLOQUE DE CÓDIGO SECCIÓN N&gt
   }
-}</pre>
+}</code></pre>
       <p align="left"><b>single</b>: Indica que el bloque de código solo puede ser ejecutado por un hilo. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp single
+      <pre align="left"><code class="C++">#pragma omp single
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>master</b>: Indica que el bloque de código solo puede ser ejecutado por el hilo maestro. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp master
+      <pre align="left"><code class="C++">#pragma omp master
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>critical</b>: Indica que solo un hilo puede ejecutar el bloque de código. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp critical
+      <pre align="left"><code class="C++">#pragma omp critical
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>atomic</b>: Indica que un solo hilo puede ejecutar una sola instrucción que afecta solamente a una variable (Como instrucciones de la forma i++ o i--). La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp atomic
-  &ltINSTRUCCIÓN DE ACTUALIZACIÓN&gt</pre>
+      <pre align="left"><code class="C++">#pragma omp atomic
+  &ltINSTRUCCIÓN DE ACTUALIZACIÓN&gt</code></pre>
       <p align="left"><b>reduction</b>: Hace una operación privada (Suma, resta, multiplicación, división, entre otras) en cada ejecución del bloque de código y al final suma cada resultado. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp parallel reduction(&ltSÍMBOLO DE OPERACIÓN&gt : &ltVARIABLE&gt)
+      <pre align="left"><code class="C++">#pragma omp parallel reduction(&ltSÍMBOLO DE OPERACIÓN&gt : &ltVARIABLE&gt)
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>shared</b>: Indica qué variables son compartidas o globales en la región paralela, esto permite que cualquier hilo pueda acceder a alguna de estas variables. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp parallel shared(&ltVARIABLE 1&gt, ... , &ltVARIABLE N&gt)
+      <pre align="left"><code class="C++">#pragma omp parallel shared(&ltVARIABLE 1&gt, ... , &ltVARIABLE N&gt)
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <p align="left"><b>private</b>: Indica qué variables serán privadas para cada hilo, esto significa que cada hilo tendrá una copia local usada como variable temporal que no se usará fuera de la región paralela. La sintaxis para el uso de esta directiva es la siguiente:</p>
-      <pre align="left">#pragma omp parallel private(&ltVARIABLE 1&gt, ... , &ltVARIABLE N&gt)
+      <pre align="left"><code class="C++">#pragma omp parallel private(&ltVARIABLE 1&gt, ... , &ltVARIABLE N&gt)
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
       <br>
       <p>Es posible especificar que solo se ejecute la región paralela cuando se cumpla una condición dada, para esto, se usa la siguiente sintaxis:</p>
-      <pre align="left">#pragma omp parallel if(&ltCONDICIÓN&gt)
+      <pre align="left"><code class="C++">#pragma omp parallel if(&ltCONDICIÓN&gt)
 {
   &ltBLOQUE DE CÓDIGO&gt
-}</pre>
+}</code></pre>
     </div>
 
     <footer class="container-fluid bg-4 text-center">
