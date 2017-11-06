@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <title>Programación funcional </title>
+</head>
+
+<body>
+<div class="todo">
+
+    <ul class="menu">
+        <li><a class="menu-item" href="index.html">Programación Funcional </a>
+            <ul>
+                <li><a class="menu-item1" href="index.html#intro">Motivación</a></li>
+                <li><a class="menu-item1" href="index.html#history">Historia</a></li>
+                <li><a class="menu-item1" href="index.html#lambdacalc">C&aacute;lculo Lambda</a></li>
+                <li><a class="menu-item1" href="index.html#advantage_disadvantage">Ventajas y desventajas</a></li>
+                <li><a class="menu-item1" href="index.html#languages">Lenguajes</a></li>
+            </ul>
+        </li>
+        <li><a href="concepts.html" class="menu-item">Conceptos</a></li>
+        <li><a href="examples.html" class="menu-item">Ejemplos</a></li>
+        <li><a href="applications.html" class="menu-item">Aplicaciones</a></li>
+
+        <li><a class="menu-item" href="test.html">Test your knowledge!</a></li>
+        <li><a class="menu-item" href="../../index.html">Volver a Index</a></li>
+    </ul>
+
+
+    <div class="head">
+        <div class="titulo-principal">
+            <strong>
+                <center>Programación Funcional
+            </strong>
+            </center>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Conceptos clave</h1>
+
+            <p>A continuación veremos algunos ejemplos en los diferentes lenguajes de programación funcional</p>
+            <hr>
+            <hr>
+
+            <div class="row">
+                <h2>Efectos secundarios</h2>
+                <div class="col-md-8">
+                    <p>
+                        Están referidos a los estados en los que puede estar el código mientras se ejecuta, una de las
+                        características ya mencionadas de la programación funcional es que es de tipo declarativo, por
+                        lo que no existe la variación de estados, estos efectos secundarios pueden referirse a:
+                    </p>
+                    <ul>
+                        <li>
+                            Cambiar el valor de cálculos realizados previamente.
+                        </li>
+                        <li>
+                            Entrada - salida de datos estándar o por archivo.
+                        </li>
+                        <li>
+                            Modificar uno de los argumentos de la función.
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="col-md-4">
+                    <img src="images/side.png" class="img-responsive img-thumbnail center-block" alt="">
+
+                </div>
+                <h3>Ejemplos</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Loops</h4>
+                        <p>
+                            Los loops generan "side effects" debido a que se está cambiando el valor de una variable
+                            para iterar y comparar, generando cambios de valor y por lo tanto cambiando la salida de una
+                            función o rutina.
+                        </p>
+                        <script src="https://gist.github.com/anonymous/ec5b8dcace25761bc383fcbacaec30ad.js"></script>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Variable aleatorias</h4>
+                        <p>Las variables generadas aleatoriamente generan side effects, ya que las funciones evaluadas
+                            con un número aleatorio no retornaran el mismo resultado ejecutadas dos veces.</p>
+                        <script src="https://gist.github.com/anonymous/983ed3822c855389415b879a188673df.js"></script>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Entrada de datos por consola en ejecución</h4>
+                        <p>Los argumentos de entrada de un programa en programación funcional se asignan sólo al
+                            principio de este (argumentos), en ejecución está prohibida la asignación de variables, ya
+                            que no garantizan que el código ejecutado dos veces sea exactamente igual.</p>
+                        <script src="https://gist.github.com/anonymous/2e67f4c0389680965ce12a2ff94ede6b.js"></script>
+                    </div>
+                </div>
+            </div>
+
+
+            <hr>
+            <hr>
+
+            <div class="row">
+                <h2>Recursión</h2>
+                <div class="col-md-6">
+                    <p>
+                        En los lenguajes funcionales no existen los ciclos, así que muchas veces hay que reemplazarlos
+                        con funciones recursivas. A continuación un ejemplo de la misma función implementada con un
+                        ciclo for y con recursión
+                    </p>
+
+                </div>
+                <div class="col-md-6">
+                    <script src="https://gist.github.com/anonymous/71553ee47bd9e61789fed5cad402ce8d.js"></script>
+
+                </div>
+            </div>
+
+            <hr>
+            <hr>
+
+            <div class="row">
+                <h2>Modularidad</h2>
+                <div class="col-md-6">
+                    <p>Modularidad para hallar la desviación estándar de una lista.</p>
+                    <img src="images/Modularidad.png" alt="" class="img-responsive">
+                    <br>
+                    <p>Aplicación en Haskell:</p>
+                    <br>
+                    <script src="https://gist.github.com/anonymous/e968a52c2624d3e325c51f11ae3737df.js"></script>
+
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        Un problema complejo se puede descomponer en problemas más simples. Por ejemplo en programación
+                        funcional una serie de funciones realizadas secuencialmente podrían resolver la mayoría de
+                        problemas de programación.
+                    </p>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <hr>
+        <hr>
+
+        <div class="row">
+            <h2>Transparencia referencial</h2>
+            <div class="col-md-6">
+                <p>
+                    Se dice que una expresión es referencialmente transparente sí se puede reemplazar con su valor
+                    correspondiente sin cambiar el comportamiento del programa. Como resultado, la evaluación de una
+                    función referencialmente da el mismo valor para los mismos argumentos. Estas funciones se llaman
+                    funciones puras. Una expresión que no es referencialmente transparente se llama referencialmente
+                    opaca.
+                </p>
+                <p>
+                    En las matemáticas todas las aplicaciones de una función son referencialmente transparentes por
+                    definición. Esto no pasa siempre en la programación, donde los términos procedimiento y método se
+                    utilizan para evitar connotaciones engañosas.
+                </p>
+                <p>
+                    La importancia de la transparencia referencial es que permite al programador y al compilador razonar
+                    sobre el comportamiento del programa como un sistema de reescritura. Esto puede ayudar a probar la
+                    corrección, simplificar un algoritmo, ayudar a modificar el código sin romperlo, o optimizar el
+                    código
+                    mediante memoization, eliminación de subexpresión común, evaluación perezosa o paralelización.
+                </p>
+                <p>
+                    Como la transparencia referencial requiere los mismos resultados para cualquier conjunto dado de
+                    entradas en cualquier punto en el tiempo, una expresión referencialmente transparente es por lo
+                    tanto determinista.
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <h4>Ejemplos</h4>
+
+                <ul>
+                    <li>
+                        <p>Se tiene la siguiente función:</p>
+                        <p>
+                            int sumarUno(int x){ <br>
+                                return x + 1;<br>
+                            }<br>
+                        </p>
+                        <p>Es transparente, porque para cualquier valor de x no tendrá side effects.</p>
+                    </li>
+                    <li>
+                        <p>Pero con una función de tiempo como:</p>
+                        <p>
+                            today();
+                        </p>
+                        <p>No es transparente, porque para un día como hoy retornará 1 de Octubre de 2017, pero mañana no (llamando la función de la misma manera).</p>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <hr>
+        <hr>
+
+        <div class="row">
+            <h2>Evaluación perezosa</h2>
+            <div class="col-md-6">
+                <ul>
+                    <li>
+                        Algunos lenguajes funciones no evalúan expresiones que no son usadas. Esto puede reducir el tiempo de ejecución de algunas funciones en tiempo exponencial.
+                    </li>
+                    <li>
+                        Permite declarar infinitos valores, ya que siempre y cuando sólo se use un número finito solo estos se calcularán. Ver ejemplo en
+                        <a href="http://ideone.com/8sd0yF">aquí</a>
+                    </li>
+                    <li>
+                        Mediante la reducción por grafos, no se re-calculan expresiones o funciones ya evaluadas. Esto reduce el costo computacional.
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-md-6">
+                <img src="images/lazy.png" alt="" class="img-responsive center-block img-thumbnail">
+
+            </div>
+        </div>
+
+        <hr>
+        <hr>
+
+
+
+    </div>
+
+    <div class="footer">
+        <center>
+            <a href="index.html">PF</a> |
+            <a href="test.html">Test your knowledge!</a>
+        </center>
+        <br>
+        <div class="footer-text">
+            <center>
+                Creado y modificado por: --
+                <br>
+                <br>
+                <p>Copyright &copy; Paradigmas de Programación - UNAL 2017</p>
+
+            </center>
+        </div>
+    </div>
+
+    <script src="js/jquery.js">
+    </script>
+    <script src="js/bootstrap.min.js">
+    </script>
+
+</div>
+</body>
+
+</html>
