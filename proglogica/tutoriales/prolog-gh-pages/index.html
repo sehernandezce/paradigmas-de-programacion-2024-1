@@ -61,6 +61,7 @@
   <li><a href="#10-arboles" aria-hidden="true">10. Arboles</a></li>
   <ul class="contenido">
     <li><a href="#101-representacion2" aria-hidden="true">10.1 Otra representación de arboles </a></li>
+      <li><a href="#102-representacion-nario" aria-hidden="true">10.2 Árboles N-arios </a></li>
   </ul>
   <li><a href="#11-ejemplo-grafos" aria-hidden="true">11. Ejemplo Grafos</a></li>
   <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
@@ -496,6 +497,14 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 <td>cociente entero de la división de X por Y</td>
 </tr>
 <tr>
+<td>X^Y</td>
+<td>potencia entera de X a la Y</td>
+</tr>
+<tr>
+<td>X**Y</td>
+<td>potencia real de X a la Y</td>
+</tr>
+<tr>
 <td>X mod Y</td>
 <td>resto de la división entera de X por Y</td>
 </tr>
@@ -504,9 +513,6 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 <td>valor absoluto de X</td>
 </tr>
 <tr>
-<td>abs(X)</td>
-<td>valor absoluto de X</td>
-</tr>
 <tr>
 <td>acos(X)</td>
 <td>arco coseno de X</td>
@@ -706,8 +712,8 @@ de expresiones:</p>
 <td>El objetivo var(X) se cumple si X es una variable no instanciada.</td>
 </tr>
 <tr>
-<td>novar</td>
-<td>El objetivo novar(X) se cumple si X es una variable instanciada</td>
+<td>nonvar</td>
+<td>El objetivo nonvar(X) se cumple si X es una variable instanciada</td>
 </tr>
 <tr>
 <td>atom</td>
@@ -805,6 +811,10 @@ de expresiones:</p>
 
 <p>Una lista es una tipo concreto de estructura de datos simple. Es una secuencia ordenada de elementos que puede tener cualquier longitud. Un elemento puede ser cualquier tipo de dato e incluso otra lista.  En Prolog las listas están formadas por cabeza y cola.  Se representan como una serie de elementos separados por comas y encerrados entre corchetes. Por ejemplo en la lista:</p>
 
+<p align="center">
+    <img height="300" src="https://www.dropbox.com/s/3gjv7rf3h0dc75f/ListaPredicado.png?dl=1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="300" src="https://www.dropbox.com/s/91v0t6nor2cwwox/lista.png?dl=1">
+    <br>Notación de predicado para listas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notación de corchetes cuadrados.
+</p>
 <pre><code>     [a, b, c, d]
 </code></pre>
 
@@ -815,7 +825,7 @@ de expresiones:</p>
 <tr>
 <th>Lista</th>
 <th>Cabeza</th>
-<th>COla</th>
+<th>Cola</th>
 </tr>
 </thead>
 <tbody>
@@ -827,7 +837,7 @@ de expresiones:</p>
 <tr>
 <td>[a]</td>
 <td>a</td>
-<td><a href="lista%20vac%C3%ADa"></a></td>
+<td>[]</td>
 </tr>
 <tr>
 <td>[]</td>
@@ -953,19 +963,22 @@ El esquema general es:</p>
 <h2>
 <a id="93-funciones-predefinidas" class="anchor" href="#93-funciones-predefinidas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9.3 Funciones predefinidas</h2>
 <ul>
-<li><strong>Append: </strong>Permite concatenar dos listas, obtener sublistas y generar todas las combinaciones de listas
-<p align="center">
-<img src="https://www.dropbox.com/s/bp5t1c7zy9i50os/append.png?dl=1">
-</p>
-</li>
-
+<li><strong>Is_list: </strong>Determina si un término es lista</li>
 <li><strong>Member: </strong>Esta función es muy útil para “iterar” sobre la lista así como revisar si un item pertence a la lista.
 <p align="center">
 <img src="https://www.dropbox.com/s/jc6zfbij6i3gch9/member.png?dl=1">
 </p>
 </li>
 <li><strong>Length: </strong>Permite obtener la longitud de una lista</li>
-<li><strong>Sort: </strong>Permite ordenar una lista</li>
+<li><strong>Append: </strong>Permite concatenar dos listas, obtener sublistas y generar todas las combinaciones de listas
+<p align="center">
+<img src="https://www.dropbox.com/s/bp5t1c7zy9i50os/append.png?dl=1">
+</p>
+</li>
+<li>
+    <strong>Sort: </strong>Permite ordenar una lista
+    
+</li>
 </ul>
 
 
@@ -1057,8 +1070,43 @@ El esquema general es:</p>
 <img src="https://www.dropbox.com/s/3br5j9mu16r899b/Arbol-ejemplo.png?dl=1">
 </p>
 
+<h2>
+    <a id="102-representacion-nario" class="anchor" href="#102-representacion-nario" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10.2 Árboles N-arios
+</h2>
 
+<p>
+    Para definir un árbol n-ario, empleamos listas, en las cuales la cabeza será el nodo padre y todos los elementos de la cola serán el conjunto de nodos hijos.
+    <br/><br/>Entonces, si tenemos: <pre><code>mi_arbol_n_ario([7, [0.9], [15], [[42, ar]], [3.333]])</code></pre>
+    Corresponderá al siguientre árbol:
+</p>
+<p align="center">    
+    <img src="https://www.dropbox.com/s/nkfp32wk6c5deav/arbol-n-ario.png?dl=1">
+</p>
+<p>
+    Para verificar que una estructura sí es lista
+    
+<pre><code>es_arbol_n_ario([]).
+es_arbol_n_ario([_ | Hijos]) :- iterar_hijos(Hijos).
 
+iterar_hijos([]).
+iterar_hijos([Hijo | Lista]) :- es_arbol_n_ario(Hijo), iterar_hijos(Lista).</code></pre>
+
+Implementación de recorrido preorder.<br><br>
+<pre><code>preorder([], []).
+preorder([Padre | Hijos], Lista) :- iterar_preorder(Hijos, L),
+        append([Padre], L, Lista).
+
+iterar_preorder([], []).
+iterar_preorder([Hijo | Lista], RecorridoHermanos) :- preorder(Hijo, Recorrido),
+        iterar_preorder(Lista, RecorridoHermano),
+    	append(Recorrido, RecorridoHermano, RecorridoHermanos).</code></pre>
+Árbol de ejemplo.<br><br>      
+<pre><code>mi_arbol_n_ario( [5, [8, [7, [9]], [10]], [11, [1]]]).</code></pre>
+</p>
+<p align="center"><img src="https://www.dropbox.com/s/hfs2itez06j5vzv/arbol-n-ario-ej.png?dl=1"></p>
+<pre><code>?- mi_arbol_n_ario(Arbol), es_arbol_n_ario(Arbol), preorder(Arbol, Recorrido).
+Arbol = [5, [8, [7, [9]], [10]], [11, [1]]],
+Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <h1>
 <a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplo Grafos</h1>
 
@@ -1116,7 +1164,6 @@ El esquema general es:</p>
 <img src="https://www.dropbox.com/s/ebl5btplkviw02b/des-ven.png?dl=1">
 </p>
 
-
 <hr>
 <p> Tutorial sobre conceptos básicos.<a href="https://www.dropbox.com/s/gxev7r4rhxrd66e/Prolog.pdf?dl=1"> Enlace de descarga.</a> </p>
 <p align="center">
@@ -1126,10 +1173,9 @@ El esquema general es:</p>
 <p align="center">
   <embed src="TutorialProlog2017I.pdf" width="700" height="385"type='application/pdf'>
 </p>
-
-
+    <a href="https://swish.swi-prolog.org/p/Tutorial%20de%20prolog.swinb">Tutorial de Prolog en Notebook de SWISH
+    <img src="https://www.dropbox.com/s/2pu2yomlhilng04/TutorialProlog.PNG?dl=1"></a>
 <hr>
-
 <h2>
 <a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. Los ejercicios trabajados pueden encontrarlos en este <a href="http://swish.swi-prolog.org/p/tutorialprolog.swinb">notebook</a>
 </h2>
@@ -1137,6 +1183,7 @@ El esquema general es:</p>
 <p>Este tutorial fue desarrollado por Mónica Pineda, Jorge Bonilla y Diego Poveda.</p>
 <p>Colaboradores : Jaime Andres Vargas y Jonathan Alberto Ortiz</p>
 <p>                Santiago Carvajal Castañeda y Mario Andrés Moreno</p>
+<p>                Julián Esteban Salomón y Cristian David González</p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
 
