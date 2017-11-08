@@ -43,98 +43,197 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Aplicaciones</h1>
-
-            <p>A continuación veremos algunas aplicaciones de los diferentes lenguajes de programación funcional</p>
-            <hr>
             <hr>
 
             <div class="row">
-                <div class="col-md-6">
-                    <h1 class="text-center">ERLANG</h1>
+                <div class="col-md-12">
                     <p>
-                        Este lenguaje se caracteriza por aplicar tanto programación funcional como concurrente. Fue diseñado para tener un enfoque hacia las aplicaciones distribuidas y tolerantes a fallos. Dentro de sus características principales encontramos la capacidad de proporcionar cambio en caliente de código. Estas propiedades lo han hecho útil dentro del campo de las telecomunicaciones, razón por la cual empresas como WhatsApp, Facebook y T-Mobile lo han usado dentro del desarrollo de algunos de sus proyectos.
+                        La programación funcional es un paradigma de propósito general, pero se destaca especialmente en
+                        las siguientes areas:
                     </p>
-                </div>
-                <div class="col-md-6">
-                    <img class="center-block img-responsive img-thumbnail" src="images/Erlang_logo.svg.png" alt="Photo" style="max-height: 300px;">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <ul>
+                                <li>
+                                    Implementación de lenguajes de programación. Si alguna vez ha escrito un compilador
+                                    o interprete, estos están generalmente divido en varias etapas, de las cuales muchas
+                                    toman una estructura tipo árbol, la procesan de alguna forma y retornan una nueva
+                                    estructura tipo árbol. Este tipo de procesos pueden ser expresados de forma más
+                                    clara en lenguajes funcionales ( Características como "pattern-matching" y muy buen
+                                    soporte para recursión eficiente, lo cual hace más fácil trabajar con árboles),
+                                    permitiendo desarrollar compiladores consistentes.
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img src="images/programming-942487_640.jpg" alt="compiler"
+                                 class="text-center img-thumbnail">
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="images/metal-1771769_640.jpg" alt="paralel" class="text-center img-thumbnail">
+
+                        </div>
+
+                        <div class="col-md-8">
+                            <ul>
+                                <li>
+                                    Concurrencia y sistemas paralelos. Las restricciones de no mutación en lenguajes
+                                    funcionales generalmente permite que muchos procesos accedan y compartan los mismos
+                                    datos alentando un diseño "embarrassingly parallel", donde diferentes hilos de
+                                    ejecución no necesitan comunicarse entre si para procesar la información. En Haskell
+                                    (por lo menos el subset seguro) el tipo sistema permite que el compilador sepa
+                                    cuales partes del programa puedan se automáticamente paralelizados, al menos en
+                                    teoría, lo cual es una ventaja potencial.
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <ul>
+                                <li>
+                                    Sistemas altamente seguros. Los lenguajes funcionales fuertemente tipados,
+                                    particularmente Haskell, son muy claros en las garantías de lo que el programa puede
+                                    y no puede hacer. Los lenguajes de asistencia de pruebas, como Coq, que normalmente
+                                    son muy semejantes a los lenguajes funcionales, pueden proveer pruebas arbitrarias
+                                    básicas de los programas que se escriben en ellos. INRIA escribió un compilador
+                                    -probablemente correcto- de C en Coq y OCaml. Por ejemplo, lo más impresionante de
+                                    todo, además de que se ha demostrado que el proyecto está libre de bugs y esto sea
+                                    escalable, es que el desempeño del código generado es muy respetable.
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-4">
+                            <img src="images/security-265130_640.jpg" alt="secure" class="text-center img-thumbnail">
+
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
             <hr>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="center-block img-responsive img-thumbnail" src="images/Scheme_logo.png" alt="Photo">
-                </div>
-                <div class="col-md-6">
-                    <h1 class="text-center">SCHEME</h1>
-                   <ul>
-                       <li>
-                           Desarrollo de aplicaciones para los primeros ordenadores de la firma Apple Macintosh
-                       </li>
-                       <li>
-                           Desarrollo de sistemas de simulación y de control de telescopio
-                       </li>
-                       <li>
-                           En el MIT se da uso a la programación funcional dentro de un curso de mecánica clásica avanzada. Este curso utiliza el libro llamado Structure and Interpretation of Classical Mechanics (SICM), en el cual se busca explicar fenómenos físicos usando programas para simularlos.
-                       </li>
-
-                   </ul>
-                </div>
-            </div>
             <hr>
 
             <div class="row">
-                <div class="col-md-6">
-                    <h1 class="text-center">HASKELL</h1>
-                    <ul>
-                        <li>Desarrollo de sistemas aeroespaciales.</li>
-                        <li>Programación web.</li>
-                        <li>Diseño de hardware.</li>
-                        <li>Diseño de pruebas automatizadas (QuickCheck)</li>
-                        <li>Más en <a href="https://wiki.haskell.org/Haskell_in_industry">Wiki Haskell</a></li>
-                    </ul>
+                <div class="col-md-12">
+                    <h1 class="text-center">Algunos ejemplos de aplicaciones concretas</h1>
                 </div>
-                <div class="col-md-6">
-                    <img class="center-block img-responsive img-thumbnail" src="images/Haskell.png" alt="Photo" style="max-height: 300px;">
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="text-center">
+                            1. Sigma (Fighting spam with Haskell)
+                        </h2>
+                        <p>
+                            Sigma es un sistema que usa facebook para identificar de forma pro-activa acciones
+                            maliciosas en
+                            las interaciones de sus usuarios, las cuales incluyen spam, ataques de phising, links a
+                            malware
+                            entre otros. El contenido detectado por Sigma es removido de forma automática y así evitando
+                            que
+                            aparezca en los post del usuario.
+                        </p>
+                        <p>
+                            --->más información <a
+                                href=https://code.facebook.com/posts/745068642270222/fighting-spam-with-haskell/>aquí</a><---
+                        </p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2 class="text-center">
+                            2. Jane Street
+                        </h2>
+                        <p>
+                            Es una firma de trading que opera alrededor del mundo, ellos implementan la mayoría de sus
+                            sistemas en ocaml, expresan que esto les permite maximizar la productividad de sus
+                            empleados.
+                            Además aportar en varios proyectos opensource.
+                        </p>
+                        <p>
+                            --->más información <a href=https://www.janestreet.com/technology/>aquí</a><---
+                        </p>
+                    </div>
+
                 </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h2 class="text-center">
+                            3. QuickCheck
+                        </h2>
+
+                        <p>
+                            QuickCkeck es una librería en haskell para la generación de pruebas aleatorias en donde se
+                            busca
+                            probar las propiedades que deberían de cumplir las funciones implementadas.
+                        </p>
+                        <p>
+                            El programador provee la especificación del programa, en forma de propiedades que la función
+                            debería satisfacer, la librería entonces genera una gran cantidad de casos de prueba
+                            aleatorios
+                            para probar que la función cumpla su cometido.
+                        </p>
+                        <p>
+                            --->más información <a href="https://hackage.haskell.org/package/QuickCheck">aquí</a><---
+                        </p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-center">
+                            4. WhatsApp - ERLANG
+                        </h2>
+
+                        <p></p>
+                        Este lenguaje se caracteriza por aplicar tanto programación funcional como concurrente. Fue diseñado para tener un enfoque hacia las aplicaciones distribuidas y tolerantes a fallos. Dentro de sus características principales encontramos la capacidad de proporcionar cambio en caliente de código. Estas propiedades lo han hecho útil dentro del campo de las telecomunicaciones, razón por la cual empresas como WhatsApp  y T-Mobile lo han usado dentro del desarrollo de algunos de sus proyectos.
+                        <p>
+                            --->más información <a href="https://blog.whatsapp.com/196/1-million-is-so-2011?">aquí</a><---
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
+
             <hr>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="center-block img-responsive img-thumbnail" src="images/lisp.jpg" alt="Photo">
-                </div>
-                <div class="col-md-6">
-                    <h1 class="text-center">LISP</h1>
-                    <p>
-                        AutoLISP es un lenguaje de programación derivado del lenguaje Lisp. Es utilizado para generar rutinas orientadas al uso específico de AutoCAD y sus derivados.
-                        <a href="https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2016/ENU/AutoCAD-AutoLISP/files/GUID-E7C900DB-8B66-4109-BEF6-B0A18E8CF6B6-htm.html">AUTO LISP WIKI</a>
-                    </p>
-                </div>
-            </div>
-
+            <hr>
 
 
         </div>
 
 
+
     </div>
 
     <div class="footer">
-        <center>
+        <div style="text-align: center;">
             <a href="index.html">PF</a> |
             <a href="test.html">Test your knowledge!</a>
-        </center>
+        </div>
         <br>
         <div class="footer-text">
-            <center>
-                Creado y modificado por: --
+            <div style="text-align: center;">
+                Creado y modificado por: Daniel Cifuentes, Alejandra Zaldua (Estudiantes Ingeniería de Sistemas y
+                computación)
                 <br>
                 <br>
                 <p>Copyright &copy; Paradigmas de Programación - UNAL 2017</p>
 
-            </center>
+            </div>
         </div>
     </div>
 
