@@ -44,6 +44,7 @@
        <li style="float: left;"><a href="#conceptos">Conceptos</a></li>
        <li style="float: left;"><a href="#aplicaciones">Aplicaciones</a></li>
        <li style="float: left;"><a href="#lenguajes">Lenguajes</a></li>
+       <li style="float: left;"><a href="#ejemplos">Lenguajes ejemplos</a></li>
        <li style="float: left;"><a href="#referencias">Referencias</a></li>
 
       </ul>
@@ -336,6 +337,15 @@ no sucede así:</p>
 
 <p>Como podemos hacer para que los filósofos no se mueran de hambre?. Interesante no, el problema en sí tiene muchas soluciones pero solo vamos a enunciar una: Un filosofo toma los dos tenedores y se los demas hacen una cola alrededor de la mesa para saber cual es el siguiente hasta que todos acaban.</p>
 
+<h2>
+<a id="problema-productor-consumidor" class="anchor" href="#problema-productor-consumidor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema del Productor - Consumidor</h2>
+
+<p>Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una mis bodega. El productor produce productos cada vez que puede, y el consumidor los consume cada vez que lo necesita.
+</p>
+<p>
+Problema:
+Cómo coordinamos a los productores y consumidores, para que los productores no produzcan más ítems de los que se pueden almacenar en el momento, y los consumidores no consumen más ítems de los que hay disponibles?. </p>
+
 <h2>Sección Critica</h2>
 <p><img src="http://ecoosfera.com/wp-content/imagenes/interseccion.gif" alt=""></p>
 
@@ -570,6 +580,83 @@ public class Akka {
     }
 }
 </pre>
+
+<ul><li>Solucion del problema Productor - Consumidor</li></ul>
+<p>- Con semaforos</p>
+<pre class="prettyprint">
+semaphore fillCount = 0;
+semaphore emptyCount = BUFFER_SIZE; 
+
+procedure producer() {
+  while (true) {
+    item = produceItem();
+    down(emptyCount);
+    putItemIntoBuffer(item);
+    up(fillCount);
+  }
+}
+
+procedure consumer() {
+  while (true) {
+    down(fillCount);
+    item = removeItemFromBuffer();
+    up(emptyCount);
+    consumeItem(item);
+  }
+}
+</pre>
+
+<p>- Con monitores</p>
+<pre class="prettyprint">
+monitor ProducerConsumer {
+  int itemCount;
+  condition full;
+  condition empty;
+
+  procedure add(item) {
+    while (itemCount == BUFFER_SIZE) {
+        wait(full);
+    }
+    putItemIntoBuffer(item);
+    itemCount = itemCount + 1;
+    if (itemCount == 1) {
+        notify(empty);
+    }
+  }
+
+  rocedure remove() {
+      while (itemCount == 0) {
+          wait(empty);
+      }
+
+      item = removeItemFromBuffer();
+      itemCount = itemCount - 1;
+
+      if (itemCount == BUFFER_SIZE - 1) {
+          notify(full);
+      }
+      return item;
+  }
+}
+
+procedure producer() {
+    while (true) {
+        item = produceItem()
+        ProducerConsumer.add(item)
+    }
+}
+
+procedure consumer() {
+    while (true) {
+        item = ProducerConsumer.remove()
+        consumeItem(item)
+    }
+}
+
+
+
+</pre>
+
 <p>Los métodos de sincronización y comunicación se explican de mejor forma mediante el uso del notebook, pues los temas se explican con el uso python y C++.</p>
 
 <a id="notebook"></a>
@@ -597,6 +684,35 @@ public class Akka {
 
 <h1>
 <a id="lenguajes" class="anchor" href="#lenguajes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguajes</h1>
+
+<ul><li><strong>Elixir</strong></li></ul>
+<center><img src="images/elixir.png" width="150px" height="150px"></center>
+<br>
+Elixir es lenguaje de programación de propósito general, concurrente; este lenguaje es funcional. Además está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a fallos con baja latencia.
+
+<ul><li><strong>Rust</strong></li></ul>
+<center><img src="images/rust.png" width="150px" height="150px"></center>
+Rust es un lenguaje de programación compilado, de propósito general y multiparadigma desarrollado por Mozilla y ha sido diseñado para ser ‘un lenguaje seguro, concurrente y práctico’. Rust se enfoca principalmente en seguridad, velocidad y concurrencia.
+
+<ul><li><strong>Erlang</strong></li></ul>
+<center><img src="images/erlang.png" width="150px" height="150px"></center>
+Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante el paso de mensajes. 
+
+<ul><li><strong>GO</strong></li></ul>
+<center><img src="images/go.png" width="150px" height="150px"></center>
+GO Es un lenguaje de programación compilado, concurrente, imperativo, estructurado, no orientado a objetos con recolector de basura, soportado en diferentes tipos de sistemas. La concurrencia en Go es diferente a los criterios de programación basados en bloqueos como pthreads.
+
+<ul><li><strong>Haskell</strong></li></ul>
+<center><img src="images/haskell.png" width="150px" height="150px"></center>
+Haskell es un lenguaje polimórficamente tipificado, perezoso, puramente funcional, muy diferente a la mayoría de los otros lenguajes de programación.
+
+<ul><li><strong>Crystal</strong></li></ul>
+<center><img src="images/crystal.png" width="150px" height="150px"></center>
+Haskell es un lenguaje polimórficamente tipificado, perezoso, puramente funcional, muy diferente a la mayoría de los otros lenguajes de programación.
+
+
+<h1>
+<a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguajes ejemplos</h1>
 
 <ul>
 <li>Ejemplo en <strong>python</strong>: Este es un pequeño ejemplo con el fin de ilustrar como podemos lanzar un hilo en python</li>
@@ -1121,13 +1237,127 @@ func echo(c chan string) {
 
 salida= Mensaje recibido:Hola
 </pre>
+
+<p>En Go tenemos el Select es como un switch, pero que espera mensajes en canales.
+Su finalidad es comunicar, no comparar valores. </p>
+<pre class="prettyprint">
+package main
+import(
+  "fmt"
+  "time"
+)
+func main() {
+    process1 := processExpensiveTransaction()
+    process2 := processExpensiveTransaction()
+    for i := 0; i < 2; i++ {
+        select {
+            case msg1 := <- process1:
+                fmt.Println("Proceso 1 termino con status ", msg1)                
+            case msg2 := <- process2:
+                fmt.Println("Proceso 2 termino con status ", msg2)                
+        }
+    }
+}
+
+func processExpensiveTransaction() chan string {
+    c := make(chan string)
+    go func() {
+        time.Sleep(time.Duration(rand.Intn(6)) * time.Second)
+        c <- "ok"
+    } ()    
+    return c
+}
+</pre>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Erlang</strong>:</li>
+</ul>
+<p>
+  La función spawn en Erlang nos permiete crear un proceso en paralelo.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([start/0]).
+  start() ->
+    Pid = spawn(fun() -> server("Hello") end),
+
+  server(Message) ->
+    io:fwrite("~p",[Message]).
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  "Hello"
+</blockquote>
+
+<p>
+   El operador ! nos permite enviar mensajes a los procesos.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([start/0]).
+  start() ->
+    Pid = spawn(fun() -> server("Hello") end),
+    Pid ! {hello}.
+
+  server(Message) ->
+    io:fwrite("~p",[Message]).
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  "Hello"
+</blockquote>
+
+
+<p>
+   receive permite recibir mensajes que son enviados a los procesos.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([loop/0,start/0]).
+
+  loop() ->
+     receive
+        {rectangle, Width, Ht} ->
+           io:fwrite("Area of rectangle is ~p~n" ,[Width * Ht]),
+           loop();
+        {circle, R} ->
+        io:fwrite("Area of circle is ~p~n" , [3.14159 * R * R]),
+        loop();
+     Other ->
+        io:fwrite("Unknown"),
+        loop()
+     end.
+
+  start() ->
+     Pid = spawn(fun() -> loop() end),
+     Pid ! {rectangle, 6, 10},
+     Pid ! {circle, 6},
+     Pid ! {square, 4, 4}.
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Area of rectangle is 60<br>
+  Area of circle is 113.09723999999999<br>
+  Unknown<br>
+</blockquote>
+
 <h1>
 <a id="presentacion" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Presentación</h1>
 <a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIOTNrUWlWXzBjNmc">Enlace</a>
+<br>
+<a href="https://docs.google.com/a/unal.edu.co/presentation/d/1qwH2qt_KMMoaIlgN5xVuBpEylf9bC_TNVD3nE5foKBo/edit?usp=sharing">Enlace 2</a>
 
 <h1>
 <a id="taller" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Taller</h1>
 <a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIcEZQX2ttZU1mVFk">Enlace</a>
+<br>
+<a href="https://docs.google.com/a/unal.edu.co/document/d/1wLW-AtC3ap86P4z547Tqse0R3X7bGChVAk6QHdkfu4E/edit?usp=sharing">Enlace 2</a>
 
 
 
@@ -1149,6 +1379,38 @@ salida= Mensaje recibido:Hola
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.noesispoint.com/jsp/scjp/SCJPch12.htm">http://www.noesispoint.com/jsp/scjp/SCJPch12.htm</a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html">http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html</a></li>
 <li>Abraham Silberschatz-Operating System Concepts (9th,2012.12)</li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
+">http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://1984.lsi.us.es/wiki-ssoo/index.php/Mensajería">http://1984.lsi.us.es/wiki-ssoo/index.php/Mensajería
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://sistop.gwolf.org/html/03_planificacion_de_procesos.html#sec-1">http://sistop.gwolf.org/html/03_planificacion_de_procesos.html#sec-1</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://es.wikipedia.org/wiki/Problema_productor-consumidor">https://es.wikipedia.org/wiki/Problema_productor-consumidor</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.slant.co/topics/6024/~programming-languages-for-concurrent-programming
+">https://www.slant.co/topics/6024/~programming-languages-for-concurrent-programming
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://blanchardspace.wordpress.com/2016/08/19/rust-lenguaje/">https://blanchardspace.wordpress.com/2016/08/19/rust-lenguaje/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.genbetadev.com/frameworks/elixir
+">https://www.genbetadev.com/frameworks/elixir
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.genbetadev.com/frameworks/elixir
+">https://www.genbetadev.com/frameworks/elixir
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.ecured.cu/Lenguaje_de_programaci%C3%B3n_Go
+">https://www.ecured.cu/Lenguaje_de_programaci%C3%B3n_Go
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://wiki.haskell.org/Es/Introduccion
+">https://wiki.haskell.org/Es/Introduccion
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://g3ortega.com/programming_languages/2016/06/10/crystal-lenguaje-de-programacion-el-por-que-y-el-como.html">http://g3ortega.com/programming_languages/2016/06/10/crystal-lenguaje-de-programacion-el-por-que-y-el-como.html</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://en.wikipedia.org/wiki/Crystal_(programming_language)
+">https://en.wikipedia.org/wiki/Crystal_(programming_language)
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.tutorialspoint.com/erlang/erlang_concurrency.htm">https://www.tutorialspoint.com/erlang/erlang_concurrency.htm</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://concurrencia-go.appspot.com/
+">http://concurrencia-go.appspot.com/
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_II/Doc/Procodis_1_01.pdf">Programación concurrente - J.M. Drake </a></li>
 </ul>
 </div>
 
@@ -1156,6 +1418,9 @@ salida= Mensaje recibido:Hola
 <a id="intregrantes" class="anchor" href="#intregrantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intregrantes</h1>
 
 <ul>
+<li>Bryam Diaz</li>
+<li>Santiago Marquez</li>
+<li>Christian Vaca</li>
 <li>Kevin Mendez Paez</li>
 <li>Diego Alejandro Guevara Rocha</li>
 <li>Jhon Emmanuel Torres</li>
