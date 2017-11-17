@@ -11,8 +11,18 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style_common.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style1.css">
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic'>
+<link rel="stylesheet" type="text/css" href="assets/css/styles/qtcreator_dark.css">
 <script src="assets/js/jquery-1.10.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js" ></script>
+<script src="assets/js/highlight.pack.js" ></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+	pre {
+		background: #303030; 
+		color: #ffffff;
+		font-size: 15px;
+	}
+</style>
 </head>
 <body>
 <div id="inicio" class="index">
@@ -79,7 +89,7 @@
 		<br>
 		<h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04)</h1>
 		<p>Primero, es necesario ejecutar una terminal para instalar el IDE CodeBlocks, por medio de los siguientes comandos:</p>
-		<pre align="left" style="font-size: 15px">sudo apt-get update 
+		<pre align="left">sudo apt-get update 
 sudo apt-get install codeblocks</pre>
 		<br>
 		<p>Después de instalar el IDE CodeBlocks, se selecciona GNU GCC como compilador por defecto. Para este sistema operativo no es necesario instalar los complementos de MingW.</p>
@@ -99,16 +109,16 @@ sudo apt-get install codeblocks</pre>
 		<p>Una forma más práctica de trabajo (Para Linux en Ubuntu 14.04), es por medio de compilación por consola de códigos fuente.</p>
 		<br>
 		<p>La compilación de programas escritos en lenguaje C con la librería "omp.h" se realiza con la siguiente estructura:</p>
-		<pre align="left" style="font-size: 15px">gcc &ltNombrePrograma&gt.c -fopenmp</pre>
-		<pre align="left" style="font-size: 15px">gcc &ltNombrePrograma&gt.c -o &ltNombreEjecutable&gt -fopenmp</pre>
+		<pre align="left">gcc &ltNombrePrograma&gt.c -fopenmp</pre>
+		<pre align="left">gcc &ltNombrePrograma&gt.c -o &ltNombreEjecutable&gt -fopenmp</pre>
 		<p>La compilación de programas escritos en lenguaje C++ con la librería "omp.h" se realiza con la siguiente estructura:</p>
-		<pre align="left" style="font-size: 15px">g++ &ltNombrePrograma&gt.cpp -fopenmp</pre>
-		<pre align="left" style="font-size: 15px">g++ &ltNombrePrograma&gt.cpp -o &ltNombreEjecutable&gt -fopenmp</pre>
+		<pre align="left">g++ &ltNombrePrograma&gt.cpp -fopenmp</pre>
+		<pre align="left">g++ &ltNombrePrograma&gt.cpp -o &ltNombreEjecutable&gt -fopenmp</pre>
 		<br>
 		<p>Para la ejecución de estos programas por medio de la terminal, si no se especificó explícitamente el nombre del archivo ejecutable, se usa el siguiente comando:</p>
-		<pre align="left" style="font-size: 15px">./a.out</pre>
+		<pre align="left">./a.out</pre>
 		<p>Para la ejecución de estos programas por medio de la terminal, si se especificó explícitamente el nombre del archivo ejecutable, se usa el siguiente comando:</p>
-		<pre align="left" style="font-size: 15px">./&ltNombreEjecutable&gt</pre>
+		<pre align="left">./&ltNombreEjecutable&gt</pre>
     </div>		
 		
       </div>
@@ -131,10 +141,10 @@ sudo apt-get install codeblocks</pre>
 		
 		<h2>Sintaxis</h2>
 		<p>Para C/C++ la sintaxis básica de OpenMP es la siguiente:</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px">#pragma omp directiva[cláusulas]</pre>
+		<pre align="left"><code class="C++">#pragma omp directiva[cláusulas]</code></pre>
 		<p>Donde las directivas son las acciones que se van a realizar y las cláusulas son las condiciones que se presentan a estas directivas.</p>
 		<p>La directiva que más se utiliza es <b>parallel</b> ya que es la que permite que se de la creación de los hilos y su sintaxis es la siguiente:</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp parallel
+		<pre align="left"><code class="C++">#pragma omp parallel
 {
 			&ltBLOQUE DE CÓDIGO&gt
 }</code></pre>
@@ -154,11 +164,11 @@ sudo apt-get install codeblocks</pre>
 		<h2>Sincronización</h2>
 		<p>Se presenta cuando existe dependencia de datos entre procesadores. <br> Para OpenMP existen tres directivas que ayudan a que se realice una sincronización:</p>
 		<p align="left"><b>Barrera</b>: Es un método que crea una barrera donde los hilos tienen que esperar a que todos se encuentren en esta sección para poder continuar.</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px">#pragma omp barrier</pre>
+		<pre align="left"><code class="C++">#pragma omp barrier</code></pre>
 		<p align="left"><b>Exclusión mutua</b>: Se presenta cuando solo se necesita que un hilo ejecute el bloque de código.</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px">#pragma omp critical</pre
+		<pre align="left"><code class="C++">#pragma omp critical</code></pre>
 		<p align="left"><b>Atomic</b>: Proporciona exclusión mutua y se utiliza cuando se da una actualización de una sola ubicación de memoria. Solo puede ser actualizada por un solo simultáneamente y es utilizada por los operadores de aumenteo y decremento. </p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px">#pragma omp atomic</pre>
+		<pre align="left"><code class="C++">#pragma omp atomic</code></pre>
 		
 		<h2>Cláusulas de Planificación</h2>
 		<p>Indica la forma como se dividen las iteraciones de los bucles entre los hilos. Pueden ser:</p>
@@ -166,32 +176,32 @@ sudo apt-get install codeblocks</pre>
 		<p align="left"><b> schedule(dinamic[,tamaño])</b>: : las iteraciones se dividen según el tamaño y se asignan a los hilos dinámicamente cuando van acabando su trabajo, es decir que se deja que OpenMP maneje la forma como se van a hacer las iteraciones de los hilos.</p>
 		<h2>Ciclo For</h2>
 		<p>Para manejar regiones paralelas en un ciclo for se utiliza la directiva <b>for</b> que es una optimización de la directiva parallel para el manejo de este ciclo. Si solo se encuentra el ciclo for dentro de una región de parallel, la sintaxis es la siguiente:</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp parallel for
+		<pre align="left"><code class="C++">#pragma omp parallel for
 for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
 	&ltBLOQUE DE CÓDIGO&gt
 }</code></pre>
 		<p>De modo contrario, si no el ciclo for no es el único código dentro de la región paralela, la sintaxis que se usa es la siguiente: </p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp for
+		<pre align="left"><code class="C++">#pragma omp for
 for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
 	&ltBLOQUE DE CÓDIGO&gt
 }</code></pre>
 		<h2>Cláusula Reduction</h2>
 		<p>Se refiere a una variable acumuladora donde se crea una copia local dentro de cada hilo de la variable establecida y que cuando todos los hilos ya han hecho su trabajo, con estas copias locales se va a actualizar la variable global. La variable se va a inicializar con la ientidad del operador que establecimos, por ejemplo si el operador es suma (+), la variable será inicializada con cero (0). Su formato es el siguiente: </p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px">reduction(operador : variable)</pre>
+		<pre align="left"><code class="C++">reduction(operador : variable)</code></pre>
 		
 		<h2>Otras directivas</h2>
 		<p><b>master</b>: Esta directiva se presenta cuando se necesita que un segmento de código sea ejecutado solo por el hilo maestro, es decir que los demás hilos van a omitir este bloque de código. Su sintaxis es la siguiente: </p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp master
+		<pre align="left"><code class="C++">#pragma omp master
 {
   &ltBLOQUE DE CÓDIGO&gt
 }</code></pre>
 		<p><b>single</b>: Es una directiva muy utilizada e indica el bloque de código que solo puede ser ejecutado por un hilo, el hilo que llegue primero será el que va a trabajar ese bloque de código y los demás hilos lo van a omitir.</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp single
+		<pre align="left"><code class="C++">#pragma omp single
 {
   &ltBLOQUE DE CÓDIGO&gt
 }</code></pre>
 		<p><b>sections</b>: Esta directiva brinda una  sección de bloque de código a cada hilo y su formato es el siguiente:</p>
-		<pre align="left" style="background: #303030; color: #ffffff; font-size: 15px"><code class="C++">#pragma omp sections
+		<pre align="left"><code class="C++">#pragma omp sections
 {
   #pragma omp section
   {
@@ -221,7 +231,7 @@ for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
       <br>
       <h2 class="margin">Ejemplo básico (Hola hilos)</h2>
       <p>En este ejemplo, se quiere mostrar un saludo de cierto número de hilos creados y además, se quiere saber cuántos procesadores o núcleos tiene el computador. Para ello, se utilizan las variables de entorno básicas de OpenMP y la directiva <i>parallel</i>, para que de forma paralela cada hilo muestre un mensaje de saludo indicando qué número de hilo es y cuántos hilos se están ejecutando antes, durante y después de que la ejecución del programa pase por la sección paralela. El código usado para este ejemplo es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -249,7 +259,7 @@ int main(){
 </code></pre>
       <br>
       <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 5 hilos, teniendo el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de hilos: 5
+      <pre align="left">Ingresar el numero de hilos: 5
 Este computador usa 4 procesador(es)
 En este ejemplo se desea usar 5 hilo(s)
 En este momento se esta(n) ejecutando 1 hilo(s)
@@ -265,7 +275,7 @@ Acabo de salir de la seccion paralela
 En este momento se esta(n) ejecutando 1 hilo(s)</pre>
     <br>
     <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 10 hilos, teniendo el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de hilos: 10
+      <pre align="left">Ingresar el numero de hilos: 10
 Este computador usa 4 procesador(es)
 En este ejemplo se desea usar 10 hilo(s) !!!
 En este momento se esta(n) ejecutando 1 hilo(s)
@@ -301,7 +311,7 @@ En este momento se esta(n) ejecutando 1 hilo(s)</pre>
       <p>Para la implementación de la forma paralela con secciones críticas atómicas, se parte de la descripción de la implementación de la forma paralela con secciones críticas generales, usando la directiva <i>atomic</i> en vez de la directiva <i>critical</i>, tomando en cuenta las secciones críticas atómicas solo toman una instrucción y no una secuencia de varias instrucciones como pasa en las secciones críticas generales.</p>
       <br>
       <p>El código usado para la implementación de forma secuencial es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 
 int main(){
   double respuesta = 0.0;
@@ -324,7 +334,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela sencilla es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -356,7 +366,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con ciclos for optimizados es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -391,7 +401,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con secciones críticas generales es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -426,7 +436,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con secciones críticas atómicas es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 int main(){
@@ -460,7 +470,7 @@ int main(){
       <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 4 hilos para la solución de este problema. Se quiere conocer la aproximación al número &pi; &asymp; 3.14159265 por medio de la serie de Leibniz para 1000000000 = 10<sup>9</sup> iteraciones, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma secuencial, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de iteraciones: 1000000000
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
 La respuesta es: 3.14159265
 
 real  0m12.102s
@@ -468,7 +478,7 @@ user  0m9.900s
 sys   0m0.004s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela sencilla, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de iteraciones: 1000000000
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
 La respuesta es: 3.14159265
 
 real  0m8.064s
@@ -476,7 +486,7 @@ user  0m21.828s
 sys   0m0.008s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela con ciclos for optimizados, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de iteraciones: 1000000000
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
 La respuesta es: 3.14159265
 
 real  0m5.200s
@@ -484,7 +494,7 @@ user  0m11.612s
 sys   0m0.012s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas generales, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de iteraciones: 1000000000
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
 El hilo 2 esta entrando en la seccion critica
 El hilo 1 esta entrando en la seccion critica
 El hilo 3 esta entrando en la seccion critica
@@ -496,7 +506,7 @@ user  0m10.540s
 sys   0m0.008s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas atómicas, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar el numero de iteraciones: 1000000000
+      <pre align="left">Ingresar el numero de iteraciones: 1000000000
 La respuesta es: 3.14159265
 
 real  0m4.898s
@@ -515,7 +525,7 @@ sys   0m0.000s</pre>
       <p>En términos de implementación, se usarán algunas funciones de las variables de entorno para indicar el número de hilos que dispone el programa y conocer qué número de hilo hizo algún cálculo, las directivas <i>parallel</i> para ejecución de código de forma paralela, <i>section y sections</i> para indicar secciones de código que se pueden ejecutar de forma paralela pero que un hilo cualquiera, pero solo uno, realice la tarea de la sección que le sea indicada y <i>atomic</i> como sección crítica para que un solo hilo a la vez aporte su respuesta al problema.</p>
       <br>
       <p>El código usado para la implementación de forma secuencial recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 
 long fibonacci(long numero){
   if(numero == 1 || numero == 2){
@@ -534,7 +544,7 @@ int main(){
 }</code></pre>
     <br>
       <p>El código usado para la implementación de forma secuencial con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include &ltmath.h&gt
 
 double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
@@ -552,7 +562,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include "omp.h"
 
 long fibonacci(long numero){
@@ -593,7 +603,7 @@ int main(){
 }</code></pre>
       <br>
       <p>El código usado para la implementación de forma paralela con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left" style="font-size: 15px"><code class="C++">#include &ltstdio.h&gt
+      <pre align="left"><code class="C++">#include &ltstdio.h&gt
 #include &ltmath.h&gt
 #include "omp.h"
 
@@ -632,7 +642,7 @@ int main(){
       <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 5 hilos aunque solo 2 hilos son necesarios para la solución de este problema. Se quiere conocer el número 45 de la sucesión de Fibonacci, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma secuencial recursiva, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar un numero: 45
+      <pre align="left">Ingresar un numero: 45
 El numero 45 de la sucesion de Fibonacci es 1134903170
 
 real  0m8.751s
@@ -640,7 +650,7 @@ user  0m7.996s
 sys   0m0.000s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma secuencial con fórmula matemática, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar un numero: 45
+      <pre align="left">Ingresar un numero: 45
 El numero 45 de la sucesion de Fibonacci es 1134903170
 
 real  0m0.703s
@@ -648,7 +658,7 @@ user  0m0.000s
 sys   0m0.000s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela recursiva, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar un numero: 45
+      <pre align="left">Ingresar un numero: 45
 El hilo 1 descubrio que fibonacci(43) = 433494437
 El hilo 2 descubrio que fibonacci(44) = 701408733
 El numero 45 de la sucesion de Fibonacci es 1134903170
@@ -658,7 +668,7 @@ user  0m6.916s
 sys   0m0.000s</pre>
       <br>
       <p>Para la ejecución de este ejemplo en la implementación de forma paralela con fórmula matemática, se tiene el siguiente resultado:</p>
-      <pre align="left" style="font-size: 15px">Ingresar un numero: 45
+      <pre align="left">Ingresar un numero: 45
 El hilo 1 descubrio que el primer valor numerico es 1134903170.0000016689
 El hilo 3 descubrio que el segundo valor numerico es -0.0000000002
 El numero 45 de la sucesion de Fibonacci es 1134903170
@@ -706,6 +716,7 @@ sys   0m0.000s</pre>
       <div class="col-md-6">
         <h4 style="color:#FFFFFF">Marcela Guzmán Caicedo y Felipe Epia Realpe</h4>
         <h5 style="color:#FFFFFF">Universidad Nacional de Colombia</h5>
+		<h5 style="color:#FFFFFF">Lenguajes de Programación</h5>
       </div>
       <div class="col-md-3"></div>
     </div>
