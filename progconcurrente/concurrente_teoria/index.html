@@ -340,11 +340,17 @@ no sucede así:</p>
 <h2>
 <a id="problema-productor-consumidor" class="anchor" href="#problema-productor-consumidor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema del Productor - Consumidor</h2>
 
-<p>Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una mis bodega. El productor produce productos cada vez que puede, y el consumidor los consume cada vez que lo necesita.
+<p>Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una misma bodega. El productor produce productos cada vez que puede, y el consumidor los consume cada vez que lo necesita.
 </p>
 <p>
-Problema:
-Cómo coordinamos a los productores y consumidores, para que los productores no produzcan más ítems de los que se pueden almacenar en el momento, y los consumidores no consumen más ítems de los que hay disponibles?. </p>
+Problema:<br>
+¿Cómo coordinamos a los productores y consumidores, para que los productores no produzcan más ítems de los que se pueden almacenar en el momento, y los consumidores no adquieran más ítems de los que hay disponibles?. </p>
+<br>
+<p>
+Solucion:<br>
+Desde el punto de vista de la programación concurrente la solución a este problema se plantea a través de herramientas de sincronización. La primera solución y la más sencilla es implementar bodegas que sean excluyentes, es decir si un consumidor o productor se encuentra haciendo de la bodega, nadie más pueda hacerlo, indicando este estado con cualquier tipo de señal o aviso, implementado a través de semáforos binarios, cuyo concepto también es explicado en esta página.</p>
+<p>
+La anterior solución aunque es funcional y completamente viable, no es del todo acertada, luego de profundizar en el enfoque de la programación concurrente se destaca que tiene fallos muy probables, debido a que puedo agregar más actores a este ambiente, y si solo uno de estos no aplica la metodología del semáforo de manera acertada la información se corromperá, además de contener un bloque de código igual en todos los consumidores y productores. Para solucionar esto se plantea una solución a través de un monitor el cual se encargará de revisar los procesos de compra y producción, eliminando así el código clonado, además de organizar los procesos desde el objeto de las bodegas en sí.</p>
 
 <h2>Sección Critica</h2>
 <p><img src="http://ecoosfera.com/wp-content/imagenes/interseccion.gif" alt=""></p>
