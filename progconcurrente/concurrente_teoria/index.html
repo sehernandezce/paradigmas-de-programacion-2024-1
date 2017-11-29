@@ -46,6 +46,7 @@
        <li style="float: left;"><a href="#lenguajes">Lenguajes</a></li>
        <li style="float: left;"><a href="#ejemplos">Lenguajes ejemplos</a></li>
        <li style="float: left;"><a href="#referencias">Referencias</a></li>
+       <li style="float: left;"><a href="quiz/index.html">Test</a></li>
 
       </ul>
     </nav>
@@ -591,7 +592,7 @@ public class Akka {
 <p>- Con semaforos</p>
 <pre class="prettyprint">
 semaphore fillCount = 0;
-semaphore emptyCount = BUFFER_SIZE; 
+semaphore emptyCount = BUFFER_SIZE;
 
 procedure producer() {
   while (true) {
@@ -702,7 +703,7 @@ Rust es un lenguaje de programación compilado, de propósito general y multipar
 
 <ul><li><strong>Erlang</strong></li></ul>
 <center><img src="images/erlang.png" width="150px" height="150px"></center>
-Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante el paso de mensajes. 
+Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante el paso de mensajes.
 
 <ul><li><strong>GO</strong></li></ul>
 <center><img src="images/go.png" width="150px" height="150px"></center>
@@ -1258,9 +1259,9 @@ func main() {
     for i := 0; i < 2; i++ {
         select {
             case msg1 := <- process1:
-                fmt.Println("Proceso 1 termino con status ", msg1)                
+                fmt.Println("Proceso 1 termino con status ", msg1)
             case msg2 := <- process2:
-                fmt.Println("Proceso 2 termino con status ", msg2)                
+                fmt.Println("Proceso 2 termino con status ", msg2)
         }
     }
 }
@@ -1270,7 +1271,7 @@ func processExpensiveTransaction() chan string {
     go func() {
         time.Sleep(time.Duration(rand.Intn(6)) * time.Second)
         c <- "ok"
-    } ()    
+    } ()
     return c
 }
 </pre>
@@ -1352,6 +1353,327 @@ func processExpensiveTransaction() chan string {
   Area of circle is 113.09723999999999<br>
   Unknown<br>
 </blockquote>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Rust</strong>:</li>
+</ul>
+<p>
+  Rust facilita la programación concurrente con las comprobaciones que se hacen en tiempo de compilación y con la gestión de memoria que realiza.
+</p>
+<p>
+  Hilos: creamos hilos con el comando thread::spawn, que recibe un closure y se lanza justo al definirlo.
+</p>
+<pre class="prettyprint">
+  use std::thread;
+
+  fn main() {
+      let child = thread::spawn(|| {
+          println!("Hello from a thread!");
+      });
+      let _ = child.join();
+  }
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Hello from a thread!
+</blockquote>
+
+<p>
+   Para esperar a que un hilo termine se puede utilizar el método join.
+</p>
+<p>
+  Podemos lanzar varios hilos dentro de un bucle
+</p>
+<p>
+  Se crea un Vec donde se meten todos los hilos para luego poder hacer un join y esperar a que todos terminen. Dentro del hilo se imprime por pantalla el índice de la iteración.
+</p>
+<pre class="prettyprint">
+  use std::thread;
+
+  fn main() {
+    let mut childs = vec![];
+
+    for i in 0..10 {
+        let child = thread::spawn(move || {
+            println!("Hello from a thread! {}", i);
+        });
+        childs.push(child);
+    }
+
+    for c in childs {
+        let _ = c.join();
+    }
+  }
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Hello from a thread! 1 <br>
+  Hello from a thread! 0 <br>
+  Hello from a thread! 5 <br>
+  Hello from a thread! 3 <br>
+  Hello from a thread! 7 <br>
+  Hello from a thread! 4 <br>
+  Hello from a thread! 8 <br>
+  Hello from a thread! 6 <br>
+  Hello from a thread! 2 <br>
+  Hello from a thread! 9 <br>
+
+</blockquote>
+
+
+<p>
+   Mutex y Arc: Para compartir una referencia a memoria entre hilos se usa Arc y Mutex en combinación.
+   Arc es un contador de referencias que se puede compartir entre hilos.
+   Mutex implementa el bloqueo asociado a la variable en concreto.
+
+</p>
+<pre class="prettyprint">
+  use std::thread;
+  use std::sync::{Arc, Mutex};
+
+  fn main() {
+      let mut childs = vec![];
+      let shared = Arc::new(Mutex::new(String::from("")));
+
+      for i in 0..10 {
+          let s = shared.clone();
+          let child = thread::spawn(move || {
+              println!("In thread {}", i);
+
+              let out = String::from("Thread ") + &i.to_string() + "\n";
+              s.lock().unwrap().push_str(&out);
+          });
+          childs.push(child);
+      }
+
+      for c in childs {
+          let _ = c.join();
+      }
+
+      println!("\nOutput:\n{}", *(shared.lock().unwrap()));
+  }
+
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  In thread 0 <br>
+  In thread 3 <br>
+  In thread 5 <br>
+  In thread 4 <br>
+  In thread 2 <br>
+  In thread 6 <br>
+  In thread 7 <br>
+  In thread 8 <br>
+  In thread 1 <br>
+  In thread 9 <br>
+ <br>
+  Output: <br>
+  Thread 0 <br>
+  Thread 3 <br>
+  Thread 5 <br>
+  Thread 4 <br>
+  Thread 2 <br>
+  Thread 6 <br>
+  Thread 7 <br>
+  Thread 8 <br>
+  Thread 1 <br>
+  Thread 9 <br>
+</blockquote>
+
+<p>
+   En este ejemplo se define la cadena dentro de un Mutex y este dentro de un Arc, así se comparte la memoria entre hilos.
+   <br>
+   channel crea un transmisor, tx, y un receptor, rx, en cada hilo, clona el transmisor y escribe en este la salida. En el send se puede enviar cualquier tipo de dato según se cree el channel, no se pueden enviar diferentes tipos de datos por el mismo canal.
+
+</p>
+<pre class="prettyprint">
+  use std::thread;
+  use std::sync::mpsc;
+
+  fn main() {
+      let (tx, rx) = mpsc::channel();
+      let mut childs = vec![];
+
+      for i in 0..10 {
+          let tx = tx.clone();
+          let child = thread::spawn(move || {
+              println!("In thread {}", i);
+
+              let out = String::from("Thread ") + &i.to_string();
+              tx.send(out).unwrap();
+          });
+          childs.push(child);
+      }
+
+      for c in childs {
+          let _ = c.join();
+      }
+
+      println!("\nOutput:");
+      loop {
+          match rx.try_recv() {
+              Ok(x) => println!("{}", x),
+              Err(_) => break
+          }
+      }
+  }
+
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  In thread 0 <br>
+  In thread 2 <br>
+  In thread 1 <br>
+  In thread 4 <br>
+  In thread 5 <br>
+  In thread 6 <br>
+  In thread 3 <br>
+  In thread 8 <br>
+  In thread 7 <br>
+  In thread 9 <br>
+ <br>
+  Output: <br>
+  Thread 0 <br>
+  Thread 2 <br>
+  Thread 1 <br>
+  Thread 4 <br>
+  Thread 5 <br>
+  Thread 6 <br>
+  Thread 8 <br>
+  Thread 7 <br>
+  Thread 9 <br>
+  Thread 3 <br>
+</blockquote>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Crystal</strong>:</li>
+</ul>
+<p>
+  Crystal usa hilos llamados fibras para lograr concurrencia. Las fibras se comunican entre sí mediante canales, como en Go o Clojure, sin tener que recurrir a la memoria compartida o bloqueos.
+  <br>
+  Cuando se inicia un programa, se activa la fibra principal que ejecutará su código de nivel superior. Allí, uno puede engendrar (spawn) más fibras.
+  Los componentes de un programa son:
+  <ul>
+    <li>Runtime Scheduler, a cargo de ejecutar todas las fibras cuando sea el momento adecuado. </li>
+    <li>El bucle de eventos, que es solo otra fibra, está a cargo de tareas asíncronas, como por ejemplo archivos, sockets, pipes, señales y temporizadores.</li>
+    <li>Canales, para comunicar datos entre fibras.  Runtime Scheduler coordinará fibras y canales para su comunicación.</li>
+    <li>Garbage collector: para limpiar la memoria que "ya no se usa".</li>
+  </ul>
+  Fibras: Para generar una fibra se usa el comando spawn
+</p>
+
+<pre class="prettyprint">
+  spawn do
+    loop do
+      puts "Hello!"
+    end
+  end
+
+  sleep 1.second
+</pre>
+<p>
+  Este programa imprimirá "¡Hello!" por un segundo y luego saldra. Esto se debe a que la llamada de espera programará la fibra principal que se ejecutará en un segundo y luego ejecutará otra fibra "lista para ejecutarse", que en este caso es la de arriba.
+  <br><br>
+  Otra manera seria:
+</p>
+
+<pre class="prettyprint">
+  spawn do
+    loop do
+      puts "Hello!"
+    end
+  end
+
+  Fiber.yield
+</pre>
+
+<p>
+  Fiber.yield le dirá al scheduler que ejecute la otra fibra. Esto imprimirá "Hello" hasta los bloques de salida estándar y luego la ejecución continuará con la fibra principal y el programa saldrá.
+</p>
+
+<p>
+  Creando(spawn) una llamada:
+  <br><br>
+  El programa imprime los números del 0 al 9. Se crea un Proc y se invoca pasando I, por lo que el valor se copia y la fibra engendrada recibe una copia.
+</p>
+
+<pre class="prettyprint">
+  i = 0
+  while i < 10
+    proc = ->(x : Int32) do
+      spawn do
+        puts(x)
+      end
+    end
+    proc.call(i)
+    i += 1
+  end
+
+  Fiber.yield
+</pre>
+
+<p>
+  La salida es la siguiente:
+</p>
+
+<blockquote>
+  0 <br>
+  1 <br>
+  2 <br>
+  3 <br>
+  4 <br>
+  5 <br>
+  6 <br>
+  7 <br>
+  8 <br>
+  9 <br>
+</blockquote>
+
+<p>
+   Canales:
+   <br>
+   Cuando el programa ejecuta una recepción, esa fibra se bloquea y la ejecución continúa con la otra fibra. Cuando se ejecuta un envió, la ejecución continúa con la fibra que estaba esperando en ese canal.
+</p>
+
+<pre class="prettyprint">
+  channel = Channel(Int32).new
+
+  spawn do
+    puts "Before first send"
+    channel.send(1)
+    puts "Before second send"
+    channel.send(2)
+  end
+
+  puts "Before first receive"
+  value = channel.receive
+  puts value # => 1
+
+  puts "Before second receive"
+  value = channel.receive
+  puts value # => 2
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Before first receive <br>
+  Before first send <br>
+  1 <br>
+  Before second receive <br>
+  Before second send <br>
+  2 <br>
+
+</blockquote>
+
 
 <h1>
 <a id="presentacion" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Presentación</h1>
