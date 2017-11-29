@@ -7,9 +7,9 @@ var questions = [
     
     new Question("Que desventaja tiene la programación concurrente?", ["Consumo de recursos", "Bloqueo mutuo", "Indeterminismo", "Violación de exclusión mutua"], 0),
 
-    new Question("Cual de los siguientes representan un estado, en el que se puede encontrar un proceso?", ["Descartado", "Preparado", "Compilado", "Ejecutando"], 1),
+    new Question("Cual de los siguientes representan un estado, en el que se puede encontrar un proceso?", ["Descartado", "Preparado", "Compilado", "En cola"], 1),
 
-    new Question("¿Cual es la función de la instrucción spawn en Erlang?", ["Crear un nuevo proceso concurrente", "Sincronizar procesos", "Enviar mensajes a otros procesos", "Evitar la condición de carrer"], 0),
+    new Question("¿Cual es la función de la instrucción spawn en Erlang?", ["Crear un nuevo proceso concurrente", "Sincronizar procesos", "Enviar mensajes a otros procesos", "Evitar la condición de carrera"], 0),
 
     new Question("Cual de los siguientes no es un criterio para la optimización de algoritmos de planificación?", ["Tiempo de vuelta", "Previsibilidad", "Utilización de proceso", "Tiempo de espera"], 3),
 
