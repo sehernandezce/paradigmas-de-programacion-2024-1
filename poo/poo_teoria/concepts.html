@@ -72,30 +72,35 @@
 			<div class="row">
 				<div class="left">
 					<li>Abstracción</li>
-						<ul>
-							<li>Clase</li>
-							<li>Atributo</li>
-							<li>Método</li>
-							<li>Objeto - Instancia</li>
-
-							<li>Diagramas de <br>clases</li>
-						</ul>
+					<li>Clase</li>
+					<li>Atributo</li>
+					<li>Método</li>
+					<li>Objeto</li>
+          <li>Instancia</li>
+					<li>Diagramas de <br>clases</li>
           <li>Mensaje</li>
 					<li>Constructor</li>
-
+          <li>Destructor</li>
+          <li>Evento</li>
+          <li>Sobreescritura</li>
+          <li>Clase abstracta</li>
 
 
 				</div>
 				<div class="right">
+          <li>Interfaz</li>
           <li>Métodos de acceso</li>
 					<li>Clase Abstracta</li>
 					<li>Interfaz</li>
-
 					<li>Modificadores de acceso</li>
 					<li>Modularidad</li>
 					<li>Encapsulamiento</li>
 					<li>Herencia</li>
 					<li>Polimorfismo</li>
+          <li>Atributos estáticos</li>
+          <li>Métodos estáticos</li>
+          <li>Clases estáticas</li>
+          <li>Hilos</li>
 				</div>
 
 			</div>
@@ -103,7 +108,8 @@
             <br />
 
 			<h3>
-			<div align="justify"><strong  id="abstraccion">Abstracción </strong><br><br>
+      <!--Abstracción-->
+			<div align="justify"><strong  id="clase">Abstracción </strong><br><br>
 			La abstracción es un proceso de interpretación y diseño que implica reconocer y enfocarse en las características importantes de una
 			situación u objeto, y filtrar o ignorar todas las particularidades no esenciales.
             <ul style="list-style-type: circle;">
@@ -133,7 +139,7 @@
             </ul>
             <br/>
 			</h3>
-
+      <!--Clase-->
 			<h3>
             <div align="justify"><strong id="clase">Clase </strong><br>La clase es un modelo o prototipo que define las variables y métodos
 			comunes a todos los objetos de cierta clase. También se puede mencionar que una clase es una plantilla genérica para un conjunto de
@@ -157,16 +163,16 @@
             <center>
                 <img src="images/classpython.png">
             </center><br/><br/>
-
+      <!--Atributo-->
 			<div align="justify" id="atributos">
-				<strong>Atributos:</strong> Es una característica de un objeto, que ayuda a definir su estructura y permite diferenciarlo de otros objetos.
+				<br><strong>Atributo</strong></br> Es una característica de un objeto, que ayuda a definir su estructura y permite diferenciarlo de otros objetos.
 				Se define con un identificador y un tipo, el cual indica los valores que puede almacenar. El conjunto de valores de los campos definen
 				el estado del objeto.
 			</div>
 			<br>
-
+      <!--Métodos-->
 			<div align="justify" id="metodos">
-				<strong>Métodos:</strong> Los métodos son los comportamientos o conductas de un objeto y permite identificar la forma en que actúa respecto a su entorno
+				<br><strong>Métodos</strong></br> Los métodos son los comportamientos o conductas de un objeto y permite identificar la forma en que actúa respecto a su entorno
 				o respecto a otros objetos. Además, representa una operación o función que un objeto realiza. El conjunto de los métodos de un objeto determinan el
 				comportamiento general del objeto.
 			</div>
@@ -176,8 +182,8 @@
                 <img src="images/atributo.png" id="ventajas">
             </center><br/><br/>
 
-
-            <div align="justify"><strong> Objeto: </strong> Los objetos de software, al igual que los objetos del mundo real, también tienen características
+    <!--Objeto-->
+      <div align="justify"><br><strong> Objeto</strong></br> Los objetos de software, al igual que los objetos del mundo real, también tienen características
 			y comportamientos. Un objeto de software mantiene sus características en uno o más atributos e implementa su comportamiento con métodos.<br /> <br>
             <ul style="list-style-type: circle;">
                 <li>Es una entidad real o abstracta, con un papel definido en el dominio del problema.</li>
@@ -188,8 +194,8 @@
                 <img src="images/objects.png">
             </center>
             </div><br/><br/>
-
-			<div align="justify"><strong> Instancia: </strong> Es la particularización, realización específica u ocurrencia de una determinada clase,
+      <!--Objeto-->
+			<div align="justify"><br><strong>Instancia</strong></br> Es la particularización, realización específica u ocurrencia de una determinada clase,
 			entidad o prototipo. Una instancia de una clase es un objeto.<br /> <br>
 
 			Ejemplo:
@@ -215,8 +221,8 @@
 			Como se puede observar, la clase <i>Estudiante</i> tiene una instancia de la clase <i>Nota</i> como atributo (<u>evaluación</u>).
 			<br><br><br>
 
-
-			<div align="justify"><strong> Diagramas de clases:</strong>
+      <!--Diagramas de clases-->
+			<div align="justify"><br><strong> Diagramas de clases</strong></br>
             Cuando se está planteando el diseño y el modelo de los objetos mediante la abstracción, existe una forma de plasmar esos prototipos a través de un
 			diagrama de clases. Formalmente, se describe como un tipo de diagrama de estructura estática que representa la estructura de un sistema mostrando las clases,
 			sus atributos, operaciones (o métodos), y las relaciones entre los objetos.
@@ -239,7 +245,8 @@
             </div>
             <br>
 			<br>
-      <div align="justify"><strong> Mensaje: </strong>
+      <!--Mensaje-->
+      <div align="justify"><br><strong> Mensaje </strong></br>
       Un mensaje es una comunicación dirigida desde un objeto A ordenando a otro objeto B que ejecute uno de sus métodos con ciertos parámetros asociados al evento que lo generó.<br />
       Los mensaje son los que permiten la comunicacion entre objetos.<br/>
       Ejemplo:<br/><br/>
@@ -248,19 +255,16 @@
       </center>
       </div>
       <br><br>
-
-
-
-
-            <br/><br/>
-            <div align="justify"><strong>Constructor: </strong>Cuando se crea un objeto es necesario inicializar sus variables con valores coherentes. Esto se hace por medio de un constructor que tiene las siguientes características: Se llama igual que la clase. No devuelve nada. Pueden existir varios, pero siguiendo las reglas de la sobrecarga de funciones. De entre los que existan, tan sólo uno se ejecutará al crear un objeto de la clase.
-                <br /> </div>
-            <br>
-            <center><img src="images/ConsPy.png" alt="Photo" height=200 border=0 hspace=0 id="ventajas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="images/ConsPhp.png" alt="Photo" height=200 border=0 hspace=0 id="ventajas">
-                <h5>Constructor en Python y Constructor en PHP</h5>
-                <br>
-            </center>
+      <!--Constructor-->
+      <br/><br/>
+      <div align="justify"><strong>Constructor: </strong>Cuando se crea un objeto es necesario inicializar sus variables con valores coherentes. Esto se hace por medio de un constructor que tiene las siguientes características: Se llama igual que la clase. No devuelve nada. Pueden existir varios, pero siguiendo las reglas de la sobrecarga de funciones. De entre los que existan, tan sólo uno se ejecutará al crear un objeto de la clase.
+          <br /> </div>
+      <br>
+      <center><img src="images/ConsPy.png" alt="Photo" height=200 border=0 hspace=0 id="ventajas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <img src="images/ConsPhp.png" alt="Photo" height=200 border=0 hspace=0 id="ventajas">
+          <h5>Constructor en Python y Constructor en PHP</h5>
+          <br>
+      </center>
 
 			<br>
 			<div align="justify"><strong>Métodos de acceso: </strong> Son los métodos o funciones que permiten obtener o modificar los atributos de un objeto. Además,
@@ -273,13 +277,7 @@
 			 En el ejemplo anterior se pueden visualizar dos métodos de acceso de la clase <i>CuentaBancaria</i>. El método <i>getNumeroCuenta()</i> retorna
 			 el atributo numeroCuenta y no tiene ninguna otra especialidad. El método <i>setNumeroCuenta(String numeroCuenta)</i> actualiza el atributo
 			 numeroCuenta de acuerdo al valor pasado por parámetro.
-
-
 			 <br /> </div>
-
-
-
-
 			<br>
             <div align="justify"><strong>Clase Abstracta: </strong> Este tipo de clases nos permiten crear "métodos generales", que recrean un comportamiento común,
 			pero sin especificar cómo lo hacen. A nivel de código tiene por particularidad que algunos de sus métodos no tienen &ldquo;cuerpo de declaración&ldquo;.
