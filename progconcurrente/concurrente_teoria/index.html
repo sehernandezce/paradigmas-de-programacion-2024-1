@@ -404,7 +404,8 @@ Para mayor claridad, este video lo explica en una mayor profundidad:
       <li>Existe una cadena circular de procesos donde cada proceso retiene uno o más recursos que el siguiente proceso de la cadena necesita.</li>
     </ul>
     Las técnicas utilizadas para evitar estos problemas consisten en negar una de las cuatro condiciones anteriormente mencionadas.<br>
-    Un ejemplo que replica este problema es este de a continuación, escrito en Ada : <br>
+    Un ejemplo que replica este problema es este de a continuación, escrito en Ada. Aqui dos procesos se ejecutan de manera finita, mientras que otros dos, los que hacen los llamados
+    funcionan en un ciclo infinito y al final se quedan esperando algo que nunca va a ocurrir: <br>
     <pre class="prettyprint">
 
       with Ada.Text_IO;
@@ -500,12 +501,66 @@ Para mayor claridad, este video lo explica en una mayor profundidad:
 
 
     </pre>
-    Se queda atascado en medio de la ejecución. 
+    Se queda atascado en medio de la ejecución.
   </li>
   <li>
     <strong>Aplazamiento indefinido : </strong> O tambien conocido como "starvation" o "lockout", se da cuando el algoritmo que maneja los recursos no tiene en cuenta
     el tiempo que lleva esperando ese proceso. Para solucionar esto entre procesos que compiten se puede manejar de tal manera que mientras más espere un proceso, más
-    alta sera su prioridad, aunque una solucion más sencilla y aplicable a un rango mayor de circunstancias es tratar con los procesos estrictamente en su orden de espera.
+    alta sera su prioridad, aunque una solucion más sencilla y aplicable a un rango mayor de circunstancias es tratar con los procesos estrictamente en su orden de espera.<br>
+    Un ejemplo en Ada es el siguiente, en este, un hilo se queda esperando una respuesta de otro proceso que nunca va a ocurrir por que la tarea Gourmet
+    ya acabo, y por eso no va a ser llamada:
+
+    <pre class="prettyprint">
+
+        with Ada.Text_IO;
+        use Ada.Text_IO;
+
+        procedure HotDog is
+
+          task Gourmet is
+          entry Make_A_Hot_Dog;
+          end Gourmet;
+
+          task body Gourmet is
+          begin
+          Put_Line("Voy a preparar un perro caliente");
+          for Index in 1..5 loop --si se cambia el 4 por un 5 se entrará en inanicion porque el task main del procedure hotdog no recibira la llamada
+          accept Make_A_Hot_Dog do
+          delay 0.8;
+          Put("Pongo el perro caliente en la mesa ");
+          Put_Line(" y le pongo mostaza");
+          end Make_A_Hot_Dog;
+          end loop;
+          Put_Line("ya no quiero mas perros calientes");
+          end Gourmet;
+
+        begin
+          for Index in 1..4 loop
+          Gourmet.Make_A_Hot_Dog;
+          delay 0.1;
+          Put_Line("como lo que me queda de perro caliente");
+          New_Line;
+          end loop;
+          Put_Line("ya estoy lleno");
+        end HotDog;
+    </pre>
+    Y su resultado es:
+    <pre class="prettyprint">
+      Voy a preparar un perro caliente
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      ya estoy lleno
+    </pre>
   </li>
   <li>
     <strong>Injusticia : </strong> Tambien conocido como "unfairness", ocurre cuando el programa no tiene mecanismos para asegurar que se da un progreso "parejo" en las
@@ -916,6 +971,8 @@ Al modelar una red de Petri, los lugares representan condiciones, las transicion
  si existe un lado dirigido que va desde el lugar P hasta la transmisión T. De igual forma se define un lugar de salida. Si todo lugar de entrada para una transmisión T tiene al menos una ficha, se dirá que T es permitida. Una transición permitida que quita una ficha a cada lugar de entrada y agrega una ficha a cada de salida se llama descarga.<br>
 Una marca M para una red de Petri esta viva si al empezar en M es posible descargar cualquier transición dada a través de una sucesión adicional de descarga, sin importar que la sucesión de descarga ya haya sucedido. <br>
 Una marca en una red de Petri es acotada si existe un entero positivo N que tiene la propiedad de que en cualquier sucesión de descarga ningún lugar recibe mas de N fichas. Ahora si una marca M esta acotada y en cualquier sucesión de descarga ningún lugar recibe mas de una ficha, se dice que M es una marca segura.
+<center><img src="images/petri.png" width="100%" height="400px"></center>
+<strong><i>Ejemplo en el cual se simula la llegada de material, para luego bifurcarla paralelamente, en dos máquinas, y luego unirlos en la salida.</i></strong>
 <h2>CSP (Communicating Sequential Processes)</h2>
 Es una teoría matemática para especificar y verificar patrones de comportamiento como abrazos mortales o Livelocks que se dan durante al interacción de objetos concurrentes. Su semántica formal y composicional esta completamente ligada con nuestra intuición natural sobre las formas en que las cosas funcionan. Podemos ver el modelo como un grupo de componentes organizados en una capa y comunicándose con otra capa de componentes a través de canales unidireccionales. Este modelo nació debido a la necesidad de encapsular la información de tal manera que esta permanezca correcta, facilitar el diseño y poder detectar fallas antes de que estas ocurran. Entre muchas de las ventajas que este modelo brindan esta su semántica sencilla y por ende su facilidad de aplicar, sus kernel tan liviano mejorando así el rendimiento de las máquinas y el que haya software del tipo de FDR que permita verificar sí el modelo esta correcto o no.
 El enfoque de sincronización que utiliza CSP es el de rende Vuez, que no permite que un proceso escriba si al mismo tiempo el otro proceso esta haciendo un leer y viceversa, como estas acciones en teoría se deben realizar en paralelo estas deberían ser no bloqueantes.
@@ -958,6 +1015,11 @@ Existen también en el mercado aplicaciones que nos permiten verificar computaci
 <center><img src="images/elixir.png" width="150px" height="150px"></center>
 <br>
 Elixir es lenguaje de programación de propósito general, concurrente; este lenguaje es funcional. Además está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a fallos con baja latencia.
+
+<ul><li><strong>Ada</strong></li></ul>
+<center><img src="images/ada-coin.jpg" width="150px" height="150px"></center>
+Ada es un lenguaje nacido de un proyecto en los 70s del ejército de los Estados Unidos, el cuál tenía como principal requisito la seguridad, es decir, se tenía que tener un lenguaje con nula cantidad de errores. El lenguaje es usado de forma amplia en la industria de las infraestructuras de riesgo grande, como lo es sistemas de aviones, trenes, tanques y misiles. Es fuertemente tipado, uno de los más tipados, debido a la necesidad explicita de minimizar los errores. Ha tenido relativamente pocas actualizaciones.Es uno de los pioneros en programación orientado a objetos, lenguaje multipropósito. Sincroniza las tareas por rendez vous.
+
 
 <ul><li><strong>Rust</strong></li></ul>
 <center><img src="images/rust.png" width="150px" height="150px"></center>
