@@ -25,6 +25,25 @@
     li a:hover {
         background-color: #111111;
     }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+    }
+    blockquote:before {
+      color: #ccc;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+    blockquote p {
+      display: inline;
+    }
     </style>
 
     <title>Programación concurrente</title>
@@ -283,6 +302,21 @@ Sección de código, sección de datos, entre otros recursos del sistema.</p>
 
 <h1>
 <a id="programacion-paralela-y-concurrente" class="anchor" href="#programacion-paralela-y-concurrente" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programacion Paralela y Concurrente</h1>
+<h2>Como diferenciarlas ?</h2>
+La concurrencia y el paralelismo han sido extensamente discutidos, pero al momento de definirlos, varios autores salen con su propia definición y esta variedad no hacen tan facil la tarea de entender.
+En terminos sencillos, se puede explicar asi:
+<blockquote>
+  Un programa es concurrente si puede soportar dos o más acciones<strong> en progreso.</strong><br><br>
+  Un programa es paralelo si puede soportar dos o más acciones <strong>ejecutándose simultáneamente.</strong>"
+</blockquote>
+
+La palabra clave es <strong>en progreso</strong>.<br><br>
+Un programa es concurrente por que maneja varias tareas al mismo tiempo, define acciones que <strong>pueden</strong> ser ejecutadas al mismo tiempo.<br>
+Y para que un programa sea paralelo, no solo debe ser concurrente, sino que tambien debe estar diseñado para correr en un medio con hardware paralelo (GPU's, procesadores multi-core, etc).<br><br>
+Puede ser visto como que la concurrencia es la propiedad de un programa, mientras que el paralelismo es la forma en la que se ejecuta un programa concurrente.<br>
+Para mayor claridad, este video lo explica en una mayor profundidad:
+<iframe width="100%" height="360" src="https://www.youtube.com/embed/cN_DpYBzKso" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 
 <h2>
 <a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relación</h2>
@@ -294,6 +328,213 @@ Sección de código, sección de datos, entre otros recursos del sistema.</p>
 <p>Hay que aclarar la concurrencia no solo es paralelismo, ya que, cuando hay mas procesos o hilos el scheduler del sistema operativo interviene y divide la ejecucion de los procesos, <strong>caracteristica que la programacion paralela NO tiene</strong> cada proceso tiene que ser ejecutado exclusivamente en una unidad de procesamiento. En la parte inferior podemos apreciar mejor la diferencia.</p>
 
 <p><img src="http://joearms.github.io/images/con_and_par.jpg" alt=""></p>
+
+<h1>Problemas de los programas concurrentes</h1>
+<p>Al lidiar con varias tareas al tiempo los programas concurrentes pueden presentar varios problemas : </p>
+<ul>
+  <li>
+    <strong>Violación de la exclusión mutua : </strong> Como se menciono anteriormente, es cuando más de un hilo trata de ejecutar la sección critica de un programa
+    y lo logra, obteniendo asi resultados indeseados. Por ejemplo, tenemos una expresión de tipo:
+    <br>
+    <strong>x = x + 1</strong>
+    <br>
+    Donde x tiene un valor inicial de 6, entonces al haber violación de exclusión mutua, varios hilos podrian tomar una copia local de x, añadir 1 y todos
+    devuelven 7 a x, lo cual es algo que no se quiere.<br>
+    Un ejemplo que replica este problema en Java, un contador que al final deberia dar 1000000, pero siempre arroja diferentes resultados: <br>
+    <pre class="prettyprint">
+      // Ejemplo hecho para ilustrar la mutabilidad del estado compartido de los hilos.
+      // Muestra un resultado distinto cada vez que se corre el programa
+
+      public class Counting {
+        public static void main(String[] args) throws InterruptedException {
+        class Counter {
+        int counter = 0;
+        public void increment() { counter++; }
+        public int get() { return counter; }
+        }
+        final Counter counter = new Counter();
+
+        class CountingThread extends Thread {
+        public void run() {
+        for (int x = 0; x < 500000; x++) {
+        counter.increment();
+        }
+        }
+        }
+
+        CountingThread t1 = new CountingThread();
+        CountingThread t2 = new CountingThread();
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+        System.out.println(counter.get());//deberia dar 1000000
+        }
+      }
+    </pre>
+
+    Y el resultado es: <br>
+    <pre class="prettyprint">
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      883345
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      830292
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      1000000
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      964409
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      945471
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      961164
+      ~/Java$
+    </pre>
+
+  </li>
+  <li>
+    <strong>Deadlock : </strong> Tambien conocido como abrazo mortal, ocurre cuando un proceso espera un evento que nunca va a pasar. Aunque se puede dar por
+    comunicación entre procesos , es más frecuente que se de por manejo de recursos. En este caso, deben cumplirse 4 condiciones para que se de un "deadlock" :
+    <ul>
+      <li>Los procesos deben reclamar un acceso exclusivo a los recursos.</li>
+      <li>Los procesos deben retener los recursos mientras esperan otros.</li>
+      <li>Los recursos pueden no ser removidos de los procesos que esperan.</li>
+      <li>Existe una cadena circular de procesos donde cada proceso retiene uno o más recursos que el siguiente proceso de la cadena necesita.</li>
+    </ul>
+    Las técnicas utilizadas para evitar estos problemas consisten en negar una de las cuatro condiciones anteriormente mencionadas.<br>
+    Un ejemplo que replica este problema es este de a continuación, escrito en Ada : <br>
+    <pre class="prettyprint">
+
+      with Ada.Text_IO;
+      use Ada.Text_IO;
+      procedure Meals1 is
+
+        HOURS : constant := 1;
+        type PERSON is (BILL, JOHN);
+
+        package Enum_IO is new Ada.Text_IO.Enumeration_IO(PERSON);
+        use Enum_IO;
+
+        task Bills_Day;
+
+        task Johns_Day;
+
+        task Restaurant is
+        entry Eat_A_Meal(Customer : PERSON);
+        end Restaurant;
+
+        task Burger_Boy is
+        entry Eat_A_Meal(Customer : PERSON);
+        end Burger_Boy;
+
+        task body Bills_Day is
+        My_Name : PERSON := BILL;
+        begin
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        end Bills_Day;
+
+        task body Johns_Day is
+        My_Name : PERSON := JOHN;
+        begin
+        delay 0.4 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 0.4 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 4.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        end Johns_Day;
+
+        task body Restaurant is
+        begin
+        loop
+        accept Eat_A_Meal(Customer : PERSON) do
+        Put(Customer);
+        Put_Line(" esta ordenando en el restaurante");
+        delay 0.5 * HOURS;
+        Put(Customer);
+        Put_Line(" esta comiendo en el restaurante");
+        delay 0.5 * HOURS;
+        end Eat_A_Meal;
+        end loop;
+        end Restaurant;
+
+        task body Burger_Boy is
+        begin
+        loop
+        accept Eat_A_Meal(Customer : PERSON) do
+        Put(Customer);
+        Put_Line(" esta ordenando en el McDonalds");
+        delay 0.1 * HOURS;
+        Put(Customer);
+        Put_Line(" esta comiendo en el McDonalds");
+        delay 0.1 * HOURS;
+        end Eat_A_Meal;
+        end loop;
+        end Burger_Boy;
+
+      begin
+        null;
+      end Meals1;
+    </pre>
+    Y el resultado es:
+    <pre class="prettyprint">
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+
+
+    </pre>
+    Se queda atascado en medio de la ejecución. 
+  </li>
+  <li>
+    <strong>Aplazamiento indefinido : </strong> O tambien conocido como "starvation" o "lockout", se da cuando el algoritmo que maneja los recursos no tiene en cuenta
+    el tiempo que lleva esperando ese proceso. Para solucionar esto entre procesos que compiten se puede manejar de tal manera que mientras más espere un proceso, más
+    alta sera su prioridad, aunque una solucion más sencilla y aplicable a un rango mayor de circunstancias es tratar con los procesos estrictamente en su orden de espera.
+  </li>
+  <li>
+    <strong>Injusticia : </strong> Tambien conocido como "unfairness", ocurre cuando el programa no tiene mecanismos para asegurar que se da un progreso "parejo" en las
+    tareas concurrentes, este es un aspecto que el diseñador debe tener en cuenta al desarrollar el programa, cualquier descuido a la "justicia" de un programa podria
+    generar un aplazamiento indefinido.
+  </li>
+</ul>
+
+<h1>
+<a id="propiedades" class="anchor" href="#propiedades" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Propiedades de los programas concurrentes</h1>
+Los requerimientos que deben haber para que un programa concurrente sea exitoso se pueden definir en terminos de propiedades que posee, y estas a su vez se clasifican en propiedades de
+<i>seguridad</i> y de <i>vida</i>.
+
+<h2>Seguridad</h2>
+Indican que es lo que se le permite hacer al programa, o equivalentemente, lo que no deberia hacer.
+<ul>
+  <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica.</li>
+  <li><strong>No deadlock :</strong> Ningun proceso debe ser retrasado esperando un evento que nunca va a ocurrir.</li>
+  <li><strong>Correctitud parcial :</strong> Si el programa termina, la salida sera lo es requerido.</li>
+</ul>
+Estas propiedades de seguridad son expresadas como <strong>invariantes</strong> en computacion, es decir, son condiciones que se mantienen ciertas en todos los puntos de ejecución del programa.
+
+<h2>Vida</h2>
+Estas propiedades indican lo que el programa debe hacer; lo que ocurrira eventualmente.
+<ul>
+  <li><strong>Justicia :</strong> Un proceso que puede ser ejecutado, va a ser ejecutado.</li>
+  <li><strong>Comunicación confiable :</strong> Un mensaje enviado por un proceso sera recibido por otro.</li>
+  <li><strong>Correctitud completa :</strong> Cuando el programa termina, el resultado obtenido es el resultado requerido.</li>
+</ul>
 
 <h1>
 <a id="sincronizacion" class="anchor" href="#sincronizacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sincronizacion</h1>
@@ -668,6 +909,27 @@ procedure consumer() {
 
 <a id="notebook"></a>
 <h3><a href="http://nbviewer.jupyter.org/url/ferestrepoca.github.io/paradigmas-de-programacion/progconcurrente/concurrente_teoria/notebook/ProgConcurrente.ipynb">Notebook</a></h3>
+<h1>Herramientas de verificación de sistemas concurrentes</h1>
+<h2>Redes de Petri</h2>
+Es un modelo gráfico para describir sistemas concurrentes, se puede ver como un grafo dirigido y bipartido donde las dos clases de vértices se denominan lugares y transiciones, se permiten lados paralelos en estas redes.
+Al modelar una red de Petri, los lugares representan condiciones, las transiciones representan eventos y la presencia de por lo menos una ficha en un lugar indica que la condición se cumple. En una red de Petri (P) es un lugar de entrada para la transición T,
+ si existe un lado dirigido que va desde el lugar P hasta la transmisión T. De igual forma se define un lugar de salida. Si todo lugar de entrada para una transmisión T tiene al menos una ficha, se dirá que T es permitida. Una transición permitida que quita una ficha a cada lugar de entrada y agrega una ficha a cada de salida se llama descarga.<br>
+Una marca M para una red de Petri esta viva si al empezar en M es posible descargar cualquier transición dada a través de una sucesión adicional de descarga, sin importar que la sucesión de descarga ya haya sucedido. <br>
+Una marca en una red de Petri es acotada si existe un entero positivo N que tiene la propiedad de que en cualquier sucesión de descarga ningún lugar recibe mas de N fichas. Ahora si una marca M esta acotada y en cualquier sucesión de descarga ningún lugar recibe mas de una ficha, se dice que M es una marca segura.
+<h2>CSP (Communicating Sequential Processes)</h2>
+Es una teoría matemática para especificar y verificar patrones de comportamiento como abrazos mortales o Livelocks que se dan durante al interacción de objetos concurrentes. Su semántica formal y composicional esta completamente ligada con nuestra intuición natural sobre las formas en que las cosas funcionan. Podemos ver el modelo como un grupo de componentes organizados en una capa y comunicándose con otra capa de componentes a través de canales unidireccionales. Este modelo nació debido a la necesidad de encapsular la información de tal manera que esta permanezca correcta, facilitar el diseño y poder detectar fallas antes de que estas ocurran. Entre muchas de las ventajas que este modelo brindan esta su semántica sencilla y por ende su facilidad de aplicar, sus kernel tan liviano mejorando así el rendimiento de las máquinas y el que haya software del tipo de FDR que permita verificar sí el modelo esta correcto o no.
+El enfoque de sincronización que utiliza CSP es el de rende Vuez, que no permite que un proceso escriba si al mismo tiempo el otro proceso esta haciendo un leer y viceversa, como estas acciones en teoría se deben realizar en paralelo estas deberían ser no bloqueantes.
+<h2> FDR (Failures-Divergence Refinement)</h2>
+Permite la verificación de muchas de las propiedades de sistemas de estados finitos y la investigación de sistemas que no pasan ese tipo de verificaciones. Esta basado en la teoría de CSP. Fue desarrollado en la universidad de Oxford.
+Su método de probar si una propiedad se cumple es el de probar el refinamiento de un sistema de transición que captura la propiedad a través de la máquina candidato.
+También permite verificar el determinismo de una máquina de estados y esto es usado primordialmente para corroborar propiedades de seguridad.
+<h2>JCSP (Java communicating sequential processes)</h2>
+Java también desarrolla su propia implementación basada en el álgebra de CSP, orientada a la concurrencia de procesos. No se requiere conocimientos avanzados en matemáticas para usar esta herramienta. Al contrario permite una simplificación en el diseño que la concurrencia genera.
+
+JCSP brinda la capacidad a través de bibliotecas completas de desarrollar programas de funcionalidad compleja sobre capas de procesos de comunicación. Con esta implementación el modelo CSP aparece soportado por las aplicaciones multihilo de Java.
+Los Procesos interactuan solamente a través de la primitivas de sincronización de CSP como channels, CALL channels, timers, crews, barriers, buckets o otros modos bien definidos de accesos a objetos pasivos. Dos procesos no invocan procesos de si mismos. Estos procesos pueden corren en forma secuencial o paralela.
+
+Existen también en el mercado aplicaciones que nos permiten verificar computacionalmente modelos especificados con CSP y una de las más sobresalientes es FDR.
 
 <h1>
 <a id="aplicaciones" class="anchor" href="#aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aplicaciones</h1>
@@ -1739,6 +2001,12 @@ func processExpensiveTransaction() chan string {
 ">http://concurrencia-go.appspot.com/
 </a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_II/Doc/Procodis_1_01.pdf">Programación concurrente - J.M. Drake </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://pegasus.javeriana.edu.co/~scada/concurrencia.html">http://pegasus.javeriana.edu.co/~scada/concurrencia.html </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://takuti.me/note/parallel-vs-concurrent/">Parallel programming vs. Concurrent Programming </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://repository.cmu.edu/cgi/viewcontent.cgi?article=1107&context=sei">Concepts of concurrent programming</a></li>
+
+
+
 </ul>
 </div>
 
@@ -1756,6 +2024,9 @@ func processExpensiveTransaction() chan string {
 <li>Diego Rodriguez</li>
 <li>Fabian David Conejo</li>
 <li>Milder Hernandez</li>
+<li>Diego Felipe Rodriguez Chaparro</li>
+<li>Nicolas Ricardo Enciso</li>
+<li>Camilo Alfonso Mosquera Benavides</li>
 </ul>
         </section>
 
