@@ -174,59 +174,61 @@
 			</center>
 			<div class="inner split">
 				<section>
-					<ul>
-						<li>
-							<p>
-								<b>Tarea:</b> La descomposición de las tareas puede ser una tarea complicada, ya que suelen haber varias formas de
-								descomponer el mismo algoritmo. Definir las tareas para una aplicación apropiadamente es una del trabajo más difícil
-								en el proceso de creación de un programa paralelizable, y difícil de automatizar.
-							</p>
-						</li>
-
-						<li>
-							<p>
-								<b>Hilo:</b> Un proceso pesado puede convertirse en varios procesos livianos ejecutados de manera concurrente. Cada
-								uno de estos procesos se conoce como hilos. Se comunican entre ellos a través de la memoria global
-
-							</p>
-						</li>
-
-						<li>
-							<p>
-								<b>Granularidad:</b> El tamaño de cada tarea, en término del número de instrucciones. Cada tarea puede tener un tamaño
-								diferente.
-							</p>
-						</li>
-
-						<li>
-							<p>
-								<b>Scheduling:</b> Las tareas de una aplicación son asignadas a procesos o hilos, que a su vez son asignados a unidades
-								de procesamiento. El proceso mediante el cual las tareas son asignadas a los procesos o hilos, y se les da un orden
-								de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
-								El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
-								otras pueden requerir los datos producidos por otras tareas.
-							</p>
-						</li>
-
-						<li>
-							<p>
-								<b>Mapping:</b> Es la asignación de procesos e hilos a unidades de procesamiento, procesadores o núcleos. Usualmente
-								el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
-							</p>
-						</li>
-					</ul>
+					<p>
+						<center>
+							<h4>Tarea:</h4>
+						</center>
+						Un problema complejo se subdivide en una cantidad discreta de tareas que representan trabajo computacional.
+						Una tarea esta compuesta de un conjunto de instrucciones que seran ejecutadas por un procesador.
+					</p>
+					<p>
+						<center>
+							<h4>Granularidad:</h4>
+						</center>
+						Se refiere al tamaño de cada tarea y a la independiencia de las demás tareas, se dividen en dos categorías.
+						<ul>
+							<li><b>Gruesa:</b> Cantidad relativamente grande de trabajo, alta independencia entre tareas y poca necesidad de sincronización.</li>
+							<li><b>Fina:</b> Cantidades pequeñas de trabajo, poca independencia entre tareas, y una alta demanda de sincronización.</li>
+						</ul>
+						Un problema complejo se subdivide en una cantidad discreta de tareas que representan trabajo computacional.
+						Una tarea esta compuesta de un conjunto de instrucciones que seran ejecutadas por un procesador.
+					</p>
+					<p>
+						<center>
+							<h4>Scheduling:</h4>
+						</center>
+						Las tareas de una aplicación son asignadas a procesos o hilos, que a su vez son asignados a unidades
+						de procesamiento. El proceso mediante el cual las tareas son asignadas a los procesos o hilos, y se les da un orden
+						de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
+						El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
+						otras pueden requerir los datos producidos por otras tareas.
+					</p>
 				</section>
 				<section>
+					<p>
+						<center>
+							<h4>Hilo:</h4>
+						</center>
+						Un proceso pesado puede convertirse en varios procesos livianos ejecutados de manera concurrente. Cada
+						uno de estos procesos se conoce como hilos. Se comunican entre ellos a través de la memoria global.
+					</p>
+					<p>
+						<center>
+							<h4>Sincronizacion:</h4>
+						</center>
+						Los programas en paralelo necesitan la sincronización y la coordinación de procesos
+						e hilos, para que haya una ejecución correcta. Los métodos de coordinación y sincronización en la programación paralela
+						están fuertemente asociados a la manera en que los procesos o hilos intercambian información, y esto depende de cómo
+						está organizada la memoria en el hardware.
+					</p>
+					<p>
+						<center>
+							<h4>Mapping:</h4>
+						</center>
+						Es la asignación de procesos e hilos a unidades de procesamiento, procesadores o núcleos. Usualmente
+						el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
+					</p>
 					<ul>
-						<li>
-							<p>
-								<b>Sincronización y cooperación:</b> Los programas en paralelo necesitan la sincronización y la coordinación de procesos
-								e hilos, para que haya una ejecución correcta. Los métodos de coordinación y sincronización en la programación paralela
-								están fuertemente asociados a la manera en que los procesos o hilos intercambian información, y esto depende de cómo
-								está organizada la memoria en el hardware.
-							</p>
-						</li>
-
 						<li>
 							<p>
 								<b>Pipelining:</b> Ruptura de una tarea en pasos realizados por diferentes unidades de procesador, con entradas de
@@ -948,6 +950,19 @@
 						</div>
 					</div>
 
+
+					<div class="spotlight">
+						<div class="image">
+							<img src="images/coco.png" alt="" />
+						</div>
+						<div class="content">
+							<h2>Renderizado de imagenes y animación</h2>
+							<p> </p>
+
+							</p>
+						</div>
+					</div>
+
 				</div>
 			</section>
 			<!--FIN APORTES MIGUEL CORTES -OSMAR CASTILLO-->
@@ -981,15 +996,15 @@
   #include &#60omp.h>
   int main () {
     int var1, var2, var3;
-	//Código en serie...     
-	   	
-	//Comienzo de la región paralela hace fork del conjunto de threads 
+	//Código en serie...
+
+	//Comienzo de la región paralela hace fork del conjunto de threads
 	#pragma omp parallel private(var1, var2) shared(var3)
 	{
 	  //Región paralela ejecutada por todos los threads
-	  //otras directivas OpenMP                          
-	  //Todos los threads se juntan en el thread master 
-	}  
+	  //otras directivas OpenMP
+	  //Todos los threads se juntan en el thread master
+	}
 	//Continuación del código...
   }
 								</code>
@@ -1220,6 +1235,9 @@ int main(int argc, char *argv[])
 							<a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf">http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf</a>
 						</li>
 
+						<li>
+							<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf</a>
+						</li>
 					</ol>
 
 				</div>
