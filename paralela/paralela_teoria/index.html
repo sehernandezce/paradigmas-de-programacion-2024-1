@@ -44,14 +44,14 @@
 					<!-- APORTE CAMILO MOSQUERA - SANTIAGO PEÑA -->
 					<li><a href="#six">Taxonomía de Flynn</a></li>
 					<li><a href="#seven">Arquitectura</a></li>
-					<li><a href="#eight">Sincronización</a></li>
-					<li><a href="#nine">Balanceador de carga</a></li>
-
 					<!--APORTE MIGUEL CORTES-OSMAR CASTILLO-->
 					<li><a href="#thirteen">Tipos de paralelismo</a></li>
 
 					<!-- APORTE CAMILO MOSQUERA - SANTIAGO PEÑA -->
 					<li><a href="#seventeen">Paralelizacion Manual vs Automatica</a></li>
+					<li><a href="#eight">Sincronización</a></li>
+					<li><a href="#nine">Balanceador de carga</a></li>
+
 					<!-- APORTE CAMILO MOSQUERA - SANTIAGO PEÑA -->
 
 					<li><a href="#fourteen">Medidas de rendimiento</a></li>
@@ -105,162 +105,171 @@
 
 
 
-	<!-- Three -->
-	<section id="three" class="wrapper">
-		<div class="inner">
-
-			<section>
-				<h2>Historia</h2>
-				<ul>
-					<li>El interés por la computación paralela se remonta a finales de los años 50. Este interés se vio expresado en forma de
-						supercomputadores, que aparecieron en los años 60 y 70. Estos computadores tenían procesadores de memoria compartida,
-						con múltiples procesadores trabajando lado a lado con datos compartidos.</li>
-					<li>A mediados de los 80, un nuevo tipo de computador paralelo fue creado cuando el proyecto “Concurrent Computation” de
-						Caltech construyó un supercomputador para aplicaciones científicas. El sistema mostró que se podría lograr un rendimiento
-						extremo usando microprocesadores regulares, disponibles en el mercado.</li>
-					<li>Empezando a los finales de los 80, los clusters surgieron para competir y con los MPP. Un cluster es un tipo de computador
-						paralelo, construido usando múltiples computadores “off-the-shelf”, conectados usando una red “off-the-shelf”. Hoy
-						en día, los clusters son la arquitectura dominante en los datacenters.</li>
-					<li>Para los MPP y clusters surgió el estándar MPI a mediados de los 90, que convergió de otras API. Para los multiprocesadores
-						con memoria compartida, un proceso de convergencia similar se observó a finales de los 90, con el surgimiento de pthreads
-						y OpenMP.</li>
-					<li>En la actualidad, la computación paralela se ha vuelto mainstream prácticamente, con la llegada de los procesadores
-						de varios núcleos casi por defecto en la mayoría de dispositivos computacionales.</li>
-					<li>El software ha sido una parte activa en la evolución de la programación paralela. Los programas paralelos son más difíciles
-						de escribir que los programas secuenciales, ya que se requiere que haya una comunicación y sincronización entre las
-						tareas que se han paralelizado.</li>
-				</ul>
-		</div>
+		<!-- Three -->
+		<section id="three" class="wrapper alt">
+			<div class="inner">
+				<section>
+					<h2>Historia</h2>
+					<ul>
+						<li>El interés por la computación paralela se remonta a finales de los años 50. Este interés se vio expresado en forma de
+							supercomputadores, que aparecieron en los años 60 y 70. Estos computadores tenían procesadores de memoria compartida,
+							con múltiples procesadores trabajando lado a lado con datos compartidos.</li>
+						<li>A mediados de los 80, un nuevo tipo de computador paralelo fue creado cuando el proyecto “Concurrent Computation” de
+							Caltech construyó un supercomputador para aplicaciones científicas. El sistema mostró que se podría lograr un rendimiento
+							extremo usando microprocesadores regulares, disponibles en el mercado.</li>
+						<li>Empezando a los finales de los 80, los clusters surgieron para competir y con los MPP. Un cluster es un tipo de computador
+							paralelo, construido usando múltiples computadores “off-the-shelf”, conectados usando una red “off-the-shelf”. Hoy
+							en día, los clusters son la arquitectura dominante en los datacenters.</li>
+						<li>Para los MPP y clusters surgió el estándar MPI a mediados de los 90, que convergió de otras API. Para los multiprocesadores
+							con memoria compartida, un proceso de convergencia similar se observó a finales de los 90, con el surgimiento de pthreads
+							y OpenMP.</li>
+						<li>En la actualidad, la computación paralela se ha vuelto mainstream prácticamente, con la llegada de los procesadores
+							de varios núcleos casi por defecto en la mayoría de dispositivos computacionales.</li>
+						<li>El software ha sido una parte activa en la evolución de la programación paralela. Los programas paralelos son más difíciles
+							de escribir que los programas secuenciales, ya que se requiere que haya una comunicación y sincronización entre las
+							tareas que se han paralelizado.</li>
+					</ul>
+			</div>
 		</section>
 
-		<section id="four" class="wrapper">
-			<div class="inner">
-				<h2>Ventajas</h2>
-				<ul>
-					<li>Resuelve problemas que no se podrían realizar en una sola CPU</li>
-					<li>Resuelve problemas que no se pueden resolver en un tiempo razonable</li>
-					<li>Permite ejecutar problemas de un orden y complejidad mayor</li>
-					<li>Permite ejecutar código de manera más rápida (aceleración)</li>
-					<li>Permite ejecutar en general más problemas</li>
-					<li>Obtención de resultados en menos tiempo</li>
-					<li>Permite la ejecución de varias instrucciones en simultáneo</li>
-					<li>Permite dividir una tarea en partes independientes</li>
-				</ul>
-
-				<h2>Desventajas</h2>
-				<ul>
-					<li>Mayor consumo de energía</li>
-					<li>Mayor dificultad a la hora de escribir programas</li>
-					<li>Dificultad para lograr una buena sincronización y comunicación entre las tareas</li>
-					<li>Retardos ocasionados por comunicación ente tareas</li>
-					<li>Número de componentes usados es directamente proporcional a los fallos potenciales</li>
-					<li>Condiciones de carrera</li>
+		<section id="four" class="wrapper alt">
+			<div class="inner split">
+				<section>
+					<h2>Ventajas</h2>
 					<ul>
-						<li>Múltiples procesos se encuentran en condición de carrera si el resultado de los mismos depende del orden de su llegada
-						</li>
-						<li>Si los procesos que están en condición de carrera no son correctamente sincronizados, puede producirse una corrupción
-							de datos
-						</li>
+						<li>Resuelve problemas que no se podrían realizar en una sola CPU</li>
+						<li>Resuelve problemas que no se pueden resolver en un tiempo razonable</li>
+						<li>Permite ejecutar problemas de un orden y complejidad mayor</li>
+						<li>Permite ejecutar código de manera más rápida (aceleración)</li>
+						<li>Permite ejecutar en general más problemas</li>
+						<li>Obtención de resultados en menos tiempo</li>
+						<li>Permite la ejecución de varias instrucciones en simultáneo</li>
+						<li>Permite dividir una tarea en partes independientes</li>
 					</ul>
-				</ul>
-			</div>
+				</section>
+				<section>
+					<h2>Desventajas</h2>
+					<ul>
+						<li>Mayor consumo de energía</li>
+						<li>Mayor dificultad a la hora de escribir programas</li>
+						<li>Dificultad para lograr una buena sincronización y comunicación entre las tareas</li>
+						<li>Retardos ocasionados por comunicación ente tareas</li>
+						<li>Número de componentes usados es directamente proporcional a los fallos potenciales</li>
+						<li>Condiciones de carrera</li>
+						<ul>
+							<li>Múltiples procesos se encuentran en condición de carrera si el resultado de los mismos depende del orden de su llegada
+							</li>
+							<li>Si los procesos que están en condición de carrera no son correctamente sincronizados, puede producirse una corrupción
+								de datos
+							</li>
+						</ul>
+					</ul>
+				</section>
 		</section>
 
 		<!-- Four -->
 		<section id="five" class="wrapper style2 alt">
-			<center>
-				<h3>Conceptos clave</h3>
+			<center><h2>Conceptos Clave</h2></center>
 
-			</center>
 			<div class="inner split">
 				<section>
+					<center><h3>Conceptos acerca de Tareas</h3></center>
 					<p>
 						<center>
 							<h4>Tarea:</h4>
+							<img class="key concept" src="images/tareas.png" />
 						</center>
-						Un problema complejo se subdivide en una cantidad discreta de tareas que representan trabajo computacional.
-						Una tarea esta compuesta de un conjunto de instrucciones que seran ejecutadas por un procesador.
-					</p>
+						Un problema complejo se subdivide en una <b>cantidad discreta</b> de tareas que representan trabajo computacional.
+						Una tarea esta compuesta de un <b>conjunto de instrucciones</b> que seran ejecutadas por un procesador.
+					</p><br/>
 					<p>
 						<center>
 							<h4>Granularidad:</h4>
+							<img class="key concept" src="images/granularidad.png" />
 						</center>
 						Se refiere al tamaño de cada tarea y a la independiencia de las demás tareas, se dividen en dos categorías.
 						<ul>
 							<li><b>Gruesa:</b> Cantidad relativamente grande de trabajo, alta independencia entre tareas y poca necesidad de sincronización.</li>
 							<li><b>Fina:</b> Cantidades pequeñas de trabajo, poca independencia entre tareas, y una alta demanda de sincronización.</li>
 						</ul>
-						Un problema complejo se subdivide en una cantidad discreta de tareas que representan trabajo computacional.
-						Una tarea esta compuesta de un conjunto de instrucciones que seran ejecutadas por un procesador.
-					</p>
+					</p><br/>
 					<p>
 						<center>
 							<h4>Scheduling:</h4>
+							<img class="key concept" src="images/scheduling.png" />
 						</center>
-						Las tareas de una aplicación son asignadas a procesos o hilos, que a su vez son asignados a unidades
-						de procesamiento. El proceso mediante el cual las tareas son asignadas a los procesos o hilos, y se les da un orden
+						Scheduling es el proceso en el que <b>las tareas son asignadas a los procesos o hilos</b>, y se les da un orden
 						de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
 						El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
 						otras pueden requerir los datos producidos por otras tareas.
+					</p><br/>
+				</section>
+				<section>
+					<center><h3>Conceptos acerca de Hilos</h3></center>
+					<p>
+						<center>
+							<h4>Hilo:</h4>
+							<img class="key concept" src="images/hilos.png" />
+						</center>
+						Un proceso pesado padre puede convertirse en varios <b>procesos livianos hijos</b>, ejecutados de manera concurrente. Cada
+						uno de estos procesos livianos se conoce como hilo. Estos se comunican entre ellos a través de la memoria global.
+					</p><br/>
+					<p>
+						<center>
+							<h4>Sincronizacion:</h4>
+							<img class="key concept" src="images/sincronizacion.png" />
+						</center>
+						Los programas en paralelo necesitan la <b>coordinación de procesos
+						e hilos, para que haya una ejecución correcta</b>. Los métodos de coordinación y sincronización en la programación paralela
+						están fuertemente asociados a la manera en que los procesos o hilos intercambian información, y esto depende de cómo
+						está organizada la memoria en el hardware.
+					</p><br/>
+					<p>
+						<center>
+							<h4>Mapping:</h4>
+							<img class="key concept" src="images/mapping.png" />
+						</center>
+						Mapping en el proceso de <b>asignación de procesos e hilos a unidades de procesamiento</b>, procesadores o núcleos. Usualmente
+						el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
 					</p>
+				</section>
+			</div>
+
+			<center><h3>Otros conceptos</h3></center>
+
+			<div class="inner split">
+				<section>
+					<p>
+						<center>
+							<h4>Speedup:</h4>
+							<img class="key concept" src="images/speed.png" />
+						</center>
+						Es un proceso para <b>aumentar el rendimiento</b> entre dos sistemas procesando el mismo problema. Es la
+						mejora en la velocidad de ejecución de una tarea ejecutada en <b>dos arquitecturas similares</b> con diferentes recursos.
+					</p><br/>
 				</section>
 				<section>
 					<p>
 						<center>
-							<h4>Hilo:</h4>
+							<h4>Parallel overhead:</h4>
+							<img class="key concept" src="images/overhead.png" />
 						</center>
-						Un proceso pesado puede convertirse en varios procesos livianos ejecutados de manera concurrente. Cada
-						uno de estos procesos se conoce como hilos. Se comunican entre ellos a través de la memoria global.
+						Es la cantidad de <b>tiempo requerido para coordinar tareas paralelas</b>, en lugar de hacer un
+						trabajo útil. Incluye factores como:
+						<ul>
+							<li>Tiempo de inicio de la tarea</li>
+							<li>Sincronización</li>
+							<li>Comunicaciones de datos</li>
+							<li>Sobrecarga de software impuesta por lenguajes paralelos, bibliotecas, sistema operativo, etc.</li>
+							<li>Tiempo de terminación de la tarea</li>
+						</ul>
 					</p>
-					<p>
-						<center>
-							<h4>Sincronizacion:</h4>
-						</center>
-						Los programas en paralelo necesitan la sincronización y la coordinación de procesos
-						e hilos, para que haya una ejecución correcta. Los métodos de coordinación y sincronización en la programación paralela
-						están fuertemente asociados a la manera en que los procesos o hilos intercambian información, y esto depende de cómo
-						está organizada la memoria en el hardware.
-					</p>
-					<p>
-						<center>
-							<h4>Mapping:</h4>
-						</center>
-						Es la asignación de procesos e hilos a unidades de procesamiento, procesadores o núcleos. Usualmente
-						el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
-					</p>
-					<ul>
-						<li>
-							<p>
-								<b>Pipelining:</b> Ruptura de una tarea en pasos realizados por diferentes unidades de procesador, con entradas de
-								flujo a través de cada unidad de proceso, Un tipo de computación paralela.
-							</p>
-						</li>
-
-						<li>
-							<p>
-								<b>Speedup:</b> Es un proceso para aumentar el rendimiento entre dos sistemas procesando el mismo problema. Es la
-								mejora en la velocidad de ejecución de una tarea ejecutada en dos arquitecturas similares con diferentes recursos.
-							</p>
-						</li>
-
-						<li>
-							<b>Parallel overhead:</b> Es la cantidad de tiempo requerido para coordinar tareas paralelas, en lugar de hacer un
-							trabajo útil. incluye factores como:
-							<ul>
-								<li>Tiempo de inicio de la tarea</li>
-								<li>Sincronización</li>
-								<li>Comunicaciones de datos</li>
-								<li>Sobrecarga de software impuesta por lenguajes paralelos, bibliotecas, sistema operativo, etc.</li>
-								<li>Tiempo de terminación de la tarea</li>
-							</ul>
-						</li>
-					</ul>
 				</section>
 			</div>
+
 		</section>
 
 		<section id="eighteen" class="wrapper style2 alt">
-
 			<center>
 				<h2>
 					Concurrencia vs Paralelismo
@@ -388,6 +397,77 @@
 				</div>
 
 
+			</div>
+		</section>
+
+
+		<section id="thirteen" class="wrapper style2 alt">
+			<center><h2>Tipos de paralelismo</h2></center>
+			<div class="inner">
+				<div class="spotlight">
+					<div class="contentmo">
+						<h3>Paralelismo a nivel de bit:</h3>
+						<p class="pjustify">
+							Se habla de paralelismo al nivel de bit, cuando se <b>aumenta el tamaño de la palabra del procesador</b> (tamaño de la cadena de bits a procesar).
+							Este aumento reduce el número de instrucciones que tiene que ejecutar el procesador en variables cuyos tamaños sean mayores a la longitud de la cadena.
+						</br>
+							<b>Ejemplo:</b> En un procesador de 8-bits sumar dos números de 16bits tomaría dos instrucciones.
+							En un procesador de 16-bits esa operación requiere solo una instrucción.
+						</p>
+					</div>
+					<div class="contentmo">
+						<img src="images/tipo-bit.png" />
+						<b>Nota:</b> este método está “estancado” desde el establecimiento de las arquitecturas de 32 y 64 bits.
+					</div>
+				</div>
+				<div class="spotlight">
+					<div class="contentmo">
+						<h3>Paralelismo a nivel de instrucción</h3>
+						<p class="pjustify">
+							Este tipo de paralelismo consiste en <b>cambiar el orden de las intrucciones</b> de un programa y juntarlas en grupos
+							para posteriormente ser ejecutados en paralelo <b>sin alterar el resultado final</b> del programa.
+						</p>
+						<h4>Pipelining</h4>
+						<p>
+							El pipelining proviene de la idea de que en una tubería no es necesario esperar a que todo el agua dentro salga,
+							para que pueda entrar más.
+							Los procesadores modernos tienen un 'pipeline' que separa las instrucciones en varias etapas, donde <b>cada etapa
+							corresponde a una acción diferente</b> que necesita la salida de la anterior.
+						</p>
+					</div>
+					<div class="contentmo">
+						<p>
+							<b>Ejemplo:</b> Un pipeline de 5 etapas: fetch (buscar la instrucción), decode (decodificarla), execute (ejecutarla),
+							write (escribir en memoria el resultado de la operación).
+						</p>
+						<img src="images/pipelining.png" />
+						<p>
+							En el gráfico anterior se observa el procesamiento de dos instrucciones sin pipeline, tomando un tiempo de 8 ciclos,
+							y con pipeline reduciendo este tiempo a solo 5 ciclos.
+						</p>
+					</div>
+				</div>
+				<div class="spotlight">
+					<div class="contentmo">
+						<br>
+						<h3>Paralelismo a nivel de datos</h3>
+						<p class="pjustify">
+							<b>Cada procesador</b> realiza <b>la misma tarea</b> sobre un subconjunto independiente de datos.</br>
+							<b>Ej:</b> Dos granjeros se dividen el área de césped a podar.</br></br>
+							El caso clásico de paralelismo de datos, es el cálculo de pi por partes usando el método de monte carlo:</br>
+						</p>
+						<img src="images/tipo-datos(pi).png"/>
+						<p>Ejemplo hecho en python</p>
+					</div>
+					<div class="contentmo">
+						<h3>Paralelismo a nivel de tareas</h3>
+						<p class="pjustify">
+							<b>Cada hilo</b> realiza <b>una tarea distinta</b> e independiente de las demás.</br>
+							<b>Ej:</b> Un granjero poda el césped, el otro cosecha.</br>
+						</p>
+						<img src="images/tipo-tareas.jpg"/>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -536,96 +616,79 @@
 
 		<section id="eight" class="wrapper style2 alt">
 			<div class="inner">
-				<div class="spotlight">
-					<div class="image">
+				<center><h2>Sincronización</h2></center>
+
+				<div class="transparent spotlight">
+					<div class="contentmo">
 						<img src="images/sync.gif" alt="" />
 					</div>
-					<div class="content">
-						<h2>Diseño de programas paralelos</h2>
-						<p>
-							<h3>Sincronización</h3>
-							<ul>
-								<li>Administrar la secuencia de trabajo y las tareas que lo realizan es una consideración crítica del diseño para la
-									mayoría de los programas paralelos.</li>
-
-								<li>Puede ser un factor significativo en el desempeño del programa </li>
-
-								<li>A menudo requiere "serialización" de segmentos del programa.</li>
-							</ul>
-						</p>
+					<div class="contentmo">
+						<ul class="checklist">
+							<li>Administrar la secuencia de trabajo y las tareas que lo realizan <b>es una consideración crítica del diseño</b> para la
+								mayoría de los programas paralelos.</li>
+							<li>Puede ser un factor significativo en el desempeño del programa, pues un diseño de sincronización adecuado
+								<b>reduce el tiempo overhead</b>.</li>
+							<li>A menudo requiere "serialización" de segmentos del programa.</li>
+						</ul>
 					</div>
 				</div>
 
+				<center><h3>Tipos de sincronización:</h2></center>
 				<div class="spotlight">
-					<div class="content">
+					<div class="contentmo">
 						<p>
-							<h3>Tipos de Sincronización</h3>
-							<b> Barrier</b>
+							<h4> Barrier</h4>
 							<ul>
-								<li>todas las tareas están involucradas</li>
-
+								<li>Todas las tareas están involucradas</li>
 								<li>Cada tarea realiza su trabajo hasta que alcanza la barrera. Después, se detiene o "bloquea".</li>
-
 								<li>Cuando la última tarea llega a la barrera, todas las tareas se sincronizan.</li>
-
-								<li>Lo que sucede a partir de aquí varía. Algunas veces, una sección del código debe ser ejecutada en serie. En otros
-									casos, las tareas se liberan automáticamente para continuar su trabajo.</li>
-
 							</ul>
+							Lo que sucede a partir de aquí varía. Algunas veces, una sección del código debe ser ejecutada en serie. En otros
+							casos, las tareas se liberan automáticamente para continuar su trabajo.
 						</p>
 					</div>
-					<div class="image">
+					<div class="contentmo">
 						<img src="images/mutex.png" alt="" />
 					</div>
 				</div>
 
 				<div class="spotlight">
-					<div class="content">
+					<div class="contentmo">
 						<p>
-
-							<b> Lock / semaphore</b>
+							<h4>Lock / semaphore</h4>
 							<ul>
 								<li>Puede involucrar cualquier número de tareas</li>
-
 								<li>Se utiliza para serializar el acceso a datos globales o a una sección de código. Sólo una tarea a la vez se puede
 									ejecutar.
 								</li>
-
 								<li>La primera tarea en llegar al lock "lo bloquea". Esta tarea puede acceder de forma segura (en serie) a los datos
 									protegidos o al código.</li>
-
 								<li>Otras tareas pueden intentar adquirir el lock pero deben esperar hasta que la tarea que posee el bloqueo lo libere.</li>
-
 							</ul>
 						</p>
 					</div>
-					<div class="image">
+					<div class="contentmo">
 						<img src="images/semaphore.png" alt="" />
 					</div>
 				</div>
 
 				<div class="spotlight">
-					<div class="content">
+					<div class="contentmo">
 						<p>
-
-							<b> Operaciones de comunicación sincronica</b>
+							<h4>Operaciones de comunicación sincrónica</h4>
 							<ul>
 								<li>Incluye sólo aquellas tareas que ejecutan una operación de comunicación</li>
-
 								<li>Cuando una tarea realiza una operación de comunicación, se requiere alguna forma de coordinación con las otras tareas
 									que participan en la comunicación. </li>
-
-								<li>Antes de que una tarea pueda realizar una operación de envío, primero debe recibir un aviso de el receptor sobre
+								<li>Antes de que una tarea pueda realizar una operación de envío, primero debe recibir un aviso del receptor sobre
 									si está disponible para enviar.</li>
-
-								<li>Lo que sucede a partir de aquí varía. Algunas veces, una sección del código debe ser ejecutada en serie. En otros
-									casos, las tareas se liberan automáticamente para continuar su trabajo.</li>
-
 							</ul>
 						</p>
 					</div>
-					<div class="image">
+					<div class="contentmo">
+						<p>Se utilizan las funciones <b>send</b> y <b>recieve</b> para coordinar las acciones.</p>
 						<img src="images/sender.jpg" alt="" />
+						<p>Un ejemplo que ilustra esta técnica es el <b>handshake</b> que establece la comunicación usando el protocolo http.</p>
 					</div>
 				</div>
 
@@ -653,9 +716,8 @@
 					</div>
 				</div>
 				<div class="spotlight">
-
 					<div class="content">
-						<b>asignación de trabajo dinámico</b>
+						<b>Asignación de trabajo dinámico</b>
 						<p>Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente
 							entre las tareas</p>
 						<ul>
@@ -676,59 +738,7 @@
 
 		<!--APORTES MIGUEL CORTES -OSMAR CASTILLO-->
 
-
-		<section id="thirteen" class="wrapper style2 alt">
-			<div class="inner">
-				<div class="spotlight">
-					<div class="contentmo">
-						<h2>Tipos de paralelismo</h2>
-						<h3>Paralelismo a nivel de bit:</h3>
-
-						<p class="pjustify">
-							Se habla de paralelismo al nivel de bit, cuanto se aumenta el tamaño de la cadenna a procesar,este aumento reduce el numero
-							de intrucciones que tiene que ejecutar el procesador en variables cuyos tamaños sean mayores a la longitud de la cadena.
-
-						</p>
-
-					</div>
-					<div class="contentmo">
-						<br>
-						<h3>Paralelismo a nivel de instrucción</h3>
-						<p class="pjustify">
-							Este tipo de paralelismo consiste en cambiar el orden de las diferentes intrucciones de un programa y juntarlas en gurpos
-							para posteriormente ser ejecutados en paralelo sin alterar el resultado final del programa.
-						</p>
-
-					</div>
-				</div>
-				<div class="spotlight">
-					<div class="contentmo">
-						<br>
-						<h3>Paralelismo de datos</h3>
-						<p class="pjustify">
-							El paralelismo a nivel de datos es ampliamente usado, en esta clasificacion, los datos de entrada se distribuyen en los diferentes
-							procesadores y cada uno realiza la misma acción sobre el conjunto de datos que le fue asignado. Un ejemplo claro de
-							esto es la suma de dos vectores, donde cada elmenteo del vector A se suma 1 a 1 con cada elemento del vector B.
-						</p>
-					</div>
-					<div class="contentmo">
-						<h3>Paralelismo de tareas</h3>
-						<p class="pjustify">
-
-							Basicamente este tipo de paralelismo consiste en asignar una tarea a cada procesador; estas tareas ueden ser completamente
-							diferentes y se les puede aplicar cualquier operacion.
-							<br>
-							<br>
-							<br>
-
-						</p>
-					</div>
-				</div>
-
-			</div>
-			</sections>
-
-			<section id="seventeen">
+			<section id="seventeen" class="wrapper alt">
 				<center><h2>Paralelismo automatico vs manual</h2></
 				<div class="inner split">
 					<section>
