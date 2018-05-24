@@ -1,0 +1,17 @@
+img {
+	max-width: 100%;
+}
+
+img.key.concept {
+	max-height: 250px;
+	max-width: 100%;
+}
+
+#five h4, #thirteen h4, #eight h4 {
+	color: rgb(0, 151, 167);
+}
+
+.transparent.spotlight {
+	background-color: transparent !important;
+	border-bottom-color: transparent !important;
+}
