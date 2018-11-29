@@ -46,9 +46,14 @@
                                     comportamientos de orden superior, en este sentido, destacan los lenguajes funcionales
                                     ya que se basan en el Calculo Lambda, es la única teoría lógica de orden superior.
                                 </p>
+                                <h3 id="sistema-de-logica-formal-que-permite-llegar-a-una-conclusion-por-medio-de-hechos-y-reglas">
+                                        <center><i>"Modelar problemas por medio de la abstracci&#243;n, utilizando un sistema de l&#243;gica formal que permite llegar 
+                                            a una conclusi&#243;n por medio de hechos y reglas"</i></center>
+                                </h3>
                                 <h4 id="&quot;Aplicaci&#243;n-de-reglas-de-la-l&#243;gica-para-inferir-conclusiones-a-partir-de-datos.&quot;">
                                     <center><i>"Aplicaci&#243;n de reglas de la l&#243;gica para inferir conclusiones a partir de datos."</i></center>
                                 </h4>
+                                
                             </div>
                         </div>
                     </div>
@@ -250,7 +255,29 @@
                     <p><img src="imagenes/tree008.PNG" style="max-width:100%; width: 50%; max-width: none">
                         <img src="imagenes/tree009.PNG" style="max-width:100%; width: 50%; max-width: none">
                         <img src="imagenes/tree010.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
-
+                    <h3 id="El problema de las N reinas">El problema de las N reinas: (Backtracking)</h3>
+                    <p> El problema consiste en un tablero de ajedrez que tiene NxN celdas,
+                        necesitamos colocar N reinas de tal manera que ninguna reina ataque a otra reina.
+                        Una reina puede atacar horizontalmente, verticalmente y diagonalmente.</p>
+                    <p><img src="imagenes/queen001.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
+                    <p> Inicialmente tenemos NxN celdas sin ataques donde necesitamos colocar N reinas.
+                        colocamos la primera reina en una celda (i, j), de modo que ahora el número de celdas
+                        no atacadas se reduzca, y la cantidad de reinas que se ubicarán es N-1.
+                        Colocamos la próxima reina en alguna celda no atacada. De nuevo, esto reduce
+                        el número de celdas sin ataque, y el número de reinas que se colocarán
+                        se convierte en N-2. Continuamos haciendo esto, siempre y cuando se cumplan
+                        las siguientes condiciones:
+                        <li style = "margin-left:3em"> El número de celdas sin ataque no es 0</li>
+                        <li style = "margin-left:3em"> El número de reinas a colocar no es 0</li>
+                    </p>
+                    <p><img src="imagenes/queen002.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
+                    <p> Finalmente, si el número de reinas que se colocan se convierte en 0,
+                        entonces se terminó, encontramos una solución. Pero si el número de celdas
+                        desatendidas se convierte en 0, entonces debemos retroceder, es decir,
+                        eliminar la última reina colocada de su celda actual, y colocarla en alguna otra celda. 
+                        Hacemos esto recursivamente.
+                    </p>
+                    <p><img src="imagenes/queen003.PNG" style="max-width:10%; width: 30%; max-width: none"></p>
                 </div>
             </div>
         </div>
@@ -411,6 +438,7 @@
                         <li>Ace</li>
                         <li>PALs</li>
                         <li>Actor Prolog</li>
+                        <li>SequenceL</li>
                     </ul>
                     <h3 id="Prolog-:">Prolog :</h3>
                     <p>Es un Lenguaje de Programación diseñado para representar y utilizar el conocimiento que se tiene sobre
@@ -528,6 +556,24 @@
                         <p>Ahora los dos hijos de homero</p>
                         <img src="imagenes/pykanren6.PNG" style="max-width: 50%; width: 40%;max-width: none">
                     </p>
+                    <h3 id="SequenceL:">SequenceL :</h3>
+                    <p>
+                        SequenceL es un lenguaje de programación funcional de propósito general que permite
+                        la paralelización automática, su objetivo principal es mejorar el rendimiento de los
+                        procesadores con varios núcleos. Es un lenguage, que, aunque tiene muchas herramientas
+                        de paralelización, está enfocado en la facilidad de programación para el usuario.
+                        Su principal ventaja es que permite escribir código común, y el software se encarga de
+                        maximizar el rendimiento del procesador, por medio de programación paralela. Sin embargo,
+                        aunque parece un lenguaje perteneciente a otro tipo de paradigma de programación, se 
+                        caracteriza porque basa su lógica en hechos, reglas y consultas. Lo cuál lo hace un 
+                        lenguaje con mucho potencial y muy diferente a los otros lenguajes aquí mencionados.
+                    </p>
+                    <p> A continuación, una pequeña tabla que muestra las diferencias entre SequenceL y 
+                        otro lenguaje popular, java, permitiendonos ver la facilidad de escritura de código:
+                    </p>
+                    <p><img src="imagenes/sequenceL001.PNG" style="max-width: 100%; width: 70%;max-width: none"></p>
+                    
+                    
                     <h3 id="Otros-Ejemplos:">Otros Ejemplos:</h3>
                     <ul>
                         <li> Grafos dirigidos en Prolog, busqueda de caminos <img src="imagenes/prolog001.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
@@ -537,6 +583,7 @@
                         <li> Algoritmo merge sort en prolog <img src="imagenes/merge3.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
                         <li> <img src="imagenes/sol.PNG" style="max-width:30%; width: 30%; max-width: none"></li>
                     </ul>
+                    
                 </div>
             </div>
         </div>
