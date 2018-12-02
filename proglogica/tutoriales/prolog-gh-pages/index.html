@@ -65,8 +65,9 @@
   </ul>
   <li><a href="#11-ejemplo-grafos" aria-hidden="true">11. Ejemplo Grafos</a></li>
   <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
-  <li><a href="#13-Aplicaciones" aria-hidden="true">13. Aplicaciones</a></li>
-  <li><a href="#14-Des-Ven" aria-hidden="true">14. Desventajas / Ventajas</a></li>
+  <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">13. Ejemplo Sistema Experto</a></li>
+  <li><a href="#14-Aplicaciones" aria-hidden="true">14. Aplicaciones</a></li>
+  <li><a href="#15-Des-Ven" aria-hidden="true">15. Desventajas / Ventajas</a></li>
 
 </ul>
 <h1>
@@ -1153,7 +1154,50 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata3.png?raw=true"></p>
 
 <h1>
-<a id="13-Aplicaciones" class="anchor" href="#13-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Aplicaciones</h1>
+<a id="13-ejemplo-sistema-experto" class="anchor" href="#14-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Ejemplo Sistema Experto</h1>
+
+
+<p>Implementar un Sistema Experto en prolog que acepte el ayude al diagnostico de un conjunto de enfermedades:</p>
+
+<p>Un sistema experto se define como un sistema que proveen una solución a los problemas en rangos específicos de conocimiento tan cercanas como un humano experto lo pudiese hacer, en prolog se pueden implementar con ayuda de los hechos conocidos por un experto humano. 
+</p>
+
+<p>Vamos a ver cada parte del sistema y que funcion cumple:</p>
+
+<p align="center">
+<img src="images/Sistema Experto 1.png">
+</p>
+
+<p>La primera parte, la regla evaluar es la cual inicia el proceso, esta asu vez llama a hipotesis, para luego de evaluarla escribir en consola la solucion que considera correcta segun los datos que tiene disponibles</p>
+
+<p align="center">
+<img src="images/Sistema Experto 2.png">
+</p>
+
+<p>En la regla "hipotesis" se enumeran las enfermedades las cuales puede diagnosticar el sistema experto</p>
+<p align="center">
+<img src="images/Sistema Experto 3.png">
+</p>
+<p>Cada enfermedad tiene una regla la cual liga los sintomas con la respectiva enfermedad, ademas de mostar los respectivos medicamentos recomenaddos</p>
+<p align="center">
+<img src="images/Sistema Experto 4.png">
+</p>
+<p>Cada regla de enfermedad usa "verificar" para reconocer si se sabe si el usuario tiene o no un sintoma en especifico, el hecho "si(sintoma)" no se encuentra en la base de conocimiento del sistema entonces se hace el llamado a la regla "preguntar(sintoma)"</p>
+<p align="center">
+<img src="images/Sistema Experto 5.png">
+</p>
+
+<p>La regla auxiliar "preguntar" sirve para recibir los datos del usuario, esta hace uso de la regla assert que trae prolog por defecto para poder añadir nuevos hechos a la base de conocimiento del sistema</p>
+
+<p>Un ejemplo de la salida del sistema experto:</p>
+
+<p align="center">
+<img src="images/Sistema Experto 6.png">
+</p>
+<a href="https://swish.swi-prolog.org/p/fgRDDSpC.swinb">Ejemplo del sistema en Notebook de swish</a>
+
+<h1>
+<a id="14-Aplicaciones" class="anchor" href="#14-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Aplicaciones</h1>
 
 
 <p align="center">
@@ -1161,7 +1205,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 </p>
 
 <h1>
-<a id="14-Des-Ven" class="anchor" href="#14-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Desventajas / Ventajas</h1>
+<a id="15-Des-Ven" class="anchor" href="#15-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Desventajas / Ventajas</h1>
 
 <p align="center">
 <img src="images/des-ven.png">
@@ -1190,6 +1234,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <p>                Santiago Carvajal Castañeda y Mario Andrés Moreno</p>
 <p>                Julián Esteban Salomón y Cristian David González</p>
 <p>                Cristian Laiton y David Hormaza.</p>
+<p>                Luis Castro y Wilson Piravaguen.</p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
 
