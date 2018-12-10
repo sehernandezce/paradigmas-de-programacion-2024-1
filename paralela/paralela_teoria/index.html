@@ -46,7 +46,8 @@
 					<li><a href="#seven">Arquitectura</a></li>
 					<!--APORTE MIGUEL CORTES-OSMAR CASTILLO-->
 					<li><a href="#thirteen">Tipos de paralelismo</a></li>
-
+					<!--APORTE DIEGO CHACÓN-SAMAEL SALCEDO-ANTONIO SUAREZ-->
+					<li><a href="#twenty">Patrones de control paralelos </a></li>
 					<!-- APORTE CAMILO MOSQUERA - SANTIAGO PEÑA -->
 					<li><a href="#seventeen">Paralelizacion Manual vs Automatica</a></li>
 					<li><a href="#eight">Sincronización</a></li>
@@ -484,6 +485,95 @@
 				</div>
 			</div>
 		</div>
+	</section>
+
+	<!-- APORTE DIEGO CHACON, ANTONIO SUAREZ, SAMAEL SALCEDO-->
+	<section id="twenty" class="wrapper style2 alt">
+		<div class="inner">
+				<div class="spotlight">
+					<div class="content">
+						<h2>Patrones de control paralelo</h2>
+						<p>Los patrones se han establecido como buenas practicas a la hora de realizar ingeniería de
+						software.</p>
+						<p>Los patrones de control en el caso de la programación paralela son maneras de combinar la distribución de los procesos
+						y el acceso a los datos para la solucion de un problema.</p>
+					</div>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<h3>Fork-Join</h3>
+						<p>Fork-Join es un patrón que nos permite partir el flujo de un programa en múltiples flujos paralelos para reunirlos luego.</p>
+					</div>
+					<div class="image">
+						<img src="images/Fork-join.png" alt="" width="140" />
+					</div>
+				</div>
+
+				<div class="spotlight">
+					<div class="image">
+							<img src="images/Map.png" alt="" width="140" />
+					</div>
+					<div class="content">
+							<h3> Map </h3>
+									<p>
+											Map es un patrón que replica una función sobre todos los elementos de un conjunto de entrada. La función que
+											está siendo replicada se llama <b>función elemental</b>, dada que la misma se aplica a una coleccion real de datos.
+									</p>
+							</div>
+					</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<p>
+								<h3>Stencil</h3>
+								<p>
+										Stencil es un generalización del patron de Map, en el cual una <b>función elemental</b> tiene acceso no solo a un elemento
+										del conjunto de entrada sino también a un conjunto de "vecinos"
+								</p>
+								<p>
+										Como la estructura de datos no es infinita se deben tener en cuenta el manejo de excepciones para los bordes de la misma.
+								</p>
+						</p>
+					</div>
+					<div class="image">
+						<img src="images/Stencil.png" alt="" height="280" />
+					</div>
+				</div>
+
+				<div class="spotlight">
+					<div class="image">
+						<img src="images/Reduccion.png" alt="" />
+					</div>
+					<div class="content">
+						<p>
+							<h3>Reducción</h3>
+							<p>
+							Una reducción combina cada elemento de una colección en uno solo utilizado una función asociativa conocida como
+							<b>función combinatoria</b>. Como es asociativa las tareas se pueden distribuir de muchas maneras y si la función resultara
+							ser también conmutativa el número de posibilidides aumentaría aún más.
+							</p>
+						</p>
+					</div>
+				</div>
+
+				<div class="spotlight">
+					<div class="content">
+						<p>
+							<h3>Scan</h3>
+							<p>
+							Scan realiza las reducciones de cada elemento perteneciente a una estructura. En otras palabras cada elemento de salida es la
+							reduccion de un elemento de entrada.
+							A traves de una <b>función sucesora</b> se avanza de un estado al otro haciendo <i> folds </i> en el proceso asociativo.
+							</p>
+						</p>
+					</div>
+					<div class="image">
+						<img src="images/Scan.png" alt="" />
+					</div>
+				</div>
+
+			</div>
 	</section>
 
 	<section id="seven" class="wrapper style2 alt">
@@ -1318,10 +1408,6 @@
 				</li>
 
 				<li>
-					<a href="http://web.mit.edu/vex/www/Parallel.pdf"></a>
-				</li>
-
-				<li>
 					<a href="http://hdl.handle.net/10045/25282">http://hdl.handle.net/10045/25282</a>
 				</li>
 
@@ -1344,6 +1430,10 @@
 				<li>
 					<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf</a>
 				</li>
+
+				<li>
+					McCOLL M., ROBISON A., REINDERS J., Structured Parallel Programming Patterns for Efficient Computation (2012)
+				</li>
 			</ol>
 
 		</div>
@@ -1354,7 +1444,8 @@
 		<div class="copyright">
 			Autores: Fabián Bernal, Camilo Albarracín, Juan Gaona,
 			Luis Giraldo, Camilo Mosquera, Santiago Peña,
-			Yeliana Torres, Juan Ovalle, José Nieto
+			Yeliana Torres, Juan Ovalle, José Nieto,
+			Diego Chacón, Samael Salcedo, Antonio Suarez
 		</div>
 	</footer>
 
