@@ -170,7 +170,43 @@ sudo apt-get install codeblocks</pre>
 		<pre align="left"><code class="C++">#pragma omp critical</code></pre>
 		<p align="left"><b>Atomic</b>: Proporciona exclusión mutua y se utiliza cuando se da una actualización de una sola ubicación de memoria. Solo puede ser actualizada por un solo simultáneamente y es utilizada por los operadores de aumenteo y decremento. </p>
 		<pre align="left"><code class="C++">#pragma omp atomic</code></pre>
-		
+	      
+	      	<h2>Directiva Task</h2>
+	      	<p>Las tareas en OpenMP son bloques de código que el compilador envuelve y pone a disposición para ejecutarse en paralelo.</p>
+	      	pre align="left"><code class="C++">#pragma omp parallel
+	      	{
+	      		#pragma omp task
+	      			printf("hello world from a random thread\n");
+}</code></pre>
+	      
+	      	<h2>Directiva TaskWait</h2>
+	    	<p>Puede sincronizar tareas utilizando las directivas taskwait o taskgroup.</p>
+		<p>Cuando un subproceso encuentra una construcción taskwait, la tarea actual se suspende hasta que todas las tareas secundarias que generó antes de que la tarea taskwait finalice la ejecución.</p>
+		pre align="left"><code class="C++">#pragma omp parallel
+	      	{
+	      		#pragma omp taskwait
+}</code></pre>
+	  
+	  	<h3>Ejemplo directivas Task y TaskWait</h3>
+	  	pre align="left"><code class="C++">int main()
+	  {
+	  	#pragma omp parallel
+		{
+			printf("A ");
+			#pragma omp task
+				{printf("car ");}
+			#pragma omp task
+				{printf("race ");}
+			#pragma omp taskwait
+				{printf("is fun to watch \n");}
+		}
+}</code></pre>
+	
+		<pre align="left">A A race car is fun to watch
+		car race is fun to watch
+		A race car is fun to watch 
+		A car race is fun to watch</pre>
+	    
 		<h2>Cláusulas de Planificación</h2>
 		<p>Indica la forma como se dividen las iteraciones de los bucles entre los hilos. Pueden ser:</p>
 		<p align="left"><b>schedule(static[,tamaño])</b>: las iteraciones se dividen según el tamaño, y nosotros decidimos como van se van a asignar las iteraciones de los hilos.</p>
