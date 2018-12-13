@@ -6,233 +6,144 @@
     <link rel="stylesheet" href="css/menu.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <meta charset='utf-8'>
-    <title> POO </title>
+    <title>Paradigma de la programación orientada a objetos </title>
 </head>
 
 <body>
+	<div class="todo">
+
     <ul class="menu">
         <li><a class="menu-item" href="index.html">Programación Orientada a Objetos</a>
             <ul>
-                <li><a class="menu-item" href="index.html#history">Historia</a></li>
-                <li><a class="menu-item" href="index.html#evolution">Evolución</a></li>
-                <li><a class="menu-item" href="index.html#philosophy">Filosofía y Principios</a></li>
-                <li><a class="menu-item" href="index.html#advantage_disadvantage">Ventajas y Desventajas</a></li>
-                <li><a class="menu-item" href="index.html#languages">Lenguajes</a></li>
-                <li><a class="menu-item" href="index.html#applications">Aplicaciones</a></li>
+				<li><a class="menu-item1" href="index.html#intro">¿Qué es?</a></li>
+                <li><a class="menu-item1" href="index.html#history">Historia</a></li>
+                <li><a class="menu-item1" href="index.html#evolution">Evolución</a></li>
+                <li><a class="menu-item1" href="index.html#advantage_disadvantage">Ventajas y desventajas</a></li>
+                <li><a class="menu-item1" href="index.html#languages">Lenguajes</a></li>
             </ul>
         </li>
-        <li><a class="menu-item" href="concepts.html">Conceptos Clave</a></li>
-        <li><a class="menu-item" href="good-practices.html">Buenas Prácticas</a></li>
-        <li><a class="menu-item" href="examples.html">Ejemplos</a></li>
-        <li><a class="menu-item" href="slides.html">Presentación</a></li>
-        <li><a class="menu-item" href="references.html">Referencias</a></li>
+        <li><a class="menu-item" href="concepts.html">Conceptos Clave</a>
+			<ul>
+				<li><a class="menu-item1" href="concepts.html#abstraccion">Abstracción</a></li>
+                <li><a class="menu-item1" href="concepts.html#modularidad">Modularidad</a></li>
+                <li><a class="menu-item1" href="concepts.html#encapsulamiento">Encapsulamiento</a></li>
+                <li><a class="menu-item1" href="concepts.html#herencia">Herencia</a></li>
+                <li><a class="menu-item1" href="concepts.html#polimorfismo">Polimorfismo</a></li>
+            </ul>
+		</li>
+		<li><a class="menu-item" href="philosophy.html">Filosofía y Principios</a>
+			<ul>
+				<li><a class="menu-item1" href="philosophy.html#filosofia">Filosofía</a></li>
+                <li><a class="menu-item1" href="philosophy.html#principios">Principios</a></li>
+                <li><a class="menu-item1" href="philosophy.html#buenaspracticas">Buenas prácticas</a></li>
+            </ul>
+		</li>
+		<li><a class="menu-item" href="examples.html" id="">Ejemplos interactivos</a>
+			<ul>
+				<li><a class="menu-item1" href="examples.html#clases">Clases</a></li>
+				<li><a class="menu-item1" href="examples.html#encapsulamiento">Encapsulamiento</a></li>
+				<li><a class="menu-item1" href="examples.html#herencia">Herencia</a></li>
+				<li><a class="menu-item1" href="examples.html#polimorfismo">Polimorfismo</a></li>
+			</ul>
+		</li>
+		
+		<li><a class="menu-item" href="applications.html">Aplicaciones</a></li>
+        <li><a class="menu-item" href="slides.html">Presentaciones y referencias</a>
+			<ul>
+				<li><a class="menu-item1" href="slides.html#slides">Presentaciones</a></li>
+				<li><a class="menu-item1" href="slides.html#referencias">Referencias y bibliografía</a></li>
+			</ul>
+		</li>
     </ul>
 
-    <div class="empty">Empty</div>
-    <div class="container">
-        <h1><strong><center>Paradigma de Programación Orientada a Objectos </center></strong><br>
-        </h1>
+
+	<div class="head">
+		<div class="titulo-principal">
+			<strong><center>Programación Orientada a Objetos</strong>
+			</center>
+        </div>
+	</div>
+
+	<div class="container">
+	<!--<div class="empty">Empty</div> -->
+		<hr>
+		<br>
+		<section id="intro">
+			<h2 id="intro1"><center><strong>¿Qué es la programación orientada a objetos?</strong></center></h2>
+			<h3>
+				<div align="justify">
+					Es un paradigma de la programación de computadores que tiene como objetivo el desarrollo computacional basado
+					en una colección de objetos que están interrelacionados y trabajan conjuntamente para resolver un problema. Surge
+					dentro de los paradigmas de la programación como un enfoque
+					diferente al momento de obtener soluciones computacionales.
+				</div>
+			</h3>
+		</section>
+
 
         <section id="history">
-            <h2> <strong>Historia</strong> </h2>
-            <h3> 
-            <div align="justify">La programación orientada a objetos (POO) nace en los años 60's en el Norwegian Computing Center en la implementación de dos lenguajes de programacion de simulacion: <i>Simula 1</i> y <i>Simula 67</i> desarrollados por Kristen Nygaard y Ole Johan Dahl. <i>Simula 67</i> introdujo por primera vez los conceptos de clases, objetos, herencia, subclases, corrutinas y funciones virtuales; es por ello que <i>Simula</i> es considerado el primer lenguaje orientado a objetos.
-            </div> 
+            <h2 id="history1"> <strong>Historia</strong> </h2>
+            <h3>
+				<div align="justify">
+					La programación orientada a objetos (POO) nace en los años 60's en el Norwegian Computing Center con
+					la implementación de dos lenguajes de programacion de simulacion: <i>Simula 1</i> y <i>Simula 67</i>, desarrollados
+					por Kristen Nygaard y Ole Johan Dahl. <i>Simula 67</i> introdujo por primera vez los conceptos de clases, objetos,
+					herencia, subclases, corrutinas y funciones virtuales. Es por esta razón que <i>Simula</i> es considerado el primer
+					lenguaje orientado a objetos.
+				</div>
             </h3>
             <br>
             <img class="center-block" src="images/Simula.png" alt="Photo">
+			<br>
             <h3><p>Programa "Hola Mundo" en Simula 67: </p></h3>
+			<br>
             <img class="center-block" src="images/helloworld.png" alt="Photo">
-            <h3> 
-            <div align="justify">El mensaje está codificado en el bloque de código de la clase Saludos. Este bloque de código se ejecuta solamente cuando existe una instancia o variable de tipo Saludos; lo que ocurre efectivamente al crear una instancia por medio de la instrucción New.En Simula, los objetos siempre son manejados por medio de referencias. Existe un recolector de basura que se encarga de eliminar de la memoria los objetos que se han quedado sin referencias a ellos. Una de estas referencias la vemos con variable objeto. Utilizamos el operador :- para asignar referencias.A diferencia de muchos lenguajes modernos, Simula entiende de dos tipos de objetos:<br/>
-            Activos: Son aquellos objetos que aún no han completado su bloque asociado begin/end.<br/>
-            Inactivos: Son aquellos que han completado su bloque de instrucciones.<br/>
+            <h3>
+            <div align="justify">
+				El mensaje está codificado en el bloque de código de la clase Saludos.
+				Este bloque de código se ejecuta solamente cuando existe una instancia o variable de tipo Saludos,
+				lo que ocurre efectivamente al crear una instancia por medio de la instrucción New.
+				En Simula, los objetos siempre son manejados por medio de referencias.
+				Existe un recolector de basura que se encarga de eliminar de la memoria los objetos que se han quedado sin referencias a ellos.
+				Una de estas referencias la vemos con variable objeto.
+				Utilizamos el operador :- para asignar referencias. A diferencia de muchos lenguajes modernos,
+				Simula entiende de dos tipos de objetos:<br>
+			<br>
+            <li>Activos: Son aquellos objetos que aún no han completado su bloque asociado begin/end.
+			</li>
+            <li>Inactivos: Son aquellos que han completado su bloque de instrucciones.</li><br>
             Tanto de unos como de otros, es posible ejecutar los procedimientos miembro y consultar los atributos en cualquier momento.
-            </div> 
+            </div>
             </h3>
-            
+
         </section>
 
         <section id="evolution">
-            <h2> <strong>Evolución</strong></h2>
+            <h2 id="evolution1"> <strong>Evolución</strong></h2>
             <br>
-            <img class="center-block" src="images/evolution.png" alt="Photo">
-            <h3> 
-            <div align="justify">Años después del desarrollo de Simula casi todos los lenguajes modernos comenzaron a utilizar sus principios de orientación a objetos. Así fue como se popularizaron términos como clases, objetos, instancias, herencia, polimorfismo, etc.
-            </div> 
+            <img class="center-block" src="images/evolution.png" alt="Photo" id="ventajas">
+            <h3>
+			<br>
+            <div align="justify">Años después del desarrollo de Simula 67 casi todos los lenguajes de programación modernos comenzaron a utilizar
+			los principios de orientación a objetos.  Así fue como se popularizaron términos como clases, objetos, instancias,
+			herencia, polimorfismo, etc.  Un ejemplo significativo fue el nacimiento del lenguaje <u><a href="https://www.java.com/es/download/faq/whatis_java.xml" target="_blank">Java</a></u>, uno de los lenguajes orientados a objetos
+			con mayor reconocimiento a nivel mundial.
+            </div>
             </h3>
-            
+
         </section>
 
-        <section id="philosophy">
-            <h2> <strong>Filosofía</strong> </h2>
-            <h3>
-            <div align="justify">
-            POO es la implementación del pensamiento orientado a objetos en la programación. <br><br>
-            POO nos dice: <br><br>
-            <ul style="list-style-type: circle;">
-                <li>Pensar todo en términos de objetos.</li>
-                <li>Representar los objetos de la forma más cercana a cómo expresamos las cosas en la vida real.</li>
-                <li>Dar prioridad a los objetos y no a la funcionalidad.</li>
-                <li>Pensar en el propósito general del programa como un todo antes de subdividir este.</li>
-                <li>Los programas se definen en términos de objetos, propiedades, métodos, y la interacción (comunicación) entre objetos.</li>
-                <br>
-            </ul>
-            </div>
-            </h3>
-            <h3>Ejemplo de pensamiento orientado a objetos : </h3>
-            <center>
-                <img src="images/philosophy.png">
-            </center>
-            <h3>El mundo visto por un programador orientado a objetos : </h3>
-            <center>
-                <img src="images/poo.png" alt="Photo" height=400 border=0 hspace=0>
-            </center>
-
-            <h2> <strong>Principios</strong> </h2>
-            <h3> 
-            <div align="justify"><b>SOLID:</b> Es un acrónimo mnemónico introducido por Robert C. Martín a comienzos de la década del 2000 que representa cinco principios básicos de la programación orientada a objetos y el diseño.Cuando estos principios se aplican en conjunto es más probable que un desarrollador cree un sistema que sea fácil de mantener y ampliar con el tiempo.Los principios SOLID son guías que pueden ser aplicadas en el desarrollo de software para eliminar código sucio provocando que el programador tenga que refactorizar el código fuente hasta que sea legible y extensible.
-            </div> 
-            <br>
-            <ul style="list-style-type: circle;">
-                <li>Principio de una sola responsabilidad</li>
-                <li>Principio abierto/cerrado </li>
-                <li>Principio de sustitución Liskov </li>
-                <li>Principio de segregación de interfaz </li>
-                <li>Principio de Inversión de dependencia </li>
-            </ul>
-            </h3>
-            <h2> <strong>Principio de una sola responsabilidad</strong> </h2>
-            <h3> 
-            <div align="justify">Cada clase debe tener una única responsabilidad, y esta debe estar contenida únicamente en la clase. Así:
-            </div> 
-            <ul style="list-style-type: circle;">
-                <li>Una clase debería tener sólo una razón para cambiar.</li>
-                <li>Cada responsabilidad es el eje del cambio.</li>
-                <li>Para contener la propagación del cambio, debemos separar las responsabilidades.</li>
-                <li>Si una clase asume más de una responsabilidad, será más sensible al cambio.</li>
-                <li>Si una clase asume más de una responsabilidad, las responsabilidades se acoplan.</li>
-            </ul>
-            Ejemplo:<br/><br/>
-            <center>
-                <img src="images/singleresponsibility1.png">
-            </center><br/><br/>
-            <div align="justify">
-            Tenemos la clase Rectangulo que tiene las siguientes responsabilidades: calcular el area y dibujar; como podemos observar son responsabilidades totalmente diferentes, es decir la clase Rectangulo no tiene una responsabilidad concreta y especifica.
-            </div><br/>
-            La solucion a este mal diseño es aplicar el principio de unica responsabilidad, para ello lo que hacemos es 
-            <b>delegar</b> la responsabilidad de dibujar, a otra clase llamada RectanguloGrafico, de esta forma ya tenemos clases con una responsabilidad bien definida:<br/><br/>
-            <center>
-                <img src="images/singleresponsibility2.png">
-            </center>
-            </h3>
-            <h2> <strong>Principio abierto/cerrado</strong> </h2>
-            <h3>
-            <div align="justify">
-            Este principio establece que una entidad de software (clase, módulo, función, etc.) debe quedarse abierta para su extensión, pero cerrada para su modificación. Es decir, se debe poder extender el comportamiento de tal entidad pero sin modificar su código fuente.<br/>
-            Una clase está cerrada, dado que puede ser compilada, almacenada en una librería y usada por otras clases. Pero también está abierta, dado que a partir de ella podríamos crear nuevas subclases que incorporaran características nuevas. Y al crear una subclase, no hay ninguna necesidad de modificar la superclase.
-            </div> 
-            <ul style="list-style-type: circle;">
-                <li>Se dice que un módulo está abierto si se puede extender.</li>
-                <li>Se dice que un módulo queda cerrado si queda utilizable para otros módulos.</li>
-                <li>Si un cambio impacta a varios modulos, entonces la aplicacion no esta bien diseñada.</li>
-                <li>Debemos diseñar modulos que nunca cambien, de esa forma los podriamos reutilizar mas adelante.</li>
-            </ul>
-            Ejemplo:<br/><br/>
-            <center>
-                <img src="images/open-closed1.png">
-            </center><br/><br/>
-            <div align="justify">
-                Tenemos que calcular el bono que recibiran los programadores y los gerentes, como vemos en la imagen eso se hace mediante una sentencia switch, lo cual es ineficiente ya que si hubieran mas tipos de empleados por ejemplo 100, este bloque switch se llenaria de 100 casos lo cual dificultaria el mantenimiento del codigo.<br/><br/>
-                La solucion a este mal diseño es aplicar el principio de abierto/cerrado, para ello lo que hacemos es extender el comportamiento de la clase Empleado, y crear el metodo Calcular bono en la clase Empleado para que todos los subtipos de Empleado puedan redefinir este metodo:<br/><br/>
-            </div> 
-            <center>
-                <img src="images/open-closed2.png">
-            </center>
-            </h3>
-            <h2> <strong>Principio de sustitución Liskov</strong> </h2>
-            <h3>
-            <div align="justify">
-            Los objetos de un programa deberían ser reemplazables por instancias de sus subtipos sin alterar el correcto funcionamiento del programa.
-            </div> 
-            <ul style="list-style-type: circle;">
-                <li>Cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas.</li>
-                <li>Funciones que usen punteros o referencias a clases base deben poder usar objetos de clases derivadas sin saberlo</li>
-            </ul>
-            Ejemplo:<br/>
-            <center>
-                <img src="images/liskov.png">
-            </center>
-            <br/><br/>
-            <div align="justify">
-            Podemos ver que al lado izquierdo de la imagen que se quiere calcular el bono para programador y gerente, pero en dado caso que hayan 100 tipos de empleados este metodo se llenaria de 100 sentencias if lo cual es ineficiente pues esto dificultaria el mantenimiento del codigo.<br/><br/>
-            La solucion a este mal diseño es aplicar el principio de sustitucion de Liskov, para ello lo que hacemos es recorrer la lista de todos los empleados y como tenemos que calcular el bono a todo tipo de empleado y los bonos pueden ser diferentes para cada tipo de empleado entonces dejamos que cada empleado implemente su comportamiento; en otras palabras hacemos que todos los tipos de empleados llamen al metodo calcular bono, pero cada uno implementara ese metodo de acuerdo al sueldo que reciba.En ultimas hemos aplicado el concepto de polimorfismo de subtipos.
-            </div>
-            </h3>
-            <h2> <strong>Principio de segregación de interfaz</strong> </h2>
-            <h3>
-            <div align="justify">
-            Este principio hace referencia a que muchas interfaces cliente específicas son mejores que una interfaz de propósito general.
-            </div> 
-            <div align="justify">
-            <ul style="list-style-type: circle;">
-                <li>Este principio se aplica a una interfaz amplia y compleja para dividirla en otras más pequeñas y específicas, de tal forma que cada cliente use sólo aquella que necesite, pudiendo así ignorar al resto.A este tipo de interfaces reducidas se les llama "interfaces de rol".</li>
-                <li>Los clientes de un programa dado sólo deberían conocer los métodos que realmente van usar, y no aquellos que no necesitan usar.</li>
-                <li>Fue concebido para mantener a un sistema desacoplado respecto a los sistemas de los que depende, y así resulte más fácil refactorizarlo, modificarlo y redesplegarlo.</li>
-            </ul>
-            </div>
-            Ejemplo:<br/>
-            <center>
-                <img src="images/segregation1.png">
-            </center><br/><br/>
-            <div align="justify">
-            Podemos ver que la clase escorpion al ser un animal, se podria alimentar y acariciar, lo cual en este contexto seria fatal pues el escorpion es un animal peligroso que no se debe acariciar, tan solo se podria alimentar.<br/><br/> 
-            La solucion a este mal diseño es aplicar el principio de segregacion de la interfaz, éste nos permitira que la clase escorpion no se vea obligada a tener que implementar todos los comportamientos de un animal, sino que implemente un comportamiento especifico.Para ello lo que hacemos es dividir los metodos de la clase animal para que de esta forma el animal solo se pueda alimentar y en ultimas que la clase escorpion pueda implementar este comportamiento especifico.<br/><br/>
-            </div> 
-            <center>
-                <img src="images/segregation2.png">
-            </center>
-            </h3>
-            <h2> <strong>Principio de Inversión de dependencia</strong> </h2>
-            <h3>
-            <div align="justify">
-            Este principio establece:
-            </div> 
-            <ul style="list-style-type: circle;">
-                <li>Los módulos de alto nivel no deben depender de los módulos de bajo nivel. Ambos deben depender de abstracciones.</li>
-                <li>Las abstracciones no deben depender de los detalles. Los detalles deben depender de abstracciones.</li>
-            </ul>
-            Puede implementarse con: inyeccion de dependencias o inversion del control.<br/><br/>
-            Ejemplo:<br/><br/>
-            Imaginemos que tenemos una cesta de compra que lo que hace es almacenar la información y llamar al método de pago para que ejecute la operación. Nuestro código sería algo así:<br/><br/>
-            <center>
-                <img src="images/inversion1.png">
-            </center><br/><br/>
-            <div align="justify">
-            Aquí estamos incumpliendo el principio. Una clase de más alto nivel, como es ShoppingBasket (cesta de compra), está dependiendo de otras de alto nivel las cuales son: SqlDatabase (Base de datos) y CreditCard (tarjeta de credito), y luego se encarga de crear objetos de estas clases y después utilizarlos.<br/>
-            Piensa ahora qué pasa si quieres añadir métodos de pago, o enviar la información a un servidor en vez de guardarla en una base de datos local. No hay forma de hacer todo esto sin desmontar toda la lógica. ¿Cómo lo solucionamos?<br/>
-            Primer paso, dejar de depender de clases. Vamos a crear interfaces que definan el comportamiento que debe dar una clase para poder funcionar como mecanismo de persistencia o como método de pago:<br/><br/>
-            </div>
-            <center>
-                <img src="images/inversion2.png">
-            </center><br/><br/>
-            <div align="justify">
-            ¿Ves la diferencia? Ahora ya no dependemos de la implementación particular que decidamos. Pero aún tenemos que seguir instanciándolo en ShoppingBasket.
-            Nuestro segundo paso es invertir las dependencias. Vamos a hacer que estos objetos se pasen por constructor:<br/><br/>
-            </div>
-            <center>
-                <img src="images/inversion3.png">
-            </center><br/><br/>
-            De esta forma ya tendriamos implementado el principio de inversion de dependencias.
-            </h3>
-        </section>
 
         <section id="advantage_disadvantage">
-            <h2> <strong>Ventajas</strong> </h2>
+
+            <h2 id="advantage_disadvantage1"> <strong>Ventajas</strong> </h2>
             <h3>
             <div align="justify">
             <ul style="list-style: none; margin: 0px;">
-            <li><img src="images/check.png" class="symbol" width="15px">Reutilización de código:  Cuando hemos diseñado adecuadamente las clases, se pueden usar en distintas partes del programa y en numerosos proyectos.Lo cual pemite: 
+			<li><img src="images/check.png" class="symbol" width="15px">Una buena abstracción de las clases, objetos y atributos nos brinda una implementación
+			más detallada, puntual y coherente.</li>
+            <li><img src="images/check.png" class="symbol" width="15px">Reutilización de código:  Cuando se han diseñado adecuadamente las clases,
+			se pueden usar en distintas partes del programa y en numerosos proyectos (<a href="concepts.html#herencia">herencia</a>). Lo cual pemite:
                 <ul style="list-style-type: circle;margin:0 30px;">
                     <li>Rápido desarrollo.</li>
                     <li>Alta calidad del código.</li>
@@ -242,18 +153,29 @@
             <li><img src="images/check.png" class="symbol" width="15px">Modificabilidad: La facilidad de añadir o suprimir nuevos objetos nos permite hacer modificaciones de una forma muy sencilla.</li>
             <li><img src="images/check.png" class="symbol" width="15px">Encapsulamiento: Nos permite proteger la integridad de los datos.</li>
             <li><img src="images/check.png" class="symbol" width="15px">Fiabilidad: Al dividir el problema en partes más pequeñas podemos probarlas de manera independiente y aislar mucho más fácilmente los posibles errores que puedan surgir.</li>
-            <li><img src="images/check.png" class="symbol" width="15px">Beneficios de diseño</li>
-            <li><img src="images/check.png" class="symbol" width="15px">Mantenimiento de Software</li>
-            <li><img src="images/check.png" class="symbol" width="15px">Documentación</li>
+            <li><img src="images/check.png" class="symbol" width="15px">Bajo acoplamiento y alta cohesión: Las clases son independientes entre sí, y hacen las tareas específicas para las
+			cuales fueron diseñadas.</li>
+			<li><img src="images/check.png" class="symbol" width="15px">Beneficios de diseño</li>
+            <li><img src="images/check.png" class="symbol" width="15px">Mantenimiento de software</li>
+            <li><img src="images/check.png" class="symbol" width="15px">Amplia documentación</li>
             </ul>
             </div>
             </h3>
+			<br>
+			<center>
+                <img src="images/ventajas.png" id="ventajas">
+            </center><br/>
+            <h3>Como se puede visualizar en la imagen, si se hace un buen diseño y una abstracción adecuada, se pueden generar diferentes módulos a partir de una clase base.
+			En este ejemplo, la clase <i>Figura</i> brinda la posibilidad de crear muchas más formas geométricas como el círculo, el rombo, la estrella, el polígono y demás
+			mediante su extensión.
 
-            <h2><strong> Desventajas</strong> </h2>
+
+            <h2 id="desventajas"><strong> Desventajas</strong> </h2>
             <h3>
                 <ul style="list-style: none; margin: 0px;">
-                <li><img src="images/x_icon.jpg" class="symbol" width="15px">Curva de aprendizaje: La necesidad de utilizar bibliotecas de clases obliga a su aprendizaje y entrenamiento.</li>                    
+                <li><img src="images/x_icon.jpg" class="symbol" width="15px">Curva de aprendizaje: La necesidad de utilizar bibliotecas de clases obliga a su aprendizaje y entrenamiento.</li>
                 <li><img src="images/x_icon.jpg" class="symbol" width="15px">La ejecución de programas orientados a objetos es más lenta.</li>
+				<li><img src="images/x_icon.jpg" class="symbol" width="15px">Se hereda código que no se usa en la clase hija cuando se extiende de una clase padre.</li>
                 <li><img src="images/x_icon.jpg" class="symbol" width="15px">Tiempo en fase de diseño.</li>
                 <li><img src="images/x_icon.jpg" class="symbol" width="15px">Tamaño del programa.</li>
                 </ul>
@@ -261,85 +183,86 @@
         </section>
 
         <section id="languages">
-            <h2>  <strong>Lenguajes de programación</strong> </h2>
-            <h3>  
-            <ul style="list-style-type: circle;">
-                <li>C++ </li> 
-                <li>Objective-C</li>
-                <li>Java </li>
-                <li>Smalltalk</li>
-                <li>Ruby </li>
-                <li>Python </li>
-                <li>ActionScript </li>
-                <li>C# </li>
-                <li>PHP</li>
-                <li>Delphi </li>
-            </ul>
-            </h3>
-        </section>
+            <h2 id="languages1">  <strong>Lenguajes de programación</strong> </h2>
 
-        <section id="applications">
-            <h2> <strong>Aplicaciones</strong> </h2>
+			<h3>
+				Un lenguaje de programación es orientado a objetos si cumple con las siguientes
+				condiciones:
+				<br>
+				<br>
+				<ul>
+					<li>Soporta objetos que son abstracciones de datos con una interfaz de
+					operaciones con nombre y un estado local oculto. </li>
+					<li>Los objetos tienen un tipo asociado (la clase).</li>
+					<li>Los tipos (clases) pueden heredar atributos de los supertipos (superclases).</li>
+				</ul>
+				<br>
+				Algunos de los lenguajes que son orientados a objetos son los siguientes:
+			</h3>
             <h3>
-            <div align="justify">    
-            <ul>
-                <li><b>Bases de datos orientadas a objetos:</b><br>            
-                La información es representada en forma de objetos.<br/>
-                Una base de datos orientada a objetos es una base de datos que incorpora todos los conceptos importantes del paradigma de objetos: encapsulamiento, herencia y polimorfismo.<br/>
-                En bases de datos orientadas a objetos, los usuarios pueden definir operaciones sobre los datos como parte de la definición de la base de datos. Una operación (llamada función) se especifica en dos partes. La interfaz (o signatura) de una operación incluye el nombre de la operación y los tipos de datos de sus argumentos (o parámetros). La implementación (o método) de la operación se especifica separadamente y puede modificarse sin afectar la interfaz. Los programas de aplicación de los usuarios pueden operar sobre los datos invocando a dichas operaciones a través de sus nombres y argumentos, sea cual sea la forma en la que se han implementado. Esto podría denominarse independencia entre programas y operaciones.<br/><br/>    
-                </li>
-                Ejemplo: Modelo orientado a objetos:
-                <br/><br/>
-                <br>
-                <center>
-                <img src="images/model.png">
-                </center><br/><br/>
-                A partir de este modelo presentado se desarrollara una base de datos en DB4O.<br/>
-                DB4O es un novedoso motor de base de datos orientada a objetos. Sus siglas se corresponden con la expresión "DataBase 4 (for) Objects", que a su vez es el nombre de la compañía que lo desarrolla: db4objects Inc.<br/>
-                SQL:2003 es el estándar de SQL92 ampliado, el cual soporta los conceptos orientados a objetos y mantiene la compatibilidad con SQL92.<br/><br/>
-                Almacenar Objetos en la base de datos:<br/><br/>
-                <center>
-                    <img src="images/store.png">
-                </center><br/>
-                Actualizacion de objetos en la base de datos:<br/><br/>
-                <center>
-                    <img src="images/update.png">
-                </center><br/>
-                Eliminacion de objetos en la base de datos:<br/><br/>
-                <center>
-                    <img src="images/delete.png">
-                </center><br/>
-                Consulta de objetos en la base de datos:<br/>
-                Para hacer consultas primero insertamos los siguientes objetos a la base de datos<br/><br/>
-                <center>
-                    <img src="images/insert.png">
-                </center><br/>
-                Hacemos las consultas sobre los objetos que acabamos de almacenar en la base de datos:<br/><br/>
-                <center>
-                    <img src="images/query.png">
-                </center><br/>
-                </div>
-                <li><b>Modelamiento y simulación de agentes:</b><br><br/>
-                <div align="justify">    
-                Los agentes son modelados como objetos.Es decir estos van a tener asociados unos atributos, un comportamiento, unas reglas para modificar su comportamiento y tambien van a poder interactuar con otros agentes como lo vemos en la siguiente imagen:
-                <div/>
-                </li>
-                <center>
-                    <img src="images/agents.png" alt="Photo" height=400 border=0 hspace=0>
-                </center>
-                <br>
-                <li><b>Diseño de interfaz de usuario:</b><br/><br/>
-                <div align="justify">
-                Cada elemento de la interfaz de usuario se puede considerar como un objeto, por ejemplo: boton, campo de texto, area de texto, etiqueta, se pueden ver como objetos.<br/><br/>
-                <center>
-                    <img src="images/gui.png" alt="Photo" height=400 border=0 hspace=0>
-                </center><br/><br/>
-                Ejemplo: Diseño de una interfaz grafica en java <br/><br/>
-                </div>
-                <center>
-                    <img src="images/guijava.png" alt="Photo" height=400 border=0 hspace=0>
-                </center>
-                </li>
+			
+			<center>
+                <img src="images/lenguajes2.png" id="lenguajes1">
+            </center><br/>
+			
+            <ul style="list-style-type: circle;" id="lenguajes">
+			
+				<li align="justify"><b>ActionScript</b>: Es el lenguaje de programación de la plataforma Adobe Flash. Fue lanzado públicamente en el año
+				1997. Ofrece un modelo de programación robusto que resulta familiar a los desarrolladores con conocimientos básicos sobre programación 
+				orientada a objetos. 
+				</li>    
+				<br>
+                <li align="justify"><b><a href="https://www.ecured.cu/C%2B%2B">C++</a></b>: Fue diseñado a mediados de los años 1980 por Bjarne
+				Stroustrup con la intención de extender el lenguaje de programación C a mecanismos que permitieran la manipulación de objetos.</li>
+				<br>
+				<li align="justify"><b>C#</b>: Fue desarrollado y estandarizado por Microsoft como parte de su plataforma .NET. El nombre C Sharp fue
+				inspirado por la notación musical, donde '#' (sostenido, en inglés sharp). Diseñado por Anders Hejlsberg y un grupo de desarrolladores, 
+				surgió en enero de 1999 con el nombre de Cool, pasando un tiempo después al nombre de C# por problemas de marca. </li>
+               	<br>		
+                <li align="justify"><a href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)"><b>Java</b></a>: Es un lenguaje de
+				programación de propósito general, concurrente y multiplataforma que fue diseñado específicamente para tener pocas dependencias
+				de implementación. Fue originalmente desarrollado por James Gosling de Sun Microsystems y publicado en 1995 como un componente
+				fundamental de la plataforma Java de Sun Microsystems. </li>
+				<br>
+				<li align="justify"><b><a href="https://es.wikipedia.org/wiki/Objective-C">Objective-C</a></b>: Fue creado creado como 
+				un superconjunto de C para que implementase un modelo de objetos parecido al de Smalltalk. Originalmente fue creado por Brad Cox
+				y la corporación StepStone en 1980. Actualmente se usa como un lenguaje principal de programación para Mac OS X, iOS y GNUstep,
+				además de Swift.</li>
+				<br>
+				<li align="justify"><b>Perl</b>: Es un lenguaje de programación diseñado por Larry Wall en 1987. Toma características del lenguaje C,
+				del lenguaje interpretado bourne shell (sh), AWK, sed, Lisp y, en un grado inferior, de muchos otros lenguajes de programación 
+				y adicionalmente, soporta herencia múltiple.
+				</li>
+				<br>
+				<center>
+					<img src="images/perl.gif" id="ventajas">
+					<h6>Lenguaje de programación - Perl</h6>
+				</center>
+				
+				<br>
+				<li align="justify"><b>PHP</b>: Es un lenguaje de programación de uso general de código del lado del servidor originalmente diseñado 
+				para el desarrollo web de contenido dinámico. Fue creado originalmente por Rasmus Lerdorf en el año 1995. Actualmente el lenguaje 
+				sigue siendo desarrollado con nuevas funciones por el grupo PHP.</li>
+				<br>
+				<li align="justify"><b><a href="https://es.wikipedia.org/wiki/Python">Python</a></b>: Es un lenguaje de programación interpretado cuya 
+				filosofía hace hincapié en una sintaxis que	favorezca un código legible, usa tipado dinámico, es multiparadigma y multiplataforma.
+				Fue creado a finales de los 80's por Guido van Rossum en el Centro para las Matemáticas y la
+				Informática (CWI, Centrum Wiskunde & Informatica), en los Países Bajos, como un sucesor del lenguaje de programación ABC. </li>
+				<br>
+                <li align="justify"><b><a href="https://www.ruby-lang.org/es/about/">Ruby</a></b>: Lenguaje de programación dinámico y de código
+				abierto enfocado en la simplicidad y productividad. Su elegante sintaxis es cómoda al leerla y fácil al escribirla. Fue creado por
+				el programador japonés Yukihiro "Matz" Matsumoto, quien comenzó a trabajar en Ruby en 1993, y lo presentó públicamente en 1995.</li>
+				<br>
+				<li align="justify"><b>Smalltalk</b>: Fue uno de los primeros lenguajes de programación orientado a objetos con tipado dinámico.
+				Es considerado un "mundo virtual de objetos" donde cualquier entidad es modelada como un objeto.</li>
+				<br>			
+				<li align="justify"><b>SCALA</b>: Scala es un lenguaje de programación orientado a objetos puro, en el sentido de que cada valor 
+				es un objeto. El tipo y comportamiento de los objetos se describe por medio de clases y traits. La abstracción de clases se realiza 
+				extendiendo otras clases y usando un mecanismo de composición basado en mixins como un reemplazo limpio de la herencia múltiple.</li>
+				<br>
+				
+				<li align="justify"><b><a href="https://en.wikipedia.org/wiki/List_of_object-oriented_programming_languages">Muchos más...</a></b></li>
+
             </ul>
             </h3>
         </section>
@@ -347,21 +270,35 @@
 
     </div>
 
-    <div class="footer">
+    <div class="footer" >
         <center>
             <a href="index.html">Paradigma</a> |
-            <a href="concepts.html">Conceptos</a> |
-            <a href="good-practices.html">Buenas Practicas</a> |
+            <a href="concepts.html">Conceptos </a> |
+			<a href="philosophy.html">Filosofía</a> |
             <a href="examples.html">Ejemplos</a> |
-            <a href="slides.html">Presentación</a> |
-            <a href="references.html">Referencias</a>
+            <a href="applications.html">Aplicaciones</a> |
+			<a href="slides.html">Referencias</a> 
         </center>
-        <br> Creado por: Laura Álvarez, Helmer Avendaño, Yeison García, Sebastián Morales, Edwin Bohórquez, Santiago Hernandez.
+        <br>
+		<div class="footer-text" >
+		<center>
+			Creado y modificado por: Laura Álvarez, Helmer Avendaño, Yeison García, Sebastián Morales, <br>
+			Edwin Bohórquez, Santiago Hernandez, Sebastián Moreno, Cristian Orjuela
+			<br>
+			<br>
+			 <p>Copyright &copy; Paradigmas de Programación - UNAL 2017</p>
+		
+		</center>
+		</div>
     </div>
 
     <script src="js/jquery.js">
     </script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js">
+	</script>
+
+	</div>
+	</div>
 </body>
 
 </html>

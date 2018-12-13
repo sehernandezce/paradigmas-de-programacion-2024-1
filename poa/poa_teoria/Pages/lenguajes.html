@@ -142,6 +142,15 @@
     </p>
 
     <img src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/COOLE.png?raw=true">
+
+    <p align="justify"> El funcionamiento de COOL se da a partir de la definición de “<strong>Agents</strong>”, y de la gestión de las comunicaciones e interacciones entre ellos. Para estas interacciones, los Agentes usan protocolos de coordinacion llamados “<strong>conversation classes</strong>”, los cuales definen las comunicaciones. Estas conversation classes pueden ser fácilmente representadas en diagramas de estados, en las cuales cada transición entre estas está descrita por una serie de reglas llamadas “<strong>conversation rules</strong>”.</p>
+
+    <p align="justify">Los objetos de COOL son los siguientes:</p>
+    <p align="justify"><strong>Agents</strong>: Son entidades autónomas, las cuales se comunican por paso de mensajes.</p>
+    <p align="justify"><strong>Conversation Classes</strong>: Es una lista de protocolos que usan los agents para comunicarse entre ellos. </p>
+    <p align="justify"><strong>Conversation Rules</strong>: Son un conjunto de reglas que descrben las conversation classes según el momento o las condiciones en las que se encuentre el agent.</p>
+    <p align="justify"><strong>Continuation Rules</strong>: Son un conjunto de reglas que usan los agents para seleccionar la siguiente conversación que van a tener dependiendo de la conversación que están teniendo en el presente.</p>
+
     <h3>
         <a id="RIDL" class="anchor" href="#RIDL" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RIDL</h3>
     <p align="justify">
@@ -171,6 +180,12 @@
     </p>
 
     <img src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/RIDL.png?raw=true">
+
+    <h2>
+        <a id="Spring_Python" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Python</h2>
+    <p align="justify">
+        Python, como tal, no requiere ningún tipo de extensión de lenguaje para poder hacer POA, dado que, además de algunas librerias, Python es capaz por si mismo de hacerlo. Sin embargo, existen proyectos que intentan agregar a Python varias herramientas y características para facilitar la inclusión de este paradigma. Entre los más notables está <strong>Spring Python</strong>, el cual es un proyecto desarrollado por Spring, con la intención de ser una versión de Spring Framework (Java) para Python.
+    </p>
 
     <h2>
         <a id="AspectC" class="anchor" href="#AspectC" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectC</h2>
@@ -282,7 +297,9 @@
     </p>
 
     <img src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/EjA.png?raw=true">
-
+    <p align="justify">
+        Finalmente, se puede argumentar que es la extensión de lenguaje más usada en cuanto a POA, debido a que es una de las más desarrolladas y a que es particularmente facil de entender y utilizar.
+    </p>
     <h2>
         <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectS</h2>
     <p align="justify">
@@ -418,6 +435,30 @@
 		por sí solo. En la siguiente tabla se encuentran resumidas las principales características de las herramientas orientadas a aspectos 
 		descriptas en los párrafos anteriores:
 	</p>
+	<h2>
+        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect(PERL)</h2>
+    <img width="500" height="200" src="../Images/perl.png?raw=true" hspace="150"> </img>
+	<p align="justify">
+		Perl es un acrónimo de Practical Extracting and Reporting Languaje. Es práctico para extraer información de archivos de texto y generar informes a partir del contenido de los ficheros. 
+		Aspect es un modulo de Perl que le permite al lenguaje soportar la Programación Orientada a Aspectos. Su uso basico sería el siguiente:
+	</p>
+	<img width="500" height="350" src="../Images/perlAspect.png?raw=true" hspace="150"> </img>
+	<h2>
+        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python</h2>
+	<p align="justify">
+		Python no necesita de ningún plug-in a librería para hacer POA. ya que esto lo puede lograr mediante los decorators.
+Existen algunos proyectos como Aspyct, sin embargo este fue abandonado. El uso mediante decoradores sería de la siguiente manera:
+
+	</p>
+	<img width="500" height="350" src="../Images/python.png?raw=true" hspace="150"> </img>
+	<h2>
+        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring (framework)</h2>
+	<p align="justify">
+		Este framework es implementado en java puro con las anotaciones de java @Aspect o basado en esquema con un XML.
+		Este permite la implementación del paradigam POA mediante AspectJ. La siguiente sería su implementación básica:
+	</p>
+	<img src="../Images/Spring.png?raw=true" hspace="150"> </img>
+	<img  src="../Images/Spring2.png?raw=true" hspace="150"> </img>
 	<footer class="site-footer">
 		<span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
 		<span class="site-footer-credits">This page was created by Jenny Sánchez Cruz, Felipe Moreno, Jeisson Prieto, Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>

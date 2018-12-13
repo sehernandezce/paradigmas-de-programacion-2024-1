@@ -9,11 +9,66 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111111;
+    }
+
+    blockquote {
+      background: #f9f9f9;
+      border-left: 10px solid #ccc;
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+    }
+    blockquote:before {
+      color: #ccc;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+    blockquote p {
+      display: inline;
+    }
+    </style>
 
     <title>Programación concurrente</title>
+    <nav>
+     <ul  style="text-align: center;
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: #333333;
+     float:right;
+     text-align: center; ">
+       <li style="float: left;"><a href="#filosofia" class="active">Filosofia</a></li>
+       <li style="float: left;"><a href="#definición">Definición</a></li>
+       <li style="float: left;"><a href="#ventajas">Ventajas</a></li>
+       <li style="float: left;"><a href="#desventajas">Desventajas</a></li>
+       <li style="float: left;"><a href="#conceptos">Conceptos</a></li>
+       <li style="float: left;"><a href="#aplicaciones">Aplicaciones</a></li>
+       <li style="float: left;"><a href="#lenguajes">Lenguajes</a></li>
+       <li style="float: left;"><a href="#ejemplos">Lenguajes ejemplos</a></li>
+       <li style="float: left;"><a href="#referencias">Referencias</a></li>
+       <li style="float: left;"><a href="quiz/index.html">Test</a></li>
+
+      </ul>
+    </nav>
   </head>
 
   <body>
@@ -26,7 +81,7 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h1>
+          <!--<h1>
 <a id="indice" class="anchor" href="#indice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Índice</h1>
 
 <ol>
@@ -43,24 +98,55 @@
 <li><a href="#lenguajes">Lenguajes</a></li>
 <li><a href="#presentacion">Presentación</a></li>
 <li><a href="#taller">Taller</a></li>
-</ol>
+</ol>-->
 
 <div class="text-justify">
 
 <h1>
 <a id="filosofía" class="anchor" href="#filosof%C3%ADa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filosofía</h1>
 
-<p>Es la división de  un problema en subproblemas  que se solucionan de forma individual, para crear un programa o aplicación que no se vea afectada en tiempo real</p>
-
+<p>Es la división de  un problema en subproblemas  que se solucionan de forma individual, para crear un programa o aplicación que no se vea afectada en tiempo real.</p>
 <h1>
 <a id="definición" class="anchor" href="#definici%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Definición</h1>
 
-<p>Hace referencia a las técnicas de programación que son utilizadas para expresar la concurrencia entre tareas y solución de los problemas de comunicación y sincronización entre procesos</p>
+<p>Hace referencia a las técnicas de programación que son utilizadas para expresar la concurrencia entre tareas y solución de los problemas de comunicación y sincronización entre procesos.
+  La programación concurrente es la ejecución simultánea de múltiples tareas interactivamente. Estas tareas pueden ser un conjunto de procesos o hilos de ejecución
+  creados por un único programa. Las tareas se pueden ejecutar en una sola CPU (multiprogramación), en varios procesadores, o en una red de computadores distribuidos.</p>
 
-<h1>
-<a id="proceso" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proceso</h1>
+<img src="https://s3.postimg.org/435ixtj2r/definicion.jpg" style="margin-left: 30px">
+  <div>
+    <h1><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h1>
 
-<p>Un proceso no solamente es el código de un programa,un proceso tiene un <strong>contador de programa</strong> el cual es un registro del computador que indica la dirección de la siguiente instrucción que será ejecutada por el proceso, <strong>Pila de proceso</strong> Esta contiene datos temporales tales como: Los parametros de las funciones, direcciones de retorno, variables locales , … , <strong>Sección de datos</strong> la cual contiene datos tales como las variables locales, Heap: Cúmulo de memoria que es la memoria que se asigna dinámicamente al proceso n tiempo de ejecución</p>
+    <ul>
+      <li>Permite optimizar el uso de recursos en sistemas mono/multiprocesador.</li>
+      <li>Fiable administración de los datos en sistemas con gran información</li>
+      <li>Mejor aprovechamiento de la CPU</li>
+      <li>Permite el desarrollo de aplicaciones que no se vean afectadas en tiempo real</li>
+      <li>Permite compartir recursos entre tareas lentas y tareas rápidas para que las tareas lentas no retrasen mucho a las rápidas.</li>
+      <li>Velocidad de ejecución.</li>
+      <li>Menores tiempos de respuesta.</li>
+    </ul>
+  </div>
+  <div>
+    <h1><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h1>
+    <ul>
+      <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
+      <li >Dificultad de desarrollo.</li>
+      <li >Dificultad de verificación.</li>
+      <li>En programas con pocas instrucciones en mas lento</li>
+      <li >Si se aplica mal puede llevar a resultados erroneos.</li>
+    </ul>
+  </div>
+
+
+<h1 id="conceptos">Conceptos</h1>
+
+<h1><a id="proceso" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proceso</h1>
+
+<p>Un proceso no solamente es el código de un programa,un proceso tiene un <strong>contador de programa</strong> el cual es un registro del computador que
+  indica la dirección de la siguiente instrucción que será ejecutada por el proceso, <strong>Pila de proceso</strong> Esta contiene datos temporales
+  tales como: Los parametros de las funciones, direcciones de retorno, variables locales , … , <strong>Sección de datos</strong> la cual contiene datos
+  tales como las variables locales, Heap: Cúmulo de memoria que es la memoria que se asigna dinámicamente al proceso n tiempo de ejecución</p>
 
 <div class="center">
 <p><img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_01_Process_Memory.jpg" alt=""></p>
@@ -95,15 +181,6 @@ Cada proceso se representa en el sistema operativo mediante el PCB, entre los el
 <div class="center">
 <p><img src="https://www.cs.uic.edu/%7Ejbell/CourseNotes/OperatingSystems/images/Chapter3/3_03_PCB.jpg" alt=""></p>
 </div>
-
-<h1>
-<a id="hilo" class="anchor" href="#hilo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hilo</h1>
-
-<p>Se puede definir como una unidad básica de utilización del CPU. Cada hilo tiene:
-Id de hilo,  Contador de programa,  Registros, Pila.
-Los hilos que pertenecen a un mismo proceso comparten:
-Sección de código, sección de datos, entre otros recursos del sistema.</p>
-
 <h1>
 <a id="multiprogramación" class="anchor" href="#multiprogramaci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiprogramación</h1>
 
@@ -120,8 +197,126 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p>Es cuando uno o varios procesos son ejecutados en una o más computadores</p>
 
+<h2><a id="calendarizacion" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calendarización De Procesos</h2>
+
+<p>Estrategia de los sistemas operativos con la que se es posible compartir la CPU entre los diferentes procesos alojados en memoria.
+La calendarización es un manejo de colas con el objetivo de maximizar el uso de recursos y minimizar retardos.</p>
+
+<img src="https://s9.postimg.org/je2q58qmn/calendarizacion.jpg" style="margin-left: 30px">
+  <h2>Tipos de Calendarización</h2>
+
+  <h3>Calendarización a corto plazo</h3>
+  <ul>
+  <li>Determina cuáles programas son admitidos al sistema para la ejecución.</li>
+  <li>El objetivo principal es mantener una mezcla balanceada de tareas, como los límites de entrada/salida y de procesador.</li>
+  <li>Controla el nivel de multiprogramación.</li>
+  </ul>
+
+  <h3>Calendarización a mediano plazo</h3>
+  También conocido como CPU scheduler o dispatcher. Su principal objetivo es incrementar el rendimiento del sistema acorde a un criterio definido.
+  <br><b>Dispatch latency:</b>  Tiempo que toma entre parar un proceso y empezar otro.
+
+  <h3>Calendarización a largo plazo</h3>
+  <ul>
+  <li>Hace parte del swapping del sistema.</li>
+  <li>Agrega y remueve procesos de memoria.</li>
+  <li>Reduce el nivel de multiprogramación del sistema.</li>
+  </ul>
+
+  <h2>Cambios de contexto</h2>
+
+  Mecanismo para almacenar y restaurar el estado de un proceso.
+
+  <ul>
+  <li>Registers</li>
+  <li>Stack pointer</li>
+  <li>Program counter</li>
+  </ul>
+
+  <div class="center">
+  <p><img src="https://www.tutorialspoint.com/operating_system/images/context_switch.jpg" alt="Cambio de contexto"></p>
+  </div>
+
+  <h2>Criterios de Calendarización</h2>
+
+  <ul>
+  <li><strong>Utilización de CPU:</strong> mantener el CPU lo más ocupado posible</li>
+  <li><strong>Throughput:</strong> Procesos completados por unidad de tiempo</li>
+  <li><strong>Tiempo de vuelta:</strong> tiempo en completar un proceso en específico</li>
+  <li><strong>Tiempo de espera:</strong> tiempo en el que un proceso ha estado en la cola de ready</li>
+  <li><strong>Tiempo de respuesta:</strong> tiempo que toma desde la creación del proceso hasta su primera respuesta</li>
+  </ul>
+
+  <h2>Algoritmos de Calendarización</h2>
+
+  <div class="text-justify">
+  <p>El principal objetivo de los algoritmos de calendarización es asignar tiempos de ejecución a los procesos del sistema para optimizar uno o más aspectos del mismo.</p>
+  </div>
+  <ul>
+  <li><strong>First-Come, First-Served (FCFS)</strong></li>
+  <p>Algoritmo simple de calendarización, en el que asigna el procesador según el orden de llegada a la cola de ready y lo ejecuta hasta el final,
+    como ventajas tienen un buen throughput y tiempo de vuelta, como desventajas malos tiempos de respuesta y de espera, en cuanto a utilización de CPU
+  tiene la ventaja de que hace pocos cambios de contexto, mas se desaprovecha el CPU cuando los procesos tienen que esperar a entradas y/o salidas.</p>
+  <p><img src="https://s18.postimg.org/cvdn2v4ft/fcfs1.jpg" style="margin-left: 30px"></p>
+  <p><img src="https://s7.postimg.org/5ng6kqtx7/fcfs.jpg" style="margin-left: 30px"></p>
+  <li><strong>Shortest-Job-First (SJF)</strong></li>
+  <p>con SJF se ejecuta primero el proceso con menor tiempo de ejecución que se encuentre en la cola de ready, a comparación de FCFS tiene
+  mejor tiempo de respuesta, mejor throughput, menores tiempos de espera, en cuanto a uso del CPU se comporta igual a FCFS, como desventaja tiene
+  la dificultad de predecir el tiempo de ejecución de un proceso. </p>
+  <p><img src="https://s24.postimg.org/mjnlamwp1/sjf1.jpg" style="margin-left: 30px"></p>
+  <p><img src="https://s12.postimg.org/guh11mzi5/sjf.jpg" style="margin-left: 30px"></p>
+  <li><strong>Priority Scheduling</strong></li>
+  <p>Introduce una necesidad en el que unos procesos deben tener prioridad sobre otros, para ello asocia un numero indicando el nivel de prioridad a cada proceso
+  cuando están en la cola de ready selecciona el de mayor prioridad, como desventaja los procesos con baja prioridad podrían sufrir de starvation
+  tardando mucho o nunca saliendo de la cola de ready, esto se soluciona utilizando una técnica en la que a medida que va pasando el tiempo se incrementa
+  la prioridad de un proceso en la cola, por lo que aquellos que lleven mucho tiempo en esta irán aumentando su prioridad. Dependiendo de las prioridades
+  que se le asignen a cada proceso puede tener buenos o malos tiempos. Hay que tener en cuenta que si ningún otro proceso está en la cola de ready ejecutara
+  el único que haya en la cola, más en el momento que llegue un proceso con mayor prioridad se sacara de ejecución el de menor y el CPU lo ocupara el que acaba
+  de llegar con mayor prioridad, esto se evidencia en el ejemplo a continuación:</p>
+  <p><img src="https://s28.postimg.org/o9zd19hod/priority.jpg" style="margin-left: 30px"></p>
+  <p><img src="https://s14.postimg.org/k1wtmwtq9/priority2.jpg" style="margin-left: 30px"></p>
+  <li><strong>Round Robin (RR)</strong></li>
+  <p>Se asigna un tiempo de CPU (time quantum) para todos los procesos, estos se ejecutarán durante ese tiempo según el orden de llegada, en cuanto completan el tiempo
+  asignado se sacan de ejecución y se regresan a la cola de ready, este procedimiento se repite hasta que el proceso complete toda su ejecución. Como
+  ventaja tiene bajos tiempos de espera y de respuesta, peor tiempo de vuelta y throughput mas bajo que SJF, el uso del CPU baja por el mayor numero
+  de cambios de contexto que debe hacer, por lo que es importante escoger un buen time quantum, si se escoge un tiempo muy corto habrá muchos cambios de contexto
+  y los procesos tardaran mucho más en terminar, si se escoge muy grande se perderían las ventajas del algoritmo, se suele usar tiempos de 10ms a 100ms, también
+  hay que tener en cuenta que para que sea optimo este tiempo debe ser mayor al que tarda el procesador en hacer un cambio de contexto. </p>
+  <p><img src="https://s14.postimg.org/b4jih3wzl/image.jpg" style="margin-left: 30px"></p>
+  <p><img src="https://s23.postimg.org/smstmzwnv/rr2.jpg" style="margin-left: 30px"></p>
+  <li><strong>Multiple-Level Queues</strong></li>
+  <p>la cola de ready se parte en varias colas que determinan la prioridad de los procesos, cada cola implementa su propio algoritmo de calendarización y
+  adicionalmente tambien se hace calendarización entre las colas</p>
+  <p><img src="https://s11.postimg.org/ac3tmerfn/multiqueue.jpg" style="margin-left: 30px"></p>
+  </ul>
+
+<h1>
+<a id="hilo" class="anchor" href="#hilo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hilo</h1>
+
+<p>Se puede definir como una unidad básica de utilización del CPU. Cada hilo tiene:
+Id de hilo,  Contador de programa,  Registros, Pila.
+Los hilos que pertenecen a un mismo proceso comparten:
+Sección de código, sección de datos, entre otros recursos del sistema.</p>
+<p><img src="https://s3.postimg.org/z6m2055rn/procesoshilos.jpg" style="margin-left: 30px"></p>
+
+
 <h1>
 <a id="programacion-paralela-y-concurrente" class="anchor" href="#programacion-paralela-y-concurrente" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programacion Paralela y Concurrente</h1>
+<h2>Como diferenciarlas ?</h2>
+La concurrencia y el paralelismo han sido extensamente discutidos, pero al momento de definirlos, varios autores salen con su propia definición y esta variedad no hacen tan facil la tarea de entender.
+En terminos sencillos, se puede explicar asi:
+<blockquote>
+  Un programa es concurrente si puede soportar dos o más acciones<strong> en progreso.</strong><br><br>
+  Un programa es paralelo si puede soportar dos o más acciones <strong>ejecutándose simultáneamente.</strong>"
+</blockquote>
+
+La palabra clave es <strong>en progreso</strong>.<br><br>
+Un programa es concurrente por que maneja varias tareas al mismo tiempo, define acciones que <strong>pueden</strong> ser ejecutadas al mismo tiempo.<br>
+Y para que un programa sea paralelo, no solo debe ser concurrente, sino que tambien debe estar diseñado para correr en un medio con hardware paralelo (GPU's, procesadores multi-core, etc).<br><br>
+Puede ser visto como que la concurrencia es la propiedad de un programa, mientras que el paralelismo es la forma en la que se ejecuta un programa concurrente.<br>
+Para mayor claridad, este video lo explica en una mayor profundidad:
+<iframe width="100%" height="360" src="https://www.youtube.com/embed/cN_DpYBzKso" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 
 <h2>
 <a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relación</h2>
@@ -134,6 +329,271 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p><img src="http://joearms.github.io/images/con_and_par.jpg" alt=""></p>
 
+<h1>Problemas de los programas concurrentes</h1>
+<p>Al lidiar con varias tareas al tiempo los programas concurrentes pueden presentar varios problemas : </p>
+<ul>
+  <li>
+    <strong>Violación de la exclusión mutua : </strong> Como se menciono anteriormente, es cuando más de un hilo trata de ejecutar la sección critica de un programa
+    y lo logra, obteniendo asi resultados indeseados. Por ejemplo, tenemos una expresión de tipo:
+    <br>
+    <strong>x = x + 1</strong>
+    <br>
+    Donde x tiene un valor inicial de 6, entonces al haber violación de exclusión mutua, varios hilos podrian tomar una copia local de x, añadir 1 y todos
+    devuelven 7 a x, lo cual es algo que no se quiere.<br>
+    Un ejemplo que replica este problema en Java, un contador que al final deberia dar 1000000, pero siempre arroja diferentes resultados: <br>
+    <pre class="prettyprint">
+      // Ejemplo hecho para ilustrar la mutabilidad del estado compartido de los hilos.
+      // Muestra un resultado distinto cada vez que se corre el programa
+
+      public class Counting {
+        public static void main(String[] args) throws InterruptedException {
+        class Counter {
+        int counter = 0;
+        public void increment() { counter++; }
+        public int get() { return counter; }
+        }
+        final Counter counter = new Counter();
+
+        class CountingThread extends Thread {
+        public void run() {
+        for (int x = 0; x < 500000; x++) {
+        counter.increment();
+        }
+        }
+        }
+
+        CountingThread t1 = new CountingThread();
+        CountingThread t2 = new CountingThread();
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+        System.out.println(counter.get());//deberia dar 1000000
+        }
+      }
+    </pre>
+
+    Y el resultado es: <br>
+    <pre class="prettyprint">
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      883345
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      830292
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      1000000
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      964409
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      945471
+      ~/Java$ java Counting
+      Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=/home/user/tmp/ -Xms64m
+      961164
+      ~/Java$
+    </pre>
+
+  </li>
+  <li>
+    <strong>Deadlock : </strong> Tambien conocido como abrazo mortal, ocurre cuando un proceso espera un evento que nunca va a pasar. Aunque se puede dar por
+    comunicación entre procesos , es más frecuente que se de por manejo de recursos. En este caso, deben cumplirse 4 condiciones para que se de un "deadlock" :
+    <ul>
+      <li>Los procesos deben reclamar un acceso exclusivo a los recursos.</li>
+      <li>Los procesos deben retener los recursos mientras esperan otros.</li>
+      <li>Los recursos pueden no ser removidos de los procesos que esperan.</li>
+      <li>Existe una cadena circular de procesos donde cada proceso retiene uno o más recursos que el siguiente proceso de la cadena necesita.</li>
+    </ul>
+    Las técnicas utilizadas para evitar estos problemas consisten en negar una de las cuatro condiciones anteriormente mencionadas.<br>
+    Un ejemplo que replica este problema es este de a continuación, escrito en Ada. Aqui dos procesos se ejecutan de manera finita, mientras que otros dos, los que hacen los llamados
+    funcionan en un ciclo infinito y al final se quedan esperando algo que nunca va a ocurrir: <br>
+    <pre class="prettyprint">
+
+      with Ada.Text_IO;
+      use Ada.Text_IO;
+      procedure Meals1 is
+
+        HOURS : constant := 1;
+        type PERSON is (BILL, JOHN);
+
+        package Enum_IO is new Ada.Text_IO.Enumeration_IO(PERSON);
+        use Enum_IO;
+
+        task Bills_Day;
+
+        task Johns_Day;
+
+        task Restaurant is
+        entry Eat_A_Meal(Customer : PERSON);
+        end Restaurant;
+
+        task Burger_Boy is
+        entry Eat_A_Meal(Customer : PERSON);
+        end Burger_Boy;
+
+        task body Bills_Day is
+        My_Name : PERSON := BILL;
+        begin
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 1.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        end Bills_Day;
+
+        task body Johns_Day is
+        My_Name : PERSON := JOHN;
+        begin
+        delay 0.4 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 0.4 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        delay 4.0 * HOURS;
+        Restaurant.Eat_A_Meal(My_Name);
+        end Johns_Day;
+
+        task body Restaurant is
+        begin
+        loop
+        accept Eat_A_Meal(Customer : PERSON) do
+        Put(Customer);
+        Put_Line(" esta ordenando en el restaurante");
+        delay 0.5 * HOURS;
+        Put(Customer);
+        Put_Line(" esta comiendo en el restaurante");
+        delay 0.5 * HOURS;
+        end Eat_A_Meal;
+        end loop;
+        end Restaurant;
+
+        task body Burger_Boy is
+        begin
+        loop
+        accept Eat_A_Meal(Customer : PERSON) do
+        Put(Customer);
+        Put_Line(" esta ordenando en el McDonalds");
+        delay 0.1 * HOURS;
+        Put(Customer);
+        Put_Line(" esta comiendo en el McDonalds");
+        delay 0.1 * HOURS;
+        end Eat_A_Meal;
+        end loop;
+        end Burger_Boy;
+
+      begin
+        null;
+      end Meals1;
+    </pre>
+    Y el resultado es:
+    <pre class="prettyprint">
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      BILL esta ordenando en el restaurante
+      BILL esta comiendo en el restaurante
+      JOHN esta ordenando en el restaurante
+      JOHN esta comiendo en el restaurante
+
+
+    </pre>
+    Se queda atascado en medio de la ejecución.
+  </li>
+  <li>
+    <strong>Aplazamiento indefinido : </strong> O tambien conocido como "starvation" o "lockout", se da cuando el algoritmo que maneja los recursos no tiene en cuenta
+    el tiempo que lleva esperando ese proceso. Para solucionar esto entre procesos que compiten se puede manejar de tal manera que mientras más espere un proceso, más
+    alta sera su prioridad, aunque una solucion más sencilla y aplicable a un rango mayor de circunstancias es tratar con los procesos estrictamente en su orden de espera.<br>
+    Un ejemplo en Ada es el siguiente, en este, un hilo se queda esperando una respuesta de otro proceso que nunca va a ocurrir por que la tarea Gourmet
+    ya acabo, y por eso no va a ser llamada:
+
+    <pre class="prettyprint">
+
+        with Ada.Text_IO;
+        use Ada.Text_IO;
+
+        procedure HotDog is
+
+          task Gourmet is
+          entry Make_A_Hot_Dog;
+          end Gourmet;
+
+          task body Gourmet is
+          begin
+          Put_Line("Voy a preparar un perro caliente");
+          for Index in 1..5 loop --si se cambia el 4 por un 5 se entrará en inanicion porque el task main del procedure hotdog no recibira la llamada
+          accept Make_A_Hot_Dog do
+          delay 0.8;
+          Put("Pongo el perro caliente en la mesa ");
+          Put_Line(" y le pongo mostaza");
+          end Make_A_Hot_Dog;
+          end loop;
+          Put_Line("ya no quiero mas perros calientes");
+          end Gourmet;
+
+        begin
+          for Index in 1..4 loop
+          Gourmet.Make_A_Hot_Dog;
+          delay 0.1;
+          Put_Line("como lo que me queda de perro caliente");
+          New_Line;
+          end loop;
+          Put_Line("ya estoy lleno");
+        end HotDog;
+    </pre>
+    Y su resultado es:
+    <pre class="prettyprint">
+      Voy a preparar un perro caliente
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      Pongo el perro caliente en la mesa y le pongo mostaza
+      como lo que me queda de perro caliente
+
+      ya estoy lleno
+    </pre>
+  </li>
+  <li>
+    <strong>Injusticia : </strong> Tambien conocido como "unfairness", ocurre cuando el programa no tiene mecanismos para asegurar que se da un progreso "parejo" en las
+    tareas concurrentes, este es un aspecto que el diseñador debe tener en cuenta al desarrollar el programa, cualquier descuido a la "justicia" de un programa podria
+    generar un aplazamiento indefinido.
+  </li>
+</ul>
+
+Para una mayor informacion de como funcionan y actuan estos problemas, por favor referirse al notebook dejado a continuación: <br>
+<h3><a href="http://nbviewer.jupyter.org/url/ferestrepoca.github.io/paradigmas-de-programacion/progconcurrente/concurrente_teoria/notebook/Notebook_ProgConcurrente_20181.ipynb" target="_blank">Notebook problemas prog. concurrente</a></h3>
+
+<h1>
+<a id="propiedades" class="anchor" href="#propiedades" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Propiedades de los programas concurrentes</h1>
+Los requerimientos que deben haber para que un programa concurrente sea exitoso se pueden definir en terminos de propiedades que posee, y estas a su vez se clasifican en propiedades de
+<i>seguridad</i> y de <i>vida</i>.
+
+<h2>Seguridad</h2>
+Indican que es lo que se le permite hacer al programa, o equivalentemente, lo que no deberia hacer.
+<ul>
+  <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica.</li>
+  <li><strong>No deadlock :</strong> Ningun proceso debe ser retrasado esperando un evento que nunca va a ocurrir.</li>
+  <li><strong>Correctitud parcial :</strong> Si el programa termina, la salida sera lo es requerido.</li>
+</ul>
+Estas propiedades de seguridad son expresadas como <strong>invariantes</strong> en computacion, es decir, son condiciones que se mantienen ciertas en todos los puntos de ejecución del programa.
+
+<h2>Vida</h2>
+Estas propiedades indican lo que el programa debe hacer; lo que ocurrira eventualmente.
+<ul>
+  <li><strong>Justicia :</strong> Un proceso que puede ser ejecutado, va a ser ejecutado.</li>
+  <li><strong>Comunicación confiable :</strong> Un mensaje enviado por un proceso sera recibido por otro.</li>
+  <li><strong>Correctitud completa :</strong> Cuando el programa termina, el resultado obtenido es el resultado requerido.</li>
+</ul>
+
 <h1>
 <a id="sincronizacion" class="anchor" href="#sincronizacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sincronizacion</h1>
 
@@ -144,6 +604,20 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 <div class="center">
 <p><img src="http://www.blogdepsicologia.com/wp-content/uploads/2015/06/ansiedad-2.jpg" alt=""></p>
 </div>
+<p><em><strong>porque se dan condiciones de carrera.</strong></em></p>
+<h2>
+<a id="condicion de carrera" class="anchor" href="#condicion de carrera" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Condición de carrera</h2>
+
+<p>Se da cuando uno o mas hilos ejecutan secciones que otro hilo podría usar al mismo tiempo, y en estas modifica variables que podrían afectar la ejecución del resto de hilos </p>
+
+<h2><a id="problema contador" class="anchor" href="#problema contador" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema simple con un contador</h2>
+<p>si tenemos dos hilos, y estos tratan de ejecutar cada uno un comando de contador++(hilo azul) y el otro el de contador--(hilo rojo), al mismo tiempo
+si el contador está en 5 se esperaría que al hacerle ++ y -- este quede igual, más en el ejemplo se ilustra que si los hilos no se sincronizan esto
+no sucede así:</p>
+<p>las instrucciones de contador++ y contador-- se pueden desglosar así:</p>
+<p><img src="https://s15.postimg.org/b3tcymfwr/problema_contador.jpg" alt=""></p>
+<p>Posible ejecución:</p>
+<p><img src="https://s4.postimg.org/antlcbbr1/problema_contador_ejecucion.jpg" alt=""></p>
 
 <h2>
 <a id="problema-del-lector---escritor" class="anchor" href="#problema-del-lector---escritor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema del Lector - Escritor</h2>
@@ -163,95 +637,359 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p>Como podemos hacer para que los filósofos no se mueran de hambre?. Interesante no, el problema en sí tiene muchas soluciones pero solo vamos a enunciar una: Un filosofo toma los dos tenedores y se los demas hacen una cola alrededor de la mesa para saber cual es el siguiente hasta que todos acaban.</p>
 
+<h2>
+<a id="problema-productor-consumidor" class="anchor" href="#problema-productor-consumidor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema del Productor - Consumidor</h2>
+
+<p>Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una misma bodega. El productor produce productos cada vez que puede, y el consumidor los consume cada vez que lo necesita.
+</p>
+<p>
+Problema:<br>
+¿Cómo coordinamos a los productores y consumidores, para que los productores no produzcan más ítems de los que se pueden almacenar en el momento, y los consumidores no adquieran más ítems de los que hay disponibles?. </p>
+<br>
+<p>
+Solucion:<br>
+Desde el punto de vista de la programación concurrente la solución a este problema se plantea a través de herramientas de sincronización. La primera solución y la más sencilla es implementar bodegas que sean excluyentes, es decir si un consumidor o productor se encuentra haciendo de la bodega, nadie más pueda hacerlo, indicando este estado con cualquier tipo de señal o aviso, implementado a través de semáforos binarios, cuyo concepto también es explicado en esta página.</p>
+<p>
+La anterior solución aunque es funcional y completamente viable, no es del todo acertada, luego de profundizar en el enfoque de la programación concurrente se destaca que tiene fallos muy probables, debido a que puedo agregar más actores a este ambiente, y si solo uno de estos no aplica la metodología del semáforo de manera acertada la información se corromperá, además de contener un bloque de código igual en todos los consumidores y productores. Para solucionar esto se plantea una solución a través de un monitor el cual se encargará de revisar los procesos de compra y producción, eliminando así el código clonado, además de organizar los procesos desde el objeto de las bodegas en sí.</p>
+
+<h2>Sección Critica</h2>
+<p><img src="http://ecoosfera.com/wp-content/imagenes/interseccion.gif" alt=""></p>
+
+<p>Para solucionar estos inconvenientes hay que identificar las secciones de código en las que se pueden dar condiciones de carrera y permitir que solo un hilo
+entre a estas secciones a la vez. Podríamos pensar en un cruce de autos como una sección critica, en la que los autos que vayan en otro sentido no podrán
+ingresar al cruce hasta que los carros del carril que tiene el semáforo en verde (tienen permiso de entrar a la sección critica) terminen de pasar.</p>
+
 <h2>Métodos de sincronización y comunicación</h2>
+<p>Existen diversas formas en las que podemos sincronizar y comunicar los hilos, entre ellas tenemos:</p>
+<ul>
+<li><strong>Semáforos:</strong> Un hilo adquiere permiso al entrar a la sección crítica, al finalizar la respectiva sección critica libera el permiso.</li>
+<li><strong>Mutex:</strong> Semáforo de tamaño 1. </li>
+<li><strong>Monitores:</strong> cada hilo tiene un turno, todos los hilos deben esperar mientras el hilo que tenga el turno esté presente en la sección crítica.</li>
+<li><strong>Mensajes:</strong> Los hilos se comunican por medio de mensajes, avisandole a los otros hilos cuando puede hacer sus respectivas ejecuciones sobre la sección crítica.</li>
+</ul>
+<p>como ejemplo supongamos que en 2 o más bancos se hacen transacciones sobre una misma cuenta,
+si en uno de los bancos (un hilo) cambia el valor de la cuenta mientras en otro banco se realiza una transacción sobre la misma
+se daría una condición de carrera, para evitar esto usaremos los múltiples métodos de sincronización:</p>
+<p><strong>Ejemplo en java de semaforos: </strong></p>
+<pre class="prettyprint">
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+//la clase extiende de thread
+public class Banco2 extends Thread{
+    static int cuenta=0;
+    int Operaciones;
+    int [] transaccion;
+    final Semaphore available = new Semaphore(1, true);
+    boolean[] used = new boolean[1];
+
+    public Banco2(int Operaciones, int[] transaccion) {
+        this.Operaciones = Operaciones;
+        this.transaccion = transaccion;
+    }
+
+
+
+
+    //se sobreescribe el metodo run, que es el que correra al momento de iniciar los hilos
+    @Override
+    public void run()  {
+        try {
+        //el hilo adquiere permiso para entrar a la seccion critica
+        available.acquire();
+        for(int i=0;i< this.Operaciones;i++){
+           int temp=cuenta;
+                temp=temp+this.transaccion[i];
+                cuenta=temp;
+            }
+        //el hilo libera el permiso
+        available.release();
+         } catch (InterruptedException ex) {
+                Logger.getLogger(Banco2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }
+    public static void main(String[] args) throws InterruptedException {
+         Scanner sc;
+
+        try {
+            //se recibe un archivo con operaciones de entrada y se guardan en arreglos
+            sc = new Scanner(new FileReader("C:/archivo3.txt"));
+            int A=sc.nextInt();
+            int B=sc.nextInt();
+            int [] arregloA= new int[A];
+            int [] arregloB= new int[B];
+            for (int i=0;i< A;i++){
+                arregloA[i]=sc.nextInt();
+            }
+            for (int i=0;i< B;i++){
+                arregloB[i]=sc.nextInt();
+            }
+            Banco2 a=new Banco2(A,arregloA);
+            Banco2 b=new Banco2(B,arregloB);
+            //se crean los hilos asociados a cada instancia de la clase
+            a.start();
+            b.start();
+            //join de los hilos con el hilo principal de ejecucion
+            a.join();
+            b.join();
+            System.out.println(cuenta);
+    }catch (FileNotFoundException ex) {
+            Logger.getLogger(Banco2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+}
+</pre>
+
+<p><strong>Ejemplo en java de monitores: </strong></p>
+<pre class="prettyprint">
+  import java.io.FileNotFoundException;
+  import java.io.FileReader;
+  import java.util.Scanner;
+  import java.util.logging.Level;
+  import java.util.logging.Logger;
+
+  //igual extiende de la clase hilo
+  public class Banco3 extends Thread{
+      static int cuenta=0;
+      int Operaciones;
+      int [] transaccion;
+      //usamos turnos para saber cual hilo debe ejecutarse
+      static boolean turno = true;
+
+      public Banco3(int Operaciones, int[] transaccion) {
+          this.Operaciones = Operaciones;
+          this.transaccion = transaccion;
+      }
+
+      public synchronized void Operar() throws InterruptedException{
+          //mientras el turno no este disponible el hilo espera
+          while(!turno) {
+              wait();
+          }
+          //si el turno esta disponible, se toma, poniendolo como false para el resto
+          //de hilos
+          turno=false;
+          for(int i=0;i< this.Operaciones;i++){
+                  int temp=cuenta;
+                  temp=temp+this.transaccion[i];
+                  cuenta=temp;
+
+          }
+          //el turno se libera y se le notifica a los hilos que estaban en espera
+          turno=true;
+          notifyAll();
+      }
+      @Override
+      public void run()  {
+          try {
+              Operar();
+          } catch (InterruptedException ex) {
+              Logger.getLogger(Banco3.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+      public static void main(String[] args) throws InterruptedException {
+           Scanner sc;
+
+          try {
+              sc = new Scanner(new FileReader("C:/archivo3.txt"));
+              int A=sc.nextInt();
+              int B=sc.nextInt();
+              int [] arregloA= new int[A];
+              int [] arregloB= new int[B];
+              for (int i=0;i< A;i++){
+                  arregloA[i]=sc.nextInt();
+              }
+              for (int i=0;i< B;i++){
+                  arregloB[i]=sc.nextInt();
+              }
+              Banco3 a=new Banco3(A,arregloA);
+              Banco3 b=new Banco3(B,arregloB);
+              a.start();
+              b.start();
+              a.join();
+              b.join();
+              System.out.println(cuenta);
+      }catch (FileNotFoundException ex) {
+              Logger.getLogger(Banco3.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+
+  }
+</pre>
+
+<p><strong>Ejemplo en java de mensajes (es necesario usar el toolkit de akka): </strong></p>
+<pre class="prettyprint">
+  import akka.actor.UntypedActor;
+  //extiende de un actor de la toolkit de akka
+public class BankActor extends UntypedActor{
+    static public int cuenta=0;
+    //los actores se comunican entre si, se sobreescribe el metodo
+    //de onReceive que se ejecuta cuando un hilo recibe mensajes de otro hilo
+    @Override
+    public void onReceive(Object message) throws Exception {
+        if(message instanceof Integer) {
+            int a= new Integer((int) message);
+            int temp=cuenta;
+            temp=temp+a;
+            cuenta=temp;
+        }else{
+            //se tiene en cuenta si el actor no puede comprender el mensaje que se le envio
+            unhandled(message);
+        }
+    }
+}
+
+
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import java.util.Scanner;
+
+
+public class Akka {
+
+    public static void main(String[] args) {
+        //se instancia un sistema de comunicacion entre los actores
+        ActorSystem system=ActorSystem.create("Transacciones");
+        //se instancian los dos actores
+        ActorRef bankActor = system.actorOf(new Props(BankActor.class), "Transaccion1");
+        ActorRef bankActor2 = system.actorOf(new Props(BankActor.class), "Transaccion2");
+        Scanner sc2 = new Scanner(System.in);
+        int A = sc2.nextInt();
+        int B = sc2.nextInt();
+        int [] arregloA= new int[A];
+        int [] arregloB= new int[B];
+        int mayor=0;
+        if (A< B){mayor=B;}
+        else {mayor=A;}
+        for (int i=0;i< mayor;i++){
+            //los actores se comunican entre si las transacciones que van haciendo
+            if (i< A){
+                arregloA[i]=sc2.nextInt();
+                bankActor.tell(arregloA[i],null);
+            }
+            if (i< B){
+                arregloB[i]=sc2.nextInt();
+            bankActor2.tell(arregloB[i],null);
+            }
+        }
+        system.shutdown(); //cierra la comunicacion
+        system.awaitTermination();//join con el hilo principal
+        System.out.println(BankActor.cuenta);
+    }
+}
+</pre>
+
+<ul><li>Solucion del problema Productor - Consumidor</li></ul>
+<p>- Con semaforos</p>
+<pre class="prettyprint">
+semaphore fillCount = 0;
+semaphore emptyCount = BUFFER_SIZE;
+
+procedure producer() {
+  while (true) {
+    item = produceItem();
+    down(emptyCount);
+    putItemIntoBuffer(item);
+    up(fillCount);
+  }
+}
+
+procedure consumer() {
+  while (true) {
+    down(fillCount);
+    item = removeItemFromBuffer();
+    up(emptyCount);
+    consumeItem(item);
+  }
+}
+</pre>
+
+<p>- Con monitores</p>
+<pre class="prettyprint">
+monitor ProducerConsumer {
+  int itemCount;
+  condition full;
+  condition empty;
+
+  procedure add(item) {
+    while (itemCount == BUFFER_SIZE) {
+        wait(full);
+    }
+    putItemIntoBuffer(item);
+    itemCount = itemCount + 1;
+    if (itemCount == 1) {
+        notify(empty);
+    }
+  }
+
+  rocedure remove() {
+      while (itemCount == 0) {
+          wait(empty);
+      }
+
+      item = removeItemFromBuffer();
+      itemCount = itemCount - 1;
+
+      if (itemCount == BUFFER_SIZE - 1) {
+          notify(full);
+      }
+      return item;
+  }
+}
+
+procedure producer() {
+    while (true) {
+        item = produceItem()
+        ProducerConsumer.add(item)
+    }
+}
+
+procedure consumer() {
+    while (true) {
+        item = ProducerConsumer.remove()
+        consumeItem(item)
+    }
+}
+
+
+
+</pre>
+
 <p>Los métodos de sincronización y comunicación se explican de mejor forma mediante el uso del notebook, pues los temas se explican con el uso python y C++.</p>
 
 <a id="notebook"></a>
 <h3><a href="http://nbviewer.jupyter.org/url/ferestrepoca.github.io/paradigmas-de-programacion/progconcurrente/concurrente_teoria/notebook/ProgConcurrente.ipynb">Notebook</a></h3>
+<h1>Herramientas de verificación de sistemas concurrentes</h1>
+<h2>Redes de Petri</h2>
+Es un modelo gráfico para describir sistemas concurrentes, se puede ver como un grafo dirigido y bipartido donde las dos clases de vértices se denominan lugares y transiciones, se permiten lados paralelos en estas redes.
+Al modelar una red de Petri, los lugares representan condiciones, las transiciones representan eventos y la presencia de por lo menos una ficha en un lugar indica que la condición se cumple. En una red de Petri (P) es un lugar de entrada para la transición T,
+ si existe un lado dirigido que va desde el lugar P hasta la transmisión T. De igual forma se define un lugar de salida. Si todo lugar de entrada para una transmisión T tiene al menos una ficha, se dirá que T es permitida. Una transición permitida que quita una ficha a cada lugar de entrada y agrega una ficha a cada de salida se llama descarga.<br>
+Una marca M para una red de Petri esta viva si al empezar en M es posible descargar cualquier transición dada a través de una sucesión adicional de descarga, sin importar que la sucesión de descarga ya haya sucedido. <br>
+Una marca en una red de Petri es acotada si existe un entero positivo N que tiene la propiedad de que en cualquier sucesión de descarga ningún lugar recibe mas de N fichas. Ahora si una marca M esta acotada y en cualquier sucesión de descarga ningún lugar recibe mas de una ficha, se dice que M es una marca segura.
+<center><img src="images/petri.png" width="100%" height="400px"></center>
+<strong><i>Ejemplo en el cual se simula la llegada de material, para luego bifurcarla paralelamente, en dos máquinas, y luego unirlos en la salida.</i></strong>
+<h2>CSP (Communicating Sequential Processes)</h2>
+Es una teoría matemática para especificar y verificar patrones de comportamiento como abrazos mortales o Livelocks que se dan durante al interacción de objetos concurrentes. Su semántica formal y composicional esta completamente ligada con nuestra intuición natural sobre las formas en que las cosas funcionan. Podemos ver el modelo como un grupo de componentes organizados en una capa y comunicándose con otra capa de componentes a través de canales unidireccionales. Este modelo nació debido a la necesidad de encapsular la información de tal manera que esta permanezca correcta, facilitar el diseño y poder detectar fallas antes de que estas ocurran. Entre muchas de las ventajas que este modelo brindan esta su semántica sencilla y por ende su facilidad de aplicar, sus kernel tan liviano mejorando así el rendimiento de las máquinas y el que haya software del tipo de FDR que permita verificar sí el modelo esta correcto o no.
+El enfoque de sincronización que utiliza CSP es el de rende Vuez, que no permite que un proceso escriba si al mismo tiempo el otro proceso esta haciendo un leer y viceversa, como estas acciones en teoría se deben realizar en paralelo estas deberían ser no bloqueantes.
+<h2> FDR (Failures-Divergence Refinement)</h2>
+Permite la verificación de muchas de las propiedades de sistemas de estados finitos y la investigación de sistemas que no pasan ese tipo de verificaciones. Esta basado en la teoría de CSP. Fue desarrollado en la universidad de Oxford.
+Su método de probar si una propiedad se cumple es el de probar el refinamiento de un sistema de transición que captura la propiedad a través de la máquina candidato.
+También permite verificar el determinismo de una máquina de estados y esto es usado primordialmente para corroborar propiedades de seguridad.
+<h2>JCSP (Java communicating sequential processes)</h2>
+Java también desarrolla su propia implementación basada en el álgebra de CSP, orientada a la concurrencia de procesos. No se requiere conocimientos avanzados en matemáticas para usar esta herramienta. Al contrario permite una simplificación en el diseño que la concurrencia genera.
 
-<h2>
-<a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h2>
+JCSP brinda la capacidad a través de bibliotecas completas de desarrollar programas de funcionalidad compleja sobre capas de procesos de comunicación. Con esta implementación el modelo CSP aparece soportado por las aplicaciones multihilo de Java.
+Los Procesos interactuan solamente a través de la primitivas de sincronización de CSP como channels, CALL channels, timers, crews, barriers, buckets o otros modos bien definidos de accesos a objetos pasivos. Dos procesos no invocan procesos de si mismos. Estos procesos pueden corren en forma secuencial o paralela.
 
-<ul>
-<li>Mejor rendimiento en un sistema monoprocesador</li>
-<li>Fiable administración de los datos en sistemas con gran información</li>
-<li>Permite el desarrollo de aplicaciones que no se vean afectadas en tiempo real</li>
-<li>Mejor aprovechamiento de la CPU</li>
-</ul>
-
-<h2>
-<a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h2>
-
-<ul>
-<li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
-<li>En programas con pocas instrucciones en mas lento</li>
-<li>Desarrollo</li>
-</ul>
-
-
-<h1>
-<a id="planificacion" class="anchor" href="#planificacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Planificación</h1>
-
-Estrategia de los sistemas operativos con la que se es posible compartir la CPU entre los diferentes procesos alojados en memoria.
-La planificación es un manejo de colas con el objetivo de maximizar el uso de recursos y minimizar retardos.
-
-<h2>Tipos de planificación</h2>
-
-<h3>Planificación a corto plazo</h3>
-<ul>
-<li>Determina cuáles programas son admitidos al sistema para la ejecución.</li>
-<li>El objetivo principal es mantener una mezcla balanceada de tareas, como los límites de entrada/salida y de procesador.</li>
-<li>Controla el nivel de multiprogramación.</li>
-</ul>
-
-<h3>Planificación a mediano plazo</h3>
-También conocido como CPU scheduler o dispatcher. Su principal objetivo es incrementar el rendimiento del sistema acorde a un criterio definido.
-<br><b>Dispatch latency:</b>  Tiempo que toma entre parar un proceso y empezar otro.
-
-<h3>Planificación a largo plazo</h3>
-<ul>
-<li>Hace parte del swapping del sistema.</li>
-<li>Agrega y remueve procesos de memoria.</li>
-<li>Reduce el nivel de multiprogramación del sistema.</li>
-</ul>
-
-<h2>Cambios de contexto</h2>
-
-Mecanismo para almacenar y restaurar el estado de un proceso.
-
-<ul>
-<li>Registers</li>
-<li>Stack pointer</li>
-<li>Program counter</li>
-</ul>
-
-<div class="center">
-<p><img src="https://www.tutorialspoint.com/operating_system/images/context_switch.jpg" alt="Cambio de contexto"></p>
-</div>
-
-<h2>Criterios de planificación</h2>
-
-<ul>
-<li>Utilización de CPU</li>
-<li>Throughput</li>
-<li>Tiempo de vuelta</li>
-<li>Tiempo de espera</li>
-<li>Tiempo de respuesta</li>
-</ul>
-
-<h2>Algoritmos de planificación</h2>
-
-<div class="text-justify">
-<p>El principal objetivo de los algoritmos de planificación asignar tiempos de ejecución a los procesos del sistema para optimizar uno o más aspectos del mismo.</p>
-</div>
-
-<ul>
-<li>First-Come, First-Served (FCFS)</li>
-<li>Shortest-Job-First (SJF)</li>
-<li>Priority Scheduling</li>
-<li>Round Robin (RR)</li>
-<li>Multiple-Level Queues</li>
-</ul>
+Existen también en el mercado aplicaciones que nos permiten verificar computacionalmente modelos especificados con CSP y una de las más sobresalientes es FDR.
 
 <h1>
 <a id="aplicaciones" class="anchor" href="#aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aplicaciones</h1>
@@ -263,10 +1001,52 @@ Mecanismo para almacenar y restaurar el estado de un proceso.
 <li>Interaccion por GUI</li>
 <li>Sistemas gestores de bases de datos</li>
 <li>Sistemas Operativos</li>
+<li>Sistemas de control</li>
+<li>Simulación</li>
+<li>videojuegos</li>
+
+
+
+
+
 </ol>
 
 <h1>
 <a id="lenguajes" class="anchor" href="#lenguajes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguajes</h1>
+
+<ul><li><strong>Elixir</strong></li></ul>
+<center><img src="images/elixir.png" width="150px" height="150px"></center>
+<br>
+Elixir es lenguaje de programación de propósito general, concurrente; este lenguaje es funcional. Además está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a fallos con baja latencia.
+
+<ul><li><strong>Ada</strong></li></ul>
+<center><img src="images/ada-coin.jpg" width="150px" height="150px"></center>
+Ada es un lenguaje nacido de un proyecto en los 70s del ejército de los Estados Unidos, el cuál tenía como principal requisito la seguridad, es decir, se tenía que tener un lenguaje con nula cantidad de errores. El lenguaje es usado de forma amplia en la industria de las infraestructuras de riesgo grande, como lo es sistemas de aviones, trenes, tanques y misiles. Es fuertemente tipado, uno de los más tipados, debido a la necesidad explicita de minimizar los errores. Ha tenido relativamente pocas actualizaciones.Es uno de los pioneros en programación orientado a objetos, lenguaje multipropósito. Sincroniza las tareas por rendez vous.
+
+
+<ul><li><strong>Rust</strong></li></ul>
+<center><img src="images/rust.png" width="150px" height="150px"></center>
+Rust es un lenguaje de programación compilado, de propósito general y multiparadigma desarrollado por Mozilla y ha sido diseñado para ser ‘un lenguaje seguro, concurrente y práctico’. Rust se enfoca principalmente en seguridad, velocidad y concurrencia.
+
+<ul><li><strong>Erlang</strong></li></ul>
+<center><img src="images/erlang.png" width="150px" height="150px"></center>
+Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante el paso de mensajes.
+
+<ul><li><strong>GO</strong></li></ul>
+<center><img src="images/go.png" width="150px" height="150px"></center>
+GO Es un lenguaje de programación compilado, concurrente, imperativo, estructurado, no orientado a objetos con recolector de basura, soportado en diferentes tipos de sistemas. La concurrencia en Go es diferente a los criterios de programación basados en bloqueos como pthreads.
+
+<ul><li><strong>Haskell</strong></li></ul>
+<center><img src="images/haskell.png" width="150px" height="150px"></center>
+Haskell es un lenguaje polimórficamente tipificado, perezoso, puramente funcional, muy diferente a la mayoría de los otros lenguajes de programación.
+
+<ul><li><strong>Crystal</strong></li></ul>
+<center><img src="images/crystal.png" width="150px" height="150px"></center>
+Haskell es un lenguaje polimórficamente tipificado, perezoso, puramente funcional, muy diferente a la mayoría de los otros lenguajes de programación.
+
+
+<h1>
+<a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguajes ejemplos</h1>
 
 <ul>
 <li>Ejemplo en <strong>python</strong>: Este es un pequeño ejemplo con el fin de ilustrar como podemos lanzar un hilo en python</li>
@@ -340,7 +1120,7 @@ t.join()</pre></div>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>unistd.h<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>sys/types.h<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>fcntl.h<span class="pl-pds">&gt;</span></span>
-#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>sys/stat.h<span class="pl-pds">&gt;</span></span>      
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>sys/stat.h<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>semaphore.h<span class="pl-pds">&gt;</span></span>
 
 #<span class="pl-k">define</span> <span class="pl-en">NUMHILOS</span> <span class="pl-c1">5</span>
@@ -461,13 +1241,778 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
 <p>EL valor de pi es:    3.14159265258921038821</p>
 </blockquote>
 
+<ul>
+<li>Ejemplo en <strong>Java</strong>:</li>
+</ul>
+<p>Un grupo de personas trata de ir de una isla(Oahu) a la otra(Molokai) con un solo bote.</p>
+<p><img src="https://s1-ssl.dmcdn.net/hjNxe/x240-XWg.jpg" alt=""></p>
+
+<p>Reglas:</p>
+<ul>
+<li>Cada persona es un hilo.</li>
+<li>La persona puede ser un adulto o un niño.</li>
+<li>Pueden ir dos niños en el bote o solo un adulto.</li>
+<li>El bote necesita como mínimo un piloto./li>
+<li>las personas solo se pueden comunicar con los que estén en la misma isla.</li>
+<li>Siempre hay mínimo dos niños.</li>
+</ul>
+
+<p>El principal objetivo del ejemplo es mostrar la sincronización de los hilos, la solución al problema consiste en llevar dos niños
+a Molokai, hacer que uno se devuelva con el bote, subir un adulto en oahu, cuando este llegue a Molokai se devolverá el otro niño
+que estaba ahí, y en Oahu se volverán a subir dos niños, este proceso se repetirá hasta que todas las personas estén en Oahu,
+hay que tener en cuenta que no hay algo como unidad principal que controle cuando pasará cada persona, cada hilo deberá saber cuando
+ejecutar sus instrucciones dependiendo de la sincronización con los otros</p>
+<pre class="prettyprint">
+
+import java.util.concurrent.Semaphore;
+
+//extiende de thread y sobreescribe run sin nada
+public class Persona extends Thread{
+
+	int Tamano;
+	String ubicacion;
+	static String boatUbication="Oahu";
+	public static String getBoatUbication() {
+		return boatUbication;
+	}
+
+	public static void setBoatUbication(String boatUbication) {
+		Persona.boatUbication = boatUbication;
+	}
+
+	public Persona(int tamano, String ubicacion) {
+		super();
+		this.Tamano = tamano;
+		this.ubicacion = ubicacion;
+	}
+
+	@Override
+    public void run() {
+
+	}
+
+
+
+}
+
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+//extiende de persona
+public class Adult extends Persona {
+	public Adult() {
+		super(2, "Oahu");
+	}
+	//sobreescribe run
+	@Override
+    public void run() {
+		//mientras no hayan pasado todas las personas
+		while(Boat.ContMolokai < Boat.ContTotalPersonas){
+		 try {
+			 //semaforo encargado de que un niño y adulto no luchen por el bote
+			 Boat.classExclus.acquire();
+             if (this.ubicacion.equals("Oahu") && boatUbication.equals(this.ubicacion) && Boat.ContChildBack%2!=0 && Boat.ContAdultOahu != 0){
+            	 //si ve que puede pasar lo hace, adquiere las dos posiciones del bote
+            	 Boat.available.acquire();
+            	 Boat.available.acquire();
+            	 Boat.bg.AdultRowToMolokai();
+            	 this.ubicacion="Molokai";
+            	 boatUbication="Molokai";
+            	 Boat.ContMolokai++;
+           		 Boat.ContOahu--;
+           		 Boat.ContAdultOahu--;
+           		 //al llegar libera las dos posiciones del bote
+            	 Boat.available.release();
+            	 Boat.available.release();
+             }
+
+             Boat.classExclus.release();
+         } catch (InterruptedException ex) {
+             Logger.getLogger(Child.class.getName()).log(Level.SEVERE, null, ex);
+         }
+	}
+	}
+}
+
+
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+//parecida a Adult
+public class Child extends Persona {
+	public Child() {
+		super(1, "Oahu");
+	}
+	@Override
+    public void run() {
+		while(Boat.ContMolokai < Boat.ContTotalPersonas ){
+		 try {
+			 Boat.classExclus.acquire();
+             if (this.ubicacion.equals("Oahu") && boatUbication.equals(this.ubicacion) && (Boat.ContChildBack%2==0 || Boat.ContAdultOahu == 0) ){
+            	 //a diferencia del adulto el niño solo adquiere una posicion del bote
+            	 Boat.available.acquire();
+            	 Boat.UbicacionDispon--;
+            	 if (Boat.UbicacionDispon==1) Boat.bg.ChildRowToMolokai();
+            	 this.ubicacion="Molokai";
+            	 Boat.ContMolokai++;
+            	 Boat.ContOahu--;
+            	 if(Boat.UbicacionDispon==0){
+            		 Boat.bg.ChildRideToMolokai();
+            		 boatUbication="Molokai";
+            		 Boat.UbicacionDispon=2;
+            	 }
+            	 Boat.available.release();
+             }
+             //parte de la seccion critica encargada de que el niño regrese desde Molokai a Oahu
+            	 if (this.ubicacion.equals("Molokai") && boatUbication.equals(this.ubicacion) && (Boat.ContMolokai < Boat.ContTotalPersonas ) ){
+            		 //para evitar que se regresen dos niños el niño adquiere las dos posiciones
+            		 //del bote
+            		 Boat.available.acquire();
+            		 Boat.available.acquire();
+            		 Boat.bg.ChildRowToOahu();
+                	 this.ubicacion="Oahu";
+                	 boatUbication="Oahu";
+                	 Boat.ContMolokai--;
+                	 Boat.ContOahu++;
+                	 Boat.ContChildBack++;
+                	 //llega y libera las dos posiciones
+                	 Boat.available.release();
+                	 Boat.available.release();
+            	 }
+
+            	 Boat.classExclus.release();
+         } catch (InterruptedException ex) {
+             Logger.getLogger(Child.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
+		}
+	}
+
+}
+
+
+
+import java.util.Scanner;
+import java.util.concurrent.Semaphore;
+import java.util.LinkedList;
+
+public class Boat {
+	//se instancian los dos semaforos
+	public static Semaphore available = new Semaphore(2, true);
+	public static Semaphore classExclus = new Semaphore(1, true);
+	static Scanner sc = new Scanner(System.in);
+	//contadores para la comunicacion
+	static int childrenTot=0;
+	static int adultTot=0;
+	static int ContChilds=0;
+	static int ContAdults=0;
+	static int ContTotalPersonas=0;
+	static int ContOahu=0;
+	static int ContMolokai=0;
+	static int ContAdultOahu=0;
+	static int UbicacionDispon=2;
+	static int ContChildBack=0;
+
+	//arreglo de personas
+	static LinkedList<Child> ChildList = new LinkedList<Child>();
+	static LinkedList<Adult> AdultList = new LinkedList<Adult>();
+	static BoatGrader bg= new BoatGrader();
+
+	//se crean los hilos
+	static public void begin(){
+		for(Child element : ChildList){
+			element.start();
+
+
+		}
+		for(Adult element : AdultList){
+			element.start();
+
+		}
+		//al terminar los hilos hacen join con el hilo principal
+		for(Child element : ChildList){
+			try {
+				element.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		for(Adult element : AdultList){
+			try {
+				element.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+
+
+	}
+
+	public static void main(String args[]) {
+		//entradas del programa
+		while (childrenTot< 2){
+			System.out.println("Introduzca el numero de niños (mayor a 1): ");
+			childrenTot=sc.nextInt();
+		}
+		System.out.println("Introduzca el numero de adultos: ");
+		adultTot=sc.nextInt();
+	    for (int i=0;i< childrenTot;i++){
+	    	ChildList.add(new Child());
+	    	ContChilds++;
+	    }
+	    for (int i=0;i< adultTot;i++){
+	    	AdultList.add(new Adult());
+	    	ContAdults++;
+	    }
+	    ContTotalPersonas=ContChilds+ContAdults;
+	    ContAdultOahu=ContAdults;
+		ContOahu=ContTotalPersonas;
+
+	    Boat.begin();
+	    System.out.println("llegaron "+ContMolokai+" personas");
+	}
+}
+</pre>
+<p>ejecución:</p>
+<pre class="prettyprint">
+  Introduzca el numero de niños (mayor a 1):
+  3
+  Introduzca el numero de adultos:
+  5
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Adult rowing to Molokai.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Adult rowing to Molokai.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Adult rowing to Molokai.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Adult rowing to Molokai.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Adult rowing to Molokai.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  **Child rowing to Oahu.
+  **Child rowing to Molokai.
+  **Child arrived on Molokai as a passenger.
+  llegaron 8 personas
+
+
+</pre>
+<ul>
+<li>Ejemplo en <strong>Go</strong>:</li>
+</ul>
+<pre class="prettyprint">
+  package main
+  import(
+  	"fmt"
+  	"time"
+  )
+  func main() {
+      fmt.Println("iniciando")
+      go printForward()
+      go printBackwards()
+  	time.Sleep(time.Second * 5)
+      fmt.Println("terminando")
+  }
+  func printForward() {
+      for i := 0; i < 10; i++ {
+          fmt.Println(i)
+          time.Sleep(time.Millisecond)
+      }
+  }
+  func printBackwards() {
+      for i := 10; i <= 20; i++ {
+          fmt.Println(i)
+          time.Sleep(time.Millisecond)
+      }
+  }
+</pre>
+<p>En Go tenemos rutinas que tienen su propio stack, aunque estos no son hilos como tal, pero si se pueden aprovechar de esta forma</p>
+<pre class="prettyprint">
+package main
+import(
+	"fmt"
+	"time"
+)
+func main() {
+    c := make(chan string)
+    go echo(c)
+    c < - "Hola"
+    mensaje := < - c
+    fmt.Println(mensaje)
+}
+
+func echo(c chan string) {
+    msg := < - c
+    time.Sleep(time.Second * 1)
+    c < - fmt.Sprintf("Mensaje recibido: %s", msg)
+}
+
+salida= Mensaje recibido:Hola
+</pre>
+
+<p>En Go tenemos el Select es como un switch, pero que espera mensajes en canales.
+Su finalidad es comunicar, no comparar valores. </p>
+<pre class="prettyprint">
+package main
+import(
+  "fmt"
+  "time"
+)
+func main() {
+    process1 := processExpensiveTransaction()
+    process2 := processExpensiveTransaction()
+    for i := 0; i < 2; i++ {
+        select {
+            case msg1 := <- process1:
+                fmt.Println("Proceso 1 termino con status ", msg1)
+            case msg2 := <- process2:
+                fmt.Println("Proceso 2 termino con status ", msg2)
+        }
+    }
+}
+
+func processExpensiveTransaction() chan string {
+    c := make(chan string)
+    go func() {
+        time.Sleep(time.Duration(rand.Intn(6)) * time.Second)
+        c <- "ok"
+    } ()
+    return c
+}
+</pre>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Erlang</strong>:</li>
+</ul>
+<p>
+  La función spawn en Erlang nos permiete crear un proceso en paralelo.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([start/0]).
+  start() ->
+    Pid = spawn(fun() -> server("Hello") end),
+
+  server(Message) ->
+    io:fwrite("~p",[Message]).
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  "Hello"
+</blockquote>
+
+<p>
+   El operador ! nos permite enviar mensajes a los procesos.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([start/0]).
+  start() ->
+    Pid = spawn(fun() -> server("Hello") end),
+    Pid ! {hello}.
+
+  server(Message) ->
+    io:fwrite("~p",[Message]).
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  "Hello"
+</blockquote>
+
+
+<p>
+   receive permite recibir mensajes que son enviados a los procesos.
+</p>
+<pre class="prettyprint">
+  -module(helloworld).
+  -export([loop/0,start/0]).
+
+  loop() ->
+     receive
+        {rectangle, Width, Ht} ->
+           io:fwrite("Area of rectangle is ~p~n" ,[Width * Ht]),
+           loop();
+        {circle, R} ->
+        io:fwrite("Area of circle is ~p~n" , [3.14159 * R * R]),
+        loop();
+     Other ->
+        io:fwrite("Unknown"),
+        loop()
+     end.
+
+  start() ->
+     Pid = spawn(fun() -> loop() end),
+     Pid ! {rectangle, 6, 10},
+     Pid ! {circle, 6},
+     Pid ! {square, 4, 4}.
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Area of rectangle is 60<br>
+  Area of circle is 113.09723999999999<br>
+  Unknown<br>
+</blockquote>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Rust</strong>:</li>
+</ul>
+<p>
+  Rust facilita la programación concurrente con las comprobaciones que se hacen en tiempo de compilación y con la gestión de memoria que realiza.
+</p>
+<p>
+  Hilos: creamos hilos con el comando thread::spawn, que recibe un closure y se lanza justo al definirlo.
+</p>
+<pre class="prettyprint">
+  use std::thread;
+
+  fn main() {
+      let child = thread::spawn(|| {
+          println!("Hello from a thread!");
+      });
+      let _ = child.join();
+  }
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Hello from a thread!
+</blockquote>
+
+<p>
+   Para esperar a que un hilo termine se puede utilizar el método join.
+</p>
+<p>
+  Podemos lanzar varios hilos dentro de un bucle
+</p>
+<p>
+  Se crea un Vec donde se meten todos los hilos para luego poder hacer un join y esperar a que todos terminen. Dentro del hilo se imprime por pantalla el índice de la iteración.
+</p>
+<pre class="prettyprint">
+  use std::thread;
+
+  fn main() {
+    let mut childs = vec![];
+
+    for i in 0..10 {
+        let child = thread::spawn(move || {
+            println!("Hello from a thread! {}", i);
+        });
+        childs.push(child);
+    }
+
+    for c in childs {
+        let _ = c.join();
+    }
+  }
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Hello from a thread! 1 <br>
+  Hello from a thread! 0 <br>
+  Hello from a thread! 5 <br>
+  Hello from a thread! 3 <br>
+  Hello from a thread! 7 <br>
+  Hello from a thread! 4 <br>
+  Hello from a thread! 8 <br>
+  Hello from a thread! 6 <br>
+  Hello from a thread! 2 <br>
+  Hello from a thread! 9 <br>
+
+</blockquote>
+
+
+<p>
+   Mutex y Arc: Para compartir una referencia a memoria entre hilos se usa Arc y Mutex en combinación.
+   Arc es un contador de referencias que se puede compartir entre hilos.
+   Mutex implementa el bloqueo asociado a la variable en concreto.
+
+</p>
+<pre class="prettyprint">
+  use std::thread;
+  use std::sync::{Arc, Mutex};
+
+  fn main() {
+      let mut childs = vec![];
+      let shared = Arc::new(Mutex::new(String::from("")));
+
+      for i in 0..10 {
+          let s = shared.clone();
+          let child = thread::spawn(move || {
+              println!("In thread {}", i);
+
+              let out = String::from("Thread ") + &i.to_string() + "\n";
+              s.lock().unwrap().push_str(&out);
+          });
+          childs.push(child);
+      }
+
+      for c in childs {
+          let _ = c.join();
+      }
+
+      println!("\nOutput:\n{}", *(shared.lock().unwrap()));
+  }
+
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  In thread 0 <br>
+  In thread 3 <br>
+  In thread 5 <br>
+  In thread 4 <br>
+  In thread 2 <br>
+  In thread 6 <br>
+  In thread 7 <br>
+  In thread 8 <br>
+  In thread 1 <br>
+  In thread 9 <br>
+ <br>
+  Output: <br>
+  Thread 0 <br>
+  Thread 3 <br>
+  Thread 5 <br>
+  Thread 4 <br>
+  Thread 2 <br>
+  Thread 6 <br>
+  Thread 7 <br>
+  Thread 8 <br>
+  Thread 1 <br>
+  Thread 9 <br>
+</blockquote>
+
+<p>
+   En este ejemplo se define la cadena dentro de un Mutex y este dentro de un Arc, así se comparte la memoria entre hilos.
+   <br>
+   channel crea un transmisor, tx, y un receptor, rx, en cada hilo, clona el transmisor y escribe en este la salida. En el send se puede enviar cualquier tipo de dato según se cree el channel, no se pueden enviar diferentes tipos de datos por el mismo canal.
+
+</p>
+<pre class="prettyprint">
+  use std::thread;
+  use std::sync::mpsc;
+
+  fn main() {
+      let (tx, rx) = mpsc::channel();
+      let mut childs = vec![];
+
+      for i in 0..10 {
+          let tx = tx.clone();
+          let child = thread::spawn(move || {
+              println!("In thread {}", i);
+
+              let out = String::from("Thread ") + &i.to_string();
+              tx.send(out).unwrap();
+          });
+          childs.push(child);
+      }
+
+      for c in childs {
+          let _ = c.join();
+      }
+
+      println!("\nOutput:");
+      loop {
+          match rx.try_recv() {
+              Ok(x) => println!("{}", x),
+              Err(_) => break
+          }
+      }
+  }
+
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  In thread 0 <br>
+  In thread 2 <br>
+  In thread 1 <br>
+  In thread 4 <br>
+  In thread 5 <br>
+  In thread 6 <br>
+  In thread 3 <br>
+  In thread 8 <br>
+  In thread 7 <br>
+  In thread 9 <br>
+ <br>
+  Output: <br>
+  Thread 0 <br>
+  Thread 2 <br>
+  Thread 1 <br>
+  Thread 4 <br>
+  Thread 5 <br>
+  Thread 6 <br>
+  Thread 8 <br>
+  Thread 7 <br>
+  Thread 9 <br>
+  Thread 3 <br>
+</blockquote>
+
+<ul>
+<li>Ejemplo de concurrecia en <strong>Crystal</strong>:</li>
+</ul>
+<p>
+  Crystal usa hilos llamados fibras para lograr concurrencia. Las fibras se comunican entre sí mediante canales, como en Go o Clojure, sin tener que recurrir a la memoria compartida o bloqueos.
+  <br>
+  Cuando se inicia un programa, se activa la fibra principal que ejecutará su código de nivel superior. Allí, uno puede engendrar (spawn) más fibras.
+  Los componentes de un programa son:
+  <ul>
+    <li>Runtime Scheduler, a cargo de ejecutar todas las fibras cuando sea el momento adecuado. </li>
+    <li>El bucle de eventos, que es solo otra fibra, está a cargo de tareas asíncronas, como por ejemplo archivos, sockets, pipes, señales y temporizadores.</li>
+    <li>Canales, para comunicar datos entre fibras.  Runtime Scheduler coordinará fibras y canales para su comunicación.</li>
+    <li>Garbage collector: para limpiar la memoria que "ya no se usa".</li>
+  </ul>
+  Fibras: Para generar una fibra se usa el comando spawn
+</p>
+
+<pre class="prettyprint">
+  spawn do
+    loop do
+      puts "Hello!"
+    end
+  end
+
+  sleep 1.second
+</pre>
+<p>
+  Este programa imprimirá "¡Hello!" por un segundo y luego saldra. Esto se debe a que la llamada de espera programará la fibra principal que se ejecutará en un segundo y luego ejecutará otra fibra "lista para ejecutarse", que en este caso es la de arriba.
+  <br><br>
+  Otra manera seria:
+</p>
+
+<pre class="prettyprint">
+  spawn do
+    loop do
+      puts "Hello!"
+    end
+  end
+
+  Fiber.yield
+</pre>
+
+<p>
+  Fiber.yield le dirá al scheduler que ejecute la otra fibra. Esto imprimirá "Hello" hasta los bloques de salida estándar y luego la ejecución continuará con la fibra principal y el programa saldrá.
+</p>
+
+<p>
+  Creando(spawn) una llamada:
+  <br><br>
+  El programa imprime los números del 0 al 9. Se crea un Proc y se invoca pasando I, por lo que el valor se copia y la fibra engendrada recibe una copia.
+</p>
+
+<pre class="prettyprint">
+  i = 0
+  while i < 10
+    proc = ->(x : Int32) do
+      spawn do
+        puts(x)
+      end
+    end
+    proc.call(i)
+    i += 1
+  end
+
+  Fiber.yield
+</pre>
+
+<p>
+  La salida es la siguiente:
+</p>
+
+<blockquote>
+  0 <br>
+  1 <br>
+  2 <br>
+  3 <br>
+  4 <br>
+  5 <br>
+  6 <br>
+  7 <br>
+  8 <br>
+  9 <br>
+</blockquote>
+
+<p>
+   Canales:
+   <br>
+   Cuando el programa ejecuta una recepción, esa fibra se bloquea y la ejecución continúa con la otra fibra. Cuando se ejecuta un envió, la ejecución continúa con la fibra que estaba esperando en ese canal.
+</p>
+
+<pre class="prettyprint">
+  channel = Channel(Int32).new
+
+  spawn do
+    puts "Before first send"
+    channel.send(1)
+    puts "Before second send"
+    channel.send(2)
+  end
+
+  puts "Before first receive"
+  value = channel.receive
+  puts value # => 1
+
+  puts "Before second receive"
+  value = channel.receive
+  puts value # => 2
+</pre>
+<p>
+  La salida es la siguiente:
+</p>
+<blockquote>
+  Before first receive <br>
+  Before first send <br>
+  1 <br>
+  Before second receive <br>
+  Before second send <br>
+  2 <br>
+
+</blockquote>
+
+
 <h1>
 <a id="presentacion" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Presentación</h1>
 <a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIOTNrUWlWXzBjNmc">Enlace</a>
- 
+<br>
+<a href="https://docs.google.com/a/unal.edu.co/presentation/d/1qwH2qt_KMMoaIlgN5xVuBpEylf9bC_TNVD3nE5foKBo/edit?usp=sharing">Enlace 2</a>
+
 <h1>
 <a id="taller" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Taller</h1>
-<a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIcEZQX2ttZU1mVFk">Enlace</a> 
+<a href="https://drive.google.com/open?id=0B_B-BoNU4ZaIcEZQX2ttZU1mVFk">Enlace</a>
+<br>
+<a href="https://docs.google.com/a/unal.edu.co/document/d/1wLW-AtC3ap86P4z547Tqse0R3X7bGChVAk6QHdkfu4E/edit?usp=sharing">Enlace 2</a>
 
 
 
@@ -475,28 +2020,78 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
 <a id="referencias" class="anchor" href="#referencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Referencias</h1>
 
 <ul>
-<li><a href="https://go-tour-es.appspot.com/#1">https://go-tour-es.appspot.com/#1</a></li>
-<li><a href="https://geekytheory.com/concurrencia-en-javascript/">https://geekytheory.com/concurrencia-en-javascript/</a></li>
-<li><a href="http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_3_01.pdf">http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_3_01.pdf</a></li>
-<li><a href="http://www.genbetadev.com/python/multiprocesamiento-en-python-threads-a-fondo-introduccion">http://www.genbetadev.com/python/multiprocesamiento-en-python-threads-a-fondo-introduccion</a></li>
-<li><a href="http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_1_01.pdf">http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_1_01.pdf</a></li>
-<li><a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-multicore-programming-primer-january-iap-2007/lecture-notes-and-video/l4-introduction-to-concurrent-programming/">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-multicore-programming-primer-january-iap-2007/lecture-notes-and-video/l4-introduction-to-concurrent-programming/</a></li>
-<li><a href="https://sites.google.com/a/unal.edu.co/sistemas-operativos/">https://sites.google.com/a/unal.edu.co/sistemas-operativos/</a></li>
-<li><a href="https://www.fing.edu.uy/tecnoinf/mvd/cursos/so/material/teo/so07-concurrencia.pdf">https://www.fing.edu.uy/tecnoinf/mvd/cursos/so/material/teo/so07-concurrencia.pdf</a></li>
+<li style="background-color: #FFFFFF;"><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://go-tour-es.appspot.com/#1">https://go-tour-es.appspot.com/#1</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://geekytheory.com/concurrencia-en-javascript/">https://geekytheory.com/concurrencia-en-javascript/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_3_01.pdf">http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_3_01.pdf</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.genbetadev.com/python/multiprocesamiento-en-python-threads-a-fondo-introduccion">http://www.genbetadev.com/python/multiprocesamiento-en-python-threads-a-fondo-introduccion</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_1_01.pdf">http://www.ctr.unican.es/asignaturas/procodis_3_ii/doc/procodis_1_01.pdf</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-multicore-programming-primer-january-iap-2007/lecture-notes-and-video/l4-introduction-to-concurrent-programming/">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-multicore-programming-primer-january-iap-2007/lecture-notes-and-video/l4-introduction-to-concurrent-programming/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://sites.google.com/a/unal.edu.co/sistemas-operativos/">https://sites.google.com/a/unal.edu.co/sistemas-operativos/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.fing.edu.uy/tecnoinf/mvd/cursos/so/material/teo/so07-concurrencia.pdf">https://www.fing.edu.uy/tecnoinf/mvd/cursos/so/material/teo/so07-concurrencia.pdf</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www2.ulpgc.es/hege/almacen/download/20/20233/tema1.pdf">http://www2.ulpgc.es/hege/almacen/download/20/20233/tema1.pdf</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://concurrencia-go.appspot.com/">http://concurrencia-go.appspot.com/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://buguroo.com/es/concurrencia-real-en-python">https://buguroo.com/es/concurrencia-real-en-python</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.noesispoint.com/jsp/scjp/SCJPch12.htm">http://www.noesispoint.com/jsp/scjp/SCJPch12.htm</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html">http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html</a></li>
 <li>Abraham Silberschatz-Operating System Concepts (9th,2012.12)</li>
-</ul>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
+">http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://1984.lsi.us.es/wiki-ssoo/index.php/Mensajería">http://1984.lsi.us.es/wiki-ssoo/index.php/Mensajería
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://sistop.gwolf.org/html/03_planificacion_de_procesos.html#sec-1">http://sistop.gwolf.org/html/03_planificacion_de_procesos.html#sec-1</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://es.wikipedia.org/wiki/Problema_productor-consumidor">https://es.wikipedia.org/wiki/Problema_productor-consumidor</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.slant.co/topics/6024/~programming-languages-for-concurrent-programming
+">https://www.slant.co/topics/6024/~programming-languages-for-concurrent-programming
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://blanchardspace.wordpress.com/2016/08/19/rust-lenguaje/">https://blanchardspace.wordpress.com/2016/08/19/rust-lenguaje/</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.genbetadev.com/frameworks/elixir
+">https://www.genbetadev.com/frameworks/elixir
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.genbetadev.com/frameworks/elixir
+">https://www.genbetadev.com/frameworks/elixir
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.ecured.cu/Lenguaje_de_programaci%C3%B3n_Go
+">https://www.ecured.cu/Lenguaje_de_programaci%C3%B3n_Go
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://wiki.haskell.org/Es/Introduccion
+">https://wiki.haskell.org/Es/Introduccion
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://g3ortega.com/programming_languages/2016/06/10/crystal-lenguaje-de-programacion-el-por-que-y-el-como.html">http://g3ortega.com/programming_languages/2016/06/10/crystal-lenguaje-de-programacion-el-por-que-y-el-como.html</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://en.wikipedia.org/wiki/Crystal_(programming_language)
+">https://en.wikipedia.org/wiki/Crystal_(programming_language)
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.tutorialspoint.com/erlang/erlang_concurrency.htm">https://www.tutorialspoint.com/erlang/erlang_concurrency.htm</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://concurrencia-go.appspot.com/
+">http://concurrencia-go.appspot.com/
+</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_II/Doc/Procodis_1_01.pdf">Programación concurrente - J.M. Drake </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://pegasus.javeriana.edu.co/~scada/concurrencia.html">http://pegasus.javeriana.edu.co/~scada/concurrencia.html </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://takuti.me/note/parallel-vs-concurrent/">Parallel programming vs. Concurrent Programming </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://repository.cmu.edu/cgi/viewcontent.cgi?article=1107&context=sei">Concepts of concurrent programming</a></li>
 
+
+
+</ul>
 </div>
 
 <h1>
 <a id="intregrantes" class="anchor" href="#intregrantes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intregrantes</h1>
 
 <ul>
+<li>Bryam Diaz</li>
+<li>Santiago Marquez</li>
+<li>Christian Vaca</li>
+<li>Kevin Mendez Paez</li>
+<li>Diego Alejandro Guevara Rocha</li>
 <li>Jhon Emmanuel Torres</li>
 <li>Raul Ramirez Penagos</li>
 <li>Diego Rodriguez</li>
 <li>Fabian David Conejo</li>
 <li>Milder Hernandez</li>
+<li>Diego Felipe Rodriguez Chaparro</li>
+<li>Nicolas Ricardo Enciso</li>
+<li>Camilo Alfonso Mosquera Benavides</li>
 </ul>
         </section>
 
@@ -517,6 +2112,6 @@ vector&lt;<span class="pl-k">double</span>&gt; <span class="pl-en">valorCal</spa
       </div>
     </div>
 
-  
+
   </body>
 </html>

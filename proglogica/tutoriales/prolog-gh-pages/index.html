@@ -8,8 +8,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src="js/prolog.js"></script>
   </head>
   <body>
+  
     <section class="page-header">
       <h1 class="project-name">Prolog</h1>
       <h2 class="project-tagline"></h2>
@@ -17,15 +19,62 @@
     </section>
 
     <section class="main-content">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Contenido</button>
+
       <p align="center">
 <img src="https://avatars2.githubusercontent.com/u/6884283?v=3&amp;s=200">
 </p>
 
 <hr>
 
+<h1 >Contenido</h1>
+<ul class="contenido" >
+  <li><a href="#1-introducci%C3%B3n-a-prolog" aria-hidden="true">1. Introducción a Prolog</a></li>
+  <li><a href="#2-sintaxis" aria-hidden="true">2. Sintaxis</a></li>
+  <ul class="contenido">
+    <li><a href="#21-t%C3%A9rminos" aria-hidden="true">2.1 Términos</a></li>
+    <li><a href="#22-programa" aria-hidden="true">2.2 Programa</a></li>
+  </ul>
+  <li><a href="#3-hechos" aria-hidden="true">3. Hechos</a></li>
+  <li><a href="#4-consultas" aria-hidden="true">4. Consultas</a></li>
+  <ul class="contenido">
+    <li><a href="#41-conjunciones-de-objetivos" aria-hidden="true">4.1 Conjunciones de objetivos</a></li>
+  </ul>
+  <li><a href="#5-reglas" aria-hidden="true">5. Reglas</a></li>
+  <ul class="contenido">
+    <li><a href="#51-reglas-recursivas" aria-hidden="true">5.1 Reglas recursivas</a></li>
+  </ul>
+  <li><a href="#6--backtracking" aria-hidden="true">6.  Backtracking</a></li>
+  <li><a href="#7-expresiones" aria-hidden="true">7. Expresiones</a></li>
+  <ul class="contenido">
+    <li><a href="#71-construcci%C3%B3n-de-expresiones-aritm%C3%A9ticas" aria-hidden="true">7.1 Construcción de expresiones aritméticas</a></li>
+    <li><a href="#72-comparaci%C3%B3n-de-t%C3%A9rminos" aria-hidden="true">7.2 Comparación de términos</a></li>
+    <li><a href="#73-comparaci%C3%B3n-de-expresiones" aria-hidden="true">7.3 Comparación de expresiones</a></li>
+  </ul>
+  <li><a href="#8-predicados-predefinidos" aria-hidden="true">8. Predicados predefinidos</a></li>
+  <li><a href="#9-listas" aria-hidden="true">9. Listas</a></li>
+  <ul class="contenido">
+    <li><a href="#91-unificaci%C3%B3n-y-listas" aria-hidden="true">9.1 Unificación y listas</a></li>
+    <li><a href="#92-listas-y-recursi%C3%B3n" aria-hidden="true">9.2 Listas y recursión</a></li>
+    <li><a href="#93-funciones-predefinidas" aria-hidden="true">9.3 Funciones predefinidas</a></li>
+  </ul>
+  <li><a href="#10-arboles" aria-hidden="true">10. Arboles</a></li>
+  <ul class="contenido">
+    <li><a href="#101-representacion2" aria-hidden="true">10.1 Otra representación de arboles </a></li>
+      <li><a href="#102-representacion-nario" aria-hidden="true">10.2 Árboles N-arios </a></li>
+  </ul>
+  <li><a href="#11-ejemplo-grafos" aria-hidden="true">11. Ejemplo Grafos</a></li>
+  <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
+  <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">13. Ejemplo Sistema Experto</a></li>
+  <li><a href="#14-Aplicaciones" aria-hidden="true">14. Aplicaciones</a></li>
+  <li><a href="#15-Des-Ven" aria-hidden="true">15. Desventajas / Ventajas</a></li>
+
+</ul>
 <h1>
 <a id="1-introducción-a-prolog" class="anchor" href="#1-introducci%C3%B3n-a-prolog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Introducción a Prolog</h1>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5byrm2q5k34" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      
 <p>Prolog es un lenguaje de programación declarativo que se utiliza para resolver problemas en los que existen objetos y las relaciones entre ellos.  Los lenguajes declarativos se diferencian de los lenguajes imperativos en que están basados en
 formalismos abstractos (Prolog tiene sus fundamentos en la lógica de predicados o de primer orden), por lo tanto su semántica no depende de la máquina en la que se ejecutan. Busca obtener conocimiento declarando hechos sobre los objetos y sus relaciones, creando reglas sobre dichos objetos y relaciones y realizando preguntas en ese dominio. Está basado en los siguientes mecanismos básicos: unificación, estructuras de datos basadas en árboles y backtracking.</p>
 
@@ -59,15 +108,19 @@ En Prolog se distinguen dos tipos de constantes:</p>
 <em>Números</em>: Este tipo de constantes se utiliza para representar números enteros y números reales, para poder realizar operaciones aritméticas entre ellos.
 Los números enteros se expresan con la notación decimal habitual, ejemplo (0,1,-2124,332,etc).
 Los números reales se pueden representar con la notación decimal (ejemplo 1.34, -0.345, etc) o también en notación exponencial (por ejemplo 4.3E6, -0.1e+3, 12.03e-2). </li>
+<p><img src="images/ej2.png"></p>
 <li>
 <em>Atomos o functores</em>: Se utilizan para nombrar objetos, propiedades o relaciones. Deben empezar en minúscula (ejemplo luis, pedro, gato, edad, :-, ?-).</li>
+<p><img src="images/ej1.png"></p>
 </ul>
 </li>
 <li><p><strong>Variables:</strong> Las variables en Prolog se representan mediante cadenas formadas por letras, dígitos y el símbolo
 de subrayado,también con una letra mayúscula en su inicio, una excepción es la variable anónima ‘_’. (ejemplo X, Y, Resultado, _nombre, _).</p></li>
+<p><img src="images/ej3.png"></p>
 <li><p><strong>Estructuras:</strong> Son términos compuestos por otros términos. Se construyen mediante un símbolo de función, denominado
 <strong>functor</strong> que se define con un átomo, seguido entre paréntesis, por una conjunto de términos separados por comas, denominados argumentos (Ejemplos: fecha(10,mayo,2011), punto(X,Y), recta(punto(11,21), punto(31,25))).
 OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functor y el paréntesis abierto antes de los argumentos. Por ejemplo, <em>punto (X,Y)</em> no es una estructura compuesta correcta y generará un error de compilación.</p></li>
+<p><img src="images/ej4.png"></p>
 </ul>
 
 <h2>
@@ -112,11 +165,11 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
 </p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/lcvptfecc1p3am0/hechos1.png?dl=1">
+<img src="images/hechos1.png">
 </p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/fidqag5rt0wodqw/hechos2.png?dl=1">
+<img src="images/hechos2.png">
 </p>
 
 
@@ -154,23 +207,23 @@ OJO!: Al escribir una estructura, no puede haber ningún espacio entre el functo
 <p> Otro ejemplo de familias</p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/d1huz0huc8751t6/hechos-familias-padre.png?dl=1">
+<img src="images/hechos-familias-padre.png">
 </p>
 <br/>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/gc7cc7cve06xpbz/hechos-familias-madre.png?dl=1">
+<img src="images/hechos-familias-madre.png">
 </p>
 
 <p>Reglas para poder hallar relación familiar.</p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/4o7xev6pyn83ph6/reglas-familias-1.png?dl=1">
+<img src="images/reglas-familias-1.png">
 </p>
 <br/>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/3jt827zfjuj0aew/reglas-familias-2.png?dl=1">
+<img src="images/reglas-familias-2.png">
 </p>
 
 
@@ -354,12 +407,17 @@ Para determinar un antepasado de forma recursiva necesitamos dos casos: El caso 
 <p>En el siguiente ejemplo podemos ver que si consultamos K(Y), donde Y puede ser “a” o “b”. En este caso prolog va ir a lo más profundo del árbol en busca de los “hechos” , para ver como establecimos la base del conocimiento. Así se puede ver que h(a), da error dado a que no se encuentra en los hechos y en cambio retorna h(b) hasta K(Y)  y por último Y tomaría el valor de “b”.</p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/8s8sse6w54lhpw6/backtrack1.png?dl=1">
+<img src="images/backtrack1.png">
 </p>
 
 <p> Ejemplo práctico de cómo hallar el factorial de un número .</p>
 <p align="center">
-<img src="https://www.dropbox.com/s/szx7v7m5bqdg9ce/factorial.png?dl=1">
+<img src="images/factorial.png">
+</p>
+
+<p> Ejemplo práctico - fibonacci .</p>
+<p align="center">
+<img src="images/fibo.png">
 </p>
 
 
@@ -442,6 +500,14 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 <td>cociente entero de la división de X por Y</td>
 </tr>
 <tr>
+<td>X^Y</td>
+<td>potencia entera de X a la Y</td>
+</tr>
+<tr>
+<td>X**Y</td>
+<td>potencia real de X a la Y</td>
+</tr>
+<tr>
 <td>X mod Y</td>
 <td>resto de la división entera de X por Y</td>
 </tr>
@@ -450,9 +516,6 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 <td>valor absoluto de X</td>
 </tr>
 <tr>
-<td>abs(X)</td>
-<td>valor absoluto de X</td>
-</tr>
 <tr>
 <td>acos(X)</td>
 <td>arco coseno de X</td>
@@ -599,9 +662,11 @@ El primer objetivo que intentará analizar es <code>sevende(Y).</code></p>
 <p>Cuando se quiere comparar expresiones(ej:predicados, términos complejos) se añade un @ inmediatamente después de la primera expresión (X @< Y)</p>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/maupbizx2p1pfcf/%40eg.png?dl=1">
+<img src="images/@eg.png">
 </p>
 
+<p>Algunos ejemplos del uso de expresiones:</p>
+<p><img src="images/expr.png"></p>
 
 <p>Los siguientes predicados predefinidos comparan términos haciendo una evaluación
 de expresiones:</p>
@@ -650,8 +715,8 @@ de expresiones:</p>
 <td>El objetivo var(X) se cumple si X es una variable no instanciada.</td>
 </tr>
 <tr>
-<td>novar</td>
-<td>El objetivo novar(X) se cumple si X es una variable instanciada</td>
+<td>nonvar</td>
+<td>El objetivo nonvar(X) se cumple si X es una variable instanciada</td>
 </tr>
 <tr>
 <td>atom</td>
@@ -749,6 +814,11 @@ de expresiones:</p>
 
 <p>Una lista es una tipo concreto de estructura de datos simple. Es una secuencia ordenada de elementos que puede tener cualquier longitud. Un elemento puede ser cualquier tipo de dato e incluso otra lista.  En Prolog las listas están formadas por cabeza y cola.  Se representan como una serie de elementos separados por comas y encerrados entre corchetes. Por ejemplo en la lista:</p>
 
+<p align="center">
+    <img height="300" src="images/imagenListas2.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img height="300" src="images/imagenListas1.png">
+    <br>Notación de predicado para listas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notación de corchetes cuadrados.
+</p>
 <pre><code>     [a, b, c, d]
 </code></pre>
 
@@ -759,7 +829,7 @@ de expresiones:</p>
 <tr>
 <th>Lista</th>
 <th>Cabeza</th>
-<th>COla</th>
+<th>Cola</th>
 </tr>
 </thead>
 <tbody>
@@ -771,7 +841,7 @@ de expresiones:</p>
 <tr>
 <td>[a]</td>
 <td>a</td>
-<td><a href="lista%20vac%C3%ADa"></a></td>
+<td>[]</td>
 </tr>
 <tr>
 <td>[]</td>
@@ -890,26 +960,29 @@ El esquema general es:</p>
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/lista6.png?raw=true"></p></li>
 <li><p>f). Sumar los elementos de una lista
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/lista7.png?raw=true"></p></li>
-<li><p>g.)Reglas basicas aplicadas a las listas. <img src="https://www.dropbox.com/s/k67kkt5mv0o8set/final-lista.png?dl=1"></p></li>
-<li><p>i.) Algoritmo para ordenar una lista usando Merge Sort. <img src="https://www.dropbox.com/s/jfafc4jipmvf9jo/merge-sort.png?dl=1"></p></li>
+<li><p>g.)Reglas basicas aplicadas a las listas. <img src="images/final-lista.png"></p></li>
+<li><p>i.) Algoritmo para ordenar una lista usando Merge Sort. <img src="images/merge-sort.png"></p></li>
 </ul>
 
 <h2>
 <a id="93-funciones-predefinidas" class="anchor" href="#93-funciones-predefinidas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9.3 Funciones predefinidas</h2>
 <ul>
-<li><strong>Append: </strong>Permite concatenar dos listas, obtener sublistas y generar todas las combinaciones de listas
-<p align="center">
-<img src="https://www.dropbox.com/s/bp5t1c7zy9i50os/append.png?dl=1">
-</p>
-</li>
-
+<li><strong>Is_list: </strong>Determina si un término es lista</li>
 <li><strong>Member: </strong>Esta función es muy útil para “iterar” sobre la lista así como revisar si un item pertence a la lista.
 <p align="center">
-<img src="https://www.dropbox.com/s/jc6zfbij6i3gch9/member.png?dl=1">
+<img src="images/member.png">
 </p>
 </li>
 <li><strong>Length: </strong>Permite obtener la longitud de una lista</li>
-<li><strong>Sort: </strong>Permite ordenar una lista</li>
+<li><strong>Append: </strong>Permite concatenar dos listas, obtener sublistas y generar todas las combinaciones de listas
+<p align="center">
+<img src="images/append.png">
+</p>
+</li>
+<li>
+    <strong>Sort: </strong>Permite ordenar una lista
+    
+</li>
 </ul>
 
 
@@ -988,21 +1061,56 @@ El esquema general es:</p>
 <a id="101-representacion2" class="anchor" href="#101-representacion2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10.1 Otra representación de arboles </h2>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/z1qtngic04h5wwq/arbol1.png?dl=1">
+<img src="images/arbol1.png">
 </p>
 
 <br/>
 <p align="center">
-<img src="https://www.dropbox.com/s/7td41b1q4n31ujw/arbol2.png?dl=1">
+<img src="images/arbol2.png">
 </p>
 
 <br/>
 <p align="center">
-<img src="https://www.dropbox.com/s/3br5j9mu16r899b/Arbol-ejemplo.png?dl=1">
+<img src="images/Arbol-ejemplo.png">
 </p>
 
+<h2>
+    <a id="102-representacion-nario" class="anchor" href="#102-representacion-nario" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10.2 Árboles N-arios
+</h2>
 
+<p>
+    Para definir un árbol n-ario, empleamos listas, en las cuales la cabeza será el nodo padre y todos los elementos de la cola serán el conjunto de nodos hijos.
+    <br/><br/>Entonces, si tenemos: <pre><code>mi_arbol_n_ario([7, [0.9], [15], [[42, ar]], [3.333]])</code></pre>
+    Corresponderá al siguientre árbol:
+</p>
+<p align="center">    
+    <img src="images/arbol-n-ario.png">
+</p>
+<p>
+    Para verificar que una estructura sí es lista
+    
+<pre><code>es_arbol_n_ario([]).
+es_arbol_n_ario([_ | Hijos]) :- iterar_hijos(Hijos).
 
+iterar_hijos([]).
+iterar_hijos([Hijo | Lista]) :- es_arbol_n_ario(Hijo), iterar_hijos(Lista).</code></pre>
+
+Implementación de recorrido preorder.<br><br>
+<pre><code>preorder([], []).
+preorder([Padre | Hijos], Lista) :- iterar_preorder(Hijos, L),
+        append([Padre], L, Lista).
+
+iterar_preorder([], []).
+iterar_preorder([Hijo | Lista], RecorridoHermanos) :- preorder(Hijo, Recorrido),
+        iterar_preorder(Lista, RecorridoHermano),
+    	append(Recorrido, RecorridoHermano, RecorridoHermanos).</code></pre>
+Árbol de ejemplo.<br><br>      
+<pre><code>mi_arbol_n_ario( [5, [8, [7, [9]], [10]], [11, [1]]]).</code></pre>
+</p>
+<p align="center"><img src="images/arbol-n-ario-ej.png"></p>
+<pre><code>?- mi_arbol_n_ario(Arbol), es_arbol_n_ario(Arbol), preorder(Arbol, Recorrido).
+Arbol = [5, [8, [7, [9]], [10]], [11, [1]]],
+Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <h1>
 <a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplo Grafos</h1>
 
@@ -1020,7 +1128,7 @@ El esquema general es:</p>
 <a id="12-ejemplo-autómatas" class="anchor" href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>12. Ejemplo Autómatas</h1>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/xuq8yd5phq0ekq0/automatas1.png?dl=1">
+<img src="images/automatas1.png">
 </p>
 
 
@@ -1046,38 +1154,87 @@ El esquema general es:</p>
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata3.png?raw=true"></p>
 
 <h1>
-<a id="13-Aplicaciones" class="anchor" href="#13-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Aplicaciones</h1>
+<a id="13-ejemplo-sistema-experto" class="anchor" href="#14-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Ejemplo Sistema Experto</h1>
+
+
+<p>Implementar un Sistema Experto en prolog que acepte el ayude al diagnostico de un conjunto de enfermedades:</p>
+
+<p>Un sistema experto se define como un sistema que proveen una solución a los problemas en rangos específicos de conocimiento tan cercanas como un humano experto lo pudiese hacer, en prolog se pueden implementar con ayuda de los hechos conocidos por un experto humano. 
+</p>
+
+<p>Vamos a ver cada parte del sistema y que funcion cumple:</p>
+
+<p align="center">
+<img src="images/Sistema Experto 1.png">
+</p>
+
+<p>La primera parte, la regla evaluar es la cual inicia el proceso, esta asu vez llama a hipotesis, para luego de evaluarla escribir en consola la solucion que considera correcta segun los datos que tiene disponibles</p>
+
+<p align="center">
+<img src="images/Sistema Experto 2.png">
+</p>
+
+<p>En la regla "hipotesis" se enumeran las enfermedades las cuales puede diagnosticar el sistema experto</p>
+<p align="center">
+<img src="images/Sistema Experto 3.png">
+</p>
+<p>Cada enfermedad tiene una regla la cual liga los sintomas con la respectiva enfermedad, ademas de mostar los respectivos medicamentos recomenaddos</p>
+<p align="center">
+<img src="images/Sistema Experto 4.png">
+</p>
+<p>Cada regla de enfermedad usa "verificar" para reconocer si se sabe si el usuario tiene o no un sintoma en especifico, el hecho "si(sintoma)" no se encuentra en la base de conocimiento del sistema entonces se hace el llamado a la regla "preguntar(sintoma)"</p>
+<p align="center">
+<img src="images/Sistema Experto 5.png">
+</p>
+
+<p>La regla auxiliar "preguntar" sirve para recibir los datos del usuario, esta hace uso de la regla assert que trae prolog por defecto para poder añadir nuevos hechos a la base de conocimiento del sistema</p>
+
+<p>Un ejemplo de la salida del sistema experto:</p>
+
+<p align="center">
+<img src="images/Sistema Experto 6.png">
+</p>
+<a href="https://swish.swi-prolog.org/p/fgRDDSpC.swinb">Ejemplo del sistema en Notebook de swish</a>
+
+<h1>
+<a id="14-Aplicaciones" class="anchor" href="#14-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Aplicaciones</h1>
 
 
 <p align="center">
-<img src="https://www.dropbox.com/s/awoodott3tfz6ta/Aplicaciones.png?dl=1">
+<img src="images/Aplicaciones.png">
 </p>
 
 <h1>
-<a id="14-Des-Ven" class="anchor" href="#14-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Desventajas / Ventajas</h1>
+<a id="15-Des-Ven" class="anchor" href="#15-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Desventajas / Ventajas</h1>
 
 <p align="center">
-<img src="https://www.dropbox.com/s/ebl5btplkviw02b/des-ven.png?dl=1">
+<img src="images/des-ven.png">
 </p>
-
 
 <hr>
 <p> Tutorial sobre conceptos básicos.<a href="https://www.dropbox.com/s/gxev7r4rhxrd66e/Prolog.pdf?dl=1"> Enlace de descarga.</a> </p>
 <p align="center">
   <embed src="Prolog.pdf" width="700" height="385"type='application/pdf'>
 </p>
-
-
-
+<p> Tutorial + IDE Online .<a href="http://swish.swi-prolog.org/"> Ide Online.</a> </p>
+<p align="center">
+  <embed src="TutorialProlog2017I.pdf" width="700" height="385"type='application/pdf'>
+</p>
+    <br>
+    <a href="https://swish.swi-prolog.org/p/Tutorial%20de%20prolog.swinb">Tutorial de Prolog en Notebook de SWISH
+    <br><br>
+    <img src="images/TutorialProlog.PNG"></a>
 <hr>
-
 <h2>
 <a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. Los ejercicios trabajados pueden encontrarlos en este <a href="http://swish.swi-prolog.org/p/tutorialprolog.swinb">notebook</a>
 </h2>
 
 <p>Este tutorial fue desarrollado por Mónica Pineda, Jorge Bonilla y Diego Poveda.</p>
 <p>Colaboradores : Jaime Andres Vargas y Jonathan Alberto Ortiz</p>
-
+<p>                Santiago Carvajal Castañeda y Mario Andrés Moreno</p>
+<p>                Julián Esteban Salomón y Cristian David González</p>
+<p>                Cristian Laiton y David Hormaza.</p>
+<p>                Luis Castro y Wilson Piravaguen.</p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
 
