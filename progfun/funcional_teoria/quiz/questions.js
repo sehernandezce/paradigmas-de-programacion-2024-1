@@ -20,4 +20,9 @@ var questions = [
     new Question("Respecto al paradigma de programación funcional, podemos afirmar que:", ["Usa funciones como objetos que pueden ser retornados o pasados como parámetros", "Limita el uso de recursión", "NO permite cambios de los valores de una variable modificando la dirección de memoria a la que apunta ", "Permite hacer depuración primaria a través de pruebas de escritorio dado su manejo de variables"], 0),
 
     new Question("¿Qué son funciones puras?", ["Funciones que tienen funciones anidadas", "Funciones que ejecutan una tarea con el mínimo de argumentos posibles", "Funciones que implementan recursividad", "Funciones que no tienen variables locales"], 1),
+  
+    new Question("¿En programacion funcional que son los efectos secundarios ?", ["Referencias a los estados en los que puede estar el código ", "Variaciones imprevistas en el codigo", "variaciones en la ejecucion del codigo", "Resultados aleatorios al momento de ejecutar un programa"], 0),
+    
+    new Question("Haciendo uso de la notacion lambda como se expresaria la siguiente funcion?  f(x)=(x*2)+3 ", ["λ(x*2) + λ3", "(λx*2)+λ3", " λx. (x*2)+3", "λf(x). (λx*2)+λ3"], 2),
+    
 ];
