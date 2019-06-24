@@ -66,8 +66,9 @@
   <li><a href="#11-ejemplo-grafos" aria-hidden="true">11. Ejemplo Grafos</a></li>
   <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
   <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">13. Ejemplo Sistema Experto</a></li>
-  <li><a href="#14-Aplicaciones" aria-hidden="true">14. Aplicaciones</a></li>
-  <li><a href="#15-Des-Ven" aria-hidden="true">15. Desventajas / Ventajas</a></li>
+  <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">14. Ejemplo QuickSort</a></li>
+  <li><a href="#15-Aplicaciones" aria-hidden="true">15. Aplicaciones</a></li>
+  <li><a href="#16-Des-Ven" aria-hidden="true">16. Desventajas / Ventajas</a></li>
 
 </ul>
 <h1>
@@ -1154,7 +1155,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata3.png?raw=true"></p>
 
 <h1>
-<a id="13-ejemplo-sistema-experto" class="anchor" href="#14-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Ejemplo Sistema Experto</h1>
+<a id="13-ejemplo-sistema-experto" class="anchor" href="#13-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Ejemplo Sistema Experto</h1>
 
 
 <p>Implementar un Sistema Experto en prolog que acepte el ayude al diagnostico de un conjunto de enfermedades:</p>
@@ -1196,8 +1197,33 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 </p>
 <a href="https://swish.swi-prolog.org/p/fgRDDSpC.swinb">Ejemplo del sistema en Notebook de swish</a>
 
+<h1><a id="14-ejemplo-quick-sort" class="anchor" href="#14-ejemplo-quick-sort" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Ejemplo de QuickSort</h1>
+
+<p>Quick sort es uno de los algoritmos de ordenamiento más usados, veremos como sería una de las implementaciones en Prolog.</p>
+
+<p>
+  Sabemos que en QuickSort se utiliza un elemento pivote el cual partirá la lista en dos (los menores del pivote y los mayores a él). Recordar que quicksort usa la estrategia de dividir y vencer.
+  Por lo cual, QuickSort lo podemos ver como dividir dos listas, ordenar cada una de esas listas con QuickSort y posterior a ello, juntar cada lista ordenada.
+</p>
+<p align="center">
+  <img src="images/QuickSort 1.png">
+</p>
+<p>
+  Ahora debemos definir <b>separar</b> que es la parte más interesante del programa. <b>separar</b> (el predicado) recibirá un pivote, una lista, unos menores y unos mayores.
+  En caso se que el elemento A sea menor que el pivote le haremos append a la lista de mayores [A|May], en caso contrario lo enviaremos como tercer parámetro para la lista de menores.
+</p>
+
+<p align="center">
+  <img src="images/QuickSort 2.png">
+</p>
+
+<p>
+  Nota: El caso base de <b>separar</b> es cuando las dos listas están vacías y no importa el pivote que nos llegue.
+</p>
+
+<a href="https://swish.swi-prolog.org/p/PL2019-I.swinb">QuickSort más otros ejemplos lo podemos encontrar en este Notebook</a>
 <h1>
-<a id="14-Aplicaciones" class="anchor" href="#14-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Aplicaciones</h1>
+<a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Aplicaciones</h1>
 
 
 <p align="center">
@@ -1205,7 +1231,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 </p>
 
 <h1>
-<a id="15-Des-Ven" class="anchor" href="#15-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Desventajas / Ventajas</h1>
+<a id="16-Des-Ven" class="anchor" href="#16-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>16. Desventajas / Ventajas</h1>
 
 <p align="center">
 <img src="images/des-ven.png">
