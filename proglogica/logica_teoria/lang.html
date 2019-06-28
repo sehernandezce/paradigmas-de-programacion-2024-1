@@ -296,7 +296,9 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Hechos">Hechos</h3>
-                    <p>Declaración, cláusula o proposición cierta o falsa, el hecho establece una relación entre objetos.</p>
+                    <p>Expresión atómica (declaración, cláusula o proposición) con un valor de verdad que establece una relación entre objetos.
+                        Utilizados a para declarar verdades desde el principio de la ejecucción de un programa.
+                    </p>
                     <p>Son las sentencias más sencillas. Un hecho es una fórmula atómica o átomo: \(p(t_{1}, ..., t_{n})\) e indica
                         que se verifica la relación (predicado) <b>p</b> sobre los objetos (términos) \(t_{1}, ..., t_{n}\).</p>
                     <p><img src="imagenes/hecho.PNG" style="max-width:100%; width: 30%; max-width: none"></p>
@@ -310,8 +312,8 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Reglas">Reglas</h3>
-                    <p>Implicación o inferencia lógica que deduce nuevo conocimiento, la regla permite definir nuevas relaciones
-                        apartir de otras ya existentes</p>
+                    <p>Conjunto de proposiciones lógicas (implicaciones/inferencias) que permiten inferir el valor de verdad de nuevas 
+                        proposiciones, lo que permite generar conocimiento. Utilizadas para delimitar el problema. </p>
                     <p><img src="imagenes/regla.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
 
                 </div>
@@ -323,8 +325,10 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Consultas">Consultas</h3>
-                    <p>se especifica el problema, la proposición a demostrar o el objetivo Partiendo de que los humanos son
-                        mortales y de que Sócrates es humano, deducimos que <i> Pepito es mortal</i></p>
+                    <p>Una consulta es una proposición construida con el propósito de ser demostrada/desmentida o de encontrar 
+                        el conjunto de valores que la convierten verdadera. En las consultas se especifica el problema a resolver.
+                        Partiendo deque los humanos son mortales y de que Sócrates es humano (ejemplos anteriores), 
+                        deducimos que <i> Pepito es mortal</i>.</p>
                     <p><img src="imagenes/consulta.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
 
                 </div>
@@ -399,20 +403,27 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h2 id="Ventajas-y-Desventajas-del-uso-de-este-paradigma">Ventajas y Desventajas del uso de este paradigma</h2>
-                    <h4 id="Ventajas">Ventajas</h4>
+                    <h5 id="Ventajas">Ventajas</h5>
+                    <li>Descripciones independientes de la implementación (unificación semántica).</li>
+
                     <li>Puede mejorarse la eficiencia modificando el componente de control sin tener que modificar la lógica
                         del algoritmo.</li>
+                    <li>Base de conocimiento fácilmente escalable.</li>
                     <li>Relaciones multipropósito.</li>
-                    <li>Simplicidad.</li>
+                    <li>Expresión simple y precisa de los problemas.</li>
                     <li>Generación rápida de prototipos e ideas complejas.</li>
                     <li>Sencillez en la implementación de estructuras complejas.</li>
                     <li>Potencia.</li>
-                    <h4 id="Desventajas">Desventajas</h4>
-                    <li>Altamente ineficiente.</li>
-                    <li>Pocas áreas de aplicación</li>
-                    <li>No existen herramientas de depuración efectivas.</li>
+
+                    <h5 id="Desventajas">Desventajas</h5>
+                    <li>Dependiendo del problema a solucionar, la implementación y el motor de inferencia, 
+                        puede llegar a ser extremadamente ineficiente.</li>
+                    <li>Pocas y muy específicas áreas de aplicación.</li>
+                    <li>Existen muy pocas herramientas de depuración, en su mayoría poco efectivas.</li>
                     <li>En problemas reales, es poco utilizado.</li>
-                    <li>Si el programa no contiene suficiente información para contestar una consulta responde false.</li>
+                    <li>Si el programa no contiene suficiente información para responder una consulta 
+                        la respuesta puede ser una que se preste para malentendidos.</li>
+                    <li>Inferencia limitada por su base de conocimiento.</li>
                 </div>
             </div>
         </div>
