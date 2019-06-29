@@ -43,3 +43,8 @@ h3 {
   position: inside !important;
   display: list-item !important;
 }
+
+.frase {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
