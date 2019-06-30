@@ -14,7 +14,7 @@
 
 <body>
 <nav class="custom-blue" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="introduccion.html" class="brand-logo">Programación Lógica</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="introduccion.html" class="brand-logo">Prog. Lógica</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="introduccion.html">Introducción</a></li>
             <li><a href="lang.html">Programación Lógica</a></li>
@@ -37,9 +37,8 @@
         <div class="inner_cell">
             <div class="text_cell_render border-box-sizing rendered_html">
                 <h2 id="Lenguajes">Lenguajes:</h2>
-                <p>Ejemplos en SWI-Prolog: <a href="http://swish.swi-prolog.org/p/Paradigma%20Programacion%20Logica.swinb">Ejemplos listos para ejecutar</a></p>
                 <p>Los siguientes son algunos de los lenguajes de programación que emplean como paradigma la <b>programación lógica</b>.</p>
-                <ul>
+                
                     <li>Prolog</li>
                     <li>Mercury</li>
                     <li>CLP (FD)</li>
@@ -54,8 +53,9 @@
                     <li>PALs</li>
                     <li>Actor Prolog</li>
                     <li>SequenceL</li>
-                </ul>
-                <h3 id="ProLog">Prolog :</h3>
+                    <p><a href="http://swish.swi-prolog.org/p/Paradigma%20Programacion%20Logica.swinb">Ejemplos en SWI-Prolog listos para ejecutar.</a></p>
+                
+                <h3 id="ProLog">Prolog:</h3>
                 <p>Es un Lenguaje de Programación diseñado para representar y utilizar el conocimiento que se tiene sobre
                     un determinado dominio. Los programas en Prolog responden preguntas sobre el tema del cual tienes
                     conocimiento.</p>
@@ -71,15 +71,15 @@
                     del conocimiento obtenido por el conjunto de reglas dadas.</p>
                 <p><img src="imagenes/prologhw.PNG" style="max-width:100%; width: 40%; max-width: none"></p>
                 <ul>
-                    <li>Alain Colmerauer y Philippe Roussel (Finales de los 70’s)</li>
+                    <li>Alain Colmerauer y Philippe Roussel (Finales de los 70’s).</li>
                     <li>Proviene del francés PROgrammation en LOGique.</li>
-                    <li>Producción interpretada</li>
-                    <li>Se basa en Lógica de primer orden</li>
-                    <li>Es declarativo</li>
-                    <li>Backtracking</li>
-                    <li href="https://swish.swi-prolog.org/">Compilador de ProLog online<li>
+                    <li>Producción interpretada.</li>
+                    <li>Se basa en Lógica de primer órden.</li>
+                    <li>Es declarativo.</li>
+                    <li>Backtracking.</li>
+                    <li>Compilador de ProLog online: <a href="https://swish.swi-prolog.org/">https://swish.swi-prolog.org/</a>.<li>
                 </ul>
-                <h3 id="Mercury">Mercury :</h3>
+                <h3 id="Mercury">Mercury:</h3>
                 <p>
                     Mercury es un lenguaje de alto nivel (es decir, no se preocupa de problemas como la reserva y liberación de memoria) derivado
                     de Prolog, pero con una implementación que le hace ser más útil para representar y tratar problemas
@@ -91,7 +91,7 @@
                     solventando así uno de los mayores problemas a los que se enfrentaban los lenguajes de programación
                     lógicos.
                 </p>
-                <li>Es puramente declarativo Æ los predicados y funciones en Mercury siempre obtienen conclusiones lógicas</li>
+                <li>Es puramente declarativo Æ los predicados y funciones en Mercury siempre obtienen conclusiones lógicas.</li>
                 <li>La comunicación con el programa es mediante una librería de funciones que necesitan como parámetro el
                     estado anterior del “mundo” además del resto de parámetros que considere el usuario necesario y dan
                     como salida el nuevo estado del “mundo” además de otros resultados específicos.</li>
@@ -110,13 +110,13 @@
                     predicados que se pueden exportar a otros módulos y otra sección <i>mplementation</i> donde están
                     las definiciones de las entidades exportadas así como definiciones de tipos y predicados no exportables,
                     locales al módulo.</li>
-                <li>El compilador genera código muy eficiente</li>
+                <li>El compilador genera código muy eficiente.</li>
                 <p><img src="imagenes/mer003.PNG" style="max-width:100%; width: 40%; max-width: none"></p>
                 <ul>
-                    <li>Fergus Henderson, Thomas Conway y Zoltan Somogyi (1995)</li>
-                    <li>Sintaxis parecida a PROLOG</li>
+                    <li>Fergus Henderson, Thomas Conway y Zoltan Somogyi (1995).</li>
+                    <li>Sintaxis parecida a ProLog.</li>
                     <li>Diseñado para resolver “aplicaciones del mundo real” de forma robusta.</li>
-                    <li>Soporta polimorfismo</li>
+                    <li>Soporta polimorfismo.</li>
                     <li>Un programa escrito en Mercury es más rápido que uno equivalente realizado en Prolog.</li>
                 </ul>
                 <h3 id="CLP-(FD)">CLP (FD)</h3>
@@ -127,7 +127,7 @@
                     de variables” (donde también se especifica su domino), “definición de restricciones” (sobre las
                     variables) y “labeling”, donde se instancian las variables por enumeración.
                 </p>
-                <b>Ejemplo:</b> SEND MORE MONEY puzzle
+                <b>Ejemplo:</b> SEND MORE MONEY puzzle.
                 <img src="imagenes/clp.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
                 <h3 id="Godel">Godel</h3>
                 <p>
@@ -164,19 +164,19 @@
                 </p>
                 <p>
                 <p>
-                    A continuaccion un ejemplo de la implementacion de esta libreria en python con un enfoque de pade hijo
+                    A continuaccion un ejemplo de la implementacion de esta libreria en python con un enfoque de pade hijo.
                 </p>
                 <img src="imagenes/pykanren4.PNG" style="max-width: 50%; width: 40%;max-width: none">
-                <p>Ahora tratemos de obtener un padre de bart</p>
+                <p>Ahora tratemos de obtener un padre de Bart.</p>
                 <img src="imagenes/pykanren5.PNG" style="max-width: 50%; width: 40%;max-width: none">
-                <p>Ahora los dos hijos de homero</p>
+                <p>Ahora los dos hijos de homero.</p>
                 <img src="imagenes/pykanren6.PNG" style="max-width: 50%; width: 40%;max-width: none">
                 </p>
-                <h3 id="SequenceL">SequenceL :</h3>
+                <h3 id="SequenceL">SequenceL:</h3>
                 <p>
                     SequenceL es un lenguaje de programación funcional de propósito general que permite
                     la paralelización automática, su objetivo principal es mejorar el rendimiento de los
-                    procesadores con varios núcleos. Es un lenguage, que, aunque tiene muchas herramientas
+                    procesadores con varios núcleos. Es un lenguaje, que, aunque tiene muchas herramientas
                     de paralelización, está enfocado en la facilidad de programación para el usuario.
                     Su principal ventaja es que permite escribir código común, y el software se encarga de
                     maximizar el rendimiento del procesador, por medio de programación paralela. Sin embargo,
@@ -185,18 +185,18 @@
                     lenguaje con mucho potencial y muy diferente a los otros lenguajes aquí mencionados.
                 </p>
                 <p> A continuación, una pequeña tabla que muestra las diferencias entre SequenceL y
-                    otro lenguaje popular, java, permitiendonos ver la facilidad de escritura de código:
+                    otro lenguaje popular, Java, permitiendonos ver la facilidad de escritura de código:
                 </p>
                 <p><img src="imagenes/sequenceL001.PNG" style="max-width: 100%; width: 70%;max-width: none"></p>
 
 
                 <h3 id="Otros-Ejemplos:">Otros Ejemplos:</h3>
                 <ul>
-                    <li> Grafos dirigidos en Prolog, busqueda de caminos <img src="imagenes/prolog001.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
-                    <li> Serie fibonacci en Prolog <img src="imagenes/prolog002.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
-                    <li> Serie fibonacci en Mercury <img src="imagenes/prolog003.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
-                    <li> Juego de ahorcado en Prolog <img src="imagenes/prolog004.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
-                    <li> Algoritmo merge sort en prolog <img src="imagenes/merge3.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
+                    <li> Grafos dirigidos en Prolog, busqueda de caminos: <img src="imagenes/prolog001.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
+                    <li> Serie Fibonacci en Prolog: <img src="imagenes/prolog002.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
+                    <li> Serie Fibonacci en Mercury: <img src="imagenes/prolog003.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
+                    <li> Juego de ahorcado en ProLog: <img src="imagenes/prolog004.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
+                    <li> Algoritmo merge sort en ProLog: <img src="imagenes/merge3.PNG" style="max-width:100%; width: 80%; max-width: none"></li>
                     <li> <img src="imagenes/sol.PNG" style="max-width:30%; width: 30%; max-width: none"></li>
                 </ul>
 
