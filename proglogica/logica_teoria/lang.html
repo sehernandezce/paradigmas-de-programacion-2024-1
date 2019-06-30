@@ -325,13 +325,23 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Hechos">Hechos</h3>
-                    <p>Expresión atómica (declaración, cláusula o proposición) con un valor de verdad que establece una relación entre objetos.
-                        Utilizados a para declarar verdades desde el principio de la ejecucción de un programa.
-                    </p>
-                    <p>Son las sentencias más sencillas. Un hecho es una fórmula atómica o átomo: \(p(t_{1}, ..., t_{n})\) e indica
-                        que se verifica la relación (predicado) <b>p</b> sobre los objetos (términos) \(t_{1}, ..., t_{n}\).</p>
+                    <p>
+                        Expresión atómica (declaración, cláusula o proposición) que se formula de la forma \(P(t_{1}, ..., t_{n})\),
+                        indicando que se verifica el predicado <b>P</b> sobre los objetos \(t_{1}, ..., t_{n}\).</p>
                     <p><img src="imagenes/hecho.PNG" style="max-width:100%; width: 30%; max-width: none"></p>
-
+                    <p>
+                        Sobre estas expresiones se puede definir el concepto de <u><i>aridad</i></u> como la cantidad de 
+                        objetos presentes en su declaración, a partir de este concepto se pueden clasificar los hechos como:
+                    </p>
+                    <ul>
+                        <li><b>Enunciado:</b> Aridad = 0 <i>Ejm: Verdadero</i></li>
+                        <li><b>Propiead: </b> Aridad = 1 <i>Ejm: humano(Pepito), animal(Perro)</i></li>
+                        <li><b>Relación: </b> Aridad > 1 <i>Ejm: padre(Homero, Bart), aprobar(Juan, Lenguajes de Programación)</i></li>
+                    </ul>
+                    <p>
+                        Los hechos son utilizados para declarar verdades desde el principio de la ejecucción de un programa,
+                        y el conjunto de estos hechos se denomina como base de conocimientos.
+                    </p>
                 </div>
             </div>
         </div>
@@ -341,10 +351,11 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Reglas">Reglas</h3>
-                    <p>Conjunto de proposiciones lógicas (implicaciones/inferencias) que permiten inferir el valor de verdad de nuevas 
-                        proposiciones, lo que permite generar conocimiento. Utilizadas para delimitar el problema. </p>
+                    <p>
+                        Conjunto de proposiciones lógicas escritas como <a href="#CláusulasDeHorn">clausulas de Horn</a>
+                        que permiten inferir el valor de verdad de nuevas proposiciones,
+                        permitiendo ampliar la base de conocimientos, a la vez que son utilizadas para definir el dominio del problema. </p>
                     <p><img src="imagenes/regla.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
-
                 </div>
             </div>
         </div>
@@ -354,12 +365,13 @@
             <div class="inner_cell">
                 <div class="text_cell_render border-box-sizing rendered_html">
                     <h3 id="Consultas">Consultas</h3>
-                    <p>Una consulta es una proposición construida con el propósito de ser demostrada/desmentida o de encontrar 
+                    <p>
+                        Proposición construida con el propósito de ser demostrada/desmentida o de encontrar 
                         el conjunto de valores que la convierten verdadera. En las consultas se especifica el problema a resolver.
-                        Partiendo deque los humanos son mortales y de que Sócrates es humano (ejemplos anteriores), 
-                        deducimos que <i> Pepito es mortal</i>.</p>
+                        Partiendo deque los humanos son mortales y de que Pepito es humano (ejemplos anteriores), 
+                        deducimos que <i>Pepito es mortal</i>.
+                    </p>
                     <p><img src="imagenes/consulta.PNG" style="max-width:100%; width: 50%; max-width: none"></p>
-
                 </div>
             </div>
         </div>
