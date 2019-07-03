@@ -29,12 +29,15 @@ img {
 }
 h1 {
   font-size: 40px;
+  margin-top: 40px;
 }
 h2 {
   font-size: 35px;
+  margin-top: 35px;
 }
 h3 {
   font-size: 30px;
+  margin-top: 30px;
 }
 .references ul li{
   list-style-type: disc !important;
@@ -42,4 +45,19 @@ h3 {
   padding-left: 30px !important;
   position: inside !important;
   display: list-item !important;
+}
+
+.frase {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mercury {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.marginimgs {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
