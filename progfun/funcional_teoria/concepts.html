@@ -231,6 +231,77 @@
             </div>
         </div>
 
+        <div class="row">
+            <h2>Inmutabilidad</h2>
+            <div class="col-md-6">
+                <p>
+                Un objeto inmutable es aquel que no puede ser modificado una vez haya sido creado. 
+                Podemos ver a los objeto inmutables como constantes, una vez nosotros asignamos un valor este no podrá ser modificado.
+                Teniendo en cuenta que un programa en programación funcional es inmutable, en ejecución está prohibida la asignación de variables, ya que no garantizan que el código ejecutado dos veces sea exactamente igual.
+
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <img src="images/Inmutabilidad.PNG" alt="" class="img-responsive center-block img-thumbnail">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Composición de funciones</h2>
+            <div class="col-md-6">
+                <p>
+                    La composición de funciones es el proceso de combinar dos o más funciones, teniendo como finalidad ejecutar cada una de estas funciones en secuencia para obtener un resultado en concreto.
+                    Básicamente funciona igual a la composición de funciones en matemáticas
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <h4>Ejemplos de composición en lenguajes funcionales</h4>
+                <p>Haskell</p><script src="https://pastebin.com/embed_js/UNyHHUQ7"></script>
+                <br><p>Scala</p><script src="https://pastebin.com/embed_js/hF4YuZg1"></script>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Funciones de Orden Superior y de Primera Clase</h2>
+            <div class="col-md-6">
+                <h4>Funciones de Orden Superior</h4>
+                <p>
+                    Son funciones que pueden tomar otras funciones como argumentos o devolverlas como resultado. Estas funciones se pueden almacenar en variables
+                    En cálculo , un ejemplo de una función de orden superior es el operador diferencial d / dx , que devuelve la derivada de una función f, recibe una función de parámetro y devuelve otra función, por ejemplo al derivar x^2, devuelve otra función que es 2x
+                </p>
+                <br>
+                <h4>Funciones de Primera Clase</h4>
+                <p>
+                        También son funciones que pueden tomar o devolver otras funciones y se pueden almacenar como variables.
+                </p>
+                <br>
+                <h4>¿Cuál es la diferencia?</h4>
+                <p>
+                        Ambas se pueden tratar como cualquier otro valor del lenguaje, pero a las de primera clase no se les debe hacer ningún tratamiento especial.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h4>Ejemplo de una función de orden superior que no es de primera clase</h4>
+                <p>Ruby</p><script src="https://pastebin.com/embed_js/5e6H50KL"></script>
+                <br><p>En Ruby no se pueden pasar métodos como parámetros de otros métodos, pero si objetos,
+                    por ello cuando se quiera hacer algo similar, se tiene que convertir el método que se quiere pasar a un objeto.
+                    Esto se puede realizar gracias al método lambda. Este es un claro ejemplo de una función de orden superior pero 
+                    no de primera clase, ya que para poder pasar el método "hola" como parámetro del método "metod1", fue necesario
+                    hacerle algún tipo de parseo o transformación 
+                </p>
+                <br>
+                <h4>Ejemplo de una función de orden superior y de primera clase</h4>
+                <p>Haskell</p><script src="https://pastebin.com/embed_js/Snpf7bqV"></script>
+                <br><p>En este caso no fue necesario ningún tipo de parseo o similar para poder pasar un función como parámetro de otra función (pasarle f a g), por ello es de orden superior y de primera clase. 
+                </p>
+            </div>
+        </div>
+
         <hr>
         <hr>
 
