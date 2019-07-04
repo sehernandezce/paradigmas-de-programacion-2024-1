@@ -1187,20 +1187,20 @@
 				<pre>
 
 						<code>
-						  #include &#60omp.h>
-						  int main () {
-						    int var1, var2, var3;
-							//Código en serie...
+#include &#60omp.h>
+int main () {
+int var1, var2, var3;
+//Código en serie...
 
-							//Comienzo de la región paralela hace fork del conjunto de threads
-							#pragma omp parallel private(var1, var2) shared(var3)
-							{
-							  //Región paralela ejecutada por todos los threads
-							  //otras directivas OpenMP
-							  //Todos los threads se juntan en el thread master
-							}
-							//Continuación del código...
-						  }
+//Comienzo de la región paralela hace fork del conjunto de threads
+#pragma omp parallel private(var1, var2) shared(var3)
+{
+	//Región paralela ejecutada por todos los threads
+	//otras directivas OpenMP
+	//Todos los threads se juntan en el thread master
+}
+//Continuación del código...
+}
 						</code>
 					</pre>
 			</div>
@@ -1215,26 +1215,26 @@
 					<h3>Ejemplo región paralela</h3>
 					<pre>
 						<code>
-							#include &#60omp.h>
-							#include &#60stdio.h>
-							int main(int argc, char *argv[])
-							{
-							  /* Cada thread tiene una variable id privada (tid) */
-							  int nthreads, tid;
+#include &#60omp.h>
+#include &#60stdio.h>
+int main(int argc, char *argv[])
+{
+	/* Cada thread tiene una variable id privada (tid) */
+	int nthreads, tid;
 
-							  #pragma omp parallel private(tid)
-							  {
-							    /* Se asigna y se imprime el id de cada thread  */
-							    tid = omp_get_thread_num();
-							    printf("Hello World desde el thread = %d\n", tid);
-							    /* Solo el thread master ejecuta lo siguiente */
-							    if (tid == 0)
-							    {
-							      nthreads = omp_get_num_threads();
-							      printf("El numero de threads es = %d\n", nthreads);
-							    }
-							  }
-							}
+	#pragma omp parallel private(tid)
+	{
+	/* Se asigna y se imprime el id de cada thread  */
+	tid = omp_get_thread_num();
+	printf("Hello World desde el thread = %d\n", tid);
+	/* Solo el thread master ejecuta lo siguiente */
+	if (tid == 0)
+	{
+		nthreads = omp_get_num_threads();
+		printf("El numero de threads es = %d\n", nthreads);
+	}
+	}
+}
 						</code>
 					</pre>
 				</div>
@@ -1263,29 +1263,29 @@
 					<h3>Parallel For</h3>
 					<pre>
 						<code>
-							#include &#60omp.h>
-							#include &#60stdio.h>
+#include &#60omp.h>
+#include &#60stdio.h>
 
-							#define N       1000
-							#define CHUNKSIZE   100
+#define N       1000
+#define CHUNKSIZE   100
 
-							int main(int argc, char *argv[])
-							{
+int main(int argc, char *argv[])
+{
 
-							  int i, chunk;
-							  float a[N], b[N], c[N];
+	int i, chunk;
+	float a[N], b[N], c[N];
 
-							  for (i=0; i < N; i++)
-							    a[i] = b[i] = i * 1.0;
-							  chunk = CHUNKSIZE;
+	for (i=0; i < N; i++)
+	a[i] = b[i] = i * 1.0;
+	chunk = CHUNKSIZE;
 
-							  #pragma omp parallel for \
-							  shared(a,b,c,chunk) private(i) \
-							  schedule(static,chunk)
+	#pragma omp parallel for \
+	shared(a,b,c,chunk) private(i) \
+	schedule(static,chunk)
 
-							  for (i=0; i < N; i++)
-							    c[i] = a[i] + b[i];
-							}
+	for (i=0; i < N; i++)
+	c[i] = a[i] + b[i];
+}
 						</code>
 					</pre>
 				</div>
@@ -1309,19 +1309,19 @@
 					<h3>Sincronización en OpenMP</h3>
 					<pre>
 						<code>
-							#include &#60omp.h>
-							int main(int argc, char *argv[])
-							{
-							  int x;
-							  x = 0;
+#include &#60omp.h>
+int main(int argc, char *argv[])
+{
+	int x;
+	x = 0;
 
-							  #pragma omp parallel shared(x)
-							  {
-							    #pragma omp critical
-							    x = x + 1;
-							  }
-							  /* Final de la región paralela */
-							}
+	#pragma omp parallel shared(x)
+	{
+	#pragma omp critical
+	x = x + 1;
+	}
+	/* Final de la región paralela */
+}
 						</code>
 					</pre>
 				</div>
@@ -1338,12 +1338,133 @@
 				</div>
 			</div>
 		</div>
+	</section>
+
+	<section id="nine" class="wrapper style2 alt">
+		<div class="inner">
+			<div class="spotlight">
+				<div class="content">
+					<h3>Ejemplo de Programación Paralela en Java</h3>
+					<pre>
+						<code>
+public class CajeraThread extends Thread {
+	private String nombre;
+	private Cliente cliente;
+	private long initialTime;
+	// Constructor, getter & setter
+
+	@Override
+	public void run() {
+		System.out.println("La cajera " + this.nombre + " COMIENZA A PROCESAR LA COMPRA DEL CLIENTE " 
+					+ this.cliente.getNombre() + " EN EL TIEMPO: " 
+					+ (System.currentTimeMillis() - this.initialTime) / 1000 
+					+ "seg");
+		for (int i = 0; i < this.cliente.getCarroCompra().length; i++) { 
+			this.esperarXsegundos(cliente.getCarroCompra()[i]); 
+			System.out.println("Procesado el producto " + (i + 1) 
+			+ " del cliente " + this.cliente.getNombre() + "->Tiempo: " 
+			+ (System.currentTimeMillis() - this.initialTime) / 1000 
+			+ "seg");
+		}
+		System.out.println("La cajera " + this.nombre + " HA TERMINADO DE PROCESAR " 
+						+ this.cliente.getNombre() + " EN EL TIEMPO: " 
+						+ (System.currentTimeMillis() - this.initialTime) / 1000 
+						+ "seg");
+	}
+
+	private void esperarXsegundos(int segundos) {
+		try {
+			Thread.sleep(segundos * 1000);
+		} catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
+		}
+	}
+}
+						</code>
+					</pre>
+				</div>
+				<div>
+					<ul>
+						<b>Supermercado</b>
+						<p>
+							En este ejemplo elaborado mediante el uso de objetos en java se simula el proceso de compra en un supermercado, para esto se tiene la clase cliente y la clase cajero que es la que se va a paralelizar mediante la herencia de la clase Thread.
+						</p>
+					</ul>
+				</div>
+			</div>
+			<div class="spotlight">
+				<div class="content">
+					<h3>Ejemplo de Programación Paralela en Java</h3>
+					<pre>
+						<code>
+public class MainThread {
+
+	public static void main(String[] args) {
+
+		Cliente cliente1 = new Cliente("Cliente 1", new int[] { 2, 2, 1, 5, 2, 3 });
+		Cliente cliente2 = new Cliente("Cliente 2", new int[] { 1, 3, 5, 1, 1 });
+
+		// Tiempo inicial de referencia
+		long initialTime = System.currentTimeMillis();
+		CajeraThread cajera1 = new CajeraThread("Cajera 1", cliente1, initialTime);
+		CajeraThread cajera2 = new CajeraThread("Cajera 2", cliente2, initialTime);
+
+		cajera1.start();
+		cajera2.start();
+	}
+} 
+						</code>
+					</pre>
+				</div>
+				<div>
+					<ul>
+						<b>Supermercado</b>
+						<p>
+							Se inicializan los dos hilos, luego se imprime en pantalla cada vez que se pasen los productos en cada cajero.<br/>
+							Se puede observar como se realiza de forma paralela la compra en cada cajero.
+						</p>
+					</ul>
+				</div>
+			</div>
+			<div class="spotlight">
+				<div class="content">
+					<h3>Ejemplo de Programación Paralela en Java</h3>
+					<pre>
+						<code>
+La cajera Cajera 1 COMIENZA A PROCESAR LA COMPRA DEL CLIENTE Cliente 1 EN EL TIEMPO: 0seg
+La cajera Cajera 2 COMIENZA A PROCESAR LA COMPRA DEL CLIENTE Cliente 2 EN EL TIEMPO: 0seg
+Procesado el producto 1 del cliente Cliente 2->Tiempo: 1seg
+Procesado el producto 1 del cliente Cliente 1->Tiempo: 2seg
+Procesado el producto 2 del cliente Cliente 2->Tiempo: 4seg
+Procesado el producto 2 del cliente Cliente 1->Tiempo: 4seg
+Procesado el producto 3 del cliente Cliente 1->Tiempo: 5seg
+Procesado el producto 3 del cliente Cliente 2->Tiempo: 9seg
+Procesado el producto 4 del cliente Cliente 2->Tiempo: 10seg
+Procesado el producto 4 del cliente Cliente 1->Tiempo: 10seg
+Procesado el producto 5 del cliente Cliente 2->Tiempo: 11seg
+La cajera Cajera 2 HA TERMINADO DE PROCESAR Cliente 2 EN EL TIEMPO: 11seg
+Procesado el producto 5 del cliente Cliente 1->Tiempo: 12seg
+Procesado el producto 6 del cliente Cliente 1->Tiempo: 15seg
+La cajera Cajera 1 HA TERMINADO DE PROCESAR Cliente 1 EN EL TIEMPO: 15seg
+						</code>
+					</pre>
+				</div>
+				<div>
+					<ul>
+						<b>Supermercado</b>
+						<p>
+							Resultados obtenidos al ejecutar el programa para los casos de ejemplo descritos en el main haciendo uso de dos hilos de trabajo.
+						</p>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
 		<ul id="eleven" class="actions special">
 			<li><a href="./presentacion_p.pdf" class="button alt">Diapositivas Exposición</a></li>
 			<li><a href="./taller_p.pdf" class="button alt">Taller</a></li>
 		</ul>
 	</section>
-
 
 	<section id="twelve" class="wrapper">
 		<div class="inner split">
@@ -1428,11 +1549,15 @@
 				</li>
 
 				<li>
-					<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf</a>
+					<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion<br/>%20en%20Paralelo.pdf</a>
 				</li>
 
 				<li>
 					McCOLL M., ROBISON A., REINDERS J., Structured Parallel Programming Patterns for Efficient Computation (2012)
+				</li>
+
+				<li>
+					<a href="https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/">https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/</a>
 				</li>
 			</ol>
 
