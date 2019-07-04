@@ -18,7 +18,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <style>
 	pre {
-		background: #303030; 
+		background: #303030;
 		color: #ffffff;
 		font-size: 15px;
 	}
@@ -37,7 +37,7 @@
           <li><a class="page-scroll" href="#instalacion">Instalación</a></li>
           <li><a class="page-scroll" href="#tutorial">Tutorial</a></li>
           <li><a class="page-scroll" href="#ejemplos">Ejemplos</a></li>
-          <li><a class="page-scroll" href="#ejemplosA">Ejemplos Archivos</a></li>  
+          <li><a class="page-scroll" href="#ejemplosA">Ejemplos Archivos</a></li>
           <li><a class="page-scroll" href="#recomendaciones">Recomendaciones</a></li>
         </ul>
       </div>
@@ -49,8 +49,8 @@
 		<div class="intro-text">
 			<div class="intro-lead-in"><img src="assets/img/omp.png" alt=""></div>
 			<a href="#instalacion" class="page-scroll btn btn-primary">Continuar</a>
-		</div> 
-		</div> 
+		</div>
+		</div>
     </div>
   </header>
 </div>
@@ -61,7 +61,7 @@
       <div class="col-lg-12 text-center">
         <h2 class="section-heading" style="color:#3680C1">Instalación</h2>
         <h3 class="section-subheading text-muted" style="font-size:18px">Para instalar OpenMP, se tienen las siguientes alternativas para los sistemas operativos de Windows y Linux:</h3>
-		
+
 		<h1 class="margin">Instalación de OpenMP en Windows</h1>
 		<p>Es necesario descargar e instalar el IDE CodeBlocks (Disponible en <a href="http://www.codeblocks.org/downloads/26">http://www.codeblocks.org/downloads/26</a>) y el complemento MingW (Disponible en <a href="https://sourceforge.net/projects/mingw/files/">https://sourceforge.net/projects/mingw/files/</a>).</p>
 		<br>
@@ -90,7 +90,7 @@
 		<br>
 		<h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04)</h1>
 		<p>Primero, es necesario ejecutar una terminal para instalar el IDE CodeBlocks, por medio de los siguientes comandos:</p>
-		<pre align="left">sudo apt-get update 
+		<pre align="left">sudo apt-get update
 sudo apt-get install codeblocks</pre>
 		<br>
 		<p>Después de instalar el IDE CodeBlocks, se selecciona GNU GCC como compilador por defecto. Para este sistema operativo no es necesario instalar los complementos de MingW.</p>
@@ -120,8 +120,8 @@ sudo apt-get install codeblocks</pre>
 		<pre align="left">./a.out</pre>
 		<p>Para la ejecución de estos programas por medio de la terminal, si se especificó explícitamente el nombre del archivo ejecutable, se usa el siguiente comando:</p>
 		<pre align="left">./&ltNombreEjecutable&gt</pre>
-    </div>		
-		
+    </div>
+
       </div>
     </div>
   </div>
@@ -134,12 +134,12 @@ sudo apt-get install codeblocks</pre>
         <h2 class="section-heading" style="color:#3680C1">Tutorial</h2>
         <p>OpenMP es un Api para programación multiproceso o multihilo de memoria compartida, que se fundamenta en el modelo fork/join. <br> Está formado por un conjunto de directivas, funciones de librería y variables de entrorno, donde las directivas le permiten al programador comunicarse con el compilador y las funciones de librería son las que asignan o preguntan por los parámetros paralelos que se van a usar. <br>
 		OpenMP es uno de los programas para programación paralela más usados hoy en día que trabaja en C/C++ y Fortran. </p> <br>
-		
+
 		<h2>Modelo Fork/Join</h2>
 		<p>Cuando se tiene una tarea muy pesada, puede ser dividida en tareas independientes más sencillas (fork) que cuando cada una tiene una solución a la tarea, se combinan (join) para poder tener la solución general a la tarea principal.</p>
 		<img src="assets/img/fork-join.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Fork-join" width="600" height="350">
 		<p>En OpenMP cuando se inicia un programa se crea un hilo maestro o padre que cuando necesita ingresar a una región paralela crea los hilos necesarios para poder realizar la tarea. Después de que cada hilo termine de realizar sus tareas, se presenta una sincronización y se sigue con la ejecución del programa. Puede que alguno de los hilos que se crearon necesite hacer este mismo procedimiento lo cual se puede realizar sin ningún problema.</p>
-		
+
 		<h2>Sintaxis</h2>
 		<p>Para C/C++ la sintaxis básica de OpenMP es la siguiente:</p>
 		<pre align="left"><code class="C++">#pragma omp directiva[cláusulas]</code></pre>
@@ -156,12 +156,12 @@ sudo apt-get install codeblocks</pre>
 		<p align="left"><b>omp_get_max_threads()</b>: Retorna el número máximo de hilos que usará el programa.</p>
 		<p align="left"><b>omp_get_num_procs()</b>: Retorna el número de núcleos o de procesadores del computador.</p>
 		<br>
-		
+
 		<h2>Técnica SPMD</h2>
 		<p>SPMD(Single Program, multiple data) es un técnica que permite lograr el paralelismo, donde las tareas son separadas y ejecutadas simultáneamente en múltiples procesadores y con diferentes entradas.</p><br>
 		<h2>Uso compartido falso</h2>
 		<p>Se presenta cuando existen datos independientes que se encuentran en la misma línea de caché, pero que por encontrarse de esta manera, si se realiza alguna actalización a la variable, las demás van a quedar sin poder realizar ningún procedimiento.</p>
-		
+
 		<h2>Sincronización</h2>
 		<p>Se presenta cuando existe dependencia de datos entre procesadores. <br> Para OpenMP existen tres directivas que ayudan a que se realice una sincronización:</p>
 		<p align="left"><b>Barrera</b>: Es un método que crea una barrera donde los hilos tienen que esperar a que todos se encuentren en esta sección para poder continuar.</p>
@@ -170,7 +170,7 @@ sudo apt-get install codeblocks</pre>
 		<pre align="left"><code class="C++">#pragma omp critical</code></pre>
 		<p align="left"><b>Atomic</b>: Proporciona exclusión mutua y se utiliza cuando se da una actualización de una sola ubicación de memoria. Solo puede ser actualizada por un solo simultáneamente y es utilizada por los operadores de aumenteo y decremento. </p>
 		<pre align="left"><code class="C++">#pragma omp atomic</code></pre>
-	      
+
 	      	<h2>Directiva Task</h2>
 	      	<p>Las tareas en OpenMP son bloques de código que el compilador envuelve y pone a disposición para ejecutarse en paralelo.</p>
 	      	pre align="left"><code class="C++">#pragma omp parallel
@@ -178,7 +178,7 @@ sudo apt-get install codeblocks</pre>
 	      		#pragma omp task
 	      			printf("hello world from a random thread\n");
 }</code></pre>
-	      
+
 	      	<h2>Directiva TaskWait</h2>
 	    	<p>Puede sincronizar tareas utilizando las directivas taskwait o taskgroup.</p>
 		<p>Cuando un subproceso encuentra una construcción taskwait, la tarea actual se suspende hasta que todas las tareas secundarias que generó antes de que la tarea taskwait finalice la ejecución.</p>
@@ -186,7 +186,7 @@ sudo apt-get install codeblocks</pre>
 	      	{
 	      		#pragma omp taskwait
 }</code></pre>
-	  
+
 	  	<h3>Ejemplo directivas Task y TaskWait</h3>
 	  	pre align="left"><code class="C++">int main()
 	  {
@@ -201,12 +201,12 @@ sudo apt-get install codeblocks</pre>
 				{printf("is fun to watch \n");}
 		}
 }</code></pre>
-	
+
 		<pre align="left">A A race car is fun to watch
 		car race is fun to watch
-		A race car is fun to watch 
+		A race car is fun to watch
 		A car race is fun to watch</pre>
-	    
+
 		<h2>Cláusulas de Planificación</h2>
 		<p>Indica la forma como se dividen las iteraciones de los bucles entre los hilos. Pueden ser:</p>
 		<p align="left"><b>schedule(static[,tamaño])</b>: las iteraciones se dividen según el tamaño, y nosotros decidimos como van se van a asignar las iteraciones de los hilos.</p>
@@ -225,7 +225,7 @@ for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
 		<h2>Cláusula Reduction</h2>
 		<p>Se refiere a una variable acumuladora donde se crea una copia local dentro de cada hilo de la variable establecida y que cuando todos los hilos ya han hecho su trabajo, con estas copias locales se va a actualizar la variable global. La variable se va a inicializar con la ientidad del operador que establecimos, por ejemplo si el operador es suma (+), la variable será inicializada con cero (0). Su formato es el siguiente: </p>
 		<pre align="left"><code class="C++">reduction(operador : variable)</code></pre>
-		
+
 		<h2>Otras directivas</h2>
 		<p><b>master</b>: Esta directiva se presenta cuando se necesita que un segmento de código sea ejecutado solo por el hilo maestro, es decir que los demás hilos van a omitir este bloque de código. Su sintaxis es la siguiente: </p>
 		<pre align="left"><code class="C++">#pragma omp master
@@ -255,9 +255,9 @@ for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
     </div>
   </div>
 </section>
-<script>	
+<script>
 
-</script> 
+</script>
 <!-- Ejemplos -->
 <section id="ejemplos">
   <div class="container">
@@ -275,7 +275,7 @@ int main(){
     int numeroHilos;
     printf("Ingresar el numero de hilos: ");
     scanf("%d", &numeroHilos);
-  
+
     int numeroProcesadores = omp_get_num_procs();
     omp_set_num_threads(numeroHilos);
     printf("Este computador usa %d procesador(es)\n", numeroProcesadores);
@@ -289,7 +289,7 @@ int main(){
         printf("Hola, soy el hilo %d, en este momento se esta(n) ejecutando %d hilo(s)\n", idHilo, omp_get_num_threads());
     }
     printf("Acabo de salir de la seccion paralela\n");
-    
+
     printf("\nEn este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
     return 0;
 }
@@ -365,7 +365,7 @@ int main(){
     }
     esIndicePar = !esIndicePar;
   }
-  
+
   printf("La respuesta es: %f\n", respuesta);
   return 0;
 }</code></pre>
@@ -397,7 +397,7 @@ int main(){
     for(int indice = 0; indice < numeroHilos; indice++){
         respuesta += sumasParciales[indice];
     }
-    
+
     printf("La respuesta es: %.8f\n", respuesta);
     return 0;
 }</code></pre>
@@ -713,9 +713,145 @@ El numero 45 de la sucesion de Fibonacci es 1134903170
 real  0m0.629s
 user  0m0.000s
 sys   0m0.000s</pre>
+			<h2 class="margin">Otros ejemplos (Multiplicación matrices)</h2>
+      <p>En este ejemplo, vamos a mostrar como la multiplicación de matrices con un algoritmo ingenuo se puede optimizar con la programación paralela usando openMP. </p>
       <br>
-      <p>En la implementación de la sucesión de Fibonacci de forma secuencial, se puede notar que para la definición recursiva de esta sucesión, se toman 8.751 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.703 segundos. Luego, en la implementación de la sucesión de Fibonacci de forma paralela, se puede notar que para la definición recursiva de esta sucesión, se toman 4.867 segundos mientras que para la definición de esta sucesión con fórmula matemática, se toman 0.629 segundos. Luego, se puede inferir que el paralelismo en funciones recursivas permite mejorar la eficiencia respecto a tiempo, donde el llamado a la misma función se tenga que hacer al menos 2 veces como en este caso (<i>fibonacci(n - 1) + fibonacci(n - 2)</i>) para notar esta mejoría en tiempo de ejecución.</p>
-    </div>
+      <p>Aplicando la paralelización del for, usamos hilos por defecto. </p>
+      <br>
+      <p>Observar también el código secuencial y la diferencia entre ellos, lo que muestra el beneficio en tiempo que openMP proporciona sobre c++</p>
+			<br>
+      <p>¡Pruébenlo!</p>
+      <pre align="left"><code class="C++">
+#include &ltiostream&gt
+#include "omp.h"
+#include &ltsys/time.h&gt
+
+using namespace std;
+
+int main()//muestra la utilidad de las progrmacion paralela con el producto de matrices.
+{
+
+
+    int tamano = 600;
+    int A [tamano][tamano], B [tamano][tamano], C [tamano][tamano], C2[tamano][tamano];
+
+    for(int i=0; i < tamano; ++i)// Inicializamos las matrices
+        for(int j=0; j < tamano; ++j){
+            A[i][j] = 0;
+            B[i][j] = 0;
+            C[i][j] = 0;
+            C2[i][j] = 0;
+
+        }
+
+    for(int i=0; i < tamano; ++i)// llenamos las matrices
+        for(int j=0; j < tamano; ++j){
+            A[i][j] = j;
+            B[i][j] = j;
+            //C[i][j] = 0;
+        }
+
+    // Generamos la matriz C = AB
+   struct timeval t0, t1;
+   gettimeofday(&t0, 0);
+   for(int i=0; i < tamano; i++)
+        for(int j=0; j < tamano;j++)
+            for(int z=0; z < tamano; z++){
+
+                C[i][j] += A[i][z] * B[z][j];
+
+            }
+    gettimeofday(&t1, 0);
+	double elapsed2 = (t1.tv_sec-t0.tv_sec) * 1.0f + (t1.tv_usec - t0.tv_usec) / 1000000.0f;
+    cout <<"TIEMPO secuencial: "<< elapsed2 << endl;
+
+    /*//Impresiones de matrices
+
+    cout<<"Matriz A: "<< endl;
+    for(int i=0; i < tamano; ++i)
+    {
+        for(int j=0; j < tamano; ++j)
+        {
+            cout<<&A[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+
+    cout<<"Matriz B: "<< endl;
+    for(int i=0; i< tamano; ++i)
+    {
+        for(int j=0; j< tamano; ++j)
+        {
+            cout<<&B[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+
+    cout<<"Matriz C: "<< endl;
+    for(int i=0; i< tamano; ++i)
+    {
+        for(int j=0; j< tamano; ++j)
+        {
+            cout<<&C[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+    */
+
+   struct timeval t2, t3; // paralelizar
+   gettimeofday(&t2, 0);
+   #pragma omp parallel for
+   for(int i=0; i< tamano; i++)
+        for(int j=0; j< tamano;j++)
+            for(int z=0; z< tamano; z++){
+
+                C2[i][j] += A[i][z] * B[z][j];
+
+            }
+   gettimeofday(&t3, 0);
+	 double elapsed = (t3.tv_sec-t2.tv_sec) * 1.0f + (t3.tv_usec - t2.tv_usec) / 1000000.0f;
+   cout <<"TIEMPO PARALELO: "<< elapsed << endl;
+
+
+    /*//Impresiones de matrices
+
+    cout<<"Matriz A: "<< endl;
+    for(int i=0; i< tamano; ++i)
+    {
+        for(int j=0; j< tamano; ++j)
+        {
+            cout<<&A[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+
+    cout<<"Matriz B: "<< endl;
+    for(int i=0; i< tamano; ++i)
+    {
+        for(int j=0; j< tamano; ++j)
+        {
+            cout<<&B[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+    cout<<"Matriz C2: "<< endl;
+    for(int i=0; i< tamano; ++i)
+    {
+        for(int j=0; j< tamano; ++j)
+        {
+            cout<<&C2[i][j]<<" ";
+        }
+        cout<< endl;
+    }
+    */
+
+    return 0;
+}
+
+
+ </code></pre>
+
+		</div>
       </div>
     </div>
   </div>
@@ -735,6 +871,8 @@ sys   0m0.000s</pre>
 				<li><a href = "Ejemplos/single.cpp">Directiva Single</a></li>
 				<li><a href = "Ejemplos/parallel_anidado.cpp">Regiones paralelas Anidadas</a></li>
 				<li><a href = "Ejemplos/calculo_pi.cpp">Calculo Pi</a></li>
+				<li><a href = "Ejemplos/mulMatrices.cpp">Multiplicación de matrices</a></li>
+
            </ul>
 		<br>
       </div>
