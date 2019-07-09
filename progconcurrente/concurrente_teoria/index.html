@@ -26,7 +26,7 @@
     li a:hover {
         background-color: #111111;
     }
-<!-- gaokdlafks > 
+
     blockquote {
       background: #f9f9f9;
       border-left: 10px solid #ccc;
@@ -143,31 +143,8 @@ Sin embargo, a principios de la década de 1960, primero se presentó Conway y l
 <img src="images/concurrentProcess.png"  style="margin-left: 30px">
 
 </div>
-  <div  id="ventajas" >
-    <br><br>
-    <h1><a class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h1>
 
-    <ul>
-      <li>Permite optimizar el uso de recursos en sistemas mono/multiprocesador.</li>
-      <li>Fiable administración de los datos en sistemas con gran información</li>
-      <li>Mejor aprovechamiento de la CPU</li>
-      <li>Permite el desarrollo de aplicaciones que no se vean afectadas en tiempo real</li>
-      <li>Permite compartir recursos entre tareas lentas y tareas rápidas para que las tareas lentas no retrasen mucho a las rápidas.</li>
-      <li>Velocidad de ejecución.</li>
-      <li>Menores tiempos de respuesta.</li>
-    </ul>
-  </div>
-  <div id="desventajas" >
-    <br><br>
-    <h1><a  class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h1>
-    <ul>
-      <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
-      <li >Dificultad de desarrollo.</li>
-      <li >Dificultad de verificación.</li>
-      <li>En programas con pocas instrucciones en mas lento</li>
-      <li >Si se aplica mal puede llevar a resultados erroneos.</li>
-    </ul>
-  </div>
+
 
 <div id="conceptos">
   <br><br>
@@ -219,10 +196,13 @@ Cada proceso se representa en el sistema operativo mediante el PCB, entre los el
 <h2>
 <a id="hilo" class="anchor" href="#hilo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hilo</h2>
 
-<p>Se puede definir como una unidad básica de utilización del CPU. Cada hilo tiene:
-Id de hilo,  Contador de programa,  Registros, Pila.
-Los hilos que pertenecen a un mismo proceso comparten:
-Sección de código, sección de datos, entre otros recursos del sistema.</p>
+<p>Se puede definir como una unidad básica de ejecución del Sistema Operativo para la utilización del CPU. Este es quien va al procesador y realiza todos los cálculos para que el programa se pueda ejecutar. Es necesario, ya que debe contar con al menos un hilo para que cualquier programa sea ejecutado.
+  Cada hilo tiene: id de hilo, contador de programa, registros, stack. 
+  Dentro de las características que se encuentran se tiene que cada hilo tiene información del código de máquina que se va a ejecutar en el procesador, sus respectivos datos, el acceso a los archivos, el registro y su respectivo stack en donde se guarda toda la información necesaria del hilo como son las variables locales, variables de retorno o algo a lo que se acceda en tiempo de ejecución.
+  Los hilos que pertenecen a un mismo proceso comparten: sección de código, sección de datos, entre otros recursos del sistema.
+  El multithreading es la capacidad para poder proporcionar múltiples hilos de ejecución al mismo tiempo. Una aplicación por lo general es implementada como un proceso separado con muchos hilos de control.
+  Dentro de las semejanzas de hilo y multihilo es que poseen un solo bloque de control de proceso (PCB) y un solo espacio de direcciones de proceso. Por el contrario, en las diferencias es que mientras un hilo tiene una pila para sus registros y stack, el multihilo tiene una pila para cada hilo con subbloques de control internos, incluyendo la pila de registros y sus respectivos stacks.
+  Se dice que los hilos de ejecución que comparten recursos agregando estos recursos da como resultado el proceso.</p>
 <!--
 <p><img src="https://s3.postimg.org/z6m2055rn/procesoshilos.jpg" style="margin-left: 30px"></p> -->
 
@@ -244,7 +224,7 @@ Es importante resaltar que los procesos nunca corren en paralelo en el procesado
 
 <p>Es cuando uno o varios procesos son ejecutados en una o más computadores</p>
 
-<h2><a id="calendarizacion" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calendarización De Procesos</h2>
+<h2><a id="calendarizacion" class="anchor" href="#proceso" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Planificación De Procesos</h2>
 
 <p>Estrategia de los sistemas operativos con la que se es posible compartir la CPU entre los diferentes procesos alojados en memoria.
 La calendarización es un manejo de colas con el objetivo de maximizar el uso de recursos y minimizar retardos.</p>
@@ -361,9 +341,44 @@ Para mayor claridad, este video lo explica en una mayor profundidad:
 
 
 <h2>
-<a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relación</h2>
+<a id="relacion" class="anchor" href="#relacion" aria-hidden="true">
+  <span aria-hidden="true" class="octicon octicon-link"></span></a>Relación
+</h2>
 
 <p>Multiples procesos pueden ser ejecutados al mismo tiempo. En otra palabras, la programacion concurrente se comporta igual que la paralela cuando tenemos un sistema multiprocesador en el cual cada unidad de procesamiento ejecuta un proceso o hilo. En la imagen inferior podemos ver que el la unidad de procesamiento 2 y 3 se comportan igual.</p>
+
+<h2><a id="relacion" class="anchor" href="#relacion" aria-hidden="true"></a>Ejemplo de concurrencia:</h2>
+
+ <p>Imagina una aplicación de descarga de música, en la cual puedes descargar un número determinado de canciones al mismo tiempo,
+    cada canción es independiente de la otra, por lo que la velocidad y el tiempo que tarde en descargarse cada una no afectara al
+    resto de canciones. Esto lo podemos ver como un proceso concurrente, ya que cada descarga es un proceso totalmente
+    independiente del resto.</p>
+
+  <img src="images/ejemplo_concurrente.png" height="347" width="471"><br>
+
+  <p>Observa la imagen, cada descarga se procesa de forma separada, y al final a una descarga no le importa el estado de las demás. Ya que cada descarga es una tarea completamente diferente.</p>
+
+
+  <h2><a id="relacion" class="anchor" href="#relacion" aria-hidden="true"></a>Ejemplo de paralelismo:</h2>
+
+  <p>
+       Imagina la clásica página de viajes, donde nos ayudan a buscar el vuelo más barato o las mejores promociones,
+       para hacer esto, la página debe de buscar al momento en cada aerolínea el vuelo más barato, con menos conexiones, etc.
+       Para esto puedo hacerlo de dos formas, buscar secuencialmente en cada aerolínea las mejores promociones (muy tardado)
+       o utilizar el paralelismo para buscar al mismo tiempo las mejores promociones en todas las aerolíneas.
+  </p>
+
+  <img src="images/ejemplo_paralelismo.png" height="412" width="471"><br>
+
+  <p>Observemos en la imagen como el proceso parte de una entrada inicial (inputs) los cuales definen
+     las características del vuelo a buscar, luego se utiliza la concurrencia para buscar en las cuatro
+     aerolíneas al mismo tiempo. Veamos que en este proceso es indispensable que las 4 búsquedas terminen
+     para poder arrojar un resultado. Podemos ver claramente la relación entre los 4 procesos, ya que el resultado
+     de uno puedo afectar al proceso final.
+    <br><br>
+    Observemos también que una vez que los cuatro procesos terminan, hay un subproceso adicional
+    encargado de unir los resultados y arrojar un resultado final.
+  </p>
 
 <h2>
 <a id="relacion" class="anchor" href="#relacion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proceso o Hilo ?</h2>
@@ -661,7 +676,31 @@ Estas propiedades indican lo que el programa debe hacer; lo que ocurrira eventua
 <h2>
 <a id="condicion de carrera" class="anchor" href="#condicion de carrera" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Condición de carrera</h2>
 
-<p>Se da cuando uno o mas hilos ejecutan secciones que otro hilo podría usar al mismo tiempo, y en estas modifica variables que podrían afectar la ejecución del resto de hilos </p>
+<p>
+  “Una condición de carrera es un comportamiento del software en el cual 
+  la salida depende del orden de ejecución de eventos que no se encuentran 
+  bajo control”
+</p>
+
+<ul>
+  <li>
+    Se da cuando uno o mas hilos ejecutan secciones que otro hilo podría usar al mismo tiempo, y en estas modifica variables que podrían afectar la ejecución del resto de hilos.
+  </li>
+
+  <li>
+    Se pueden producir cuando varios threads NO acceden en exclusi´on mutua a un recurso compartido.
+  </li>
+
+  <li>
+    El nombre viene de la idea de dos procesos compiten en una carrera para acceder a un recurso compartido.
+  </li>
+
+  <li>
+    Se convierte en un fallo siempre que el orden de ejecución no sea el esperado.
+  </li>
+</ul>
+
+
 
 <h2><a id="problema contador" class="anchor" href="#problema contador" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problema simple con un contador</h2>
 <p>si tenemos dos hilos, y estos tratan de ejecutar cada uno un comando de contador++(hilo azul) y el otro el de contador--(hilo rojo), al mismo tiempo
@@ -715,14 +754,70 @@ ingresar al cruce hasta que los carros del carril que tiene el semáforo en verd
 <h2>Métodos de sincronización y comunicación</h2>
 <p>Existen diversas formas en las que podemos sincronizar y comunicar los hilos, entre ellas tenemos:</p>
 <ul>
-<li><strong>Semáforos:</strong> Un hilo adquiere permiso al entrar a la sección crítica, al finalizar la respectiva sección critica libera el permiso.</li>
-<li><strong>Mutex:</strong> Semáforo de tamaño 1. </li>
-<li><strong>Monitores:</strong> cada hilo tiene un turno, todos los hilos deben esperar mientras el hilo que tenga el turno esté presente en la sección crítica.</li>
-<li><strong>Mensajes:</strong> Los hilos se comunican por medio de mensajes, avisandole a los otros hilos cuando puede hacer sus respectivas ejecuciones sobre la sección crítica.</li>
+<li><strong>Semáforos:</strong> 
+  <ul>
+    <li>Un hilo adquiere permiso al entrar a la sección crítica, al finalizar la respectiva sección critica libera el permiso.</li>
+
+    <li>Está formado por una posición de memoria y dos instrucciones, una para reservarlo (wait o down) y otra para liberarlo (signal o up). A  esto se le puede añadir una cola de threads para recordar el orden en que se hicieron la peticiones</li>
+
+    <li>Soporte del SO para garantizar la exclusión mutua</li>
+
+    <li>Sincronizar dos o más threads o procesos, de modo que su ejecución se realice de forma ordenada y sin conflictos entre ellos.</li>
+  </ul>
+  <p>
+    <strong>EJEMPLO:</strong> (Solución posterior)<br><br>
+    Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una misma bodega. El productor produce productos cada vez que puede, y el consumidor los consume cada vez que lo necesita. <br><br>
+    <strong>Problema:</strong> <br><br>
+    ¿Cómo coordinamos a los productores y consumidores, para que los productores no produzcan más ítems de los que se pueden almacenar en el momento, y los consumidores no adquieran más ítems de los que hay disponibles?.<br><br>
+    <strong>Solución:</strong><br>
+    Desde el punto de vista de la programación concurrente la solución a este problema se plantea a través de herramientas de sincronización. La primera solución y la más sencilla es implementar bodegas que sean excluyentes, es decir si un consumidor o productor se encuentra haciendo de la bodega, nadie más pueda hacerlo, indicando este estado con cualquier tipo de señal o aviso, implementado a través de semáforos binarios.<br><br>
+  </p>
+
+</li>
+<li><strong>Exclusión mutua:</strong><br>
+  La exclusión mutua es una propiedad del control de concurrencia, cuyo proposito es evitar condiciones de carrera,
+  es decir, que dos procesos no intenten acceder a un mismo recurso compartido al tiempo (sección crítica).
+  Por ejemplo, un bloque de memoria.
+  
+  <br><br>
+
+  <strong>EJEMPLO:</strong><br><br>
+
+  <img src="images/PerroGato.png" height="239px" weight="430px"><br><br>
+
+  Se podría realizar una analogía con una breve historia: Alice y Bob comparte un patio,
+  Alice tiene un gato y Bob un perro. Las mascotas no se llevan bien, por lo que nunca deberán estar en el patio juntas.
+  La idea sería mirar el patio, ver si está vacío y, si lo está, liberar a la mascota.
+  El cuidado sería que los dos dueños de las mascotas podrían mirar el patio al mismo tiempo.
+  La comunicación explícita es requerida para poder coordinarse. El protocolo que se llevaría a cabo
+  sería poner a utilizar llamadas para establecer comunicación, pero alguno de los dos puede estar ocupado y no responder.
+  Es necesario hacer énfasis en que la comunicación debe ser persistente.
+
+  <br><br>
+
+  Dentro de las posibles soluciones para este problema se tienen el uso de las variables compartidas,
+  estas son leídas por todos pero escritas solo por un proceso en un instante de tiempo.
+  También se podrían utilizar locks, que es una especie de bloqueo al recurso compartido,
+  el proceso que posea el lock será el único que puede acceder a la sección crítica.
+  La exclusión mutua no puede ser solucionada a través de comunicación transitiva ni interrupciones.
+
+  </li><br>
+
+<li><strong>Monitores:</strong><br>
+   Cada hilo tiene un turno, todos los hilos deben esperar mientras el hilo que tenga el turno esté
+   presente en la sección crítica. Aquí los métodos son ejecutados haciendo uso de exclusión mutua
+   porque varios hilos de procesos van a querer ingresar en diferentes tiempos pero solo es permitido
+   que ingrese uno y así pueda estar activo en el monitor en cierto instante de tiempo.
+  </li><br>
+
+<li><strong>Mensajes:</strong><br>
+   Los hilos se comunican por medio de mensajes, avisandole a los otros hilos cuando puede
+    hacer sus respectivas ejecuciones sobre la sección crítica.
+</li>
 </ul>
 <p>como ejemplo supongamos que en 2 o más bancos se hacen transacciones sobre una misma cuenta,
 si en uno de los bancos (un hilo) cambia el valor de la cuenta mientras en otro banco se realiza una transacción sobre la misma
-se daría una condición de carrera, para evitar esto usaremos los múltiples métodos de sincronización:</p>
+se daría una condición de carrera, para evitar esto usaremos los múltiples métodos de sincronización:</p><br>
 <p><strong>Ejemplo en java de semaforos: </strong></p>
 <pre class="prettyprint">
 import java.io.FileNotFoundException;
@@ -1074,6 +1169,33 @@ Existen también en el mercado aplicaciones que nos permiten verificar computaci
 
 
 </div>
+
+<div  id="ventajas" >
+  <br><br>
+  <h1><a class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ventajas</h1>
+
+  <ul>
+    <li>Permite optimizar el uso de recursos en sistemas mono/multiprocesador.</li>
+    <li>Fiable administración de los datos en sistemas con gran información</li>
+    <li>Mejor aprovechamiento de la CPU</li>
+    <li>Permite el desarrollo de aplicaciones que no se vean afectadas en tiempo real</li>
+    <li>Permite compartir recursos entre tareas lentas y tareas rápidas para que las tareas lentas no retrasen mucho a las rápidas.</li>
+    <li>Velocidad de ejecución.</li>
+    <li>Menores tiempos de respuesta.</li>
+  </ul>
+</div>
+<div id="desventajas" >
+  <br><br>
+  <h1><a  class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Desventajas</h1>
+  <ul>
+    <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
+    <li >Dificultad de desarrollo.</li>
+    <li >Dificultad de verificación.</li>
+    <li>En programas con pocas instrucciones en mas lento</li>
+    <li >Si se aplica mal puede llevar a resultados erroneos.</li>
+  </ul>
+</div>
+
 
 <div id="lenguajes">
   <br><br>
@@ -2156,6 +2278,7 @@ Aquí, el programa debe poder recibir la entrada teclado del usuario. Pero tambi
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.noesispoint.com/jsp/scjp/SCJPch12.htm">http://www.noesispoint.com/jsp/scjp/SCJPch12.htm</a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html">http://www.javaworld.com/article/2076774/java-concurrency/programming-java-threads-in-the-real-world--part-1.html</a></li>
 <li>Abraham Silberschatz-Operating System Concepts (9th,2012.12)</li>
+<li>Abraham Silberschatz-Operating System Concepts Essentials (2nd,2013)</li>      
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
 ">http://wiki.inf.utfsm.cl/index.php?title=Monitores#.C2.BFQu.C3.A9_son_los_Monitores.3F
 </a></li>
@@ -2189,10 +2312,12 @@ Aquí, el programa debe poder recibir la entrada teclado del usuario. Pero tambi
 </a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://www.ctr.unican.es/asignaturas/procodis_3_II/Doc/Procodis_1_01.pdf">Programación concurrente - J.M. Drake </a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://pegasus.javeriana.edu.co/~scada/concurrencia.html">http://pegasus.javeriana.edu.co/~scada/concurrencia.html </a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://babel.upm.es/teaching/concurrencia/material/slides/groman/CC_CondCarrera.pdf">Condición de Carrera </a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://takuti.me/note/parallel-vs-concurrent/">Parallel programming vs. Concurrent Programming </a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="http://repository.cmu.edu/cgi/viewcontent.cgi?article=1107&context=sei">Concepts of concurrent programming</a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://books.google.com.co/books?id=k1cIQwg23vAC&pg=PA10&lpg=PA11&dq=Concurrent+computing+history&source=bl&ots=CqOM6TbQ8e&sig=A16KtMDjujSMg34iVx7RPnLE3tc&hl=es-419&sa=X&ved=2ahUKEwjA1JrumonfAhWNm1kKHfPFANUQ6AEwCHoECAkQAQ#v=onepage&q=Concurrent%20computing%20history&f=false">Historia Computacion concurrente</a></li>
 <li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://books.google.com.co/books?id=JeT9wlXhUTMC&pg=PA92&dq=Shortest+Process+next+(SPN)&hl=es-419&sa=X&ved=0ahUKEwjUzu2jpYnfAhXLq1kKHUcKAFoQ6AEILDAA#v=onepage&q=Shortest%20Process%20next%20(SPN)&f=false">Principles of Modern Operating Systems</a></li>
+<li><a style="background-color: #FFFFFF;color: blue; text-align: left;" href="https://www.oscarblancarteblog.com/2017/03/29/concurrencia-vs-paralelismo/">Concurrencia vs Paralelismo</a></li>
 
 
 
@@ -2223,6 +2348,9 @@ Aquí, el programa debe poder recibir la entrada teclado del usuario. Pero tambi
 <li>Juan Sebastian Herrera Maldonado </li>
 <li>Florent Sebag</li>
 <li>Michael Tomas Velasquez Gordillo</li>
+<li>Cristian David Martinez Collazos</li>
+<li>Alejandro Sebastián Alejo Patarroyo</li>
+<li>Laura Vanessa Bohórquez Ramirez</li>
 </ul>
 </div>
         </section>
