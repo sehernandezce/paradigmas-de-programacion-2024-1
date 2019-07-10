@@ -51,6 +51,8 @@
 
 <p align="justify">Aunque la <em>programación orientada a objetos</em> es un paradigma de programación que resuelve bastantes problemas de la programación tradicional como el integrar nuevos datos, no es perfecta y posee innumerables problemas dado a que las funciones continúan esparcidas por todo el código y para agregar una función nueva es necesario revisar y modificar objetos.</p>
 
+
+
 <p align="justify">Además, el diseño e ingeniería de software no se trata simplemente de tratar las funcionalidades básicas del problema, existen muchos otros conceptos que en la descomposición funcional y en la programación orientada a objetos son aproximados de manera poco eficiente, por ejemplo:</p>
 
 <ol>
@@ -61,9 +63,34 @@
 <li>La Gestión de la Seguridad.</li>
 </ol>
 
+<p align="justify">Mientras que las descomposiciones funcional y orientada a objetos no
+nos plantean ningún problema con respecto al diseño y la implementación de la
+funcionalidad básica, estas técnicas no se comportan bien con los otros aspectos. Es
+decir, que nos encontramos con problemas de programación en los cuales ni las técnicas
+funcionales, ni las orientadas a objeto son suficientes para capturar todas las decisiones
+de diseño que el programa debe implementar.</p>
+
+<p align="justify">La programación orientada a aspectos (POA) es una nueva metodología de
+programación que aspira a soportar la separación de competencias para los aspectos
+antes mencionados. Es decir, que intenta separar los componentes y los aspectos unos
+de otros, proporcionando mecanismos que hagan posible abstraerlos y componerlos para
+formar todo el sistema. En definitiva, lo que se persigue es implementar una aplicación
+de forma eficiente y fácil de entender</p>
+
+<p align="justify"><img src="Images/d_aspects.jpg" alt=""></p>
+
+<p align="justify">En este esquema se observa que la disociación de los de los distintos conjuntos
+se realiza tanto en base a la forma (datos) como a las tonalidades (funciones). Además,
+se indica que las distintas funcionalidades están relacionadas de alguna manera. Esto se
+representa utilizando figuras transparentes para indicar este tipo de relación.</p>
+
 <p align="justify">Todos estos conceptos se encuentran diseminados por todo el código, a veces incluso implementados múltiples veces, por cada objeto o clase que necesite de las mismas. Un código normal, implementado con paradigmas actuales puede lucir de la siguiente manera:</p>
 
 <p align="justify"><img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/Cod.jpg" alt=""></p>
+
+<p align="justify">En una version orientada a aspectos del mismo codigo, tenemos un programa mas compacto y modularizado.</p>
+
+<p align="justify"><img src="Images/aspect_org.jpg" alt="">
 
 <p align="justify">La no separación de los conceptos transversales en la programación ocasiona distintos tipos de problemas como pueden ser:</p>
 
