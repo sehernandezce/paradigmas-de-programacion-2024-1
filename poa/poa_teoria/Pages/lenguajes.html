@@ -452,17 +452,99 @@ Existen algunos proyectos como Aspyct, sin embargo este fue abandonado. El uso m
 	</p>
 	<img width="500" height="350" src="../Images/python.png?raw=true" hspace="150"> </img>
 	<h2>
-        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring (framework)</h2>
+        <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring AOP</h2>
 	<p align="justify">
-		Este framework es implementado en java puro con las anotaciones de java @Aspect o basado en esquema con un XML.
+        Este framework es implementado en java puro con las anotaciones de java @Aspect o basado en esquema con un XML.
 		Este permite la implementación del paradigam POA mediante AspectJ. La siguiente sería su implementación básica:
 	</p>
 	<img src="../Images/Spring.png?raw=true" hspace="150"> </img>
-	<img  src="../Images/Spring2.png?raw=true" hspace="150"> </img>
-	<footer class="site-footer">
-		<span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
-		<span class="site-footer-credits">This page was created by Jenny Sánchez Cruz, Felipe Moreno, Jeisson Prieto, Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>
-	</footer>
+    <img  src="../Images/Spring2.png?raw=true" hspace="150"> </img>
+    
+    <h3>AspectJ vs Spring AOP</h3>
+    
+    <p align="justify">
+        Junto con AspectJ, son los dos principales frameworks de AOP para JAVA, sin embargo tienen objetivos distintos.
+    </p>
+
+    <h4>Objetivos</h4>
+
+    <p align="justify">
+        Spring AOP busca proveer una implementación simple del Paradigma Orientado a Aspectos, para solucionar los problemas más comunes que los programadores enfrentan.
+        Por otra parte, AspectJ sí busca proveer una implementación completa del paradigma interoperable con el código de java existente.
+    </p>
+
+    <h4>Weaving</h4>
+
+    <p align="justify">
+        AspectJ hace uso de tres tipos distintos de weaving:
+
+        <ol>
+            <li>
+                <strong>Compile-time weaving: </strong>
+                El compilador de AspectJ toma como entrada el código fuente del aspecto y de la aplicación y las compone para crear bytecode de JAVA listo para ser procesados por la JVM.
+            </li>
+            <li>
+                <strong>Post-compile weaving: </strong>
+                Es usado para enlazar las los aspectos con bytecode de java y JAR existentes.
+            </li>
+            <li>
+                <strong>Load-time weaving: </strong>
+                Es similar al weaving anterior, solo que se pospone hasta que un cargador de clases carga los archivos a la JVM.
+            </li>
+        </ol>
+
+        Sprint AOP hace uso de un weaving en tiempo de ejecución, similar al load-time weaving de AspectJ.
+    </p>
+
+    <h4>Simplicidad</h4>
+
+    <p align="justify">
+        Spring AOP es mucho más simple porque no introduce ningún compilador extra o weaver en el proceso de compilación. Sin embargo, esto le quita mucha potencia a lo que puede ser realizado con el Framework.
+        AspectJ por otra parte introduce el AspectJ compiler (ajc) y con él compila todas las clases que tenemos, tanto las .java como las .aj, lo que lo hace más complejo porque introduce nuevas herramientas pero también lo hace más potente.
+    </p>
+
+    <h4>Performance</h4>
+
+    <p align="justify">
+        El compile-time weaving del AspectJ es mucho más rápido que el runtime weaver del Spring AOP.
+
+        Sprint AOP es un framework basado en proxy, por lo tanto en tiempo de ejecución se están creando proxies. 
+        También, se ejecutan otros métodos de fondo, por lo tanto se crea un overload significativo.
+
+        Por otra parte, AspectJ teje los aspectos en el código principal antes de que la aplicación entre en ejecución, por lo tanto no existe un overhead adicional.
+
+        Por estas razones, AspectJ es alrededor de 8 y 35 veces más rápido que SpringAOP.
+    </p>
+
+    <h4>Choosing the Right Framework</h4>
+
+    <p align="justify">
+        If we analyze all the arguments made in this section, we’ll start to understand that it’s not at all that one framework is better than another.
+
+        Simply put, the choice heavily depends on our requirements:
+
+        <ol>
+            <li><strong>Framework: </strong>
+                Si la aplicación usa el framework de Spring con otros propósitos, el uso del AOP será bastante sencillo de aprender y usar.
+                Sin embargo, si esto no es así, habrá que integrar el proyecto y adaptarlo para que haga uso del mismo, lo cual podría complicar
+                un poco el procesos.</li>
+            <li><strong>Flexibilidad: </strong>
+                Spring AOP no soporta todos los Joinpoints, pero sí los suficientes para resolver los problemas más comunes que se presentan
+                durante el desarrollo en JAVA. No obstante, si se necesita otro tipo de Joinpoint, será necesario usar AspectJ.
+            </li>
+            <li><strong>Performance: </strong>
+                Si se usan aspectos limitados, entonces habrán diferencias de desempeño. Si es necesario usar una gran cantidad de aspectos, AspectJ es 
+                la mejor opción debido a su mejor rendimiento.</li>
+            <li><strong>Best of Both: </strong>
+                Ambos de estos aspectos son completamente compatibles con los otros. Podemos aprovechar el Spring AOP framework cuando
+                sea posible y aún usar AspectJ para obtener soporte de aquellos JoinPoints que sean necesarios.</li>
+        </ol>
+    </p>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
+        <span class="site-footer-credits">This page was created by Jenny Sánchez Cruz, Felipe Moreno, Jeisson Prieto, Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>
+    </footer>
 </section>
 </body>
 </html>
