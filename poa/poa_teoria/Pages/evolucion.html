@@ -75,6 +75,8 @@ Dentro de ellos podemos encontrar:</p>
 <li>
 <strong>around</strong>: cuando el flujo llega a ejecutar el join-point, permite que nuestra lógica pueda determinar si proceder o no.</li>
 </ul>
+<p>A continuación se muestra un <strong>Consejo</strong> que fue declarado de manera <i>anónima</i>. Esto siginifica que no se declaró un Pointcut o Corte antes del Consejo.</p>
+<img src="../Images/advice.png"/>
 
 <h3>
 <a id="puntos-de-cortepointcut" class="anchor" href="#puntos-de-cortepointcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTOS DE CORTE(Pointcut):</strong>
@@ -86,7 +88,17 @@ Dentro de ellos podemos encontrar:</p>
 
 <p align="justify"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/advice_pointcut.png?raw=true" alt=""></p>
 
+<p>A continuación un ejemplo de un <strong>Punto de Corte (Pointcut)</strong> y también un Consejo declarado por un Pointcut.</p>
+<img src="../Images/punto_corte.png"/>
+
 <hr>
+
+
+<p align="justify"><strong>Joinpoints por Categoría:</strong></p>
+<img src="../Images/Joinpoint_tabla.png"/>
+
+<p align="justify"><strong>Algunos Pointcut importantes:</strong></p>
+<img src="../Images/Pointcut_tabla.png"/>
 
 <p align="justify"><em><strong>VAMOS CON EL EJEMPLO...</strong></em></p>
 
@@ -151,6 +163,37 @@ Dentro de ellos podemos encontrar:</p>
 <p align="justify"><em>Este concepto de Tejedor es muy importante dentro de la Programación Orientada a Aspectos, este es el que nos va a mezclar el <strong>Programa de componentes</strong> descrito por un Lenguaje base, y  los diferentes <strong>Programas de Aspectos</strong>, cada uno descrito por su propio Lenguaje de aspectos</em></p>
 
 <p align="justify"><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/Tejedor.png?raw=true" alt=""></p>
+
+<h3><strong>Tipos de Entrelazado:</strong></h3>
+<p><ul>
+        <li>
+            <strong>Entrelazado Estático:</strong><br/>
+                <p>El entrelazado estático implica modificar el código fuente de una clase insertando sentencias en estos puntos de enlace. Es decir, que el código del aspecto se introduce en el de la clase. Un ejemplo de este tipo de tejedor es el Tejedor de Aspectos de AspectJ.<br/><br/>
+                La principal ventaja de esta forma de entrelazado es que se evita que el nivel de abstracción que se introduce con la programación orientada a aspectos se derive en un impacto negativo en el rendimiento de la aplicación. Pero, por el contrario, es bastante difícil identificar los aspectos en el código una vez que éste ya se ha tejido.</p>
+        </li>
+        <li>
+            <strong>Entrelazado Dinámico:</strong><br/>
+                <p>Una pre condición o requisito para que se pueda realizar un entrelazado dinámico es que los aspectos existan de forma explícita tanto en tiempo de compilación como en tiempo de ejecución.<br/><br/>
+                    Para conseguir esto, tanto los aspectos como las estructuras entrelazadas se deben modelar como objetos y deben mantenerse en el ejecutable. Dado un interfaz de reflexión, el tejedor es capaz de añadir, adaptar y borrar aspectos de forma dinámica, si así se desea, durante la ejecución.<br/><br/>
+                    Este tejedor también tiene en cuenta el orden en el que se entremezclan los aspectos. Esto lo resuelve asignando una prioridad al aspecto. El aspecto que tenga asignado un número menor es el que se teje primero, y por lo tanto, aparecerá antes en la jerarquía de herencia.<br/><br/>
+                    El principal inconveniente subyacente bajo este enfoque es el rendimiento y que se utiliza más memoria con la generación de todas estas subclases.<br/><br/>
+                    Una de las primeras clasificaciones de las formas de combinar el comportamiento de los componentes y los aspectos fue dada por John Lamping:
+                    <ul>
+                        <li>
+                                Yuxtaposición. Consiste en la intercalación del código de los aspectos en el de los componentes. La estructura del código mezclado quedaría como el código base con el código de los aspectos añadidos en los puntos de enlace. En este caso, el tejedor sería bastante simple. 
+                        </li>
+                        <li>
+                                Mezcla. Es lo opuesto a la yuxtaposición, todo el código queda mezclado con una combinación de descripciones de componentes y aspectos.
+                        </li>
+                        <li>
+                                Fusión. En este caso, los puntos de enlace no se tratan de manera independiente, se fusionan varios niveles de componentes y de descripciones de aspectos en una acción simple. 
+                        </li>
+                    </ul>
+                </p>
+        </li>
+        
+    </ul>
+</p>
 
 <hr>
 
