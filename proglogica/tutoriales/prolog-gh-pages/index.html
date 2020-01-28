@@ -67,8 +67,9 @@
   <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
   <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">13. Ejemplo Sistema Experto</a></li>
   <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">14. Ejemplo QuickSort</a></li>
-  <li><a href="#15-Aplicaciones" aria-hidden="true">15. Aplicaciones</a></li>
-  <li><a href="#16-Des-Ven" aria-hidden="true">16. Desventajas / Ventajas</a></li>
+  <li><a href="#16-hanoi" aria-hidden="true">15. Problema de Torres de Hanoi</a></li>
+  <li><a href="#15-Aplicaciones" aria-hidden="true">16. Aplicaciones</a></li>
+  <li><a href="#16-Des-Ven" aria-hidden="true">17. Desventajas / Ventajas</a></li>
 
 </ul>
 <h1>
@@ -1222,16 +1223,48 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 </p>
 
 <a href="https://swish.swi-prolog.org/p/PL2019-I.swinb">QuickSort más otros ejemplos lo podemos encontrar en este Notebook</a>
-<h1>
-<a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Aplicaciones</h1>
 
+<h1><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Problema de Torres de Hanoi</h1>
 
+<p align="center">
+  <img src="images/torres-de-hanoi.png">
+</p>
+<p>
+  El problema consiste en:
+  <ul>
+    <li>Hay un stack de N discos están organizados del más grande al más pequeño, de abajo hacia arriba en una barilla.</li>
+    <li>Hay otras dos varillas que no tienen discos, una es nuestro objetivo donde queremos pasar los discos de forma ordenada y la otra nos va a servir de auxiliar.</li>
+    <li>Queremos el mínimo número de movimientos para mover el stack de la varilla inicial a la varilla objetivo.</li>
+  </ul>
+</p>
+<p>En cuestión, se puede solucionar de manera recursiva, donde podemos definir tres casos.</p>
+<p>El caso base, que es cuando en la varilla A hay un sólo elemento, por lo cual el disco se mueve directamente a C. Lo definimos de la siguiente manera en Prolog</p>
+<p align="center">
+    <img src="images/hanoi_base_case.png">
+  </p>
+<p>Y el caso recusivo, es cuando N>1 en el cual podemos definir que primero pase N-1 discos de A a B, usando C, luego el disco que queda lo pasamos de A a C, y en última instancia 
+  se pasarían los discos que hay en B a C. Lo definimos en Prolog de la siguiente manera.
+</p>
+<p align="center">
+  <img src="images/hanoi_recursivo.png">
+</p>
+<p>A continuación podemos ver la resolución del objetivo con tres discos.</p>
+<p align="center">
+  <img src="images/hanoi_solv.png">
+</p>
+
+<p>
+  <a target="_blank" href="https://swish.swi-prolog.org/p/LP-2019-2-fork.swinb">Aquí</a> 
+  encontrarás un tutorial completo de Prolog, que va desde sus estructuras más simples, hasta ejemplos avanzados como un sistema experto.
+</p>
+
+<h1><a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>16. Aplicaciones</h1>
 <p align="center">
 <img src="images/Aplicaciones.png">
 </p>
 
 <h1>
-<a id="16-Des-Ven" class="anchor" href="#16-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>16. Desventajas / Ventajas</h1>
+<a id="16-Des-Ven" class="anchor" href="#16-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>17. Desventajas / Ventajas</h1>
 
 <p align="center">
 <img src="images/des-ven.png">
