@@ -76,7 +76,21 @@
 	<p align="justify">
 		Los LOA de dominio específico fuerzan a programar las tareas de aspectos dentro de  éstos,  ya  que  en  el  lenguaje  base  se  restringe  el  uso  de  las  
 		instrucciones que tienen relación con la funcionalidad de los aspectos.
-	</p>
+    </p>
+    
+    <h2>
+            <a id="Prom" class="anchor" href="#prom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> El problema de los lenguajes base</h2>
+    <p align="justify">
+            Para el diseño de los LOA hay dos alternativas relativas al lenguaje base. Una sería el diseñar un nuevo lenguaje base junto con el lenguaje de aspectos y la otra sería tomar un lenguaje ya existente como base, lo cual es posible, ya que la base ha de ser un lenguaje de propósito general. Esta última opción tiene la ventaja de que se tiene que trabajar menos en el diseño e implementación de lenguajes para los entornos orientados a aspectos, y se pueden utilizar lenguajes ya trillados, y segundo, que el programador solamente tendrá que aprender el lenguaje de aspectos, pero no el lenguaje para la funcionalidad básica, que todavía constituye la mayor parte de los programas orientados a aspectos.
+    </p>
+    <p align="justify">
+            Hasta ahora, ambos, los lenguajes de dominio específicos y los de propósito general se han diseñado para utilizarse con lenguajes base existentes. Sin embargo, esta decisión también conlleva algunos problemas. 
+    </p>
+    <p align="justify">Con respecto a los lenguajes de dominio específico, puede tener bastante importancia el hecho de escoger un lenguaje base. Se tiene que tener en cuenta que los puntos de enlace solamente pueden ser los que se identifiquen en el lenguaje base. Así que no se es completamente libre para diseñar los puntos de enlace. </p>
+    <p align="justify">Segundo, si se necesitan separar las funcionalidades, se debe recordar que el lenguaje base debe restringirse después de que se hayan separado los aspectos. Esta es la parte más difícil, ya que se tiene que quitar elementos de un sistema complejo, el lenguaje base. Aunque el diseño de un lenguaje de programación es una tarea difícil y compleja, aún lo es más el hacerle cambios a un lenguaje, que no fue diseñado para tal propósito.</p>
+    <p align="justify">Los lenguajes de aspectos de propósito general son menos difíciles de implementar por encima de un lenguaje de programación existente, ya que no necesitan restringir el lenguaje base. Aparte de esto, la situación es la misma que con los lenguajes de dominio específicos, es decir, en el diseño de los puntos de enlace, se limita a los que pueden definirse en el lenguaje base.</p>
+
+
     <h2>
         <a id="JPAL" class="anchor" href="#jpal" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> JPAL</h2>
     <p align="justify">
