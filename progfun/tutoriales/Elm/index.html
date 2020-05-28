@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
+    <title>Elm &mdash; Functional programming</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="img/logo.png" alt="elm logo" class="logo" />
+        <h1>Elm - functional language</h1>
+      </header>
+
+      <div class="content">
+        <nav class="sidebar">
+          <ul class="side-nav">
+            <li class="side-nav__item side-nav__item--active">
+              <a href="#page1" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-home"></use>
+                </svg>
+                <span>Page 1</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#page2" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-aircraft-take-off"></use>
+                </svg>
+                <span>Page 2</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <span>Page 3</span>
+              </a>
+            </li>
+            <li class="side-nav__item">
+              <a href="#" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-map"></use>
+                </svg>
+                <span>Page 4</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="legal">
+            &copy; 2020, Daniela Castellanos, Cristhian Gomez, Camilo Sánchez
+          </div>
+        </nav>
+
+        <main class="elm-view">
+          <div class="detail" id="page1">
+            <div class="overview">
+              <h1 class="overview__heading">
+                PAGE 1
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                nisi dignissimos debitis ratione sapiente saepe. Accusantium
+                cumque, quas, ut corporis incidunt deserunt quae architecto
+                voluptate.
+              </p>
+              <p class="paragraph">
+                Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                architecto voluptate delectus, inventore iure aliquid aliquam.
+              </p>
+              <ul class="list">
+                <li class="list__item">Close to the beach</li>
+                <li class="list__item">Breakfast included</li>
+                <li class="list__item">Free airport shuttle</li>
+                <li class="list__item">Free wifi in all rooms</li>
+                <li class="list__item">Air conditioning and heating</li>
+                <li class="list__item">Pets allowed</li>
+                <li class="list__item">We speak all languages</li>
+                <li class="list__item">Perfect for families</li>
+              </ul>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  <span style="color: rgb(51, 187, 200);"
+                    >-- TYPE MISMATCH ----------------------------
+                    Main.elm</span
+                  >
+
+                  The 1st argument to `drop` is not what I expect: 8| List.drop
+                  (String.toInt userInput) [1,2,3,4,5,6]
+                  <span style="color: rgb(194, 54, 33);"
+                    >^^^^^^^^^^^^^^^^^^^^^^</span
+                  >
+                  This `toInt` call produces:
+
+                  <span style="color: rgb(173, 173, 39);">Maybe</span> Int But
+                  `drop` needs the 1st argument to be: Int
+
+                  <span style="text-decoration: underline;">Hint</span>: Use
+                  <span style="color: rgb(49, 231, 34);"
+                    >Maybe.withDefault</span
+                  >
+                  to handle possible errors.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="detail" id="page2">
+            <div class="overview" id="page1">
+              <h1 class="overview__heading">
+                PAGE 2
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                nisi dignissimos debitis ratione sapiente saepe. Accusantium
+                cumque, quas, ut corporis incidunt deserunt quae architecto
+                voluptate.
+              </p>
+              <p class="paragraph">
+                Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                architecto voluptate delectus, inventore iure aliquid aliquam.
+              </p>
+              <ul class="list">
+                <li class="list__item">Close to the beach</li>
+                <li class="list__item">Breakfast included</li>
+                <li class="list__item">Free airport shuttle</li>
+                <li class="list__item">Free wifi in all rooms</li>
+                <li class="list__item">Air conditioning and heating</li>
+                <li class="list__item">Pets allowed</li>
+                <li class="list__item">We speak all languages</li>
+                <li class="list__item">Perfect for families</li>
+              </ul>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  <span style="color: rgb(51, 187, 200);"
+                    >-- TYPE MISMATCH ----------------------------
+                    Main.elm</span
+                  >
+
+                  The 1st argument to `drop` is not what I expect: 8| List.drop
+                  (String.toInt userInput) [1,2,3,4,5,6]
+                  <span style="color: rgb(194, 54, 33);"
+                    >^^^^^^^^^^^^^^^^^^^^^^</span
+                  >
+                  This `toInt` call produces:
+
+                  <span style="color: rgb(173, 173, 39);">Maybe</span> Int But
+                  `drop` needs the 1st argument to be: Int
+
+                  <span style="text-decoration: underline;">Hint</span>: Use
+                  <span style="color: rgb(49, 231, 34);"
+                    >Maybe.withDefault</span
+                  >
+                  to handle possible errors.
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
