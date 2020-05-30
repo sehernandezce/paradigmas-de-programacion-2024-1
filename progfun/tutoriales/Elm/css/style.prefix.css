@@ -322,6 +322,8 @@ body {
     -webkit-box-shadow: none;
             box-shadow: none; } }
 
+
+
 .paragraph:not(:last-of-type) {
   margin-bottom: 2rem; }
 

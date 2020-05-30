@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +13,14 @@
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
     <title>Elm &mdash; Functional programming</title>
+    <script defer>
+      function changeSelection(selection) {
+        document.querySelector(document.querySelector('#selector').value).classList.remove('side-nav__item--active');
+        document.querySelector(selection).classList.add('side-nav__item--active');
+        document.querySelector('#selector').value = selection;
+      }
+    </script>
+
   </head>
   <body>
     <div class="container">
@@ -19,35 +28,35 @@
         <img src="img/logo.png" alt="elm logo" class="logo" />
         <h1>Elm - functional language</h1>
       </header>
-
+      <input hidden value="#page1-menu" id="selector"/>
       <div class="content">
         <nav class="sidebar">
           <ul class="side-nav">
-            <li class="side-nav__item side-nav__item--active">
-              <a href="#page1" class="side-nav__link">
+            <li class="side-nav__item side-nav__item--active" id="page1-menu" onclick="changeSelection('#page1-menu')">
+              <a href="#page1" class="side-nav__link ">
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-home"></use>
                 </svg>
-                <span>Caracteristicas Importantes y Arquitectura</span>
+                <span>Caracteristicas Importantes</span>
               </a>
             </li>
-            <li class="side-nav__item">
+            <li class="side-nav__item" id="page2-menu" onclick="changeSelection('#page2-menu')">
               <a href="#page2" class="side-nav__link">
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-aircraft-take-off"></use>
                 </svg>
-                <span>Page 2</span>
+                <span>Arquitectura ELM</span>
               </a>
             </li>
-            <li class="side-nav__item">
-              <a href="#" class="side-nav__link">
+            <li class="side-nav__item" id="page3-menu" onclick="changeSelection('#page3-menu')">
+              <a href="#page3" class="side-nav__link">
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-key"></use>
                 </svg>
                 <span>Page 3</span>
               </a>
             </li>
-            <li class="side-nav__item">
+            <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page4-menu')">
               <a href="#" class="side-nav__link">
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-map"></use>
@@ -66,7 +75,7 @@
           <div class="detail" id="page1">
             <div class="overview">
               <h1 class="overview__heading">
-                Caracteristicas Importantes y Arquitectura
+                Caracteristicas Importantes
               </h1>
             </div>
             <div class="description">
@@ -82,34 +91,36 @@
                 <li class="list__item"><b>Basado en eventos:</b> La base de ELM son los eventos, cada evento en ELM se agrupan en conjuntos discretos de mensajes, definidos en un tipo de mensaje. Existen tres fuentes de eventos que pueden producir mensajes: Las acciones de los usuarios en la vista HTML, La ejecución de comandos, Eventos a los cuales se subscriben.</li>
                 
               </ul>
-              <div class="elm-code-block">
-                <div class="terminal">
-                  <span style="color: rgb(51, 187, 200);"
-                    >-- TYPE MISMATCH ----------------------------
-                    Main.elm</span
-                  >
-
-                  The 1st argument to `drop` is not what I expect: 8| List.drop
-                  (String.toInt userInput) [1,2,3,4,5,6]
-                  <span style="color: rgb(194, 54, 33);"
-                    >^^^^^^^^^^^^^^^^^^^^^^</span
-                  >
-                  This `toInt` call produces:
-
-                  <span style="color: rgb(173, 173, 39);">Maybe</span> Int But
-                  `drop` needs the 1st argument to be: Int
-
-                  <span style="text-decoration: underline;">Hint</span>: Use
-                  <span style="color: rgb(49, 231, 34);"
-                    >Maybe.withDefault</span
-                  >
-                  to handle possible errors.
-                </div>
-              </div>
+              
             </div>
+            
           </div>
           <div class="detail" id="page2">
             <div class="overview" id="page1">
+              <h1 class="overview__heading">
+                Arquitectura ELM
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+                La arquitectura ELM es un patron para la creación de programas interactivos. El patron basico de la erquitectura se ve de la siguiente manera:
+              </p>
+              <img style="display: block;
+                  margin-left: auto;
+                  margin-right: auto;" src="img/arquitechture.svg"/>
+              <p>
+                El programa elm produce HTML para renderizar en pantalla, y luego el computador envia un mensaje acerca de lo que esta sucediendo, es decir se crea una via de comunicación bidireccional que garantiza reactividad en cada programa creado por ELM.
+                De esta forma la arquitectura basica de un programa ELM se divide en tres partes:
+                <ul class="list">
+                  <li class="list__item"><b>Modelo:</b> Representa el estado del programa.</li>
+                  <li class="list__item"><b>Vista:</b> La forma de transformar el estado en HTML.</li>
+                  <li class="list__item"><b>Actualización:</b> una forma de actualizar el estado basado en el mensaje.</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+          <div class="detail" id="page3">
+            <div class="overview" id="page3">
               <h1 class="overview__heading">
                 PAGE 2
               </h1>
@@ -165,4 +176,7 @@
       </div>
     </div>
   </body>
+
+
+  
 </html>
