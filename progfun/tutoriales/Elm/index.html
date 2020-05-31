@@ -53,7 +53,7 @@
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-key"></use>
                 </svg>
-                <span>Page 3</span>
+                <span>Conceptos Exoticos</span>
               </a>
             </li>
             <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page4-menu')">
@@ -103,24 +103,170 @@
             </div>
             <div class="description">
               <p class="paragraph">
-                La arquitectura ELM es un patron para la creación de programas interactivos. El patron basico de la erquitectura se ve de la siguiente manera:
+                La arquitectura ELM es un patrón para la creación de programas interactivos. El patrón básico de la arquitectura se ve de la siguiente manera:
               </p>
               <img style="display: block;
                   margin-left: auto;
                   margin-right: auto;" src="img/arquitechture.svg"/>
               <p>
-                El programa elm produce HTML para renderizar en pantalla, y luego el computador envia un mensaje acerca de lo que esta sucediendo, es decir se crea una via de comunicación bidireccional que garantiza reactividad en cada programa creado por ELM.
-                De esta forma la arquitectura basica de un programa ELM se divide en tres partes:
+                El programa elm produce HTML para renderizar en pantalla, y luego el computador enviá un mensaje acerca de lo que esta sucediendo, es decir se crea una via de comunicación bidireccional que garantiza reactividad en cada programa creado por ELM.
+                De esta forma la arquitectura básica de un programa ELM se divide en tres partes:
                 <ul class="list">
                   <li class="list__item"><b>Modelo:</b> Representa el estado del programa.</li>
                   <li class="list__item"><b>Vista:</b> La forma de transformar el estado en HTML.</li>
                   <li class="list__item"><b>Actualización:</b> una forma de actualizar el estado basado en el mensaje.</li>
                 </ul>
+                El siguiente ejemplo muestra como funciona la arquitectura:
+
+                <div class="terminal">
+                  
+                  
+                  module Main exposing (...)
+                  import Browser
+                  import Html exposing (Html, button, div, text)
+                  import Html.Events exposing (onClick)
+
+                  <span style="color: rgb(49, 231, 34);"
+                    >-- MAIN</span
+                  >
+                  main = 
+                  Browser.sandbox(init = init, update = update, view = view)
+
+                  type alias Model = Int 
+
+                  init : Model
+                  init = 0
+                  <span style="color: rgb(49, 231, 34);"
+                  >-- UPDATE</span
+                >
+                  type = Msg
+                       = Increment
+                       | Decrement
+                  update : Msg -> Model -> Model
+                  update msg model =
+                    case msg of
+                      Increment ->
+                        model + 1
+                      Decrement ->
+                        model + 1
+
+                  <span style="color: rgb(49, 231, 34);"
+                  >-- VIEW</span
+                  >
+                  view : Model -> Html Msg
+                  view model =
+                    div []
+                      [ button [ onClick Decrement ] [ text "-" ]
+                      , div [] [ text (String.fromInt model) ]
+                      , button [ onClick Increment ] [ test "+" ]
+                      ]
+                </div>
+                En el anterior código tenemos un contador en la parte del modelo, inicializado en 0, el cual se actualiza por medio de mensajes incrementando o decrementando, y por ultimo tenemos la renderización de este contador, junto a dos botones para modificar el valor.
+
+                Para mas ejemplos como el anterior, siga al enlace <a target="_blank" href="https://elm-lang.org/try">Ejemplos ELM</a>
+
               </p>
             </div>
           </div>
           <div class="detail" id="page3">
             <div class="overview" id="page3">
+              <h1 class="overview__heading">
+                Conceptos Exóticos
+              </h1>
+            </div>
+            <div class="description">
+              <h1 class="">
+                Tipos de uniones
+              </h1>
+              <p class="paragraph">
+              </p>
+              <p class="paragraph">
+                Este concepto es la piedra preciosa detrás de ELM. Veamos este concepto con un ejemplo:
+              </p>
+              <p class="paragraph">
+                Imagine que usted esta creando una paginación para una lista. Al final de la pagina debe existir botones para devolverse, ir hacia adelante, e ir a cualquier pagina por su número, pero el problema es como mantener la información de cual link fue oprimido de una forma elegante.
+                Podríamos utilizar múltiples callbacks para cada caso, o complicarnos con valores booleanos que indiquen en que tipo de acción nos encontramos, pero en ELM las cosas se hacen de una forma mas elegante. 
+                En ELM definiremos el siguiente tipo de union 
+              </p>
+              
+              <div class="elm-code-block">
+                <div class="terminal">
+                  type NextPage
+                    = Prev
+                    | Next
+                    | ExactPage Int
+                </div>
+              </div>
+              <p class="paragraph">
+                y lo utilizamos como un parámetro en el envió de mensaje de la siguiente manera:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  type Msg
+                    = ...
+                    | ChangePage NextPage
+                </div>
+              </div>
+              <p class="paragraph">
+                Finalmente en la función de actualización discriminamos cada caso de la siguiente forma:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  update msg model =
+                    case msg of
+                      ChangePage nextPage ->
+                        case nextPage of
+                          Prev ->
+                            ...
+                          Next ->
+                            ...
+                          ExactPage newPage ->
+                            ...
+                </div>
+              </div>
+              <p class="paragraph"></p>
+              <br>
+              <br>
+              <h1 class="">
+                Creando múltiples mapeos de funciones con <|
+              </h1>
+              <p class="paragraph">
+                Veamos este concepto por medio de un ejemplo: suponga que una lista tiene map, map2,...,map5. Pero ¿que sucede si tenemos una función que toma seis argumentos? No existe ningún map6. Pero, existe una técnica para solucionar esto. Usar la función <| como parámetro, y funciones parciales, con algunos de los argumentos aplicados como resultados parciales.
+              </p>
+              <p class="paragraph">
+                Por simplicidad, suponga que la lista solo tiene map y map2, y queremos aplicar una función que toma tres argumentos.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  map3 foo list1 list2 list3 =
+                      let
+                          partialResult =
+                              List.map2 foo list1 list2
+                      in
+                      List.map2 (<|) partialResult list3
+                </div>
+              </div>
+              <p class="paragraph">
+                Suponga que queremos usar foo, que solo multiplica los argumentos numéricos, definido como:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  foo a b c =
+                    a * b * c
+                </div>
+              </div>
+              <p class="paragraph">
+                Así, el resultado de map3 foo [1,2,3,4,5] [1,2,3,4,5] [1,2,3,4,5] es [1,8,27,64,125].
+              </p>
+              <p class="paragraph">
+                De esta forma reconstruyamos lo que esta pasando en la parte anterior. Primero, en partialResult = List.map2 foo list1 list2, foo se aplica parcialmente a toda pareja list1 y list2. El resultado es [foo 1 1, foo 2 2, foo 3 3, foo 4 4, foo 5 5], una lista de funciones que toma un parámetro y retorna un numero, el cual es después llamado en List.map2 (<|) partialResult list3.
+              </p>
+              <br>
+              <br>
+            </div>
+          </div>
+          <div class="detail" id="page4">
+            <div class="overview" id="page4">
               <h1 class="overview__heading">
                 PAGE 2
               </h1>
