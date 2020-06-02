@@ -64,6 +64,15 @@
                 <span>CÓDIGO ELM</span>
               </a>
             </li>
+            <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page5-menu')">
+              <a href="#page5" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-map"></use>
+                </svg>
+                <span>PROGRAMACIÓN FUNCIONAL</span>
+              </a>
+            </li>
+            
           </ul>
 
           <div class="legal">
@@ -173,13 +182,9 @@
               <h1 class="overview__heading">
                 Conceptos Exóticos
               </h1>
-            </div>
+            </div> <!--overview end  -->
             <div class="description">
-              <h1 class="">
-                Tipos de uniones
-              </h1>
-              <p class="paragraph">
-              </p>
+              <h1 class="">Tipos de uniones</h1>
               <p class="paragraph">
                 Este concepto es la piedra preciosa detrás de ELM. Veamos este concepto con un ejemplo:
               </p>
@@ -188,7 +193,6 @@
                 Podríamos utilizar múltiples callbacks para cada caso, o complicarnos con valores booleanos que indiquen en que tipo de acción nos encontramos, pero en ELM las cosas se hacen de una forma mas elegante. 
                 En ELM definiremos el siguiente tipo de union 
               </p>
-              
               <div class="elm-code-block">
                 <div class="terminal">
                   type NextPage
@@ -224,12 +228,7 @@
                             ...
                 </div>
               </div>
-              <p class="paragraph"></p>
-              <br>
-              <br>
-              <h1 class="">
-                Creando múltiples mapeos de funciones con <|
-              </h1>
+              <h1 >Creando múltiples mapeos de funciones con <|  </h1>
               <p class="paragraph">
                 Veamos este concepto por medio de un ejemplo: suponga que una lista tiene map, map2,...,map5. Pero ¿que sucede si tenemos una función que toma seis argumentos? No existe ningún map6. Pero, existe una técnica para solucionar esto. Usar la función <| como parámetro, y funciones parciales, con algunos de los argumentos aplicados como resultados parciales.
               </p>
@@ -261,10 +260,9 @@
               <p class="paragraph">
                 De esta forma reconstruyamos lo que esta pasando en la parte anterior. Primero, en partialResult = List.map2 foo list1 list2, foo se aplica parcialmente a toda pareja list1 y list2. El resultado es [foo 1 1, foo 2 2, foo 3 3, foo 4 4, foo 5 5], una lista de funciones que toma un parámetro y retorna un numero, el cual es después llamado en List.map2 (<|) partialResult list3.
               </p>
-              <br>
-              <br>
-            </div>
-          </div>
+           
+           </div> <!--description end  -->
+          </div> <!--detail  -->
           <div class="detail" id="page4">
             <div class="overview">
               <h1 class="overview__heading">
@@ -335,6 +333,7 @@
                   <span style="color: rgb(173, 173, 39);">["A", "B", "C"]</span>
                   > list = [1, 2, 3]
                   <span style="color: rgb(51, 187, 200);">[1, 2, 3]</span>
+                </div>
               </div>
               <h2>Tuplas:</h2>
               <p class="paragraph">
@@ -347,6 +346,7 @@
                  
                   > ( 1, False, "A" )
                   (<span style="color: rgb(176, 90, 226);">1</span>, <span style="color: rgb(51, 187, 200);">False</span>, <span style="color: rgb(173, 173, 39);">"A"</span>)
+                </div>
               </div>
               <h2>Records:</h2>
               <p class="paragraph">
@@ -450,6 +450,7 @@
               <p class="paragraph">
                 Y ya instanciando dos elementos Gato, el primero con edad desconocida y el segundo con edad conocida
               </p>
+
               <div class="elm-code-block">
                 <div class="terminal">
                   > tail = { nombre = "Tail", edad = Nothing }  
@@ -457,10 +458,11 @@
                 <div class="terminal">
                   > chloe = { nombre = "Chloe", edad = Just 1 }  
                 </div>
-                <p class="paragraph">
-                  Este concepto es bastante útil al definir atributos opcionales en records o cuando se requiere que una función no procese ciertos valores (por ejemplo, cuando se intenta hacer un parseo de String a Int pero el valor de la cadena no tiene representación entera)
-                </p>
+
               </div>
+              <p class="paragraph">
+                Este concepto es bastante útil al definir atributos opcionales en records o cuando se requiere que una función no procese ciertos valores (por ejemplo, cuando se intenta hacer un parseo de String a Int pero el valor de la cadena no tiene representación entera)
+              </p>
               <h2>Pipelines:</h2>
               <p class="paragraph">
                 Tenemos dos funciones 
@@ -501,8 +503,163 @@
                   |
                 </div>
               </div>
-            </div>
+          </div> <!-- description-->
           </div>
+          <div class="detail" id="page5">
+            <div class="overview">
+              <h1 class="overview__heading">
+                PROGRAMACIÓN FUNCIONAL
+              </h1>
+            </div>
+            <div class="description">
+              <h1>
+                ¿Y los ciclos?
+              </h1>
+            
+              <p class="paragraph">
+              Elm no provee una implementación de ciclos de forma nativa. Si se requiere usar un ciclo en Elm, entonces se le pide al programador que haga uso de herramientas como la recursión.
+
+              Así, entonces un ciclo construido de la siguiente forma en Javascript
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  var saludo = ""
+                  for (var i = 5; i> 0; i--){
+                    saludo = saludo + ("hola:"+i+" ");
+                  }
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              En Elm podría ser implementado de la siguiente forma
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+
+                  > saludar: Int -> String
+                  | saludar num =
+                  |   case num of
+                  |     1 -> "hola:1 "
+                  |     _ -> "hola:" ++ String.fromInt num ++ " " ++ saludar (num-1)
+            
+              </div>
+            </div>
+            <p class="paragraph">
+              El primer bloque almacena en la variable “saludo” el valor 
+            </p>
+            <p class="paragraph">
+              “hola:5 hola:4 hola:3 hola:2 hola:1”
+            </p>
+            <p class="paragraph">
+              Este valor también es el resultante de llamar a la función “saludar” del segundo bloque utilizando el parámetro 5.
+            </p>
+
+            <h2>Funciones de primera clase</h2>
+            <p class="paragraph">
+              Elm tiene soporte para funciones de primera clase, esto significa que las funciones pueden ser asignadas a variables o ser usadas como atributos o valores de retorno en otras funciones.
+              
+              En el siguiente ejemplo se asigna a una variable una función
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                  > sum a b = a + b
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+                  > miFunc = sum
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+              </div>
+            </div>
+            <h2>Funciones de orden superior</h2>
+            <p class="paragraph">
+              Son funciones que pueden tomar otras funciones como parámetros o retornar otras funciones. 
+
+              Esto es bastante evidente al saber que Elm realmente solo admite funciones que tienen un argumento, el lenguaje se encarga de hacer la conversión de una función que tiene varios parámetros a una lista de “curried functions”, donde cada una de las funciones retorna a su vez una función.
+              
+              Para ilustrar el concepto, veamos un ejemplo de implementación de una función que suma dos valores “a” y “b” en Elm y la respectiva conversión que se hace “por debajo” a “curried functions”.
+              
+              A continuación la implementación en Elm
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                  > sum a b = a + b
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+                  > sum 5 2
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+                  > (sum 5) 2
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+                  > 2 |> (sum 5)
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+              </div>
+            </div>
+            <p class="paragraph">
+              La función “sum” es transformada de la siguiente forma. (Para hacer más entendible el código, se hizo la conversión equivalente en Javascript)
+
+              La función sumar
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  function sumar (a, b) {
+                    return a + b;
+                  }
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              Es transformada en “curried functions”, una lista de funciones anidadas que a su vez retornan funciones. Cada una de estas funciones son funciones de orden superior.
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  function sumar (a) {
+                    return function (b) {
+                      return a + b;
+                    }
+                  }
+                </span>
+              </div>
+            </div>
+            <h2>Funciones lambda</h2>
+            <p class="paragraph">
+              Son cierto tipo especial de funciones que son usados en alguno de los siguientes escenarios:
+            </p>
+            <ul class="list">
+              <li class="list__item"><b>Se quiere usar sólo una vez  
+              </b></li>
+              <li class="list__item"><b>La función es demasiado simple
+              </b></li>
+              <li class="list__item"><b>Se requiere legibilidad (se definen sólamente cuando se necesitan)</b>
+              </li>
+              <li class="list__item"><b>Se necesita retornar una función desde una función</b>
+              </li>
+            </ul>
+            <p class="paragraph">
+              Por ejemplo, la siguiente función lambda es equivalente a una función que calcula el cuadrado de un número
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                > \n -> n*n
+                <span style="color: rgb(51, 187, 200);">
+                  < function >
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              Y la siguiente función retorna una función lambda
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                > suma a =
+                | \b -> a + b
+                |
+                <span style="color: rgb(51, 187, 200);">
+                  < function >
+                </span>
+              </div>
+            </div>
+            </div> <!-- description-->
+          </div>
+ 
         </main>
       </div>
     </div>
