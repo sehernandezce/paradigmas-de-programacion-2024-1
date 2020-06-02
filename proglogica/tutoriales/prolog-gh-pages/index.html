@@ -9,9 +9,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <script type="text/javascript" src="js/prolog.js"></script>
+    <script type="text/javascript"
+  src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+    </script>
+
   </head>
   <body>
   
+
+<div id="google_translate_element"></div>
     <section class="page-header">
       <h1 class="project-name">Prolog</h1>
       <h2 class="project-tagline"></h2>
@@ -63,11 +69,15 @@
     <li><a href="#101-representacion2" aria-hidden="true">10.1 Otra representación de arboles </a></li>
       <li><a href="#102-representacion-nario" aria-hidden="true">10.2 Árboles N-arios </a></li>
   </ul>
-  <li><a href="#11-ejemplo-grafos" aria-hidden="true">11. Ejemplo Grafos</a></li>
-  <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">12. Ejemplo Autómatas</a></li>
-  <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">13. Ejemplo Sistema Experto</a></li>
-  <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">14. Ejemplo QuickSort</a></li>
-  <li><a href="#16-hanoi" aria-hidden="true">15. Problema de Torres de Hanoi</a></li>
+  <li><a href="#11-ejemplo-grafos" aria-hidden="true">11.Ejemplos en prolog</a></li>
+  <ul class="contenido">
+    <li><a href="#11-ejemplo-grafos" aria-hidden="true">11.1 Ejemplo Grafos</a></li>
+    <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">11.2 Ejemplo Autómatas</a></li>
+    <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">11.3 Ejemplo Sistema Experto</a></li>
+    <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">11.4 Ejemplo QuickSort</a></li>
+    <li><a href="#17-ejemplo-dcg" aria-hidden="true">11.5 Ejemplo DCG</a></li>
+    <li><a href="#16-hanoi" aria-hidden="true">11.6 Problema de Torres de Hanoi</a></li>
+  </ul>
   <li><a href="#15-Aplicaciones" aria-hidden="true">16. Aplicaciones</a></li>
   <li><a href="#16-Des-Ven" aria-hidden="true">17. Desventajas / Ventajas</a></li>
 
@@ -76,7 +86,8 @@
 <a id="1-introducción-a-prolog" class="anchor" href="#1-introducci%C3%B3n-a-prolog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Introducción a Prolog</h1>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5byrm2q5k34" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      
+
+
 <p>Prolog es un lenguaje de programación declarativo que se utiliza para resolver problemas en los que existen objetos y las relaciones entre ellos.  Los lenguajes declarativos se diferencian de los lenguajes imperativos en que están basados en
 formalismos abstractos (Prolog tiene sus fundamentos en la lógica de predicados o de primer orden), por lo tanto su semántica no depende de la máquina en la que se ejecutan. Busca obtener conocimiento declarando hechos sobre los objetos y sus relaciones, creando reglas sobre dichos objetos y relaciones y realizando preguntas en ese dominio. Está basado en los siguientes mecanismos básicos: unificación, estructuras de datos basadas en árboles y backtracking.</p>
 
@@ -1114,8 +1125,9 @@ iterar_preorder([Hijo | Lista], RecorridoHermanos) :- preorder(Hijo, Recorrido),
 Arbol = [5, [8, [7, [9]], [10]], [11, [1]]],
 Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <h1>
-<a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplo Grafos</h1>
 
+<a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplos de Prolog</h1>
+<h2><a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.1 Ejemplo de Grafos </h2>
 <p>Implementar el siguiente grafo en Prolog y definir una regla para encontrar los caminos de un nodo.</p>
 
 <p align="center">
@@ -1126,8 +1138,8 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/grafo1.png?raw=true"></p>
 
-<h1>
-<a id="12-ejemplo-autómatas" class="anchor" href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>12. Ejemplo Autómatas</h1>
+<h2>
+<a id="12-ejemplo-autómatas" class="anchor" href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.2 Ejemplo Autómatas</h2>
 
 <p align="center">
 <img src="images/automatas1.png">
@@ -1155,8 +1167,8 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/automata3.png?raw=true"></p>
 
-<h1>
-<a id="13-ejemplo-sistema-experto" class="anchor" href="#13-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Ejemplo Sistema Experto</h1>
+<h2>
+<a id="13-ejemplo-sistema-experto" class="anchor" href="#13-ejemplo-sistema-experto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.3 Ejemplo Sistema Experto</h2>
 
 
 <p>Implementar un Sistema Experto en prolog que acepte el ayude al diagnostico de un conjunto de enfermedades:</p>
@@ -1198,7 +1210,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 </p>
 <a href="https://swish.swi-prolog.org/p/fgRDDSpC.swinb">Ejemplo del sistema en Notebook de swish</a>
 
-<h1><a id="14-ejemplo-quick-sort" class="anchor" href="#14-ejemplo-quick-sort" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>14. Ejemplo de QuickSort</h1>
+<h2><a id="14-ejemplo-quick-sort" class="anchor" href="#14-ejemplo-quick-sort" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.4 Ejemplo de QuickSort</h1>
 
 <p>Quick sort es uno de los algoritmos de ordenamiento más usados, veremos como sería una de las implementaciones en Prolog.</p>
 
@@ -1224,7 +1236,54 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 
 <a href="https://swish.swi-prolog.org/p/PL2019-I.swinb">QuickSort más otros ejemplos lo podemos encontrar en este Notebook</a>
 
-<h1><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>15. Problema de Torres de Hanoi</h1>
+<h2><a id="17-ejemplo-dcg" class="anchor" href="#17-ejemplo-dcg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.5 Ejemplo de DCG</h2>
+
+<p>Uno de las aplicaciones por las cuales fue originalmente concebido Prolog por su autor Alain Colmerauer
+  fue el de procesamiento de lenguaje natural. Esto se logra en Prolog gracias al uso de 
+Definitive Clauses Grammar o por sus siglas en ingles DCG</p>
+<p>Pero antes de entender mediante un ejemplo basico como funciona el DCG en Prolog es necesario hacer una breve
+  introduccion a las gramaticas libres de contexto.
+</p>
+<p>
+  Donde la gramatica libre de contexto es en esencia un conjunto de reglas que nos dicen si una "oracion" esta
+  correctamente formulada (Es decir desde un punto de vista sintactico). Un ejemplo de dicha gramatica es $L=\left\lbracea^ib^jc^k | i+j=3k\right\rbrace$ como la que 
+  se muestra a continuacion
+</p>
+<p align="center">
+  <img src="images/Grammar.png">
+</p>
+<p>La anterior gramatica se refiere a palabras formadas por a,b,c de tal forma que se cumpla que $ L=\left\lbrace a^ib^jc^k | i+j=3k \right\rbrace $ .
+  En esta gramatica podemos identificar unas letras mayusculas las cuales son los simbolos no terminales es decir que tienen producciones
+  mientras que las letras minusculas seran considerados como simbolos terminales de la gramatica
+</p>
+<p>Lo anterior mencionado puede ser generalizado a casos mas grandes incluso en el area de procesamiento de lenguaje natural es decir hacer que un
+  computador logre entender idiomas como lo son el español, ingles, aleman, entre otros...
+</p>
+<p>
+  Prolog facilita la labor de trabajar con gramaticas libre de contexto mediante el uso de los ya mencionados DCG, aunque
+  tambien se puede realizar con la funcion append de listas.Nada mejor algo grafico para mostrar las facilidades que esta 
+  posee para representar la gramatica por medio de DCG:
+</p>
+<p align="center">
+  <img src="images/grammar_english.png">
+</p>
+<p>Como podemos observar las similitudes entre la forma que estamos acostumbrados y la forma como le hacemos entender 
+  mediante el uso de DCG la gramatica con la queremos trabajar.Y la forma como se realizan consultas sobre si una estructura
+  gramatical de una frase es correcta se realiza de la siguiente forma:
+</p>
+<p align="center">
+  <img src="images/sintax.png">
+</p>
+<p>Ahora vamos a probar con la frase  woman a man love a y nos daremos que el resultado es el esperado, es decir falso</p>
+<p align="center">
+  <img src="images/incorrect.png">
+</p>
+ Esto nos permite un sin fin de cosas mas como crear el arbol sintactico correspondiente entre otras que se dejan como 
+ tarea de revision al lector.
+<p>
+  
+</p>
+<h2><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.6 Problema de Torres de Hanoi</h2>
 
 <p align="center">
   <img src="images/torres-de-hanoi.png">
@@ -1258,13 +1317,13 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
   encontrarás un tutorial completo de Prolog, que va desde sus estructuras más simples, hasta ejemplos avanzados como un sistema experto.
 </p>
 
-<h1><a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>16. Aplicaciones</h1>
+<h1><a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>12. Aplicaciones</h1>
 <p align="center">
 <img src="images/Aplicaciones.png">
 </p>
 
 <h1>
-<a id="16-Des-Ven" class="anchor" href="#16-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>17. Desventajas / Ventajas</h1>
+<a id="16-Des-Ven" class="anchor" href="#16-Des-Ven" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>13. Desventajas / Ventajas</h1>
 
 <p align="center">
 <img src="images/des-ven.png">
@@ -1294,6 +1353,7 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <p>                Julián Esteban Salomón y Cristian David González</p>
 <p>                Cristian Laiton y David Hormaza.</p>
 <p>                Luis Castro y Wilson Piravaguen.</p>
+<p>                Andrés Fernando Román Arévalo.</p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
 
