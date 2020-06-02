@@ -57,11 +57,11 @@
               </a>
             </li>
             <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page4-menu')">
-              <a href="#" class="side-nav__link">
+              <a href="#page4" class="side-nav__link">
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-map"></use>
                 </svg>
-                <span>Page 4</span>
+                <span>CÓDIGO ELM</span>
               </a>
             </li>
           </ul>
@@ -266,54 +266,239 @@
             </div>
           </div>
           <div class="detail" id="page4">
-            <div class="overview" id="page4">
+            <div class="overview">
               <h1 class="overview__heading">
-                PAGE 2
+                CÓDIGO ELM
               </h1>
             </div>
             <div class="description">
+              <h1>
+                Operadores, transformaciones y comparadores
+              </h1>
               <p class="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-                nisi dignissimos debitis ratione sapiente saepe. Accusantium
-                cumque, quas, ut corporis incidunt deserunt quae architecto
-                voluptate.
+                Al igual que otros lenguajes, Elm soporta una gran variedad de operaciones entre valores, transformaciones de tipo y comparadores de expresiones. La siguiente tabla muestra algunos de los más representativos.
               </p>
+              <img class="contentImage"  src="img/operadores_tr_comp.png"/>
+              <h1>
+                El núcleo del lenguaje
+              </h1>
               <p class="paragraph">
-                Accusantium cumque, quas, ut corporis incidunt deserunt quae
-                architecto voluptate delectus, inventore iure aliquid aliquam.
+                Es importante conocer ciertas estructuras que son útiles al momento de realizar código en Elm:
               </p>
-              <ul class="list">
-                <li class="list__item">Close to the beach</li>
-                <li class="list__item">Breakfast included</li>
-                <li class="list__item">Free airport shuttle</li>
-                <li class="list__item">Free wifi in all rooms</li>
-                <li class="list__item">Air conditioning and heating</li>
-                <li class="list__item">Pets allowed</li>
-                <li class="list__item">We speak all languages</li>
-                <li class="list__item">Perfect for families</li>
-              </ul>
+              <h2>Values:</h2>
+              <p class="paragraph">
+                Pueden ser entendidos como literales, por ejemplo números enteros o cadenas definidas en el código.
+              </p>
+              <h2>Funciones:</h2>
+              <p class="paragraph">
+                Son las estructuras más importantes en el lenguaje, su estructura puede parecer extraña inicialmente debido a que difiere de otros lenguajes, sin embargo el concepto es exactamente el mismo. 
+
+                Declaración de la función “greet” que recibe el argumento “name”
+              </p>
               <div class="elm-code-block">
                 <div class="terminal">
-                  <span style="color: rgb(51, 187, 200);"
-                    >-- TYPE MISMATCH ----------------------------
-                    Main.elm</span
-                  >
-
-                  The 1st argument to `drop` is not what I expect: 8| List.drop
-                  (String.toInt userInput) [1,2,3,4,5,6]
-                  <span style="color: rgb(194, 54, 33);"
-                    >^^^^^^^^^^^^^^^^^^^^^^</span
-                  >
-                  This `toInt` call produces:
-
-                  <span style="color: rgb(173, 173, 39);">Maybe</span> Int But
-                  `drop` needs the 1st argument to be: Int
-
-                  <span style="text-decoration: underline;">Hint</span>: Use
-                  <span style="color: rgb(49, 231, 34);"
-                    >Maybe.withDefault</span
-                  >
-                  to handle possible errors.
+                  > green name =
+                    |  "Hello " ++ name ++ "!"
+                </div>
+              </div>
+              <p class="paragraph">
+                Declaración de la función “sum” que recibe dos argumentos “a” y “b”
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > sum a b =
+                    |  a + b
+                </div>
+              </div>
+              <h2>Condicionales:</h2>
+              <p class="paragraph">
+                La estructura de un condicional en Elm es muy similar a otros lenguajes como python. En el siguiente ejemplo se construye la función “greet” que recibe el parámetro “name”, y en el cuerpo de la función se hace un condicional para que varíe el output en función del valor de “name”.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > greet name =
+                    if name == "Felipe" then
+                      "Hola profesor!"
+                    else if name == "Laura" then
+                      "Hola monitora!"
+                    else
+                      "Hola " ++ name ++ "!"
+                </div>
+              </div>
+              <h2>Listas:</h2>
+              <p class="paragraph">
+                La declaración de las listas en Elm es equivalente a la declaración de una lista en lenguajes como python o javascript, con la diferencia de que en Elm todos los elementos de la lista deben ser del mismo tipo.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > list = ["A", "B", "C"]
+                  <span style="color: rgb(173, 173, 39);">["A", "B", "C"]</span>
+                  > list = [1, 2, 3]
+                  <span style="color: rgb(51, 187, 200);">[1, 2, 3]</span>
+              </div>
+              <h2>Tuplas:</h2>
+              <p class="paragraph">
+                Las tuplas se utilizan principalmente cuando se requiere retornar varios valores en una misma función, tal vez de distinto tipo. Únicamente pueden tener dos o tres valores.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > ( True, "Lenguajes" )
+                  (<span style="color: rgb(51, 187, 200);">[1, 2, 3]</span>, <span style="color: rgb(176, 90, 226);">"Lenguajes"</span>
+                 
+                  > ( 1, False, "A" )
+                  (<span style="color: rgb(176, 90, 226);">1</span>, <span style="color: rgb(51, 187, 200);">False</span>, <span style="color: rgb(173, 173, 39);">"A"</span>)
+              </div>
+              <h2>Records:</h2>
+              <p class="paragraph">
+                El concepto de un registro o record en Elm es muy similar al de un objeto en Javascript o un diccionario en Python. Se refiere a un elemento que posee varios atributos con sus respectivos valores.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > chloe =
+                  |   { edad = 1,
+                  |     especie = "gato",
+                  |     color = "gris" }
+                </div>
+              </div>
+              <p class="paragraph">
+                La forma de acceder a sus atributos es muy común en otros lenguajes
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > chloe.edad
+                  <span style="color: rgb(176, 90, 226);">1</span>
+                  > chloe.especie
+                  <span style="color: rgb(173, 173, 39);">"gato"</span>
+                  > .color chloe
+                  <span style="color: rgb(173, 173, 39);">"gris"</span>
+                </div>
+              </div>
+              <p class="paragraph">
+                Cuando se quiere reescribir uno de sus atributos, en Elm se crea una copia completa del objeto variando únicamente los campos que le especificamos. Esto con el objetivo de que no se afecten las salidas de otras funciones que dependan del record inicial. En la siguiente línea de código se modifica la edad del record chloe para que sea 2 en lugar de 1.
+              </p>
+              <div class="terminal">
+                > { chloe | edad = 2 }
+              </div>
+              <h2>Tipos:</h2>
+              <p class="paragraph">
+                Uno de los puntos más fuertes de Elm es que tenemos control total sobre los tipos de dato que hay en las funciones, tanto como en su entrada como en su salida. Sin embargo, a veces puede ser más útil definir nuestros propios tipos aparte de los nativos, para esto Elm nos da ciertas herramientas:
+              </p>
+              <ul class="list">
+                <li class="list__item">Type alias: Es muy útil para definir tipos que serán usados en funciones como parámetro o como salida. Es un concepto similar a la creación del modelo de un objeto, por lo que se debe especificar los tipos de los atributos que posea
+                  <div class="elm-code-block">
+                    <div class="terminal">
+                      > type alias Gato =
+                      |   { edad = Int,
+                      |     nombre = String }
+                    </div>
+                  </div>
+                </li>
+                <li class="list__item">Custom types: Esta herramienta nos permite crear tipos personalizados de forma sencilla, estos pueden ser usados incluso como tipos de un Type alias.
+                  <div class="elm-code-block">
+                    <div class="terminal">
+                      > type Raza = Criollo | Persa
+                    </div>
+                  </div>
+              </ul>
+              <h2>Case y wildcard:</h2>
+              <p class="paragraph">
+                Imaginemos que tenemos un type alias “Gato” que tiene como atributos “raza” de tipo “Raza” (definido en el último fragmento de código) y de un nombre tipo cadena.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type alias Gato =
+                  |   { raza = Raza,
+                  |     nombre = String }
+                </div>
+              </div>
+              <p class="paragraph">
+                La siguiente función identifica si un gato es de Raza Criollo o de Raza Persa
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > esCriollo gato =
+                  |   case gato of
+                  |     Criollo _ -> "Es criollo!"
+                  |     Persa _ -> "Es persa!"
+                  |     
+                </div>
+              </div>
+              <p class="paragraph">
+                La estructura case sirve para tomar decisiones en base a la estructura de los datos  de “gato”, sin embargo también sirve para tomar decisiones en base a valores, como lo sería una estructura switch-case existente en otros lenguajes. El carácter “_” sirve como comodín, indica que lo que sea que vaya en esa posición realmente no va a ser significativo en el flujo de la función, a esto se le conoce como wildcard.
+              </p>
+              <h2>Maybe</h2>
+              <p class="paragraph">
+                Un tipo Maybe sirve para indicar que un valor puede que no sea conocido.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type Maybe a =
+                  |   Just a |
+                  |   Nothing     
+                </div>
+              </div>
+              <p class="paragraph">
+                Por ejemplo, continuando con el ejemplo del type alias “Gato”, la siguiente definición significa que tal vez no se conozca la edad del gato, es importante haber definido ya el tipo Maybe.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type alias Gato =
+                  |   { nombre: String,
+                  |     edad: Maybe Int }   
+                </div>
+              </div>
+              <p class="paragraph">
+                Y ya instanciando dos elementos Gato, el primero con edad desconocida y el segundo con edad conocida
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > tail = { nombre = "Tail", edad = Nothing }  
+                </div>
+                <div class="terminal">
+                  > chloe = { nombre = "Chloe", edad = Just 1 }  
+                </div>
+                <p class="paragraph">
+                  Este concepto es bastante útil al definir atributos opcionales en records o cuando se requiere que una función no procese ciertos valores (por ejemplo, cuando se intenta hacer un parseo de String a Int pero el valor de la cadena no tiene representación entera)
+                </p>
+              </div>
+              <h2>Pipelines:</h2>
+              <p class="paragraph">
+                Tenemos dos funciones 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > sum1 : Int -> Int
+                  | sum1 numero =
+                  |  
+               
+                  <span style="color: rgb(51, 187, 200);">< function ></span>
+                  > mult2 : Int -> Int
+                  | mult2 numero =
+                  | numero * 2
+                  |
+                  <span style="color: rgb(51, 187, 200);">< function ></span>
+                </div>
+              </div>
+              <p class="paragraph">
+                Implementamos una función que las use para transformar un número entero 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > transformar : Int -> Int
+                  | transformar numero =
+                  |   mult2 (sum1 numero)
+                  |
+                </div>
+              </div>
+              <p class="paragraph">
+                Elm además nos provee de una herramienta llamada Pipelines para que los múltiples llamados a funciones sean más legibles para el programador, así entonces el último bloque de código quedaría de la siguiente forma 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > transformar : Int -> Int
+                  | transformar numero =
+                  |   numero |> sum1 |> mult2
+                  |
                 </div>
               </div>
             </div>
