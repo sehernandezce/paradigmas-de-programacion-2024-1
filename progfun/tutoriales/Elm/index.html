@@ -37,7 +37,7 @@
                 <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-home"></use>
                 </svg>
-                <span>Caracteristicas Importantes</span>
+                <span>Introducción</span>
               </a>
             </li>
             <li class="side-nav__item" id="page2-menu" onclick="changeSelection('#page2-menu')">
@@ -64,12 +64,28 @@
                 <span>CÓDIGO ELM</span>
               </a>
             </li>
-            <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page5-menu')">
+            <li class="side-nav__item" id="page5-menu" onclick="changeSelection('#page5-menu')">
               <a href="#page5" class="side-nav__link">
                 <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-map"></use>
+                  <use xlink:href="img/sprite.svg#icon-star"></use>
                 </svg>
                 <span>PROGRAMACIÓN FUNCIONAL</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page6-menu" onclick="changeSelection('#page6-menu')">
+              <a href="#page6" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                </svg>
+                <span>EJEMPLO FUNCIONAL</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page7-menu" onclick="changeSelection('#page7-menu')">
+              <a href="#page7" class="side-nav__link">
+                <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                </svg>
+                <span>EJEMPLO PRÁCTICO</span>
               </a>
             </li>
             
@@ -84,7 +100,7 @@
           <div class="detail" id="page1">
             <div class="overview">
               <h1 class="overview__heading">
-                Caracteristicas Importantes
+                Introducción
               </h1>
             </div>
             <div class="description">
@@ -657,6 +673,178 @@
                 </span>
               </div>
             </div>
+            </div> <!-- description-->
+          </div>
+
+          <div class="detail" id="page6">
+            <div class="overview">
+              <h1 class="overview__heading">
+                EJEMPLO FUNCIONAL
+              </h1>
+            </div>
+            <div class="description">
+              Dado un número natural n, par mayor que 2, calcular dos primos tales que su suma sea igual a n:
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  goldbach : Int -> Maybe (Int, Int)
+                  goldbach n =
+                      if isOdd n || n < 3 then
+                          Nothing
+                      else
+                          goldbach1 n <| primesInRange 2 n
+
+
+                  goldbach1 : Int -> List Int -> Maybe (Int, Int)
+                  goldbach1 n ps =
+                      case ps of
+                          [] ->
+                              Nothing
+
+                          p1 :: xs ->
+                              let
+                                  ps1 = dropWhile (\y -> p1 + y < n) ps
+                              in
+                                  case List.head ps1 of
+                                      Nothing ->
+                                          goldbach1 n xs
+
+                                      Just p2 ->
+                                          if p2 + p1 == n  then
+                                              Just (p1, p2)
+                                          else
+                                              goldbach1 n xs
+
+
+                  primesInRange : Int -> Int -> List Int
+                  primesInRange low high =
+                      if high < low || high < 2 then
+                        []
+                      else
+                        dropWhile (\x -> x < low) <| primes high
+
+
+                  -- find all primes up to n
+                  primes : Int -> List Int
+                  primes n = 
+                      if n < 2 then
+                          []
+                      else
+                          eratos [2..n] []
+
+
+                  -- sieve of Eratosthenes
+                  -- remove all the the non-primes from a list
+                  eratos : List Int -> List Int -> List Int
+                  eratos candidates primes =  
+                    case candidates of
+                        [] -> List.reverse primes
+
+                        x::xs ->
+                            let 
+                                cs = List.filter (\y -> (y % x) /= 0) xs
+                            in
+                                eratos cs (x :: primes)
+
+
+                  dropWhile : (a -> Bool) -> List a -> List a
+                  dropWhile predicate list =
+                      case list of
+                        []      -> []
+
+                        x::xs   -> 
+                            if (predicate x) then 
+                                dropWhile predicate xs
+                            else 
+                                list
+                </span>
+              
+
+
+
+
+
+              </div>
+            </div>
+            En el anterior ejemplo tenemos las siguientes funciones:
+                <ul class="list">
+                  <li class="list__item">dropWhile: función que al tomar una lista elimina los elementos mientras que se cumpla cierta condición (emulación de un while)
+                  </li>
+                  <li class="list__item">eratos: Cálculo de la criba de Eratóstenes
+                  </li>
+                  <li class="list__item">primes: Función para calcular los primos hasta n
+                  </li>
+                  <li class="list__item">primesInRange: Función para calcular los primos en un rango
+                  </li>
+                  <li class="list__item">goldbach1: Función para calcular los números primos que solucionan el problema
+                  </li>
+                  <li class="list__item">goldbach: Función inicial que llama a goldbach1 solo si los parametros dados son correctos
+                  </li>
+                </ul>
+            </div> <!-- description-->
+          </div>
+          <div class="detail" id="page7">
+            <div class="overview">
+              <h1 class="overview__heading">
+                EJEMPLO PRÁCTICO
+              </h1>
+            </div>
+            <div class="description">
+                El siguiente programa muestra un contador que puede ser aumentado o decrementado por medio de dos botones
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  module Main exposing (main)
+
+                  import Browser
+                  import Html exposing (Html, button, div, text)
+                  import Html.Events exposing (onClick)
+
+
+                  type alias Model =
+                      { count : Int }
+
+
+                  initialModel : Model
+                  initialModel =
+                      { count = 0 }
+
+
+                  type Msg
+                      = Increment
+                      | Decrement
+
+
+                  update : Msg -> Model -> Model
+                  update msg model =
+                      case msg of
+                          Increment ->
+                              { model | count = model.count + 1 }
+
+                          Decrement ->
+                              { model | count = model.count - 1 }
+
+
+                  view : Model -> Html Msg
+                  view model =
+                      div []
+                          [ button [ onClick Increment ] [ text "+1" ]
+                          , div [] [ text <| String.fromInt model.count ]
+                          , button [ onClick Decrement ] [ text "-1" ]
+                          ]
+
+
+                  main : Program () Model Msg
+                  main =
+                      Browser.sandbox
+                          { init = initialModel
+                          , view = view
+                          , update = update
+                          }
+                </span>
+              </div>
+            </div>
+            En el anterior ejemplo podemos ver de forma precisa como se puede alterar un modelo por medio de un mensaje, el cual en este caso es Increment y Decrement, adicionalmente la vista cambia automaticamente al momento que el mensaje es enviado. Para ver el codigo en funcionamiento <a target="_blank" href="https://ellie-app.com/new">oprima en el link</a>
             </div> <!-- description-->
           </div>
  
