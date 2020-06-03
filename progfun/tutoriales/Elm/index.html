@@ -34,61 +34,55 @@
           <ul class="side-nav">
             <li class="side-nav__item side-nav__item--active" id="page1-menu" onclick="changeSelection('#page1-menu')">
               <a href="#page1" class="side-nav__link ">
-                <svg class="side-nav__icon">
+                1. &nbsp;
+                <!-- <svg class="side-nav__icon">
                   <use xlink:href="img/sprite.svg#icon-home"></use>
-                </svg>
+                </svg> -->
                 <span>Introducción</span>
               </a>
             </li>
             <li class="side-nav__item" id="page2-menu" onclick="changeSelection('#page2-menu')">
               <a href="#page2" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-aircraft-take-off"></use>
-                </svg>
+                2. &nbsp;
                 <span>Arquitectura ELM</span>
               </a>
             </li>
             <li class="side-nav__item" id="page3-menu" onclick="changeSelection('#page3-menu')">
               <a href="#page3" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-key"></use>
-                </svg>
+                3. &nbsp;
                 <span>Conceptos Exoticos</span>
               </a>
             </li>
             <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page4-menu')">
               <a href="#page4" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-map"></use>
-                </svg>
+                4. &nbsp;
                 <span>CÓDIGO ELM</span>
               </a>
             </li>
             <li class="side-nav__item" id="page5-menu" onclick="changeSelection('#page5-menu')">
               <a href="#page5" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-star"></use>
-                </svg>
+                5. &nbsp;
                 <span>PROGRAMACIÓN FUNCIONAL</span>
               </a>
             </li>
             <li class="side-nav__item" id="page6-menu" onclick="changeSelection('#page6-menu')">
               <a href="#page6" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
-                </svg>
+                6. &nbsp;
                 <span>EJEMPLO FUNCIONAL</span>
               </a>
             </li>
             <li class="side-nav__item" id="page7-menu" onclick="changeSelection('#page7-menu')">
               <a href="#page7" class="side-nav__link">
-                <svg class="side-nav__icon">
-                  <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
-                </svg>
+                7. &nbsp;
                 <span>EJEMPLO PRÁCTICO</span>
               </a>
             </li>
-            
+            <li class="side-nav__item" id="page8-menu" onclick="changeSelection('#page8-menu')">
+              <a href="#page8" class="side-nav__link">
+                8. &nbsp;
+                <span>REFERENCIAS</span>
+              </a>
+            </li>
           </ul>
 
           <div class="legal">
@@ -198,7 +192,7 @@
               <h1 class="overview__heading">
                 Conceptos Exóticos
               </h1>
-            </div> <!--overview end  -->
+            </div> <!--overview   -->
             <div class="description">
               <h1 class="">Tipos de uniones</h1>
               <p class="paragraph">
@@ -215,8 +209,8 @@
                     = Prev
                     | Next
                     | ExactPage Int
-                </div>
-              </div>
+                </div> <!--terminal   -->
+              </div><!--elm-code-block   -->
               <p class="paragraph">
                 y lo utilizamos como un parámetro en el envió de mensaje de la siguiente manera:
               </p>
@@ -226,7 +220,7 @@
                     = ...
                     | ChangePage NextPage
                 </div>
-              </div>
+              </div><!--elm-code-block   -->
               <p class="paragraph">
                 Finalmente en la función de actualización discriminamos cada caso de la siguiente forma:
               </p>
@@ -243,7 +237,7 @@
                           ExactPage newPage ->
                             ...
                 </div>
-              </div>
+              </div><!--elm-code-block   -->
               <h1 >Creando múltiples mapeos de funciones con <|  </h1>
               <p class="paragraph">
                 Veamos este concepto por medio de un ejemplo: suponga que una lista tiene map, map2,...,map5. Pero ¿que sucede si tenemos una función que toma seis argumentos? No existe ningún map6. Pero, existe una técnica para solucionar esto. Usar la función <| como parámetro, y funciones parciales, con algunos de los argumentos aplicados como resultados parciales.
@@ -260,7 +254,7 @@
                       in
                       List.map2 (<|) partialResult list3
                 </div>
-              </div>
+              </div><!--elm-code-block   -->
               <p class="paragraph">
                 Suponga que queremos usar foo, que solo multiplica los argumentos numéricos, definido como:
               </p>
@@ -758,14 +752,8 @@
                             else 
                                 list
                 </span>
-              
-
-
-
-
-
-              </div>
-            </div>
+              </div> <!-- terminal -->
+            </div> <!-- elm-code-block -->
             En el anterior ejemplo tenemos las siguientes funciones:
                 <ul class="list">
                   <li class="list__item">dropWhile: función que al tomar una lista elimina los elementos mientras que se cumpla cierta condición (emulación de un while)
@@ -844,10 +832,29 @@
                 </span>
               </div>
             </div>
-            En el anterior ejemplo podemos ver de forma precisa como se puede alterar un modelo por medio de un mensaje, el cual en este caso es Increment y Decrement, adicionalmente la vista cambia automaticamente al momento que el mensaje es enviado. Para ver el codigo en funcionamiento <a target="_blank" href="https://ellie-app.com/new">oprima en el link</a>
+            <p>En el anterior ejemplo podemos ver de forma precisa como se puede alterar un modelo por medio de un mensaje, el cual en este caso es Increment y Decrement, adicionalmente la vista cambia automaticamente al momento que el mensaje es enviado. Para ver el codigo en funcionamiento <a target="_blank" href="https://ellie-app.com/new">oprima en el link</a></p>
             </div> <!-- description-->
           </div>
- 
+           <div class="detail" id="page8">
+            <div class="overview">
+              <h1 class="overview__heading">
+                REFERENCIAS
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+               Puede consultar mas información en las siguientes fuentes
+              </p>
+              <ul class="list">
+                <li class="list__item">Documentación oficial <a href="https://guide.elm-lang.org/" target="_blank">aquí</a></li>
+                <li class="list__item">Programación funcional en Elm <a href="https://functional-programming-in-elm.netlify.app/" target="_blank">aquí</a></li>
+                <li class="list__item">Getting Started with the Elm Programming Language  <a href="https://www.toptal.com/front-end/getting-started-elm-language" target="_blank">aquí</a></li>
+                <li class="list__item">99 Problems solved in Elm  <a href="https://johncrane.gitbooks.io/ninety-nine-elm-problems/content/" target="_blank">aquí</a></li>
+                <li class="list__item">Learn you an Elm <a href="https://learnyouanelm.github.io/" target="_blank">aquí</a></li>
+                <li class="list__item">Functional reactive programming with elm <a href="https://csmith111.gitbooks.io/functional-reactive-programming-with-elm" target="_blank">aquí</a></li>
+              </ul>
+            </div>
+          </div>
         </main>
       </div>
     </div>

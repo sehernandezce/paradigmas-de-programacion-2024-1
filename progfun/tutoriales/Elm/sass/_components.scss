@@ -11,7 +11,7 @@
   font-size: 1.4rem;
   list-style: none;
   margin-top: 3.5rem;
-
+  flex-wrap: wrap;
   @media only screen and (max-width: $bp-medium) {
     display: flex;
     margin: 0;
@@ -212,7 +212,7 @@
   flex-wrap: wrap;
 
   &__item {
-    flex: 0 0 50%;
+    width: 100%;
     margin-bottom: 0.7rem;
   }
 
