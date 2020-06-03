@@ -64,6 +64,9 @@
   overflow: scroll;
   flex: 1;
   max-height: 90vh;
+  @media only screen and (max-width: $bp-medium) {
+    max-height: 80vh;
+  }
 }
 
 .detail {
