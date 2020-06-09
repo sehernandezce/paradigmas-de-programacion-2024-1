@@ -2,7 +2,7 @@ window.onscroll = function() {scrollFunction()};
 
 var mediaquery = window.matchMedia("(max-width: 64em)");
 if (mediaquery.matches) {
-	alert("sdfsdf");
+	//alert("sdfsdf");
    var b = document.getElementById("myBtn").value = "Bebe";
    alert(b);
 } else {
