@@ -27,10 +27,6 @@
     <h1>Programando en Julia</h1>
   </div>
 
-    <ul class="sf-menu" id="example" >
-        <li><a href="index.html">Programación paralela y distribuida en Julia</a></li>
-    </ul>
-
 </div>
 <!---header-wrap--->
 <div class="clear"></div>
@@ -48,7 +44,7 @@
        </p>
 	  <br>
       <p>
-        En la siguiente sección se presentan 3 notebooks, uno contextualizando el lenguaje como tal, el siguiente explicando las estructuras de datos en general y el otro explicando el uso del paralelismo en este lenguaje.
+        En la siguiente sección se presentan 5 notebooks, uno contextualizando el lenguaje como tal, el siguiente explicando las estructuras de datos en general y los demás con un enfoque hacia la programacion paralela.
       </p>
   </div>
 </div>
@@ -62,8 +58,10 @@
                     <h2>Notebook introductorio</h2>
                 </div>
                 <div class="content">
-                    <p>Notebook que explica el lenguaje de programación Julia, pasando por estructuras de control,tipado y otras cosas</p>
-                    <div class="button"><a href="https://nbviewer.jupyter.org/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/paralela/tutoriales/julia/notebooks/basicLevel.ipynb">Ver</a></div>
+                    <p>Notebook que explica el lenguaje de programación Julia, pasando por estructuras de control,tipado y otras cosas.</p>
+                    <div class="buttons2">
+                        <div class="button"><a target="_blank" href="https://nbviewer.jupyter.org/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/paralela/tutoriales/julia/notebooks/basicLevel.ipynb">Ver</a></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,23 +73,63 @@
                 </div>
                 <div class="content">
                     <p>Notebook que explica como realizar las diferentes estructuras de datos posibles en julia.</p>
-                    <div class="button"><a href="https://nbviewer.jupyter.org/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/paralela/tutoriales/julia/notebooks/intermediateLevel.ipynb">Ver</a></div>
+                    <div class="buttons2">
+                        <div class="button"><a target="_blank" href="https://nbviewer.jupyter.org/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/paralela/tutoriales/julia/notebooks/intermediateLevel.ipynb">Ver</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box marRight40">
+            <div class="panel">
+                <div class="title">
+                    <h1>Paralelismo en Julia parte 1</h1>
+                    <h2>Notebook de paralelismo parte 1</h2>
+                </div>
+                <div class="content">
+                    <p>Notebook que explica como se pueden realizar corutinas, procesamiento multihilos y algunos ejemplos que nos permitarán evitar condiciones de carrera.</p>
+                    <div class="buttons2 marTop2">
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingPart1.html">Ver</a></div>
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingPart1Slides.html">Slides</a></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="box">
             <div class="panel">
                 <div class="title">
-                    <h1>Paralelismo en Julia</h1>
-                    <h2>Notebook de paralelismo</h2>
+                    <h1>Paralelismo en Julia parte 2</h1>
+                    <h2>Notebook de paralelismo parte 2</h2>
                 </div>
                 <div class="content">
-                    <p>Notebook que explica como realizar el paralelismo, pasando por el for paralelo, envío de trabajos a trabajadores, paso de datos de trabajadores.</p>
-                    <div class="button"><a href="https://nbviewer.jupyter.org/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/paralela/tutoriales/julia/notebooks/advancedLevel.ipynb">Ver</a></div>
+                    <p>Notebook donde se explica como implementar el paralelismo en procesamientos distribuidos y multi-núcleos, manejar procesos trabajadores,
+                        llamadas remotas, referencias remotas, canales remotos, ciclos paralelos y arreglos compartidos.</p>
+                    <div class="buttons2">
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingPart2.html">Ver</a></div>
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingPart2Slides.html">Slides</a></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
+        <div class="box marRight40">
+            <div class="panel">
+                <div class="title">
+                    <h1>Aplicaciones de la programación paralela en Julia</h1>
+                    <h2>Notebook de Aplicaciones de Julia</h2>
+                </div>
+                <div class="content">
+                    <p>Acá pondrán encontrar dos aplicaciones de Julia: la primera resolviendo con ayuda de la computación paralela mergesort: un problema clásico 
+                            de ciencias de la computación. También encontrarán una aplicación de Julia y son los modelos que podemos encontrar en Machine Learning por la 
+                            parte de clasificación; junto con el setup necesario para correrlos y un ejemplo práctico (con el dataset IRIS) que se aborda desde diferentes 
+                            algoritmos de clasificación, como lo son : Lasso, Ridge, Elastic Net, Random Forest, K-Nearest Neighbors y Support Vector Machine, junto con sus 
+                            respectivos performances.</p>
+                    <div class="buttons2">
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingApplications.html">Ver</a></div>
+                        <div class="button"><a target="_blank" href="./notebooks/parallelProgrammingApplicationsSlides.html">Slides</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"> <p> Nota: Los últimos 3 notebooks se presentan de manera estática, si deseas descargarlos puedes ir a este <a target="_blank" href="https://github.com/jjpulidos/Julia-Parallel-Programming-20201">repositorio</a></p></div>
     </div>
 </div>
 <!---page-wrap-end--->
@@ -121,6 +159,9 @@
               <li>Juan David Cristancho Rincon</li>
               <li>Valeria Huepa Ducuara</li>
               <li>Guiselle Tatiana Zambrano Penagos</li>
+              <li>Juan Jesus Pulido Sanchez</li>
+              <li>Oscar Camilo Pulido Peña</li>
+              <li>Brayan Andrés Guevara Márquez</li>
             </ul>
         </div>
     </div>
