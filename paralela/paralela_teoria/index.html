@@ -248,8 +248,72 @@
 					Scheduling es el proceso en el que <b>las tareas son asignadas a los procesos o hilos</b>, y se les da un orden
 					de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
 					El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
-					otras pueden requerir los datos producidos por otras tareas.
-				</p><br/>
+					otras pueden requerir los datos producidos por otras tareas. <br />
+					<strong>Criterios de planificación</strong>
+				<ul>
+					<li>
+						Orientados al usuario:
+						<ul>
+							<li>
+								Tiempo de vuelta:
+								Intervalo de tiempo que transcurre entre la solicitud de ejecución de un proceso
+								y su terminación.
+							</li>
+							<li>
+								Tiempo de respuesta:
+								Tiempo transcurrido desde que se hace una solicitud y se empieza el proceso.
+							</li>
+							<li>
+								Plazos:
+								Ocurre cuando se pueden dar plazos de ejecución de procesos,
+								Obligando al planificador a subordinar otros procesos.
+							</li>
+							<li>
+								Previsibilidad:
+								Un proceso deberia ejecutarse en el mismo tiempo siempre
+								(sin importar la carga que se tenga en el sistema).
+							</li>
+						</ul>
+					</li>
+					<li>
+						Orientados al sistema:
+						<ul>
+							<li>
+								Tasa de salida:
+								Consiste en el numero de procesos ejecutados por unidad de tiempo.
+							</li>
+							<li>
+								Utilización del proceso:
+								Cantidad de tiempo que el procesador permanece ocupado.
+							</li>
+							<li>
+								Equidad:
+								Los procesos deben ser tratados todos de igual forma para evitar la
+								inanición de procesos.
+							</li>
+							<li>
+								Prioridades:
+								Se debe poder tener una politica de prioridades para poder favorecer a ciertos
+								procesos que se consideren importantes.
+							</li>
+							<li>
+								Balanceo de recursos:
+								Se debe balancear la carga del sistema de modo que todos sus componentes
+								se mantengan ocupados.
+							</li>
+						</ul>
+					</li>
+				</ul><br />
+				<strong>Algoritmos de planificación</strong>
+				<ul>
+					<li>FCFS (first-come-first-served)</li>
+					<li>Round Robin</li>
+					<li>"Primero el proceso más corto"</li>
+					<li>"Primero el de menor tiempo restante"</li>
+					<li>"Primero el de mayor tasa de respuesta"</li>
+					<li>realimentación</li>
+				</ul>
+				</p><br />
 			</section>
 			<section>
 				<center><h3>Conceptos acerca de Hilos</h3></center>
