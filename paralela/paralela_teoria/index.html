@@ -36,6 +36,7 @@
 				<ol>
 					<li><a href="#two">Introducción/Filosofía</a></li>
 					<!-- CONTRIBUCION DE BRAYAN GARCIA A HISTORIA -->
+					<!-- CONTRIBUCION DE JOSE LUIS PINZON A HISTORIA -->
 					<li><a href="#three">Historia</a></li>
 					<li><a href="#four">Ventajas y desventajas</a></li>
 					<li><a href="#five">Conceptos clave</a></li>
@@ -158,16 +159,21 @@
 				<h2>Historia</h2>
 				<ul>
 				    <li>En <b>1958</b> Luigi Federico Menabrea habló sobre programación paralela y la necesidad de “branching” y “waiting”.</li>
-				    <li>También en <b>1958</b> Investigadores de IBM discutieron el uso de paralelismo en cálculos numéricos por primera vez. </li>
-				    <li>El interés por la computación paralela se remonta a finales de los años 50. Este interés se vio expresado en forma de supercomputadores, que aparecieron en los años 60 y 70. Estos computadores tenían procesadores de memoria compartida, con múltiples procesadores trabajando lado a lado con datos compartidos.</li>
+					<li>También en <b>1958</b> Investigadores de IBM, Cocke y Slotnick, discutieron el uso de paralelismo en cálculos numéricos por primera vez. Este último propone SOLOMON, el cual fue un proyecto para hacer un super computador que nunca se llevo a cabo, pero su diseño sirvió como base para el desarrollo de proyectos futuros.</li>
 				    <li>En <b>1962</b> Burroughs Corporation creó un computador de 4 procesadores que accedía a 16 módulos de memoria. </li>
-				    <li>Luego en <b>1964</b> La fuerza aérea estadounidense financió el diseño del primer computador paralelo masivo ILLIAC IV. (256 procesadores)</li>
-				    <li> Amdahl y Slotnick debatieron sobre la viabilidad del procesamiento en paralelo en <b>1967</b>. De estos debates surgió la ley de Amdahl</li>
-				    <li>Primera aplicación corriendo en ILLIAC IV<b>(1976)</b>. Por esta razón este computador fue llamado “the most infamous of the supercomputers”, ya que solo fue completado en un 25%, tomó 11 años y 4 veces más al costo estimado.</li>
-				    <li>A mediados de los 80, un nuevo tipo de computador paralelo fue creado cuando el proyecto “Concurrent Computation” de Caltech construyó un supercomputador para aplicaciones científicas. El sistema mostró que se podría lograr un rendimiento extremo usando microprocesadores regulares, disponibles en el mercado.</li>
+				    <li>Ese mismo año se computador ATLAS entra en operación, es la primera máquina en implementar los conceptos de memoria virtual y paginación</li>
+					<li>Luego en <b>1964</b> La fuerza aérea estadounidense, USAF, financió el diseño del primer computador paralelo masivo ILLIAC IV. (256 procesadores). Slotnick es contratado para empezar el proyecto (usando como contratatistas, por ejemplo, a Texas Instruments)</li>
+					<li>En <b>1965</b> Dijkstra describe y da nombre el problema de las secciones críticas</li>
+					<li>Ese mismo año, Cooley y Tukey, desarrollan el algoritmo de la transformada rápida de Fourier, el cual sería una de los algoritmos que más ciclos de operaciones de punto flotante demandan</li>
+					<li> Amdahl y Slotnick debatieron sobre la viabilidad del procesamiento en paralelo en <b>1967</b>. De estos debates surgió la ley de Amdahl</li>
+					<li>En <b>1968</b> Dijkstra describe los semáforos como posible solución al problema de las secciones críticas</li>
+					<li>Desde <b>1968</b> hasta <b>1976</b> se desarrollan diferentes proyectos en EEUU, Rusia, Japón y algunos paises europeos. La industria tecnológica y las universidades son los sectores que más invierten en investigación sobre paralelismo</li>
+				    <li>Primera aplicación corriendo en ILLIAC IV <b>(1976)</b>. Por esta razón este computador fue llamado “the most infamous of the supercomputers”, ya que solo fue completado en un 25%, tomó 11 años y 4 veces más al costo estimado.</li>
+					<li>Finalmente, en <b>1981</b> es desmantelado el proyecto ILLIAC IV por la NASA. Aunque se afirma que fue un fracaso en términos económicos, llego a ser el computador más rápido de la época y varios conceptos importantes usados en la construcción del ILLIAC IV se terminan implementando de futuros proyectos de manera exitosa</li>
+					<li>A mediados de los 80, un nuevo tipo de computador paralelo fue creado cuando el proyecto “Concurrent Computation” de Caltech construyó un supercomputador para aplicaciones científicas. El sistema mostró que se podría lograr un rendimiento extremo usando microprocesadores regulares, disponibles en el mercado.</li>
 				    <li>Empezando a los finales de los 80, los clusters surgieron para competir y con los MPP. Un cluster es un tipo de computador paralelo, construido usando múltiples computadores “off-the-shelf”, conectados usando una red “off-the-shelf”. Hoy en día, los clusters son la arquitectura dominante en los datacenters.</li>
-				    <li>Para los MPP y clusters surgió el estándar MPI a mediados de los 90, que convergió de otras API. Para los multiprocesadores con memoria compartida, un proceso de convergencia similar se observó a finales de los 90, con el surgimiento de pthreads y OpenMP.</li>
-				    <li>En la actualidad, la computación paralela se ha vuelto mainstream prácticamente, con la llegada de los procesadores de varios núcleos casi por defecto en la mayoría de dispositivos computacionales.</li>
+				    <li>Para los MPP (Massively Parallel Processor) y clusters surgió el estándar MPI (Interfaz de Paso de Mensajes) a mediados de los 90, que convergió de otras API. Para los multiprocesadores con memoria compartida, un proceso de convergencia similar se observó a finales de los 90, con el surgimiento de pthreads y OpenMP.</li>
+				    <li>En la actualidad, la computación paralela se encuentra en la cotidianidad, con la llegada de los procesadores de varios núcleos físicos casi por defecto en la mayoría de dispositivos computacionales. </li>
 				    <li>El software ha sido una parte activa en la evolución de la programación paralela. Los programas paralelos son más difíciles de escribir que los programas secuenciales, ya que se requiere que haya una comunicación y sincronización entre las tareas que se han paralelizado.</li>
 				</ul>
 		</div>
@@ -242,8 +248,72 @@
 					Scheduling es el proceso en el que <b>las tareas son asignadas a los procesos o hilos</b>, y se les da un orden
 					de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
 					El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
-					otras pueden requerir los datos producidos por otras tareas.
-				</p><br/>
+					otras pueden requerir los datos producidos por otras tareas. <br />
+					<strong>Criterios de planificación</strong>
+				<ul>
+					<li>
+						Orientados al usuario:
+						<ul>
+							<li>
+								Tiempo de vuelta:
+								Intervalo de tiempo que transcurre entre la solicitud de ejecución de un proceso
+								y su terminación.
+							</li>
+							<li>
+								Tiempo de respuesta:
+								Tiempo transcurrido desde que se hace una solicitud y se empieza el proceso.
+							</li>
+							<li>
+								Plazos:
+								Ocurre cuando se pueden dar plazos de ejecución de procesos,
+								Obligando al planificador a subordinar otros procesos.
+							</li>
+							<li>
+								Previsibilidad:
+								Un proceso deberia ejecutarse en el mismo tiempo siempre
+								(sin importar la carga que se tenga en el sistema).
+							</li>
+						</ul>
+					</li>
+					<li>
+						Orientados al sistema:
+						<ul>
+							<li>
+								Tasa de salida:
+								Consiste en el numero de procesos ejecutados por unidad de tiempo.
+							</li>
+							<li>
+								Utilización del proceso:
+								Cantidad de tiempo que el procesador permanece ocupado.
+							</li>
+							<li>
+								Equidad:
+								Los procesos deben ser tratados todos de igual forma para evitar la
+								inanición de procesos.
+							</li>
+							<li>
+								Prioridades:
+								Se debe poder tener una politica de prioridades para poder favorecer a ciertos
+								procesos que se consideren importantes.
+							</li>
+							<li>
+								Balanceo de recursos:
+								Se debe balancear la carga del sistema de modo que todos sus componentes
+								se mantengan ocupados.
+							</li>
+						</ul>
+					</li>
+				</ul><br />
+				<strong>Algoritmos de planificación</strong>
+				<ul>
+					<li>FCFS (first-come-first-served)</li>
+					<li>Round Robin</li>
+					<li>"Primero el proceso más corto"</li>
+					<li>"Primero el de menor tiempo restante"</li>
+					<li>"Primero el de mayor tasa de respuesta"</li>
+					<li>realimentación</li>
+				</ul>
+				</p><br />
 			</section>
 			<section>
 				<center><h3>Conceptos acerca de Hilos</h3></center>
@@ -351,10 +421,9 @@
 				</section>
 			</div>
 			<div class="image">
+				<img src="images\pvsc.jpeg" alt="" width="600" /><br>
 				<img src="images/cvsa.png" alt="" width="600" />
 			</div>
-		</center>
-
 
 	</section>
 
@@ -1221,11 +1290,40 @@
 						</div>
 
 
-					</div>
+				</div>
+				
 
 				</div>
 			</div>
-		</section>
+			<div class="spotlight">
+				<div class="content">
+					<h3>Lenguajes que integran el paradigma</h3>
+					<p class="pjustify">
+						Actualmente, existe una variedad de lenguajes de programación con un enfoque multiparadigma, los cuales
+						permiten tener flexibilidad a la hora de querer lograr un objetivo, en cuanto a programación. Igualmente,
+						los lenguajes suelen complementar dicho comportamiento con librerías, APIs o frameworks (ya sean comunitarios
+						 o privativos), los cuales le permiten al programador el disponer de herramientas de trabajo. 
+					</p>
+					<p class="pjustify">
+						El paradigma paralelo es implementado, en la mayoría de los lenguajes más conocidos actualmente, a través
+						de dichas herramientas. En la imagen, se hace un recuento de herramientas específicas de algunos de esos lenguajes,
+						mencionando que no son las únicas que existen. 
+					</p>
+					<p class="pjustify">
+						Igualmente, hay otras herramientas más aplicadas a un campo específico que se sirven del paradigma paralelo
+						para mejorar sus servicios, como por ejemplo CUDA, el cual es una plataforma para trabajar con algoritmos de 
+						nVidia usando GPU. También, se puede dar el ejemplo de Apache Spark, el cual es un framework para realizar 
+						análisis de BigData. Cada uno de ellos tiene su propias APIs para poder configurar comportamientos paralelos
+						en los algoritmos que se quieran desarrollar.
+					</p>
+					
+				</div>
+				<div class="image">
+					<img src="images/integracion_paralela_lenguajes.png" alt="" width="140" />
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<section id="sixteen" class="wrapper style2 alt">
 		<div class="inner">
@@ -1759,7 +1857,7 @@ La cajera Cajera 1 HA TERMINADO DE PROCESAR Cliente 1 EN EL TIEMPO: 15seg
 			Autores: Fabián Bernal, Camilo Albarracín, Juan Gaona,
 			Luis Giraldo, Camilo Mosquera, Santiago Peña,
 			Yeliana Torres, Juan Ovalle, José Nieto,
-			Diego Chacón, Samael Salcedo, Antonio Suarez
+			Diego Chacón, Samael Salcedo, Antonio Suarez, Diego Cortés, Jose Pinzón, Pedro Higuera
 		</div>
 	</footer>
 
