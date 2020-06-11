@@ -1240,35 +1240,35 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 
 <p>Uno de las aplicaciones por las cuales fue originalmente concebido Prolog por su autor Alain Colmerauer
   fue el de procesamiento de lenguaje natural. Esto se logra en Prolog gracias al uso de 
-Definitive Clauses Grammar o por sus siglas en ingles DCG</p>
-<p>Pero antes de entender mediante un ejemplo basico como funciona el DCG en Prolog es necesario hacer una breve
-  introduccion a las gramaticas libres de contexto.
+Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
+<p>Pero antes de entender mediante un ejemplo básico cómo funciona el DCG en Prolog es necesario hacer una breve
+  introducción a las gramaticas libres de contexto.
 </p>
 <p>
-  Donde la gramatica libre de contexto es en esencia un conjunto de reglas que nos dicen si una "oracion" esta
-  correctamente formulada (Es decir desde un punto de vista sintactico). Un ejemplo de dicha gramatica es $L=\left\lbracea^ib^jc^k | i+j=3k\right\rbrace$ como la que 
-  se muestra a continuacion
+  Donde la gramática libre de contexto es en esencia un conjunto de reglas que nos dicen si una "oración" está
+  correctamente formulada (Es decir desde un punto de vista sintáctico). Un ejemplo de dicha gramática es $L=\left\lbracea^ib^jc^k | i+j=3k\right\rbrace$ como la que 
+  se muestra a continuación
 </p>
 <p align="center">
   <img src="images/Grammar.png">
 </p>
-<p>La anterior gramatica se refiere a palabras formadas por a,b,c de tal forma que se cumpla que $ L=\left\lbrace a^ib^jc^k | i+j=3k \right\rbrace $ .
-  En esta gramatica podemos identificar unas letras mayusculas las cuales son los simbolos no terminales es decir que tienen producciones
-  mientras que las letras minusculas seran considerados como simbolos terminales de la gramatica
+<p>La anterior gramática se refiere a palabras formadas por a,b,c de tal forma que se cumpla que $ L=\left\lbrace a^ib^jc^k | i+j=3k \right\rbrace $ .
+  En esta gramática podemos identificar unas letras mayúsculas las cuales son los símbolos no terminales es decir que tienen producciones
+  mientras que las letras minúsculas serán considerados como símbolos terminales de la gramática
 </p>
-<p>Lo anterior mencionado puede ser generalizado a casos mas grandes incluso en el area de procesamiento de lenguaje natural es decir hacer que un
-  computador logre entender idiomas como lo son el español, ingles, aleman, entre otros...
+<p>Lo anterior mencionado puede ser generalizado a casos más grandes incluso en el área de procesamiento de lenguaje natural es decir hacer que un
+  computador logre entender idiomas como lo son el español, inglés, alemán, entre otros...
 </p>
 <p>
-  Prolog facilita la labor de trabajar con gramaticas libre de contexto mediante el uso de los ya mencionados DCG, aunque
-  tambien se puede realizar con la funcion append de listas.Nada mejor algo grafico para mostrar las facilidades que esta 
-  posee para representar la gramatica por medio de DCG:
+  Prolog facilita la labor de trabajar con gramáticas libre de contexto mediante el uso de los ya mencionados DCG, aunque
+  tambien se puede realizar con la función append de listas.Nada mejor algo grafico para mostrar las facilidades que esta 
+  posee para representar la gramática por medio de DCG:
 </p>
 <p align="center">
   <img src="images/grammar_english.png">
 </p>
 <p>Como podemos observar las similitudes entre la forma que estamos acostumbrados y la forma como le hacemos entender 
-  mediante el uso de DCG la gramatica con la queremos trabajar.Y la forma como se realizan consultas sobre si una estructura
+  mediante el uso de DCG la gramática con la queremos trabajar. Y la forma como se realizan consultas sobre si una estructura
   gramatical de una frase es correcta se realiza de la siguiente forma:
 </p>
 <p align="center">
@@ -1278,8 +1278,8 @@ Definitive Clauses Grammar o por sus siglas en ingles DCG</p>
 <p align="center">
   <img src="images/incorrect.png">
 </p>
- Esto nos permite un sin fin de cosas mas como crear el arbol sintactico correspondiente entre otras que se dejan como 
- tarea de revision al lector.
+ Esto nos permite un sinfín de cosas mas como crear el árbol sintáctico correspondiente entre otras que se dejan como 
+ tarea de revisión al lector.
 <p>
   
 </p>
