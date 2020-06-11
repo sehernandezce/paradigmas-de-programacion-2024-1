@@ -27,6 +27,7 @@
             <li><a href="applications.html" class="menu-item">Aplicaciones</a></li>
 
             <li><a class="menu-item" href="test.html">Test your knowledge!</a></li>
+            <li><a class="menu-item" href="referencias.html">Referencias</a></li>
             <li><a class="menu-item" href="../../index.html">Volver a Index</a></li>
         </ul>
 
@@ -43,9 +44,40 @@
             <div class="row">
                 <h1 class="text-center">Conceptos clave</h1>
 
-                <p>A continuación veremos algunos ejemplos en los diferentes lenguajes de programación funcional</p>
+                <p>A continuación veremos algunos conceptos referentes a la programación funcional</p>
                 <hr>
                 <hr>
+
+                <div class="row">
+                    <h2>Funciones Puras</h2>
+                    <div class="col-md-8 text-justify">
+                        <p>
+                            Una función puede catalogarse como pura si cumple las siguientes dos condiciones:
+                        </p>
+
+                        <ul>
+                            <li>
+                                Dados los mismos parámetros de entrada, la función debe retornar siempre el mismo valor de salida, sin importar cuántas veces se llame.
+                                Aquí se aplica el concepto de "Transparencial Referencial".
+                            </li>
+                            <li>
+                                La función no debe tener "efectos secundarios", es decir, no debe tener ningún otro efecto en el entorno, aparte del cálculo del resultado objetivo.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 text-justify">
+                        <img src="images/funcPuras.JPG" class="img-responsive img-thumbnail center-block" alt="">
+                    </div>
+                    
+                    <div class="col-md-8 text-justify">
+                        <p>
+                            Las funciones puras son útiles porque se pueden ejecutar desordenadamente y en paralelo, cuando no hay dependencias de parámetros entre ellas.
+                            Algunos ejemplos de estas los podemos ver en las funciones matemáticas y algoritmicas deterministas.
+                            Son funciones impuras, por otro lado, los generadores de números aleatorios.
+                        </p>
+                    </div>
+                </div>
 
                 <div class="row">
                     <h2>Efectos secundarios</h2>
@@ -287,6 +319,23 @@
                     <script src="https://pastebin.com/embed_js/hF4YuZg1"></script>
 
 
+                </div>
+            </div>
+
+            <div class="row">
+                <h2>Estado Compartido</h2>
+                <div class="col-md-6 text-justify">
+                    <p>
+                        El estado compartido es cualquier variable, objeto o espacio de memoria que exista en un ámbito compartido.
+                        Un ámbito compartido incluye el alcance global o ámbitos de cierre.
+                        
+                        Un ejemplo de esto lo podemos observar en la programación orientada a objetos, donde los objetos se comparten entre ámbitos al agregar propiedades a otros objetos.
+                        De la misa manera, el paradigma funcional toma esta propiedad para aplicarla en su ámbito de desarrollo.
+                    </p>
+                </div>
+
+                <div class="col-md-6 text-justify">
+                    <img src="images/estadoCompartido.JPG" class="img-responsive img-thumbnail center-block" alt="">
                 </div>
             </div>
 

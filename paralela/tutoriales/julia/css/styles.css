@@ -16,15 +16,18 @@ GENERAL CLASSES
 .marRight40{ margin-right:40px;}
 .marRight30{ margin-right:30px;}
 .marTop{ margin-top:30px;}
+.marTop2{ margin-top:37px;}
 .bg-bottom-none{background:none bottom !important;}
 .page-wrap{ width:960px; overflow:hidden; margin:0 auto;}
 .page{width:960px; overflow:hidden; margin:0 auto;}
 .wrap{ overflow:hidden;}
 .box{ width:460px; float:left; margin-bottom:40px;}
-.button{ background:url(../images/button.png) no-repeat; width:80px; height:30px; text-align:center; margin-top:20px;}
+.button{ background:url(../images/button.png) no-repeat; width:80px; height:30px; text-align:center; margin-top:20px; margin-right:40px }
 .button:hover{ background:url(../images/button-hover.png) no-repeat;}
 .button a{ line-height:30px; color:#ffffff; text-decoration:none;}
 .button a:hover{ color:#ffffff;}
+
+.buttons2{display: flex; flex-flow: row; justify-content: center}
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
@@ -37,7 +40,7 @@ PANEL CLASSES
 
 .panel{overflow:hidden; background: url(../images/bg3.jpg); padding:30px;}
 .title{ margin-bottom:20px; margin-top:15px;}
-.content p{ padding-bottom:10px;}
+.content p{ padding-bottom:10px; text-align: justify}
 .content img{margin-right:30px; float:left;}
 
 /*-------------------------------------------------

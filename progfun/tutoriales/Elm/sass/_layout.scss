@@ -1,0 +1,106 @@
+.container {
+  //   max-width: 150rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(151, 234, 210, 0.7),
+      rgba(1, 186, 239, 0.7)
+    ),
+    url(../img/background.jpg);
+  background-size: cover;
+  // background-image: linear-gradient(
+  //     to right bottom,
+  //     rgba($color-primary-light, 0.8),
+  //     rgba($color-primary-dark, 0.8)
+  //   ),
+  //   url(../img/nat-4.jpg);
+  box-shadow: var(--shadow-dark);
+  min-height: 50rem;
+  height: 100vh;
+  @media only screen and (max-width: $bp-largest) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  border-bottom: var(--line);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  img {
+    margin: 1rem;
+  }
+  text-transform: uppercase;
+  box-shadow: var(--shadow-light);
+  @media only screen and (max-width: $bp-smallest) {
+    align-content: space-around;
+  }
+}
+
+.content {
+  display: flex;
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  background-color: var(--code-block);
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.elm-view {
+  overflow: scroll;
+  flex: 1;
+  max-height: 90vh;
+  @media only screen and (max-width: $bp-medium) {
+    max-height: 80vh;
+  }
+}
+
+.detail {
+  font-size: 1.4rem;
+  display: flex;
+  padding: 4.5rem;
+  border-bottom: var(--line);
+  flex-direction: column;
+  border: none;
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+  }
+}
+
+.description {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 100%;
+  h1,
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-bottom: 3rem;
+  }
+}
+
+.contentImage {
+  max-width: 100%;
+  max-height: 400px;
+}

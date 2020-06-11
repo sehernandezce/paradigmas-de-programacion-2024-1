@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
+    <title>Elm &mdash; Functional programming</title>
+    <script defer>
+      function changeSelection(selection) {
+        document.querySelector(document.querySelector('#selector').value).classList.remove('side-nav__item--active');
+        document.querySelector(selection).classList.add('side-nav__item--active');
+        document.querySelector('#selector').value = selection;
+      }
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="img/logo.png" alt="elm logo" class="logo" />
+        <h1>Elm - functional language</h1>
+      </header>
+      <input hidden value="#page1-menu" id="selector"/>
+      <div class="content">
+        <nav class="sidebar">
+          <ul class="side-nav">
+            <li class="side-nav__item side-nav__item--active" id="page1-menu" onclick="changeSelection('#page1-menu')">
+              <a href="#page1" class="side-nav__link ">
+                1. &nbsp;
+                <!-- <svg class="side-nav__icon">
+                  <use xlink:href="img/sprite.svg#icon-home"></use>
+                </svg> -->
+                <span>Introducción</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page2-menu" onclick="changeSelection('#page2-menu')">
+              <a href="#page2" class="side-nav__link">
+                2. &nbsp;
+                <span>Arquitectura ELM</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page3-menu" onclick="changeSelection('#page3-menu')">
+              <a href="#page3" class="side-nav__link">
+                3. &nbsp;
+                <span>Conceptos Exoticos</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page4-menu" onclick="changeSelection('#page4-menu')">
+              <a href="#page4" class="side-nav__link">
+                4. &nbsp;
+                <span>CÓDIGO ELM</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page5-menu" onclick="changeSelection('#page5-menu')">
+              <a href="#page5" class="side-nav__link">
+                5. &nbsp;
+                <span>PROGRAMACIÓN FUNCIONAL</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page6-menu" onclick="changeSelection('#page6-menu')">
+              <a href="#page6" class="side-nav__link">
+                6. &nbsp;
+                <span>EJEMPLO FUNCIONAL</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page7-menu" onclick="changeSelection('#page7-menu')">
+              <a href="#page7" class="side-nav__link">
+                7. &nbsp;
+                <span>EJEMPLO PRÁCTICO</span>
+              </a>
+            </li>
+            <li class="side-nav__item" id="page8-menu" onclick="changeSelection('#page8-menu')">
+              <a href="#page8" class="side-nav__link">
+                8. &nbsp;
+                <span>REFERENCIAS</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="legal">
+            &copy; 2020, Daniela Castellanos, Cristhian Gomez, Camilo Sánchez
+          </div>
+        </nav>
+
+        <main class="elm-view">
+          <div class="detail" id="page1">
+            <div class="overview">
+              <h1 class="overview__heading">
+                Introducción
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+                El lenguaje ELM es un lenguaje cliente de web puramente funcional, fuertemente tipado, reactivo y basado en eventos  ¿pero que queremos decir con esto?
+              </p>
+              
+              <ul class="list">
+                <li class="list__item"><b>Lenguaje puramente funcional:</b> En ELM practicamente todo es una función, los nombres se tratan como funciones, el valor de union de tipos es una funcion, y cada función esta compuesta por funciones parciales aplicadas a sus argumentos, hasta los operadores (+) o (-) son tratados como funciones.</li>
+                <li class="list__item"><b>Fuertemente tipado:</b> En ELM los tipos son genericos a menos que se espicifique lo contrario, aun así el lenguaje ELM no permite operaciones en los tipos incorrectos, es por eso que se recomienda siempre especificar los tipos. </li>
+                <li class="list__item"><b>Lenguaje cliente de web:</b> ELM compila a javascript, es por eso que los buscadores pueden ejecutar este lenguaje en paginas web, de hecho su mayor uso se encuentra en esa area.</li>
+                <li class="list__item"><b>Reactivo:</b> En ELM cualquier cambio ejecutado en los modelos es renderizado automaticamente en la vista, sin una manipulación explicita del DOM.</li>
+                <li class="list__item"><b>Basado en eventos:</b> La base de ELM son los eventos, cada evento en ELM se agrupan en conjuntos discretos de mensajes, definidos en un tipo de mensaje. Existen tres fuentes de eventos que pueden producir mensajes: Las acciones de los usuarios en la vista HTML, La ejecución de comandos, Eventos a los cuales se subscriben.</li>
+                
+              </ul>
+              
+            </div>
+            
+          </div>
+          <div class="detail" id="page2">
+            <div class="overview" id="page1">
+              <h1 class="overview__heading">
+                Arquitectura ELM
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+                La arquitectura ELM es un patrón para la creación de programas interactivos. El patrón básico de la arquitectura se ve de la siguiente manera:
+              </p>
+              <img class="contentImage" src="img/arquitechture.svg"/>
+              <p>
+                El programa elm produce HTML para renderizar en pantalla, y luego el computador enviá un mensaje acerca de lo que esta sucediendo, es decir se crea una via de comunicación bidireccional que garantiza reactividad en cada programa creado por ELM.
+                De esta forma la arquitectura básica de un programa ELM se divide en tres partes:
+                <ul class="list">
+                  <li class="list__item"><b>Modelo:</b> Representa el estado del programa.</li>
+                  <li class="list__item"><b>Vista:</b> La forma de transformar el estado en HTML.</li>
+                  <li class="list__item"><b>Actualización:</b> una forma de actualizar el estado basado en el mensaje.</li>
+                </ul>
+                El siguiente ejemplo muestra como funciona la arquitectura:
+
+                <div class="terminal">
+                  
+                  
+                  module Main exposing (...)
+                  import Browser
+                  import Html exposing (Html, button, div, text)
+                  import Html.Events exposing (onClick)
+
+                  <span style="color: rgb(49, 231, 34);"
+                    >-- MAIN</span
+                  >
+                  main = 
+                  Browser.sandbox(init = init, update = update, view = view)
+
+                  type alias Model = Int 
+
+                  init : Model
+                  init = 0
+                  <span style="color: rgb(49, 231, 34);"
+                  >-- UPDATE</span
+                >
+                  type = Msg
+                       = Increment
+                       | Decrement
+                  update : Msg -> Model -> Model
+                  update msg model =
+                    case msg of
+                      Increment ->
+                        model + 1
+                      Decrement ->
+                        model + 1
+
+                  <span style="color: rgb(49, 231, 34);"
+                  >-- VIEW</span
+                  >
+                  view : Model -> Html Msg
+                  view model =
+                    div []
+                      [ button [ onClick Decrement ] [ text "-" ]
+                      , div [] [ text (String.fromInt model) ]
+                      , button [ onClick Increment ] [ test "+" ]
+                      ]
+                </div>
+                En el anterior código tenemos un contador en la parte del modelo, inicializado en 0, el cual se actualiza por medio de mensajes incrementando o decrementando, y por ultimo tenemos la renderización de este contador, junto a dos botones para modificar el valor.
+
+                Para mas ejemplos como el anterior, siga al enlace <a target="_blank" href="https://elm-lang.org/try">Ejemplos ELM</a>
+
+              </p>
+            </div>
+          </div>
+          <div class="detail" id="page3">
+            <div class="overview" id="page3">
+              <h1 class="overview__heading">
+                Conceptos Exóticos
+              </h1>
+            </div> <!--overview   -->
+            <div class="description">
+              <h1 class="">Tipos de uniones</h1>
+              <p class="paragraph">
+                Este concepto es la piedra preciosa detrás de ELM. Veamos este concepto con un ejemplo:
+              </p>
+              <p class="paragraph">
+                Imagine que usted esta creando una paginación para una lista. Al final de la pagina debe existir botones para devolverse, ir hacia adelante, e ir a cualquier pagina por su número, pero el problema es como mantener la información de cual link fue oprimido de una forma elegante.
+                Podríamos utilizar múltiples callbacks para cada caso, o complicarnos con valores booleanos que indiquen en que tipo de acción nos encontramos, pero en ELM las cosas se hacen de una forma mas elegante. 
+                En ELM definiremos el siguiente tipo de union 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  type NextPage
+                    = Prev
+                    | Next
+                    | ExactPage Int
+                </div> <!--terminal   -->
+              </div><!--elm-code-block   -->
+              <p class="paragraph">
+                y lo utilizamos como un parámetro en el envió de mensaje de la siguiente manera:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  type Msg
+                    = ...
+                    | ChangePage NextPage
+                </div>
+              </div><!--elm-code-block   -->
+              <p class="paragraph">
+                Finalmente en la función de actualización discriminamos cada caso de la siguiente forma:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  update msg model =
+                    case msg of
+                      ChangePage nextPage ->
+                        case nextPage of
+                          Prev ->
+                            ...
+                          Next ->
+                            ...
+                          ExactPage newPage ->
+                            ...
+                </div>
+              </div><!--elm-code-block   -->
+              <h1 >Creando múltiples mapeos de funciones con <|  </h1>
+              <p class="paragraph">
+                Veamos este concepto por medio de un ejemplo: suponga que una lista tiene map, map2,...,map5. Pero ¿que sucede si tenemos una función que toma seis argumentos? No existe ningún map6. Pero, existe una técnica para solucionar esto. Usar la función <| como parámetro, y funciones parciales, con algunos de los argumentos aplicados como resultados parciales.
+              </p>
+              <p class="paragraph">
+                Por simplicidad, suponga que la lista solo tiene map y map2, y queremos aplicar una función que toma tres argumentos.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  map3 foo list1 list2 list3 =
+                      let
+                          partialResult =
+                              List.map2 foo list1 list2
+                      in
+                      List.map2 (<|) partialResult list3
+                </div>
+              </div><!--elm-code-block   -->
+              <p class="paragraph">
+                Suponga que queremos usar foo, que solo multiplica los argumentos numéricos, definido como:
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  foo a b c =
+                    a * b * c
+                </div>
+              </div>
+              <p class="paragraph">
+                Así, el resultado de map3 foo [1,2,3,4,5] [1,2,3,4,5] [1,2,3,4,5] es [1,8,27,64,125].
+              </p>
+              <p class="paragraph">
+                De esta forma reconstruyamos lo que esta pasando en la parte anterior. Primero, en partialResult = List.map2 foo list1 list2, foo se aplica parcialmente a toda pareja list1 y list2. El resultado es [foo 1 1, foo 2 2, foo 3 3, foo 4 4, foo 5 5], una lista de funciones que toma un parámetro y retorna un numero, el cual es después llamado en List.map2 (<|) partialResult list3.
+              </p>
+           
+           </div> <!--description end  -->
+          </div> <!--detail  -->
+          <div class="detail" id="page4">
+            <div class="overview">
+              <h1 class="overview__heading">
+                CÓDIGO ELM
+              </h1>
+            </div>
+            <div class="description">
+              <h1>
+                Operadores, transformaciones y comparadores
+              </h1>
+              <p class="paragraph">
+                Al igual que otros lenguajes, Elm soporta una gran variedad de operaciones entre valores, transformaciones de tipo y comparadores de expresiones. La siguiente tabla muestra algunos de los más representativos.
+              </p>
+              <img class="contentImage"  src="img/operadores_tr_comp.png"/>
+              <h1>
+                El núcleo del lenguaje
+              </h1>
+              <p class="paragraph">
+                Es importante conocer ciertas estructuras que son útiles al momento de realizar código en Elm:
+              </p>
+              <h2>Values:</h2>
+              <p class="paragraph">
+                Pueden ser entendidos como literales, por ejemplo números enteros o cadenas definidas en el código.
+              </p>
+              <h2>Funciones:</h2>
+              <p class="paragraph">
+                Son las estructuras más importantes en el lenguaje, su estructura puede parecer extraña inicialmente debido a que difiere de otros lenguajes, sin embargo el concepto es exactamente el mismo. 
+
+                Declaración de la función “greet” que recibe el argumento “name”
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > green name =
+                    |  "Hello " ++ name ++ "!"
+                </div>
+              </div>
+              <p class="paragraph">
+                Declaración de la función “sum” que recibe dos argumentos “a” y “b”
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > sum a b =
+                    |  a + b
+                </div>
+              </div>
+              <h2>Condicionales:</h2>
+              <p class="paragraph">
+                La estructura de un condicional en Elm es muy similar a otros lenguajes como python. En el siguiente ejemplo se construye la función “greet” que recibe el parámetro “name”, y en el cuerpo de la función se hace un condicional para que varíe el output en función del valor de “name”.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > greet name =
+                    if name == "Felipe" then
+                      "Hola profesor!"
+                    else if name == "Laura" then
+                      "Hola monitora!"
+                    else
+                      "Hola " ++ name ++ "!"
+                </div>
+              </div>
+              <h2>Listas:</h2>
+              <p class="paragraph">
+                La declaración de las listas en Elm es equivalente a la declaración de una lista en lenguajes como python o javascript, con la diferencia de que en Elm todos los elementos de la lista deben ser del mismo tipo.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > list = ["A", "B", "C"]
+                  <span style="color: rgb(173, 173, 39);">["A", "B", "C"]</span>
+                  > list = [1, 2, 3]
+                  <span style="color: rgb(51, 187, 200);">[1, 2, 3]</span>
+                </div>
+              </div>
+              <h2>Tuplas:</h2>
+              <p class="paragraph">
+                Las tuplas se utilizan principalmente cuando se requiere retornar varios valores en una misma función, tal vez de distinto tipo. Únicamente pueden tener dos o tres valores.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > ( True, "Lenguajes" )
+                  (<span style="color: rgb(51, 187, 200);">[1, 2, 3]</span>, <span style="color: rgb(176, 90, 226);">"Lenguajes"</span>
+                 
+                  > ( 1, False, "A" )
+                  (<span style="color: rgb(176, 90, 226);">1</span>, <span style="color: rgb(51, 187, 200);">False</span>, <span style="color: rgb(173, 173, 39);">"A"</span>)
+                </div>
+              </div>
+              <h2>Records:</h2>
+              <p class="paragraph">
+                El concepto de un registro o record en Elm es muy similar al de un objeto en Javascript o un diccionario en Python. Se refiere a un elemento que posee varios atributos con sus respectivos valores.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > chloe =
+                  |   { edad = 1,
+                  |     especie = "gato",
+                  |     color = "gris" }
+                </div>
+              </div>
+              <p class="paragraph">
+                La forma de acceder a sus atributos es muy común en otros lenguajes
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > chloe.edad
+                  <span style="color: rgb(176, 90, 226);">1</span>
+                  > chloe.especie
+                  <span style="color: rgb(173, 173, 39);">"gato"</span>
+                  > .color chloe
+                  <span style="color: rgb(173, 173, 39);">"gris"</span>
+                </div>
+              </div>
+              <p class="paragraph">
+                Cuando se quiere reescribir uno de sus atributos, en Elm se crea una copia completa del objeto variando únicamente los campos que le especificamos. Esto con el objetivo de que no se afecten las salidas de otras funciones que dependan del record inicial. En la siguiente línea de código se modifica la edad del record chloe para que sea 2 en lugar de 1.
+              </p>
+              <div class="terminal">
+                > { chloe | edad = 2 }
+              </div>
+              <h2>Tipos:</h2>
+              <p class="paragraph">
+                Uno de los puntos más fuertes de Elm es que tenemos control total sobre los tipos de dato que hay en las funciones, tanto como en su entrada como en su salida. Sin embargo, a veces puede ser más útil definir nuestros propios tipos aparte de los nativos, para esto Elm nos da ciertas herramientas:
+              </p>
+              <ul class="list">
+                <li class="list__item">Type alias: Es muy útil para definir tipos que serán usados en funciones como parámetro o como salida. Es un concepto similar a la creación del modelo de un objeto, por lo que se debe especificar los tipos de los atributos que posea
+                  <div class="elm-code-block">
+                    <div class="terminal">
+                      > type alias Gato =
+                      |   { edad = Int,
+                      |     nombre = String }
+                    </div>
+                  </div>
+                </li>
+                <li class="list__item">Custom types: Esta herramienta nos permite crear tipos personalizados de forma sencilla, estos pueden ser usados incluso como tipos de un Type alias.
+                  <div class="elm-code-block">
+                    <div class="terminal">
+                      > type Raza = Criollo | Persa
+                    </div>
+                  </div>
+              </ul>
+              <h2>Case y wildcard:</h2>
+              <p class="paragraph">
+                Imaginemos que tenemos un type alias “Gato” que tiene como atributos “raza” de tipo “Raza” (definido en el último fragmento de código) y de un nombre tipo cadena.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type alias Gato =
+                  |   { raza = Raza,
+                  |     nombre = String }
+                </div>
+              </div>
+              <p class="paragraph">
+                La siguiente función identifica si un gato es de Raza Criollo o de Raza Persa
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > esCriollo gato =
+                  |   case gato of
+                  |     Criollo _ -> "Es criollo!"
+                  |     Persa _ -> "Es persa!"
+                  |     
+                </div>
+              </div>
+              <p class="paragraph">
+                La estructura case sirve para tomar decisiones en base a la estructura de los datos  de “gato”, sin embargo también sirve para tomar decisiones en base a valores, como lo sería una estructura switch-case existente en otros lenguajes. El carácter “_” sirve como comodín, indica que lo que sea que vaya en esa posición realmente no va a ser significativo en el flujo de la función, a esto se le conoce como wildcard.
+              </p>
+              <h2>Maybe</h2>
+              <p class="paragraph">
+                Un tipo Maybe sirve para indicar que un valor puede que no sea conocido.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type Maybe a =
+                  |   Just a |
+                  |   Nothing     
+                </div>
+              </div>
+              <p class="paragraph">
+                Por ejemplo, continuando con el ejemplo del type alias “Gato”, la siguiente definición significa que tal vez no se conozca la edad del gato, es importante haber definido ya el tipo Maybe.
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > type alias Gato =
+                  |   { nombre: String,
+                  |     edad: Maybe Int }   
+                </div>
+              </div>
+              <p class="paragraph">
+                Y ya instanciando dos elementos Gato, el primero con edad desconocida y el segundo con edad conocida
+              </p>
+
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > tail = { nombre = "Tail", edad = Nothing }  
+                </div>
+                <div class="terminal">
+                  > chloe = { nombre = "Chloe", edad = Just 1 }  
+                </div>
+
+              </div>
+              <p class="paragraph">
+                Este concepto es bastante útil al definir atributos opcionales en records o cuando se requiere que una función no procese ciertos valores (por ejemplo, cuando se intenta hacer un parseo de String a Int pero el valor de la cadena no tiene representación entera)
+              </p>
+              <h2>Pipelines:</h2>
+              <p class="paragraph">
+                Tenemos dos funciones 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > sum1 : Int -> Int
+                  | sum1 numero =
+                  |  
+               
+                  <span style="color: rgb(51, 187, 200);">< function ></span>
+                  > mult2 : Int -> Int
+                  | mult2 numero =
+                  | numero * 2
+                  |
+                  <span style="color: rgb(51, 187, 200);">< function ></span>
+                </div>
+              </div>
+              <p class="paragraph">
+                Implementamos una función que las use para transformar un número entero 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > transformar : Int -> Int
+                  | transformar numero =
+                  |   mult2 (sum1 numero)
+                  |
+                </div>
+              </div>
+              <p class="paragraph">
+                Elm además nos provee de una herramienta llamada Pipelines para que los múltiples llamados a funciones sean más legibles para el programador, así entonces el último bloque de código quedaría de la siguiente forma 
+              </p>
+              <div class="elm-code-block">
+                <div class="terminal">
+                  > transformar : Int -> Int
+                  | transformar numero =
+                  |   numero |> sum1 |> mult2
+                  |
+                </div>
+              </div>
+          </div> <!-- description-->
+          </div>
+          <div class="detail" id="page5">
+            <div class="overview">
+              <h1 class="overview__heading">
+                PROGRAMACIÓN FUNCIONAL
+              </h1>
+            </div>
+            <div class="description">
+              <h1>
+                ¿Y los ciclos?
+              </h1>
+            
+              <p class="paragraph">
+              Elm no provee una implementación de ciclos de forma nativa. Si se requiere usar un ciclo en Elm, entonces se le pide al programador que haga uso de herramientas como la recursión.
+
+              Así, entonces un ciclo construido de la siguiente forma en Javascript
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  var saludo = ""
+                  for (var i = 5; i> 0; i--){
+                    saludo = saludo + ("hola:"+i+" ");
+                  }
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              En Elm podría ser implementado de la siguiente forma
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+
+                  > saludar: Int -> String
+                  | saludar num =
+                  |   case num of
+                  |     1 -> "hola:1 "
+                  |     _ -> "hola:" ++ String.fromInt num ++ " " ++ saludar (num-1)
+            
+              </div>
+            </div>
+            <p class="paragraph">
+              El primer bloque almacena en la variable “saludo” el valor 
+            </p>
+            <p class="paragraph">
+              “hola:5 hola:4 hola:3 hola:2 hola:1”
+            </p>
+            <p class="paragraph">
+              Este valor también es el resultante de llamar a la función “saludar” del segundo bloque utilizando el parámetro 5.
+            </p>
+
+            <h2>Funciones de primera clase</h2>
+            <p class="paragraph">
+              Elm tiene soporte para funciones de primera clase, esto significa que las funciones pueden ser asignadas a variables o ser usadas como atributos o valores de retorno en otras funciones.
+              
+              En el siguiente ejemplo se asigna a una variable una función
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                  > sum a b = a + b
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+                  > miFunc = sum
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+              </div>
+            </div>
+            <h2>Funciones de orden superior</h2>
+            <p class="paragraph">
+              Son funciones que pueden tomar otras funciones como parámetros o retornar otras funciones. 
+
+              Esto es bastante evidente al saber que Elm realmente solo admite funciones que tienen un argumento, el lenguaje se encarga de hacer la conversión de una función que tiene varios parámetros a una lista de “curried functions”, donde cada una de las funciones retorna a su vez una función.
+              
+              Para ilustrar el concepto, veamos un ejemplo de implementación de una función que suma dos valores “a” y “b” en Elm y la respectiva conversión que se hace “por debajo” a “curried functions”.
+              
+              A continuación la implementación en Elm
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                  > sum a b = a + b
+                  <span style="color: rgb(51, 187, 200);"> < function ></span> : number -> number -> number
+                  > sum 5 2
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+                  > (sum 5) 2
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+                  > 2 |> (sum 5)
+                  <span style="color: rgb(176, 90, 226);">7</span> : number
+              </div>
+            </div>
+            <p class="paragraph">
+              La función “sum” es transformada de la siguiente forma. (Para hacer más entendible el código, se hizo la conversión equivalente en Javascript)
+
+              La función sumar
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  function sumar (a, b) {
+                    return a + b;
+                  }
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              Es transformada en “curried functions”, una lista de funciones anidadas que a su vez retornan funciones. Cada una de estas funciones son funciones de orden superior.
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  function sumar (a) {
+                    return function (b) {
+                      return a + b;
+                    }
+                  }
+                </span>
+              </div>
+            </div>
+            <h2>Funciones lambda</h2>
+            <p class="paragraph">
+              Son cierto tipo especial de funciones que son usados en alguno de los siguientes escenarios:
+            </p>
+            <ul class="list">
+              <li class="list__item"><b>Se quiere usar sólo una vez  
+              </b></li>
+              <li class="list__item"><b>La función es demasiado simple
+              </b></li>
+              <li class="list__item"><b>Se requiere legibilidad (se definen sólamente cuando se necesitan)</b>
+              </li>
+              <li class="list__item"><b>Se necesita retornar una función desde una función</b>
+              </li>
+            </ul>
+            <p class="paragraph">
+              Por ejemplo, la siguiente función lambda es equivalente a una función que calcula el cuadrado de un número
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                > \n -> n*n
+                <span style="color: rgb(51, 187, 200);">
+                  < function >
+                </span>
+              </div>
+            </div>
+            <p class="paragraph">
+              Y la siguiente función retorna una función lambda
+            </p>
+            <div class="elm-code-block">
+              <div class="terminal">
+                > suma a =
+                | \b -> a + b
+                |
+                <span style="color: rgb(51, 187, 200);">
+                  < function >
+                </span>
+              </div>
+            </div>
+            </div> <!-- description-->
+          </div>
+
+          <div class="detail" id="page6">
+            <div class="overview">
+              <h1 class="overview__heading">
+                EJEMPLO FUNCIONAL
+              </h1>
+            </div>
+            <div class="description">
+              Dado un número natural n, par mayor que 2, calcular dos primos tales que su suma sea igual a n:
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  goldbach : Int -> Maybe (Int, Int)
+                  goldbach n =
+                      if isOdd n || n < 3 then
+                          Nothing
+                      else
+                          goldbach1 n <| primesInRange 2 n
+
+
+                  goldbach1 : Int -> List Int -> Maybe (Int, Int)
+                  goldbach1 n ps =
+                      case ps of
+                          [] ->
+                              Nothing
+
+                          p1 :: xs ->
+                              let
+                                  ps1 = dropWhile (\y -> p1 + y < n) ps
+                              in
+                                  case List.head ps1 of
+                                      Nothing ->
+                                          goldbach1 n xs
+
+                                      Just p2 ->
+                                          if p2 + p1 == n  then
+                                              Just (p1, p2)
+                                          else
+                                              goldbach1 n xs
+
+
+                  primesInRange : Int -> Int -> List Int
+                  primesInRange low high =
+                      if high < low || high < 2 then
+                        []
+                      else
+                        dropWhile (\x -> x < low) <| primes high
+
+
+                  -- find all primes up to n
+                  primes : Int -> List Int
+                  primes n = 
+                      if n < 2 then
+                          []
+                      else
+                          eratos [2..n] []
+
+
+                  -- sieve of Eratosthenes
+                  -- remove all the the non-primes from a list
+                  eratos : List Int -> List Int -> List Int
+                  eratos candidates primes =  
+                    case candidates of
+                        [] -> List.reverse primes
+
+                        x::xs ->
+                            let 
+                                cs = List.filter (\y -> (y % x) /= 0) xs
+                            in
+                                eratos cs (x :: primes)
+
+
+                  dropWhile : (a -> Bool) -> List a -> List a
+                  dropWhile predicate list =
+                      case list of
+                        []      -> []
+
+                        x::xs   -> 
+                            if (predicate x) then 
+                                dropWhile predicate xs
+                            else 
+                                list
+                </span>
+              </div> <!-- terminal -->
+            </div> <!-- elm-code-block -->
+            En el anterior ejemplo tenemos las siguientes funciones:
+                <ul class="list">
+                  <li class="list__item">dropWhile: función que al tomar una lista elimina los elementos mientras que se cumpla cierta condición (emulación de un while)
+                  </li>
+                  <li class="list__item">eratos: Cálculo de la criba de Eratóstenes
+                  </li>
+                  <li class="list__item">primes: Función para calcular los primos hasta n
+                  </li>
+                  <li class="list__item">primesInRange: Función para calcular los primos en un rango
+                  </li>
+                  <li class="list__item">goldbach1: Función para calcular los números primos que solucionan el problema
+                  </li>
+                  <li class="list__item">goldbach: Función inicial que llama a goldbach1 solo si los parametros dados son correctos
+                  </li>
+                </ul>
+            </div> <!-- description-->
+          </div>
+          <div class="detail" id="page7">
+            <div class="overview">
+              <h1 class="overview__heading">
+                EJEMPLO PRÁCTICO
+              </h1>
+            </div>
+            <div class="description">
+                El siguiente programa muestra un contador que puede ser aumentado o decrementado por medio de dos botones
+            <div class="elm-code-block">
+              <div class="terminal">
+                <span style="color: rgb(51, 187, 200);">
+                  module Main exposing (main)
+
+                  import Browser
+                  import Html exposing (Html, button, div, text)
+                  import Html.Events exposing (onClick)
+
+
+                  type alias Model =
+                      { count : Int }
+
+
+                  initialModel : Model
+                  initialModel =
+                      { count = 0 }
+
+
+                  type Msg
+                      = Increment
+                      | Decrement
+
+
+                  update : Msg -> Model -> Model
+                  update msg model =
+                      case msg of
+                          Increment ->
+                              { model | count = model.count + 1 }
+
+                          Decrement ->
+                              { model | count = model.count - 1 }
+
+
+                  view : Model -> Html Msg
+                  view model =
+                      div []
+                          [ button [ onClick Increment ] [ text "+1" ]
+                          , div [] [ text <| String.fromInt model.count ]
+                          , button [ onClick Decrement ] [ text "-1" ]
+                          ]
+
+
+                  main : Program () Model Msg
+                  main =
+                      Browser.sandbox
+                          { init = initialModel
+                          , view = view
+                          , update = update
+                          }
+                </span>
+              </div>
+            </div>
+            <p>En el anterior ejemplo podemos ver de forma precisa como se puede alterar un modelo por medio de un mensaje, el cual en este caso es Increment y Decrement, adicionalmente la vista cambia automaticamente al momento que el mensaje es enviado. Para ver el codigo en funcionamiento <a target="_blank" href="https://ellie-app.com/new">oprima en el link</a></p>
+            </div> <!-- description-->
+          </div>
+           <div class="detail" id="page8">
+            <div class="overview">
+              <h1 class="overview__heading">
+                REFERENCIAS
+              </h1>
+            </div>
+            <div class="description">
+              <p class="paragraph">
+               Puede consultar mas información en las siguientes fuentes
+              </p>
+              <ul class="list">
+                <li class="list__item">Documentación oficial <a href="https://guide.elm-lang.org/" target="_blank">aquí</a></li>
+                <li class="list__item">Programación funcional en Elm <a href="https://functional-programming-in-elm.netlify.app/" target="_blank">aquí</a></li>
+                <li class="list__item">Getting Started with the Elm Programming Language  <a href="https://www.toptal.com/front-end/getting-started-elm-language" target="_blank">aquí</a></li>
+                <li class="list__item">99 Problems solved in Elm  <a href="https://johncrane.gitbooks.io/ninety-nine-elm-problems/content/" target="_blank">aquí</a></li>
+                <li class="list__item">Learn you an Elm <a href="https://learnyouanelm.github.io/" target="_blank">aquí</a></li>
+                <li class="list__item">Functional reactive programming with elm <a href="https://csmith111.gitbooks.io/functional-reactive-programming-with-elm" target="_blank">aquí</a></li>
+              </ul>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+
+
+  
+</html>
