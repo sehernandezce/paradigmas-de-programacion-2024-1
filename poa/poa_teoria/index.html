@@ -32,27 +32,53 @@
       <h1>
 <a id="introducción" class="anchor" href="#introducci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introducción.</h1>
 
-<p align="justify">A lo largo de la historia de la ingeniería de software se ha pasado por ciertas "etapas" en las que se hace uso de un concepto básico de la programación e incluso la vida diaria, dividir una gran tarea en pequeñas tareas manejables es mucho más sencillo que intentar realizar el todo, "<em>divide y vencerás</em>". En un inicio se tenía el código sin división alguna, datos y funcionalidades estaban mezcladas por todo el código, a esta etapa se le llama la generación del código "espaghetti":</p>
+<p align="justify">A lo largo de la historia, la ingeniería de software ha atravesado ciertas "etapas"  
+	en las que se ha ido desarrollando un concepto básico de la programación (e incluso la vida diaria): 
+	dividir una gran tarea en pequeñas tareas manejables es mucho más sencillo que intentar realizar el 
+	todo, "<em>divide y vencerás</em>". </p>
+<p align="justify">
+	En un inicio se tenía el código sin división alguna: datos y 
+	funcionalidades estaban mezcladas por todo el código. A esta etapa se le llama la <b>generación del 
+		código "espaghetti"</b>:</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/Spag.jpg" alt=""></p>
 
-<p align="justify">Las formas tienen la función de representar los datos y los colores representan la funcionalidad, de ésta manera la imagen ilustra a lo que le llamamos el código "espaghetti".</p>
+<p align="justify">En las imagen, las formas tienen la función de representar los datos y los colores 
+	representan la funcionalidad, de ésta manera la imagen ilustra a lo que le llamamos 
+	el código "espaghetti".</p>
 
-<p align="justify">Luego de ésta generación de caos en el código llegó el primer gran paso en el uso del concepto "<em>divide y vencerás</em>". Los desarrolladores comenzaron a identificar las partes más manejables del código y lo expresaron como funciones definidas dentro del dominio del problema:</p>
+<p align="justify">Luego de ésta generación de caos en el código llegó el primer gran paso en el uso 
+	del concepto "<em>divide y vencerás</em>". Los desarrolladores comenzaron a identificar las partes
+	 más manejables del código y las expresaron como funciones definidas dentro del dominio del problema:</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/Func.jpg" alt=""></p>
 
-<p align="justify">De ésta manera se consiguió encapsular de cierta manera las funcionalidades y haciendo que el incluir una nueva función fuera mucho mas sencillo, no obstante todavía existían inconvenientes ya que la claridad de las funciones era pobre debido a la utilización de datos compartidos, por otro lado el agregar un nuevo tipo de dato se convertía en una tarea de modificar cuanta función estuviera involucrada con el nuevo dato.</p>
+<p align="justify">De ésta manera se consiguió encapsular de cierta manera las funcionalidades, y se 
+	consiguió incluir nuevas funciones de forma mas sencilla. No obstante, todavía existían
+	 inconvenientes, ya que la claridad de las funciones era pobre debido a la utilización de datos
+	  compartidos; por otro lado, el agregar un nuevo tipo de dato se convertía en una tarea que requería
+	   modificar cuanta función estuviera involucrada con él.</p>
 
-<p align="justify">Finalmente, en un intento por solucionar los problemas que dejaban los datos esparcidos por todo el código, nace la <a href="http://ferestrepoca.github.io/paradigmas-de-programacion/poo/index.html">Programación Orientada a Objetos</a>, la cual supuso un gran avance que es visible hasta el día de hoy siendo éste uno de los paradigmas de programación más importantes y usados de los últimos años. Su descomposición en objetos es mucho más acertada en el entorno real que la descomposición funcional.</p>
+<p align="justify">Finalmente, en un intento por solucionar los problemas que dejaban los datos 
+	esparcidos por todo el código, nace la <a href="http://ferestrepoca.github.io/paradigmas-de-programacion/poo/index.html">Programación 
+		Orientada a Objetos</a>. Esto supuso un gran avance que es visible hasta el día de hoy,
+		 siendo éste uno de los paradigmas de programación más importantes y usados de los últimos años. 
+		 Su descomposición en objetos es mucho más acertada en el entorno real que la descomposición 
+		 funcional.</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/anfmorenoso/Archivos/master/obj.jpg" alt=""></p>
 
-<p align="justify">Aunque la <em>programación orientada a objetos</em> es un paradigma de programación que resuelve bastantes problemas de la programación tradicional como el integrar nuevos datos, no es perfecta y posee innumerables problemas dado a que las funciones continúan esparcidas por todo el código y para agregar una función nueva es necesario revisar y modificar objetos.</p>
+<p align="justify">Aunque la <em>programación orientada a objetos</em> es un paradigma de 
+	programación que resuelve bastantes problemas de la programación tradicional, como el integrar
+	 nuevos datos, no es perfecta y posee innumerables problemas, dado que las funciones continúan
+	  esparcidas por todo el código y para agregar una función nueva es necesario revisar y
+	   modificar objetos.</p>
 
 
 
-<p align="justify">Además, el diseño e ingeniería de software no se trata simplemente de tratar las funcionalidades básicas del problema, existen muchos otros conceptos que en la descomposición funcional y en la programación orientada a objetos son aproximados de manera poco eficiente, por ejemplo:</p>
+<p align="justify">Además, el diseño e ingeniería de software no se trata simplemente de tratar las 
+	funcionalidades básicas del problema. Existen muchos otros conceptos que en la descomposición funcional
+	 y en la programación orientada a objetos que son aproximados de manera poco eficiente, por ejemplo:</p>
 
 <ol>
 <li>La Sincronización.</li>
@@ -66,7 +92,7 @@
 nos plantean ningún problema con respecto al diseño y la implementación de la
 funcionalidad básica, estas técnicas no se comportan bien con los otros aspectos. Es
 decir, que nos encontramos con problemas de programación en los cuales ni las técnicas
-funcionales, ni las orientadas a objeto son suficientes para capturar todas las decisiones
+funcionales, ni las orientadas a objetos son suficientes para capturar todas las decisiones
 de diseño que el programa debe implementar.</p>
 
 <p align="justify">La programación orientada a aspectos (POA) es una nueva metodología de
@@ -74,7 +100,7 @@ programación que aspira a soportar la separación de competencias para los aspe
 antes mencionados. Es decir, que intenta separar los componentes y los aspectos unos
 de otros, proporcionando mecanismos que hagan posible abstraerlos y componerlos para
 formar todo el sistema. En definitiva, lo que se persigue es implementar una aplicación
-de forma eficiente y fácil de entender</p>
+de forma eficiente, fácil de entender y mantener.</p>
 
 <p align="center"><img src="Images/d_aspects.JPG" alt=""></p>
 
