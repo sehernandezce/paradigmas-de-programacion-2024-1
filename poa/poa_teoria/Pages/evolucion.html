@@ -35,12 +35,75 @@
 <a id="conceptos-claves" class="anchor" href="#conceptos-claves" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CONCEPTOS CLAVES</h2>
 
 <h3>
+    <a id="concern" class="anchor" href="#concern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>CONCEPTO(Concern):</strong>
+</h3>
+
+<p align="justify">
+    Es un requerimiento específico que debe ser implementado para satifacer las necesidades del sistema [1].
+</p>
+
+<p align="justify">
+    Así como en la ingeniería de software se propone una clasificiación para los requerimientos 
+    (funcionales y no funcionales), la POA también propone que los conceptos o <em>concerns</em> se pueden
+     clasificar en 
+    <strong>componentes</strong> y <strong>aspectos</strong>.
+</p>
+
+<h3>
+    <a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>COMPONENTE(Component):</strong>
+</h3>
+    <p align="justify">
+        Son las partes del código que pueden ser encapsuladas claramente. Suelen estar relacionados a las
+        funcionalidades del sistema [2].
+    </p>
+    
+
+<h3>
 <a id="aspectoaspect" class="anchor" href="#aspectoaspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>ASPECTO(Aspect):</strong>
 </h3>
 
 <p align="justify">“Un aspecto es una <strong>unidad modular que se disemina por la estructura de otras unidades funcionales.</strong> Un aspecto de diseño es una unidad modular del diseño que se entremezcla en la estructura de otras partes del diseño. (G. Kiczales).“</p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/Aspecto.png?raw=true" alt=""></p>
+
+<p align="justify">
+    Por lo general, los aspectos no suelen hacer parte de las funcionalidades del sistema, 
+    sino más bien a propiedades que afectan el desempeño del mismo [2]. 
+</p>
+
+<h4>
+    <a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Ejemplos de aspectos:</strong>
+</h4>
+    
+<ul>
+    <li>Uso de memoria</li>
+    <li>Persistencia de datos</li>
+    <li>Seguridad</li>
+    <li>Sistemas de registros (logger)</li>
+    <li>Manejo de errores</li>
+    </ul>
+
+<h3>
+    <a id="sep_concerns" class="anchor" href="#sep_concerns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>SEPARACIÓN DE CONCEPTOS (separation of concerns):</strong>
+</h3>
+
+<p align="justify">
+    A pesar de que la separación de conceptos no es exclusiva de la POA
+    (y aunque ya se haya hablado del tema en la filosfía del paradigma), la POA hace uso de este término
+    y señala la importancia de encapsular, abstraer y separar los componentes de los aspectos. Esto con 
+    el objetivo de hacer el código más mantenible y evitar el código enmarañado. 
+</p>
+
+<p align="justify">
+    La separación entre aspectos y componentes es tan evidente que usualmente se utilizan lenguajes
+    diferentes para programar los aspectos y los componentes [2]. Por lo general se usan lenguajes 
+    orientados a objetos como Java para implementar los componentes [1].
+</p>
+
+<p align="justify">
+    Cualquier lenguaje que quiera aplicar este paradigma, debe proporcionar herramientas suficientes para
+    permitirle al programador implementar de buena forma esta separación de componentes.
+</p>
 
 <h3>
 <a id="punto-de-uniÓnenlacejoint-point" class="anchor" href="#punto-de-uni%C3%93nenlacejoint-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTO DE UNIÓN/ENLACE(Joint point):</strong>
@@ -104,7 +167,7 @@ Dentro de ellos podemos encontrar:</p>
 <p align = "center">
     <img src="../Images/Pointcut_tabla.png"/>
 </p>
-<p align="justify"><em><strong>VAMOS CON EL EJEMPLO...</strong></em></p>
+<p align="justify"><em><strong>PUNTOS DE CORTE VS PUNTOS DE ENLACE. VAMOS CON EL EJEMPLO...</strong></em></p>
 
 <p align="justify"><em>Cuando sales a comer a un restaurante, estando en él, miras el menú y hay varias opciones que se pueden escoger de platos fuertes, ensaladas, postres, etc. Después de ver que hay en el menú escoges uno o mas de estos platos, pero hasta que estos no sean ordenados y el mesero no te los traiga son solo "oportunidades para cenar".</em></p>
 
@@ -151,10 +214,17 @@ Dentro de ellos podemos encontrar:</p>
 <hr>
 
 <h3>
-<a id="tejedorweaving" class="anchor" href="#tejedorweaving" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>TEJEDOR(Weaving):</strong>
+<a id="tejedorweaving" class="anchor" href="#tejedorweaving" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>TEJEDOR(Weaver):</strong>
 </h3>
 
-<p align="justify">El tejedor se encarga de <strong>mezclar los diferentes mecanismos de abstracción y composición</strong> que aparecen en los lenguajes de aspectos y componentes ayudándose de los puntos de enlace.</p>
+<p align="justify">El tejedor tiene un papel similar al del compilador en otros paradigmas, 
+    se encarga de <strong>mezclar los diferentes componentes con los aspectos</strong> 
+    ayudándose de las reglas de recomposición que proporcionen los puntos de enlace [1].
+</p>
+
+<p align="justify">El resultado de este proceso de tejido (o weaving) es un código ejecutable 
+    de todo el sistema [1].
+</p>
 
 <p align="justify">Este proceso puede ocurrir a lo largo del ciclo de vida del programa:</p>
 
@@ -163,8 +233,6 @@ Dentro de ellos podemos encontrar:</p>
 <li>Aspectos en Tiempo de Carga, los Aspectos se implementan cuando el Objeto Destinatario es cargado.</li>
 <li>Aspectos en Tiempo de Ejecución.</li>
 </ul>
-
-<p align="justify"><em>Este concepto de Tejedor es muy importante dentro de la Programación Orientada a Aspectos, este es el que nos va a mezclar el <strong>Programa de componentes</strong> descrito por un Lenguaje base, y  los diferentes <strong>Programas de Aspectos</strong>, cada uno descrito por su propio Lenguaje de aspectos</em></p>
 
 <p align="center"><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/Tejedor.png?raw=true" alt=""></p>
 
@@ -215,6 +283,19 @@ En la anterior imagen se puede observar graficamente como funciona el tejedor. E
 <p align = "center">
     <img width="800" height="500" src="../Images/tejedor2.png?raw=true"> </img>
 </p>
+
+<h3>
+    <a id="referencias" class="anchor" href="#referencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Referencias:</strong>
+</h3>
+<ul>
+    <li>
+        [1]R. Laddad, AspectJ in action. Greenwich, CT: Manning, 2004.
+    </li>
+    <li>
+        [2]G. Kiczales et al., "Aspect-oriented programming", 1997. Available: https://www.cs.ubc.ca/~gregor/papers/kiczales-ECOOP1997-AOP.pdf. [Accessed 7 June 2020].
+    </li>
+
+</ul>
 </section>
 
 </body>
