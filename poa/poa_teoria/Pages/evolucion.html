@@ -128,7 +128,7 @@ Dentro de ellos podemos encontrar:</p>
 
 <ul>
 <li>
-<strong>before</strong> : justo antes de proceder al joint-point (ej: justo antes de entrar al getter, o al constructor, etc)</li>
+<strong>before</strong> : justo antes de proceder al joint-point (ej: justo antes de entrar al getter, o al constructor, etc).</li>
 <li>
 <strong>after returning</strong>: justo después del return de un método.</li>
 <li>
@@ -148,7 +148,7 @@ Dentro de ellos podemos encontrar:</p>
 
 <p align="justify">Define los Consejos que se aplicarán a cada Punto de Cruce. Un pointcut es un <strong>predicado o condición para la aplicación de un aspecto.</strong></p>
 
-<p align="justify"><em>Se puede entender mas claramente en la siguiente imagen, donde el programa hace un llamado a un advice, el cual se definirá atravez de un pointcut, el cual tendrá diferentes joinpoints del cual podrá escoger uno o varios aspectos para ser ejecutados (Algo enredado, pero mas adelante se explica mejor esa diferenciación entre pointcut y joinpoint..)</em></p>
+<p align="justify"><em>Se puede entender mas claramente en la siguiente imagen, donde el programa hace un llamado a un advice, el cual se definirá a través de un pointcut, el cual tendrá diferentes joinpoints del cual podrá escoger uno o varios aspectos para ser ejecutados (Algo enredado, pero mas adelante se explica mejor esa diferenciación entre pointcut y joinpoint..).</em></p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/advice_pointcut.png?raw=true" alt=""></p>
 
@@ -177,13 +177,13 @@ Dentro de ellos podemos encontrar:</p>
 
 <hr>
 
-<p align="justify"><em>Pero bueno, a nosotros nos gusta ver como se verían todos estos conceptos aplicados ya en un programa. Supongamos que tenemos una tienda, la cual tendrá diferentes empleados. El administrador de la tienda va a tener todo el manejo de los empleados, incluyendo todas las operaciones CRUD (Create, Read, Update, Delete), hasta Como sera el inicio de sesión a la aplicación por parte de los empleados. Este inicio de sesión o Loggin sera el Aspecto que tendrá nuestra aplicación.</em></p>
+<p align="justify"><em>Pero bueno, a nosotros nos gusta ver como se verían todos estos conceptos aplicados ya en un programa. Supongamos que tenemos una tienda, la cual tendrá diferentes empleados. El administrador de la tienda va a tener todo el manejo de los empleados, incluyendo todas las operaciones CRUD (Create, Read, Update, Delete), hasta cómo sera el inicio de sesión a la aplicación por parte de los empleados. Este inicio de sesión o Loggin sera el Aspecto que tendrá nuestra aplicación.</em></p>
 
-<p align="justify"><em>La imagen a continuación explicara claramente donde estarían cada uno de los conceptos anteriormente mencionados dentro de un programa. Este programa fue implementado utilizando <strong>Spring AOP + AspectJ</strong>.</em></p>
+<p align="justify"><em>La imagen a continuación explicará claramente donde estarían cada uno de los conceptos anteriormente mencionados dentro de un programa. Este programa fue implementado utilizando <strong>Spring AOP + AspectJ</strong>.</em></p>
 
 <p align="center"><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/example_code.png?raw=true" alt=""></p>
 
-<p align="justify"><em>Tal vez aun no quede claro estos conceptos mencionados anteriormente, pero en secciones posteriores encontraran mas ejemplos que ayudaran a entender mejor el paradigma de <strong>Programación Orientada a Aspectos</strong></em></p>
+<p align="justify"><em>Tal vez aun no queden claros estos conceptos mencionados anteriormente, pero en secciones posteriores encontrarán más ejemplos que ayudarán a entender mejor el paradigma de <strong>Programación Orientada a Aspectos.</strong></em></p>
 
 <hr>
 
@@ -207,7 +207,7 @@ Dentro de ellos podemos encontrar:</p>
 
 <hr>
 
-<p align="justify"><em>Estas definiciones de Target y proxy se entienden mejor en la siguiente imagen, donde claramente se ve que la clase aconsejada o Target es la clase <strong>FooService</strong> y el objeto creado Proxy despues de aplicar ese Concejo es <strong>FooServiceProxy</strong></em></p>
+<p align="justify"><em>Estas definiciones de Target y proxy se entienden mejor en la siguiente imagen, donde claramente se ve que la clase aconsejada o Target es la clase <strong>FooService</strong> y el objeto creado Proxy después de aplicar ese Concejo es <strong>FooServiceProxy</strong></em></p>
 
 <p align="center"><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/proxy_target.png?raw=true" alt=""></p>
 
@@ -218,8 +218,8 @@ Dentro de ellos podemos encontrar:</p>
 </h3>
 
 <p align="justify">El tejedor tiene un papel similar al del compilador en otros paradigmas, 
-    se encarga de <strong>mezclar los diferentes componentes con los aspectos</strong> 
-    ayudándose de las reglas de recomposición que proporcionen los puntos de enlace [1].
+    se encarga de <strong>mezclar los diferentes componentes con los aspectos</strong>,
+    ayudándose de las reglas de recomposición que proporcionan los puntos de enlace [1].
 </p>
 
 <p align="justify">El resultado de este proceso de tejido (o weaving) es un código ejecutable 
@@ -245,14 +245,14 @@ Dentro de ellos podemos encontrar:</p>
         </li>
         <li>
             <strong>Entrelazado Dinámico:</strong><br/>
-                <p>Una pre condición o requisito para que se pueda realizar un entrelazado dinámico es que los aspectos existan de forma explícita tanto en tiempo de compilación como en tiempo de ejecución.<br/><br/>
+                <p>Una pre condición o requisito para que se pueda realizar un entrelazado dinámico es que los aspectos existan de forma explícita, tanto en tiempo de compilación como en tiempo de ejecución.<br/><br/>
                     Para conseguir esto, tanto los aspectos como las estructuras entrelazadas se deben modelar como objetos y deben mantenerse en el ejecutable. Dado un interfaz de reflexión, el tejedor es capaz de añadir, adaptar y borrar aspectos de forma dinámica, si así se desea, durante la ejecución.<br/><br/>
                     Este tejedor también tiene en cuenta el orden en el que se entremezclan los aspectos. Esto lo resuelve asignando una prioridad al aspecto. El aspecto que tenga asignado un número menor es el que se teje primero, y por lo tanto, aparecerá antes en la jerarquía de herencia.<br/><br/>
                     El principal inconveniente subyacente bajo este enfoque es el rendimiento y que se utiliza más memoria con la generación de todas estas subclases.<br/><br/>
                     Una de las primeras clasificaciones de las formas de combinar el comportamiento de los componentes y los aspectos fue dada por John Lamping:
                     <ul>
                         <li>
-                                Yuxtaposición. Consiste en la intercalación del código de los aspectos en el de los componentes. La estructura del código mezclado quedaría como el código base con el código de los aspectos añadidos en los puntos de enlace. En este caso, el tejedor sería bastante simple. 
+                                Yuxtaposición. Consiste en la intercalación del código de los aspectos con los componentes. La estructura del código mezclado quedaría como el código base con el código de los aspectos añadidos en los puntos de enlace. En este caso, el tejedor sería bastante simple. 
                         </li>
                         <li>
                                 Mezcla. Es lo opuesto a la yuxtaposición, todo el código queda mezclado con una combinación de descripciones de componentes y aspectos.
@@ -269,7 +269,7 @@ Dentro de ellos podemos encontrar:</p>
 
 <hr>
 
-<p align="justify">VIENDO TODOS ESTOS CONCEPTOS ANTERIORMENTE MENCIONADOS, SE PUEDE PUEDE VER LA DIFERENCIA EN LA ESTRUCTURA DE LA IMPLEMENTACIÓN ENTRE <strong>LOS LENGUAJES TRADICIONALES</strong> Y <strong>LOS LENGUAJES DE ASPECTOS</strong></p>
+<p align="justify">VIENDO TODOS ESTOS CONCEPTOS ANTERIORMENTE MENCIONADOS, SE PUEDE VER LA DIFERENCIA EN LA ESTRUCTURA DE LA IMPLEMENTACIÓN ENTRE <strong>LOS LENGUAJES TRADICIONALES</strong> Y <strong>LOS LENGUAJES DE ASPECTOS.</strong></p>
 
 <p align="center"><img src="https://github.com/ProgramacionOrientadaAspectos/POA_teoria/blob/gh-pages/Images/Diferencia_tradicional_aspectos.png?raw=true" alt=""></p>
 
