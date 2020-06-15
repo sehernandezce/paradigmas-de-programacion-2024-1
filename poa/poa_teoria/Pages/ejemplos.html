@@ -190,11 +190,20 @@
 
   <p align="justify">
     Para este segundo ejemplo suponga que se está implementando una aplicación de tipo bancaria y para ello se tiene una
-    clase Account. Esta clase cuenta con un método debit que recibe una cantidad a debitar y realiza dos acciones:
+    clase Account.
+    <br>
+    Esta clase cuenta con un método debit que recibe una cantidad a debitar y realiza dos acciones:
 
     <ul>
       <li>Chequea que la cantidad a debitar de la cuenta sea menor a el balance. De no ser así arroja una excepción. </li>
       <li>Ajusta el nuevo balance restando la cantidad debitada.</li>
+    </ul>
+    <br>
+    Y también un método credit que recibe una cantidad a acreditar a la cuenta y realiza dos acciones:
+
+    <ul>
+      <li>Chequea que la cantidad a acreditar a la cuenta sea mayor a cero. De no ser así arroja una excepción. </li>
+      <li>Ajusta el nuevo balance restando la cantidad acreditada.</li>
     </ul>
 
     </p>
@@ -213,6 +222,9 @@
           <li>Después de que cambie el saldo de la cuenta, se debe: Actualizar el nuevo balance en una store de persistencia o una base de datos.</li>
           <li>Antes de cambiar el saldo de la cuenta se debe: Autenticar y autorizar al usuario.</li>
         </ul>
+
+      Usando before y after_returning_from se puede ejecutar la lógica anteriormente planteada de manera separada y limpia
+      como se muestra en la siguiente imagen.
 
       </p>
 
