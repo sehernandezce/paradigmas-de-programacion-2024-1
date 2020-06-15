@@ -37,7 +37,7 @@
 	</h1>
 
 	<p align="justify">
-		En esa sección encontrarás ejemplos del uso de lenguajes utilizando programación orientada a aspectos
+		En esa sección encontrarás diversos ejemplos del uso de lenguajes como Java o Ruby utilizando el enfoque de la programación orientada a aspectos
 	</p>
 
 
@@ -141,11 +141,106 @@
 
 	<script src="https://ideone.com/e.js/KAGmIl" type="text/javascript" ></script>
 
+  <h2>
+    <span aria-hidden="true" class="octicon octicon-link"></span></a>Utilizando la gema Aquarium de Ruby
+  </h2>
+
+  <p align="justify">
+    La gema Aquarium nos ofrece una amplia variedad de formas para ejecutar un advice. De forma análoga a los métodos que
+    ofrece AspectJ es posible ejecutar un advice:
+    <ul>
+    <li>Antes de la ejecución satisfactoria de un método.</li>
+    <li>Tras la ejecución satisfactoria de un método.</li>
+    <li>Antes y después de la ejecución satisfactoria de un método.</li>
+    <li>Antes y después de la ejecución de un método aunque arroje un error.</li>
+    <li>Después de la ejecución de un método que arrojó un error cualquiera.</li>
+    <li>Después de la ejecución de un método que arrojó un error específico.</li>
+  </ul>
+
+  A continuación se muestra como realizar estas operaciones usando la sintáxis que Aquarium dispone:
+
+  </p>
+
+  <img width="600" height="400" src="../Images/ruby/1.png?raw=true" hspace="150"> </img>
+
+  <h2>
+    <span aria-hidden="true" class="octicon octicon-link"></span></a>Utilizando la gema Aquarium de Ruby - Ejemplo #1
+  </h2>
+
+  <p align="justify">
+
+    En el siguiente ejemplo se puede ver de manera sencilla la implementación del enfoque del paradigma
+    usando la gema Aquarium. Supongamos que tenemos nuestra clase Foo, y en esta tenemos un método cuya
+    ejecución de crítica (critical_operation) el cual queremos necesitamos loggear tanto en su inicio como
+    al terminar. En lugar de realizar la lógica de los logs dentro del método crítico, Aquarium nos permite
+    redeclarar la clase y usar la palabra clave "around". Aquí es dónde podemos implementar la lógica para mostrar el mensaje o
+    realizar otro tipo de procesos que necesitemos antes de la ejecución del método. El método no se ejecutará hasta llamar a
+    "join_point.proceed". Una vez termine el proceso podemos mostrar el mensaje de salida indicando que la operación crítica ya ha
+    concluido.
+
+
+  </p>
+
+  <img width="600" height="400" src="../Images/ruby/2.png?raw=true" hspace="150"> </img>
+
+
+  <h2>
+    <span aria-hidden="true" class="octicon octicon-link"></span></a>Utilizando la gema Aquarium de Ruby - Ejemplo #2
+  </h2>
+
+  <p align="justify">
+    Para este segundo ejemplo suponga que se está implementando una aplicación de tipo bancaria y para ello se tiene una
+    clase Account.
+    <br>
+    Esta clase cuenta con un método debit que recibe una cantidad a debitar y realiza dos acciones:
+
+    <ul>
+      <li>Chequea que la cantidad a debitar de la cuenta sea menor a el balance. De no ser así arroja una excepción. </li>
+      <li>Ajusta el nuevo balance restando la cantidad debitada.</li>
+    </ul>
+    <br>
+    Y también un método credit que recibe una cantidad a acreditar a la cuenta y realiza dos acciones:
+
+    <ul>
+      <li>Chequea que la cantidad a acreditar a la cuenta sea mayor a cero. De no ser así arroja una excepción. </li>
+      <li>Ajusta el nuevo balance restando la cantidad acreditada.</li>
+    </ul>
+
+    </p>
+
+      <img width="600" height="400" src="../Images/ruby/3.png?raw=true" hspace="150"> </img>
+
+      <p align="justify">
+        Como es evidente en el código anterior, la aplicación necesita de aspectos como transactiones, persistencia y seguridad/autenticación. Estos
+        aspectos son transversales a la aplicación y su implementación con ruby estándar seguramente llevará a un
+        código muy disperso en el cual se vea comprometida la modularidad.
+        Sin embargo, al usar la gema aquarium se puede realizar un refactor al código para adoptar las técnicas de la programación orientada a aspectos. Para
+        ello se requieren realizar tres acciones:
+
+        <ul>
+          <li>Antes de devolver el saldo de la cuenta, se debe: Leer el saldo actual de la store de persistencia o base de datos.</li>
+          <li>Después de que cambie el saldo de la cuenta, se debe: Actualizar el nuevo balance en una store de persistencia o una base de datos.</li>
+          <li>Antes de cambiar el saldo de la cuenta se debe: Autenticar y autorizar al usuario.</li>
+        </ul>
+
+      Usando before y after_returning_from se puede ejecutar la lógica anteriormente planteada de manera separada y limpia
+      como se muestra en la siguiente imagen.
+
+      </p>
+
+      <img width="600" height="400" src="../Images/ruby/4.png?raw=true" hspace="150"> </img>
+
+
+
+
+
 	<footer class="site-footer">
 		<span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
 		<span class="site-footer-credits">This page was created by Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>
     <br>
     <span class="site-footer-credits">This page was modified(2017-1) by Neill Giraldo e Ivàn Vanegas.</span>
+    <br>
+    <span class="site-footer-credits">This page was modified(2020-1) by Esteban Jaramillo Sarmiento.</span>
 	</footer>
 
 
