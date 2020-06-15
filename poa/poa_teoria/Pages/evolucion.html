@@ -35,7 +35,7 @@
 <a id="conceptos-claves" class="anchor" href="#conceptos-claves" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CONCEPTOS CLAVES</h2>
 
 <h3>
-    <a id="concern" class="anchor" href="#concern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>CONCEPTO(Concern):</strong>
+    <a id="concern" class="anchor" href="#concern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>CONCEPTO (Concern):</strong>
 </h3>
 
 <p align="justify">
@@ -50,16 +50,16 @@
 </p>
 
 <h3>
-    <a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>COMPONENTE(Component):</strong>
+    <a id="component" class="anchor" href="#component" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>COMPONENTE (Component):</strong>
 </h3>
     <p align="justify">
-        Son las partes del código que pueden ser encapsuladas claramente. Suelen estar relacionados a las
+        Son las partes del código que pueden ser encapsuladas claramente. Estas partes suelen estar relacionadas con las
         funcionalidades del sistema [2].
     </p>
 
 
 <h3>
-<a id="aspectoaspect" class="anchor" href="#aspectoaspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>ASPECTO(Aspect):</strong>
+<a id="aspectoaspect" class="anchor" href="#aspectoaspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>ASPECTO (Aspect):</strong>
 </h3>
 
 <p align="justify">“Un aspecto es una <strong>unidad modular que se disemina por la estructura de otras unidades funcionales.</strong> Un aspecto de diseño es una unidad modular del diseño que se entremezcla en la estructura de otras partes del diseño. (G. Kiczales).“</p>
@@ -106,7 +106,7 @@
 </p>
 
 <h3>
-<a id="punto-de-uniÓnenlacejoint-point" class="anchor" href="#punto-de-uni%C3%93nenlacejoint-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTO DE UNIÓN/ENLACE(Joint point):</strong>
+<a id="punto-de-uniÓnenlacejoint-point" class="anchor" href="#punto-de-uni%C3%93nenlacejoint-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTO DE UNIÓN/ENLACE (Joint point):</strong>
 </h3>
 
 <p align="justify">Punto de ejecución dentro del sistema donde un aspecto puede ser conectado:</p>
@@ -140,17 +140,22 @@ Dentro de ellos podemos encontrar:</p>
 <li>
 <strong>around</strong>: Cuando el flujo llega a ejecutar el join-point, permite que nuestra lógica pueda determinar si proceder o no mediante el llamado al método proceed().</li>
 </ul>
-<p>A continuación se muestra un <strong>Consejo</strong> que fue declarado de manera <i>anónima</i>. Esto siginifica que no se declaró un Pointcut o Corte antes del Consejo.</p>
+<p>A continuación se muestra un <strong>Consejo</strong> que fue declarado de manera <i>anónima</i>.
+  Esto siginifica que no se declaró un Pointcut o punto de corte antes del Consejo.
+</p>
 <p align = "center">
     <img src="../Images/advice.png"/>
 </p>
 <h3>
-<a id="puntos-de-cortepointcut" class="anchor" href="#puntos-de-cortepointcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTOS DE CORTE(Pointcut):</strong>
+<a id="puntos-de-cortepointcut" class="anchor" href="#puntos-de-cortepointcut" aria-hidden="true">
+  <span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTOS DE CORTE (Pointcut):</strong>
 </h3>
 
 <p align="justify">Define los Consejos que se aplicarán a cada Punto de Cruce. Un pointcut es un <strong>predicado o condición para la aplicación de un aspecto.</strong></p>
 
-<p align="justify"><em>Se puede entender mas claramente en la siguiente imagen, donde el programa hace un llamado a un advice, el cual se definirá a través de un pointcut, el cual tendrá diferentes joinpoints del cual podrá escoger uno o varios aspectos para ser ejecutados (Algo enredado, pero mas adelante se explica mejor esa diferenciación entre pointcut y joinpoint..).</em></p>
+<p align="justify"><em>Se puede entender mas claramente en la siguiente imagen, en la que el programa hace un llamado a un advice,
+                       este advice se definirá a través de un pointcut que contará con diferentes joinpoints del cual podrá escoger uno o varios aspectos
+                       para ser ejecutados (Algo enredado, pero mas adelante se explica mejor esa diferenciación entre pointcut y joinpoint).</em></p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/advice_pointcut.png?raw=true" alt=""></p>
 
@@ -175,7 +180,9 @@ Dentro de ellos podemos encontrar:</p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/example_restaurant.png?raw=true" alt=""></p>
 
-<p align="justify"><em>Los <strong>joinpoints</strong> son las opciones que hay en el menu y los <strong>pointcuts</strong> son los platos que se ordenan. Hablando dentro del ámbito de la programación. Un <strong>joinpoint</strong> es una oportunidad dentro del código para la aplicación de un ASPECTO; una vez se toma esa oportunidad y se selecciona uno o mas joinpoints, al aplicar un ASPECTO de ellos se tendrá un <strong>pointcut</strong>.</em></p>
+<p align="justify"><em>Los <strong>joinpoints</strong> son las opciones que hay en el menu y los <strong>pointcuts</strong> son los platos que se ordenan.
+                      Hablando dentro del ámbito de la programación, un <strong>joinpoint</strong> es una oportunidad dentro del código para la aplicación de un ASPECTO;
+                      Una vez se toma esa oportunidad y se selecciona uno o mas joinpoints, al aplicar un ASPECTO de ellos se tendrá un <strong>pointcut</strong>.</em></p>
 
 <h2>
   <span aria-hidden="true" class="octicon octicon-link"></span></a>De manera resumida:
@@ -202,19 +209,19 @@ Dentro de ellos podemos encontrar:</p>
 <hr>
 
 <h3>
-<a id="introducciÓnintroduction" class="anchor" href="#introducci%C3%93nintroduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>INTRODUCCIÓN(Introduction):</strong>
+<a id="introducciÓnintroduction" class="anchor" href="#introducci%C3%93nintroduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>INTRODUCCIÓN (Introduction):</strong>
 </h3>
 
 <p align="justify">Permite añadir métodos o atributos a clases ya existentes. Un ejemplo en el que resultaría útil es la creación de un Consejo de Auditoría que mantenga la fecha de la última modificación de un objeto, mediante una variable y un método setUltimaModificacion(fecha), que podrían ser introducidos en todas las clases (o sólo en algunas) para proporcionarles esta nueva funcionalidad. </p>
 
 <h3>
-<a id="destinatariotarget" class="anchor" href="#destinatariotarget" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>DESTINATARIO(Target):</strong>
+<a id="destinatariotarget" class="anchor" href="#destinatariotarget" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>DESTINATARIO (Target):</strong>
 </h3>
 
 <p align="justify">Es la clase aconsejada, la clase que es objeto de un consejo.</p>
 
 <h3>
-<a id="resultanteproxy" class="anchor" href="#resultanteproxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>RESULTANTE(Proxy):</strong>
+<a id="resultanteproxy" class="anchor" href="#resultanteproxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>RESULTANTE (Proxy):</strong>
 </h3>
 
 <p align="justify">Es el objeto creado después de aplicar el Consejo al Objeto Destinatario.</p>
@@ -228,7 +235,7 @@ Dentro de ellos podemos encontrar:</p>
 <hr>
 
 <h3>
-<a id="tejedorweaving" class="anchor" href="#tejedorweaving" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>TEJEDOR(Weaver):</strong>
+<a id="tejedorweaving" class="anchor" href="#tejedorweaving" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>TEJEDOR (Weaver):</strong>
 </h3>
 
 <p align="justify">El tejedor tiene un papel similar al del compilador en otros paradigmas,
@@ -266,13 +273,13 @@ Dentro de ellos podemos encontrar:</p>
                     Una de las primeras clasificaciones de las formas de combinar el comportamiento de los componentes y los aspectos fue dada por John Lamping:
                     <ul>
                         <li>
-                                Yuxtaposición. Consiste en la intercalación del código de los aspectos con los componentes. La estructura del código mezclado quedaría como el código base con el código de los aspectos añadidos en los puntos de enlace. En este caso, el tejedor sería bastante simple.
+                                Yuxtaposición: Consiste en la intercalación del código de los aspectos con los componentes. La estructura del código mezclado quedaría como el código base con el código de los aspectos añadidos en los puntos de enlace. En este caso, el tejedor sería bastante simple.
                         </li>
                         <li>
-                                Mezcla. Es lo opuesto a la yuxtaposición, todo el código queda mezclado con una combinación de descripciones de componentes y aspectos.
+                                Mezcla: Es lo opuesto a la yuxtaposición, todo el código queda mezclado con una combinación de descripciones de componentes y aspectos.
                         </li>
                         <li>
-                                Fusión. En este caso, los puntos de enlace no se tratan de manera independiente, se fusionan varios niveles de componentes y de descripciones de aspectos en una acción simple.
+                                Fusión: En este caso, los puntos de enlace no se tratan de manera independiente, se fusionan varios niveles de componentes y de descripciones de aspectos en una acción simple.
                         </li>
                     </ul>
                 </p>
