@@ -163,6 +163,10 @@
 
   <img width="600" height="400" src="../Images/ruby/1.png?raw=true" hspace="150"> </img>
 
+  <h2>
+    <span aria-hidden="true" class="octicon octicon-link"></span></a>Utilizando la gema Aquarium de Ruby - Ejemplo #1
+  </h2>
+
   <p align="justify">
 
     En el siguiente ejemplo se puede ver de manera sencilla la implementación del enfoque del paradigma
@@ -178,6 +182,43 @@
   </p>
 
   <img width="600" height="400" src="../Images/ruby/2.png?raw=true" hspace="150"> </img>
+
+
+  <h2>
+    <span aria-hidden="true" class="octicon octicon-link"></span></a>Utilizando la gema Aquarium de Ruby - Ejemplo #2
+  </h2>
+
+  <p align="justify">
+    Para este segundo ejemplo suponga que se está implementando una aplicación de tipo bancaria y para ello se tiene una
+    clase Account. Esta clase cuenta con un método debit que recibe una cantidad a debitar y realiza dos acciones:
+
+    <ul>
+      <li>Chequea que la cantidad a debitar de la cuenta sea menor a el balance. De no ser así arroja una excepción. </li>
+      <li>Ajusta el nuevo balance restando la cantidad debitada.</li>
+    </ul>
+
+    </p>
+
+      <img width="600" height="400" src="../Images/ruby/3.png?raw=true" hspace="150"> </img>
+
+      <p align="justify">
+        Como es evidente en el código anterior, la aplicación necesita de aspectos como transactiones, persistencia y seguridad/autenticación. Estos
+        aspectos son transversales a la aplicación y su implementación con ruby estándar seguramente llevará a un
+        código muy disperso en el cual se vea comprometida la modularidad.
+        Sin embargo, al usar la gema aquarium se puede realizar un refactor al código para adoptar las técnicas de la programación orientada a aspectos. Para
+        ello se requieren realizar tres acciones:
+
+        <ul>
+          <li>Antes de devolver el saldo de la cuenta, se debe: Leer el saldo actual de la store de persistencia o base de datos.</li>
+          <li>Después de que cambie el saldo de la cuenta, se debe: Actualizar el nuevo balance en una store de persistencia o una base de datos.</li>
+          <li>Antes de cambiar el saldo de la cuenta se debe: Autenticar y autorizar al usuario.</li>
+        </ul>
+
+      </p>
+
+      <img width="600" height="400" src="../Images/ruby/4.png?raw=true" hspace="150"> </img>
+
+
 
 
 
