@@ -1,4 +1,4 @@
-body, div,  h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+body, div,  h3, h4, h5, h6, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
 	margin: 0; padding: 0; border: 0;
 }
 
@@ -10,13 +10,21 @@ body, div,  h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, img, form, fieldset, inp
   position: fixed;
   left: 0;
   top: 0;
-  right: 0;
+  right: 0; 
+  float: right;
+  
 }
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
 
 P {
 	margin: 0; 
 	padding: 0; 
 	border: 0;
+	margin-bottom: 1.6em; 
 	color: 		White;
 }
 a {
@@ -24,6 +32,13 @@ a {
   a:hover {
     text-decoration: underline; }
 h1 {
+  font-size: 1.8rem;
+  line-height: 1.3em;
+  margin: 0; 
+  padding: 0; 
+  border: 0;
+}
+h2 {
   font-size: 2rem;
   line-height: 1.3em;
   margin: 0; 
@@ -46,52 +61,145 @@ body {
 	width: 900px; margin: 250px auto;
 }
 
-nav ul {
-	list-style: none; overflow: hidden; position: relative;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+.sidebar {
+  position: fixed;
+  width: 12%;
+  height: 100vh;
+  background: #00af5f;
+  font-size: 0.8em;
+  background-image: linear-gradient(120deg, #00af5f, #005f5f); 
 }
-	nav ul li {
-		float: left; margin: 0 20px 0 0;
-	}
-		nav ul li a {
-			display: block; width: 120px; height: 120px;
-			background-image: url(icons.png); background-repeat: no-repeat;
-		}
-			nav ul li:nth-child(1) a {
-				background-color: #5bb2fc;
-				background-position: 28px 28px;
-			}
-			nav ul li:nth-child(2) a {
-				background-color: #58ebd3;
-				background-position: 28px -96px;
-			}
-			nav ul li:nth-child(3) a {
-				background-color: #ffa659;
-				background-position: 28px -222px;
-			}
-			nav ul li:nth-child(4) a {
-				background-color: #ff7a85;
-				background-position: 28px -342px;
-			}
-		
-				nav ul li a span {
-					font: 50px "Dosis", sans-serif; text-transform: uppercase; 
-					position: absolute; left: 580px; top: 29px;
-					display: none;
-				}
-					nav ul li a:hover span {
-						display: block;
-					}
-				
-				nav ul li:nth-child(1) a span {
-					color: #5bb2fc;
-				}
-				nav ul li:nth-child(2) a span {
-					color: #58ebd3;
-				}
-				nav ul li:nth-child(3) a span {
-					color: #ffa659;
-				}
-				nav ul li:nth-child(4) a span {
-					color: #ff7a85;
-				}
-					
+
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 23%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+  
+  li {
+    position: relative;
+    margin: 3.2em 0;
+    
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      display: block;
+      transition: all ease-out 300ms;
+    }
+    
+    &.active a {
+      color: white;
+    }
+    
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+    
+    &:not(.active):hover a {
+      color: rgba(#FFF, 0.75);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: Black;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.cuerpo {
+  position: relative;
+  width: 78%;
+  float: right;
+  height: 80vh;
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  a{
+    color: black;
+  }
+}
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 1200px;
+	position: relative;
+	margin: 10% auto;
+	padding: 20px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+  -webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+}
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+.column {
+  float: left;
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
