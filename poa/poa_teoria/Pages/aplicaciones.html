@@ -142,12 +142,74 @@
             <p align="justify">
 			El objetivo del proyecto FACET es investigar el desarrollo de middleware personalizable utilizando métodos de programación orientados a aspectos.
 			Se espera que el uso de aspectos en middleware tendrá los siguientes beneficios:
-			<li>Mejor modularización de características utilizando aspectos</li>
-			<li>Reducción del código de middleware mediante la activación selectiva de funciones</li>
+            <ul>
+                <li>Mejor modularización de características utilizando aspectos</li>
+                <li>Reducción del código de middleware mediante la activación selectiva de funciones</li>
+            </ul>
 			</p>
 			</p>		
 
-		</li>
+        </li>
+        </br>
+        </br>  
+        
+        <li> <h2><ins>Aplicacion en frameworks.</ins></h2>  
+        </br>
+        <b><h1>Spring AOP </h1></b>	
+        <li> <h3><ins>Weaving</ins></h3> 
+        <p align="justify">
+            Usa Runtime weaving durante la ejecución usando proxy dinámico JDK o proxy CGLIB
+        </p></br>
+        <li> <h3><ins>Estrucutra interna y aplicación</ins></h3> 
+        <p align="justify">
+            Para implementar aspectos en los objetos de destino, tendremos que crear proxies de ese objetos tipo poa . Esto se logra usando una de dos maneras:
+            <ul>
+                <li>Proxy dinámico JDK: la forma preferida para Spring AOP. Siempre que el objeto de destino implemente incluso una interfaz, se utilizará el proxy dinámico JDK
+                <li>Proxy CGLIB: si el objeto de destino no implementa una interfaz, se puede usar el proxy CGLIB
+            </ul>
+        </p></br>
+        <li> <h3><ins>JoinPoints</ins></h3> 
+        <p align="justify">
+            No puede aplicarse a clases de tipo final, a metodos estaticos o finales porque no se pueden sobrecargar y resultaria en una runtime excepcion
+        </p></br>
+        <li> <h3><ins>Simplicidad</ins></h3> 
+        <p align="justify">
+            Spring AOP es más simple porque no introduce ningún compilador o weaver adicional en nuestro proceso de compilación. Utiliza el weaver en tiempo de ejecución y, por lo tanto, se integra a la perfección con nuestro proceso de construcción habitual. Aunque parece simple, solo funciona con beans administrados por Spring.
+        </p></br>
+        <b><h1>AspectJ</h1></b>							
+       <li> <h3><ins>Weaving</ins></h3> 
+        <p align="justify">
+            Usa 3 tipos diferentes de weaving:
+            <ul>
+              <li> <h4><ins>Weaving en tiempo de compilación: </ins></h4> 
+                <p align="justify">
+                  Toma como entrada tanto el código fuente de nuestro aspecto como de nuestra aplicación y produce una clase de archivos tejidos como salida.
+                </p></br>
+              <li> <h4><ins>Weaving post-compilación: </ins></h4> 
+                <p align="justify">
+                  Se conoce como weaving binario, se usa hacerle weave a las clases ya existentes y archivos JAR en conjunto con nuestros aspectos.
+                </p></br>
+               <li> <h4><ins>Weaving en tiempo de carga: </ins></h4> 
+                <p align="justify">
+                  Igual que en el weaving binario, con la diferencia que ocurre hasta que la clase sea cargada a la JVM
+                </p></br>
+            </ul>
+        </p></br>
+        <li> <h3><ins>Estrucutra interna y aplicación</ins></h3> 
+        <p align="justify">
+            Las clases son compiladas directamente con los aspectos
+        </p></br>
+        <li> <h3><ins>JoinPoints</ins></h3> 
+        <p align="justify">
+            ACA VA TEXTO
+        </p></br>
+        <li> <h3><ins>Simplicidad</ins></h3> 
+        <p align="justify">
+           Para usar AspectJ, estamos obligados a presentar el compilador de AspectJ (ajc) y volver a empaquetar todas nuestras bibliotecas (a menos que cambiemos el weaving posterior a la compilación o al tiempo de carga).
+
+Esto es más complicado, porque presenta AspectJ Java Tools (que incluye un compilador (ajc), un depurador (ajdb), un generador de documentación (ajdoc), un navegador de estructura de programa (ajbrowser)) que debe integrarse a nuestro IDE o a la herramienta de compilación.
+        </p></br>
+    </li>
 	
     </UL>
 	<footer class="site-footer">
