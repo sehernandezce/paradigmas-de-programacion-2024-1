@@ -1,445 +1,522 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>AspectJ by seradiazpin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-      
-   
-    <!--
-    <div class="img_flotante hidden-xs">
-        <p class="menu_flotante"><a href="#aspectj">AspectJ</a></p>
-        <p class="menu_flotante"><a href="#compatibilidad">Compatibilidad</a></p>
-        <p class="menu_flotante"><a href="#semantica">Semantica</a></p>
-        <p class="menu_flotante"><a href="#ventajas">Ventajas</a></p>
-        <p class="menu_flotante"><a href="#desventajas">Desventajas</a></p>
-        <p class="menu_flotante"><a href="#compiladores">Compiladores</a></p>
-        <p class="menu_flotante"><a href="#extends">Herencia</a></p>
-        <p class="menu_flotante"><a href="#pointcut">PointCut</a></p>
-        <p class="menu_flotante"><a href="#advice">Advice</a></p>
-        <p class="menu_flotante"><a href="#sintaxis-de-anotaciones">Sintaxis</a></p>
-        <p class="menu_flotante"><a href="#java8">Repaso Java</a></p>
-        <p class="menu_flotante"><a href="#ejemplos">Ejemplos</a></p>
-        <p class="menu_flotante"><a href="#tutorial">Tutorial</a></p>
-
-    </div> 
-    -->
-
-    <section class="page-header">
-      <h1 class="project-name">AspectJ</h1>
-      <h2 class="project-tagline">Tutorial de Aspectj</h2>
-      <a href="https://github.com/seradiazpin/paradigmas-de-programacion" class="btn">View on GitHub</a>
-      <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-      
-    <section class="main-content">
-        
-      <h1 class="p_centrado"><a id="aspectj" class="anchor " href="#aspectj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h1>
-        <p>AspectJ es una extensión de AOP para Java.Fue creado en PARC(Palo Alto Research Center) por el equipo Xerox PARC, liderado por  Gregor Kiczales.Ampliamente usado como estándar de la POA.Se caracteriza por su simplicidad y usabilidad.</p>
-        
-        <!-- Inicio compatibilidad -->
-        <h2><a id="compatibilidad" class="anchor" href="#compatibilidad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibilidad</h2>
-        <p>AspectJ es una extensión compatible de Java para facilitar el uso de aspectos por parte de los programadores de Java. Por compatible se entiende:</p>
-
-        <p class="caja_contenido"><strong>Compatibilidad base: </strong>Todos los programas válidos de Java deben ser programas válidos de AspectJ.</p>
-        
-        <p class="caja_contenido"><strong>Compatibilidad de plataforma: </strong> Todos los programas válidos de AspectJ deben correr sobre la máquina virtual estándar de Java</p>
-        
-        <p class="caja_contenido"><strong>Compatibilidad de programación: </strong>La programación en AspectJ debe ser una extensión natural de la programación en Java.</p>     
-        
-        <p>Esta última meta fue una de las guías más importante a la hora de tomar decisiones sobre el lenguaje. Es estáticamente tipado y usa el sistema de tipos estático de Java.</p>
-
-        <img src="tutorial/images/compatibilidad.PNG">
-        <!-- Fin compatibilidad -->
-        
-        <!-- Inicio de semantica -->
-        <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica</h2>
-        <img src="tutorial/images/HOW_IS_FORMED.png">
-        <p>En sí, AspectJ funciona extiendiendo a Java como Base para soportar el manejo de aspectos y clases, agregando a la semántica de Java cuatro entidades principales.</p>
-
-        <button class="accordion"><strong>Los puntos de enlace (Join Points)</strong></button>
-        <div class="panel">
-            <p>Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
-        </div>
-
-        <button class="accordion"><strong>Los cortes (Point Cuts)</strong></button>
-        <div class="panel">
-            <p>Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
-        </div>
-
-        <button class="accordion"><strong>Los avisos (Advices)</strong></button>
-        <div class="panel">
-            <p>Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
-        </div>
-
-        <button class="accordion"><strong>Las introducciones y declaraciones (Inter-Type Declarations)</strong></button>
-        <div class="panel">
-            <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. <br>Esta última entidad es estática porque afecta la signatura estática del programa.</p>
-        </div>
-        <!-- Fin semantica -->
-
-        <!-- Inicio Semantica de Declaración -->
-        <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica De Declaración</h2>
-        <h5><p><b>[ privileged ] Modifiers aspect Id [ extends Type ] [ implements TypeList ] [ Per Clause ] { Body } </b></p></h5>
-
-        <p>Un Aspecto puede ser declarado como cualquier clase de Java, con su id, con la palabra reservada "aspect", con sus respectivos modifiers para modificar el acceso y comportamiento de la clase, e introduciendo nuevos elementos a la semántica de cómo funcionan y van a interactuar con respecto a las demás clases de nuestro proyecto. De estas nos enfocaremos en 3 en especial debido a su particularidad con los Aspectos: <b>[ privileged ], [extends Type], [implements TypeList ]</b> y <b>[Per Clause]</b></p>
-        <button class="accordion"><strong>[ privileged ]</strong></button>
-        <div class="panel">
-            <br>
-            <p>Un modifier especial que, como su nombre nos lo indica, le dará privilegios al aspecto, esto significa que nos permitirá poder acceder a métodos y atributos privados de clases y aspectos externos.</p>
-            <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/a16efb36b73a10bdeabd7bcc87725eaa.js"></script>
-<img src="tutorial/images/key.png" width="100" height="100" alt="Key">
-            </div>
-        </div>
-
-        <button class="accordion"><strong>[extends Type], [implements TypeList ]</strong></button>
-        <div class="panel">
-        <br>
-        <img src="tutorial/images/extends.png">
-        
-        <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
-        <p>La siguientes son unas reglas a tener en cuenta:</p>
-        <ul>
-            <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
-            <li>Una clase no puede extender un aspecto.</li>    
-            <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
-        </ul>
-
-        <script src="https://gist.github.com/jsbecerrab/c433c3563f28277a8a52e00c2a336167.js"></script>
-         
-        </div>
-        <button class="accordion"><strong>[ Per Clause ]</strong></button>
-
-        <div class="panel">
-        <br>
-        <p>Los Aspectos originalmente se generan como singleton. Sin embargo, pueden haber varias formas de crear diversas instancias del mismo acceso, según su objeto asociado, su posición de ejecución, entre otras. Las <b>Per Clause</b> son quienes se encargan de modificar los Aspectos para poder tener más control sobre la cantidad y comportamiento de los Aspectos</p>
-        <img src="tutorial/images/perclauses.png">
-        <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99c3d0cda1c4f01c10f747adc3d231d8.js"></script></div>
-    <p>Sin embargo, no se recomienda mezclar varios de estos métodos debido a que pueden llegar a inteferir con flujos ajenos de los distintos Aspectos.</p>
-        </div>
-        <!-- Fin Semantica de Declaración -->
-
-
-
-        <!-- Inicio compíladores -->
-        <h2><a id="compiladores" class="anchor" href="#compiladores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Compiladores diseñados para AspectJ</h2>
-        <p>Los dos principales compiladores para AspectJ son:</p>
-    <ul>
-        <li><strong>ajc</strong> ajc parte de las herramientas soportadas por el proyecto Eclipse,</li>
-        <li><strong>abc</strong> que es un compilador, que optimiza y es extensible, producido en aspectbench.org.</li>
-    </ul>
-        <!-- Fin compiladores -->
-        
-
-        
-        <!-- Inicio objetivos -->
-        <h2><a id="objetivos" class="anchor" href="#objetivos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivos</h2>
-        
-        <p>La intención de AspectJ es ser un LOA práctico, que provea un conjunto sólido y maduro de características orientadas a aspectos, compatible con Java para aprovechar su popularidad.</p>
-        <!-- Fin objetivos -->
-        
-        
-        <h2><a id="lenguaje" class="anchor" href="#lenguaje" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguaje</h2>
-        
-        <h3><a id="aspect" class="anchor" href="#aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h3>
-
-        <p>Es la unidad central de Aspectj, se puede colocar en un archivo .aj.Contiene el código que expresa las reglas de los crosscutting.Un aspecto es una unidad de modularización en AOP como las clases son en OOP.</p>
-
-<div class="highlight highlight-source-aspectj"> <script src="https://gist.github.com/jsbecerrab/d1fdfbd41f0402231fa46053d3920462.js"></script></div>
-
-<h3>
-<a id="pointcut" class="anchor" href="#pointcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h3>
-
-<p>Una palabra del lenguaje que selecciona los puntos interesantes (join points) y colecta el contexto de este punto.
-Selecciona puntos interesantes de la ejecución.
-Pueden ser llamadas, ejecuciones, instanciar objetos, constructores, manejo de excepciones.</p>
-
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/b59fb3697da08d39b7fb3051cd6bed9c.js"></script></div>
-
-<h4>
-<a id="tipos-de-point-cuts" class="anchor" href="#tipos-de-point-cuts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tipos de point cuts</h4>
-
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/puntos1.png" alt="tabla de pointcut">
-<img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/punto2.png" alt="tabla de pointcut"></p>
-
-    
-<p><a href="https://eclipse.org/aspectj/doc/next/progguide/index.html">Mas informacion</a></p>
-        
-<h2>PointCut Pattern </h2>
-<img src="tutorial/images/point_cut.PNG">
-
-<h3>
-<a id="advice" class="anchor" href="#advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice</h3>
-
-<p>Código que se ejecutará cuando se llegue al pointcut este se puede definir de diferentes maneras.
-Existen tres tipos de advice: </p>
-
-<ul>
-<li>before ()</li>
-<li>after ()</li>
-<li>around ()</li>
-</ul>
-
-<h4>
-<a id="before" class="anchor" href="#before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Before</h4>
-
-<p>Se ejecuta  antes de cada join point.</p>
-<img src="tutorial/images/Before.png">
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/d0e82cce382b65f47bf03b4b75b55696.js"></script></div>
-
-<h4>
-<a id="after" class="anchor" href="#after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>After</h4>
-
-<p>Se ejecuta después de cada join point.
-Puede de tres tipos:</p>
-
-<ul>
-</li><b>Defecto:</b> el cual retorna sin importar el resultado.</li>
-<img src="tutorial/images/After.png">
-<li><b>Returning:</b> Me realiza la acción únicamente si finalizó correctamente y/o me retornó el valor (Este Advice también puede servir con JointPoints que sean voids). Este returning me permite también utilizar los valores retornados por los JoinPoints para utilizarlos en los advices.</li>
-<img src="tutorial/images/AfterRet.png">
-<li><b>Throwing:</b> Me realiza la acción únicamente si la acción del PointCut finalizó lanzando una acción o un resultado como una excepción.</li>
-<img src="tutorial/images/AfterThrow.png">
+    <head>
+        <meta charset="UTF-8">
+        <title>AspectJ by YV7 Team</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    </head>
+    <body>
+
+        <section class="page-header">
+
+            <header class="header">
+                <div style="display: flex; justify-content: space-around">
+                    <div class="container logo-nav-container">
+                        <h1 class="project-name">AspectJ</h1>
+                        <h5>Tutorial de Aspectj</h5></div>
+                    <div>
+                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion" class="btn">View on GitHub</a>
+                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
+                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
+                    </div>
+                </div>
+            </header>
+
+
+
+            <!--
+            
+            <section class="page-header">
+            <h1 class="project-name">AspectJ</h1>
+            <h2 class="project-tagline">Tutorial de Aspectj</h2>
+            <a href="https://github.com/seradiazpin/paradigmas-de-programacion" class="btn">View on GitHub</a>
+            <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
+            <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
+            </section>
+            -->
+        </section>
+        <section class="main">
+            <aside class="sidebar">
+                <nav class="nav">
+                    <ul><li class="active"><a href="#">NAVEGACION</a></li>
+                        <li><a href="#aspectj">AspectJ</a></li>
+                        <li><a href="#compatibilidad">Compatibilidad</a></li>
+                        <li><a href="#semantica">Semantica</a></li>
+                        <li><a href="#ventajas">Ventajas</a></li>
+                        <li><a href="#desventajas">Desventajas</a></li>
+                        <li><a href="#compiladores">Compiladores</a></li>
+                        <li><a href="#extends">Herencia</a></li>
+                        <li><a href="#pointcut">PointCut</a></li>
+                        <li><a href="#advice">Advice</a></li>
+                        <li><a href="#sintaxis-de-anotaciones">Sintaxis</a></p>
+                        <li><a href="#java8">Repaso Java</a></li>
+                        <li><a href="#ejemplos">Ejemplos</a></li>
+                        <li><a href="#tutorial">Tutorial</a></li>
+                        <li><a href="#openModal">Contribuidores</a></li>
+
+                        </div> 
+                    </ul>
+                </nav>
+            </aside>
+            </section>
+        <section class="main-content">
+                <h1 class="p_centrado"><a id="aspectj" class="anchor " href="#aspectj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AspectJ</h1>
+                <p>AspectJ es una extensión de AOP para Java.Fue creado en PARC(Palo Alto Research Center) por el equipo Xerox PARC, liderado por  Gregor Kiczales.Ampliamente usado como estándar de la POA.Se caracteriza por su simplicidad y usabilidad.</p>
+
+                <!-- Inicio compatibilidad -->
+                <h2><a id="compatibilidad" class="anchor" href="#compatibilidad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibilidad</h2>
+                <p>AspectJ es una extensión compatible de Java para facilitar el uso de aspectos por parte de los programadores de Java. Por compatible se entiende:</p>
+
+                <p class="caja_contenido"><strong>Compatibilidad base: </strong>Todos los programas válidos de Java deben ser programas válidos de AspectJ.</p>
+
+                <p class="caja_contenido"><strong>Compatibilidad de plataforma: </strong> Todos los programas válidos de AspectJ deben correr sobre la máquina virtual estándar de Java</p>
+
+                <p class="caja_contenido"><strong>Compatibilidad de programación: </strong>La programación en AspectJ debe ser una extensión natural de la programación en Java.</p>     
+
+                <p>Esta última meta fue una de las guías más importante a la hora de tomar decisiones sobre el lenguaje. Es estáticamente tipado y usa el sistema de tipos estático de Java.</p>
+
+                <img src="tutorial/images/compatibilidad.PNG">
+                <!-- Fin compatibilidad -->
+
+                <!-- Inicio de semantica -->
+                <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica</h2>
+                <img src="tutorial/images/HOW_IS_FORMED.png">
+                <p>En sí, AspectJ funciona extiendiendo a Java como Base para soportar el manejo de aspectos y clases, agregando a la semántica de Java cuatro entidades principales.</p>
+
+                <button class="accordion"><strong>Los puntos de enlace (Join Points)</strong></button>
+                <div class="panel">
+                    <p>Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
+                </div>
+
+                <button class="accordion"><strong>Los cortes (Point Cuts)</strong></button>
+                <div class="panel">
+                    <p>Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
+                </div>
+
+                <button class="accordion"><strong>Los avisos (Advices)</strong></button>
+                <div class="panel">
+                    <p>Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
+                </div>
 
-</ul>
-
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/9fedc1f65aba5b11413b2ca9e6c7ab11.js"></script></div>
+                <button class="accordion"><strong>Las introducciones y declaraciones (Inter-Type Declarations)</strong></button>
+                <div class="panel">
+                    <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. <br>Esta última entidad es estática porque afecta la signatura estática del programa.</p>
+                </div>
+                <!-- Fin semantica -->
 
-<h4>
-<a id="around" class="anchor" href="#around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Around</h4>
-<br>
-<p>Se ejecuta en lugar de el join point.
-Debe ser declarado con un tipo de retorno.
-<img src="tutorial/images/Around.png"></p>
-<p>El código del join point se puede ejecutar usando la palabra
-<code>proceed();</code></p>
-<br>
-<img src="tutorial/images/AroundProceed.png">
-<br>
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/4bb16a1acef32187012dbb6d44612394.js"></script></div>
+                <!-- Inicio Semantica de Declaración -->
+                <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica De Declaración</h2>
+                <h5><p><b>[ privileged ] Modifiers aspect Id [ extends Type ] [ implements TypeList ] [ Per Clause ] { Body } </b></p></h5>
 
-<h4>
-<a id="atributos-de-los-advice" class="anchor" href="#atributos-de-los-advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Atributos de los advice</h4>
+                <p>Un Aspecto puede ser declarado como cualquier clase de Java, con su id, con la palabra reservada "aspect", con sus respectivos modifiers para modificar el acceso y comportamiento de la clase, e introduciendo nuevos elementos a la semántica de cómo funcionan y van a interactuar con respecto a las demás clases de nuestro proyecto. De estas nos enfocaremos en 3 en especial debido a su particularidad con los Aspectos: <b>[ privileged ], [extends Type], [implements TypeList ]</b> y <b>[Per Clause]</b></p>
+                <button class="accordion"><strong>[ privileged ]</strong></button>
+                <div class="panel">
+                    <br>
+                    <p>Un modifier especial que, como su nombre nos lo indica, le dará privilegios al aspecto, esto significa que nos permitirá poder acceder a métodos y atributos privados de clases y aspectos externos.</p>
+                    <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/a16efb36b73a10bdeabd7bcc87725eaa.js"></script>
+                        <img src="tutorial/images/key.png" width="100" height="100" alt="Key">
+                    </div>
+                </div>
 
-<p><code>thisJoinPoint</code> : Representa el join point en el cual el advice se está ejecutando.
-<code>thisJoinPointStaticPart</code> : equivalente a <code>thisJoinPoint.getStaticPart()</code> pero consume menos recursos.
-<code>thisEnclosingJoinPointStaticPart</code> : la parte estatica de la dinamica que encierra el join point.</p>
+                <button class="accordion"><strong>[extends Type], [implements TypeList ]</strong></button>
+                <div class="panel">
+                    <br>
+                    <img src="tutorial/images/extends.png">
 
-<h3>
-<a id="sintaxis-de-anotaciones" class="anchor" href="#sintaxis-de-anotaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sintaxis de anotaciones</h3>
+                    <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
+                    <p>La siguientes son unas reglas a tener en cuenta:</p>
+                    <ul>
+                        <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
+                        <li>Una clase no puede extender un aspecto.</li>    
+                        <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
+                    </ul>
 
-<h4>
-<a id="aspect-1" class="anchor" href="#aspect-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h4>
+                    <script src="https://gist.github.com/jsbecerrab/c433c3563f28277a8a52e00c2a336167.js"></script>
 
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/aspect.png" alt="aspect"></p>
+                </div>
+                <button class="accordion"><strong>[ Per Clause ]</strong></button>
 
-<h4>
-<a id="pointcut-1" class="anchor" href="#pointcut-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h4>
+                <div class="panel">
+                    <br>
+                    <p>Los Aspectos originalmente se generan como singleton. Sin embargo, pueden haber varias formas de crear diversas instancias del mismo acceso, según su objeto asociado, su posición de ejecución, entre otras. Las <b>Per Clause</b> son quienes se encargan de modificar los Aspectos para poder tener más control sobre la cantidad y comportamiento de los Aspectos</p>
+                    <img src="tutorial/images/perclauses.png">
+                    <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99c3d0cda1c4f01c10f747adc3d231d8.js"></script></div>
+                    <p>Sin embargo, no se recomienda mezclar varios de estos métodos debido a que pueden llegar a inteferir con flujos ajenos de los distintos Aspectos.</p>
+                </div>
+                <!-- Fin Semantica de Declaración -->
 
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/pointcut.png" alt="pointcut"></p>
 
-<h4>
-<a id="advice-before" class="anchor" href="#advice-before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice before</h4>
 
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/before.png" alt="before"></p>
+                <!-- Inicio compíladores -->
+                <h2><a id="compiladores" class="anchor" href="#compiladores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Compiladores diseñados para AspectJ</h2>
+                <p>Los dos principales compiladores para AspectJ son:</p>
+                <ul>
+                    <li><strong>ajc</strong> ajc parte de las herramientas soportadas por el proyecto Eclipse,</li>
+                    <li><strong>abc</strong> que es un compilador, que optimiza y es extensible, producido en aspectbench.org.</li>
+                </ul>
+                <!-- Fin compiladores -->
 
-<h4>
-<a id="advice-after" class="anchor" href="#advice-after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice after</h4>
 
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/after.png" alt="after"></p>
 
-<h4>
-<a id="advice-around" class="anchor" href="#advice-around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice around</h4>
+                <!-- Inicio objetivos -->
+                <h2><a id="objetivos" class="anchor" href="#objetivos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objetivos</h2>
 
-<p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
+                <p>La intención de AspectJ es ser un LOA práctico, que provea un conjunto sólido y maduro de características orientadas a aspectos, compatible con Java para aprovechar su popularidad.</p>
+                <!-- Fin objetivos -->
 
-<h3>
-<a id="java8" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java 8</h3>
-<h4>Streams </h4>
-<p>Estos son nuevas abtracciones que nos permiten tener flujos de datos sobre los cuales aplicaremos diversas operaciones, ya sea desde filtros hasta operaciones complejas como implementar un Map-Reduce</p>
-<div><script src="https://gist.github.com/jsbecerrab/284015e9dd458b198875b07d157e8d43.js"></script></div>
-<p>En este caso dado un stream de lineas de texto <code>jm.getLines()</code> mapeamos cada linea como un mapa de la palabra y su frecuencia
-para la reduccion o la operacion de agregacion usamos una expresion lambda que hace referencia a una interfaz funcional donde definimos la operacion 
-de agregacion: <code>(m1, m2) -> JavaMethods.fussion(m1, m2)</code> la cual fusiona 2 mapas en uno solo, finalmente imprimirmos 
-las llaves y valores encontrados usando el <code>forEach</code> de los mapas en vez de usar el tradicional <code>Entry&lt;K,V&gt;</code>
-</p>
-<p>muestra de la funcion Fussion</p>
-<div><script src="https://gist.github.com/jsbecerrab/f86b12926c08710059f29d0a16935c14.js"></script></div>
-<p>Observamos el uso de una interfaz funcional en <code>Long::sum</code> la cual llamamos haciendo uso del ::</p>
-<h4>Muestra de Streams Infinitos</h4>
-<div><script src="https://gist.github.com/jsbecerrab/1b8d56ada15ee405449e72060a404d49.js"></script></div>
-<p>Para mas informacion consulta el siguiente <a class="pl-k" href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">enlace</a></p>
-<h3>
-<a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplos</h3>
 
-<p>A continuación veremos un ejemplo en el cual podremos ver la funcionalidad en un ejemplo sencillo.</p>
+                <h2><a id="lenguaje" class="anchor" href="#lenguaje" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lenguaje</h2>
 
-<h4>
-<a id="clase-testasp" class="anchor" href="#clase-testasp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clase TestAsp</h4>
+                <h3><a id="aspect" class="anchor" href="#aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h3>
 
-<p>La clase en la cual tenemos unos cuantos metodos y un main.</p>
+                <p>Es la unidad central de Aspectj, se puede colocar en un archivo .aj.Contiene el código que expresa las reglas de los crosscutting.Un aspecto es una unidad de modularización en AOP como las clases son en OOP.</p>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/2fb3b9a1a93000c377d095a922e41cff.js"></script></div>
+                <div class="highlight highlight-source-aspectj"> <script src="https://gist.github.com/jsbecerrab/d1fdfbd41f0402231fa46053d3920462.js"></script></div>
 
-<h4>
-<a id="aspect-aspect" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect Aspect</h4>
+                <h3>
+                    <a id="pointcut" class="anchor" href="#pointcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h3>
 
-<p>Nuestro aspecto con algunos puntos de corte para ver su funcion.</p>
+                <p>Una palabra del lenguaje que selecciona los puntos interesantes (join points) y colecta el contexto de este punto.
+                    Selecciona puntos interesantes de la ejecución.
+                    Pueden ser llamadas, ejecuciones, instanciar objetos, constructores, manejo de excepciones.</p>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99b924d154c69f1e840b59af4bd120c6.js"></script></div>
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/b59fb3697da08d39b7fb3051cd6bed9c.js"></script></div>
 
-<h2>
-<a id="tutorial" class="anchor" href="#tutorial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TUTORIAL</h2>
+                <h4>
+                    <a id="tipos-de-point-cuts" class="anchor" href="#tipos-de-point-cuts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tipos de point cuts</h4>
 
-<p>A partir de una aplicación de un banco se desea implementar un Log de transacciones y un sistema de login mediante programación orientada a aspectos.
-Para esto se tienen las siguientes clases en las cuales se implementa la funcionalidad sencilla de un banco.</p>
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/puntos1.png" alt="tabla de pointcut">
+                    <img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/punto2.png" alt="tabla de pointcut"></p>
 
-<div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/e1a300fe825a4e8c257d3f91536cabd4.js"></script></div>
 
-<p>Adicionalmente se tiene la siguiente clase la cual representa a los usuarios de este banco.</p>
+                <p><a href="https://eclipse.org/aspectj/doc/next/progguide/index.html">Mas informacion</a></p>
 
-<div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/6b1654e348fdad2f71eabb604018e6db.js"></script></div>
+                <h2>PointCut Pattern </h2>
+                <img src="tutorial/images/point_cut.PNG">
 
-<h3>
-<a id="aspectos" class="anchor" href="#aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspectos</h3>
+                <h3>
+                    <a id="advice" class="anchor" href="#advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice</h3>
 
-<p>Se implementarán dos aspectos uno llamado <code>Login</code> y otro llamado <code>Log</code>.</p>
+                <p>Código que se ejecutará cuando se llegue al pointcut este se puede definir de diferentes maneras.
+                    Existen tres tipos de advice: </p>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/b43be6295b3ea0f1c59a93dae34ddc59.js"></script></div>
+                <ul>
+                    <li>before ()</li>
+                    <li>after ()</li>
+                    <li>around ()</li>
+                </ul>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/c77934d0a1231bfd86ded72b1d8f3cb0.js"></script></div>
+                <h4>
+                    <a id="before" class="anchor" href="#before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Before</h4>
 
-<p>Ahora debemos identificar los join points de nuestra aplicación para poder implementar los pointcuts en los aspectos.</p>
+                <p>Se ejecuta  antes de cada join point.</p>
+                <img src="tutorial/images/Before.png">
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/d0e82cce382b65f47bf03b4b75b55696.js"></script></div>
 
-<h3>
-<a id="identificacion-de-los-puntos-de-corte-de-los-aspectos" class="anchor" href="#identificacion-de-los-puntos-de-corte-de-los-aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identificacion de los puntos de corte de los aspectos</h3>
+                <h4>
+                    <a id="after" class="anchor" href="#after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>After</h4>
 
-<div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/f19da61099b3be7dc9441dd6954bb4e6.js"></script></div>
+                <p>Se ejecuta después de cada join point.
+                    Puede de tres tipos:</p>
 
-<p>Esta es la funcionalidad que queremos guardar en el log de transacciones.</p>
+                <ul>
+                    </li><b>Defecto:</b> el cual retorna sin importar el resultado.</li>
+                    <img src="tutorial/images/After.png">
+                    <li><b>Returning:</b> Me realiza la acción únicamente si finalizó correctamente y/o me retornó el valor (Este Advice también puede servir con JointPoints que sean voids). Este returning me permite también utilizar los valores retornados por los JoinPoints para utilizarlos en los advices.</li>
+                    <img src="tutorial/images/AfterRet.png">
+                    <li><b>Throwing:</b> Me realiza la acción únicamente si la acción del PointCut finalizó lanzando una acción o un resultado como una excepción.</li>
+                    <img src="tutorial/images/AfterThrow.png">
 
-<div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/4e899863db1b62be0fef64a9c9e2aa1f.js"></script></div>
+                </ul>
 
-<p>Esta es la funcionalidad que queremos aplicarle un login.
-Aunque hay join point que son comunes por buena practica los viviremos en dos aspectos.</p>
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/9fedc1f65aba5b11413b2ca9e6c7ab11.js"></script></div>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/6bcfe8399203aa74b9d559d23aaf9be1.js"></script></div>
+                <h4>
+                    <a id="around" class="anchor" href="#around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Around</h4>
+                <br>
+                <p>Se ejecuta en lugar de el join point.
+                    Debe ser declarado con un tipo de retorno.
+                    <img src="tutorial/images/Around.png"></p>
+                <p>El código del join point se puede ejecutar usando la palabra
+                    <code>proceed();</code></p>
+                <br>
+                <img src="tutorial/images/AroundProceed.png">
+                <br>
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/4bb16a1acef32187012dbb6d44612394.js"></script></div>
 
-<p>En el primer punto de corte queremos capturar los metodos que comiensen con make y my.</p>
+                <h4>
+                    <a id="atributos-de-los-advice" class="anchor" href="#atributos-de-los-advice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Atributos de los advice</h4>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/a3125b71b3a1d1da76549c9b05628598.js"></script></div>
+                <p><code>thisJoinPoint</code> : Representa el join point en el cual el advice se está ejecutando.
+                    <code>thisJoinPointStaticPart</code> : equivalente a <code>thisJoinPoint.getStaticPart()</code> pero consume menos recursos.
+                    <code>thisEnclosingJoinPointStaticPart</code> : la parte estatica de la dinamica que encierra el join point.</p>
 
-<p>Queremos capturar las distintos tipos de transacciones.
-Posteriormente agregamos los advices que queremos en los dos aspectos con su funcionalidad correspondiente.</p>
+                <h3>
+                    <a id="sintaxis-de-anotaciones" class="anchor" href="#sintaxis-de-anotaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sintaxis de anotaciones</h3>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/dbf1f2ee074dc0b0f1abeded609f2f4d.js"></script></div>
+                <h4>
+                    <a id="aspect-1" class="anchor" href="#aspect-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect</h4>
 
-<p>Queremos que escribir el los se realice depues de que la transacción se haya realizado, por esta razón elegimos after.</p>
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/aspect.png" alt="aspect"></p>
 
-<div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/cf450ad990695db6acdf69856c970dba.js"></script></div>
+                <h4>
+                    <a id="pointcut-1" class="anchor" href="#pointcut-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PointCut</h4>
 
-<p>Queremos que el login sea antes de la transacción se haya realizado, por esta razón elegimos before.
-Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/pointcut.png" alt="pointcut"></p>
 
-<p>Finalmente este código nos agrega la funcionalidad de un login antes de las transacciones y un registro de sus actividades en un archivo.</p>
+                <h4>
+                    <a id="advice-before" class="anchor" href="#advice-before" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice before</h4>
 
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/before.png" alt="before"></p>
 
-<p><a href="https://github.com/JeffersonH44/AspectJExamples">Mas ejemplos</a></p>
+                <h4>
+                    <a id="advice-after" class="anchor" href="#advice-after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice after</h4>
 
-    <h2><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas y Desventajas de AspectJ </h2>
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/after.png" alt="after"></p>
 
-    <!-- Inicio Ventajas -->
-    <h4><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas </h4>
-    <ul>
-        <li>Facilita/mejora la modularidad de los desarrollos de software.</li>
-        <li>El código es organizado y comprimido</li>
-        <li>Es reutilizable</li>
-        <li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
-        <li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
-    </ul>
-        <!-- Fin Ventajas -->
-        
-        <!-- Inicio desventajas -->
-        <h4><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Desventajas</h4>
-    <ul>
-        <li>Puede introducir nuevos errores y fallas de seguridad si no se implementa adecuadamente</li>
-        <li>El paradigma puede emplearse mal quitando y/o delegando responsabilidades a ciertas clases</li>
-        <li>Los Aspectos pueden ser mal utilizados. Un programador puede implementar una falsa funcionalidad en cualquier estado del desarrollo y afectar a un amplio rango del sistema.</li>
-    </ul>
-        <!-- Fin desventajas -->
+                <h4>
+                    <a id="advice-around" class="anchor" href="#advice-around" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advice around</h4>
 
- <h4><a href="presentacion.pdf">Enlace a la presentación</h4>
-  <h4><a href="taller.pdf">Enlace al taller</h4>
+                <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
 
+                <h3>
+                    <a id="java8" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java 8</h3>
+                <h4>Streams </h4>
+                <p>Estos son nuevas abtracciones que nos permiten tener flujos de datos sobre los cuales aplicaremos diversas operaciones, ya sea desde filtros hasta operaciones complejas como implementar un Map-Reduce</p>
+                <div><script src="https://gist.github.com/jsbecerrab/284015e9dd458b198875b07d157e8d43.js"></script></div>
+                <p>En este caso dado un stream de lineas de texto <code>jm.getLines()</code> mapeamos cada linea como un mapa de la palabra y su frecuencia
+                    para la reduccion o la operacion de agregacion usamos una expresion lambda que hace referencia a una interfaz funcional donde definimos la operacion 
+                    de agregacion: <code>(m1, m2) -> JavaMethods.fussion(m1, m2)</code> la cual fusiona 2 mapas en uno solo, finalmente imprimirmos 
+                    las llaves y valores encontrados usando el <code>forEach</code> de los mapas en vez de usar el tradicional <code>Entry&lt;K,V&gt;</code>
+                </p>
+                <p>muestra de la funcion Fussion</p>
+                <div><script src="https://gist.github.com/jsbecerrab/f86b12926c08710059f29d0a16935c14.js"></script></div>
+                <p>Observamos el uso de una interfaz funcional en <code>Long::sum</code> la cual llamamos haciendo uso del ::</p>
+                <h4>Muestra de Streams Infinitos</h4>
+                <div><script src="https://gist.github.com/jsbecerrab/1b8d56ada15ee405449e72060a404d49.js"></script></div>
+                <p>Para mas informacion consulta el siguiente <a class="pl-k" href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">enlace</a></p>
+                <h3>
+                    <a id="ejemplos" class="anchor" href="#ejemplos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ejemplos</h3>
 
-        <h2><a id="Contribuidores" class="anchor" href="#eContribuidores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Contribuidores</em></h2>
+                <p>A continuación veremos un ejemplo en el cual podremos ver la funcionalidad en un ejemplo sencillo.</p>
 
-        <p>2016-1</p>
-        <ul>
-            <li>Sergio Alejandro Diaz Pinilla</li>
-            <li>Pedro Luis Monroy Garces</li>
-            <li>Jefferson Javier Hernández Panqueba</li>
-        </ul>
-        <p>2016-2</p>
-        <ul>
-            <li>Juan Rodriguez Duran</li>
-            <li>Johann Triana Olaya</li>
-            <li>Jonatan Parra Toro</li>
-        </ul>
+                <h4>
+                    <a id="clase-testasp" class="anchor" href="#clase-testasp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clase TestAsp</h4>
 
-        <p>2017-1</p>
-        <ul>
-            <li>Juan Sebastián Martínez Beltrán</li>
-            <li>Andrés Felipe Sánchez Lemus</li>
-        </ul>
+                <p>La clase en la cual tenemos unos cuantos metodos y un main.</p>
 
-        <p>2019-2</p>
-        <ul>
-            <li>Juan Sebastián Becerra Barcenas</li>
-            <li>Juan Sebastián Peña Quintero</li>
-            <li>Brayan David Vega Triana</li>
-        </ul>
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/2fb3b9a1a93000c377d095a922e41cff.js"></script></div>
 
-        <h2>
-        <a id="bibliografia" class="anchor" href="#bibliografia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Bibliografia</em></h2>
-            <ul>
-                <li>Libro: Mariano Lorente López, Fernando Asteasuain, Bernardo Ezequiel Contreras. (2005). Programemos en AspectJ.</li>
-                <li>https://sistemasacademico.uniandes.edu.co/~miso4204/dokuwiki/lib/exe/fetch.php?media=temas:aspectj.pdf</li>
-                <li>http://ldc.usb.ve/~yudith/docencia/ci-4822/presentacionPOA.pdf</li>
-                <li>https://es.wikipedia.org/wiki/AspectJ</li>
-                <li>https://eclipse.org/aspectj/</li>
-            </ul>
+                <h4>
+                    <a id="aspect-aspect" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect Aspect</h4>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/seradiazpin/paradigmas-de-programacion">AspectJ</a> is maintained by programming languages course at UNAL.</span>
+                <p>Nuestro aspecto con algunos puntos de corte para ver su funcion.</p>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-        
-    </section>
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99b924d154c69f1e840b59af4bd120c6.js"></script></div>
 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].onclick = function(){
-                this.classList.toggle("active");
-                this.nextElementSibling.classList.toggle("show");
+                <h2>
+                    <a id="tutorial" class="anchor" href="#tutorial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TUTORIAL</h2>
+
+                <p>A partir de una aplicación de un banco se desea implementar un Log de transacciones y un sistema de login mediante programación orientada a aspectos.
+                    Para esto se tienen las siguientes clases en las cuales se implementa la funcionalidad sencilla de un banco.</p>
+
+                <div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/e1a300fe825a4e8c257d3f91536cabd4.js"></script></div>
+
+                <p>Adicionalmente se tiene la siguiente clase la cual representa a los usuarios de este banco.</p>
+
+                <div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/6b1654e348fdad2f71eabb604018e6db.js"></script></div>
+
+                <h3>
+                    <a id="aspectos" class="anchor" href="#aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspectos</h3>
+
+                <p>Se implementarán dos aspectos uno llamado <code>Login</code> y otro llamado <code>Log</code>.</p>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/b43be6295b3ea0f1c59a93dae34ddc59.js"></script></div>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/c77934d0a1231bfd86ded72b1d8f3cb0.js"></script></div>
+
+                <p>Ahora debemos identificar los join points de nuestra aplicación para poder implementar los pointcuts en los aspectos.</p>
+
+                <h3>
+                    <a id="identificacion-de-los-puntos-de-corte-de-los-aspectos" class="anchor" href="#identificacion-de-los-puntos-de-corte-de-los-aspectos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identificacion de los puntos de corte de los aspectos</h3>
+
+                <div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/f19da61099b3be7dc9441dd6954bb4e6.js"></script></div>
+
+                <p>Esta es la funcionalidad que queremos guardar en el log de transacciones.</p>
+
+                <div class="highlight highlight-source-java"><script src="https://gist.github.com/jsbecerrab/4e899863db1b62be0fef64a9c9e2aa1f.js"></script></div>
+
+                <p>Esta es la funcionalidad que queremos aplicarle un login.
+                    Aunque hay join point que son comunes por buena practica los viviremos en dos aspectos.</p>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/6bcfe8399203aa74b9d559d23aaf9be1.js"></script></div>
+
+                <p>En el primer punto de corte queremos capturar los metodos que comiensen con make y my.</p>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/a3125b71b3a1d1da76549c9b05628598.js"></script></div>
+
+                <p>Queremos capturar las distintos tipos de transacciones.
+                    Posteriormente agregamos los advices que queremos en los dos aspectos con su funcionalidad correspondiente.</p>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/dbf1f2ee074dc0b0f1abeded609f2f4d.js"></script></div>
+
+                <p>Queremos que escribir el los se realice depues de que la transacción se haya realizado, por esta razón elegimos after.</p>
+
+                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/cf450ad990695db6acdf69856c970dba.js"></script></div>
+
+                <p>Queremos que el login sea antes de la transacción se haya realizado, por esta razón elegimos before.
+                    Este es un ejemplo muy sencillo de lo que nos permite aspectj.</p>
+
+                <p>Finalmente este código nos agrega la funcionalidad de un login antes de las transacciones y un registro de sus actividades en un archivo.</p>
+
+
+                <p><a href="https://github.com/JeffersonH44/AspectJExamples">Mas ejemplos</a></p>
+
+                <h2><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas y Desventajas de AspectJ </h2>
+
+                <!-- Inicio Ventajas -->
+                <h4><a id="ventajas" class="anchor" href="#ventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Ventajas </h4>
+                <ul>
+                    <li>Facilita/mejora la modularidad de los desarrollos de software.</li>
+                    <li>El código es organizado y comprimido</li>
+                    <li>Es reutilizable</li>
+                    <li>Añade constructores a Java que permiten la implementación modular de crosscutting concerns</li>
+                    <li>Permite modelar referencias transversales, extiende las capacidades de POO\</li>
+                </ul>
+                <!-- Fin Ventajas -->
+
+                <!-- Inicio desventajas -->
+                <h4><a id="desventajas" class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Desventajas</h4>
+                <ul>
+                    <li>Puede introducir nuevos errores y fallas de seguridad si no se implementa adecuadamente</li>
+                    <li>El paradigma puede emplearse mal quitando y/o delegando responsabilidades a ciertas clases</li>
+                    <li>Los Aspectos pueden ser mal utilizados. Un programador puede implementar una falsa funcionalidad en cualquier estado del desarrollo y afectar a un amplio rango del sistema.</li>
+                </ul>
+                <!-- Fin desventajas -->
+
+                <h4><a href="presentacion.pdf">Enlace a la presentación</h4>
+                <h4><a href="taller.pdf">Enlace al taller</h4>
+                <div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Contribuidores</h2>
+        <div class="row">
+        <div class="column">
+		<p>2016-1</p>
+                <ul>
+                    <li>Sergio Alejandro Diaz Pinilla</li>
+                    <li>Pedro Luis Monroy Garces</li>
+                    <li>Jefferson Javier Hernández Panqueba</li>
+                </ul>
+                <p>2016-2</p>
+                <ul>
+                    <li>Juan Rodriguez Duran</li>
+                    <li>Johann Triana Olaya</li>
+                    <li>Jonatan Parra Toro</li>
+                </ul></div>
+			<div class="column">
+                <p>2017-1</p>
+                
+                <ul>
+                    <li>Juan Sebastián Martínez Beltrán</li>
+                    <li>Andrés Felipe Sánchez Lemus</li>
+                </ul>
+			
+                <p>2019-2</p>
+                
+                <ul>
+                    <li>Juan Sebastián Becerra Barcenas</li>
+                    <li>Juan Sebastián Peña Quintero</li>
+                    <li>Brayan David Vega Triana</li>
+                </ul>
+                </div><div class="column">
+                <p>2020-1</p>
+                
+                <ul>
+                    <li>Andres Esteban Romero Romero	</li>
+                    <li>Oscar Andres Mancera Garzón</li>
+                    <li><b>Y</b>erson Andres <b>V</b>alderrama Ceron <b>7</b></li></ul>
+                </div>
+                </div>
+	</div>
+</div>
+
+
+                <h2><a id="Contribuidores" class="anchor" href="#eContribuidores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Contribuidores</em></h2>
+
+                <p>2016-1</p>
+                <ul>
+                    <li>Sergio Alejandro Diaz Pinilla</li>
+                    <li>Pedro Luis Monroy Garces</li>
+                    <li>Jefferson Javier Hernández Panqueba</li>
+                </ul>
+                <hr style="width:32%;">
+                <p>2016-2</p>
+                <ul>
+                    <li>Juan Rodriguez Duran</li>
+                    <li>Johann Triana Olaya</li>
+                    <li>Jonatan Parra Toro</li>
+                </ul>
+				<hr style="width:32%;">
+                <p>2017-1</p>
+                <ul>
+                    <li>Juan Sebastián Martínez Beltrán</li>
+                    <li>Andrés Felipe Sánchez Lemus</li>
+                </ul>
+                <hr style="width:32%;">
+
+                <p>2019-2</p>
+                <ul>
+                    <li>Juan Sebastián Becerra Barcenas</li>
+                    <li>Juan Sebastián Peña Quintero</li>
+                    <li>Brayan David Vega Triana</li>
+                </ul>
+                <hr style="width:32%;">
+                <p>2020-1</p>
+                
+                <ul>
+                    <li>Andres Esteban Romero Romero	</li>
+                    <li>Oscar Andres Mancera Garzón</li>
+                    <li><b>Y</b>erson Andres <b>V</b>alderrama Ceron <b>7</b></li></ul>
+
+                <h2>
+                    <a id="bibliografia" class="anchor" href="#bibliografia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Bibliografia</em></h2>
+                <ul>
+                    <li>Libro: Mariano Lorente López, Fernando Asteasuain, Bernardo Ezequiel Contreras. (2005). Programemos en AspectJ.</li>
+                    <li>https://sistemasacademico.uniandes.edu.co/~miso4204/dokuwiki/lib/exe/fetch.php?media=temas:aspectj.pdf</li>
+                    <li>http://ldc.usb.ve/~yudith/docencia/ci-4822/presentacionPOA.pdf</li>
+                    <li>https://es.wikipedia.org/wiki/AspectJ</li>
+                    <li>https://eclipse.org/aspectj/</li>
+                </ul>
+
+                <footer class="site-footer">
+                    <span class="site-footer-owner"><a href="https://github.com/seradiazpin/paradigmas-de-programacion">AspectJ</a> is maintained by programming languages course at UNAL.</span>
+
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+                </footer>
+            </section>
+        </section>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].onclick = function () {
+                    this.classList.toggle("active");
+                    this.nextElementSibling.classList.toggle("show");
+                }
             }
-        }
-    </script>
+        </script>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://github.com/kashif-umair/gist-embed/raw/master/gist-embed.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://github.com/kashif-umair/gist-embed/raw/master/gist-embed.js"></script>
 
 
-  
-  </body>
+
+    </body>
 </html>

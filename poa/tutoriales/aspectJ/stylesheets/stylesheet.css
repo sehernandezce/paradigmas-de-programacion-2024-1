@@ -2,22 +2,20 @@
   box-sizing: border-box; }
 
 body {
-  padding: 0;
-  margin: 0;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #606c71; }
 
 a {
-  color: #1e6bb8;
+  color: #3a3a3a;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
 
 .caja_contenido {
     background-color: #10bb70;
-    border: 1px solid #666699;
+    border: 1px solid #8dce8;
     border-radius: 60px;
     text-align: center;
     font-family: sans-serif !important;   
@@ -28,7 +26,7 @@ a {
 }
 
 .caja_contenido:hover{    
-      box-shadow: 0px 0px 30px blue;
+      box-shadow: 0px 0px 30px black;
       padding: 1px;
       border: 0.5px solid green;
       transform: scale(1.2);
@@ -71,10 +69,13 @@ h4{
 }
 
 ul li:hover{
-    color: #1146c1;
+    color: #081c24;
 }
 p, ul{
-    color: black;
+    color: white;
+	margin: 0; 
+	padding: 0; 
+	border: 0;
 }
 
 .p_justificado{
@@ -132,16 +133,17 @@ div.panel.show {
 
 .btn {
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-left:auto;
+  margin-bottom: 0.25rem;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
   border-style: solid;
-  border-width: 1px;
+  border-width: 0.5px;
   border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
   .btn + .btn {
-    margin-left: 1rem; }
+    margin-left: 0.5rem; }
 
 .btn:hover {
   color: rgba(255, 255, 255, 0.8);
@@ -171,8 +173,8 @@ div.panel.show {
 .page-header {
   color: #fff;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  background-color: Black;
+  background-image: linear-gradient(120deg, #00af5f, #005f5f); }
 
 @media screen and (min-width: 64em) {
   .page-header {
