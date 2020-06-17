@@ -167,6 +167,7 @@
                 <li>Proxy dinámico JDK: la forma preferida para Spring AOP. Siempre que el objeto de destino implemente incluso una interfaz, se utilizará el proxy dinámico JDK
                 <li>Proxy CGLIB: si el objeto de destino no implementa una interfaz, se puede usar el proxy CGLIB
             </ul>
+            <img width="500" height="400" src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/springaop-process.png?raw=true" hspace="150"> </img>
         </p></br>
         <li> <h3><ins>JoinPoints</ins></h3> 
         <p align="justify">
@@ -194,14 +195,33 @@
                   Igual que en el weaving binario, con la diferencia que ocurre hasta que la clase sea cargada a la JVM
                 </p></br>
             </ul>
-        </p></br>
-        <li> <h3><ins>Estrucutra interna y aplicación</ins></h3> 
+        </p>
+        <li> <h3><ins>Estructura interna y aplicación</ins></h3> 
         <p align="justify">
             Las clases son compiladas directamente con los aspectos
         </p></br>
         <li> <h3><ins>JoinPoints</ins></h3> 
         <p align="justify">
-            ACA VA TEXTO
+           Los tipos de joinpoints que soporta AspectJ son: 
+           <ul>
+            <li> <h4><ins>Llamada a metodos </ins></h4> 
+              </br>
+            <li> <h4><ins>Ejecución de Método </ins></h4> 
+              </br>
+             <li> <h4><ins>Llamada de constructor</ins></h4> 
+              </br>
+            <li> <h4><ins>Ejecución de constructor</ins></h4> 
+            </br>
+            <li> <h4><ins>Ejecución de inicializador estático</ins></h4> 
+            </br>
+            <li> <h4><ins>Inicialización de objeto</ins></h4> 
+            </br>
+            <li> <h4><ins>Asignación de campo</ins></h4> 
+            </br>
+            <li> <h4><ins>Ejecución del hanlder</ins></h4> 
+            </br>
+          </ul>
+          Hay que aclarar que AspectJ realiza el proceso de inyeccion de aspectos en el codigo justo antes de cuando se vaya a ejecutar
         </p></br>
         <li> <h3><ins>Simplicidad</ins></h3> 
         <p align="justify">
