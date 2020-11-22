@@ -78,8 +78,9 @@
     <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">11.2 Ejemplo Autómatas</a></li>
     <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">11.3 Ejemplo Sistema Experto</a></li>
     <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">11.4 Ejemplo QuickSort</a></li>
-    <li><a href="#17-ejemplo-dcg" aria-hidden="true">11.5 Ejemplo DCG</a></li>
-    <li><a href="#16-hanoi" aria-hidden="true">11.6 Problema de Torres de Hanoi</a></li>
+    <li><a href="#15-ejemplo-compresor" aria-hidden="true">11.5 Ejemplo Compresor</a></li>
+    <li><a href="#17-ejemplo-dcg" aria-hidden="true">11.6 Ejemplo DCG</a></li>
+    <li><a href="#16-hanoi" aria-hidden="true">11.7 Problema de Torres de Hanoi</a></li>
   </ul>
   <li><a href="#15-Aplicaciones" aria-hidden="true">16. Aplicaciones</a></li>
   <li><a href="#16-Des-Ven" aria-hidden="true">17. Desventajas / Ventajas</a></li>
@@ -1269,7 +1270,33 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 
 <a href="https://swish.swi-prolog.org/p/PL2019-I.swinb">QuickSort más otros ejemplos lo podemos encontrar en este Notebook</a>
 
-<h2><a id="17-ejemplo-dcg" class="anchor" href="#17-ejemplo-dcg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.5 Ejemplo de DCG</h2>
+<h2><a id="15-ejemplo-compresor" class="anchor" href="#15-ejemplo-compresor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.5 Ejemplo de un compresor</h2>
+<p>La compresión de datos se basa fundamentalmente en buscar repeticiones en series de datos para después almacenar solo el dato junto al número de veces que se repite. Así, por ejemplo, si en un fichero aparece una secuencia como "AAAAAA", ocupando 6 bytes se podría almacenar simplemente "6A" que ocupa solo 2 bytes. </p>
+<p><span>Supongamos que se desea comprimir la siguiente cadena de n&uacute;meros y se desea comprimir la secuencia de n&uacute;meros contiguos, se puede hacer una compresi&oacute;n RLE</span><span></span><span>&nbsp;</span></p>
+<p align="center">
+  <img src="images/comprime1.png">
+</p>
+<p><span>Para este caso toda la secuencia ingresada ser&aacute; agrupada por el n&uacute;mero de repeticiones contiguas de s&iacute; misma.</span><span>&nbsp;</span></p>
+<p><span>Aplicando inducci&oacute;n matem&aacute;tica se llega a los siguientes casos</span></p>
+<ul>
+<li><span>Lista vac&iacute;a.</span></li>
+<li><span>Un &uacute;nico elemento: Cuando tenga solo un elemento no contiguo con otro no se har&aacute; compresi&oacute;n, evitando as&iacute; tener casos de este tipo (1,1).</span></li>
+<li><span>Cuando ambos elementos contiguos son iguales: cuando se cumple el caso se aplica recursi&oacute;n con uno menos del resto y se acumula.</span></li>
+<li><span>Cuando ambos elementos contiguos no son iguales: cuando se cumple el caso se retira el primero de la lista y se a&ntilde;ade al resto. </span></li>
+</ul>
+
+
+<p align="center">
+  <img src="images/comprime2.png">
+</p>
+<p>Al dar como input por ejemplo: comprime([1,1,1,2,2,2,3,4,4], R). </p>
+<p align="center">
+  <img src="images/comprime3.png">
+</p>
+<p>La codificación <b>run-length</b> realiza una compresión de datos sin pérdidas y es muy utilizado en imágenes de 8 bits indexadas (en un principio fue utilizado para imágenes en blanco y negro). No funciona tan bien en imágenes donde varía constantemente el color de los píxels como fotografías, aunque JPEG lo utiliza de forma efectiva en los coeficientes que quedan después de transformar y cuantificar bloques de imágenes. </p>
+<a href="https://swish.swi-prolog.org/p/Filia.swinb">Ejemplo compresión RLE -Notebook</a>
+
+<h2><a id="17-ejemplo-dcg" class="anchor" href="#17-ejemplo-dcg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.6 Ejemplo de DCG</h2>
 
 <p>Uno de las aplicaciones por las cuales fue originalmente concebido Prolog por su autor Alain Colmerauer
   fue el de procesamiento de lenguaje natural. Esto se logra en Prolog gracias al uso de 
@@ -1316,7 +1343,7 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
 <p>
   
 </p>
-<h2><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.6 Problema de Torres de Hanoi</h2>
+<h2><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.7 Problema de Torres de Hanoi</h2>
 
 <p align="center">
   <img src="images/torres-de-hanoi.png">
