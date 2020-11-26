@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Gödel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script type="text/javascript" src="js/prolog.js"></script>
+    <script type="text/javascript"
+  src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+    </script>
+
+  </head>
+  <body>
+  
+
+<div id="google_translate_element"></div>
+    <section class="page-header">
+      <h1 class="project-name">Gödel </h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages" class="btn">View on GitHub</a>
+    </section>
+
+    <section class="main-content">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Contenido</button>
+
+      <p align="center">
+<img src="https://avatars2.githubusercontent.com/u/6884283?v=3&amp;s=200">
+</p>
+
+<hr>
+
+<h1 >Contenido</h1>
+<ul class="contenido" >
+  <li><a href="#1-introducci%C3%B3n-a-godel" aria-hidden="true">1. Introducción a Gödel </a></li>
+  <ul class="contenido">
+    <li><a href="#11-documento" aria-hidden="true">1.1 Documento de Gödel </a></li>
+    <li><a href="#11-ventajas" aria-hidden="true">1.2 Ventajas</a></li>
+    <li><a href="#11-comp_prolog" aria-hidden="true">1.3 Comparación con Prolog</a></li>
+    <li><a href="#11-ejemplo" aria-hidden="true">1.4 Ejemplo</a></li>
+  </ul> 
+
+</ul>
+<h1>
+<a id="1-introducción-a-prolog" class="anchor" href="#1-introducci%C3%B3n-a-godel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Introducción a Gödel </h1>
+
+      
+<p align="justify">Gödel es un lenguaje de programación declarativo y de propósito general de la familia de los lenguajes de programación lógica. Es un lenguaje fuertemente tipificado, el sistema de tipificación se basa en muchos tipos de lógica con polimorfismo paramétrico. Tiene un sistema de módulos. Gödel soporta una precisión infinita números enteros, racionales de precisión infinita, y también números de punto flotante. Puede resolver restricciones sobre dominios finitos de enteros y también restricciones racionales lineales. Soporta el procesamiento de conjuntos finitos. También tiene una regla de cálculo flexible y un operador de poda que generaliza el compromiso del lenguaje de programación lógica concurrente. Se hace un énfasis considerable en la meta-lógica de Gödel instalaciones que proporcionan un apoyo significativo a los meta-programas que hacen análisis, transformación, compilación, verificación, depuración, etc. El carácter declarativo de Gödel lo hace particularmente adecuado para su uso como lenguaje de enseñanza; reduce la brecha que existe actualmente entre la teoría y la práctica en la programación lógica; hace posibles herramientas avanzadas de ingeniería de software tales como depuradores declarativos y generadores de compilación; reduce el esfuerzo que supone proporcionar una aplicación paralela del lenguaje; y ofrece un margen sustancial para la paralelización en tales implementaciones. </p>
+
+<h2><a id="11-documento" href="#11-documento" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.1 Documento de Gödel</h2>
+
+<p align="justify">El lenguaje Goedel fue diseñado por P.M. Hill y J.W. Lloyd, y el lenguaje fue implementado por A. Bowers y J. Wang. SAGE fue escrito por Corin Gurr. A continuación, su documento creado en octubre de 1992 , </p>
+
+<a href="documents/Gödel.pdf" download="Gödel.pdf">Enlace de descarga</a>
+
+<p align="center">
+  <embed src="documents/Gödel.pdf" width="700" height="385"type='application/pdf'>
+</p>
+
+
+<h2><a id="11-ventajas" href="#11-ventajas" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.2 Ventajas</h2>
+
+<p align="justify">
+  Gödel es un lenguaje de programación declarativo y de propósito general de la familia de los lenguajes de programación lógica. Sus principales facilidades son las siguientes: 
+  <ul>
+    <li>Tipos</li>
+    <li>Módulos</li>
+    <li>Control</li>
+    <li>Declaraciones de control</li>
+    <li>Resolución de restricciones</li>
+    <li>Operador de poda</li>
+    <li>Meta-programación</li>
+    <li>Entrada/Salida</li>
+  </ul>
+</p>
+
+<h2><a id="11-comp_prolog" href="11-comp_prolog" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.3 Comparación con Prolog</h2>
+
+<p align="justify">Por el momento, la mayoría de los lenguajes de programación lógica prácticos se basan en un número significativo de características no lógicas para las que no hay una semántica útil. Al reducir en gran medida su dependencia de características no lógicas, Gödel proporciona así un puente sólido entre la teoría y la práctica. En tercer lugar, el El hecho de que los meta-programas de Gödel sean declarativos hace posible algunas aplicaciones deseables. Uno de estos es construir un compilador-generador evaluando parcialmente un evaluador parcial (autoaplicable) con respecto a sí mismo como entrada. Otra aplicación de este tipo es el uso de un depurador declarativo para depurar los programas de Gödel. La depuración declarativa es una atractiva técnica de depuración que sólo requiere que el programador conozca la interpretación prevista de un programa para localizar ciertos bichos. En particular, no es necesario conocer el comportamiento procesal del sistema Gödel. En cuarto lugar, Gödel permite más fácilmente una implementación paralela ya que sólo hay un par de características no lógicas que complican las cosas. Por último, dado que el lenguaje tiene tan pocas características (a saber, entrada/salida y poda) que tienen efectos secundarios o tienen efectos globales en un árbol de búsqueda, hay es muy poco para impedir innecesariamente la explotación del paralelismo en los programas.</p>
+
+<p align="justify">Un lenguaje de alto nivel es aquel que proporciona conceptos tan cercanos como sea posible a los que la gente gusta de usar para expresar sus pensamientos e ideas. Un lenguaje expresivo es aquel que proporciona conceptos que pueden ser utilizados para modelar situaciones del mundo real de manera fácil y concisa. Un lenguaje eficiente es aquel en el que los programas típicos se ejecutan a velocidades y costos de memoria similares a los de los lenguajes de la competencia. Un lenguaje práctico es aquel que puede ser usado para aplicaciones a gran escala en el mundo real. Un lenguaje con una semántica simple es aquel para el cual los programadores pueden verificar y depurar fácilmente sus programas y estar seguros de la corrección de las transformaciones, optimizaciones, etc. de los programas. </p>
+
+<p align="justify">Prolog ha demostrado ser un gran éxito en una amplia variedad de áreas de aplicación. Este éxito se debe sin duda al hecho de que Prolog es de alto nivel, expresivo, eficiente y práctico. La importancia y el uso generalizado de Prolog está bien justificado por estas propiedades. Sin embargo, la semántica de Prolog (y por Prolog nos referimos al lenguaje de programación práctico tal como se encarna en los sistemas Prolog actualmente disponibles, y no a los subconjuntos puros idealizados estudiados en, por ejemplo) es mucho menos satisfactoria. Los problemas con la semántica son numerosos y bien conocidos: la falta de comprobación de la ocurrencia, el uso de negación insegura, el uso de predicados no lógicos, como var, nonvar, assert, y retractarse, el uso indisciplinado del corte, y así sucesivamente. Estos aspectos problemáticos de Prolog causan muchos programas prácticos de Prolog para no tener ninguna semántica declarativa y tener innecesariamente una semántica procesal complicada. Esto significa que el análisis, la transformación, la optimización, y la depuración de muchos programas Prolog es extremadamente difícil.  </p>
+
+<h2><a id="11-ejemplo" href="11-ejemplo" class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.4 Ejemplo</h2>
+
+<p align="justify">El siguiente ejemplo de módulo Gödel es una especificación del máximo común divisor (MCD) de dos números. Su objetivo es mostrar la naturaleza declarativa de Gödel, pero no es particularmente eficiente. El predicado DivisorComun dice que si i y j no son cero, d es un divisor común de i y j si está entre 1 y el menor entre i y j y divide a los dos en forma exacta. El predicado Mcd dice que d es el MCD de i y j si es un divisor común de i y j y no existe e que sea también divisor común de i y j y sea mayor que d.</p>
+
+<pre><code>
+MODULE      MCD.
+IMPORT      Integers.
+ 
+PREDICATE   Mcd : Integer * Integer * Integer.
+Mcd(i,j,d) <- 
+           DivisorComun(i,j,d) &
+           ~ SOME [e] (DivisorComun(i,j,e) & e > d).
+ 
+PREDICATE   DivisorComun : Integer * Integer * Integer.
+DivisorComun(i,j,d) <-
+           IF (i = 0 \/ j = 0)
+           THEN
+             d = Max(Abs(i),Abs(j))
+           ELSE
+             1 =< d =< Min(Abs(i),Abs(j)) &
+             i Mod d = 0 &
+             j Mod d = 0.
+</code></pre>
+
+
+
+
+<h2>
+<a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. 
+</h2>
+
+<p>Este tutorial fue desarrollado por Luis gerson Avendaño Alvira.</p>
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Gödel </a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+
+  </body>
+</html>
