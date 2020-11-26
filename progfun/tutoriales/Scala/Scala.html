@@ -1,119 +1,129 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Scala Tutorial">
+    <meta charset="utf-8" />
+    <meta name="description" content="Scala Tutorial" />
+    <link rel="stylesheet" href="Scala.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
     <title>Tutorial Scala</title>
-  <style>
-    img.logo{
-      width: 40%;
-      padding: 2em;
-    }
-    header{
-      background-image: url("imagenes/ss.jpg");
-      padding-bottom: 30px;
-    }
-    .button {
-      color: black;
-      border: 2px solid #b30000;
-      border-radius: 8px;
-      padding: 15px 30px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 15px;
-      cursor: pointer;
-    }
-    .button:hover {
-      background-color: #b30000;
-      color: white;
-    }
-    a{
-      color: black;
-      text-decoration: none;
-    }
-    a:hover{
-      color: #b3b3b3;
-      font-weight: bold;
-    }
-    img.de{
-      width: 2%;
-    }
-    section{
-      padding:  30px;
-      text-align: justify;
-      color:black;
-      background: #8080ff;
-      background: linear-gradient(white, #8080ff);
-    }
-    div.des{
-      padding: 1em 2em 1em 2em;
-      margin-top: 1em;
-      background: #f2f2f2;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 5px;
-    }
-    footer{
-      color: white;
-      text-align: center;
-    }
-  </style>
   </head>
 
   <body>
     <header>
-      <div class="hea" align="center">
-        <img class="logo" src="imagenes/scala.png" alt="imagen scala">
-        <h2>Tutorial Scala</h2>
-        <div class="button"><a href="document/Scala.pdf" target="_blank">
-          Presentación</a>
-        </div>
-        <div class="button"><a  href="document/taller.pdf" target="_blank">
-          Taller</a>
-        </div>
-        <div class="button"><a  href="https://www.scala-lang.org/" target="_blank">
-          Página oficial</a>
-        </div>
-        <div class="button"><a href="codigo.html">Ejemplos</a>
-        </div>
+      <div class="header">
+        <img
+          class="header__logo"
+          src="imagenes/scala-logo.svg"
+          alt="imagen scala"
+        />
+        <!-- <a href="document/Scala.pdf">
+          <div class="header__button">PRESENTACIÓN</div>
+        </a> -->
+        <a href="document/taller.pdf">
+          <div class="header__button">TALLER</div>
+        </a>
+        <a href="https://www.scala-lang.org/">
+          <div class="header__button">PÁGINA OFICIAL</div>
+        </a>
+        <a href="codigo.html">
+          <div class="header__button">EJEMPLOS</div>
+        </a>
       </div>
     </header>
-    <section>
-      <div class="des">
-          <img src="imagenes/poo.png" style="float:right; width: 340px; heigth:110px;">
-            <p>Scala es un lenguaje multi-paradigma(orientado a objetos, funcional)
-            <br>
-            Fue diseñado por Martin Odersky en el año 2003.
-            <br>
+
+    <div class="content">
+      <div class="content__section">
+        <h2 class="content__section-title">Presentaciones</h2>
+        <ul>
+          <li>
+            <a
+              href="document/Scala.pdf"
+              target="_blank"
+              style="color: #660000; font-weight: 900"
+              >Presentación 2017-2</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/presentation/d/1pUFZk3sGKoFqZH-XquUVlto8iOtXO0_NApq0oyB2-zc/edit?usp=sharing"
+              target="_blank"
+              style="color: #660000; font-weight: 900"
+              >Presentación 2020-2</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="content__section">
+        <h2 class="content__section-title">Introducción</h2>
+        <ul>
+          <li>
+            Scala es un lenguaje multi-paradigma(orientado a objetos, funcional)
+          </li>
+          <li>Fue diseñado por Martin Odersky en el año 2003.</li>
+          <li>
             El nombre de Scala surge de la unión de dos palabras:
-             <em>scalable</em> y <em>language</em>.
-             <br>
-            Su implementación actual corre en la máquina virtual de Java <br>
+            <em>scalable</em> y <em>language</em>.
+          </li>
+          <li>
+            Su implementación actual corre en la máquina virtual de Java <br />
             y es compatible con las aplicaciones Java existentes.
-          </p>
+          </li>
+        </ul>
+        <img
+          src="imagenes/poo.png"
+          class="content__image--right"
+          style="width: 20%"
+        />
       </div>
-      <div class="des">
-        <h2>Instalación</h2>
-        Podemos trabajar en dos entornos: por consola y en un ide como eclipse, para más información mira una guía paso a paso:
-        <a href="http://www.journaldev.com/7456/installing-scala-on-linuxunix-and-windows-os" target="_blank" style="color: #660000; font-weight:bold">Consola</a>
-        <a href="http://scala-ide.org/docs/current-user-doc/gettingstarted/index.html" target="_blank" style="color: #660000; font-weight: bold">Ide</a>
+
+      <div class="content__section">
+        <h2 class="content__section-title">Instalación</h2>
+        Podemos trabajar en dos entornos: por consola y en un ide como eclipse,
+        para más información mira una guía paso a paso:
+        <ul>
+          <li>
+            <a
+              href="http://www.journaldev.com/7456/installing-scala-on-linuxunix-and-windows-os"
+              target="_blank"
+              style="color: #660000; font-weight: 900"
+              >Consola</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://scala-ide.org/docs/current-user-doc/gettingstarted/index.html"
+              target="_blank"
+              style="color: #660000; font-weight: 900"
+              >Ide</a
+            >
+          </li>
+        </ul>
       </div>
-      <div class="des">
-        <img src="imagenes/cara.png" style="float:right; padding-top: 3em;">
-        <h2>Características</h2>
+      <div class="content__section">
+        <img src="imagenes/cara.png" class="content__image--right" />
+        <h2 class="content__section-title">Características</h2>
         <ul>
           <li>Scala es orientado a objetos:</li>
           <ul>
-            <li>Los tipos y comportamientos de objetos son descritos por clases y traits.</li>
-            <li> Las clases pueden ser extendidas a través de subclases.</li>
-            <li> Posee un mecanismo de composición mezclada que provee remplazo para la herencia múltiple.</li>
+            <li>
+              Los tipos y comportamientos de objetos son descritos por clases y
+              traits.
+            </li>
+            <li>Las clases pueden ser extendidas a través de subclases.</li>
+            <li>
+              Posee un mecanismo de composición mezclada que provee remplazo
+              para la herencia múltiple.
+            </li>
           </ul>
           <li>Scala es funcional:</li>
           <ul>
             <li>Toda función es un valor.</li>
-            <li> Scala provee una sintaxis para definir funciones anónimas.</li>
+            <li>Scala provee una sintaxis para definir funciones anónimas.</li>
             <li>Soporta funciones de primer orden.</li>
             <li>Permite que las funciones sean anidadas</li>
             <li>Soporta currying.</li>
@@ -123,55 +133,70 @@
             <li>Soporta clases genéricas.</li>
             <li>Anotaciones variables.</li>
             <li>Límites de tipado superiores e inferiores.</li>
-            <li>Clases internas y tipos abstractos como miembros de objetos.</li>
+            <li>
+              Clases internas y tipos abstractos como miembros de objetos.
+            </li>
             <li>Tipos compuestos.</li>
             <li>Auto-referencias explicitamente tipadas.</li>
             <li>Métodos polimórficos.</li>
           </ul>
           <li>Scala es extensible:</li>
           <ul>
-            <li>Cualquier método puede ser usado como un operador de infijo o postfijo.</li>
-            <li>Closures son construidos automáticamente dependiendo del tipo esperado (tipos objetivo).</li>
-            <li>Diseñado para interoperar bien con el popular Entorno de ejecución de Java (JRE).</li>
+            <li>
+              Cualquier método puede ser usado como un operador de infijo o
+              postfijo.
+            </li>
+            <li>
+              Closures son construidos automáticamente dependiendo del tipo
+              esperado (tipos objetivo).
+            </li>
+            <li>
+              Diseñado para interoperar bien con el popular Entorno de ejecución
+              de Java (JRE).
+            </li>
             <li>Está disponible el soporte para el Framework .NET (CLR).</li>
           </ul>
         </ul>
       </div>
-      <div class="des">
-        <h2>Tipos de datos</h2>
-        <img src="imagenes/tipos.png" alt="tipos" style="float:center; width: 1079px; heigth:650px;">
+      <div class="content__section">
+        <h2 class="content__section-title">Tipos de datos</h2>
+        <center>
+          <img src="imagenes/tipos.png" alt="tipos" style="width: 60%" />
+        </center>
         <p>
-          Los tipos de datos de scala se corresponden con los tipos de datos de java,
-          el Unit equivale al Void, Nothing es el subtipo de cualquier otro tipo; incluye no valores,
-          Any	es el supertipo de cualquier tipo; cualquier objeto es de tipo Any.
+          Los tipos de datos de scala se corresponden con los tipos de datos de
+          java, el Unit equivale al Void, Nothing es el subtipo de cualquier
+          otro tipo; incluye no valores, Any es el supertipo de cualquier tipo;
+          cualquier objeto es de tipo Any.
         </p>
       </div>
-      <div class="des">
-        <h2>Operadores</h2>
+      <div class="content__section">
+        <h2 class="content__section-title">Operadores</h2>
         <center>
-          <img src="imagenes/precedencia.png" alt="operadores" >
+          <img src="imagenes/precedencia.png" alt="operadores" />
         </center>
       </div>
-      <div class="des">
-        <h2>Colleciones</h2>
+      <div class="content__section">
+        <h2>Coleciones</h2>
         <center>
-          <img src="imagenes/colecciones.png" alt="colecciones">
+          <img src="imagenes/colecciones.png" alt="colecciones" />
         </center>
       </div>
-      <div class="des">
-        Comparación entre la programación en java y la programación en scala con ejemplos:
-        <a href="https://www.toptal.com/scala/why-should-i-learn-scala"> --> Scala vs Java <--</a>
+      <div class="content__section">
+        Comparación entre la programación en java y la programación en scala con
+        ejemplos:
+        <a href="https://www.toptal.com/scala/why-should-i-learn-scala">
+          --> Scala vs Java <--</a
+        >
       </div>
-      <footer>
+      <footer class="footer">
         <p>
-          En este tutorial nos centramos en la parte funcional de scala,
-         no se explicará la parte orientada a objetos.<br>
-         Diana Carolina Navarrete - Cristian Camilo Lozano
-       </p>
-       	<span>© Copyright 2017</span>
-
-       </footer>
-    </section>
-
+          En este tutorial nos centramos en la parte funcional de scala, no se
+          explicará la parte orientada a objetos.<br />
+          Diana Carolina Navarrete - Cristian Camilo Lozano
+        </p>
+        <span>© Copyright 2017</span>
+      </footer>
+    </div>
   </body>
 </html>
