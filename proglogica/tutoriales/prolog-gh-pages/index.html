@@ -1338,10 +1338,55 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
 <p align="center">
   <img src="images/incorrect.png">
 </p>
- Esto nos permite un sinfín de cosas mas como crear el árbol sintáctico correspondiente entre otras que se dejan como 
- tarea de revisión al lector.
 <p>
-  
+  Sin embargo, podemos ahondar más en esta gramática que hace referencia al lenguaje inglés para añadir nuevas características. 
+  Comencemos por una simplificación básica que nos permitirá construir sobre ella más adelante:
+</p>
+
+<p align="center">
+  <img src="images/english_grammar_1.png">
+</p>
+
+<p>
+  Esta gramática hace referencia al caso extremadamente estricto de oraciones simples en inglés de la forma: sustantivo, luego verbo, con la opcionalidad de tener de nuevo un sustantivo o no. Podemos mejorarla al añadir una frase sustantiva, que permita añadir un determinador opcional a la oración.
+</p>
+
+<p align="center">
+  <img src="images/english_grammar_2.png">
+</p>
+
+<p>
+  Aquí podemos notar varias cosas. <code>sentence, noun_phrase y verb</code> son conocidos como los términos sintácticos. Esto indica que hacen parte de la estructura del lenguaje inglés. Por otra parte la lista de paréntesis cuadrados son usados para indicar que son parte del vocabulario del lenguaje, y no hacen parte de la estructura del lenguaje; también conocidos como terminales.
+</p>
+
+<p>
+  Elaborando un poco más, podemos añadir verbos compuestos al añadir la regla <code>verb-->[will_see].</code>; además que podemos añadir el uso de adjetivos que nos permitirán crear oraciones más complejas.
+</p>
+
+<p align="center">
+  <img src="images/english_grammar_3.png">
+</p>
+
+<p>
+  Esta última gramática no tiene en cuenta la pluralidad de los sustantivos en conjunción con sus verbos. Así que podemos implementar reglas particulares para sustantivos y verbos de tal manera que se asignen a sustantivos (plurales y singulares) sus verbos en forma correcta. Los primeros 4 verbos son etiquetados como <code>ambos</code> para indicar que tienen la misma forma tanto en plural como singular.
+  Y una vez hayamos añadido estos cambios, deberemos soportar esta pluralidad en la creación de oraciones y frases sustantivas.
+</p>
+
+<p align="center">
+  <img src="images/english_grammar_4.png">
+</p>
+
+<p>
+  Ahora podemos hacer unas cuantas consultas para darle uso a este analizador de lenguaje natural.
+</p>
+
+<p align="center">
+  <img src="images/english_grammar_5.png">
+</p>
+
+<p>
+  Esto nos permite un sinfín de cosas más como crear el árbol sintáctico correspondiente, entre otras que se dejan
+  como tarea de revisión al lector.  
 </p>
 <h2><a id="16-hanoi" class="anchor" href="#16-hanoi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.7 Problema de Torres de Hanoi</h2>
 
