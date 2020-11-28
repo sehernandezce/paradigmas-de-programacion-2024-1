@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>OpenMP</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/logo-ico.png" rel="icon">
+    <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container">
+
+            <div class="logo float-left">
+                <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+            </div>
+
+            <nav class="nav-menu float-right d-none d-lg-block">
+                <ul>
+                    <li><a href="#modelo">Modelo</a></li>
+                    <li class="drop-down"><a href="#">Directivas</a>
+                        <ul>
+                            <li><a href="#sintaxis">Sintaxis</a></li>
+                            <li><a href="#funcionesutiles">Funciones útiles</a></li>
+                            <li><a href="#SPMD">Técnica SPMD</a></li>
+                            <li><a href="#compartido">Uso compartido falso</a></li>
+                            <li><a href="#sincronizacion">Sincronización</a></li>
+                            <li><a href="#task">Directiva Task</a></li>
+                            <li><a href="#taskWait">Directiva TaskWait</a></li>
+                            <li><a href="#planificacion">Cláusulas de Planificación</a></li>
+                            <li><a href="#for">Ciclo For</a></li>
+                            <li><a href="#reduction">Cláusula Reduction</a></li>
+                            <li><a href="#otrasDirectivas">Otras directivas</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="index.html#tutorial">Volver a la página principal</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <section id="hero">
+        <div class="hero-container">
+            <div class="carousel-item active" style="background-image: url('assets/img/slide/tutorial.jpg');">
+                <div class="carousel-container">
+                  <div class="carousel-content container">
+                    <h2 class="animate__animated animate__fadeInDown">Tutorial OpenMP</span></h2>
+                    <a href="#modelo" class="btn-get-started animate__animated animate__fadeInUp scrollto">Empezar</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+
+        <section id="modelo" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Modelo</h2>
+                    <h6>Cuando se tiene una tarea muy pesada, esta puede ser dividida en tareas independientes más sencillas (fork) 
+                        que cuando cada una tiene una solución a la tarea, se combinan (join) para poder tener la solución general 
+                        a la tarea principal.
+                    </h6>
+                    <img src="assets/img/slide/fork-join.jpg" class="img-responsive img-rounded margin" 
+                    style="display:inline; margin-top: 20px; margin-bottom: 20px;" alt="Fork-join" width="600" height="350">
+		            <p>En OpenMP cuando se inicia un programa se crea un hilo maestro o padre que cuando necesita ingresar a una 
+                        región paralela crea los hilos necesarios para poder realizar la tarea. Después de que cada hilo termine 
+                        de realizar sus tareas, se presenta una sincronización y se sigue con la ejecución del programa. Puede 
+                        que alguno de los hilos que se crearon necesite hacer este mismo procedimiento lo cual se puede realizar 
+                        sin ningún problema.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="directivas" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Directivas</h2>
+                </div>
+
+                <div class="row  d-flex align-items-stretch">
+
+                    <div id="sintaxis" class="col-lg-6 faq-item" data-aos="fade-up">
+                        <h4>Sintaxis</h4>
+                        <p>Para C/C++ la sintaxis básica de OpenMP es la siguiente:</p>
+                        <pre><code class="language-css">#pragma omp directiva[cláusulas]</code></pre>
+                        <p>Donde las directivas son las acciones que se van a realizar y las cláusulas son las condiciones que se presentan a estas directivas. La 
+                            directiva que más se utiliza es <b>parallel</b> ya que es la que permite que se de la creación de los hilos y su sintaxis es la siguiente:
+                        </p>
+                        <pre><code class="language-css">#pragma omp parallel {<br/>    &ltBLOQUE DE CÓDIGO&gt<br/>}
+                        </code></pre>
+                    </div>
+
+                    <div id="funcionesutiles" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <h4>Funciones útiles</h4>
+                        <p>
+                            <b>omp_set_num_threads(n):</b> Permite fijar el número máximo de hilos que usará el programa.<br/>
+                            <b>omp_get_num_threads():</b> Retorna el número de hilos que están en ejecución en el momento de su llamada.<br/>
+                            <b>omp_get_thread_num():</b> Retorna el identificador del hilo. Este valor es un número entero entre 0 y n-1, donde n es el número de hilos que usará el programa.<br/>
+                            <b>omp_get_max_threads():</b> Retorna el número máximo de hilos que usará el programa.<br/>
+                            <b>omp_get_num_procs():</b> Retorna el número de núcleos o de procesadores del computador.
+                        </p>
+                    </div>
+
+                    <div id="SPMD" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <h4>Técnica SPMD</h4>
+                        <p>SPMD(Single Program, multiple data) es un técnica que permite lograr el paralelismo, donde las tareas son separadas y ejecutadas 
+                        simultáneamente en múltiples procesadores y con diferentes entradas.</p>
+                    </div>
+
+                    <div id="compartido" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <h4>Uso compartido falso</h4>
+                        <p>Se presenta cuando existen datos independientes que se encuentran en la misma línea de caché, pero que por encontrarse de esta manera, 
+                        si se realiza alguna actalización a la variable, las demás van a quedar sin poder realizar ningún procedimiento.</p>                
+                    </div>
+
+                    <div id="sincronizacion" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Sincronización</h4>
+                        <p>Se presenta cuando existe dependencia de datos entre procesadores. Para OpenMP existen tres directivas que ayudan a que se realice una sincronización:
+                            <p><b>Barrera:</b> Es un método que crea una barrera donde los hilos tienen que esperar a que todos se encuentren en esta sección para poder continuar. </p>
+                            <pre><code>#pragma omp barrier</code></pre>
+                            <p><b>Exclusión mutua:</b> Se presenta cuando solo se necesita que un hilo ejecute el bloque de código. </p>
+                            <pre><code>#pragma omp critical</code></pre>
+                            <p><b>Atomic:</b> Proporciona exclusión mutua y se utiliza cuando se da una actualización de una sola ubicación de memoria. Solo puede ser actualizada por un solo simultáneamente y es utilizada por los operadores de aumenteo y decremento. </p>
+                            <pre><code>#pragma omp atomic</code></pre>
+                    </div>
+
+                    <div class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="500">
+                        <h4 id="task" >Directiva Task</h4>
+                        <p>Las tareas en OpenMP son bloques de código que el compilador envuelve y pone a disposición para ejecutarse en paralelo.</p>
+                        <pre><code>#pragma omp parallel {<br/>  #pragma omp task<br/>       printf("hello world from a random thread\n");<br/>}</code></pre>
+                    
+                        <br/>
+          
+                        <h4 id="taskWait" >Directiva TaskWait</h4>
+                        <p>Puede sincronizar tareas utilizando las directivas taskwait o taskgroup. Cuando un subproceso encuentra una construcción taskwait, 
+                            la tarea actual se suspende hasta que todas las tareas secundarias que generó antes de que la tarea taskwait finalice la ejecución.</p>
+                        <pre><code>#pragma omp parallel {<br/>  #pragma omp taskwait<br/>}</code></pre>
+
+                        <a class="btn btn-outline-secondary" href="#" role="button">Ver ejemplos de Task y TaskWait</a>
+                    </div>
+
+                    <div id="planificacion" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Cláusulas de Planificación</h4>
+                        <p>Indica la forma como se dividen las iteraciones de los bucles entre los hilos. Pueden ser:
+                            <p>
+                                <b>schedule( static[ ,tamaño] ):</b>  Las iteraciones se dividen según el tamaño, y nosotros decidimos 
+                                como van se van a asignar las iteraciones de los hilos. 
+                            </p>
+                            <p>
+                                <b>schedule( dinamic[ ,tamaño] ):</b>  Las iteraciones se dividen según el tamaño y se asignan a los hilos dinámicamente 
+                                cuando van acabando su trabajo, es decir que se deja que OpenMP maneje la forma como se van a hacer las iteraciones de los hilos.
+                            </p>
+                    </div>
+
+                    <div id="for" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Ciclo For</h4>
+                        <p>
+                            Para manejar regiones paralelas en un ciclo for se utiliza la directiva <b>for</b> que es una optimización de la directiva parallel para el manejo 
+                            de ciclos. Si solo se encuentra el ciclo for dentro de una región de parallel, la sintaxis es la siguiente:
+                        </p>
+                        <pre><code>#pragma omp parallel for<br/>for( &ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt ){<br/>    &ltBLOQUE DE CÓDIGO&gt<br/>}</code></pre>
+                        
+                        <p>
+                            De modo contrario, si el ciclo for no es el único código dentro de la región paralela, la sintaxis que se usa es la siguiente:
+                        </p>
+                        <pre><code>#pragma omp for<br/>for( &ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt ){<br/>    &ltBLOQUE DE CÓDIGO&gt<br/>}</code></pre>
+                        
+                    </div>
+
+                    <div id="reduction" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <h4>Cláusula Reduction</h4>
+                        <p>
+                            Se refiere a una variable acumuladora donde se crea una copia local dentro de cada hilo de la variable establecida, y que cuando todos los 
+                            hilos ya han hecho su trabajo, con estas copias locales se va a actualizar la variable global. La variable se va a inicializar con la 
+                            identidad del operador que establecimos, por ejemplo si el operador es suma (+), la variable será inicializada con cero (0). Su formato es 
+                            el siguiente:
+                        </p>
+                        <pre><code>reduction(operador : variable)</code></pre>
+                    </div>
+
+                    <div id="otrasDirectivas" class="col-lg-6 faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Otras directivas</h4>
+                        <p>
+                            <b>master:</b> Esta directiva se presenta cuando se necesita que un segmento de código sea ejecutado solo por el hilo maestro, es decir que 
+                            los demás hilos van a omitir este bloque de código. Su sintaxis es la siguiente:
+                        </p>
+                        <pre><code>#pragma omp master{<br/>    &ltBLOQUE DE CÓDIGO&gt<br/>}</code></pre>
+                        
+                        <p>
+                            <b>single:</b> Es una directiva muy utilizada e indica el bloque de código que solo puede ser ejecutado por un hilo, el hilo que llegue 
+                            primero será el que va a trabajar ese bloque de código y los demás hilos lo van a omitir.
+                        </p>
+                        <pre><code>#pragma omp single{<br/>    &ltBLOQUE DE CÓDIGO&gt<br/>}</code></pre>
+
+                        <p>
+                            <b>sections:</b> Esta directiva brinda una sección de bloque de código a cada hilo y su formato es el siguiente:
+                        </p>
+                        <pre><code>#pragma omp sections{<br/>    #pragma omp section {<br/>        &ltBLOQUE DE CÓDIGO SECCIÓN 1&gt<br/>    }<br/>     #pragma omp section {<br/>        &ltBLOQUE DE CÓDIGO SECCIÓN N&gt<br/>    }<br/>}</code></pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Frequently Asked Questions Section -->
+
+
+    </main>
+    <!-- End #main -->
+
+
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
