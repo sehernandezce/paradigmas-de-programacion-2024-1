@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>OpenMP</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/logo-ico.png" rel="icon">
+    <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="assets/css/qtcreator_dark.css">
+    <script src="assets/js/highlight.pack.js" ></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        pre {
+            background: #303030;
+            color: #ffffff;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container">
+
+            <div class="logo float-left">
+                <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+            </div>
+
+            <nav class="nav-menu float-right d-none d-lg-block">
+                <ul>
+                    <li class="drop-down"><a href="#hero">Ejemplos</a>
+                        <ul>
+                            <li><a href="#ejemplos">Inicio</a></li>
+                            <li><a href="#basico">Ejemplo basico (Hola hilos)</a></li>
+                            <li><a href="#intermedio">Ejemplo intermedio (Serie de Leibniz)</a></li>
+                            <li><a href="#avanzado">Ejemplo avanzado (Sucesión de Fibonacci)</a></li>
+                            <li><a href="#otros">Otros ejemplos (Multiplicación matrices)</a></li>
+                            <li><a href="#descargar">Descargar ejemplos</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="index.html#ejemplos">Volver a la página principal</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <section id="hero">
+        <div class="hero-container">
+            <div class="carousel-item active" style="background-image: url('assets/img/slide/ejemplos.jpg');">
+                <div class="carousel-container">
+                  <div class="carousel-content container">
+                    <h2 class="animate__animated animate__fadeInDown">Ejemplos OpenMP</span></h2>
+                    <a href="#ejemplos" class="btn-get-started animate__animated animate__fadeInUp scrollto">Empezar</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+
+        <section id="ejemplos" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Ejemplos</h2>
+                    <h6>A continuación veremos ejemplos de programas escritos en lenguaje C++ que aplican conceptos básicos del API OpenMP, se explican detalles de implementación, se muestra un análisis de ejecución y análisis a nivel de programación secuencial y paralela.
+                    </h6>
+                    
+
+            </div>
+        </section>
+
+
+        <section id="basico" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Ejemplo básico (Hola hilos)</h2>
+                    <h6>En este ejemplo, se quiere mostrar un saludo de cierto número de hilos creados y además, se quiere saber cuántos procesadores o núcleos tiene el computador. Para ello, se utilizan las variables de entorno básicas de OpenMP y la directiva <i>parallel</i>, para que de forma paralela cada hilo muestre un mensaje de saludo indicando qué número de hilo es y cuántos hilos se están ejecutando antes, durante y después de que la ejecución del programa pase por la sección paralela. El código usado para este ejemplo es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                        #include "omp.h"
+                        
+                        int main(){
+                            int numeroHilos;
+                            printf("Ingresar el numero de hilos: ");
+                            scanf("%d", &numeroHilos);
+                        
+                            int numeroProcesadores = omp_get_num_procs();
+                            omp_set_num_threads(numeroHilos);
+                            printf("Este computador usa %d procesador(es)\n", numeroProcesadores);
+                            printf("En este ejemplo se desea usar %d hilo(s)\n", omp_get_max_threads());
+                            printf("En este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
+                        
+                            printf("\nAcabo de entrar a la seccion paralela\n");
+                            #pragma omp parallel
+                            {
+                                int idHilo = omp_get_thread_num();
+                                printf("Hola, soy el hilo %d, en este momento se esta(n) ejecutando %d hilo(s)\n", idHilo, omp_get_num_threads());
+                            }
+                            printf("Acabo de salir de la seccion paralela\n");
+                        
+                            printf("\nEn este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
+                            return 0;
+                        }
+                        </code></pre>
+                              <br>
+                              <h6>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 5 hilos, teniendo el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de hilos: 5
+                        Este computador usa 4 procesador(es)
+                        En este ejemplo se desea usar 5 hilo(s)
+                        En este momento se esta(n) ejecutando 1 hilo(s)
+                        
+                        Acabo de entrar a la seccion paralela
+                        Hola, soy el hilo 1, en este momento se esta(n) ejecutando 5 hilo(s)
+                        Hola, soy el hilo 3, en este momento se esta(n) ejecutando 5 hilo(s)
+                        Hola, soy el hilo 2, en este momento se esta(n) ejecutando 5 hilo(s)
+                        Hola, soy el hilo 4, en este momento se esta(n) ejecutando 5 hilo(s)
+                        Hola, soy el hilo 0, en este momento se esta(n) ejecutando 5 hilo(s)
+                        Acabo de salir de la seccion paralela
+                        
+                        En este momento se esta(n) ejecutando 1 hilo(s)</pre>
+                        <br>
+    <h6>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 10 hilos, teniendo el siguiente resultado:</h6>
+    <br>
+      <pre align="left">Ingresar el numero de hilos: 10
+Este computador usa 4 procesador(es)
+En este ejemplo se desea usar 10 hilo(s) !!!
+En este momento se esta(n) ejecutando 1 hilo(s)
+
+Acabo de entrar a la seccion paralela
+Hola, soy el hilo 1, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 6, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 3, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 4, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 5, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 2, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 7, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 8, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 9, en este momento se esta(n) ejecutando 10 hilo(s)
+Hola, soy el hilo 0, en este momento se esta(n) ejecutando 10 hilo(s)
+Acabo de salir de la seccion paralela
+
+En este momento se esta(n) ejecutando 1 hilo(s)</pre>
+      <br>
+      <h6>Como se pudo observar en las 2 ejecuciones del código usado para este ejemplo, antes y después de pasar por la sección paralela, se ejecuta un solo hilo, denominado <i>hilo maestro</i>, y en la sección paralela se ejecuta el número de hilos que se deseaba usar. También es importante destacar que los hilos se identifican por un número entero entre 0 y n - 1, donde n indica el número de hilos; además, el hilo maestro se identifica por el número 0.</h6>
+      
+                </div>
+
+            </div>
+        </section>
+        <!-- End Frequently Asked Questions Section -->
+
+        <section id="intermedio" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Ejemplo intermedio (Serie de Leibniz)
+                    </h2>
+                    <h6>En este ejemplo, se desea calcular el número &pi; &asymp; 3.14159265 por medio de la serie de Leibiz de forma secuencial y de forma paralela con varias maneras de implementación (Paralela sencilla, Paralela con ciclos for optimizados, Paralela con sección crítica general y Paralela con sección crítica atómica). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la serie de Leibniz de forma tradicional; luego, de forma paralela se divide la serie original en varias subseries para que los hilos calculen los resultados numéricos de estas subseries, sumar los resultados y mostrar la respuesta.
+                    </h6>
+                    <br>
+                    <h6>En términos de implementación, de forma secuencial se implementa la serie de Leibniz por medio de un ciclo for limitado por un número de iteraciones que entre mayor sea, más se aproxima al resultado verdadero pero implicará una mayor inversión de tiempo, y para controlar el signo según la definición de la serie de Leibniz, se usa una variable booleana cuyo valor se invierte en cada iteración para evitar el uso de funciones que calculen potencias de números, esto ayuda a mejorar la eficiencia en tiempo, para este ejemplo.</h6>
+                    <br>
+                    <h6>En términos de implementación, además de usar algunas variables de entorno de OpenMP, para la implementación de la forma paralela sencilla, se usará la directiva <i>parallel</i> para la ejecución de forma paralela, con variables compartidas y privadas para que cada hilo calcule su parte de la serie y guarde su resultado en una posición de una variable que es compartida para todos los hilos, y para combinar resultados, se calcula la sumatoria de los valores calculados por cada hilo que fueron almacenados previamente, y se muestra el resultado.</h6>
+                    <br>
+                    <h6>Para la implementación de la forma paralela con ciclos for optimizados, se usarán las directivas <i>parallel</i> para ejecución de forma paralela y <i>for</i> en cada ciclo for presente en la implementación (Para el cálculo de las subseries, el uso de esta directiva se encarga de repartir las iteraciones según el número de hilos disponibles y para el cálculo de la respuesta del problema, se aprovecha esta directiva para que realice la suma de los valores calculados por cada hilo, más rápidamente).</h6>
+                    <br>
+                    <h6>Para la implementación de la forma paralela con secciones críticas generales, se usarán las directivas <i>parallel</i> para ejecución de forma paralela, donde cada hilo dispone de una variable donde almacena el resultado de la subserie que le corresponda y <i>critical</i> para indicar con un mensaje el número del hilo que está accediendo a la sección crítica y para que el hilo aporte su resultado de la subserie que le haya correspondido, a la respuesta de este problema; para esta acción es importante que un solo hilo la realice a la vez, debido a que es necesario sincronizar los hilos en programación paralela y se observa que debido a esto, los hilos pueden competir por el acceso a un recurso y esto se debe controlar.</h6>
+                    <br>
+                    <h6>Para la implementación de la forma paralela con secciones críticas atómicas, se parte de la descripción de la implementación de la forma paralela con secciones críticas generales, usando la directiva <i>atomic</i> en vez de la directiva <i>critical</i>, tomando en cuenta las secciones críticas atómicas solo toman una instrucción y no una secuencia de varias instrucciones como pasa en las secciones críticas generales.</h6>
+                    <br>
+                    <h6>El código usado para la implementación de forma secuencial es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+
+                        int main(){
+                          double respuesta = 0.0;
+                          long numeroIteraciones;
+                          printf("Ingresar el numero de iteraciones: ");
+                          scanf("%ld", &numeroIteraciones);
+                        
+                          bool esIndicePar = true;
+                          for(long indice = 0; indice <= numeroIteraciones; indice++){
+                            if(esIndicePar == true){
+                              respuesta += 4.0 / (2.0 * indice + 1.0);
+                            }else{
+                              respuesta -= 4.0 / (2.0 * indice + 1.0);
+                            }
+                            esIndicePar = !esIndicePar;
+                          }
+                        
+                          printf("La respuesta es: %f\n", respuesta);
+                          return 0;
+                        }</code></pre>
+                              <br>
+                              <h6>El código usado para la implementación de forma paralela sencilla es el siguiente:</h6>
+                              <br>
+                              <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                        #include "omp.h"
+                        
+                        int main(){
+                            int numeroHilos = 4, idHilo;
+                            omp_set_num_threads(numeroHilos);
+                            double respuesta = 0.0, sumasParciales[numeroHilos];
+                            long numeroIteraciones;
+                            printf("Ingresar el numero de iteraciones: ");
+                            scanf("%ld", &numeroIteraciones);
+                        
+                            #pragma omp parallel private(idHilo) shared(sumasParciales)
+                            {
+                                int idHilo = omp_get_thread_num();
+                                sumasParciales[idHilo] = 0.0;
+                                for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+                                    if(indice % 2 == 0){
+                                        sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
+                                    }else{
+                                        sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
+                                    }
+                                }
+                            }
+                            for(int indice = 0; indice < numeroHilos; indice++){
+                                respuesta += sumasParciales[indice];
+                            }
+                        
+                            printf("La respuesta es: %.8f\n", respuesta);
+                            return 0;
+                        }</code></pre>
+                              <br>
+                              <h6>El código usado para la implementación de forma paralela con ciclos for optimizados es el siguiente:</h6>
+                              <br>
+                              <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                        #include "omp.h"
+                        
+                        int main(){
+                            int numeroHilos = 4, idHilo;
+                            omp_set_num_threads(numeroHilos);
+                            double respuesta = 0.0, sumasParciales[numeroHilos];
+                            long numeroIteraciones;
+                            printf("Ingresar el numero de iteraciones: ");
+                            scanf("%ld", &numeroIteraciones);
+                        
+                            #pragma omp parallel private(idHilo) shared(sumasParciales)
+                            {
+                                int idHilo = omp_get_thread_num();
+                                sumasParciales[idHilo] = 0.0;
+                                #pragma omp for
+                                for(long indice = idHilo; indice < numeroIteraciones; indice++){
+                                    if(indice % 2 == 0){
+                                        sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
+                                    }else{
+                                        sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
+                                    }
+                                }
+                            }
+                        
+                            #pragma omp for
+                            for(int indice = 0; indice < numeroHilos; indice++){
+                                respuesta += sumasParciales[indice];
+                            }
+                        
+                            printf("La respuesta es: %.8f\n", respuesta);
+                            return 0;
+                        }</code></pre>
+                              <br>
+                              <h6>El código usado para la implementación de forma paralela con secciones críticas generales es el siguiente:</h6>
+                              <br>
+                              <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                        #include "omp.h"
+                        
+                        int main(){
+                            int numeroHilos = 4, idHilo;
+                            omp_set_num_threads(numeroHilos);
+                            double respuesta = 0.0;
+                            long numeroIteraciones;
+                            printf("Ingresar el numero de iteraciones: ");
+                            scanf("%ld", &numeroIteraciones);
+                        
+                            #pragma omp parallel
+                            {
+                                int idHilo = omp_get_thread_num();
+                                double sumaParcial = 0.0;
+                                for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+                                    if(indice % 2 == 0){
+                                        sumaParcial += 4.0 / (2.0 * indice + 1.0);
+                                    }else{
+                                        sumaParcial -= 4.0 / (2.0 * indice + 1.0);
+                                    }
+                                }
+                        
+                                #pragma omp critical
+                                {
+                                  printf("El hilo %d esta entrando en la seccion critica\n", idHilo);
+                                  respuesta += sumaParcial;
+                                }
+                            }
+                        
+                            printf("La respuesta es: %.8f\n", respuesta);
+                            return 0;
+                        }</code></pre>
+                              <br>
+                              <h6>El código usado para la implementación de forma paralela con secciones críticas atómicas es el siguiente:</h6>
+                              <br>
+                              <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                        #include "omp.h"
+                        
+                        int main(){
+                            int numeroHilos = 4, idHilo;
+                            omp_set_num_threads(numeroHilos);
+                            double respuesta = 0.0;
+                            long numeroIteraciones;
+                            printf("Ingresar el numero de iteraciones: ");
+                            scanf("%ld", &numeroIteraciones);
+                        
+                            #pragma omp parallel
+                            {
+                                int idHilo = omp_get_thread_num();
+                                double sumaParcial = 0.0;
+                                for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
+                                    if(indice % 2 == 0){
+                                        sumaParcial += 4.0 / (2.0 * indice + 1.0);
+                                    }else{
+                                        sumaParcial -= 4.0 / (2.0 * indice + 1.0);
+                                    }
+                                }
+                        
+                                #pragma omp atomic
+                                respuesta += sumaParcial;
+                            }
+                        
+                            printf("La respuesta es: %.8f\n", respuesta);
+                            return 0;
+                        }</code></pre>
+                              <br>
+                              <h6>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 4 hilos para la solución de este problema. Se quiere conocer la aproximación al número &pi; &asymp; 3.14159265 por medio de la serie de Leibniz para 1000000000 = 10<sup>9</sup> iteraciones, además del tiempo que fue necesario para obtener la respuesta en cada caso.</h6>
+                              <br>
+                              <h6>Para la ejecución de este ejemplo en la implementación de forma secuencial, se tiene el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de iteraciones: 1000000000
+                        La respuesta es: 3.14159265
+                        
+                        real  0m12.102s
+                        user  0m9.900s
+                        sys   0m0.004s</pre>
+                              <br>
+                              <h6>Para la ejecución de este ejemplo en la implementación de forma paralela sencilla, se tiene el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de iteraciones: 1000000000
+                        La respuesta es: 3.14159265
+                        
+                        real  0m8.064s
+                        user  0m21.828s
+                        sys   0m0.008s</pre>
+                              <br>
+                              <h6>Para la ejecución de este ejemplo en la implementación de forma paralela con ciclos for optimizados, se tiene el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de iteraciones: 1000000000
+                        La respuesta es: 3.14159265
+                        
+                        real  0m5.200s
+                        user  0m11.612s
+                        sys   0m0.012s</pre>
+                              <br>
+                              <h6>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas generales, se tiene el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de iteraciones: 1000000000
+                        El hilo 2 esta entrando en la seccion critica
+                        El hilo 1 esta entrando en la seccion critica
+                        El hilo 3 esta entrando en la seccion critica
+                        El hilo 0 esta entrando en la seccion critica
+                        La respuesta es: 3.14159265
+                        
+                        real  0m4.823s
+                        user  0m10.540s
+                        sys   0m0.008s</pre>
+                              <br>
+                              <h6>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas atómicas, se tiene el siguiente resultado:</h6>
+                              <br>
+                              <pre align="left">Ingresar el numero de iteraciones: 1000000000
+                        La respuesta es: 3.14159265
+                        
+                        real  0m4.898s
+                        user  0m10.652s
+                        sys   0m0.000s</pre>
+                              <br>
+                              <h6>En la implementación de la serie de Leibniz de forma secuencial, se toman 12.102 segundos mientras que para la implementación de forma paralela sencilla, se toman 8.064 segundos, para la implementación de forma paralela con ciclos for optimizados, se toman 5.200 segundos, para la implementación de forma paralela con secciones críticas generales, se toman 4.823 segundos y para la implementación de forma paralela con secciones críticas atómicas, se toman 4.898 segundos. Luego, se puede inferir que el paralelismo en problemas matemáticos como sumatorias, productorias o en general, problemas concurrentes permite mejorar la eficiencia respecto a tiempo dependiendo de cómo se construyen los subproblemas y en qué forma se combinan las soluciones a los subproblemas para obtener la solución al problema original.</h6>
+                              <br>
+                              <h6>Como se pudo observar, en los resultados de tiempo de ejecución del problema de la serie de Leibniz, se tuvieron mejores resultados usando la directiva de ciclos for optimizados y definiendo explícitamente secciones críticas, el uso de este tipo de directivas junto a una buena planeación de problemas concurrentes según el modelo de ejecución fork-join permite mayor eficiencia en tiempo aunque se gasten más recursos a nivel computacional.</h6>
+                              <br>
+
+            </div>
+        </section>
+
+        <section id="avanzado" class="faq section-bg">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Ejemplo avanzado (Sucesión de Fibonacci)</h2>
+                    <h6>En este ejemplo, se desea calcular un número de la sucesión de Fibonacci de 4 formas (Secuencial: De forma recursiva y con la fórmula matemática, Paralela: De forma recursiva y con la fórmula matemática). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la sucesión de Fibonacci como una función recursiva y con su fórmula matemática; luego, de forma paralela, como el caso recursivo de la sucesión de Fibonacci está dado por <i>fibonacci(n - 1) + fibonacci(n - 2)</i>, se quiere que un solo hilo calcule <i>fibonacci(n - 1)</i> y otro hilo calcule <i>fibonacci(n - 2)</i> para después sumar los resultados y mostrar la respuesta.</h6>
+                    <br>
+                    <h6>Para la solución de forma paralela con la fórmula matemática, como la fórmula de la sucesión de Fibonacci está dada por la suma de 2 términos, se quiere que un solo hilo calcule el valor numérico del primer término y otro hilo calculará el valor numérico del segundo término para después sumar estos 2 resultados y mostrar la respuesta.</h6>
+                    <br>
+                    <h6>En términos de implementación, se usarán algunas funciones de las variables de entorno para indicar el número de hilos que dispone el programa y conocer qué número de hilo hizo algún cálculo, las directivas <i>parallel</i> para ejecución de código de forma paralela, <i>section y sections</i> para indicar secciones de código que se pueden ejecutar de forma paralela pero que un hilo cualquiera, pero solo uno, realice la tarea de la sección que le sea indicada y <i>atomic</i> como sección crítica para que un solo hilo a la vez aporte su respuesta al problema.</h6>
+                    <br>
+                    <h6>El código usado para la implementación de forma secuencial recursiva de la sucesión de Fibonacci es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+
+                long fibonacci(long numero){
+                if(numero == 1 || numero == 2){
+                    return 1;
+                }else{
+                    return fibonacci(numero - 1) + fibonacci(numero - 2);
+                }
+                }
+
+                int main(){
+                long numero;
+                printf("Ingresar un numero: ");
+                scanf("%ld", &numero);
+                printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, fibonacci(numero));
+                return 0;
+                }</code></pre>
+                    <br>
+                    <h6>El código usado para la implementación de forma secuencial con fórmula matemática de la sucesión de Fibonacci es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                #include &ltmath.h&gt
+
+                double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
+
+                double fibonacci(long numero){
+                return (pow(numeroAureo, numero) - pow(1 - numeroAureo, numero)) / sqrt(5.0);
+                }
+
+                int main(){
+                long numero;
+                printf("Ingresar un numero: ");
+                scanf("%ld", &numero);
+                printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, fibonacci(numero));
+                return 0;
+                }</code></pre>
+                    <br>
+                    <h6>El código usado para la implementación de forma paralela recursiva de la sucesión de Fibonacci es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                #include "omp.h"
+
+                long fibonacci(long numero){
+                if(numero == 1 || numero == 2){
+                    return 1;
+                }else{
+                    return fibonacci(numero - 1) + fibonacci(numero - 2);
+                }
+                }
+
+                int main(){
+                int numeroHilos = 5;
+                omp_set_num_threads(numeroHilos);
+                long respuesta = 0, numero;
+                printf("Ingresar un numero: ");
+                scanf("%ld", &numero);
+
+                #pragma omp parallel sections
+                {
+                    #pragma omp section
+                    {
+                    long subrespuesta = fibonacci(numero - 2);
+                    printf("El hilo %d descubrio que fibonacci(%ld) = %ld\n", omp_get_thread_num(), numero - 2, subrespuesta);
+                    #pragma omp atomic
+                        respuesta += subrespuesta;
+                    }
+                    #pragma omp section
+                    {
+                    long subrespuesta = fibonacci(numero - 1);
+                    printf("El hilo %d descubrio que fibonacci(%ld) = %ld\n", omp_get_thread_num(), numero - 1, subrespuesta);
+                    #pragma omp atomic
+                        respuesta += subrespuesta;
+                    }
+                }
+
+                printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, respuesta);
+                return 0;
+                }</code></pre>
+                    <br>
+                    <h6>El código usado para la implementación de forma paralela con fórmula matemática de la sucesión de Fibonacci es el siguiente:</h6>
+                    <br>
+                    <pre align="left"><code class="C++">#include &ltstdio.h&gt
+                #include &ltmath.h&gt
+                #include "omp.h"
+
+                double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
+
+                int main(){
+                int numeroHilos = 5;
+                omp_set_num_threads(numeroHilos);
+                double respuesta = 0;
+                long numero;
+                printf("Ingresar un numero: ");
+                scanf("%ld", &numero);
+
+                #pragma omp parallel sections
+                {
+                    #pragma omp section
+                    {
+                    double subrespuesta = pow(numeroAureo, numero) / sqrt(5.0);
+                    printf("El hilo %d descubrio que el primer valor numerico es %.10f\n", omp_get_thread_num(), subrespuesta);
+                    #pragma omp atomic
+                        respuesta += subrespuesta;
+                    }
+                    #pragma omp section
+                    {
+                    double subrespuesta = pow(1 - numeroAureo, numero) / sqrt(5.0);
+                    printf("El hilo %d descubrio que el segundo valor numerico es %.10f\n", omp_get_thread_num(), subrespuesta);
+                    #pragma omp atomic
+                        respuesta -= subrespuesta;
+                    }
+                }
+
+                printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, respuesta);
+                return 0;
+                }</code></pre>
+                    <br>
+                    <h6>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 5 hilos aunque solo 2 hilos son necesarios para la solución de este problema. Se quiere conocer el número 45 de la sucesión de Fibonacci, además del tiempo que fue necesario para obtener la respuesta en cada caso.</h6>
+                    <br>
+                    <h6>Para la ejecución de este ejemplo en la implementación de forma secuencial recursiva, se tiene el siguiente resultado:</h6>
+                    <br>
+                    <pre align="left">Ingresar un numero: 45
+                El numero 45 de la sucesion de Fibonacci es 1134903170
+
+                real  0m8.751s
+                user  0m7.996s
+                sys   0m0.000s</pre>
+                    <br>
+                    <h6>Para la ejecución de este ejemplo en la implementación de forma secuencial con fórmula matemática, se tiene el siguiente resultado:</h6>
+                    <br>
+                    <pre align="left">Ingresar un numero: 45
+                El numero 45 de la sucesion de Fibonacci es 1134903170
+
+                real  0m0.703s
+                user  0m0.000s
+                sys   0m0.000s</pre>
+                    <br>
+                    <h6>Para la ejecución de este ejemplo en la implementación de forma paralela recursiva, se tiene el siguiente resultado:</h6>
+                    <br>
+                    <pre align="left">Ingresar un numero: 45
+                El hilo 1 descubrio que fibonacci(43) = 433494437
+                El hilo 2 descubrio que fibonacci(44) = 701408733
+                El numero 45 de la sucesion de Fibonacci es 1134903170
+
+                real  0m4.867s
+                user  0m6.916s
+                sys   0m0.000s</pre>
+                    <br>
+                    <h6>Para la ejecución de este ejemplo en la implementación de forma paralela con fórmula matemática, se tiene el siguiente resultado:</h6>
+                    <br>
+                    <pre align="left">Ingresar un numero: 45
+                El hilo 1 descubrio que el primer valor numerico es 1134903170.0000016689
+                El hilo 3 descubrio que el segundo valor numerico es -0.0000000002
+                El numero 45 de la sucesion de Fibonacci es 1134903170
+
+                real  0m0.629s
+                user  0m0.000s
+                sys   0m0.000s</pre>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="otros" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Otros ejemplos (Multiplicación matrices)
+                    </h2>
+                    <h6>En este ejemplo, vamos a mostrar como la multiplicación de matrices con un algoritmo ingenuo se puede optimizar con la programación paralela usando openMP. </h6>
+                    <br>
+                    <h6>Aplicando la paralelización del for, usamos hilos por defecto. </h6>
+                    <br>
+                    <h6>Observar también el código secuencial y la diferencia entre ellos, lo que muestra el beneficio en tiempo que openMP proporciona sobre c++</h6>
+                            <br>
+                    <h6>¡Pruébenlo!</h6>
+                    <br>
+                    <pre align="left"><code class="C++">
+                #include &ltiostream&gt
+                #include "omp.h"
+                #include &ltsys/time.h&gt
+
+                using namespace std;
+
+                int main()//muestra la utilidad de las progrmacion paralela con el producto de matrices.
+                {
+
+
+                    int tamano = 600;
+                    int A [tamano][tamano], B [tamano][tamano], C [tamano][tamano], C2[tamano][tamano];
+
+                    for(int i=0; i < tamano; ++i)// Inicializamos las matrices
+                        for(int j=0; j < tamano; ++j){
+                            A[i][j] = 0;
+                            B[i][j] = 0;
+                            C[i][j] = 0;
+                            C2[i][j] = 0;
+
+                        }
+
+                    for(int i=0; i < tamano; ++i)// llenamos las matrices
+                        for(int j=0; j < tamano; ++j){
+                            A[i][j] = j;
+                            B[i][j] = j;
+                            //C[i][j] = 0;
+                        }
+
+                    // Generamos la matriz C = AB
+                struct timeval t0, t1;
+                gettimeofday(&t0, 0);
+                for(int i=0; i < tamano; i++)
+                        for(int j=0; j < tamano;j++)
+                            for(int z=0; z < tamano; z++){
+
+                                C[i][j] += A[i][z] * B[z][j];
+
+                            }
+                    gettimeofday(&t1, 0);
+                    double elapsed2 = (t1.tv_sec-t0.tv_sec) * 1.0f + (t1.tv_usec - t0.tv_usec) / 1000000.0f;
+                    cout <<"TIEMPO secuencial: "<< elapsed2 << endl;
+
+                    /*//Impresiones de matrices
+
+                    cout<<"Matriz A: "<< endl;
+                    for(int i=0; i < tamano; ++i)
+                    {
+                        for(int j=0; j < tamano; ++j)
+                        {
+                            cout<<&A[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+
+                    cout<<"Matriz B: "<< endl;
+                    for(int i=0; i< tamano; ++i)
+                    {
+                        for(int j=0; j< tamano; ++j)
+                        {
+                            cout<<&B[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+
+                    cout<<"Matriz C: "<< endl;
+                    for(int i=0; i< tamano; ++i)
+                    {
+                        for(int j=0; j< tamano; ++j)
+                        {
+                            cout<<&C[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+                    */
+
+                struct timeval t2, t3; // paralelizar
+                gettimeofday(&t2, 0);
+                #pragma omp parallel for
+                for(int i=0; i< tamano; i++)
+                        for(int j=0; j< tamano;j++)
+                            for(int z=0; z< tamano; z++){
+
+                                C2[i][j] += A[i][z] * B[z][j];
+
+                            }
+                gettimeofday(&t3, 0);
+                    double elapsed = (t3.tv_sec-t2.tv_sec) * 1.0f + (t3.tv_usec - t2.tv_usec) / 1000000.0f;
+                cout <<"TIEMPO PARALELO: "<< elapsed << endl;
+
+
+                    /*//Impresiones de matrices
+
+                    cout<<"Matriz A: "<< endl;
+                    for(int i=0; i< tamano; ++i)
+                    {
+                        for(int j=0; j< tamano; ++j)
+                        {
+                            cout<<&A[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+
+                    cout<<"Matriz B: "<< endl;
+                    for(int i=0; i< tamano; ++i)
+                    {
+                        for(int j=0; j< tamano; ++j)
+                        {
+                            cout<<&B[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+                    cout<<"Matriz C2: "<< endl;
+                    for(int i=0; i< tamano; ++i)
+                    {
+                        for(int j=0; j< tamano; ++j)
+                        {
+                            cout<<&C2[i][j]<<" ";
+                        }
+                        cout<< endl;
+                    }
+                    */
+
+                    return 0;
+                }
+
+
+                </code></pre>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="descargar" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Descargar ejemplos</h2>
+                    <h6>A continuacion encontraran los archivos de ejemplos .</h6>
+                    <ul class="dark-blue-text">
+                         <li><a href = "descargas/parallel.cpp">Directiva Parallel</a></li>
+                         <li><a href = "descargas/for.cpp">Directiva For</a></br></li>
+                         <li><a href = "descargas/section.cpp">Directiva Section</a></li>
+                         <li><a href = "descargas/single.cpp">Directiva Single</a></li>
+                         <li><a href = "descargas/parallel_anidado.cpp">Regiones paralelas Anidadas</a></li>
+                         <li><a href = "descargas/calculo_pi.cpp">Calculo Pi</a></li>
+                         <li><a href = "descargas/mulMatrices.cpp">Multiplicación de matrices</a></li>
+         
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <!-- End #main -->
+
+
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
