@@ -608,6 +608,13 @@
       961164
       ~/Java$
     </pre>
+          Esto se debe a que no hay un orden total como sucede en la
+          programación secuencial, hay un orden parcial, lo que genera
+          un orden de precedencia de las instrucciones que se deben ejecutar
+          muy diferente, de tal manera que en dicho árbol se muestra un orden
+          de ejecución simultáneo para todas las instrucciones del programa.
+          <p><img src="images/arbol_precedencia.PNG" alt=""></p>
+
 
               </li>
               <li>
@@ -811,7 +818,8 @@
             <h2>Seguridad</h2>
             Indican que es lo que se le permite hacer al programa, o equivalentemente, lo que no deberia hacer.
             <ul>
-              <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica.</li>
+              <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica, aunque esto
+              puede llegar a ser contraproducente al momento de la ejecución.</li>
               <li><strong>No deadlock :</strong> Ningun proceso debe ser retrasado esperando un evento que nunca va a
                 ocurrir.</li>
               <li><strong>Correctitud parcial :</strong> Si el programa termina, la salida sera lo es requerido.</li>
@@ -876,6 +884,7 @@
               intentar leer o escribir al mismo tiempo, lo cual no podemos permitir, ya que, nuestra informacion se
               podria perder, duplicar, corromper entre otros. Solo es posible que un proceso leo o escriba y que los
               demas esperen su turno. </p>
+            <p><img src="images/problema_lector_escritor.PNG" alt=""></p>
 
             <h2>Problema de los
               filosofos que cenan</h2>
@@ -946,13 +955,18 @@
 
                   <li>Está formado por una posición de memoria y dos instrucciones, una para reservarlo (wait o down) y
                     otra para liberarlo (signal o up). A esto se le puede añadir una cola de threads para recordar el
-                    orden en que se hicieron la peticiones</li>
+                    orden en que se hicieron la peticiones.</li>
 
-                  <li>Soporte del SO para garantizar la exclusión mutua</li>
+                  <li>Soporte del SO para garantizar la exclusión mutua.</li>
 
                   <li>Sincronizar dos o más threads o procesos, de modo que su ejecución se realice de forma ordenada y
                     sin conflictos entre ellos.</li>
+                  <li>Es una solución con un bajo nivel de abstracción, por lo cual
+                    se debe implementar en todo el programa, y puede generar graves
+                    problemas de seguridad e implementación.
+                  </li>
                 </ul>
+                <p><img src="images/semaforo.PNG" alt=""></p>
                 <p>
                   <strong>EJEMPLO:</strong> (Solución posterior)<br><br>
                   Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una
@@ -1008,8 +1022,14 @@
                 Cada hilo tiene un turno, todos los hilos deben esperar mientras el hilo que tenga el turno esté
                 presente en la sección crítica. Aquí los métodos son ejecutados haciendo uso de exclusión mutua
                 porque varios hilos de procesos van a querer ingresar en diferentes tiempos pero solo es permitido
-                que ingrese uno y así pueda estar activo en el monitor en cierto instante de tiempo.
+                que ingrese uno y así pueda estar activo en el monitor en cierto instante de tiempo. Puesto a que
+                es una implementación con un alto nivel de abstracción, ofrece más garantías con respecto a seguridad
+                y tolerancia a fallos que otras implementaciones para planificar procesos.
               </li><br>
+              <div class="row">
+                <p><img src="images/monitor_1.PNG" alt=""></p>
+                <p><img src="images/monitor_2.PNG" alt=""></p>
+              </div>
 
               <li><strong>Mensajes:</strong><br>
                 Los hilos se comunican y sincronizan por medio de mensajes, avisandole a los otros hilos cuando puede
@@ -1460,12 +1480,16 @@ procedure consumer() {
                 mucho a las rápidas.</li>
               <li>Velocidad de ejecución.</li>
               <li>Menores tiempos de respuesta.</li>
+              <li>Permite la implementación de programación reactiva</li>
+              <li>Controlabilidad</li>
+              <li>Disponibilidad de servicios</li>
             </ul>
           </div>
           <div id="desventajas">
             <br><br>
             <h1>Desventajas</h1>
             <ul>
+              <li>Seguridad</li>
               <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
               <li>Dificultad de desarrollo.</li>
               <li>Dificultad de verificación.</li>
@@ -1487,7 +1511,9 @@ procedure consumer() {
             <br>
             Elixir es lenguaje de programación de propósito general, concurrente; este lenguaje es funcional. Además
             está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a
-            fallos con baja latencia.
+            fallos con baja latencia. Es utilizado para construcción de API's y para optimización en el desarrollo web.
+            Es utilizado en muchos frameworks como Hedwig, para la implementación de chatbots en distntas redes sociales y
+            demás.
 
             <ul>
               <li><strong>Ada</strong></li>
@@ -1508,7 +1534,8 @@ procedure consumer() {
             <center><img src="images/rust.png" width="150px" height="150px"></center>
             Rust es un lenguaje de programación compilado, de propósito general y multiparadigma desarrollado por
             Mozilla y ha sido diseñado para ser ‘un lenguaje seguro, concurrente y práctico’. Rust se enfoca
-            principalmente en seguridad, velocidad y concurrencia.
+            principalmente en seguridad, velocidad y concurrencia. Una de sus principales caraterísticas es que es posible
+            arreglar bugs en timepo de ejecución. Usado en desarollo web y embebido.
 
             <ul>
               <li><strong>Erlang</strong></li>
@@ -1517,7 +1544,7 @@ procedure consumer() {
             Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones
             concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para
             estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante
-            el paso de mensajes.
+            el paso de mensajes. Utilizado en telecomunicaciones, e-commerce y mensajería instantánea.
 
             <ul>
               <li><strong>GO</strong></li>
@@ -1525,7 +1552,8 @@ procedure consumer() {
             <center><img src="images/go.png" width="150px" height="150px"></center>
             GO Es un lenguaje de programación compilado, concurrente, imperativo, estructurado, no orientado a objetos
             con recolector de basura, soportado en diferentes tipos de sistemas. La concurrencia en Go es diferente a
-            los criterios de programación basados en bloqueos como pthreads.
+            los criterios de programación basados en bloqueos como pthreads. Es fácil de aprender debido a su similitud
+            con los lenguajes más usados, es implementado en modelos de negocio y manejo de servidores.
 
             <ul>
               <li><strong>Haskell</strong></li>
@@ -1553,13 +1581,37 @@ procedure consumer() {
 
             Java es un lenguaje de programación orientado a objetos creado en 1991 y publicado en 1995 por Sun
             Microsystem (adquirida por Oracle en 2010), con la intención de que los programadores escribieran el código
-            solo una y lo ejecutarán en cualquier dispositivo. JAva permite realizar concurrencia con la libretia
-            threads.
-            <br /><br /><br /><br /><br />
-            <p>Es altamente recomendable de utilizar hilos con estos lenguajes. En cualquier caso, cuando, un lenguaje
-              permite de hacer programación concurrente, debe usarlo. Además, cuando uses estos lenguajes, a menudo
-              usarás hilos sin siquiera saberlo. De hecho, hay muchas funciones incluidas en los lenguajes que crean un
-              hilo sin preguntarle al programador.</p>
+            solo una y lo ejecutarán en cualquier dispositivo. JAva permite realizar concurrencia con la librería
+            threads. Además de que cuenta con otras librerías que implementan métodos de planificación y control de procesos 
+            (variables atómicas, semáforos, entre otros) traídos del paquete concurrent.
+            <div class="mt-4"></div>
+              <p>Es altamente recomendable de utilizar hilos con estos lenguajes. En cualquier caso, cuando, un lenguaje
+                permite de hacer programación concurrente, debe usarlo. Además, cuando uses estos lenguajes, a menudo
+                usarás hilos sin siquiera saberlo. De hecho, hay muchas funciones incluidas en los lenguajes que crean un
+                hilo sin preguntarle al programador. Además, existen otros lenguajes que ya contienen paquetes que facilitan la
+                implementción de la programación concurrente como los son:</p>
+            </div>
+
+
+            <ul>
+              <li><strong>python</strong></li>
+            </ul>
+            <center><img src="images/python.png" width="96px" height="96px"></center>
+
+            Python es el lenguaje más utilizado a nivel mundial (según revista IEEE), es un lenguaje de sintaxis simple y cuyas
+            aplicaciones cubren una gran cantidad de áreas del conocimiento como lo son inteligencia artificial, ciencia de datos,
+            entre otras. En cuanto a programación concurrente, cuenta con varias librerías para la implementación d eesta y su respectivo
+            control, como lo son la librería "Thread" y "Multiprocessing", que provee de herramientas como semáforos, monitores, entre otros.
+
+            <ul>
+              <li><strong>C</strong></li>
+            </ul>
+            <center><img src="images/c.jpg" width="180px" height="96px"></center>
+            C es uno de los lenguajes más rápidos que existen puesto a que es un lenguaje compilado, es altamente usado en el diseño y desarrollo
+            de los sistemas operativos que hoy en día se usan, además de que facilita el uso de memoria dinámica y muchas otras características.
+            En cuanto a programación concurrente, usa la librería pthread.h para la creación de hlos y métodos de control muy básicos como la implementación
+            de un semáforo.
+            
 
 
           </div>
