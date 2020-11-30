@@ -1280,10 +1280,183 @@
 		</section>
 
 	<section id="fifteen" class="wrapper style2 alt">
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h2>Lenguajes de programación</h2>
+					<p class="pjustify">
+						Los lenguajes de programación paralela, son lenguajes, API, frameworks y herramientas que permiten aprovechar el potencial del hardware de forma paralela.  Sin embargo, la 
+						paralelización automática de un programa secuencial sigue siendo un problema a resolver a pesar de los muchos esfuerzos que se han hecho en los últimos 40 años. Los principales lenguajes
+						de programación en paralelo permanecen explicitamente paralelos o parcialmente implícitos: un programador le da al compilador directivas de paralelización. Existen pocos lenguajes de programación
+						paralelos totalmente implícitos: SISAL, Parallel Haskell, y (para FPGAs) Mitrion C. 
+					</p>
+					<h3>Niveles de los modelos de programación paralela</h3>
+					<p class="pjustify">
+						Los lenguajes de programación paralelos en general se pueden agrupar en niveles de acuerdo con la arquitectura subyacente, el nivel de paralelización y el esfuerzo realizado por el programador para 
+						lograr dicho nivel.  
+					</p>
+					<div class="imagen">
+						<img src="images/nivelesprogramacionparalela.png" alt="" />
+					</div>
+					<p>
+						En donde: 
+					</p>
+						<ol type="a">
+							<li>
+								El nivel de abstracción de la programación paralela es el más alto y el modelo mantiene toda la complejidad del paralelismo a nivel de hardware. 
+								El modelo demanda el mínimo esfuerzo en términos de programación y el paralelismo se limita específicamente al que introduce el hardware, por ejemplo en 
+								ejecución superescalar y SMT( Simultaneous Multithreading).
+							</li>
+							<li>
+								En este nivel, igualmente el esfuerzo requerido por el programador es mínimo y el paralelismo se gana gracias al compilador y las interfaces con el mismo.  Este 
+								modelo es usado generalmente cuando los programas son restructurados y recompilados para mejorar su desempeño por medio de paralelismo.
+							</li>
+							<li>
+								En este nivel, el esfuerzo requerido por el programador es un poco mayor, pero se dispone de herramientas de más alto nivel para mejorar el desempeño.
+								Este modelo es usado por ejemplo en GPGPU (General-purpose computing on graphics processing units) especialmente en dispositivos móbiles.
+							</li>
+							<li>
+								Este es el nivel de programación paralela más poderoso.  Hace énfasis en el control del programador sobre el hardware explotando
+								su uso de forma eficiente mediante librerías y herramientas de alto nivel. En este nivel se encuentran aplicaciones implementadas con librerías de MPI, CUDA, POSIX y OPENMP entre otros.
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
 			<div class="inner">
 				<div class="spotlight">
 					<div class="contentmo2">
-						<h2>Lenguajes de programacion</h2>
+					<h2>Modelos de programación paralela</h2>
+					<p>
+						En la actualidad existen diversos modelos de programación paralela, ellos se agrupan de acuerdo a: el método de comunicación entre los diferentes elementos de cómputo, 
+						los mecanismos de acceso a la memoria de datos del programa, la forma de gestionar las ejecución de las tareas y más recientemente de acuerdo con la heterogeneidad del hardware 
+						sobre el cual pueden ser implementados.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h3>Modelo de intercambio de mensajes</h3>
+					<div class="imagen">
+						<img src="images/animationmpi.gif" alt="MPI" />
+					</div>
+					<p>
+						En el modelo de intercambio de mensajes el algoritmo es dividido en piezas que serán procesadas dentro de un cluster (región) de nodos (CPUs) que están conectados por un 
+						bus de intercomunicación.  La sincronización de los procesos ocurre por intercambio de mensajes entre los nodos. En cada CPU la memoria es compartida y cada núcleo se hace cargo 
+						de un proceso. Usualmente es utilizado para ejecutar muchas veces el mismo proceso con la misma distribución de procesamiento por cluster. 
+					</p>
+					<p>
+						El usuario escribirá su aplicación como un proceso secuencial del que se lanzarán varias instancias que cooperan entre sí.  A pesar que se comparte localmente la memoria, 
+						es considerado un modelo de memoria distribuida debido a que cada nodo dispone de su propia memoria local.
+					</p>
+					<p>
+						La aplicación más representativa de este modelo es MPI.
+					</p>
+					<h4>MPI (Message Passing Interface) </h4>
+
+					<p>
+						MPI es una librería estándar para ser usada en programas que aprovechen arquitecturas de múltiples procesadores.  Fue desarrollada por el Centro de investigación en Computación paralela en
+						Williamsbrug, y publicada en Noviembre de 1993, año en el que nace el foro que actualmente se encarga de su mantenimiento y evolución. Sus lenguajes de especificación son C , C++ y Fortran. 
+						Existen implementaciones para Python, Ocalm, Java, .NET y PHP.  
+					</p>
+					<p>
+						<b>Ventajas: </b>Estandarización y eficiencia en el traspaso de mensajes, portabilidad, y disponibilidad en varios lenguajes de programación. 
+					</p>
+					<p>
+						<b>Desventajas: </b>  Estarían las posibles latencias del bus de intercomunicación, la dificultad en la sincronización entre tareas. 
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h3>Modelo de programación por hilos</h3>
+					<div class="imagen">
+						<img src="images/animationthreads.gif" alt="threadsModel" />
+					</div>
+					<p>
+						Este modelo busca la ejecución de múltiples tareas simultáneamente.  Es un modelo de memoria compartida. Su estructura base es un hilo el cual es una unidad de ejecución 
+						que contiene instrucciones de un programa y la estructura de memoria necesaria para su ejecución independiente.  La aplicación precursora de este modelo es POSIX Threads.						
+					</p>
+					<h4>POSIX Threads (Portable operating system interface for Linux) </h4>
+					<p>
+						Posix es una librería para sistemas operativos. Es el estándar de IEEE 1003.1 Fue creada en 1995 para Linux, y ha tenido varias actualizaciones, 
+						la versión actual es la del 2017, pero existen unas especificaciones del Open Group actualizadas en el año 20018.  
+						Su especificación fue realizada en ANSI C y lenguaje ensamblador. Ha tenido implementaciones en otros sistemas operativos como Mac OS, Solaris y Windows
+						 (mediante la instalación de aplicaciones adicionales).
+						 
+					</p>
+					<p>
+						<b>Ventajas: </b> Estandarización y eficiencia
+					</p>
+					<p>	 
+					<b>Desventajas: </b> complejidad en la sincronización entre tareas, algunas incompatibilidades dependiendo de la versión del sistema operativo.
+					</p>
+					
+					<h4>OpemMP (Opem multiprocessing) </h4>
+					<p>
+						
+					</p>
+					<h4>TBB (Threading building blocks) </h4>
+					<p>
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h3>Modelos  </h3>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h2>¿Cuál modelo seleccionar?</h2>
+					<p>
+							Seleccionar el mejor modelo de programación paralela dependerá del tipo de tarea a ejecutar, el dominio del negocio y la aplicación que necesitamos implementar.  Por ejemplo, si se intenta
+							realizar una implementación en donde los datos requeridos para el algoritmo son muy grandes, en primera instancia se podría pensar en un modelo de memoria distribuida, en donde de ser necesario
+							se distribuye el procesamiento de los datos en varios nodos y se usa el modelo MPI para la implementación.  Sin embargo, si por ejemplo se tiene un algoritmo secuencial que ya está funcionando y 
+							lo que queremos es hacerlo más eficiente aprovechando un nuevo hardware y también sabemos que el requerimiento de memoria no es muy alto , se podría pensar en el uso de OpenMP pues además
+							 incluye directivas que ayudan en la paralelización del algoritmo.  También se puede pensar en darle solución a la necesidad mediante un sistema híbrido por ejemplo: MPI +  OpenMP. </p>
+					<p>		
+							Sin embargo, siempre se debe tener en cuenta que el modelo seleccionado debería tener las siguientes propiedades:
+					</p>
+					<div class="imagemo">
+							<img src="images/seleccionmodelo.PNG" alt="" />
+					</div>
+
+					<h5>
+						Desempeño:
+					</h5>
+					<p> 
+						El desempeño del modelo debe ser predecible, aún si se escala a sistemas más grandes.
+					</p>
+					<h5>
+						Productividad:
+					</h5>
+					<p> 
+						El modelo debería disponer de herramientas que le permitan monitorear y ajustar su desempeño y debe 
+						contener las librerías y herramientas suficientes para  realizar las implementaciones de forma fácil y eficiente.
+					</p>
+					<h5>
+						Portabilidad:
+					</h5>
+					<p> El modelo debe ser escalable a otros sistemas de hardware actuales y futuros.
+					</p>	
+				</div>
+			</div>
+		</div>
+
+			<div class="inner">
+				<div class="spotlight">
+					<div class="contentmo2">
+						<h3>Clasificación de las herramientas de programación paralela</h3>
 
 						<div class="imagemo">
 							<img src="images/Biblioteca.png" alt="" />
@@ -1294,39 +1467,83 @@
 						<div class="imagemo">
 							<img src="images/Lenguajes.png" alt="" />
 						</div>
-
-
-				</div>
-				
-
+				    </div>
 				</div>
 			</div>
-			<div class="spotlight">
-				<div class="content">
-					<h3>Lenguajes que integran el paradigma</h3>
-					<p class="pjustify">
+			<div class="inner">
+				<div class="spotlight">
+					<div class="contentmo2">
+						<h3>Lenguajes que integran el paradigma</h3>
+						<p class="pjustify">
 						Actualmente, existe una variedad de lenguajes de programación con un enfoque multiparadigma, los cuales
 						permiten tener flexibilidad a la hora de querer lograr un objetivo, en cuanto a programación. Igualmente,
 						los lenguajes suelen complementar dicho comportamiento con librerías, APIs o frameworks (ya sean comunitarios
 						 o privativos), los cuales le permiten al programador el disponer de herramientas de trabajo. 
-					</p>
-					<p class="pjustify">
+						</p>
+						<p class="pjustify">
 						El paradigma paralelo es implementado, en la mayoría de los lenguajes más conocidos actualmente, a través
-						de dichas herramientas. En la imagen, se hace un recuento de herramientas específicas de algunos de esos lenguajes,
+						de dichas herramientas. En la tabla, se hace un recuento de herramientas específicas de algunos de esos lenguajes,
 						mencionando que no son las únicas que existen. 
 					</p>
-					<p class="pjustify">
-						Igualmente, hay otras herramientas más aplicadas a un campo específico que se sirven del paradigma paralelo
-						para mejorar sus servicios, como por ejemplo CUDA, el cual es una plataforma para trabajar con algoritmos de 
-						nVidia usando GPU. También, se puede dar el ejemplo de Apache Spark, el cual es un framework para realizar 
-						análisis de BigData. Cada uno de ellos tiene su propias APIs para poder configurar comportamientos paralelos
-						en los algoritmos que se quieran desarrollar.
-					</p>
-					
-				</div>
-				<div class="image">
-					<img src="images/integracion_paralela_lenguajes.png" alt="" width="140" />
-				</div>
+			
+					<table border="1" style="border-collapse: collapse; width: 100%; height: 216px;">
+						<tbody>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;"><b>Lenguaje</b></td>
+						<td style="width: 50%; height: 18px;"><b>Implementaci&oacute;n</b></td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">C</td>
+						<td style="width: 50%; height: 18px;"><a href="https://pubs.opengroup.org/onlinepubs/9695969399/toc.pdf">Posix</a>, <a href="https://github.com/mpitutorial/mpitutorial">MPI</a>, <a href="https://github.com/OpenMP/sources/blob/main/stubs/stubs.c">OpenMp</a></td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;"><a href="https://isocpp.org/std/the-standard">C++</a></td>
+						<td style="width: 50%; height: 18px;">
+						<p><a href="https://en.wikipedia.org/wiki/Rogue_Wave_Software">Rogue Wave</a>, <a href="https://en.wikipedia.org/wiki/Boost_(C%2B%2B_libraries)">Boost</a>, <a href="https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library">Thread</a>, <a href="https://en.wikipedia.org/wiki/Dlib">Dlib</a>, <a href="https://en.wikipedia.org/wiki/OpenMP">OpenMP</a>, <a href="https://en.wikipedia.org/wiki/OpenThreads">OpenThreads</a>, <a href="https://en.wikipedia.org/wiki/Parallel_Patterns_Library">Parallel Patterns Library</a>, <a href="https://en.wikipedia.org/wiki/POCO_C%2B%2B_Libraries">POCO C++ Libraries</a>, <a href="https://en.wikipedia.org/wiki/POSIX_Threads">POSIX Threads</a>, <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a>&nbsp;Qthread, <a href="https://en.wikipedia.org/wiki/Stapl">Stapl</a>, <a href="https://en.wikipedia.org/wiki/Threading_Building_Blocks">TBB</a>, <a href="https://en.wikipedia.org/wiki/Integrated_Performance_Primitives">IPP</a></p>
+						</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">C#</td>
+						<td style="width: 50%; height: 18px;"><a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl">Task</a> <a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl">Parallel</a><a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl"> Library</a>. <a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq">Parallel</a> <a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq">Query</a><a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/introduction-to-plinq"> PLINQ</a>,</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;"><a href="http://fortranwiki.org/fortran/show/Parallelization">Fortran</a></td>
+						<td style="width: 50%; height: 18px;"><a href="https://en.wikipedia.org/wiki/Coarray_Fortran">Co-arrays</a>, <a href="http://www.mpi-forum.org/">MPI</a>, <a href="http://www.mcs.anl.gov/research/projects/mpich2/about/index.php?s=about">MPICH</a>, <a href="http://www.open-mpi.org/">OpenMPI</a>, <a href="http://fortranwiki.org/fortran/show/OpenMP">OpenMP</a>,<a href="http://openmp.org/wp/">OMP</a>, <a href="http://www.scai.fraunhofer.de/EP-CACHE/adaptor/www/adaptor_home.html">ADAPTOR</a>, <a href="http://www.pgroup.com/resources/cudafortran.htm">PGI CUDA Fortran </a><a href="http://www.pgroup.com/resources/cudafortran.htm">compiler</a>, <a href="http://www.cri.ensmp.fr/pips/">PIPS</a>.</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Go</td>
+						<td style="width: 50%; height: 18px;">
+						<p><a href="https://www.golang-book.com/books/intro/10">Goroutines</a><a href="https://www.golang-book.com/books/intro/10"> y </a><a href="https://www.golang-book.com/books/intro/10">channels</a></p>
+						</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Java</td>
+						<td style="width: 50%; height: 18px;">Clase <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Thread.html">Thread</a> (interfaz&nbsp;<b><i>Runnable</i></b>)</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Javascript</td>
+						<td style="width: 50%; height: 18px;"><a href="https://github.com/parallel-js">Parallel</a><a href="https://github.com/parallel-js"> JS</a>&nbsp;(usando web workers)</td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;"><a href="https://docs.julialang.org/en/v1/manual/parallel-computing/">Julia</a></td>
+						<td style="width: 50%; height: 18px;"><a href="https://docs.julialang.org/en/v1/manual/asynchronous-programming/">Tareas as&iacute;ncronas</a>, <a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Multihilos</a>, <a href="https://docs.julialang.org/en/v1/manual/distributed-computing/">computaci&oacute;n distribuida</a></td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Matlab</td>
+						<td style="width: 50%; height: 18px;"><a href="https://www.mathworks.com/help/parallel-computing/">Parallel</a> <a href="https://www.mathworks.com/help/parallel-computing/">computing</a> <a href="https://www.mathworks.com/help/parallel-computing/">toolbox</a></td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Python</td>
+						<td style="width: 50%; height: 18px;"><a href="https://wiki.python.org/moin/ParallelProcessing">M&uacute;ltiples librer&iacute;as</a></td>
+						</tr>
+						<tr style="height: 18px;">
+						<td style="width: 50%; height: 18px;">Ruby</td>
+						<td style="width: 50%; height: 18px;"><a href="https://rubygems.org/gems/parallel/versions/1.20.1">Gem </a><a href="https://rubygems.org/gems/parallel/versions/1.20.1">Parallel</a></td>
+						</tr>
+						</tbody>
+						</table>
+					</div>	
+				</div>		
 			</div>
 		</div>
 	</section>
@@ -1694,8 +1911,6 @@ int main(int argc, char *argv[])
 						CUDA son las siglas de Compute Unified Device Architecture (Arquitectura Unificada de Dispositivos de Cómputo) que hace referencia a una plataforma de computación en paralelo incluyendo un compilador y un conjunto de herramientas de desarrollo creadas por nVidia que permiten a los programadores usar una variación del lenguaje de programación C para codificar algoritmos en GPU de nVidia.[27]
 					</p>
 				</div>
-
-
 				<b>Hello World de CUDA. [28]</b>
 				<pre>
 
@@ -1859,76 +2074,40 @@ La cajera Cajera 1 HA TERMINADO DE PROCESAR Cliente 1 EN EL TIEMPO: 15seg
 		<div class="inner split">
 			<h2 id="biblio">Bibliografía</h2>
 			<ol>
+
 				<li>
-					<a href="http://proparalelaydistribuida.blogdiario.com/tags/lenguajes-paralelos/">http://proparalelaydistribuida.blogdiario.com/tags/lenguajes-paralelos/</a>
+					<a href="https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela">https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela</a>
+				</li>
+				<li>
+					<a href="https://computing.llnl.gov/tutorials/parallel_comp/">https://computing.llnl.gov/tutorials/parallel_comp/</a>
+				</li>
+				<li>
+					<a href="http://hdl.handle.net/10045/25282">http://hdl.handle.net/10045/25282</a>
 				</li>
 				<li>
 					<a href="http://informatica.uv.es/iiguia/ALP/materiales/1_1_a_ComputacionParalela.pdf">http://informatica.uv.es/iiguia/ALP/materiales/1_1_a_ComputacionParalela.pdf</a>
 				</li>
 				<li>
+					<a href="https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/">https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/</a>
+				</li>
+				<li>
 					<a href="http://lahuen.dcc.uchile.cl/mm_wiki/lib/exe/fetch.php?media=cpar:1-modelos.pdf">http://lahuen.dcc.uchile.cl/mm_wiki/lib/exe/fetch.php?media=cpar:1-modelos.pdf</a>
 				</li>
-
-				<li>
-					<a href="http://www.cs.buap.mx/~mtovar/doc/ProgConc/ProgramacionParalela.pdf">http://www.cs.buap.mx/~mtovar/doc/ProgConc/ProgramacionParalela.pdf</a>
-				</li>
-
-				<li>
-					<a href="http://www.saber.ula.ve/bitstream/123456789/15969/1/com_par.pdf">http://www.saber.ula.ve/bitstream/123456789/15969/1/com_par.pdf</a>
-				</li>
-
-				<li>
-					<a href="https://computing.llnl.gov/tutorials/parallel_comp/">https://computing.llnl.gov/tutorials/parallel_comp/</a>
-				</li>
-
 				<li>
 					<a href="http://lsi.ugr.es/jmantas/pdp/tutoriales/tutorial_mpi.php?tuto=03_pi">http://lsi.ugr.es/jmantas/pdp/tutoriales/tutorial_mpi.php?tuto=03_pi</a>
 				</li>
-
 				<li>
 					<a href="http://ocw.uc3m.es/ingenieria-informatica/arquitectura-de-computadores-ii/materiales-de-clasee/mc-f-002-iii">http://ocw.uc3m.es/ingenieria-informatica/arquitectura-de-computadores-ii/materiales-de-clasee/mc-f-002-iii</a>
 				</li>
-
 				<li>
-					Rauber, T., & Runger, G. (n.d.). Parallel programming: For multicore and cluster systems. Springer Books.
+					<a href="http://proparalelaydistribuida.blogdiario.com/tags/lenguajes-paralelos/">http://proparalelaydistribuida.blogdiario.com/tags/lenguajes-paralelos/</a>
 				</li>
-
 				<li>
-					Intro to parallel programming. <a href="https://www.udacity.com/course/intro-to-parallel-programming--cs344">Udacity course</a>.
+					<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion<br/>%20en%20Paralelo.pdf</a>
 				</li>
-
-				<li>
-					Whitson, G. P. (2016). Parallel Computing. Salem Press Encyclopedia Of Science,
-				</li>
-
-				<li>
-					Presentaciones profesor Cesar Pedraza - Computación paralela y Distribuida
-				</li>
-
-				<li>
-					<a href="https://www.cs.purdue.edu/homes/ayg/book/Slides/">https://www.cs.purdue.edu/homes/ayg/book/Slides/</a>
-				</li>
-
-				<li>
-					<a href="https://computing.llnl.gov/tutorials/parallel_comp/">https://computing.llnl.gov/tutorials/parallel_comp/</a>
-				</li>
-
 				<li>
 					<a href="http://web.mit.edu/vex/www/Parallel.pdf">http://web.mit.edu/vex/www/Parallel.pdf</a>
 				</li>
-
-				<li>
-					<a href="http://hdl.handle.net/10045/25282">http://hdl.handle.net/10045/25282</a>
-				</li>
-
-				<li>
-					<a href="https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html">https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html</a>
-				</li>
-
-				<li>
-					<a href="https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela">https://es.wikipedia.org/wiki/Computaci%C3%B3n_paralela</a>
-				</li>
-
 				<li>
 					<a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/07_ModelosDeProgramacionParalela.pdf">http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/07_ModelosDeProgramacionParalela.pdf</a>
 				</li>
@@ -1936,34 +2115,81 @@ La cajera Cajera 1 HA TERMINADO DE PROCESAR Cliente 1 EN EL TIEMPO: 15seg
 				<li>
 					<a href="http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf">http://webdelprofesor.ula.ve/ingenieria/gilberto/paralela/05_LeyDeAmdahlYMoore.pdf</a>
 				</li>
-
 				<li>
-					<a href="http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion%20en%20Paralelo.pdf">http://repositoriodigital.uns.edu.ar/bitstream/123456789/2001/1/MgTesis%20Weinbach%20-%20Paradigmas%20de%20Programacion<br/>%20en%20Paralelo.pdf</a>
+					<a href="https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html">https://webdocs.cs.ualberta.ca/~paullu/C681/parallel.timeline.html</a>
 				</li>
-
-				<li>
-					McCOLL M., ROBISON A., REINDERS J., Structured Parallel Programming Patterns for Efficient Computation (2012)
-				</li>
-
-				<li>
-					<a href="https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/">https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/</a>
-				</li>
-
 				<li>
 					<a href="https://www.agenciasinc.es/Noticias/La-UE-impulsa-la-computacion-paralela-para-aplicaciones-biomedicas">https://www.agenciasinc.es/Noticias/La-UE-impulsa-la-computacion-paralela-para-aplicaciones-biomedicas</a>
 				</li>
 				<li>
-					Hilos POSIX - POSIX Threads - qaz.wiki. (2011). es.qaz.wiki. https://es.qaz.wiki/wiki/POSIX_Threads
+					<a href="https://www.cs.purdue.edu/homes/ayg/book/Slides/">https://www.cs.purdue.edu/homes/ayg/book/Slides/</a>
+				</li>
+				<li>
+					<a href="http://www.cs.buap.mx/~mtovar/doc/ProgConc/ProgramacionParalela.pdf">http://www.cs.buap.mx/~mtovar/doc/ProgConc/ProgramacionParalela.pdf</a>
+				</li>
+
+				<li>
+					<a href="http://www.saber.ula.ve/bitstream/123456789/15969/1/com_par.pdf">http://www.saber.ula.ve/bitstream/123456789/15969/1/com_par.pdf</a>
 				</li>
 				<li>
 					C++ Multithreading - Tutorialspoint. (2010). tutorialspoint. https://www.tutorialspoint.com/cplusplus/cpp_multithreading.htm
 				</li>
 				<li>
-					colaboradores de Wikipedia. (2020, 14 noviembre). CUDA. Wikipedia, la enciclopedia libre. https://es.wikipedia.org/wiki/CUDA
+					Colaboradores de Wikipedia. (2020, 14 noviembre). CUDA. Wikipedia, la enciclopedia libre. https://es.wikipedia.org/wiki/CUDA
 				</li>
 				<li>
 					Hello World from CUDA. (2012). subscription.packtpub.com. https://subscription.packtpub.com/book/programming/9781788996242/1/ch01lvl1sec03/hello-world-from-cuda
 				</li>
+				<li>
+					Hilos POSIX - POSIX Threads - qaz.wiki. (2011). es.qaz.wiki. https://es.qaz.wiki/wiki/POSIX_Threads
+				</li>
+				<li>
+					 <a href="https://www.udacity.com/course/intro-to-parallel-programming--cs344"> Intro to parallel programming. Udacity course</a>.
+				</li>
+				<li>
+					<a href="http://index-of.es/Programming/C++/O'Reilly Intel Threading Building Blocks OutFitting C++ for Multi-Core Processor Parallelism.pdf"> 
+						James Reinders.Intel Threading Building Blocks Outfitting C++ for Multi-Core Processor Parallelism. Oreilly, 2007.</a>
+				</li>
+				<li>
+					<a href="http://digilib.stmik-banjarbaru.ac.id/data.bc/18. Programming/2012 Structured Parallel Programming Patterns for Efficient Computation.pdf"> 
+						McCool, M. D., Robison, A. D., & Reinders, J. (2012). Structured parallel programming: Patterns for efficient computation. Waltham, MA: Elsevier, Inc.</a>
+				</li>
+				<li>
+					<a href="http://www.e-tahtam.com/~turgaybilgin/2013-2014-guz/ParalelProgramlama/ParallelProg.pdf">
+						 Pacheco, Peter. An introduction to parallel programming. Elsevier. 2011.</a>
+				</li>
+				
+				<li><a href="https://arxiv.org/abs/1701.00854"> Paul E. McKenney. Is Parallel Programming Hard, And, If So, What Can You Do About It?.2019 </a></li>
+				<li>
+					<a href="https://pdfs.semanticscholar.org/e8f4/b7b68e73f9dd7b9b8dcfd32de6d2ff24a26b.pdf?_ga=2.51242345.1320536918.1606532300-813819185.1605570904"> 
+						Paweł Czarnul, Jerzy Proficz and Krzysztof Drypczewski.Survey of Methodologies, Approaches, and Challenges in Parallel Programming Using High-Performance Computing Systems. 
+						Hindawi Scientific Programming, Vol 2020. Articulo ID 4176794.</a>
+				</li>
+				<li>
+					<a href="https://www.researchgate.net/publication/344832796_A_Survey_on_Parallel_Architectures_and_Programming_Models">  
+						Pervan, Branimir & Knezovic, Josip. (2020). A Survey on Parallel Architectures and Programming Models.  </a>
+				</li>
+				<li>
+					Presentaciones profesor Cesar Pedraza - Computación paralela y Distribuida
+				</li>
+				<li>
+					Rauber, T., & Runger, G. (n.d.). Parallel programming: For multicore and cluster systems. Springer Books.
+				</li>
+				<li><a href="http://www.jornadassarteco.org/js2012/papers/paper_125.pdf"> Sánchez, Luis Miguel. Fernández,Javier.  Sotomayor, Rafael y García, J. Daniel.  
+					Evaluación comparativa de modelos de programación paralela en arquitectura de memoria compartida. </a>
+				</li>
+				
+				<li><a href="http://www-e6.ijs.si/~roman/files/Book_jul2018/book/book.pdf">  Trobec, R., Slivnik, B., Bulić, P., Robič, B. Introduction to Parallel Computing:
+					From Algorithms to Programming on State-of-the-Art Platforms. 2018</a>
+				</li>
+				<li>
+					Whitson, G. P. (2016). Parallel Computing. Salem Press Encyclopedia Of Science,
+				</li>
+
+				
+
+
+
 			</ol>
 
 		</div>
