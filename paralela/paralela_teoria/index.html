@@ -1285,7 +1285,7 @@
 				<div class="contentmo2">
 					<h2>Lenguajes de programación</h2>
 					<p class="pjustify">
-						Los lenguajes de programación paralela, son lenguajes, API, frameworks y herramientas que permiten aprovechar el potencial del hardware de forma paralela.  Sin embargo, la 
+						Los herramientas de programación paralela son: lenguajes, API, frameworks y otras herramientas que permiten aprovechar el potencial del hardware de forma paralela.  Sin embargo, la 
 						paralelización automática de un programa secuencial sigue siendo un problema a resolver a pesar de los muchos esfuerzos que se han hecho en los últimos 40 años. Los principales lenguajes
 						de programación en paralelo permanecen explicitamente paralelos o parcialmente implícitos: un programador le da al compilador directivas de paralelización. Existen pocos lenguajes de programación
 						paralelos totalmente implícitos: SISAL, Parallel Haskell, y (para FPGAs) Mitrion C. 
@@ -1354,19 +1354,33 @@
 					<p>
 						La aplicación más representativa de este modelo es MPI.
 					</p>
-					<h4>MPI (Message Passing Interface) </h4>
+													
+				</div>
+			</div>
+		</div>
+					<div class="inner">
+						<div class="spotlight">
+							<div class="contentmo2">					
+								
+								<a href="https://www.mpi-forum.org/">
+								<img src="images/mpi.png" alt="mpi-forum" width="100"  />
+								<h4>MPI (Message Passing Interface) </h4>
+								</a>
+								<p>
+									MPI es una librería estándar para ser usada en programas que aprovechen arquitecturas de múltiples procesadores.  Fue desarrollada por el Centro de investigación en Computación paralela en
+									Williamsbrug, y publicada en Noviembre de 1993, año en el que nace el foro que actualmente se encarga de su mantenimiento y evolución. Sus lenguajes de especificación son C , C++ y Fortran. 
+									Existen implementaciones para Python, Ocalm, Java, .NET y PHP.  
+								</p>
+								<p>
+									<b>Ventajas: </b>Estandarización y eficiencia en el traspaso de mensajes, portabilidad, y disponibilidad en varios lenguajes de programación. 
+								</p>
+								<p>
+									<b>Desventajas: </b>  Estarían las posibles latencias del bus de intercomunicación, la dificultad en la sincronización entre tareas. 
+								</p>
+								<a href="https://github.com/mpi-forum/">
+									<img src="images/github.png" alt="github" width="40" height="40" class="imagen" />
+								</a>
 
-					<p>
-						MPI es una librería estándar para ser usada en programas que aprovechen arquitecturas de múltiples procesadores.  Fue desarrollada por el Centro de investigación en Computación paralela en
-						Williamsbrug, y publicada en Noviembre de 1993, año en el que nace el foro que actualmente se encarga de su mantenimiento y evolución. Sus lenguajes de especificación son C , C++ y Fortran. 
-						Existen implementaciones para Python, Ocalm, Java, .NET y PHP.  
-					</p>
-					<p>
-						<b>Ventajas: </b>Estandarización y eficiencia en el traspaso de mensajes, portabilidad, y disponibilidad en varios lenguajes de programación. 
-					</p>
-					<p>
-						<b>Desventajas: </b>  Estarían las posibles latencias del bus de intercomunicación, la dificultad en la sincronización entre tareas. 
-					</p>
 				</div>
 			</div>
 		</div>
@@ -1381,36 +1395,132 @@
 						Este modelo busca la ejecución de múltiples tareas simultáneamente.  Es un modelo de memoria compartida. Su estructura base es un hilo el cual es una unidad de ejecución 
 						que contiene instrucciones de un programa y la estructura de memoria necesaria para su ejecución independiente.  La aplicación precursora de este modelo es POSIX Threads.						
 					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="inner">
+		<div class="spotlight">
+			<div class="contentmo2">
 					<h4>POSIX Threads (Portable operating system interface for Linux) </h4>
 					<p>
 						Posix es una librería para sistemas operativos. Es el estándar de IEEE 1003.1 Fue creada en 1995 para Linux, y ha tenido varias actualizaciones, 
 						la versión actual es la del 2017, pero existen unas especificaciones del Open Group actualizadas en el año 20018.  
 						Su especificación fue realizada en ANSI C y lenguaje ensamblador. Ha tenido implementaciones en otros sistemas operativos como Mac OS, Solaris y Windows
 						 (mediante la instalación de aplicaciones adicionales).
-						 
 					</p>
-					<p>
-						<b>Ventajas: </b> Estandarización y eficiencia
-					</p>
-					<p>	 
-					<b>Desventajas: </b> complejidad en la sincronización entre tareas, algunas incompatibilidades dependiendo de la versión del sistema operativo.
-					</p>
-					
-					<h4>OpemMP (Opem multiprocessing) </h4>
-					<p>
-						
-					</p>
-					<h4>TBB (Threading building blocks) </h4>
-					<p>
-						
-					</p>
+					<p><b>Ventajas: </b> Estandarización y eficiencia.</p>
+					<p><b>Desventajas: </b> complejidad en la sincronización entre tareas, algunas incompatibilidades dependiendo de la versión del sistema operativo.</p>
 				</div>
 			</div>
 		</div>
 		<div class="inner">
 			<div class="spotlight">
 				<div class="contentmo2">
-					<h3>Modelos  </h3>
+								
+					<a href="https://www.openmp.org/">
+						<img src="images/openmp.gif" alt="openmp" width="100"  />
+						<h4>OpemMP (Open multiprocessing) </h4>
+						</a>
+
+					<p>
+						OpenMP es una API para programación multiproceso de memoria compartida en múltiples plataformas que fue publicada por la Architecture Review Board en 1997. 
+						Su modelo de ejecución se basa en memoria compartida multihilos.   Se considera el sucesor más sofisticado de Posix Threads. Dispone de directivas que apoyan al programador para convertir
+						algoritmos secuenciales a paralelos de forma eficiente. Su especificiación fue realizada para lenguajes C, C++ y Fortran.  Funciona en la mayoría de las arquitecturas de procesador 
+						y sistemas operativos, incluyendo Solaris, AIX, HP - UX, Linux, Mac OS X, y las plataformas de Windows .
+					</p>
+					<a href="https://github.com/OpenMP">
+						<img src="images/github.png" alt="github" width="40" height="40" class="imagen" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<a href="https://software.intel.com/content/www/us/en/develop/tools/threading-building-blocks.html">
+						<img src="images/tbb.png" alt="tbb" width="200"  />
+						<h4>TBB (Threading building blocks) </h4>
+						</a>
+					<p>
+						TBB es una librería creada por Intel para que los programadores aprovechen al máximo el uso de los procesadores multinúcleo, es por ello que fue publicada en el año 2006 luego 
+						del lanzamiento del 1er procesador multinúcleo.  En el 2007 Intel decidió ofrecer sus herramientas básicas como código abierto, sin embargo muchas de sus funcionalidades más interesantes
+						 se encuentran bajo licencia comercial. Su lenguaje de especificación es C++, y se trata de un modelo de memoria compartida que implementó el concepto de work-steal.					
+					</p>
+					<div class="imagen">
+						<img src="images/animationworksteal.gif" alt="work-steal" />
+					</div>
+					<p>
+						El modelo de TBB consiste en un organizador de las tareas que se encarga de distribuir la carga entre los distintos workers,  cada worker o trabajador tiene una fila de tareas 
+						que debe ejecutar, sin embargo en caso de que algún núcleo termine antes, buscará a otro worker que tenga tareas pendientes por ejecutar y le robará la tarea más antigua para 
+						ayudarle con su carga y así hacer más eficiente el desempeño global del algoritmo.
+					</p>
+					<a href="https://github.com/oneapi-src/oneTBB">
+						<img src="images/github.png" alt="github" width="40" height="40" class="imagen" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<h3>Modelos heterogéneos  </h3>
+					<p>Durante las últimas dos décadas los servidores, computadoras personales y PMD que utilizan tanto CPU como GPU se han vuelto más comunes en la industria del hardware. La aparición de estos
+						equipos con tecnologías heterogéneas de procesamiento ha promovido un nuevo modelo de programación paralela: modelo de programación heterogéneo. En este entorno, el modelo de programación 
+						intenta aprovechar al máximo los recursos de cálculo del sistema disponibles mediante el uso de API y herramientas funcionales sin la necesidad de abordar paradigmas específicos de hardware
+						 (para CPU ó para GPU) o las limitantes de desempeño computacional entre ellos.  En este tipo de modelos, los cálculos son gestionados por un procesador host que provee control sobre otros equipos 
+						 computacionales (CPU/GPU).  La programación paralela es realizada usando programas kernel los cuales implementan la funcionalidad que será ejecutada por los devices (equipos computacionales).
+					</p>
+					<p>
+						El framework más representativo de este modelo es OpenCL.
+					</p>
+					<div class="imagen">
+						<img src="images/modeloheterogeneo" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<a href="https://www.khronos.org/opencl/">
+						<img src="images/opencllogo.png" alt="opencl" width="200"  />
+						<h4>OpenCL (Open computing language) </h4>
+						</a>
+					<p>
+						OpenCL es una API con lenguaje de programación propio llamado OpenCL C. Fue creada para fabricantes de hardware por Apple y desarrollada en conjunto con INTEL, IBM, NVIDIA y AMD. 
+						En el 2008 pasó al grupo Kronos para convertirse en estándar abierto.  En ese momento se retiran Intel  y NVIDIA e implementan sus propios entornos de desarrollo. 
+						Su especificación está basada en C y C++. Ha sido implementada para hardware heterogéneo: CPU, GPU, DSP, FPGA, ASIC. Como otros frameworks permite aprovechar el enorme potencial 
+						de la computación paralela y como ventaja lo ofrece de manera abierta y gratuita.  Sin embargo y debido a que está implementado para distintos tipos de equipo, 
+						su interfaz y configuración se hace más compleja que aquellos que usan un único tipo de dispositivo.
+				
+					</p>
+					<a href="https://github.com/KhronosGroup/OpenCL-Docs">
+						<img src="images/github.png" alt="github" width="40" height="40" class="imagen" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="spotlight">
+				<div class="contentmo2">
+					<a href="https://developer.nvidia.com/cuda-zone/">
+						<img src="images/cudalogo.png" alt="CUDA" width="200"  />
+						<h4>CUDA (Compute Unified Device Architecture)</h4>
+						</a>
+					<p>
+						CUDA es una API de computación en paralelo, que incluye un compilador y una serie de herramientas de desarrollo creadas por NVIDIA para implementar algoritmos en sus GPU. Permite programador
+						mediante una variación del lenguaje de programación C.  Mediante wrapers se puede usar en C/C++, Java y Fortran y existen múltiples aplicaciones en Python. 
+						CUDA intenta aprovechar el gran paralelismo, y el alto ancho de banda de la memoria en las GPU en aplicaciones con un gran coste aritmético frente a realizar numerosos accesos a memoria principal, lo que podría actuar de cuello de botella.
+						
+						
+
+				
+					</p>
+					<a href="https://github.com/NVIDIA/cuda-samples">
+						<img src="images/github.png" alt="github" width="40" height="40" class="imagen" />
+					</a>
 				</div>
 			</div>
 		</div>
@@ -1425,7 +1535,7 @@
 							lo que queremos es hacerlo más eficiente aprovechando un nuevo hardware y también sabemos que el requerimiento de memoria no es muy alto , se podría pensar en el uso de OpenMP pues además
 							 incluye directivas que ayudan en la paralelización del algoritmo.  También se puede pensar en darle solución a la necesidad mediante un sistema híbrido por ejemplo: MPI +  OpenMP. </p>
 					<p>		
-							Sin embargo, siempre se debe tener en cuenta que el modelo seleccionado debería tener las siguientes propiedades:
+							Sin embargo, siempre se debe tener en cuenta que el modelo seleccionado debería cumplir las siguientes propiedades:
 					</p>
 					<div class="imagemo">
 							<img src="images/seleccionmodelo.PNG" alt="" />
