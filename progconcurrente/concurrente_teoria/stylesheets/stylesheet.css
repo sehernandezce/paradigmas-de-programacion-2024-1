@@ -495,7 +495,7 @@ header h2 {
 }
 
 #main-content img {
-  max-width: 100%;
+  max-width: calc(100% - 30px);
 }
 
 aside#sidebar {

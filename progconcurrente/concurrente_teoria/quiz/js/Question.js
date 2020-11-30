@@ -56,7 +56,7 @@ Question.prototype.render = function(shuffle) {
     var fieldset = document.createElement("fieldset"),
         legend = document.createElement("legend"),
         self = this;
-
+    fieldset.className+=" question"
     fieldset.id = this.uid;
 
     if (shuffle) {
