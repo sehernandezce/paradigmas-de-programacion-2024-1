@@ -1,923 +1,265 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>OpenMP</title>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link rel="stylesheet" type="text/css" href="assets/css/boot.css">
-<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style_common.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style1.css">
-<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic'>
-<link rel="stylesheet" type="text/css" href="assets/css/styles/qtcreator_dark.css">
-<script src="assets/js/jquery-1.10.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js" ></script>
-<script src="assets/js/highlight.pack.js" ></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<style>
-	pre {
-		background: #303030;
-		color: #ffffff;
-		font-size: 15px;
-	}
-</style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>OpenMP</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/logo-ico.png" rel="icon">
+    <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-<div id="inicio" class="index">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <a class="navbar-brand page-scroll" href="http://www.openmp.org/">OpenMP</a></div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a class="page-scroll" href="#inicio">Inicio</a></li>
-          <li><a class="page-scroll" href="#instalacion">Instalación</a></li>
-          <li><a class="page-scroll" href="#tutorial">Tutorial</a></li>
-          <li><a class="page-scroll" href="#ejemplos">Ejemplos</a></li>
-          <li><a class="page-scroll" href="#ejemplosA">Ejemplos Archivos</a></li>
-          <li><a class="page-scroll" href="#recomendaciones">Recomendaciones</a></li>
-        </ul>
-      </div>
-    </div><!-- /.container-fluid -->
-  </nav>
-  <!-- Header -->
-  <header style="background-image:url(assets/img/header.jpg)">
-	<div class="container">
-		<div class="intro-text">
-			<div class="intro-lead-in"><img src="assets/img/omp.png" alt=""></div>
-			<a href="#instalacion" class="page-scroll btn btn-primary">Continuar</a>
-		</div>
-		</div>
-    </div>
-  </header>
-</div>
-<!-- ===== Instalacion ===== -->
-<section id="instalacion">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading" style="color:#3680C1">Instalación</h2>
-        <h3 class="section-subheading text-muted" style="font-size:18px">Para instalar OpenMP, se tienen las siguientes alternativas para los sistemas operativos de Windows y Linux:</h3>
-
-		<h1 class="margin">Instalación de OpenMP en Windows</h1>
-		<p>Es necesario descargar e instalar el IDE CodeBlocks (Disponible en <a href="http://www.codeblocks.org/downloads/26">http://www.codeblocks.org/downloads/26</a>) y el complemento MingW (Disponible en <a href="https://sourceforge.net/projects/mingw/files/">https://sourceforge.net/projects/mingw/files/</a>).</p>
-		<br>
-		<p>Al instalar el IDE CodeBlocks, se muestra la siguiente ventana:</p>
-		<img src="assets/img/instalacion1.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de CodeBlocks (Windows)" width="700" height="350">
-		<br>
-		<p>Al inicio de la instalación de MingW, se muestra una ventana en la que se descargarán unos paquetes:</p>
-		<img src="assets/img/instalacion2.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
-		<br>
-		<p>Después de que se hayan descargado esos paquetes, aparecerá la siguiente ventana, en la que hay que seleccionar todos los paquetes para que se instalen (Para pedir que se instale un paquete, se oprime clic derecho en un paquete y se selecciona la opción   “Mark for installation”):</p>
-		<img src="assets/img/instalacion3.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
-		<br>
-		<p>Después de haber seleccionado todos los paquetes, en la barra de menú, acceder a Installation -> Apply Changes y se acepta que 	se instalen los paquetes. Al finalizar, aparecerá la siguiente ventana y la instalación de MingW finalizará:</p>
-		<img src="assets/img/instalacion4.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Instalación de MingW (Windows)" width="700" height="350">
-		<br>
-		<p>Es necesario habilitar la librería omp.h en el IDE CodeBlocks para poder usarla. Para ello, es necesario ejecutar CodeBlocks, Ir a Settings -> Compiler en la barra de menú, luego en la ventana que aparece, ubicarse en la pestaña Compiler settings -> Other options, para agregar el texto “-fopenmp” (Sin comillas).</p>
-		<img src="assets/img/instalacion5.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
-		<img src="assets/img/instalacion6.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="700" height="400">
-		<br>
-		<p>Ahora es necesario ubicarse en la pestaña Compiler settings -> Linker settings para luego agregar el archivo “libgomp-1.dll” ubicado en el directorio de instalación de MingW y después se da clic primario en el botón OK para salir de la ventana:</p>
-		<img src="assets/img/instalacion7.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
-		<img src="assets/img/instalacion8.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="550" height="350">
-		<img src="assets/img/instalacion9.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
-		<br>
-		<p>Después de haber realizado estos pasos, ya se tendrá OpenMP en Windows para el IDE CodeBlocks.</p>
-		<br>
-		<h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04)</h1>
-		<p>Primero, es necesario ejecutar una terminal para instalar el IDE CodeBlocks, por medio de los siguientes comandos:</p>
-		<pre align="left">sudo apt-get update
-sudo apt-get install codeblocks</pre>
-		<br>
-		<p>Después de instalar el IDE CodeBlocks, se selecciona GNU GCC como compilador por defecto. Para este sistema operativo no es necesario instalar los complementos de MingW.</p>
-		<br>
-		<p>Es necesario habilitar la librería omp.h en el IDE CodeBlocks para poder usarla. Para ello, es necesario ejecutar CodeBlocks, Ir a Settings -> Compiler en la barra de menú, luego en la ventana que aparece, ubicarse en la pestaña Compiler settings -> Other options, para agregar el texto “-fopenmp” (Sin comillas).</p>
-		<img src="assets/img/instalacion5.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
-		<img src="assets/img/instalacion6.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="700" height="400">
-		<br>
-		<p>Ahora es necesario ubicarse en la pestaña Compiler settings -> Linker settings para luego agregar la librería “gomp” (Escribiendo el texto "gomp" (Sin comillas) directamente) y después se da clic primario en el botón OK para salir de la ventana:</p>
-		<img src="assets/img/instalacion7.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="300" height="350">
-		<img src="assets/img/instalacion10.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="425" height="350">
-		<img src="assets/img/instalacion11.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Habilitación de la librería" width="225" height="350">
-		<br>
-		<p>Después de haber realizado estos pasos, ya se tendrá OpenMP en Linux (Ubuntu 14.04) para el IDE CodeBlocks.</p>
-		<br>
-		<h1 class="margin">Instalación de OpenMP en Linux (Ubuntu 14.04) (Alternativa)</h1>
-		<p>Una forma más práctica de trabajo (Para Linux en Ubuntu 14.04), es por medio de compilación por consola de códigos fuente.</p>
-		<br>
-		<p>La compilación de programas escritos en lenguaje C con la librería "omp.h" se realiza con la siguiente estructura:</p>
-		<pre align="left">gcc &ltNombrePrograma&gt.c -fopenmp</pre>
-		<pre align="left">gcc &ltNombrePrograma&gt.c -o &ltNombreEjecutable&gt -fopenmp</pre>
-		<p>La compilación de programas escritos en lenguaje C++ con la librería "omp.h" se realiza con la siguiente estructura:</p>
-		<pre align="left">g++ &ltNombrePrograma&gt.cpp -fopenmp</pre>
-		<pre align="left">g++ &ltNombrePrograma&gt.cpp -o &ltNombreEjecutable&gt -fopenmp</pre>
-		<br>
-		<p>Para la ejecución de estos programas por medio de la terminal, si no se especificó explícitamente el nombre del archivo ejecutable, se usa el siguiente comando:</p>
-		<pre align="left">./a.out</pre>
-		<p>Para la ejecución de estos programas por medio de la terminal, si se especificó explícitamente el nombre del archivo ejecutable, se usa el siguiente comando:</p>
-		<pre align="left">./&ltNombreEjecutable&gt</pre>
-    </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ===== Tutorial ===== -->
-<section id="tutorial" class="bg-success">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading" style="color:#3680C1">Tutorial</h2>
-        <p>OpenMP es un Api para programación multiproceso o multihilo de memoria compartida, que se fundamenta en el modelo fork/join. <br> Está formado por un conjunto de directivas, funciones de librería y variables de entrorno, donde las directivas le permiten al programador comunicarse con el compilador y las funciones de librería son las que asignan o preguntan por los parámetros paralelos que se van a usar. <br>
-		OpenMP es uno de los programas para programación paralela más usados hoy en día que trabaja en C/C++ y Fortran. </p> <br>
-
-		<h2>Modelo Fork/Join</h2>
-		<p>Cuando se tiene una tarea muy pesada, puede ser dividida en tareas independientes más sencillas (fork) que cuando cada una tiene una solución a la tarea, se combinan (join) para poder tener la solución general a la tarea principal.</p>
-		<img src="assets/img/fork-join.jpg" class="img-responsive img-rounded margin" style="display:inline" alt="Fork-join" width="600" height="350">
-		<p>En OpenMP cuando se inicia un programa se crea un hilo maestro o padre que cuando necesita ingresar a una región paralela crea los hilos necesarios para poder realizar la tarea. Después de que cada hilo termine de realizar sus tareas, se presenta una sincronización y se sigue con la ejecución del programa. Puede que alguno de los hilos que se crearon necesite hacer este mismo procedimiento lo cual se puede realizar sin ningún problema.</p>
-
-		<h2>Sintaxis</h2>
-		<p>Para C/C++ la sintaxis básica de OpenMP es la siguiente:</p>
-		<pre align="left"><code class="C++">#pragma omp directiva[cláusulas]</code></pre>
-		<p>Donde las directivas son las acciones que se van a realizar y las cláusulas son las condiciones que se presentan a estas directivas.</p>
-		<p>La directiva que más se utiliza es <b>parallel</b> ya que es la que permite que se de la creación de los hilos y su sintaxis es la siguiente:</p>
-		<pre align="left"><code class="C++">#pragma omp parallel
-{
-			&ltBLOQUE DE CÓDIGO&gt
-}</code></pre>
-		<h2>Funciones útiles</h2>
-		<p align="left"><b>omp_set_num_threads(n)</b>: Permite fijar el número máximo de hilos que usará el programa.</p>
-		<p align="left"><b>omp_get_num_threads()</b>: Retorna el número de hilos que están en ejecución en el momento de su llamada.</p>
-		<p align="left"><b>omp_get_thread_num()</b>: Retorna el identificador del hilo. Este valor es un número entero entre 0 y n - 1, donde n es el número de hilos que usará el programa.</p>
-		<p align="left"><b>omp_get_max_threads()</b>: Retorna el número máximo de hilos que usará el programa.</p>
-		<p align="left"><b>omp_get_num_procs()</b>: Retorna el número de núcleos o de procesadores del computador.</p>
-		<br>
-
-		<h2>Técnica SPMD</h2>
-		<p>SPMD(Single Program, multiple data) es un técnica que permite lograr el paralelismo, donde las tareas son separadas y ejecutadas simultáneamente en múltiples procesadores y con diferentes entradas.</p><br>
-		<h2>Uso compartido falso</h2>
-		<p>Se presenta cuando existen datos independientes que se encuentran en la misma línea de caché, pero que por encontrarse de esta manera, si se realiza alguna actalización a la variable, las demás van a quedar sin poder realizar ningún procedimiento.</p>
-
-		<h2>Sincronización</h2>
-		<p>Se presenta cuando existe dependencia de datos entre procesadores. <br> Para OpenMP existen tres directivas que ayudan a que se realice una sincronización:</p>
-		<p align="left"><b>Barrera</b>: Es un método que crea una barrera donde los hilos tienen que esperar a que todos se encuentren en esta sección para poder continuar.</p>
-		<pre align="left"><code class="C++">#pragma omp barrier</code></pre>
-		<p align="left"><b>Exclusión mutua</b>: Se presenta cuando solo se necesita que un hilo ejecute el bloque de código.</p>
-		<pre align="left"><code class="C++">#pragma omp critical</code></pre>
-		<p align="left"><b>Atomic</b>: Proporciona exclusión mutua y se utiliza cuando se da una actualización de una sola ubicación de memoria. Solo puede ser actualizada por un solo simultáneamente y es utilizada por los operadores de aumenteo y decremento. </p>
-		<pre align="left"><code class="C++">#pragma omp atomic</code></pre>
-
-	      	<h2>Directiva Task</h2>
-	      	<p>Las tareas en OpenMP son bloques de código que el compilador envuelve y pone a disposición para ejecutarse en paralelo.</p>
-	      	pre align="left"><code class="C++">#pragma omp parallel
-	      	{
-	      		#pragma omp task
-	      			printf("hello world from a random thread\n");
-}</code></pre>
-
-	      	<h2>Directiva TaskWait</h2>
-	    	<p>Puede sincronizar tareas utilizando las directivas taskwait o taskgroup.</p>
-		<p>Cuando un subproceso encuentra una construcción taskwait, la tarea actual se suspende hasta que todas las tareas secundarias que generó antes de que la tarea taskwait finalice la ejecución.</p>
-		pre align="left"><code class="C++">#pragma omp parallel
-	      	{
-	      		#pragma omp taskwait
-}</code></pre>
-
-	  	<h3>Ejemplo directivas Task y TaskWait</h3>
-	  	pre align="left"><code class="C++">int main()
-	  {
-	  	#pragma omp parallel
-		{
-			printf("A ");
-			#pragma omp task
-				{printf("car ");}
-			#pragma omp task
-				{printf("race ");}
-			#pragma omp taskwait
-				{printf("is fun to watch \n");}
-		}
-}</code></pre>
-
-		<pre align="left">A A race car is fun to watch
-		car race is fun to watch
-		A race car is fun to watch
-		A car race is fun to watch</pre>
-
-		<h2>Cláusulas de Planificación</h2>
-		<p>Indica la forma como se dividen las iteraciones de los bucles entre los hilos. Pueden ser:</p>
-		<p align="left"><b>schedule(static[,tamaño])</b>: las iteraciones se dividen según el tamaño, y nosotros decidimos como van se van a asignar las iteraciones de los hilos.</p>
-		<p align="left"><b> schedule(dinamic[,tamaño])</b>: : las iteraciones se dividen según el tamaño y se asignan a los hilos dinámicamente cuando van acabando su trabajo, es decir que se deja que OpenMP maneje la forma como se van a hacer las iteraciones de los hilos.</p>
-		<h2>Ciclo For</h2>
-		<p>Para manejar regiones paralelas en un ciclo for se utiliza la directiva <b>for</b> que es una optimización de la directiva parallel para el manejo de este ciclo. Si solo se encuentra el ciclo for dentro de una región de parallel, la sintaxis es la siguiente:</p>
-		<pre align="left"><code class="C++">#pragma omp parallel for
-for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
-	&ltBLOQUE DE CÓDIGO&gt
-}</code></pre>
-		<p>De modo contrario, si no el ciclo for no es el único código dentro de la región paralela, la sintaxis que se usa es la siguiente: </p>
-		<pre align="left"><code class="C++">#pragma omp for
-for(&ltINICIALIZACIÓN&gt ; &ltCONDICIÓN DE PARADA&gt ; &ltACTUALIZACIÓN&gt){
-	&ltBLOQUE DE CÓDIGO&gt
-}</code></pre>
-		<h2>Cláusula Reduction</h2>
-		<p>Se refiere a una variable acumuladora donde se crea una copia local dentro de cada hilo de la variable establecida y que cuando todos los hilos ya han hecho su trabajo, con estas copias locales se va a actualizar la variable global. La variable se va a inicializar con la ientidad del operador que establecimos, por ejemplo si el operador es suma (+), la variable será inicializada con cero (0). Su formato es el siguiente: </p>
-		<pre align="left"><code class="C++">reduction(operador : variable)</code></pre>
-
-		<h2>Otras directivas</h2>
-		<p><b>master</b>: Esta directiva se presenta cuando se necesita que un segmento de código sea ejecutado solo por el hilo maestro, es decir que los demás hilos van a omitir este bloque de código. Su sintaxis es la siguiente: </p>
-		<pre align="left"><code class="C++">#pragma omp master
-{
-  &ltBLOQUE DE CÓDIGO&gt
-}</code></pre>
-		<p><b>single</b>: Es una directiva muy utilizada e indica el bloque de código que solo puede ser ejecutado por un hilo, el hilo que llegue primero será el que va a trabajar ese bloque de código y los demás hilos lo van a omitir.</p>
-		<pre align="left"><code class="C++">#pragma omp single
-{
-  &ltBLOQUE DE CÓDIGO&gt
-}</code></pre>
-		<p><b>sections</b>: Esta directiva brinda una  sección de bloque de código a cada hilo y su formato es el siguiente:</p>
-		<pre align="left"><code class="C++">#pragma omp sections
-{
-  #pragma omp section
-  {
-    &ltBLOQUE DE CÓDIGO SECCIÓN 1&gt
-  }
-                  ...
-  #pragma omp section
-  {
-    &ltBLOQUE DE CÓDIGO SECCIÓN N&gt
-  }
-}</code></pre>
-
-      </div>
-    </div>
-  </div>
-</section>
-<script>
-
-</script>
-<!-- Ejemplos -->
-<section id="ejemplos">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading" style="color:#3680C1">Ejemplos</h2>
-        <p>A partir del repaso realizado anteriormente, se muestran ejemplos de programas escritos en lenguaje C++ que aplican conceptos básicos del API OpenMP, se explican detalles de implementación, se muestra un análisis de ejecución y análisis a nivel de programación secuencial y paralela.</p>
-      <br>
-      <h2 class="margin">Ejemplo básico (Hola hilos)</h2>
-      <p>En este ejemplo, se quiere mostrar un saludo de cierto número de hilos creados y además, se quiere saber cuántos procesadores o núcleos tiene el computador. Para ello, se utilizan las variables de entorno básicas de OpenMP y la directiva <i>parallel</i>, para que de forma paralela cada hilo muestre un mensaje de saludo indicando qué número de hilo es y cuántos hilos se están ejecutando antes, durante y después de que la ejecución del programa pase por la sección paralela. El código usado para este ejemplo es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-int main(){
-    int numeroHilos;
-    printf("Ingresar el numero de hilos: ");
-    scanf("%d", &numeroHilos);
-
-    int numeroProcesadores = omp_get_num_procs();
-    omp_set_num_threads(numeroHilos);
-    printf("Este computador usa %d procesador(es)\n", numeroProcesadores);
-    printf("En este ejemplo se desea usar %d hilo(s)\n", omp_get_max_threads());
-    printf("En este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
-
-    printf("\nAcabo de entrar a la seccion paralela\n");
-    #pragma omp parallel
-    {
-        int idHilo = omp_get_thread_num();
-        printf("Hola, soy el hilo %d, en este momento se esta(n) ejecutando %d hilo(s)\n", idHilo, omp_get_num_threads());
-    }
-    printf("Acabo de salir de la seccion paralela\n");
-
-    printf("\nEn este momento se esta(n) ejecutando %d hilo(s)\n", omp_get_num_threads());
-    return 0;
-}
-</code></pre>
-      <br>
-      <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 5 hilos, teniendo el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de hilos: 5
-Este computador usa 4 procesador(es)
-En este ejemplo se desea usar 5 hilo(s)
-En este momento se esta(n) ejecutando 1 hilo(s)
-
-Acabo de entrar a la seccion paralela
-Hola, soy el hilo 1, en este momento se esta(n) ejecutando 5 hilo(s)
-Hola, soy el hilo 3, en este momento se esta(n) ejecutando 5 hilo(s)
-Hola, soy el hilo 2, en este momento se esta(n) ejecutando 5 hilo(s)
-Hola, soy el hilo 4, en este momento se esta(n) ejecutando 5 hilo(s)
-Hola, soy el hilo 0, en este momento se esta(n) ejecutando 5 hilo(s)
-Acabo de salir de la seccion paralela
-
-En este momento se esta(n) ejecutando 1 hilo(s)</pre>
-    <br>
-    <p>Para la ejecución de este programa, se indicará por medio de la entrada de consola que se quiere usar 10 hilos, teniendo el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de hilos: 10
-Este computador usa 4 procesador(es)
-En este ejemplo se desea usar 10 hilo(s) !!!
-En este momento se esta(n) ejecutando 1 hilo(s)
-
-Acabo de entrar a la seccion paralela
-Hola, soy el hilo 1, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 6, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 3, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 4, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 5, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 2, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 7, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 8, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 9, en este momento se esta(n) ejecutando 10 hilo(s)
-Hola, soy el hilo 0, en este momento se esta(n) ejecutando 10 hilo(s)
-Acabo de salir de la seccion paralela
-
-En este momento se esta(n) ejecutando 1 hilo(s)</pre>
-      <br>
-      <p>Como se pudo observar en las 2 ejecuciones del código usado para este ejemplo, antes y después de pasar por la sección paralela, se ejecuta un solo hilo, denominado <i>hilo maestro</i>, y en la sección paralela se ejecuta el número de hilos que se deseaba usar. También es importante destacar que los hilos se identifican por un número entero entre 0 y n - 1, donde n indica el número de hilos; además, el hilo maestro se identifica por el número 0.</p>
-      <br>
-      <h2 class="margin">Ejemplo intermedio (Serie de Leibniz)</h2>
-      <p>En este ejemplo, se desea calcular el número &pi; &asymp; 3.14159265 por medio de la serie de Leibiz de forma secuencial y de forma paralela con varias maneras de implementación (Paralela sencilla, Paralela con ciclos for optimizados, Paralela con sección crítica general y Paralela con sección crítica atómica). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la serie de Leibniz de forma tradicional; luego, de forma paralela se divide la serie original en varias subseries para que los hilos calculen los resultados numéricos de estas subseries, sumar los resultados y mostrar la respuesta.</p>
-      <br>
-      <p>En términos de implementación, de forma secuencial se implementa la serie de Leibniz por medio de un ciclo for limitado por un número de iteraciones que entre mayor sea, más se aproxima al resultado verdadero pero implicará una mayor inversión de tiempo, y para controlar el signo según la definición de la serie de Leibniz, se usa una variable booleana cuyo valor se invierte en cada iteración para evitar el uso de funciones que calculen potencias de números, esto ayuda a mejorar la eficiencia en tiempo, para este ejemplo.</p>
-      <br>
-      <p>En términos de implementación, además de usar algunas variables de entorno de OpenMP, para la implementación de la forma paralela sencilla, se usará la directiva <i>parallel</i> para la ejecución de forma paralela, con variables compartidas y privadas para que cada hilo calcule su parte de la serie y guarde su resultado en una posición de una variable que es compartida para todos los hilos, y para combinar resultados, se calcula la sumatoria de los valores calculados por cada hilo que fueron almacenados previamente, y se muestra el resultado.</p>
-      <br>
-      <p>Para la implementación de la forma paralela con ciclos for optimizados, se usarán las directivas <i>parallel</i> para ejecución de forma paralela y <i>for</i> en cada ciclo for presente en la implementación (Para el cálculo de las subseries, el uso de esta directiva se encarga de repartir las iteraciones según el número de hilos disponibles y para el cálculo de la respuesta del problema, se aprovecha esta directiva para que realice la suma de los valores calculados por cada hilo, más rápidamente).</p>
-      <br>
-      <p>Para la implementación de la forma paralela con secciones críticas generales, se usarán las directivas <i>parallel</i> para ejecución de forma paralela, donde cada hilo dispone de una variable donde almacena el resultado de la subserie que le corresponda y <i>critical</i> para indicar con un mensaje el número del hilo que está accediendo a la sección crítica y para que el hilo aporte su resultado de la subserie que le haya correspondido, a la respuesta de este problema; para esta acción es importante que un solo hilo la realice a la vez, debido a que es necesario sincronizar los hilos en programación paralela y se observa que debido a esto, los hilos pueden competir por el acceso a un recurso y esto se debe controlar.</p>
-      <br>
-      <p>Para la implementación de la forma paralela con secciones críticas atómicas, se parte de la descripción de la implementación de la forma paralela con secciones críticas generales, usando la directiva <i>atomic</i> en vez de la directiva <i>critical</i>, tomando en cuenta las secciones críticas atómicas solo toman una instrucción y no una secuencia de varias instrucciones como pasa en las secciones críticas generales.</p>
-      <br>
-      <p>El código usado para la implementación de forma secuencial es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-
-int main(){
-  double respuesta = 0.0;
-  long numeroIteraciones;
-  printf("Ingresar el numero de iteraciones: ");
-  scanf("%ld", &numeroIteraciones);
-
-  bool esIndicePar = true;
-  for(long indice = 0; indice <= numeroIteraciones; indice++){
-    if(esIndicePar == true){
-      respuesta += 4.0 / (2.0 * indice + 1.0);
-    }else{
-      respuesta -= 4.0 / (2.0 * indice + 1.0);
-    }
-    esIndicePar = !esIndicePar;
-  }
-
-  printf("La respuesta es: %f\n", respuesta);
-  return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela sencilla es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-int main(){
-    int numeroHilos = 4, idHilo;
-    omp_set_num_threads(numeroHilos);
-    double respuesta = 0.0, sumasParciales[numeroHilos];
-    long numeroIteraciones;
-    printf("Ingresar el numero de iteraciones: ");
-    scanf("%ld", &numeroIteraciones);
-
-    #pragma omp parallel private(idHilo) shared(sumasParciales)
-    {
-        int idHilo = omp_get_thread_num();
-        sumasParciales[idHilo] = 0.0;
-        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
-            if(indice % 2 == 0){
-                sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
-            }else{
-                sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
-            }
-        }
-    }
-    for(int indice = 0; indice < numeroHilos; indice++){
-        respuesta += sumasParciales[indice];
-    }
-
-    printf("La respuesta es: %.8f\n", respuesta);
-    return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela con ciclos for optimizados es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-int main(){
-    int numeroHilos = 4, idHilo;
-    omp_set_num_threads(numeroHilos);
-    double respuesta = 0.0, sumasParciales[numeroHilos];
-    long numeroIteraciones;
-    printf("Ingresar el numero de iteraciones: ");
-    scanf("%ld", &numeroIteraciones);
-
-    #pragma omp parallel private(idHilo) shared(sumasParciales)
-    {
-        int idHilo = omp_get_thread_num();
-        sumasParciales[idHilo] = 0.0;
-        #pragma omp for
-        for(long indice = idHilo; indice < numeroIteraciones; indice++){
-            if(indice % 2 == 0){
-                sumasParciales[idHilo] += 4.0 / (2.0 * indice + 1.0);
-            }else{
-                sumasParciales[idHilo] -= 4.0 / (2.0 * indice + 1.0);
-            }
-        }
-    }
-
-    #pragma omp for
-    for(int indice = 0; indice < numeroHilos; indice++){
-        respuesta += sumasParciales[indice];
-    }
-
-    printf("La respuesta es: %.8f\n", respuesta);
-    return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela con secciones críticas generales es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-int main(){
-    int numeroHilos = 4, idHilo;
-    omp_set_num_threads(numeroHilos);
-    double respuesta = 0.0;
-    long numeroIteraciones;
-    printf("Ingresar el numero de iteraciones: ");
-    scanf("%ld", &numeroIteraciones);
-
-    #pragma omp parallel
-    {
-        int idHilo = omp_get_thread_num();
-        double sumaParcial = 0.0;
-        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
-            if(indice % 2 == 0){
-                sumaParcial += 4.0 / (2.0 * indice + 1.0);
-            }else{
-                sumaParcial -= 4.0 / (2.0 * indice + 1.0);
-            }
-        }
-
-        #pragma omp critical
-        {
-          printf("El hilo %d esta entrando en la seccion critica\n", idHilo);
-          respuesta += sumaParcial;
-        }
-    }
-
-    printf("La respuesta es: %.8f\n", respuesta);
-    return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela con secciones críticas atómicas es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-int main(){
-    int numeroHilos = 4, idHilo;
-    omp_set_num_threads(numeroHilos);
-    double respuesta = 0.0;
-    long numeroIteraciones;
-    printf("Ingresar el numero de iteraciones: ");
-    scanf("%ld", &numeroIteraciones);
-
-    #pragma omp parallel
-    {
-        int idHilo = omp_get_thread_num();
-        double sumaParcial = 0.0;
-        for(long indice = idHilo; indice < numeroIteraciones; indice += numeroHilos){
-            if(indice % 2 == 0){
-                sumaParcial += 4.0 / (2.0 * indice + 1.0);
-            }else{
-                sumaParcial -= 4.0 / (2.0 * indice + 1.0);
-            }
-        }
-
-        #pragma omp atomic
-        respuesta += sumaParcial;
-    }
-
-    printf("La respuesta es: %.8f\n", respuesta);
-    return 0;
-}</code></pre>
-      <br>
-      <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 4 hilos para la solución de este problema. Se quiere conocer la aproximación al número &pi; &asymp; 3.14159265 por medio de la serie de Leibniz para 1000000000 = 10<sup>9</sup> iteraciones, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma secuencial, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de iteraciones: 1000000000
-La respuesta es: 3.14159265
-
-real  0m12.102s
-user  0m9.900s
-sys   0m0.004s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela sencilla, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de iteraciones: 1000000000
-La respuesta es: 3.14159265
-
-real  0m8.064s
-user  0m21.828s
-sys   0m0.008s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con ciclos for optimizados, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de iteraciones: 1000000000
-La respuesta es: 3.14159265
-
-real  0m5.200s
-user  0m11.612s
-sys   0m0.012s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas generales, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de iteraciones: 1000000000
-El hilo 2 esta entrando en la seccion critica
-El hilo 1 esta entrando en la seccion critica
-El hilo 3 esta entrando en la seccion critica
-El hilo 0 esta entrando en la seccion critica
-La respuesta es: 3.14159265
-
-real  0m4.823s
-user  0m10.540s
-sys   0m0.008s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con secciones críticas atómicas, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar el numero de iteraciones: 1000000000
-La respuesta es: 3.14159265
-
-real  0m4.898s
-user  0m10.652s
-sys   0m0.000s</pre>
-      <br>
-      <p>En la implementación de la serie de Leibniz de forma secuencial, se toman 12.102 segundos mientras que para la implementación de forma paralela sencilla, se toman 8.064 segundos, para la implementación de forma paralela con ciclos for optimizados, se toman 5.200 segundos, para la implementación de forma paralela con secciones críticas generales, se toman 4.823 segundos y para la implementación de forma paralela con secciones críticas atómicas, se toman 4.898 segundos. Luego, se puede inferir que el paralelismo en problemas matemáticos como sumatorias, productorias o en general, problemas concurrentes permite mejorar la eficiencia respecto a tiempo dependiendo de cómo se construyen los subproblemas y en qué forma se combinan las soluciones a los subproblemas para obtener la solución al problema original.</p>
-      <br>
-      <p>Como se pudo observar, en los resultados de tiempo de ejecución del problema de la serie de Leibniz, se tuvieron mejores resultados usando la directiva de ciclos for optimizados y definiendo explícitamente secciones críticas, el uso de este tipo de directivas junto a una buena planeación de problemas concurrentes según el modelo de ejecución fork-join permite mayor eficiencia en tiempo aunque se gasten más recursos a nivel computacional.</p>
-      <br>
-      <h2 class="margin">Ejemplo avanzado (Sucesión de Fibonacci)</h2>
-      <p>En este ejemplo, se desea calcular un número de la sucesión de Fibonacci de 4 formas (Secuencial: De forma recursiva y con la fórmula matemática, Paralela: De forma recursiva y con la fórmula matemática). Aunque el resultado deseado es el mismo, se quiere conocer qué tan eficientes en tiempo son estas formas de solución a este problema. Para ello, de forma secuencial se implementa la sucesión de Fibonacci como una función recursiva y con su fórmula matemática; luego, de forma paralela, como el caso recursivo de la sucesión de Fibonacci está dado por <i>fibonacci(n - 1) + fibonacci(n - 2)</i>, se quiere que un solo hilo calcule <i>fibonacci(n - 1)</i> y otro hilo calcule <i>fibonacci(n - 2)</i> para después sumar los resultados y mostrar la respuesta.</p>
-      <br>
-      <p>Para la solución de forma paralela con la fórmula matemática, como la fórmula de la sucesión de Fibonacci está dada por la suma de 2 términos, se quiere que un solo hilo calcule el valor numérico del primer término y otro hilo calculará el valor numérico del segundo término para después sumar estos 2 resultados y mostrar la respuesta.</p>
-      <br>
-      <p>En términos de implementación, se usarán algunas funciones de las variables de entorno para indicar el número de hilos que dispone el programa y conocer qué número de hilo hizo algún cálculo, las directivas <i>parallel</i> para ejecución de código de forma paralela, <i>section y sections</i> para indicar secciones de código que se pueden ejecutar de forma paralela pero que un hilo cualquiera, pero solo uno, realice la tarea de la sección que le sea indicada y <i>atomic</i> como sección crítica para que un solo hilo a la vez aporte su respuesta al problema.</p>
-      <br>
-      <p>El código usado para la implementación de forma secuencial recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-
-long fibonacci(long numero){
-  if(numero == 1 || numero == 2){
-    return 1;
-  }else{
-    return fibonacci(numero - 1) + fibonacci(numero - 2);
-  }
-}
-
-int main(){
-  long numero;
-  printf("Ingresar un numero: ");
-  scanf("%ld", &numero);
-  printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, fibonacci(numero));
-  return 0;
-}</code></pre>
-    <br>
-      <p>El código usado para la implementación de forma secuencial con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include &ltmath.h&gt
-
-double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
-
-double fibonacci(long numero){
-  return (pow(numeroAureo, numero) - pow(1 - numeroAureo, numero)) / sqrt(5.0);
-}
-
-int main(){
-  long numero;
-  printf("Ingresar un numero: ");
-  scanf("%ld", &numero);
-  printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, fibonacci(numero));
-  return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela recursiva de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include "omp.h"
-
-long fibonacci(long numero){
-  if(numero == 1 || numero == 2){
-    return 1;
-  }else{
-    return fibonacci(numero - 1) + fibonacci(numero - 2);
-  }
-}
-
-int main(){
-  int numeroHilos = 5;
-  omp_set_num_threads(numeroHilos);
-  long respuesta = 0, numero;
-  printf("Ingresar un numero: ");
-  scanf("%ld", &numero);
-
-  #pragma omp parallel sections
-  {
-    #pragma omp section
-    {
-      long subrespuesta = fibonacci(numero - 2);
-      printf("El hilo %d descubrio que fibonacci(%ld) = %ld\n", omp_get_thread_num(), numero - 2, subrespuesta);
-      #pragma omp atomic
-        respuesta += subrespuesta;
-    }
-    #pragma omp section
-    {
-      long subrespuesta = fibonacci(numero - 1);
-      printf("El hilo %d descubrio que fibonacci(%ld) = %ld\n", omp_get_thread_num(), numero - 1, subrespuesta);
-      #pragma omp atomic
-        respuesta += subrespuesta;
-    }
-  }
-
-  printf("El numero %ld de la sucesion de Fibonacci es %ld\n", numero, respuesta);
-  return 0;
-}</code></pre>
-      <br>
-      <p>El código usado para la implementación de forma paralela con fórmula matemática de la sucesión de Fibonacci es el siguiente:</p>
-      <pre align="left"><code class="C++">#include &ltstdio.h&gt
-#include &ltmath.h&gt
-#include "omp.h"
-
-double numeroAureo = (1.0 + sqrt(5.0)) / 2.0;
-
-int main(){
-  int numeroHilos = 5;
-  omp_set_num_threads(numeroHilos);
-  double respuesta = 0;
-  long numero;
-  printf("Ingresar un numero: ");
-  scanf("%ld", &numero);
-
-  #pragma omp parallel sections
-  {
-    #pragma omp section
-    {
-      double subrespuesta = pow(numeroAureo, numero) / sqrt(5.0);
-      printf("El hilo %d descubrio que el primer valor numerico es %.10f\n", omp_get_thread_num(), subrespuesta);
-      #pragma omp atomic
-        respuesta += subrespuesta;
-    }
-    #pragma omp section
-    {
-      double subrespuesta = pow(1 - numeroAureo, numero) / sqrt(5.0);
-      printf("El hilo %d descubrio que el segundo valor numerico es %.10f\n", omp_get_thread_num(), subrespuesta);
-      #pragma omp atomic
-        respuesta -= subrespuesta;
-    }
-  }
-
-  printf("El numero %ld de la sucesion de Fibonacci es %.0f\n", numero, respuesta);
-  return 0;
-}</code></pre>
-      <br>
-      <p>Para la ejecución de los códigos en este ejemplo, se usó un computador con 8 GB de memoria RAM y 2.2 GHz de frecuencia de procesador; en sistema operativo Linux Ubuntu 14.04, y se propone que en la ejecución de estos programas, se disponga de 5 hilos aunque solo 2 hilos son necesarios para la solución de este problema. Se quiere conocer el número 45 de la sucesión de Fibonacci, además del tiempo que fue necesario para obtener la respuesta en cada caso.</p>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma secuencial recursiva, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar un numero: 45
-El numero 45 de la sucesion de Fibonacci es 1134903170
-
-real  0m8.751s
-user  0m7.996s
-sys   0m0.000s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma secuencial con fórmula matemática, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar un numero: 45
-El numero 45 de la sucesion de Fibonacci es 1134903170
-
-real  0m0.703s
-user  0m0.000s
-sys   0m0.000s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela recursiva, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar un numero: 45
-El hilo 1 descubrio que fibonacci(43) = 433494437
-El hilo 2 descubrio que fibonacci(44) = 701408733
-El numero 45 de la sucesion de Fibonacci es 1134903170
-
-real  0m4.867s
-user  0m6.916s
-sys   0m0.000s</pre>
-      <br>
-      <p>Para la ejecución de este ejemplo en la implementación de forma paralela con fórmula matemática, se tiene el siguiente resultado:</p>
-      <pre align="left">Ingresar un numero: 45
-El hilo 1 descubrio que el primer valor numerico es 1134903170.0000016689
-El hilo 3 descubrio que el segundo valor numerico es -0.0000000002
-El numero 45 de la sucesion de Fibonacci es 1134903170
-
-real  0m0.629s
-user  0m0.000s
-sys   0m0.000s</pre>
-			<h2 class="margin">Otros ejemplos (Multiplicación matrices)</h2>
-      <p>En este ejemplo, vamos a mostrar como la multiplicación de matrices con un algoritmo ingenuo se puede optimizar con la programación paralela usando openMP. </p>
-      <br>
-      <p>Aplicando la paralelización del for, usamos hilos por defecto. </p>
-      <br>
-      <p>Observar también el código secuencial y la diferencia entre ellos, lo que muestra el beneficio en tiempo que openMP proporciona sobre c++</p>
-			<br>
-      <p>¡Pruébenlo!</p>
-      <pre align="left"><code class="C++">
-#include &ltiostream&gt
-#include "omp.h"
-#include &ltsys/time.h&gt
-
-using namespace std;
-
-int main()//muestra la utilidad de las progrmacion paralela con el producto de matrices.
-{
-
-
-    int tamano = 600;
-    int A [tamano][tamano], B [tamano][tamano], C [tamano][tamano], C2[tamano][tamano];
-
-    for(int i=0; i < tamano; ++i)// Inicializamos las matrices
-        for(int j=0; j < tamano; ++j){
-            A[i][j] = 0;
-            B[i][j] = 0;
-            C[i][j] = 0;
-            C2[i][j] = 0;
-
-        }
-
-    for(int i=0; i < tamano; ++i)// llenamos las matrices
-        for(int j=0; j < tamano; ++j){
-            A[i][j] = j;
-            B[i][j] = j;
-            //C[i][j] = 0;
-        }
-
-    // Generamos la matriz C = AB
-   struct timeval t0, t1;
-   gettimeofday(&t0, 0);
-   for(int i=0; i < tamano; i++)
-        for(int j=0; j < tamano;j++)
-            for(int z=0; z < tamano; z++){
-
-                C[i][j] += A[i][z] * B[z][j];
-
-            }
-    gettimeofday(&t1, 0);
-	double elapsed2 = (t1.tv_sec-t0.tv_sec) * 1.0f + (t1.tv_usec - t0.tv_usec) / 1000000.0f;
-    cout <<"TIEMPO secuencial: "<< elapsed2 << endl;
-
-    /*//Impresiones de matrices
-
-    cout<<"Matriz A: "<< endl;
-    for(int i=0; i < tamano; ++i)
-    {
-        for(int j=0; j < tamano; ++j)
-        {
-            cout<<&A[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-
-    cout<<"Matriz B: "<< endl;
-    for(int i=0; i< tamano; ++i)
-    {
-        for(int j=0; j< tamano; ++j)
-        {
-            cout<<&B[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-
-    cout<<"Matriz C: "<< endl;
-    for(int i=0; i< tamano; ++i)
-    {
-        for(int j=0; j< tamano; ++j)
-        {
-            cout<<&C[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-    */
-
-   struct timeval t2, t3; // paralelizar
-   gettimeofday(&t2, 0);
-   #pragma omp parallel for
-   for(int i=0; i< tamano; i++)
-        for(int j=0; j< tamano;j++)
-            for(int z=0; z< tamano; z++){
-
-                C2[i][j] += A[i][z] * B[z][j];
-
-            }
-   gettimeofday(&t3, 0);
-	 double elapsed = (t3.tv_sec-t2.tv_sec) * 1.0f + (t3.tv_usec - t2.tv_usec) / 1000000.0f;
-   cout <<"TIEMPO PARALELO: "<< elapsed << endl;
-
-
-    /*//Impresiones de matrices
-
-    cout<<"Matriz A: "<< endl;
-    for(int i=0; i< tamano; ++i)
-    {
-        for(int j=0; j< tamano; ++j)
-        {
-            cout<<&A[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-
-    cout<<"Matriz B: "<< endl;
-    for(int i=0; i< tamano; ++i)
-    {
-        for(int j=0; j< tamano; ++j)
-        {
-            cout<<&B[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-    cout<<"Matriz C2: "<< endl;
-    for(int i=0; i< tamano; ++i)
-    {
-        for(int j=0; j< tamano; ++j)
-        {
-            cout<<&C2[i][j]<<" ";
-        }
-        cout<< endl;
-    }
-    */
-
-    return 0;
-}
-
-
- </code></pre>
-
-		</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ===== Recomendaciones ===== -->
-<section id="ejemplosA">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-          <h2 class="section-heading" style="color:#3680C1">Ejemplos Archivos</h2>
-          <div class="col-lg-12 text-left">
-          <p>A continuacion encontraran los archivos de ejemplos .</p>
-          <ul class="dark-blue-text">
-               <li><a href = "Ejemplos/parallel.cpp">Directiva Parallel</a></li>
-				<li><a href = "Ejemplos/for.cpp">Directiva For</a></br></li>
-				<li><a href = "Ejemplos/section.cpp">Directiva Section</a></li>
-				<li><a href = "Ejemplos/single.cpp">Directiva Single</a></li>
-				<li><a href = "Ejemplos/parallel_anidado.cpp">Regiones paralelas Anidadas</a></li>
-				<li><a href = "Ejemplos/calculo_pi.cpp">Calculo Pi</a></li>
-				<li><a href = "Ejemplos/mulMatrices.cpp">Multiplicación de matrices</a></li>
-
-           </ul>
-		<br>
-      </div>
-</div>
-  </div>
-    </div>
+
+
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container">
+
+            <div class="logo float-left">
+                <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+            </div>
+
+            <nav class="nav-menu float-right d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="#header">Inicio</a></li>
+                    <li><a href="#Instalacion">Instalación</a></li>
+                    <li class="drop-down"><a href="#tutorial">Tutorial</a>
+                        <ul>
+                            <li><a href="tutorial.html#modelo">Modelo Fork/Join</a></li>
+                            <li><a href="tutorial.html#directivas">Directivas</a></li>
+                        </ul>
+                    </li>
+                    <li class="drop-down"><a href="#ejemplos">Ejemplos</a>
+                        <ul>
+                            <li><a href="ejemplos.html#basico">Ejemplo basico (Hola hilos)</a></li>
+                            <li><a href="ejemplos.html#intermedio">Ejemplo intermedio (Serie de Leibniz)</a></li>
+                            <li><a href="ejemplos.html#avanzado">Ejemplo avanzado (Sucesión de Fibonacci)</a></li>
+                            <li><a href="ejemplos.html#otros">Otros ejemplos (Multiplicación matrices)</a></li>
+                            <li><a href="ejemplos.html#descargar">Descargar ejemplos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#recursos">Recursos</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+    <!-- End Header -->
+
+    <section id="hero">
+        <div class="hero-container">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/img/slide/index.jpg');background-size: cover;">
+                <div class="carousel-container">
+                    <div class="carousel-content container" style="text-align: center; width: 55%;">
+                        <h2 class="animate__animated animate__fadeInDown" style="font-size: 100px;">OpenMP</span>
+                        </h2>
+                        <p style="width: 100%; font-size: 18px;">Es una API creada en 1997 por un consorcio tecnológico conformado por compañías como AMD, Intel, IBM, entre otras. Tiene como propósito el soporte del multiprocesamiento de memoria compartida o en otras palabras el soporte de la
+                            programación paralela en C, C++ y Fortran. Su nombre es una abreviación de Open Multi-Processing</p>
+                        <a href="#Instalacion" class="btn-get-started animate__animated animate__fadeInUp scrollto">Conocer más</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+
+        <section id="Instalacion" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Instalación</h2>
+                    <h6>Para instalar OpenMP, se tienen las siguientes alternativas para los sistemas operativos de Windows y Linux:</h6>
+                </div>
+
+                <div class="row no-gutters">
+
+                    <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+                        <span>01</span>
+                        <h4 class="title"><a href="instalacion_01.html">Windows</a></h4>
+                        <p>Pasos para la instalación de OpenMP en el sistema operativo Windows.</p>
+                      </div>
+            
+                      <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
+                        <span>02</span>
+                        <h4 class="title"><a href="instalacion_02.html">Linux (Ubuntu 14.04)</a></h4>
+                        <p>Instalación de OpenMP en el sistema operativos Linux.</p>
+                      </div>
+            
+                      <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="200">
+                        <span>03</span>
+                        <h4 class="title"><a href="instalacion_03.html">Linux (Alternativa)</a></h4>
+                        <p>Una forma más práctica de trabajo, es por medio de compilación por consola de códigos fuente.</p>
+                      </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======= About Us Section ======= -->
+        <section id="tutorial" class="about section-bg container">
+          <div class="col-lg-8 d-flex flex-column justify-content-center" style="margin: auto;">
+
+            <div class="section-title">
+                <h2>Tutorial</h2>
+                <p>
+                  Para aprender como funciona OpenMP es necesario conocer dos cosas, el modelo que sigue OpenMP para realizar tareas 
+                  en paralelo y las directivas que se utilizan para ejecutar operaciones paralelamente. A continuación, se encuentran
+                  los tutoriales necesarios para el entendimiento de esta API.
+                </p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                <h4 class="title"><a href="tutorial.html#modelo">Modelo Fork/Join</a></h4>
+                <p class="description">Cuando se tiene una tarea muy pesada, esta puede ser dividida en tareas independientes más sencillas.
+                  OpenMP hace uso de este principio en el modelo que define su funcionamiento.
+                </p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon"><i class="bx bx-gift"></i></div>
+                <h4 class="title"><a href="tutorial.html#directivas">Directivas</a></h4>
+                <p class="description">La sintaxis que utiliza OpenMP se basa en las directivas que este utiliza para construir el modelo
+                  explicado anteriormente, aquí se explica el uso y propósito de estas.
+                </p>
+            </div>
+
+        </div>
+        </section>
+        <!-- End About Us Section -->
+
+        <!-- ======= Frequently Asked Questions Section ======= -->
+
+        <section id="ejemplos" class="about-lists">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Ejemplos</h2>
+                    <h6>Si deseas ver ejemplos de programas escritos en lenguaje C++ que aplican conceptos básicos del API OpenMP, donde se expliquen detalles de implementación, se muestre un análisis de ejecución y a nivel de programación secuencial y paralela debes explorar esta sección</h6>
+                </div>
+
+                <div class="row no-gutters">
+
+                    <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+                        <h4 class="title"><a href="ejemplos.html#basico">Básico</a></h4>
+                        <p>El clásico ejemplo del "Hola mundo" aplicado a la programación paralela, saludando con cada uno de nuestros hilos</p>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="title"><a href="ejemplos.html#avanzado">Avanzado</a></h4>
+                        <p>La sucesión de Fibonacci aplicada a la programación paralela y un análisis con su implementación secuencial</p>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 content-item" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="title"><a href="ejemplos.html#descargar">Descargar ejemplos</a></h4>
+                        <p>Si deseas descargar el código fuente de los ejemplos planteados da click aquí</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        
+        <section id="recursos" class="services section-bg">
+          <div class="container">
+
+              <div class="section-title">
+                  <h2>Recursos</h2>
+              </div>
+
+              <div class="row">
+                  <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                      <div class="icon"><i class="icofont-earth"></i></div>
+                      <h4 class="title"><a href="http://www.openmp.org/">Página Oficial</a></h4>
+                      <p class="description">En la página oficial de OpenMP hay una gran cantidad de información, si quieres saber más del tema
+                        no dudes visitar los recursos oficiales
+                      </p>
+                  </div>
+                  <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                      <div class="icon"><i class="icofont-book"></i></div>
+                      <h4 class="title"><a href="https://computing.llnl.gov/tutorials/openMP/">Manual</a></h4>
+                      <p class="description">El manual de OpenMP es muy completo y explica a profundidad todos lo visto en esta página e incluso más</p>
+                  </div>
+                  <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon"><i class="icofont-youtube"></i></div>
+                      <h4 class="title"><a href="https://goo.gl/cd8XiB">Videos Tutoriales</a></h4>
+                      <p class="description">En Youtube hay tutoriales de OpenMP, si no te gusta leer, pero igual quieres aprender, el curso que esta disponible en
+                        youtube en una buena opción
+                      </p>
+                  </div>
+              </div>
+
+          </div>
       </section>
-<!-- ===== Recomendaciones ===== -->
-<section id="recomendaciones" class="bg-success">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading" style="color:#3680C1">Recomendaciones</h2>
-        <h3 class="section-subheading text-muted">Para poder complementar está introducción práctica recomendamos revisar</h3>
-      </div>
-    </div>
-	<div class="row text-center">
-      <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-cloud fa-stack-1x fa-inverse"></i></span>
-        <h4 class="service-heading"><a href="http://www.openmp.org/">Página Oficial</a></h4>
-        <p class="text-muted text-center">Página Oficial de OpenMP</p>
-      </div>
-      <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-book fa-stack-1x fa-inverse"></i></span>
-        <h4 class="service-heading"><a href="https://computing.llnl.gov/tutorials/openMP/">Manual</a></h4>
-        <p class="text-muted text-center">Manual de especificaciones de OpenMP</p>
-      </div>
-      <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-youtube fa-stack-1x fa-inverse"></i></span>
-        <h4 class="service-heading"><a href="https://goo.gl/cd8XiB"> Videos Tutoriales</a></h4>
-        <p class="text-muted text-center" >Videos oficiales de OpenMP</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<footer style="background-color:#222">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <h4 style="color:#FFFFFF">Marcela Guzmán Caicedo y Felipe Epia Realpe</h4>
-        <h5 style="color:#FFFFFF">Universidad Nacional de Colombia</h5>
-		<h5 style="color:#FFFFFF">Lenguajes de Programación</h5>
+
+    </main>
+    <!-- End #main -->
+
+
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        <strong><span>Autores:</span></strong> Marcela Guzmán Caicedo, Felipe Epia Realpe </br>
+        Julian David Acosta, Camilo Andres Gil, Andres Felipe Castillo
       </div>
-      <div class="col-md-3"></div>
+      <div class="credits">
+        Universidad Nacional de Colombia </br>
+        Lenguajes de programación
+      </div>
     </div>
-  </div>
-</footer>
+  </footer><!-- End Footer -->
+
+
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
