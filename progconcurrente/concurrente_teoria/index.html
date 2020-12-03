@@ -561,7 +561,64 @@
               una unidad de procesamiento. En la parte inferior podemos apreciar mejor la diferencia.</p>
 
             <p><img src="http://joearms.github.io/images/con_and_par.jpg" alt=""></p>
-
+              <p><strong>Cuadro compartivo Procesos vs Hilos: </strong></p>
+              <table class="table">
+                  <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Procesos</th>
+                      <th scope="col">Hilos</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                      <th scope="row">1</th>
+                      <td>Son programas en ejecución.</td>
+                      <td>Son segmentos de procesos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">2</th>
+                      <td>Tardan más tiempo en terminar.</td>
+                      <td>Tardan menos tiempo en terminar.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">3</th>
+                      <td>Toma más tiempo crearlos.</td>
+                      <td>Toma menos tiempo crearlos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">4</th>
+                      <td>Toma más tiempo hacer el cambio de contexto.</td>
+                      <td>Toma menos tiempo hacer el cambio de contexto.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">5</th>
+                      <td>Son menos eficientes en términos de comunicación.</td>
+                      <td>Son meás eficientes en términos de comunicación.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">6</th>
+                      <td>Consumen más recursos.</td>
+                      <td>Consumen menos recursos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">7</th>
+                      <td>Son aislados.</td>
+                      <td>Comparten memoria.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">8</th>
+                      <td>Son denominados "heavy weight process".</td>
+                      <td>Son denominados "light weight process".</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">9</th>
+                      <td>Los procesos tienen su propio PCB, Stack y espacio en memoria.</td>
+                      <td>Los hilos tienen el PCB de sus padres, su propio Thread Control Block (TCB) y Stack y un
+                          espacio de memoria compartido.</td>
+                  </tr>
+                  </tbody>
+              </table>
             <h1>Problemas de los programas concurrentes</h1>
             <p>Al lidiar con varias tareas al tiempo los programas concurrentes pueden presentar varios problemas : </p>
             <ul>
@@ -3091,6 +3148,9 @@ TotalMilliseconds : 832,8442
             <li>Marcelo Escamilla Sanchez</li>
             <li>Ivan Delgado Gonzalez</li>
             <li>David Santiago Fajardo Barrera</li>
+            <li>Juan Camilo Acosta Rojas</li>
+            <li>Cristian Santiago Vargas Ortiz</li>
+            <li>Juan Esteban Rozo Urbina</li>
           </ul>
         </div>
       </section>
