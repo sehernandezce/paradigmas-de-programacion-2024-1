@@ -11,6 +11,8 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,7 +29,6 @@
     li a:hover {
       background-color: #111111;
     }
-
     blockquote {
       background: #f9f9f9;
       border-left: 10px solid #ccc;
@@ -44,45 +45,36 @@
       margin-right: 0.25em;
       vertical-align: -0.4em;
     }
-
     blockquote p {
       display: inline;
     }
   </style>
-
   <title>Programación concurrente</title>
-  <nav>
-    <ul style="text-align: center;
-     z-index: 1000;
-    position: fixed;
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     overflow: hidden;
-     background-color: #333333;
-     float:right;
-     text-align: center; ">
-      <li style="float: left;"><a href="#historia" class="active">Historia</a></li>
-      <li style="float: left;"><a href="#filosofía" class="active">Filosofia</a></li>
-      <li style="float: left;"><a href="#definición">Definición</a></li>
-      <li style="float: left;"><a href="#CvP" class="active">Concurrencia VS Paralelismo</a></li>
-      <li style="float: left;"><a href="#ventajas">Ventajas</a></li>
-      <li style="float: left;"><a href="#desventajas">Desventajas</a></li>
-      <li style="float: left;"><a href="#conceptos">Conceptos</a></li>
-      <li style="float: left;"><a href="#aplicaciones">Aplicaciones</a></li>
-      <li style="float: left;"><a href="#lenguajes">Lenguajes</a></li>
-      <li style="float: left;"><a href="#ejemplos">Lenguajes ejemplos</a></li>
-      <li style="float: left;"><a href="#referencias">Referencias</a></li>
-      <li style="float: left;"><a href="#Integrantes">Integrantes</a></li>
-      <li style="float: left;"><a href="quiz/index.html">Test</a></li>
-
-    </ul>
+  <nav id="main-nav" class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top"  >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+        <li class="nav-item"><a class="nav-link" href="#historia" >Historia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#filosofía">Filosofia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#definición">Definición</a></li>
+        <li class="nav-item"><a class="nav-link" href="#CvP">Concurrencia VS Paralelismo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#conceptos">Conceptos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#aplicaciones">Aplicaciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ventajas">Ventajas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#desventajas">Desventajas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#lenguajes">Lenguajes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ejemplos">Lenguajes ejemplos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#referencias">Referencias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Integrantes">Integrantes</a></li>
+        <li class="nav-item"><a class="nav-link" href="quiz/index.html">Test</a></li>
+      </ul>
+    </div>
   </nav>
 </head>
 
-<body>
-
-
+<body style="position: relative;" data-spy="scroll" data-target="#main-nav" data-offset="0">
 
   <header>
     <div class="inner">
@@ -94,24 +86,6 @@
   <div id="content-wrapper">
     <div class="inner clearfix">
       <section id="main-content">
-        <!--<h1>
-<a id="indice" class="anchor" href="#indice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Índice</h1>
-
-<ol>
-<li><a href="#filosofía">Filosofía</a></li>
-<li><a href="#definición">Definición</a></li>
-<li><a href="#proceso">Proceso</a></li>
-<li><a href="#hilo">Hilo</a></li>
-<li><a href="#multiprogramación">Multiprogramación</a></li>
-<li><a href="#multiproceso">Multiproceso</a></li>
-<li><a href="#sincronizacion">Sincronización</a></li>
-<li><a href="#notebook">Notebook sincronización</a></li>
-<li><a href="#planificacion">Planificación</a></li>
-<li><a href="#aplicaciones">Aplicaciones</a></li>
-<li><a href="#lenguajes">Lenguajes</a></li>
-<li><a href="#presentacion">Presentación</a></li>
-<li><a href="#taller">Taller</a></li>
-</ol>-->
 
         <div class="text-justify">
           <div id="historia">
@@ -504,10 +478,7 @@
             correr en un medio con hardware paralelo (GPU's, procesadores multi-core, etc).<br><br>
             Puede ser visto como que la concurrencia es la propiedad de un programa, mientras que el paralelismo es la
             forma en la que se ejecuta un programa concurrente.<br>
-            Para mayor claridad, este video lo explica en una mayor profundidad:
-            <iframe width="100%" height="360" src="https://www.youtube.com/embed/cN_DpYBzKso" frameborder="0"
-              allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+            
 
             <h2>
               <a id="relacion" class="anchor" href="#relacion" aria-hidden="true">
@@ -587,7 +558,64 @@
               una unidad de procesamiento. En la parte inferior podemos apreciar mejor la diferencia.</p>
 
             <p><img src="http://joearms.github.io/images/con_and_par.jpg" alt=""></p>
-
+              <p><strong>Cuadro compartivo Procesos vs Hilos: </strong></p>
+              <table class="table">
+                  <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Procesos</th>
+                      <th scope="col">Hilos</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                      <th scope="row">1</th>
+                      <td>Son programas en ejecución.</td>
+                      <td>Son segmentos de procesos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">2</th>
+                      <td>Tardan más tiempo en terminar.</td>
+                      <td>Tardan menos tiempo en terminar.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">3</th>
+                      <td>Toma más tiempo crearlos.</td>
+                      <td>Toma menos tiempo crearlos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">4</th>
+                      <td>Toma más tiempo hacer el cambio de contexto.</td>
+                      <td>Toma menos tiempo hacer el cambio de contexto.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">5</th>
+                      <td>Son menos eficientes en términos de comunicación.</td>
+                      <td>Son meás eficientes en términos de comunicación.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">6</th>
+                      <td>Consumen más recursos.</td>
+                      <td>Consumen menos recursos.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">7</th>
+                      <td>Son aislados.</td>
+                      <td>Comparten memoria.</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">8</th>
+                      <td>Son denominados "heavy weight process".</td>
+                      <td>Son denominados "light weight process".</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">9</th>
+                      <td>Los procesos tienen su propio PCB, Stack y espacio en memoria.</td>
+                      <td>Los hilos tienen el PCB de sus padres, su propio Thread Control Block (TCB) y Stack y un
+                          espacio de memoria compartido.</td>
+                  </tr>
+                  </tbody>
+              </table>
             <h1>Problemas de los programas concurrentes</h1>
             <p>Al lidiar con varias tareas al tiempo los programas concurrentes pueden presentar varios problemas : </p>
             <ul>
@@ -654,6 +682,13 @@
       961164
       ~/Java$
     </pre>
+          Esto se debe a que no hay un orden total como sucede en la
+          programación secuencial, hay un orden parcial, lo que genera
+          un orden de precedencia de las instrucciones que se deben ejecutar
+          muy diferente, de tal manera que en dicho árbol se muestra un orden
+          de ejecución simultáneo para todas las instrucciones del programa.
+          <p><img src="images/arbol_precedencia.PNG" alt=""></p>
+
 
               </li>
               <li>
@@ -858,7 +893,8 @@
             <h2>Seguridad</h2>
             Indican que es lo que se le permite hacer al programa, o equivalentemente, lo que no deberia hacer.
             <ul>
-              <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica.</li>
+              <li><strong>Exclusión mutua :</strong> Solo hay un proceso presente en una sección critica, aunque esto
+              puede llegar a ser contraproducente al momento de la ejecución.</li>
               <li><strong>No deadlock :</strong> Ningun proceso debe ser retrasado esperando un evento que nunca va a
                 ocurrir.</li>
               <li><strong>Correctitud parcial :</strong> Si el programa termina, la salida sera lo es requerido.</li>
@@ -929,6 +965,7 @@
               intentar leer o escribir al mismo tiempo, lo cual no podemos permitir, ya que, nuestra informacion se
               podria perder, duplicar, corromper entre otros. Solo es posible que un proceso leo o escriba y que los
               demas esperen su turno. </p>
+            <p><img src="images/problema_lector_escritor.PNG" alt=""></p>
 
             <h2>
               <a id="problema-de-los-filosofos-que-cenan" class="anchor" href="#problema-de-los-filosofos-que-cenan"
@@ -1003,13 +1040,18 @@
 
                   <li>Está formado por una posición de memoria y dos instrucciones, una para reservarlo (wait o down) y
                     otra para liberarlo (signal o up). A esto se le puede añadir una cola de threads para recordar el
-                    orden en que se hicieron la peticiones</li>
+                    orden en que se hicieron la peticiones.</li>
 
-                  <li>Soporte del SO para garantizar la exclusión mutua</li>
+                  <li>Soporte del SO para garantizar la exclusión mutua.</li>
 
                   <li>Sincronizar dos o más threads o procesos, de modo que su ejecución se realice de forma ordenada y
                     sin conflictos entre ellos.</li>
+                  <li>Es una solución con un bajo nivel de abstracción, por lo cual
+                    se debe implementar en todo el programa, y puede generar graves
+                    problemas de seguridad e implementación.
+                  </li>
                 </ul>
+                <p><img src="images/semaforo.PNG" alt=""></p>
                 <p>
                   <strong>EJEMPLO:</strong> (Solución posterior)<br><br>
                   Existen uno o más productores y uno o más consumidores, todos almacenan y extraen productos de una
@@ -1065,8 +1107,14 @@
                 Cada hilo tiene un turno, todos los hilos deben esperar mientras el hilo que tenga el turno esté
                 presente en la sección crítica. Aquí los métodos son ejecutados haciendo uso de exclusión mutua
                 porque varios hilos de procesos van a querer ingresar en diferentes tiempos pero solo es permitido
-                que ingrese uno y así pueda estar activo en el monitor en cierto instante de tiempo.
+                que ingrese uno y así pueda estar activo en el monitor en cierto instante de tiempo. Puesto a que
+                es una implementación con un alto nivel de abstracción, ofrece más garantías con respecto a seguridad
+                y tolerancia a fallos que otras implementaciones para planificar procesos.
               </li><br>
+              <div class="row">
+                <p><img src="images/monitor_1.PNG" alt=""></p>
+                <p><img src="images/monitor_2.PNG" alt=""></p>
+              </div>
 
               <li><strong>Mensajes:</strong><br>
                 Los hilos se comunican y sincronizan por medio de mensajes, avisandole a los otros hilos cuando puede
@@ -1520,13 +1568,16 @@ procedure consumer() {
                 mucho a las rápidas.</li>
               <li>Velocidad de ejecución.</li>
               <li>Menores tiempos de respuesta.</li>
+              <li>Permite la implementación de programación reactiva</li>
+              <li>Controlabilidad</li>
+              <li>Disponibilidad de servicios</li>
             </ul>
           </div>
           <div id="desventajas">
             <br><br>
-            <h1><a class="anchor" href="#desventajas" aria-hidden="true"><span aria-hidden="true"
-                  class="octicon octicon-link"></span></a>Desventajas</h1>
+            <h1>Desventajas</h1>
             <ul>
+              <li>Seguridad</li>
               <li>Consumos de recursos cuando hay excesos de hilos o procesos</li>
               <li>Dificultad de desarrollo.</li>
               <li>Dificultad de verificación.</li>
@@ -1550,7 +1601,9 @@ procedure consumer() {
             <br>
             Elixir es lenguaje de programación de propósito general, concurrente; este lenguaje es funcional. Además
             está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a
-            fallos con baja latencia.
+            fallos con baja latencia. Es utilizado para construcción de API's y para optimización en el desarrollo web.
+            Es utilizado en muchos frameworks como Hedwig, para la implementación de chatbots en distntas redes sociales y
+            demás.
 
             <ul>
               <li><strong>Ada</strong></li>
@@ -1571,7 +1624,8 @@ procedure consumer() {
             <center><img src="images/rust.png" width="150px" height="150px"></center>
             Rust es un lenguaje de programación compilado, de propósito general y multiparadigma desarrollado por
             Mozilla y ha sido diseñado para ser ‘un lenguaje seguro, concurrente y práctico’. Rust se enfoca
-            principalmente en seguridad, velocidad y concurrencia.
+            principalmente en seguridad, velocidad y concurrencia. Una de sus principales caraterísticas es que es posible
+            arreglar bugs en timepo de ejecución. Usado en desarollo web y embebido.
 
             <ul>
               <li><strong>Erlang</strong></li>
@@ -1580,7 +1634,7 @@ procedure consumer() {
             Erlang es un lenguaje de programación funcional de alto nivel, diseñado para escribir aplicaciones
             concurrentes y distribuidas de funcionamiento ininterrumpido. Erlang usa procesos concurrentes para
             estructurar la aplicación. Estos procesos no comparten memoria y se comunican de forma asincrónica mediante
-            el paso de mensajes.
+            el paso de mensajes. Utilizado en telecomunicaciones, e-commerce y mensajería instantánea.
 
             <ul>
               <li><strong>GO</strong></li>
@@ -1588,7 +1642,8 @@ procedure consumer() {
             <center><img src="images/go.png" width="150px" height="150px"></center>
             GO Es un lenguaje de programación compilado, concurrente, imperativo, estructurado, no orientado a objetos
             con recolector de basura, soportado en diferentes tipos de sistemas. La concurrencia en Go es diferente a
-            los criterios de programación basados en bloqueos como pthreads.
+            los criterios de programación basados en bloqueos como pthreads. Es fácil de aprender debido a su similitud
+            con los lenguajes más usados, es implementado en modelos de negocio y manejo de servidores.
 
             <ul>
               <li><strong>Haskell</strong></li>
@@ -1616,13 +1671,37 @@ procedure consumer() {
 
             Java es un lenguaje de programación orientado a objetos creado en 1991 y publicado en 1995 por Sun
             Microsystem (adquirida por Oracle en 2010), con la intención de que los programadores escribieran el código
-            solo una y lo ejecutarán en cualquier dispositivo. JAva permite realizar concurrencia con la libretia
-            threads.
-            <br /><br /><br /><br /><br />
-            <p>Es altamente recomendable de utilizar hilos con estos lenguajes. En cualquier caso, cuando, un lenguaje
-              permite de hacer programación concurrente, debe usarlo. Además, cuando uses estos lenguajes, a menudo
-              usarás hilos sin siquiera saberlo. De hecho, hay muchas funciones incluidas en los lenguajes que crean un
-              hilo sin preguntarle al programador.</p>
+            solo una y lo ejecutarán en cualquier dispositivo. JAva permite realizar concurrencia con la librería
+            threads. Además de que cuenta con otras librerías que implementan métodos de planificación y control de procesos 
+            (variables atómicas, semáforos, entre otros) traídos del paquete concurrent.
+            <div class="mt-4">
+              <p>Es altamente recomendable de utilizar hilos con estos lenguajes. En cualquier caso, cuando, un lenguaje
+                permite de hacer programación concurrente, debe usarlo. Además, cuando uses estos lenguajes, a menudo
+                usarás hilos sin siquiera saberlo. De hecho, hay muchas funciones incluidas en los lenguajes que crean un
+                hilo sin preguntarle al programador. Además, existen otros lenguajes que ya contienen paquetes que facilitan la
+                implementción de la programación concurrente como los son:</p>
+            </div>
+
+
+            <ul>
+              <li><strong>python</strong></li>
+            </ul>
+            <center><img src="images/python.png" width="96px" height="96px"></center>
+
+            Python es el lenguaje más utilizado a nivel mundial (según revista IEEE), es un lenguaje de sintaxis simple y cuyas
+            aplicaciones cubren una gran cantidad de áreas del conocimiento como lo son inteligencia artificial, ciencia de datos,
+            entre otras. En cuanto a programación concurrente, cuenta con varias librerías para la implementación d eesta y su respectivo
+            control, como lo son la librería "Thread" y "Multiprocessing", que provee de herramientas como semáforos, monitores, entre otros.
+
+            <ul>
+              <li><strong>C</strong></li>
+            </ul>
+            <center><img src="images/c.jpg" width="180px" height="96px"></center>
+            C es uno de los lenguajes más rápidos que existen puesto a que es un lenguaje compilado, es altamente usado en el diseño y desarrollo
+            de los sistemas operativos que hoy en día se usan, además de que facilita el uso de memoria dinámica y muchas otras características.
+            En cuanto a programación concurrente, usa la librería pthread.h para la creación de hlos y métodos de control muy básicos como la implementación
+            de un semáforo.
+            
 
 
           </div>
@@ -3066,6 +3145,9 @@ TotalMilliseconds : 832,8442
             <li>Marcelo Escamilla Sanchez</li>
             <li>Ivan Delgado Gonzalez</li>
             <li>David Santiago Fajardo Barrera</li>
+            <li>Juan Camilo Acosta Rojas</li>
+            <li>Cristian Santiago Vargas Ortiz</li>
+            <li>Juan Esteban Rozo Urbina</li>
           </ul>
         </div>
       </section>
@@ -3089,7 +3171,8 @@ TotalMilliseconds : 832,8442
     </div>
   </div>
 
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 
 </html>
