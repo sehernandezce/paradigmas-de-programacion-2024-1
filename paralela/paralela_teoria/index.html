@@ -120,19 +120,6 @@
 					<p> El hecho de que la programación paralela sea un paradigma da cuenta de que existe una razón por la cual no ha dejado de ser necesaria
 						o no ha sido totalmente automatizable, igualmente hay otras razones interesantes detrás para entender la existencia, actualidad y contemporaneidad de la programación paralela:
 					</p>
-					<li><b>Ley de Moore:</b> Esta ley propuesta por Gordon E. Moore en 1965 dice resumidamente que el número de transistores en un chip determinado
-						 se doblaría cada dos años. Esto quiere decir un aumento del rendimiento en los procesadores del alrededor del 50%,
-						 esto se traduce en escalar la velocidad de reloj de los procesadores, pero esta ley no es fidedigna desde el 2002
-						 dónde solo ha habido un 20%, lo cual sigue siendo un aumento considerable, sin embargo, no sería suficiente para que todos los
-						 avances en computación que se han logrado hasta el día y las necesidades de procesamiento en crecimiento exponencial puedan satisfacerse
-						 totalmente. Veamos en la gráfica adjunta que el problema principal es que la ley no puede continuar indeterminadamente
-						 porque esto implica un crecimiento exponencial, el cuál es imposible de mantener por espacio, pero principalmente
-						 por el punto de la temperatura mismo, se puede ver que si esto fuese cierto llegaría muy pronto el año en que un solo procesador
-						 alcanzara la temperatura de la superficie del sol.
-						 <div class="image">
-			 				<img src="images/moore.jpg" alt="" />
-			 			</div>
-					 </li>
 					<li><b>Overclocking infinito: </b>El overclokcing tiene un límite a pesar de que existiera una refrigeración perpetúa
 						 y adecuada del procesador. Esto es debido a las corrientes parásitas que impiden una velocidad teóricamente infinita
 						 a la cual los circuitos pueden cambiar entre estados, o de hecho sus transistores.</li>
@@ -229,164 +216,219 @@
 	</section>
 
 	<!-- Four -->
+	<!-- Aporte por Sebastian Guerrero Salinas-->
 	<section id="five" class="wrapper style2 alt">
-		<center><h2>Conceptos Clave</h2></center>
+		<center><h2>Pruebas Conceptos Clave</h2></center>
+		<center><h3>Conceptos acerca de tareas</h3></center>
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Tareitas</h4></center>
+				<p class="pjustify">
+					Son <b>secciones lógicamente discretas</b> de trabajo computacional. 
+					Una tarea está compuesta de un <b>conjunto de instrucciones</b> que seran ejecutadas por un procesador.
+				</p>
+			</div>
+			<div class="key concept">
+				<br/>
+				<img src="images/tareas.png"/>
+			</div>
+		</div>
 
-		<div class="inner split">
-			<section>
-				<center><h3>Conceptos acerca de Tareas</h3></center>
-				<p>
-					<center>
-						<h4>Tarea:</h4>
-						<img class="key concept" src="images/tareas.png" />
-					</center>
-					Un problema complejo se subdivide en una <b>cantidad discreta</b> de tareas que representan trabajo computacional.
-					Una tarea esta compuesta de un <b>conjunto de instrucciones</b> que seran ejecutadas por un procesador.
-				</p><br/>
-				<p>
-					<center>
-						<h4>Granularidad:</h4>
-						<img class="key concept" src="images/granularidad.png" />
-					</center>
+		<div class="spotlight">
+			<div class="image">
+				<br/>
+				<center><h4>Granularidad</h4></center>
+				<img src="images/granularidad.png"/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
 					Se refiere al tamaño de cada tarea y a la independiencia de las demás tareas, se dividen en dos categorías.
 					<ul>
 						<li><b>Gruesa:</b> Cantidad relativamente grande de trabajo, alta independencia entre tareas y poca necesidad de sincronización.</li>
 						<li><b>Fina:</b> Cantidades pequeñas de trabajo, poca independencia entre tareas, y una alta demanda de sincronización.</li>
 					</ul>
-				</p><br/>
-				<p>
-					<center>
-						<h4>Scheduling:</h4>
-						<img class="key concept" src="images/scheduling.png" />
-					</center>
-					Scheduling es el proceso en el que <b>las tareas son asignadas a los procesos o hilos</b>, y se les da un orden
-					de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
-					El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
-					otras pueden requerir los datos producidos por otras tareas. <br />
-					<strong>Criterios de planificación</strong>
-				<ul>
-					<li>
-						Orientados al usuario:
-						<ul>
-							<li>
-								Tiempo de vuelta:
-								Intervalo de tiempo que transcurre entre la solicitud de ejecución de un proceso
-								y su terminación.
-							</li>
-							<li>
-								Tiempo de respuesta:
-								Tiempo transcurrido desde que se hace una solicitud y se empieza el proceso.
-							</li>
-							<li>
-								Plazos:
-								Ocurre cuando se pueden dar plazos de ejecución de procesos,
-								Obligando al planificador a subordinar otros procesos.
-							</li>
-							<li>
-								Previsibilidad:
-								Un proceso deberia ejecutarse en el mismo tiempo siempre
-								(sin importar la carga que se tenga en el sistema).
-							</li>
-						</ul>
-					</li>
-					<li>
-						Orientados al sistema:
-						<ul>
-							<li>
-								Tasa de salida:
-								Consiste en el numero de procesos ejecutados por unidad de tiempo.
-							</li>
-							<li>
-								Utilización del proceso:
-								Cantidad de tiempo que el procesador permanece ocupado.
-							</li>
-							<li>
-								Equidad:
-								Los procesos deben ser tratados todos de igual forma para evitar la
-								inanición de procesos.
-							</li>
-							<li>
-								Prioridades:
-								Se debe poder tener una politica de prioridades para poder favorecer a ciertos
-								procesos que se consideren importantes.
-							</li>
-							<li>
-								Balanceo de recursos:
-								Se debe balancear la carga del sistema de modo que todos sus componentes
-								se mantengan ocupados.
-							</li>
-						</ul>
-					</li>
-				</ul><br />
-				<strong>Algoritmos de planificación</strong>
-				<ul>
-					<li>FCFS (first-come-first-served)</li>
-					<li>Round Robin</li>
-					<li>"Primero el proceso más corto"</li>
-					<li>"Primero el de menor tiempo restante"</li>
-					<li>"Primero el de mayor tasa de respuesta"</li>
-					<li>realimentación</li>
-				</ul>
-				</p><br />
-			</section>
-			<section>
-				<center><h3>Conceptos acerca de Hilos</h3></center>
-				<p>
-					<center>
-						<h4>Hilo:</h4>
-						<img class="key concept" src="images/hilos.png" />
-					</center>
-					Un proceso pesado padre puede convertirse en varios <b>procesos livianos hijos</b>, ejecutados de manera concurrente. Cada
-					uno de estos procesos livianos se conoce como hilo. Estos se comunican entre ellos a través de la memoria global.
-				</p><br/>
-				<p>
-					<center>
-						<h4>Sincronizacion:</h4>
-						<img class="key concept" src="images/sincronizacion.png" />
-					</center>
-					Los programas en paralelo necesitan la <b>coordinación de procesos
-					e hilos, para que haya una ejecución correcta</b>. Los métodos de coordinación y sincronización en la programación paralela
-					están fuertemente asociados a la manera en que los procesos o hilos intercambian información, y esto depende de cómo
-					está organizada la memoria en el hardware.
-				</p><br/>
-				<p>
-					<center>
-						<h4>Mapping:</h4>
-						<img class="key concept" src="images/mapping.png" />
-					</center>
-					Mapping en el proceso de <b>asignación de procesos e hilos a unidades de procesamiento</b>, procesadores o núcleos. Usualmente
-					el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
 				</p>
-			</section>
+			</div>			
 		</div>
 
-		<center><h3>Otros conceptos</h3></center>
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Scheduling</h4></center>
+				<p class="pjustify">
+					Es el proceso en el que <b>las tareas son asignadas a los procesos o hilos</b>, y se les da un orden
+					de ejecución. Este puede ser especificado en el código, en tiempo de compilación o dinámicamente en tiempo de ejecución.
+					El proceso de scheduling debe tener en cuenta la dependencia entre tareas, ya que, aunque muchas pueden ser independientes,
+					otras pueden requerir los datos producidos por otras tareas. <br/>
+					<strong>Criterios de planificación</strong>
+					<ul>
+						<li>
+							Orientados al usuario:
+							<ul>
+								<li>
+									Tiempo de vuelta:
+									Intervalo de tiempo que transcurre entre la solicitud de ejecución de un proceso
+									y su terminación.
+								</li>
+								<li>
+									Tiempo de respuesta:
+									Tiempo transcurrido desde que se hace una solicitud y se empieza el proceso.
+								</li>
+								<li>
+									Plazos:
+									Ocurre cuando se pueden dar plazos de ejecución de procesos,
+									Obligando al planificador a subordinar otros procesos.
+								</li>
+								<li>
+									Previsibilidad:
+									Un proceso deberia ejecutarse en el mismo tiempo siempre
+									(sin importar la carga que se tenga en el sistema).
+								</li>
+							</ul>
+						</li>
+						<li>
+							Orientados al sistema:
+							<ul>
+								<li>
+									Tasa de salida:
+									Consiste en el numero de procesos ejecutados por unidad de tiempo.
+								</li>
+								<li>
+									Utilización del proceso:
+									Cantidad de tiempo que el procesador permanece ocupado.
+								</li>
+								<li>
+									Equidad:
+									Los procesos deben ser tratados todos de igual forma para evitar la
+									inanición de procesos.
+								</li>
+								<li>
+									Prioridades:
+									Se debe poder tener una politica de prioridades para poder favorecer a ciertos
+									procesos que se consideren importantes.
+								</li>
+								<li>
+									Balanceo de recursos:
+									Se debe balancear la carga del sistema de modo que todos sus componentes
+									se mantengan ocupados.
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<strong>Algoritmos de planificación</strong>
+					<ul>
+						<li>FCFS (first-come-first-served)</li>
+						<li>Round Robin</li>
+						<li>"Primero el proceso más corto"</li>
+						<li>"Primero el de menor tiempo restante"</li>
+						<li>"Primero el de mayor tasa de respuesta"</li>
+						<li>realimentación</li>
+					</ul>
+				</p>
+			</div>
+			<div class="image">
+				<br/>
+				<img src="images/scheduling.png"/>
+				<br/>
+				<br/>
+				<img src="images/scheduling2.jpg"/>
+			</div>
+		</div>
+		<center><h3>Conceptos acerca de hilos</h3></center>
 
-		<div class="inner split">
-			<section>
-				<p>
-					<center>
-						<h4>Balanceo de carga</h4>
-						<img class="key concept" src="images/balanceador.png" />
-					</center>
+		<div class="spotlight">
+			<div class="image">
+				<br/>
+				<center><h4>Hilos</h4></center>
+				<img src="images/hilos.png"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
+					Un proceso pesado padre puede convertirse en varios <b>procesos livianos hijos</b>, ejecutados de manera concurrente. Cada
+					uno de estos procesos livianos se conoce como <b>hilo</b>. Estos se comunican entre ellos a través de la memoria global.
+				</p>
+			</div>			
+		</div>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Sincronización</h4></center>
+				<p class="pjustify">
+					Los programas en paralelo necesitan la <b>coordinación de procesos
+					e hilos, para que haya una ejecución correcta</b>. Los métodos de coordinación y sincronización en la programación paralela
+					están fuertemente asociados a la manera en que los procesos o hilos intercambian información y esto depende de cómo
+					está organizada la memoria en el hardware.
+				</p>
+			</div>
+			<div class="image">
+				<br/>
+				<img src="images/sincronizacion.png"/>
+				<br/>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="image">
+				<br/>
+				<center><h4>Mapping o Mapeo</h4></center>
+				<img src="images/mapping.png"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
+					Mapping en el proceso de <b>asignación de procesos e hilos a unidades de procesamiento</b>, procesadores o núcleos. 
+					Usualmente el mapping se hace por el sistema en tiempo de ejecución, aunque en ocasiones puede ser influenciado por el programador.
+				</p>
+			</div>
+		</div>
+
+		<center><h3>Otros conceptos importantes</h3></center>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Balanceo de carga</h4></center>
+				<p class="pjustify">
 					Se refiere a la práctica de distribuir <b>cantidades equitativas de trabajo</b> entre las tareas,
-					de modo que todas las tareas se mantengan ocupadas todo el tiempo.
-				</p><br/>
-				<p>
-					<center>
-						<h4>Speedup:</h4>
-						<img class="key concept" src="images/speed.png" />
-					</center>
+					de modo que todas las tareas se mantengan ocupadas todo el tiempo. Se puede considerar una 
+					minimización del tiempo de inactividad de la tarea. Algunos puntos a tener en cuenta con el balanceo de carga son:
+					<ul>
+						<li>Asignar el trabajo que recibe cada tarea equitativamente</li>
+
+						<li>Puede ser un factor significativo en el desempeño del programa </li>
+
+						<li>A menudo requiere "serialización" de segmentos del programa.</li>
+					</ul>
+				</p>
+			</div>
+			<div>
+				<br/>
+				<img src="images/balanceador.png" width="300" height="300"/>
+				<br/>
+				<br/>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="image">
+				<br/>
+				<center><h4>Speedup</h4></center>
+				<img src="images/speed.png"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
 					Es un proceso para <b>aumentar el rendimiento</b> entre dos sistemas procesando el mismo problema. Es la
 					mejora en la velocidad de ejecución de una tarea ejecutada en <b>dos arquitecturas similares</b> con diferentes recursos.
+					El SpeedUp resresenta la ganacia que se obtiene en la version paralela del programa respecto a la version secuencial del mismo.
 				</p>
-			</section>
-			<section>
-				<p>
-					<center>
-						<h4>Overhead</h4>
-						<img class="key concept" src="images/overhead.png" />
-					</center>
+				<img class="key concept" src="images/formula4.png"/>
+			</div>			
+		</div>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Overhead</h4></center>
+				<p class="pjustify">
 					Es la cantidad de <b>tiempo requerido para coordinar tareas paralelas</b>, en lugar de hacer un
 					trabajo útil. Incluye factores como:
 					<ul>
@@ -396,16 +438,145 @@
 						<li>Sobrecarga de software impuesta por lenguajes paralelos, bibliotecas, sistema operativo, etc.</li>
 						<li>Tiempo de terminación de la tarea</li>
 					</ul>
-				</p><br/>
-				<p>
-					<center>
-						<h4>Sección crítica</h4>
-						<!-- <img class="key concept" src="images/speed.png" /> -->
-					</center>
-					Un proceso tiene un segmento de código llamado sección crítica cuando este puede modificar o leer información
-					de memoria compartida con otros procesos. Dos procesos no pueden ejecutar su seccion critica al mismo tiempo.
 				</p>
-			</section>
+			</div>
+			<div>
+				<br/>
+				<img src="images/overhead.png"/>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div >
+				<br/>
+				<center><h4>Sección crítica</h4></center>
+				<img src="images/critic_sec.gif"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
+					Es un segmento de código que manipula un recurso y se debe ejecutar de forma <b>atómica</b>, es decir, que no debe de 
+					ser accedido por más de un hilo en ejecución.
+				</p>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Condición de carrera</h4></center>
+				<p class="pjustify">
+					Es la representación del <b>acceso de dos o más procesos a un recurso compartido sin control</b>, 
+					este acceso depende del orden de llegada de los procesos
+				</p>
+			</div>
+			<div class="image">
+				<br/>
+				<img src="images/race.jpg"/>
+				<br/>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div >
+				<br/>
+				<center><h4>Pipelining</h4></center>
+				<img src="images/pipelining2.png"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
+					Es la <b>ruptura o segmentación</b> de una tarea en pasos realizados por diferentes unidades de procesador.
+					El pipelining proviene de la idea de que en una tubería no es necesario esperar a que todo el agua dentro salga, 
+					para que pueda entrar más. Los procesadores modernos tienen un <b>pipeline</b> que separa las instrucciones en 
+					<b>varias etapas</b>, donde cada etapa corresponde a una acción diferente que necesita la salida de la anterior.
+				</p>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Cooperación</h4></center>
+				<p class="pjustify">
+					Es esa característica de los procesos que los orienta <b>trabajar conjuntamente</b>
+				</p>
+			</div>
+			<div>
+				<br/>
+				<img src="images/cooperation.jpg" width="250" height="250"/>
+				<br/>
+			</div>
+		</div>
+
+		<center><h3>Algunas leyes para tener en cuenta</h3></center>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Ley de Amdahl</h4></center>
+				<p class="pjustify">
+					Ley de la computación formulada por Gene Amdahl y dicta que la mejora obtenida en el rendimiento de un sistema debido 
+					a la alteración de uno de sus componentes está limitada por la fracción de tiempo que se utiliza dicho componente. 
+					Sea f el porcentaje paralelizado del programa expresado en decimal, la ley de Amdahl
+					dice que llega un punto en el cual sin importar que el numero de procesadores sea muy alto , el speedup se va a comportar
+					de manera lineal; esto de acuerdo al porcentaje que esté paralelizado el código. El speedup de un programa con un
+					fragmento paralelizado se calcula con:
+				</p>
+				<div class="image">
+					<img src="images/formula5.png" alt="" width="140" />
+				</div>
+				<p class="pjustify">
+					Esta ley ayuda a definir si introducir una mejora en el sistema vale o no la pena
+				</p>
+			</div>
+			<div class="image">
+				<img src="images/graficaAmdahl.png" alt="" width="150" />
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="image">
+				<br/>
+				<center><h4>Ley de Gustafson</h4></center>
+				<img src="images/graficaGustafson.png"/>
+				<br/>
+			</div>
+			<div class="content">
+				<p class="pjustify">
+					Ley de la computación formulada por John L Gustafson en 1988, también llamada ley de Gustafson-Barsis, es una ley en ciencia de la computación 
+					que establece que cualquier problema suficientemente grande puede ser eficientemente paralelizado, ofrece un nuevo punto de vista y así una 
+					visión positiva de las ventajas del procesamiento paralelo.
+				</p>
+				<div class="image">
+					<img src="images/Gust_For1.PNG" alt="" width="140" />
+				</div>
+				<p class="pjustify">
+					En su fórmula, P es el número de procesadores, S es el speedup (aceleración), y α la parte no paralelizable del proceso. 
+				</p>
+			</div>
+		</div>
+
+		<div class="spotlight">
+			<div class="content">
+				<center><h4>Ley de Moore</h4></center>
+				<p class="pjustify">
+					Ley propuesta por Gordon E. Moore en 1965, inicialmente decía resumidamente que el número de transistores en un chip determinado
+					se doblaría cada año aunque unos años más tarde, en 1975, modificó su propia ley para aumentar esta cadencia a cada dos años. 
+					Esto quiere decir un aumento del rendimiento en los procesadores del alrededor del 50%,
+					esto se traduce en escalar la velocidad de reloj de los procesadores, pero esta ley no es fidedigna desde el 2002
+					dónde solo ha habido un 20%, lo cual sigue siendo un aumento considerable, sin embargo, para que esto sea posible 
+					es necesario reducir el tamaño de los transistores para que todos los
+					avances en computación que se han logrado hasta el día y las necesidades de procesamiento en crecimiento exponencial puedan satisfacerse
+					totalmente. <br/> Veamos en la gráfica adjunta que el problema principal es que la ley no puede continuar indeterminadamente
+					porque esto implica un crecimiento exponencial, el cuál es imposible de mantener por espacio, pero principalmente
+					por el punto de la temperatura mismo, se puede ver que si esto fuese cierto llegaría muy pronto el año en que un solo procesador
+					alcanzara la temperatura de la superficie del sol.
+				</p>
+			</div>
+			<div class="image">
+				<img src="images/moore.jpg" alt="" />
+				<p class="pjustify">
+					<br/>La unidad de medida de transistores en superficie es MTr/mm<sup>2</sup> o millones de transistores por milímetro cuadrado
+				</p>
+			</div>
 		</div>
 
 	</section>
@@ -418,7 +589,7 @@
 
 				<section>
 					<h3>Concurrencia</h3>
-					<p>
+					<p class="pjustify">
 						Capacidad de operar actividades al mismo tiempo. Es decir se pueden tener varios procesos corriendo cada uno en un procesador
 						o puede haber varios proceso que corran solo en un procesador
 
@@ -427,7 +598,7 @@
 
 				<section>
 					<h3>Paralelismo</h3>
-					<p>
+					<p class="pjustify">
 						Son muchas actividades teniendo lugar al mismo tiempo, “la cualidad o el estado de ser paralelo”. El hecho de ser paralelo
 						implica que solo se pueden tener varios procesos corriendo cada uno en un procesador.
 					</p>
@@ -445,8 +616,10 @@
 		<div class="inner">
 			<div class="spotlight">
 				<div class="content">
-					<p>Se caracterizaba por guardar las instrucciones de los procesos y los datos en una memoria electronica, a diferencia
-						de como se modelaban los computadores de la epoca a través de una conexion de cables</p>
+					<p class="pjustify">
+						Se caracterizaba por guardar las instrucciones de los procesos y los datos en una memoria electronica, a diferencia
+						de como se modelaban los computadores de la epoca a través de una conexion de cables
+					</p>
 					<h4>Componentes principales</h4>
 					<ul>
 						<li>Memoria</li>
@@ -455,7 +628,9 @@
 						<li>Entradas/Salidas</li>
 					</ul>
 					<h4>Memoria de acceso aleatorio</h4>
-					<p>En la memoria de acceso aleatorio se almacenaban los datos y los programas que estaban siendo ejecutados</p>
+					<p class="pjustify">
+						En la memoria de acceso aleatorio se almacenaban los datos y los programas que estaban siendo ejecutados
+					</p>
 					<ul>
 						<li>Las instrucciones del programa son datos codificados que le dicen al computador que es lo que tiene que hacer</li>
 						<li>Los datos son simplemente informacion que sera usada por el programa</li>
@@ -471,14 +646,8 @@
 
 	<section id="twentyone" class="wrapper style2 alt">
 		<center><h2>Metodologias de diseño</h2></center>
-
-
-
-
-
 			<section>
-
-				<p>
+				<p class="pjustify">
 					Cuando se diseña un algoritmo paralelo es necesario tener
 					en cuenta:
 					<ol>
@@ -490,22 +659,17 @@
 					</ol>
 					<center><h3>Metodologia foster</h3></center>
 					Consiste en cuatro etapas
-
 					<ol>
 						<li><b>Particionamiento: </b>En el dominio de los datos o de funciones.</li>
 						<li><b>Comunicaciones: </b> Se hace por medio de distintos medios o paradigmas tales como la memoria o paso de mensajes</li>
 						<li><b>Aglomeración: </b>Las tareas o datos son agrupados teniendo en cuenta posibles dependencias</li>
 						<li><b>Mapeo: </b>Los grupos son asignados a una unidad de procesamiento</li>
 					</ol>
-					En la siguiente imagen se puede ver descrito el proceso de forma gráfica:
+					En la siguiente imagen se puede ver descrito el proceso de forma gráfica: <br/>
 					<div class="image">
 						<img src="images/foster.jpg" alt="" />
 					</div>
-
 			</section>
-
-
-
 	</section>
 
 	
@@ -514,14 +678,13 @@
 			<div class="spotlight">
 				<div class="content">
 					<h2>Taxonomia de Flynn</h2>
-					<p>
-						<h3>Single Instruction, Single Data (SISD)</h3>
-						hay un elemento de procesamiento, que tiene acceso a un único programa y a un almacenamiento de datos. En cada paso, el elemento
+					<h3>Single Instruction, Single Data (SISD)</h3>
+					<p class="pjustify">
+						Hay un elemento de procesamiento, que tiene acceso a un único programa y a un almacenamiento de datos. En cada paso, el elemento
 						de procesamiento carga una instrucción y la información correspondiente y ejecuta esta instrucción. El resultado es
 						guardado de vuelta en el almacenamiento de datos. Luego SISD es el computador secuencial convencional, de acuerdo
 						al modelo de von Neumann.
 					</p>
-
 				</div>
 				<div class="image">
 					<img src="images/sisd.png" alt="" width="140" />
@@ -530,9 +693,9 @@
 
 			<div class="spotlight">
 				<div class="content">
-					<p>
-						<h3>Multiple Instruction, Single Data (MISD)</h3>
-						hay múltiples elementos de procesamiento, en el que cada cual tiene memoria privada del programa, pero se tiene acceso común
+					<h3>Multiple Instruction, Single Data (MISD)</h3>
+					<p class="pjustify">
+						Hay múltiples elementos de procesamiento, en el que cada cual tiene memoria privada del programa, pero se tiene acceso común
 						a una memoria global de información. En cada paso, cada elemento de procesamiento de obtiene la misma información
 						de la memoria y carga una instrucción de la memoria privada del programa. Luego, las instrucciones posiblemente diferentes
 						de cada unidad, son ejecutadas en paralelo, usando la información (idéntica) recibida anteriormente. Este modelo es
@@ -546,8 +709,8 @@
 
 			<div class="spotlight">
 				<div class="content">
-					<p>
-						<h3>Single Instruction, Multiple Data (SIMD): </h3>
+					<h3>Single Instruction, Multiple Data (SIMD): </h3>
+					<p class="pjustify">
 						Hay múltiples elementos de procesamiento, en el que cada cual tiene acceso privado a la memoria de información (compartida
 						o distribuida). Sin embargo, hay una sola memoria de programa, desde la cual una unidad de procesamiento especial
 						obtiene y despacha instrucciones. En cada paso, cada unidad de procesamiento obtiene la misma instrucción y carga
@@ -564,9 +727,9 @@
 
 			<div class="spotlight">
 				<div class="content">
-					<p>
-						<h3>Multiple Instruction, Multiple Data (MIMD):</h3>
-						hay múltiples unidades de procesamiento, en la cual cada una tiene tanto instrucciones como información separada. Cada elemento
+					<h3>Multiple Instruction, Multiple Data (MIMD):</h3>
+					<p class="pjustify">
+						Hay múltiples unidades de procesamiento, en la cual cada una tiene tanto instrucciones como información separada. Cada elemento
 						ejecuta una instrucción distinta en un elemento de información distinto. Los elementos de proceso trabajan asíncronamente.
 						Los clusters son ejemplo son ejemplos del modelo MIMD.
 					</p>
@@ -606,21 +769,14 @@
 						Este tipo de paralelismo consiste en <b>cambiar el orden de las intrucciones</b> de un programa y juntarlas en grupos
 						para posteriormente ser ejecutados en paralelo <b>sin alterar el resultado final</b> del programa.
 					</p>
-					<h4>Pipelining</h4>
-					<p>
-						El pipelining proviene de la idea de que en una tubería no es necesario esperar a que todo el agua dentro salga,
-						para que pueda entrar más.
-						Los procesadores modernos tienen un 'pipeline' que separa las instrucciones en varias etapas, donde <b>cada etapa
-						corresponde a una acción diferente</b> que necesita la salida de la anterior.
-					</p>
 				</div>
 				<div class="contentmo">
-					<p>
+					<p class="pjustify">
 						<b>Ejemplo:</b> Un pipeline de 5 etapas: fetch (buscar la instrucción), decode (decodificarla), execute (ejecutarla),
 						write (escribir en memoria el resultado de la operación).
 					</p>
 					<img src="images/pipelining.png" />
-					<p>
+					<p class="pjustify">
 						En el gráfico anterior se observa el procesamiento de dos instrucciones sin pipeline, tomando un tiempo de 8 ciclos,
 						y con pipeline reduciendo este tiempo a solo 5 ciclos.
 					</p>
@@ -656,20 +812,26 @@
 				<div class="spotlight">
 					<div class="content">
 						<h2>Patrones de diseño paralelo</h2>
-						<p>Los patrones se han establecido como buenas practicas a la hora de realizar ingeniería de
-						software.</p>
-						<p>Los patrones de control en el caso de la programación paralela son maneras de combinar la distribución de los procesos
-						y el acceso a los datos para la solucion de un problema.</p>
+						<p class="pjustify">
+							Los patrones se han establecido como buenas practicas a la hora de realizar ingeniería de
+							software.
+						</p>
+						<p class="pjustify">
+							Los patrones de control en el caso de la programación paralela son maneras de combinar la distribución de los procesos
+							y el acceso a los datos para la solucion de un problema.
+						</p>
 					</div>
 				</div>
 
 				<div class="spotlight">
 					<div class="content">
 						<h3>Fork-Join</h3>
-						<p> En este patrón de diseño se generan dos ejecuciones concurrentes,
+						<p class="pjustify"> 
+							En este patrón de diseño se generan dos ejecuciones concurrentes,
 							que empieza inmediatamente después de que el fork es llamado en código, después,
 							se usa join para combinar estas dos ejecuciones concurrentes en una. Cada join puede unirse entonces a su fork
-							correspondiente y lo hace antes de las otras terminen.</p>
+							correspondiente y lo hace antes de las otras terminen.
+						</p>
 					</div>
 					<div class="image">
 						<img src="images/Fork-join.png" alt="" width="140" />
@@ -682,9 +844,9 @@
 					</div>
 					<div class="content">
 							<h3> Map </h3>
-									<p>
-											Map es un patrón que replica una función sobre todos los elementos de un conjunto de entrada. La función que
-											está siendo replicada se llama <b>función elemental</b>, dada que la misma se aplica a una coleccion real de datos.
+									<p class="pjustify">
+										Map es un patrón que replica una función sobre todos los elementos de un conjunto de entrada. La función que
+										está siendo replicada se llama <b>función elemental</b>, dada que la misma se aplica a una coleccion real de datos.
 									</p>
 							</div>
 					</div>
@@ -693,12 +855,12 @@
 					<div class="content">
 						<p>
 								<h3>Stencil</h3>
-								<p>
-										Stencil es un generalización del patron de Map, en el cual una <b>función elemental</b> tiene acceso no solo a un elemento
-										del conjunto de entrada sino también a un conjunto de "vecinos"
+								<p class="pjustify">
+									Stencil es un generalización del patron de Map, en el cual una <b>función elemental</b> tiene acceso no solo a un elemento
+									del conjunto de entrada sino también a un conjunto de "vecinos"
 								</p>
-								<p>
-										Como la estructura de datos no es infinita se deben tener en cuenta el manejo de excepciones para los bordes de la misma.
+								<p class="pjustify">
+									Como la estructura de datos no es infinita se deben tener en cuenta el manejo de excepciones para los bordes de la misma.
 								</p>
 						</p>
 					</div>
@@ -714,10 +876,10 @@
 					<div class="content">
 						<p>
 							<h3>Reducción</h3>
-							<p>
-							Una reducción combina cada elemento de una colección en uno solo utilizado una función asociativa conocida como
-							<b>función combinatoria</b>. Como es asociativa las tareas se pueden distribuir de muchas maneras y si la función resultara
-							ser también conmutativa el número de posibilidides aumentaría aún más.
+							<p class="pjustify">
+								Una reducción combina cada elemento de una colección en uno solo utilizado una función asociativa conocida como
+								<b>función combinatoria</b>. Como es asociativa las tareas se pueden distribuir de muchas maneras y si la función resultara
+								ser también conmutativa el número de posibilidides aumentaría aún más.
 							</p>
 						</p>
 					</div>
@@ -727,10 +889,10 @@
 					<div class="content">
 						<p>
 							<h3>Scan</h3>
-							<p>
-							Scan realiza las reducciones de cada elemento perteneciente a una estructura. En otras palabras cada elemento de salida es la
-							reduccion de un elemento de entrada.
-							A traves de una <b>función sucesora</b> se avanza de un estado al otro haciendo <i> folds </i> en el proceso asociativo.
+							<p class="pjustify">
+								Scan realiza las reducciones de cada elemento perteneciente a una estructura. En otras palabras cada elemento de salida es la
+								reduccion de un elemento de entrada.
+								A traves de una <b>función sucesora</b> se avanza de un estado al otro haciendo <i> folds </i> en el proceso asociativo.
 							</p>
 						</p>
 					</div>
@@ -746,7 +908,7 @@
 					</div>
 					<div class="content">
 							<h3> ParBegin - ParEnd </h3>
-									<p>
+									<p class="pjustify">
 										Parbegin y Parend originalmente propuesto por Dijsktra es un patrón para lenguajes estructurados en bloque
 										como Pascal y permiten una especificación explicita del paralelismo, todo lo que esté contenido entre ambos
 										será ejecutado en hilos separados en tanto se necesite y se genera un grafo de precedencia como el que se ve en la imagen,
@@ -760,46 +922,52 @@
 					<div class="spotlight">
 						<div class="content">
 								<h3> Maestro / Esclavo </h3>
-										<p>
+									<p class="pjustify">
 										Es usada cuando se tienen dos o más procesos que necesitan ejecutarse simultanea
 										y continuamente pero a diferentes velocidades. Si estos procesos corren en un único ciclo,
 										pueden suceder problemas de temporización graves. Estos problemas de temporización ocurren
 										cuando una parte del ciclo tarda más en ejecutarse de lo esperado. Si esto sucede, la sección
 										restante del ciclo se atrasa. El patrón Maestro/Esclavo consiste en múltiples ciclos en paralelo.
 										Un ciclo actúa como el maestro y los otros como esclavos. El ciclo maestro controla a todos los demás.
-										</p>
-								</div>
+									</p>
 						</div>
+						<div class="image">
+							<img src="images/master_slave.png"/>
+						</div>
+					</div>
 
 
 						<div class="spotlight">
 							<div class="content">
-									<h3> SPMD - SIMD </h3>
-											<p>
-												Esto viene de la taxonomia Flynn  SPMD (Single Program, Multiple Data), múltiples procesadores autónomos
-												ejecutan simultáneamente el mismo programa en puntos independientes, SIMD (Single instructon, multiple data)
-												está basado en organizar los datos relevantes al problema en estructuras de datos iterativas como arreglos y
-												en definir la computación en términos de una secuencia de actualizaciones paralelas en paralelo con estas estructuras
-												de datos.
-
-											</p>
-									</div>
+								<h3> SPMD - SIMD </h3>
+									<p class="pjustify">
+										Esto viene de la taxonomia Flynn  SPMD (Single Program, Multiple Data), múltiples procesadores autónomos
+										ejecutan simultáneamente el mismo programa en puntos independientes, SIMD (Single instructon, multiple data)
+										está basado en organizar los datos relevantes al problema en estructuras de datos iterativas como arreglos y
+										en definir la computación en términos de una secuencia de actualizaciones paralelas en paralelo con estas estructuras
+										de datos.
+									</p>
 							</div>
+							<div class="image">
+								<img src="images/spmd_simd.gif"/>
+							</div>
+						</div>
 
 
 							<div class="spotlight">
 								<div class="content">
-										<h3> Creación de hilos y procesos </h3>
-												<p>
-										Los hilos se distinguen de los tradicionales procesos en que los procesos son generalmente independientes,
-										llevan bastante información de estados, e interactúan sólo a través de mecanismos de comunicación dados por el sistema.
-										Por otra parte, muchos hilos generalmente comparten otros recursos directamente. En muchos de los sistemas operativos que
-										proveen facilidades para los hilos, es más rápido cambiar de un hilo a otro dentro del mismo proceso, que cambiar de un proceso a otro.
-												</p>
-										</div>
+									<h3> Creación de hilos y procesos </h3>
+										<p class="pjustify">
+											Los hilos se distinguen de los tradicionales procesos en que los procesos son generalmente independientes,
+											llevan bastante información de estados, e interactúan sólo a través de mecanismos de comunicación dados por el sistema.
+											Por otra parte, muchos hilos generalmente comparten otros recursos directamente. En muchos de los sistemas operativos que
+											proveen facilidades para los hilos, es más rápido cambiar de un hilo a otro dentro del mismo proceso, que cambiar de un proceso a otro.
+										</p>
 								</div>
-
-
+								<div class="image">
+								<img src="images/hilo_proceso.png"/>
+							</div>
+							</div>
 			</div>
 	</section>
 
@@ -861,11 +1029,13 @@
 				<div class="content">
 					<p>
 						<h3>Memoria distribuida</h3>
-						<p> Esta arquitectura se basa en múltiples procesadores con su propia memoria física privada, las tareas pueden operar
+						<p class="pjustify"> 
+							Esta arquitectura se basa en múltiples procesadores con su propia memoria física privada, las tareas pueden operar
 							solo con información local y se necesita de la comunicación para obtener información remota, a través también de procesadores remotos
 							Hay cuatro implementaciones que pueden servir como ejemplo conocidas para esta arquitectura tales como: múltiples sistemas operativos, Middlewares, clusters y grids.
-							 Las razones por las que se prefiere esta arquitectura en ciertos escenarios es porque en principio se pueden
-							 añadir tantas unidades de procesamiento como la red pueda soportar, pero las limitaciones recaen directamente en ella.</p>
+							Las razones por las que se prefiere esta arquitectura en ciertos escenarios es porque en principio se pueden
+							añadir tantas unidades de procesamiento como la red pueda soportar, pero las limitaciones recaen directamente en ella.
+						</p>
 						<ul>
 
 							<li>También llamado modelo de paso de mensajes</li>
@@ -1064,7 +1234,7 @@
 			<center><h3>Tipos de sincronización:</h3></center>
 			<div class="spotlight">
 				<div class="contentmo">
-					<p>
+					<p class="pjustify">
 						<h4> Barrier</h4>
 						<ul>
 							<li>Todas las tareas están involucradas</li>
@@ -1114,9 +1284,9 @@
 					</p>
 				</div>
 				<div class="contentmo">
-					<p>Se utilizan las funciones <b>send</b> y <b>recieve</b> para coordinar las acciones.</p>
+					<p class="pjustify">Se utilizan las funciones <b>send</b> y <b>recieve</b> para coordinar las acciones.</p>
 					<img src="images/sender.jpg" alt="" />
-					<p>Un ejemplo que ilustra esta técnica es el <b>handshake</b> que establece la comunicación usando el protocolo http.</p>
+					<p class="pjustify">Un ejemplo que ilustra esta técnica es el <b>handshake</b> que establece la comunicación usando el protocolo http.</p>
 				</div>
 			</div>
 		</div>
@@ -1125,28 +1295,9 @@
 	<section id="nine" class="wrapper style2 alt">
 		<div class="inner">
 			<div class="spotlight">
-				<div class="image">
-					<img src="images/load.jpg" alt="" />
-				</div>
-				<div class="content">
-					<h2>Balanceador de carga</h2>
-					<p>Se refiere a la práctica de distribuir cantidades aproximadamente iguales de trabajo entre las tareas, de modo que
-						todas las tareas se mantengan ocupadas todo el tiempo. Se puede considerar una minimización del tiempo de inactividad
-						de la tarea.</p>
-					<ul>
-						<li>Asignar el trabajo que recibe cada tarea equitativamente</li>
-
-						<li>Puede ser un factor significativo en el desempeño del programa </li>
-
-						<li>A menudo requiere "serialización" de segmentos del programa.</li>
-					</ul>
-					</p>
-				</div>
-			</div>
-			<div class="spotlight">
 				<div class="content">
 					<b>Asignación de trabajo dinámico</b>
-					<p>Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente
+					<p class="pjustify">Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente
 						entre las tareas</p>
 					<ul>
 						<li>Cuando la cantidad de trabajo que realiza cada tarea es variable o no se puede predecir, puede ser útil usar un planificador
@@ -1240,49 +1391,6 @@
 						<img src="images/formula3.png" alt="" width="140" />
 					</div>
 				</div>
-
-				<div class="spotlight">
-					<div class="content">
-
-						<h3>SpeedUp</h3>
-						<p class="pjustify">
-							El SpeedUp resresenta la ganacia que se obtiene en la version paralela del programa respecto a la version secuencial del
-							mimo.
-						</p>
-
-					</div>
-
-					<div class="image">
-						<img src="images/formula4.png" alt="" width="140" />
-					</div>
-				</div>
-
-				<div class="spotlight">
-					<div class="content">
-
-						<h2>Ley de Amdahl</h2>
-						<p class="pjustify">
-							El incremento de velocidad de un programa utilizando múltiples procesadores en computación paralela está limitada por la
-							fracción secuencial del programa. Sea f el porcentaje paralelizado del programa expresado en decimal, la ley de Amdahl
-							dice que llega un punto en el cual sin importar que el numero de procesadores sea muy alto , el speedup se va a comportar
-							de manera lineal ; esto de acuerdo al porcentaje que este paralelizado el codigo. El speedup de un programa con un
-							fragmento paralelizado se calcula con :
-						</p>
-
-						<div class="image">
-							<img src="images/formula5.png" alt="" width="140" />
-						</div>
-
-
-					</div>
-
-					<div class="image">
-						<img src="images/graficaAmdahl.png" alt="" width="150" />
-					</div>
-
-
-				</div>
-
 			</div>
 		</section>
 
@@ -1584,7 +1692,7 @@
 						<div class="imagemo">
 							<img src="images/Lenguajes.png" alt="" />
 						</div>
-				    </div>
+				</div>
 				</div>
 			</div>
 			<div class="inner">
@@ -1595,9 +1703,9 @@
 						Actualmente, existe una variedad de lenguajes de programación con un enfoque multiparadigma, los cuales
 						permiten tener flexibilidad a la hora de querer lograr un objetivo, en cuanto a programación. Igualmente,
 						los lenguajes suelen complementar dicho comportamiento con librerías, APIs o frameworks (ya sean comunitarios
-						 o privativos), los cuales le permiten al programador el disponer de herramientas de trabajo. 
-						</p>
-						<p class="pjustify">
+						o privativos), los cuales le permiten al programador el disponer de herramientas de trabajo. 
+					</p>
+					<p class="pjustify">
 						El paradigma paralelo es implementado, en la mayoría de los lenguajes más conocidos actualmente, a través
 						de dichas herramientas. En la tabla, se hace un recuento de herramientas específicas de algunos de esos lenguajes,
 						mencionando que no son las únicas que existen. 
@@ -1672,8 +1780,10 @@
 				<div class="content">
 					<h2>Aplicaciones</h2>
 					<b>Computación grafica</b>
-					<p>Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente
-						entre las tareas</p>
+					<p class="pjustify">
+						Ciertas clases de problemas producen desequilibrios de carga incluso si los datos están distribuidos uniformemente
+						entre las tareas
+					</p>
 					</p>
 				</div>
 				<div class="image">
@@ -1687,10 +1797,10 @@
 				</div>
 				<div class="content">
 					<h2>Aproximación y cálculo de constantes y/o funciones numéricas.</h2>
-					<p> Worldwide LHC Computing Grid (WLCG) es una colaboración global de centros de computación. Fue lanzado en 2002 para
+					<p class="pjustify">
+						Worldwide LHC Computing Grid (WLCG) es una colaboración global de centros de computación. Fue lanzado en 2002 para
 						proporcionar un recurso para almacenar, distribuir y analizar los 15 petabytes (15 millones de gigabytes) de datos
-						generados cada año por el Large Hadron Collider (LHC).</p>
-
+						generados cada año por el Large Hadron Collider (LHC).
 					</p>
 				</div>
 			</div>
@@ -1699,11 +1809,11 @@
 
 				<div class="content">
 					<h2>Predicción del clima y cambio climático</h2>
-					<p> Uno de los primeros usos exitosos de la computación paralela fue la predicción del tiempo. La información, como la
+					<p class="pjustify"> 
+						Uno de los primeros usos exitosos de la computación paralela fue la predicción del tiempo. La información, como la
 						temperatura, la humedad y las precipitaciones, se ha recolectado y utilizado para predecir el clima durante más de
 						500 años. En 1904, el físico y meteorólogo noruego Vilhelm Bjerknes propuso un modelo de ecuaciones diferenciales
-						para la predicción meteorológica que incluía siete variables, incluyendo temperatura, lluvia y humedad.</p>
-
+						para la predicción meteorológica que incluía siete variables, incluyendo temperatura, lluvia y humedad.
 					</p>
 				</div>
 
@@ -1718,10 +1828,10 @@
 				</div>
 				<div class="content">
 					<h2>Análisis de imágenes multiespectro</h2>
-					<p> Las imágenes satelitales consisten en grandes cantidades de datos. Por ejemplo, las imágenes Landsat 7 consta de siete
+					<p class="pjustify">
+						Las imágenes satelitales consisten en grandes cantidades de datos. Por ejemplo, las imágenes Landsat 7 consta de siete
 						tablas de datos, donde cada entrada en una tabla representa una longitud de onda magnética diferente (azul, verde,
-						rojo o infrarrojo térmico) para un píxel de 30 metros cuadrados de la superficie de la Tierra.</p>
-
+						rojo o infrarrojo térmico) para un píxel de 30 metros cuadrados de la superficie de la Tierra.
 					</p>
 				</div>
 			</div>
@@ -1730,11 +1840,11 @@
 
 				<div class="content">
 					<h2>Astronomía</h2>
-					<p> Hay muchas aplicaciones de los supercomputadores a la astronomía, incluyendo el uso de un supercomputador para simular
+					<p class="pjustify"> 
+						Hay muchas aplicaciones de los supercomputadores a la astronomía, incluyendo el uso de un supercomputador para simular
 						eventos en el futuro, o pasado, para probar teorías astronómicas. La Universidad de Minnesota Supercomputer Center
 						simuló lo que una explosión de supernova que se origina en el borde de una gigantesca nube de gas molecular interestelar
-						parecería 650 años después de la explosión.</p>
-
+						parecería 650 años después de la explosión.
 					</p>
 				</div>
 
@@ -1745,7 +1855,7 @@
 
 			<div class="spotlight">
 				<div class="image">
-					<img src="images/coco.png" alt="" />
+					<img src="images/render.png" alt="" />
 				</div>
 				<div class="content">
 					<h2>Renderizado de imagenes y animación</h2>
@@ -1758,19 +1868,41 @@
 			<div class="spotlight">
 				<div class="content">
 					<h2>Diagnóstico de enfermedades mentales</h2>
-					<p> El proyecto RePhrase incluido en el programa Horizonte 2020 de la UE tuvo como objetivo trabajar 
+					<p class="pjustify">
+						El proyecto RePhrase incluido en el programa Horizonte 2020 de la UE tuvo como objetivo trabajar 
 						en la mejora del desarrollo de software para arquitecturas paralelas y heterogéneas. Los resultados 
 						de esta investigación encontraron aplicación en diversos campos, como en la mejora de procesos industriales 
 						de fabricación, la monitorización del tráfico ferroviario y la optimización de aplicaciones para el diagnóstico 
 						de enfermedades mentales. Este último consistía en el procesamiento por computador de imágenes capturadas mediante 
 						resonancia magnética del cerebro, con el objetivo de conseguir diagnósticos más rápidos en el caso de enfermedades 
-						como la la esquizofrenia, el trastorno bipolar o la depresión.</p>
-
+						como la la esquizofrenia, el trastorno bipolar o la depresión.
 					</p>
 				</div>
 
 				<div class="image">
 					<img src="images/biomedicas.jpg" alt="" />
+				</div>
+			</div>
+
+			<div class="spotlight">
+				<div class="image">
+					<br/>
+					<center><h3>Otras tendencias en la computación paralela</h3></center>
+					<img src="images/trends.jpg" alt="" />
+					<br/>
+				</div>
+				<div class="content">
+					<p class="pjustify">
+						<ul>
+							<li>Reducción en  los tiempos de comunicaciones en las arquitecturas</li>
+							<li>Software de desarrollo más sencillo para clústeres</li>
+							<li>Sistema híbridos en múltiples plataformas</li>
+							<li>Confiabilidad y tolerancia a fallos</li>
+							<li>Computación en la nube</li>
+							<li>Unificación o integración de APIs</li>
+							<li>Producción de software que haga transparente la programación en sistemas híbridos</li>
+						</ul>
+					</p>
 				</div>
 			</div>
 			
