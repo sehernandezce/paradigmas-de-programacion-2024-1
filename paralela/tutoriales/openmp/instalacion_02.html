@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>OpenMP</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo-ico.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+  <style>
+    pre {
+      background: #303030;
+      color: #ffffff;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+      <div class="container">
+
+          <div class="logo float-left">
+              <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+          </div>
+
+          <nav class="nav-menu float-right d-none d-lg-block">
+              <ul>
+                  <li class="active"><a href="#faq">Paso a paso</a></li>
+                  <li><a href="index.html#Instalacion">Volver a la página principal</a></li>
+              </ul>
+          </nav>
+
+      </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url('assets/img/slide/ubuntu_wallpaper.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content container">
+                <h2 class="animate__animated animate__fadeInDown">Instalación en Linux (Ubuntu 18.04)</span></h2>
+                <a href="#faq" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+
+  <main id="main">
+
+
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Paso a Paso</h2>
+        </div>
+
+
+        <div class="row  d-flex align-items-stretch">
+
+
+          <!-- 01 -->
+          <div class="col-lg-12 faq-item" data-aos="fade-up">
+            
+            <h4 ><a href="#inst_w_01" data-toggle="collapse" >01. Instalación IDE CodeBlocks</a></h4>
+            <div id="inst_w_01" class="collapse">
+              <p>
+                Primero, es necesario ejecutar una terminal para instalar el 
+                <span style="font-weight: bold;">IDE CodeBlocks</span>, 
+                por medio de los siguientes comandos:
+              </p>
+
+              <div class="col-lg-12" style="display: flex; justify-content: center;">
+                <pre style="padding: 20px 20px 0px 20px;" class="col-lg-11">
+                  sudo apt-get update
+                  sudo apt-get install codeblocks
+                </pre>
+              </div>
+
+              <p>
+                Después de instalar el IDE CodeBlocks, se selecciona GNU GCC como compilador por defecto. 
+                Para este sistema operativo no es necesario instalar los complementos de MingW.
+              </p>
+
+            </div>
+          </div>
+
+
+
+
+          <!-- 02 -->
+          <div class="col-lg-12 faq-item" data-aos="fade-up">
+            <h4 ><a href="#inst_w_02" data-toggle="collapse" >02. Configuracion CodeBlocks</a></h4>
+            <div id="inst_w_02" class="collapse">
+              <p>
+                Es necesario habilitar la <span style="font-weight: bold;">librería omp.h</span> en el IDE CodeBlocks para poder usarla. 
+                Para ello, es necesario ejecutar CodeBlocks, Ir a <span style="font-weight: bold;">Settings -> Compiler</span> en la barra 
+                de menú, luego en la ventana que aparece, ubicarse en la pestaña 
+                <span style="font-weight: bold;">Compiler settings -> Other options</span>, para agregar 
+                la bandera <span style="font-weight: bold;">-fopenmp</span>.
+              </p>
+
+              <div class="col-lg-12" style="text-align: center;">
+                <img src="assets/img/instalacion/ubu_instalacion_01.jpg" class="col-lg-6"  class="img-fluid" alt="" style="border: 2px solid #238b8b;">
+              </div>
+              
+              <br/> <br/>
+            
+              <div class="col-lg-12" style="text-align: center;">
+                <img src="assets/img/instalacion/ubu_instalacion_02.jpg" class="col-lg-10"  class="img-fluid" alt="" style="border: 2px solid #238b8b;">
+              </div>
+
+              <br/> <br/>
+
+              <p>
+                Ahora es necesario ubicarse en la pestaña <span style="font-weight: bold;">Compiler settings -> Linker settings</span> 
+                para luego agregar la <span style="font-weight: bold;">librería “gomp”</span> (Escribiendo el texto <span style="font-weight: bold;">gomp</span> directamente) 
+                y después se da clic primario en el botón OK para salir de la ventana:
+              </p>
+
+              <div class="col-lg-12" style="text-align: center;">
+                <img src="assets/img/instalacion/ubu_instalacion_03.jpg" class="col-lg-4"  class="img-fluid" alt="" style="border: 2px solid #238b8b;">
+              </div>
+
+              <br/> <br/>
+
+              <div class="col-lg-12" style="text-align: center;">
+                <img src="assets/img/instalacion/ubu_instalacion_04.jpg" class="col-lg-6"  class="img-fluid" alt="" style="border: 2px solid #238b8b;">
+              </div>
+
+              <br/> <br/>
+
+              <div class="col-lg-12" style="text-align: center;">
+                <img src="assets/img/instalacion/ubu_instalacion_05.jpg" class="col-lg-4"  class="img-fluid" alt="" style="border: 2px solid #238b8b;">
+              </div>
+
+              <br/> <br/>
+
+              <p>
+                Después de haber realizado estos pasos, ya se tendrá OpenMP en Linux (Ubuntu 14.04) para el IDE CodeBlocks.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

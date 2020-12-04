@@ -495,7 +495,7 @@ header h2 {
 }
 
 #main-content img {
-  max-width: 100%;
+  max-width: calc(100% - 30px);
 }
 
 aside#sidebar {
@@ -518,7 +518,7 @@ aside#sidebar p.repo-owner a {
 
 a.button {
   width: 134px;
-  height: 58px;
+  height: 80px;
   padding-top: 22px;
   padding-left: 68px;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
@@ -538,7 +538,7 @@ header a.button {
 }
 aside a.button {
   display: block;
-  width: 138px;
+  width: 200px;
   padding-left: 64px;
   margin-bottom: 20px;
   font-size: 21px;
@@ -857,9 +857,6 @@ footer a:hover {
     margin-top: 20px;
     background-image: none;
     border-top: solid 1px #ddd;
-  }
-  aside#sidebar a.button {
-    display: none;
   }
   #main-content h1:before,
   #main-content h2:before,

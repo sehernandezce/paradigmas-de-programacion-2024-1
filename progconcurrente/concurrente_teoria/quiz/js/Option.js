@@ -19,7 +19,7 @@ Option.prototype.render = function() {
     var label = document.createElement("label"),
         option = document.createElement("input"),
         self = this;
-
+    label.className+=" d-block"
     option.value = this.value;
     option.type = "radio";
     option.name = this.uid;
