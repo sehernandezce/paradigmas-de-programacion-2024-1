@@ -20,9 +20,9 @@
                         <h1 class="project-name">AspectJ</h1>
                         <h5>Tutorial de Aspectj</h5></div>
                     <div>
-                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion" class="btn">View on GitHub</a>
-                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
-                        <a href="https://github.com/seradiazpin/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
+                        <a href="https://github.com/ferestrepoca/paradigmas-de-programacion" class="btn">View on GitHub</a>
+                        <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/zipball/master" class="btn">Download .zip</a>
+                        <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tarball/master" class="btn">Download .tar.gz</a>
                     </div>
                 </div>
             </header>
@@ -86,26 +86,26 @@
                 <!-- Inicio de semantica -->
                 <h2><a id="semantica" class="anchor" href="#semantica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Semantica</h2>
                 <img src="tutorial/images/HOW_IS_FORMED.png">
-                <p>En sí, AspectJ funciona extiendiendo a Java como Base para soportar el manejo de aspectos y clases, agregando a la semántica de Java cuatro entidades principales.</p>
+                <p >En sí, AspectJ funciona extiendiendo a Java como Base para soportar el manejo de aspectos y clases, agregando a la semántica de Java cuatro entidades principales.</p>
 
                 <button class="accordion"><strong>Los puntos de enlace (Join Points)</strong></button>
                 <div class="panel">
-                    <p>Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
+                    <p style="color:#1C1453">Son puntos bien definidos en la ejecución de un programa, entre ellos podemos citar llamadas a métodos y accesos a atributos.</p>
                 </div>
 
                 <button class="accordion"><strong>Los cortes (Point Cuts)</strong></button>
                 <div class="panel">
-                    <p>Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
+                    <p style="color:#1C1453">Agrupan puntos de enlace y permiten exponer el contexto en ejecución de dichos puntos. Existen cortes primitivos y también definidos por el usuario.</p>
                 </div>
 
                 <button class="accordion"><strong>Los avisos (Advices)</strong></button>
                 <div class="panel">
-                    <p>Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
+                    <p style="color:#1C1453">Son acciones que se ejecutan en cada punto de enlace incluido en un corte. Los avisos tienen acceso a los valores expuestos por el corte. Las tres entidades anteriores son dinámicas porque permiten definir comportamiento adicional que actuará en tiempo de ejecución.</p>
                 </div>
 
                 <button class="accordion"><strong>Las introducciones y declaraciones (Inter-Type Declarations)</strong></button>
                 <div class="panel">
-                    <p>Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. <br>Esta última entidad es estática porque afecta la signatura estática del programa.</p>
+                    <p style="color:#1C1453">Permiten cambiar la estructura de clases de un programa agregando o extendiendo interfaces y clases con nuevos atributos, constructores o métodos. <br>Esta última entidad es estática porque afecta la signatura estática del programa.</p>
                 </div>
                 <!-- Fin semantica -->
 
@@ -117,7 +117,7 @@
                 <button class="accordion"><strong>[ privileged ]</strong></button>
                 <div class="panel">
                     <br>
-                    <p>Un modifier especial que, como su nombre nos lo indica, le dará privilegios al aspecto, esto significa que nos permitirá poder acceder a métodos y atributos privados de clases y aspectos externos.</p>
+                    <p style="color:#1C1453">Un modifier especial que, como su nombre nos lo indica, le dará privilegios al aspecto, esto significa que nos permitirá poder acceder a métodos y atributos privados de clases y aspectos externos.</p>
                     <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/a16efb36b73a10bdeabd7bcc87725eaa.js"></script>
                         <img src="tutorial/images/key.png" width="100" height="100" alt="Key">
                     </div>
@@ -128,12 +128,12 @@
                     <br>
                     <img src="tutorial/images/extends.png">
 
-                    <p>Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
-                    <p>La siguientes son unas reglas a tener en cuenta:</p>
+                    <p style="color:#1C1453">Un aspecto puede extender una clase, u otro aspecto abstracto y puede implementar tantos interfaces como se le indiquen. </p>
+                    <p style="color:#1C1453">La siguientes son unas reglas a tener en cuenta:</p>
                     <ul>
-                        <li>De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>    
-                        <li>Una clase no puede extender un aspecto.</li>    
-                        <li>Un aspecto no puede extender un aspecto que no sea abstracto.</li>    
+                        <li style="color:#1C1453">De un aspecto a pesar de extender una clase no se puede crear una instancia del mismo con el método new.</li>
+                        <li style="color:#1C1453" >Una clase no puede extender un aspecto.</li>
+                        <li style="color:#1C1453" >Un aspecto no puede extender un aspecto que no sea abstracto.</li>
                     </ul>
 
                     <script src="https://gist.github.com/jsbecerrab/c433c3563f28277a8a52e00c2a336167.js"></script>
@@ -143,10 +143,10 @@
 
                 <div class="panel">
                     <br>
-                    <p>Los Aspectos originalmente se generan como singleton. Sin embargo, pueden haber varias formas de crear diversas instancias del mismo acceso, según su objeto asociado, su posición de ejecución, entre otras. Las <b>Per Clause</b> son quienes se encargan de modificar los Aspectos para poder tener más control sobre la cantidad y comportamiento de los Aspectos</p>
+                    <p style="color:#1C1453">Los Aspectos originalmente se generan como singleton. Sin embargo, pueden haber varias formas de crear diversas instancias del mismo acceso, según su objeto asociado, su posición de ejecución, entre otras. Las <b>Per Clause</b> son quienes se encargan de modificar los Aspectos para poder tener más control sobre la cantidad y comportamiento de los Aspectos</p>
                     <img src="tutorial/images/perclauses.png">
                     <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99c3d0cda1c4f01c10f747adc3d231d8.js"></script></div>
-                    <p>Sin embargo, no se recomienda mezclar varios de estos métodos debido a que pueden llegar a inteferir con flujos ajenos de los distintos Aspectos.</p>
+                    <p style="color:#1C1453">Sin embargo, no se recomienda mezclar varios de estos métodos debido a que pueden llegar a inteferir con flujos ajenos de los distintos Aspectos.</p>
                 </div>
                 <!-- Fin Semantica de Declaración -->
 
@@ -319,6 +319,42 @@
 
                 <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/99b924d154c69f1e840b59af4bd120c6.js"></script></div>
 
+             <h4>
+                    <a id="Hello World" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hello World</h4>
+
+
+                <script src="https://gist.github.com/ejariasm/360ebce37e07ac720c05c2962fbdcc3c.js"></script>
+
+             <h4>
+                    <a id="Comodines" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Comodines</h4>
+
+
+                <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
+            <h4>
+                    <a id="Calls y Execution" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calls y Execution</h4>
+
+            <script src="https://gist.github.com/ejariasm/87b44157a293c8c72ec4cad282da328b.js"></script>
+
+            <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
+            <h4>
+                    <a id="Calls vs Execution" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calls vs Execution</h4>
+
+
+            <script src="https://gist.github.com/ejariasm/7f9c0189640343ce8911260535df87b6.js"></script>
+<h4>
+                    <a id="Context Passing" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Context Passing</h4>
+
+
+            <script src="https://gist.github.com/ejariasm/53e2469cf1d7102971836da96db4e8ae.js"></script>
+
+<h4>
+                    <a id="Aspect Behaviours" class="anchor" href="#aspect-aspect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Aspect Behaviours</h4>
+
+
+            <script src="https://gist.github.com/ejariasm/2a85f9b5273e68c496ee1c72a4405372.js"></script>
+
+
+
                 <h2>
                     <a id="tutorial" class="anchor" href="#tutorial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TUTORIAL</h2>
 
@@ -401,7 +437,56 @@
 
                 <h4><a href="presentacion.pdf">Enlace a la presentación</h4>
                 <h4><a href="taller.pdf">Enlace al taller</h4>
+                    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h1 id="Tutorial-Sistema-de-inventario-con-log" data-id="Tutorial-Sistema-de-inventario-con-log"><a class="anchor hidden-xs" href="#Tutorial-Sistema-de-inventario-con-log" title="Tutorial-Sistema-de-inventario-con-log"><span class="octicon octicon-link"></span></a><span>Tutorial: Sistema de inventario con log</span></h1><p><span>En este tutorial vamos a ver el paso a paso de cómo subir a la nube un servidor para el control de inventarios. Es una API Rest y se utiliza el entorno de trabajo Spring. Vamos a ver la estructura del proyecto, las clases y cómo subirlo a un nodo de AWS con Putty. También veremos cómo hacer peticiones al servidor mediante Postman.</span><br>
+<span>Para acceder y descargar el proyecto, ir al siguiente enlace </span><a href="https://github.com/esgonzalezca/SpringLenguajes" target="_blank" rel="noopener"><span style="color:#33FDFF;" >https://github.com/esgonzalezca/SpringLenguajes</span></a></p><h3 id="Estructura-del-proyecto" data-id="Estructura-del-proyecto"><a class="anchor hidden-xs" href="#Estructura-del-proyecto" title="Estructura-del-proyecto"><span class="octicon octicon-link"></span></a><span>Estructura del proyecto</span></h3><p><img src="https://i.imgur.com/BMCBp8r.png" alt=""></p><p><span>Entramos a src/main/java/com/spring/aop/api/</span></p><p><img src="https://i.imgur.com/EXHUXQN.png" alt=""></p><p><strong><span>Advice</span></strong></p><p><span>Dentro de este directorio está la clase que contiene los pointcuts para la petición GET (myPointCutGet) y para la petición POST (myPointCutPost). Ambos son de tipo execution.</span><br>
+<span>Después están las dos funciones que se usarán para hacer los logs:applicationLoggerPost para las peticiones POST, donde se crea un ObjectMapper, se obtiene el nombre del método, el nombre de la clase y los argumentos para registrar la información en el log. Luego con pjp.proceed() se ejecuta el JoinPoint. Esta función tiene la anotación</span><br>
+<span>@Around porque reemplaza el código que está en el joinpoint</span><br>
+<span>La segunda función applicationLoggerGet cumple prácticamente la misma función de applicationLoggerPost pero como tiene la anotación @AfterReturning recibe el retorno del pointcut (myPointCutGet) en la variable redVal y luego hace el registro en el log.</span></p><p><img src="https://i.imgur.com/Kc8l4yt.png" alt=""></p><p><strong><span>Model</span></strong></p><p><span>En la clase Product se describen los atributos de los productos que estarán en nuestro repositorio, los constructores, getters y setters.</span></p><p><img src="https://i.imgur.com/4UObccG.png" alt=""></p><p><strong><span>Service</span></strong></p><p><span>En la clase ProductService se inicia la base de datos y se hacen las operaciones de consulta y adición de registros.</span></p><p><img src="https://i.imgur.com/uICOdJi.png" alt=""></p><p><strong><span>Controller</span></strong></p><p><span>En la clase ProductController es donde se expone la información con REST, hay una petición POST (save) para guardar un producto o una lista de productos.</span><br>
+<span>La petición GET (findProducts) para obtener todos los productos en el sistema.</span><br>
+<span>En esta clase usamos la clase ProductService para acceder a la base de datos.</span></p><p><img src="https://i.imgur.com/XFR7vuB.png" alt=""></p><p><strong><span>Repository</span></strong></p><p><span>La clase ProductRepository hereda de JpaRepository, hay que declarar la tabla con Producto y el tipo de dato de la llave primaria (Integer).</span></p><p><img src="https://i.imgur.com/hSuIrCB.png" alt=""></p><p><span>Y por último, fuera de los directorios vistos arriba, está la clase SpringAopApplication, donde está el método main para correr el servidor.</span></p><p><img src="https://i.imgur.com/KcKPtIc.png" alt=""></p><h3 id="Creación-del-jar" data-id="Creación-del-jar"><a class="anchor hidden-xs" href="#Creación-del-jar" title="Creación-del-jar"><span class="octicon octicon-link"></span></a><span>Creación del .jar</span></h3><p><span>Usaremos el IDE Netbeans.</span></p><p><img src="https://i.imgur.com/IQgcacM.png" alt=""></p><p><span>En la parte superior de la pantalla haremos clic en el icono del Martillo con la escoba. Así se creará un archivo .jar con un nombre genérico (el cual se puede cambiar más adelante) en la carpeta “Target” de nuestro directorio del proyecto en local.</span></p><h3 id="Creación-del-Dockerfile" data-id="Creación-del-Dockerfile"><a class="anchor hidden-xs" href="#Creación-del-Dockerfile" title="Creación-del-Dockerfile"><span class="octicon octicon-link"></span></a><span>Creación del Dockerfile</span></h3><p><span>Ahora crearemos un archivo llamado “Dockerfile” que no tendrá extensión y tendrá este contenido:</span></p><p><img src="https://i.imgur.com/J102urS.png" alt=""></p><p><span>Nótese que aquí “myService.jar” es como se debe llamar el archivo ejecutable de Java. Este archivo debe estar en la misma carpeta  del Dockerfile ya que será transportado a la carpeta /opt/app de nuestro entorno virtual (nodo de AWS). Recuerde que este archivo .jar fue generado al principio dentro de la carpeta target de nuestro proyecto en local.</span></p><h3 id="Creación-del-nodo-EC2" data-id="Creación-del-nodo-EC2"><a class="anchor hidden-xs" href="#Creación-del-nodo-EC2" title="Creación-del-nodo-EC2"><span class="octicon octicon-link"></span></a><span>Creación del nodo EC2</span></h3><p><strong><span>Nota:</span></strong><span> Para esta sección se usó una máquina t2.micro de AWS (se puede acceder a una de estas máquinas con la capa gratuita de AWS).</span></p><p><span>Vamos a la página de AWS </span><a href="https://aws.amazon.com/" target="_blank" rel="noopener"><span style="color:#33FDFF"; >https://aws.amazon.com/</span></a><span>, creamos una cuenta y accedemos a la consola.</span></p><p><img src="https://i.imgur.com/G0YE5tK.png" alt=""></p><p><span>Vamos a la sección EC2</span></p><p><img src="https://i.imgur.com/vU9yOpD.png" alt=""></p><p><span>Vamos a la sección instances y oprimimos Launch instance.</span></p><p><img src="https://i.imgur.com/LI3czvB.png" alt=""></p><p><span>Seleccionamos Amazon Linux 2 64 bits(X86)  y luego en “Select”.</span></p><p><img src="https://i.imgur.com/6RHqykG.png" alt=""></p><p><span>Seleccionamos la t2.micro.</span></p><p><img src="https://i.imgur.com/dY1ddmw.png" alt=""></p><p><span>Luego hacemos click en “Review and Launch”.</span></p><p><img src="https://i.imgur.com/3xL6plT.png" alt=""></p><p><span>Hacemos click en Launch. A continuación nos pedirá ingresar un nuevo valor de llave. Ingresamos los datos como sale a continuación.</span></p><p><img src="https://i.imgur.com/Yfn57Dl.png" alt=""></p><h3 id="Acceder-al-nodo-usando-Putty" data-id="Acceder-al-nodo-usando-Putty"><a class="anchor hidden-xs" href="#Acceder-al-nodo-usando-Putty" title="Acceder-al-nodo-usando-Putty"><span class="octicon octicon-link"></span></a><span>Acceder al nodo usando Putty</span></h3><p><span>Ya con la llave del nodo, accedemos a él mediante Putty. Descargar en: </span><a href="https://www.putty.org" target="_blank" rel="noopener"><span style="color:#33FDFF";>https://www.putty.org</span></a></p><p><span>Interfaz inicial de Putty</span></p><p><img src="https://i.imgur.com/BFwTB4U.png" alt=""></p><p><span>En el cuadro de Host Name ingresamos la IP del nodo del nodo que creamos unos pasos arriba. Para el caso de la exposición hecha en clase:</span></p><p><img src="https://i.imgur.com/m4Dbehx.png" alt=""></p><p><span>Luego vamos a la categoría SSH - Auth.</span></p><p><img src="https://i.imgur.com/aS9x0bH.png" alt=""></p><p><span>En el campo Private key file for authentication ponemos la ruta de la llave del nodo de AWS. Luego regresamos a la categoría Session y oprimimos open.</span></p><p><img src="https://i.imgur.com/Nx5Ewkf.png" alt=""></p><p><span>Accedemos con el usuario ec2-user (es el usuario por defecto).</span></p><p><img src="https://i.imgur.com/6BsM1HM.png" alt=""></p><p><span>Desde esta ventana de comandos instalamos docker para hacer el contenedor para correr nuestra API.</span></p><p><img src="https://i.imgur.com/XVVP5jq.png" alt=""></p><p><span>Iniciamos docker.</span></p><p><img src="https://i.imgur.com/2zn4FyO.png" alt=""></p><p><span>Luego vamos a la carpeta donde está el Dockerfile.</span></p><p><span></span></p><p><img src="https://i.imgur.com/ZQYfSXB.png" alt=""></p><p><span>Construimos el contenedor.</span></p><p><img src="https://i.imgur.com/6QpfkeW.png" alt=""></p><p><span>Corremos el contenedor.</span></p><p><img src="https://i.imgur.com/1Fz9eSS.png" alt=""></p><p><span>Ya está corriendo el servidor, debajo comenzarán a aparecer los logs.</span></p><p><img src="https://i.imgur.com/M5VPMfU.png" alt=""></p><h3 id="Peticiones-al-servidor-con-Postman" data-id="Peticiones-al-servidor-con-Postman"><a class="anchor hidden-xs" href="#Peticiones-al-servidor-con-Postman" title="Peticiones-al-servidor-con-Postman"><span class="octicon octicon-link"></span></a><span>Peticiones al servidor con Postman</span></h3><p><span>Enlace para descargar Postman: </span><a href="https://www.postman.com/downloads/" target="_blank" rel="noopener"><span style="color:#33FDFF";>https://www.postman.com/downloads/</span></a></p><p><span>Agregamos una nueva petición de tipo GET para obtener la lista de productos de nustro inventario. En la dirección escribimos la ip del nodo seguida por “:” el puerto “/” findProducts. Damos click a Send para enviar la petición al servidor.</span></p><p><img src="https://i.imgur.com/JafDxOw.png" alt=""></p><p><span>Log del servidor.</span></p><p><img src="https://i.imgur.com/lbclRXb.png" alt=""></p><p><span>Ahora agregamos otra petición de tipo POST para agregar productos al inventario. Ingresamos la misma ruta cambiando lo que va depués del “/” por save. En la pestaña </span><em><span>Body</span></em><span> seleccionamos </span><em><span>raw</span></em><span> y </span><em><span>JSON</span></em><span> para escribir el cuerpo de la petición (los artículos que vamos a agregar). Enviamos la petición son </span><em><span>Send</span></em></p><p><img src="https://i.imgur.com/SmVZe9W.png" alt=""></p><p><span>Log del servidor</span></p><p><img src="https://i.imgur.com/UD20Vlb.png" alt=""></p><p><span>Luego hacemos otro GET para obtener la lista de productos actualizada.</span></p><p><img src="https://i.imgur.com/MC0SFb5.png" alt=""></p><p><span>Log del servidor</span><br>
+<img src="https://i.imgur.com/V8q2eOC.png" alt=""></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#Tutorial-Sistema-de-inventario-con-log" title="Tutorial: Sistema de inventario con log">Tutorial: Sistema de inventario con log</a><ul class="nav">
+<li class=""><a href="#Estructura-del-proyecto" title="Estructura del proyecto">Estructura del proyecto</a></li>
+<li><a href="#Creación-del-jar" title="Creación del .jar">Creación del .jar</a></li>
+<li><a href="#Creación-del-Dockerfile" title="Creación del Dockerfile">Creación del Dockerfile</a></li>
+<li><a href="#Creación-del-nodo-EC2" title="Creación del nodo EC2">Creación del nodo EC2</a></li>
+<li><a href="#Acceder-al-nodo-usando-Putty" title="Acceder al nodo usando Putty">Acceder al nodo usando Putty</a></li>
+<li class=""><a href="#Peticiones-al-servidor-con-Postman" title="Peticiones al servidor con Postman">Peticiones al servidor con Postman</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#Tutorial-Sistema-de-inventario-con-log" title="Tutorial: Sistema de inventario con log">Tutorial: Sistema de inventario con log</a><ul class="nav">
+<li class=""><a href="#Estructura-del-proyecto" title="Estructura del proyecto">Estructura del proyecto</a></li>
+<li><a href="#Creación-del-jar" title="Creación del .jar">Creación del .jar</a></li>
+<li><a href="#Creación-del-Dockerfile" title="Creación del Dockerfile">Creación del Dockerfile</a></li>
+<li><a href="#Creación-del-nodo-EC2" title="Creación del nodo EC2">Creación del nodo EC2</a></li>
+<li><a href="#Acceder-al-nodo-usando-Putty" title="Acceder al nodo usando Putty">Acceder al nodo usando Putty</a></li>
+<li class=""><a href="#Peticiones-al-servidor-con-Postman" title="Peticiones al servidor con Postman">Peticiones al servidor con Postman</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
                 <div id="openModal" class="modalDialog">
+                    
+                    
+                    
+                    
+                    
+                    
 	<div>
 		<a href="#close" title="Close" class="close">X</a>
 		<h2>Contribuidores</h2>
@@ -441,6 +526,7 @@
                     <li>Andres Esteban Romero Romero	</li>
                     <li>Oscar Andres Mancera Garzón</li>
                     <li><b>Y</b>erson Andres <b>V</b>alderrama Ceron <b>7</b></li></ul>
+            
                 </div>
                 </div>
 	</div>
@@ -482,7 +568,15 @@
                 <ul>
                     <li>Andres Esteban Romero Romero	</li>
                     <li>Oscar Andres Mancera Garzón</li>
-                    <li><b>Y</b>erson Andres <b>V</b>alderrama Ceron <b>7</b></li></ul>
+                    <li><b>Y</b>erson Andres <b>V</b>alderrama Ceron <b></b></li></ul>
+                    <hr style="width:32%;">
+                <p>2020-2</p>
+                
+                <ul>
+                    <li>Sergio Esteban González Cárdenas</li>
+                    <li>Elsa Johanna Arias Muñoz</li>
+                    <li>Nicolás Alejandro Contreras</li>
+                    <li>Hubert Alejandro Tovar Strubinger</li></ul>
 
                 <h2>
                     <a id="bibliografia" class="anchor" href="#bibliografia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Bibliografia</em></h2>
@@ -492,6 +586,14 @@
                     <li>http://ldc.usb.ve/~yudith/docencia/ci-4822/presentacionPOA.pdf</li>
                     <li>https://es.wikipedia.org/wiki/AspectJ</li>
                     <li>https://eclipse.org/aspectj/</li>
+                    <li>Constantinides, C. (2015). V Aspect-Oriented Programming with AspectJ. En Principles of Programming Languages (págs. 309-407). Montreal: Concordia University.</li>
+<li>eclipse. (Abril de 2020). The AspectJ Language. Obtenido de The AspectJ Programming Guide: https://www.eclipse.org/aspectj/doc/released/progguide/language-joinPoints.html</li>
+<li>Fernández Egido, A. (Junio de 2009). CORE. Obtenido de CONFLICTOS ENTRE ASPECTOS EN LA PROGRAMACIÓN ORIENTADA A ASPECTOS : https://core.ac.uk/download/pdf/29400487.pdf</li>
+<li>IBM. (1 de Enero de 2002). IBM. Obtenido de Improve modularity with aspect-oriented programming: https://www.ibm.com/developerworks/library/j-aspectj/index.html</li>
+<li>Laiseca Manso, X. (2007 de Julio de 27). MORElab. Obtenido de Cursillo 2007: http://e-ghost.deusto.es/docs/2007/cursillos/aop/curso_aop.pdf</li>
+<li>Lorente Lopez, M., Asteasuain, F., & Contreras, E. B. (2005). Programemos en AspectJ. programemos.</li>
+
+                    
                 </ul>
 
                 <footer class="site-footer">
