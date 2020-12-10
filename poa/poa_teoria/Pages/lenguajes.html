@@ -78,7 +78,7 @@
             lenguajes no pueden imponer
             restricciones en el lenguaje base. Generalmente tienen el mismo nivel de abstracción que el lenguaje base, y
             soportan las mismas instrucciones
-            o primitivas dellenguaje base, ya que, en principio, cualquier código debería poderse escribir en los
+            o primitivas del lenguaje base, ya que, en principio, cualquier código debería poderse escribir en los
             aspectos desarrollados con estos lenguajes
             (un ejemplo de este tipo de LOA es AspectJ, el cual se describirá más adelante).
         </p>
@@ -159,7 +159,7 @@
             siguiente:
         </p>
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/JPAL.png?raw=true">
+            src="../Images/JPAL.webp?raw=true">
         <h2>
             <a id="D" class="anchor" href="#D" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>D</h2>
@@ -185,7 +185,7 @@
             <strong>coordinadores</strong>.
             Estos módulos se asocian a las clases por medio del nombre, sin embargo, un mismo coordinador podría
             coordinar más de una clase.
-            Mínimamente se puede sincronizar un método, y para declarar un corrdinador, se debe describir la estrategia
+            Mínimamente se puede sincronizar un método, y para declarar un coordinador, se debe describir la estrategia
             de coordinación.</p>
 
         <p align="justify">
@@ -201,24 +201,24 @@
 
         <p align="justify"> La asociación entre los objetos y los coordinadores es uno-a-uno por defecto y recibe
             el nombre de coordinación “<strong>per object</strong>”. Sin embargo, un coordinador también puede asociarse
-            con todos los objetos de una o más clases y recibe el nombre de coordinación “<strong>per class</strong>”. .
+            con todos los objetos de una o más clases y recibe el nombre de coordinación “<strong>per class</strong>”.
         </p>
         <p align="justify">
             Protocolo de coordinación entre un módulo coordinador y un objeto.
         </p>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/COOL.png?raw=true">
+            src="../Images/COOL.webp?raw=true">
         <p align="justify">
             El siguiente sería un aspecto implementado en COOL para la verificación en una cola circular.
         </p>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/COOLE.png?raw=true">
+            src="../Images/COOLE.webp?raw=true">
 
         <p align="justify"> El funcionamiento de COOL se da a partir de la definición de “<strong>Agents</strong>”, y de
             la gestión de las comunicaciones e interacciones entre ellos. Para estas interacciones, los Agentes usan
-            protocolos de coordinacion llamados “<strong>conversation classes</strong>”, los cuales definen las
+            protocolos de coordinación llamados “<strong>conversation classes</strong>”, los cuales definen las
             comunicaciones. Estas conversation classes pueden ser fácilmente representadas en diagramas de estados, en
             las cuales cada transición entre estas está descrita por una serie de reglas llamadas “<strong>conversation
                 rules</strong>”.</p>
@@ -228,7 +228,7 @@
             mensajes.</p>
         <p align="justify"><strong>Conversation Classes</strong>: Es una lista de protocolos que usan los agents para
             comunicarse entre ellos. </p>
-        <p align="justify"><strong>Conversation Rules</strong>: Son un conjunto de reglas que descrben las conversation
+        <p align="justify"><strong>Conversation Rules</strong>: Son un conjunto de reglas que describen las conversation
             classes según el momento o las condiciones en las que se encuentre el agent.</p>
         <p align="justify"><strong>Continuation Rules</strong>: Son un conjunto de reglas que usan los agents para
             seleccionar la siguiente conversación que van a tener dependiendo de la conversación que están teniendo en
@@ -265,14 +265,14 @@
         </p>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/RIDL.png?raw=true">
+            src="../Images/RIDL.webp?raw=true">
 
         <h2>
             <a id="Spring_Python" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>Spring Python</h2>
         <p align="justify">
             Python, como tal, no requiere ningún tipo de extensión de lenguaje para poder hacer POA, dado que, además de
-            algunas librerias, Python es capaz por si mismo de hacerlo. Sin embargo, existen proyectos que intentan
+            algunas librerías, Python es capaz por si mismo de hacerlo. Sin embargo, existen proyectos que intentan
             agregar a Python varias herramientas y características para facilitar la inclusión de este paradigma. Entre
             los más notables está <strong>Spring Python</strong>, el cual es un proyecto desarrollado por Spring, con la
             intención de ser una versión de Spring Framework (Java) para Python.
@@ -346,7 +346,7 @@
         </p>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/Aspectc++.png?raw=true">
+            src="../Images/Aspectc++.webp?raw=true">
         <h2>
             <a id="AspectJ" class="anchor" href="#AspectJ" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>AspectJ</h2>
@@ -395,16 +395,16 @@
         </ul>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/ASPECTJ.png?raw=true">
+            src="../Images/ASPECTJ.webp?raw=true">
         <p align="justify">
             El siguiente es un ejemplo implementado en AspectJ para registro de transacciones bancarias.
         </p>
 
         <img
-            src="https://github.com/ferestrepoca/paradigmas-de-programacion/blob/master/poa/poa_teoria/Images/EjA.png?raw=true">
+            src="../Images/EjA.webp?raw=true">
         <p align="justify">
             Finalmente, se puede argumentar que es la extensión de lenguaje más usada en cuanto a POA, debido a que es
-            una de las más desarrolladas y a que es particularmente facil de entender y utilizar.
+            una de las más desarrolladas y a que es particularmente fácil de entender y utilizar.
         </p>
         <h2>
             <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
@@ -560,14 +560,14 @@
         <h2>
             <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>Aspect(PERL)</h2>
-        <img width="500" height="200" src="../Images/perl.png?raw=true" hspace="150"> </img>
+        <img width="500" height="200" src="../Images/perl.webp?raw=true" hspace="150"> </img>
         <p align="justify">
             Perl es un acrónimo de Practical Extracting and Reporting Languaje. Es práctico para extraer información de
             archivos de texto y generar informes a partir del contenido de los ficheros.
-            Aspect es un modulo de Perl que le permite al lenguaje soportar la Programación Orientada a Aspectos. Su uso
-            basico sería el siguiente:
+            Aspect es un módulo de Perl que le permite al lenguaje soportar la Programación Orientada a Aspectos. Su uso
+            básico sería el siguiente:
         </p>
-        <img width="500" height="350" src="../Images/perlAspect.png?raw=true" hspace="150"> </img>
+        <img width="500" height="350" src="../Images/perlAspect.webp?raw=true" hspace="150"> </img>
         <h2>
             <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>Python</h2>
@@ -578,7 +578,7 @@
             la siguiente manera:
 
         </p>
-        <img width="500" height="350" src="../Images/python.png?raw=true" hspace="150"> </img>
+        <img width="500" height="350" src="../Images/python.webp?raw=true" hspace="150"> </img>
         <h2>
             <h2>
                 <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
@@ -630,7 +630,7 @@
                 AspectJ, y permite la creación de Aspectos para modularizar "preocupaciones transversales" en objetos
                 escritos en Lua puro.
             </p>
-            <img width="100" height="100" src="../Images/aspectlua.png?raw=true" hspace="150"> </img>
+            <img width="100" height="100" src="../Images/aspectlua.webp?raw=true" hspace="150"> </img>
 
 
             <h2>
@@ -662,7 +662,7 @@
             </ul>
 
             </p>
-            <img width="550" height="200" src="../Images/seasar.png?raw=true" hspace="150"> </img>
+            <img width="550" height="200" src="../Images/seasar.webp?raw=true" hspace="150"> </img>
             <h2>
                 <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                         class="octicon octicon-link"></span></a>MatLab</h2>
@@ -678,7 +678,7 @@
                 comprobaciones dinámicas en el código tejido. El compilador AspectMatlab (amc) incluye análisis de flujo
                 que se utilizan para eliminar muchas de esas comprobaciones dinámicas (Tomado de <a href="http://www.sable.mcgill.ca/mclab/aspectmatlab/index.html">AspectMatLab</a>).
             </p>
-            <img width="350" height="350" src="../Images/mclab.png?raw=true" hspace="150"> </img>
+            <img width="350" height="350" src="../Images/mclab.webp?raw=true" hspace="150"> </img>
             <h2>
                 <a id="HyperJ" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                         class="octicon octicon-link"></span></a>Spring AOP</h2>
@@ -688,8 +688,8 @@
                 Este permite la implementación del paradigam POA mediante AspectJ. La siguiente sería su implementación
                 básica:
             </p>
-            <img src="../Images/Spring.png?raw=true" hspace="150"> </img>
-            <img src="../Images/Spring2.png?raw=true" hspace="150"> </img>
+            <img src="../Images/Spring.webp?raw=true" hspace="150"> </img>
+            <img src="../Images/Spring2.webp?raw=true" hspace="150"> </img>
 
             <h3>AspectJ vs Spring AOP</h3>
 
