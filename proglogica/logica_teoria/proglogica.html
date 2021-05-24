@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Programación lógica UNAL</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--==========================
+    Header
+    ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a><img src="img/logo.png" class="resize" /></img></a>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="index.html#hero">Paradigma de programación</a>
+            <ul>
+              <li><a href="index.html#about">Definición</a></li>
+              <li><a href="index.html#comparacion">Imperativo vs Declarativo</a></li>
+            </ul>
+          </li>
+          <li><a href="proglogica.html">Programación lógica</a>
+            <ul>
+              <li><a href="proglogica.html#filosofia">Filosofía del paradigma</a></li>
+              <li><a href="proglogica.html#definicion">¿Qué es?</a></li>
+              <li><a href="proglogica.html#historia">Historia</a></li>
+              <li><a href="proglogica.html#logica">Lógica</a>
+                <ul>
+                  <li><a href="proglogica.html#logica_definicion">Definición</a>
+                  <li><a href="proglogica.html#logica_cero">Lógica de orden cero</a>
+                  <li><a href="proglogica.html#logica_uno">Lógica de primer orden</a>
+                  <li><a href="proglogica.html#logica_dos">Lógica de segundo orden</a>
+                </ul>
+              </li>
+              <li><a href="proglogica.html#conceptos">Conceptos claves</a>
+                <ul>
+                  <li><a href="proglogica.html#hechos">Hechos</a>
+                  <li><a href="proglogica.html#reglas">Reglas</a>
+                  <li><a href="proglogica.html#consultas">Consultas</a>
+                  <li><a href="proglogica.html#recursion">Recursión</a>
+                  <li><a href="proglogica.html#ejemplo">Ejemplo</a>
+                </ul>
+              </li>
+              <li><a href="proglogica.html#ventajas">Ventajas y desventajas</a></li>
+            </ul>
+          </li>
+          <li><a href="lenguaje.html">Lenguajes lógicos</a>
+            <ul>
+              <li><a href="lenguaje.html#prolog">Prolog</a></li>
+              <li><a href="lenguaje.html#mercury">Mercury</a></li>
+              <li><a href="lenguaje.html#clp">CLP (FD)</a></li>
+              <li><a href="lenguaje.html#godel">Godel</a></li>
+              <li><a href="lenguaje.html#minikanren">miniKanren</a></li>
+              <li><a href="lenguaje.html#sequencel">SequenceL</a></li>
+              <li><a href="lenguaje.html#datalog">Datalog</a></li>
+              <li><a href="lenguaje.html#ejemplos">Ejemplos</a></li>
+            </ul>
+          </li>
+          <li><a href="aplicaciones.html">Aplicaciones</a>
+            <ul>
+              <li><a href="aplicaciones.html#ai">Inteligencia artificial</a></li>
+              <li><a href="aplicaciones.html#sist_experto">Sistemas Expertos</a></li>
+              <li><a href="aplicaciones.html#demostracion">Demostración automática de problemas</a></li>
+              <li><a href="aplicaciones.html#reconocimiento">Reconocimiento de lenguaje natural</a></li>
+              <li><a href="aplicaciones.html#procesamiento">Procesamiento de lenguaje natural</a></li>
+              <li><a href="aplicaciones.html#sist_admon">Sistemas de administración de bases de datosrelacionales</a>
+              </li>
+              <li><a href="aplicaciones.html#resolucion">Resolución de ecuaciones simbólicas</a></li>
+              <li><a href="aplicaciones.html#consultas">Consultas lógicas basadas en reglas</a></li>
+              <li><a href="aplicaciones.html#creacion">Creación de prototipos</a></li>
+              <li><a href="aplicaciones.html#simulacion">Simulación</a></li>
+            </ul>
+          </li>
+          <li><a href="presentaciones.html">Presentaciones y otros</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+        Hero Section
+    ============================-->
+  <section id="test">
+    <p style=" display: flex; justify-content: center;"><img src="img/hero-bg-short.jpg" style="width:100%;"></p>
+  </section><!-- #hero -->
+
+  <main id="main">
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="filosofia" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>Filosofia del paradigma</strong></h2>
+          <p>
+            La mayoría de los lenguajes de programación se basan en la teoría lógica de primer orden,
+            aunque también incorporan algunos
+            comportamientos de orden superior, en este sentido, destacan los lenguajes funcionales
+            ya que se basan en el Calculo Lambda, es la única teoría lógica de orden superior.
+          </p>
+          <h5 class="frase">
+            <center><i>"Modelar problemas por medio de la abstracción, utilizando un sistema de lógica
+                formal que permite llegar
+                a una conclusión por medio de hechos y reglas"</i></center>
+          </h5>
+          <h5 class="frase">
+            <center><i>"Aplicación de reglas de la lógica para inferir conclusiones a partir de
+                datos."</i></center>
+          </h5>
+
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="definicion" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>¿Qué es la programación lógica?</strong></h2>
+          <p>
+            Paradigma de programación basado en la lógica de primer orden. La programación lógica
+            estudia el uso de la lógica para el
+            planteamiento de problemas y el control sobre las reglas de inferencia para alcanzar la
+            solución
+            automática.
+          </p>
+          <p>
+            La programación lógica, junto con la funcional, forma parte de lo que se conoce como
+            Programación Declarativa, es decir la
+            programación consiste en indicar como resolver un problema mediante sentencias, en la
+            Programación
+            Lógica, se trabaja en una forma descriptiva, estableciendo relaciones entre entidades,
+            indicando
+            no como, sino que hacer, entonces se dice que la idea esencial de la programación lógica es
+          </p>
+          <p><img src="img/001.png"></p>
+          <p>Se puede ver como una deducción controlada.</p>
+          <p><strong>Lógica (programador):</strong> hechos y reglas para representar conocimiento.</p>
+          <p><strong>Control (interprete):</strong> deducción lógica para dar respuestas (soluciones).</p>
+
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <section id="about" style="margin-top:50px;">
+      <div class="container">
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h3>¿Qué trata de resolver?</h3>
+            <p>Dado un problema S, saber si la afirmación A es solución o no del problema o en que casos lo
+              es. Además
+              queremos que los métodos sean implantados en maquinas de forma que la resolución del
+              problema se
+              haga de forma automática</p>
+            <p><strong>La programación lógica construye base de conocimientos mediante reglas y
+                hechos.</strong></p>
+          </div>
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h3>Características del Paradigma</h3>
+            <li>Unificación de términos.</li>
+            <li>Mecanismos de inferencia automática.</li>
+            <li>Recursion como estructura de control básica.</li>
+            <li>Visión lógica de la computación.</li>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="historia" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>Historia de la programación lógica</strong></h2>
+          <p>
+            Uno de los precursores de la lógica matemática y, en consecuencia, de la programación
+            lógica fue Aristóteles (384-322 a.C.)
+            con su teoría silogística. Esta teoría estudia una clase particular de implicaciones con
+            dos premisas y una conclusión.
+            También fue tratada por los filósofos contemporáneos a Aristóteles y largamente
+            estudiada en siglos posteriores,
+            aunque no se produjeron innovaciones de interés hasta el siglo XVII con los trabajos de
+            René Descartes y Gottfried Leibnitz.
+          </p>
+          <p>
+            Dos siglos después el matemático y lógico británico George Boole (1815-1864) dio un paso
+            importante en el sistema
+            de razonamiento aristotélico poniendo en relación la lógica y el álgebra. Los trabajos
+            de Boole fueron modificados
+            y ampliados mas tarde por otros matemáticos y lógicos como Jevon, Pierce, Schroeder y
+            Huntington, entre otros.
+          </p>
+          <p>
+            Llegamos así a finales del siglo XIX y principios del XX con la revolución de la
+            fundamentacion de las Matemáticas gracias
+            a los trabajos de Frege, Cantor, Peano, Russell, Whitehead, entre otros, que marcan el
+            periodo más apasionante
+            y de mayor actividad en la historia de la lógica matemática.
+          </p>
+          <p>
+            En la mitad del siglo XX descubrimos que de forma paralela al desarrollo de la lógica se
+            ha producido un espectacular avance
+            de las llamadas “máquinas de calcular”, avance sobre el que reflexiona Alan Turing en un
+            articulo titulado <i>“¿Pueden pensar las máquinas?”</i>,
+            publicado en 1950 y que podemos dar como punto de partida de lo que después se llamará
+            Inteligencia Artificial.
+          </p>
+          <p style=" display: flex; justify-content: center;"><img src="img/historia.PNG" style="width: 80%;"></p>
+          <p>
+            El primer momento en el que se usa la lógica matemática para representar y ejecutar
+            programas es en <b>1930</b> cuando aparece como una caracteristica de los <i>cálculos
+              lamba</i> desarrollados por <b>Allonzo Church</b>.
+          </p>
+          <p>
+            Sin embargo, la primera propuesta para usar la <i>forma causal de la lógica</i> para
+            representar programas de
+            cómputo fue propuesta por <b>Cordell Green</b> en <b>1969</b>. Esto utilizó una
+            axiomatización de un subconjunto
+            de <b>LISP</b> (es una familia de lenguajes de programación de computadora de tipo
+            multiparadigma con una larga
+            historia y una sintaxis completamente entre paréntesis), junto con una representación de
+            una relación de entrada-salida,
+            para calcular la relación simulando la ejecución del programa en LISP.
+          </p>
+          <p>
+            Por otro lado, Fyster y Elcock's Absys emplearon una combinación de ecuaciones y
+            <i>cálculos lamba</i> en un
+            lenguaje de programación asercional que no impone restricciones en el orden en que se
+            realizan las operaciones.
+          </p>
+          <p>
+            A principios de los 70's en la Universidad de Aix-Marseille I (Marsella, Francia) fue
+            ideado un lenguaje de programación
+            por los estudiantes <b>Alain Colmerauer y Philippe Roussel</b>. Éste nació de un
+            proyecto que no
+            tenía como objetivo la traducción de un lenguaje de programación, sino la clasificación
+            algorítmica de lenguajes
+            naturales. <b>Alain Colmerauer y Robert Pasero</b> trabajaban en la parte del procesado
+            del lenguaje natural
+            y <b>Jean Trudel y Philippe Roussel</b> en la parte de deducción e inferencia del
+            sistema. Interesado por el
+            método de resolución <b>SL</b>, Trudel persuadió a <b>Robert Kowalski</b> para que se
+            uniera al proyecto, dando
+            lugar a una versión preliminar del lenguaje Prolog a finales de <b>1971</b> y
+            apareciendo la versión definitiva
+            en <b>1972</b>. Esta primera versión de Prolog fue programada en ALGOL W.
+          </p>
+          <p>
+            A <b>Finales de los 70's</b> <b>Robert Kowalski</b> crea el método de prueba por
+            refutación que emplea el algoritmo
+            de unificación como mecanismo de base y permite la extracción de respuestas <b>SLD
+              (Selective Linear Definite clause resolution)</b>.
+          </p>
+          <p>
+            Inicialmente se trataba de un lenguaje totalmente interpretado hasta que en <b>1983</b>,
+            David H.D. Warren desarrolló
+            un compilador capaz de traducir Prolog en un conjunto de instrucciones de una máquina
+            abstracta denominada <b>Warren Abstract Machine</b>,
+            o abreviadamente, WAM. Desde entonces Prolog es un lenguaje semi-interpretado.
+          </p>
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="logica" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>Lógica</strong></h2>
+          <p>
+            La <b>lógica</b> es una ciencia formal que estudia la estructura o formas del pensamiento humano (como
+            proposiciones, conceptos y razonamientos) para establecer leyes y principios válidos para obtener
+            criterios de verdad.
+          </p>
+
+          <section id="logica_cero" style="margin-top:50px;">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Lógica de orden cero o lógica proposicional</h3>
+                <p>También llamada <b><i>lógica de enunciados</i></b>: toma como elemento básico las frases
+                  declarativas
+                  simples o proposiciones. Su estructura está dada por:</p>
+
+                <p style=" display: flex; justify-content: center;"><img src="img/propo001.PNG" style="width: 80%;"></p>
+
+                <p>
+                  Es un sistema formal cuyos elementos más simples representan proposiciones, y cuyas constantes
+                  lógicas, llamadas conectivas
+                  lógicas, representan operaciones sobre proposiciones, capaces de formar otras proposiciones de
+                  mayor
+                  complejidad.
+                </p>
+                <p>
+                  La lógica proposicional trata con sistemas lógicos que carecen de cuantificadores, o variables
+                  interpretables como entidades.
+                  En lógica proposicional si bien no hay signos para variables de tipo entidad, sí existen signos
+                  para
+                  variables proposicionales (es decir, que pueden ser interpretadas como proposiciones con un
+                  valor
+                  de verdad definido), de ahí el nombre proposicional. La lógica proposicional incluye además de
+                  variables
+                  interpretables como proposiciones simples signos para conectivas lógicas, por lo que dentro de
+                  este
+                  tipo de lógica puede analizarse la inferencia lógica de proposiciones a partir de proposiciones,
+                  pero sin tener en cuenta la estructura interna de las proposiciones más simples.
+                </p>
+                <p><b>Proposiciones:</b> Elementos de una frase que constituyen por sí solos una unidad de
+                  comunicación
+                  de conocimientos y pueden ser considerados verdaderos o falsos.</p>
+                <p><b>Proposición Simple:</b> <i>“Pepito es humano”</i>.</p>
+                <p><b>Proposición Compuesta:</b> <i>“Pepito es hombre y pepita es mujer”</i>.</p>
+                <p style=" display: flex; justify-content: center;"><img src="img/propo002.PNG" style="width: 80%;"></p>
+              </div>
+            </div>
+          </section>
+
+          <section id="logica_uno" style="margin-top:50px;">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Lógica de primer orden o lógica de predicados</h3>
+                <p>También llamada <b><i>lógica predictiva</i></b>: es un sistema deductivo basado en un
+                  lenguaje lógico
+                  matemático formal. Su estructura esta dada por:</p>
+                <p style=" display: flex; justify-content: center;"><img src="img/predi.PNG" style="width: 80%;"></p>
+                <p>Incluye proposiciones lógicas, predicados y cuantificadores.</p>
+                <p>Más expresiva de la Lógica proposicional.</p>
+                <ul>
+                  <li>¿Qué se afirma? (predicado o relación)</li>
+                  <li>¿De quién se afirma? (objeto)</li>
+                </ul>
+                <p>Es un sistema formal diseñado para estudiar la inferencia en los lenguajes de primer orden.1
+                  Los lenguajes
+                  de primer orden son, a su vez, lenguajes formales con cuantificadores que alcanzan sólo a
+                  variables
+                  de individuo, y con predicados y funciones cuyos argumentos son sólo constantes o variables de
+                  individuo.
+                  La lógica de primer orden tiene el poder expresivo suficiente para definir a prácticamente todas
+                  las matemáticas.</p>
+
+                <section id="horn">
+                  <div class="container">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                      <h5><u>Cláusula de Horn</u></h5>
+                      <p>Secuencia de literales que contiene a lo sumo uno de sus literales positivos
+                        (disyunción de literales).
+                        Esto es un ejemplo de una cláusula de Horn, y abajo se indica una fórmula como esta
+                        también puede
+                        reescribirse de forma equivalente como una implicación:</p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/horn001.PNG"
+                          style="width: 25%;"></p>
+                      <ul>
+                        <li><b>Cláusula ‘definite’:</b> Cláusula de Horn con exactamente un literal positivo.
+                        </li>
+                        <li><b>Hecho:</b> Cláusula ‘definite’ sin literales negativos.</li>
+                        <li><b>Cláusula objetivo:</b> Sin ningún literal positivo (consulta).</li>
+                      </ul>
+                      <center> antecedente &rarr; consecuente
+
+                        <b><i>"Si es verdad el antecedente, entonces es verdad el consecuente"</i></b>
+                      </center>
+                      <p>En Prolog Se escribe primero el consecuente luego el antecedente.</p>
+                      <p><b>Ej:</b> Estructura de clúasulas de Horn:
+                      <p style=" display: flex; justify-content: center;"><img src="img/horn002.PNG"
+                          style="width: 45%;"></p>
+                      </p>
+                      <p>Estructura de clásulas de Horn en Prolog:
+                      <p style=" display: flex; justify-content: center;"><img src="img/horn003.PNG"
+                          style="width: 45%;"></p>
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="container">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                      <h5><u>Resolución SLD (Selective Linear Definite clause resolution)</u></h5>
+                      <p>
+                        El nombre <b>"SLD resolution"</b> fue dado por Maarten van Emden para la regla de
+                        inferencia sin
+                        nombre introducida por <b>Robert Kowalski</b>. Su nombre deriva de la resolución de
+                        <b>SL</b>, que
+                        es a la vez sonido y refutación completa de la forma clausal sin restricciones de la
+                        lógica. <b>"SLD"</b> significa <b>"SL resolution with Definite clauses"</b>.
+                      </p>
+                      <p>
+                        En ambos, SL y SLD, <b>"L"</b> representa el hecho de que una prueba de resolución se
+                        puede restringir
+                        a una secuencia lineal de cláusulas:
+                      </p>$$C_{1}, C_ {2}, \cdots, C_{l}$$
+                      <p>
+                        Donde la "cláusula superior" \(C_ {1}\), es una cláusula de entrada, y cada otra
+                        cláusula \(C_{i + 1} \) es una solución de cuyos
+                        padres es la cláusula anterior \(C_ {i} \). La prueba es una refutación si la última
+                        cláusula \(C_{l} \), es la cláusula vacía.
+                      </p>
+                      <p>
+                        En SLD, todas las cláusulas son una secuencia <b>cláusulas objetivo</b> y el otro padre
+                        es una <b>cláusula de entrada</b>.
+                        En la resolución SL, el otro padre es una cláusula de entrada o una cláusula ancestral
+                        anterior en
+                        la secuencia.
+                      </p>
+                      <p>
+                        Tanto en SL como en SLD, "S" representa el único literal resuelto en cualquier cláusula
+                        \(C_ {i} \), es aquel que es seleccionado
+                        únicamente por una regla de selección o función de selección. En la resolución SL, el
+                        literal seleccionado
+                        está restringido a uno que ha sido introducido recientemente en la cláusula. En el caso
+                        más simple,
+                        tal función de selección de último en entrar primero en salir puede especificarse por el
+                        orden en
+                        el que se escriben los literales, como en Prolog. Sin embargo, la función de selección
+                        en la resolución
+                        SLD es más general que en la resolución SL y en Prolog. No hay ninguna restricción sobre
+                        el literal
+                        que se puede seleccionar.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="container">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                      <h5><u>Backtracking</u></h5>
+                      <p>
+                        En lenguajes de programación como Fortran, Pascal, C o Java, las instrucciones se ejecutan
+                        normalmente en orden secuencial,
+                        es decir, una a continuación de otra, en el mismo orden en que están escritas, que sólo varía
+                        cuando
+                        se alcanza una instrucción de control (un bucle, una instrucción condicional o una
+                        transferencia).
+                      </p>
+                      <p>
+                        Los programas en Prolog se componen de <b>cláusulas de Horn</b> que constituyen reglas del tipo
+                        <i>"modus ponendo ponens"</i>,
+                        es decir, <b><i>"Si es verdad el antecedente, entonces es verdad el consecuente"</i></b>. No
+                        obstante,
+                        la forma de escribir las cláusulas de Horn es al contrario de lo habitual. <i>Primero se escribe
+                          el consecuente y luego el antecedente</i>.
+                        El antecedente puede ser una conjunción de condiciones que se denomina secuencia de objetivos.
+                        Cada
+                        objetivo se separa con una coma y puede considerarse similar a una instrucción o llamada a
+                        procedimiento
+                        de los lenguajes imperativos. En Prolog no existen instrucciones de control. Su ejecución se
+                        basa
+                        en dos conceptos: la <b>unificación</b> y el <b>backtracking</b>.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree001.PNG"
+                          style="width: 45%;"></p>
+                      <p>
+                        Gracias a la <b>unificación</b>, cada objetivo determina un <b>subconjunto de cláusulas
+                          susceptibles de ser ejecutadas</b>.
+                        Cada una de ellas se denomina <b>punto de elección</b>. Prolog selecciona el <b>primer punto de
+                          elección</b> y sigue ejecutando el programa hasta determinar si el objetivo es
+                        <font color="green">verdadero</font> o
+                        <font color="red">falso</font>.
+                      </p>
+                      <p>
+                        En caso de ser falso entra en juego el <b>backtracking</b>, que consiste en deshacer todo lo
+                        ejecutado
+                        situando el programa en el mismo estado en el que estaba justo antes de llegar al <b>punto de
+                          elección</b>.
+                        Entonces se toma el siguiente punto de elección que estaba pendiente y se repite de nuevo el
+                        proceso.
+                        Todos los objetivos terminan su ejecución bien en éxito (<font color="green">"verdadero"</font>
+                        ), bien en fracaso (
+                        <font color="red">"falso"</font>).
+                      </p>
+                      <p>
+                        A continuación veremos un ejemplo de backtracking en caso de que todos los objetivos son
+                        <font color="red">falsos</font>.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree002.PNG"
+                          style="width: 45%;"></p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree003.PNG"
+                          style="width: 45%;"></p>
+                      <p>Selecciona el primer punto de elección.</p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree004.PNG"
+                          style="width: 45%;"></p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree005.PNG"
+                          style="width: 45%;"></p>
+                      <p>Si encuentra un objetivo
+                        <font color="red">falso</font> realiza <b>backtracking</b> hasta el punto de elección anterior,
+                        y continua.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree006.PNG"
+                          style="width: 45%;"></p>
+                      <p>Repite el mismo procedimiento y en caso de no encontrar objetivo
+                        <font color="red">verdadero</font>, y no tener más puntos de elección que recorrer devuelve
+                        <font color="red">falso</font> como resultado de la consulta.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree007.PNG"
+                          style="width: 45%;"></p>
+                      <p>En caso de que todos alguno de los objetivos sea
+                        <font color="green">verdadero</font> este es el recorrido.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree008.PNG"
+                          style="width: 45%;"></p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree009.PNG"
+                          style="width: 45%;"></p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/tree010.PNG"
+                          style="width: 45%;"></p>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="container">
+                    <div class="text_cell_render border-box-sizing rendered_html">
+                      <h5><u>El problema de las N reinas: (Backtracking)</u></h5>
+                      <p> El problema consiste en un tablero de ajedrez que tiene NxN celdas,
+                        necesitamos colocar N reinas de tal manera que ninguna reina ataque a otra reina.
+                        Una reina puede atacar horizontalmente, verticalmente y diagonalmente.</p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/queen001.PNG"
+                          style="width: 45%;"></p>
+
+                      <p> Inicialmente tenemos NxN celdas sin ataques donde necesitamos colocar N reinas.
+                        Colocamos la primera reina en una celda (i, j), de modo que ahora el número de celdas
+                        no atacadas se reduzca, y la cantidad de reinas que se ubicarán es N-1.
+                        Colocamos la próxima reina en alguna celda no atacada. De nuevo, esto reduce
+                        el número de celdas sin ataque, y el número de reinas que se colocarán
+                        se convierte en N-2. Continuamos haciendo esto, siempre y cuando se cumplan
+                        las siguientes condiciones:
+                        <li style="margin-left:3em"> El número de celdas sin ataque no es 0.</li>
+                        <li style="margin-left:3em"> El número de reinas a colocar no es 0.</li>
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/queen002.PNG"
+                          style="width: 45%;"></p>
+                      <p> Finalmente, si el número de reinas que se colocan se convierte en 0,
+                        entonces se terminó, encontramos una solución. Pero si el número de celdas
+                        desatendidas se convierte en 0, entonces debemos retroceder, es decir,
+                        eliminar la última reina colocada de su celda actual, y colocarla en alguna otra celda.
+                        Hacemos esto recursivamente.
+                      </p>
+                      <p style=" display: flex; justify-content: center;"><img src="img/queen003.PNG"
+                          style="width: 45%;"></p>
+                    </div>
+                  </div>
+              </div>
+          </section>
+
+          <section id="logica_dos" style="margin-top:50px;">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Lógica de segundo orden</h3>
+                <p>
+                  Una <b>lógica de segundo orden</b> es una extensión de una lógica de primer orden en la que se
+                  añaden
+                  variables que representan propiedades, funciones y relaciones, y cuantificadores que operan
+                  sobre esas variables. Así se expande el poder expresivo del lenguaje sin tener que agregar
+                  nuevos símbolos lógicos.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="conceptos" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>Conceptos clave del paradigma</strong></h2>
+
+          <section id="hechos">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Hechos</h3>
+                <p>
+                  Expresión atómica (declaración, cláusula o proposición) que se formula de la forma \(P(t_{1}, ...,
+                  t_{n})\),
+                  indicando que se verifica el predicado <b>P</b> sobre los objetos \(t_{1}, ..., t_{n}\).</p>
+
+                <p style=" display: flex; justify-content: center;"><img src="img/hecho.PNG" style="width: 45%;"></p>
+                <p>
+                  Sobre estas expresiones se puede definir el concepto de <u><i>aridad</i></u> como la cantidad de
+                  objetos presentes en su declaración, a partir de este concepto se pueden clasificar los hechos como:
+                </p>
+                <ul>
+                  <li><b>Enunciado:</b> Aridad = 0. <i> Ejm: Verdadero.</i></li>
+                  <li><b>Propiead: </b> Aridad = 1. <i> Ejm: humano(Pepito), animal(Perro).</i></li>
+                  <li><b>Relación: </b> Aridad > 1. <i> Ejm: padre(Homero, Bart), aprobar(Juan, Lenguajes de
+                      Programación).</i></li>
+                </ul>
+                <p>
+                  Los hechos son utilizados para declarar verdades desde el principio de la ejecucción de un programa,
+                  y el conjunto de estos hechos se denomina como base de conocimientos.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="reglas">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Reglas</h3>
+                <p>
+                  Conjunto de proposiciones lógicas escritas como <a href="#horn">clausulas de Horn</a>
+                  que permiten inferir el valor de verdad de nuevas proposiciones,
+                  permitiendo ampliar la base de conocimientos, a la vez que son utilizadas para definir el dominio del
+                  problema. </p>
+                <p style=" display: flex; justify-content: center;"><img src="img/regla.PNG" style="width: 45%;"></p>
+              </div>
+            </div>
+          </section>
+
+          <section id="consultas">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Consultas</h3>
+                <p>
+                  Proposición construida con el propósito de ser demostrada/desmentida o de encontrar
+                  el conjunto de valores que la convierten verdadera. En las consultas se especifica el problema a
+                  resolver.
+                  Partiendo deque los humanos son mortales y de que Pepito es humano (ejemplos anteriores),
+                  deducimos que <i>Pepito es mortal</i>.
+                </p>
+                <p style=" display: flex; justify-content: center;"><img src="img/consulta.PNG" style="width: 45%;"></p>
+              </div>
+            </div>
+          </section>
+
+          <section id="recursion">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Recursión</h3>
+                <p>La recursividad puede ser tratada de una manera más eficaz si se piensa en que hace el algoritmo
+                  recursivo
+                  que se piensa aplicar, en vez de cómo hacerlo. Para esto se usará la modularidad, la cual se basa
+                  en separar el problema en otros más pequeños y hallar la solución a estos para luego unirlos, como
+                  es ususal en la programación lógica.</p>
+                <p>Lo que se ha estado mostrando hasta ahora es, este sistema de resolver problemas de la programación
+                  lógica
+                  mediante la modularidad, entonces, ¿cómo puede ser aplicada ésta en la recursión?</p>
+                <p>Si nuestro problema es obtener el área de un cuadrado, lo que se debe hacer no es separar esta área
+                  en
+                  una de un triángulo o un círculo, sino en las áreas de otros cuadrados, por lo cual se puede dar
+                  el valor del área del cuadrado con las medidas mínimas y de ahí empezar a llamar recursivamente la
+                  función con medidas mayores a ésta. Por ejemplo:</p>
+                <p>El área de un cuadrado de área de 2 unidades cuadradas es igual a cuatro veces el área de un cuadrado
+                  de 1 unidad cuadrada.
+                </p>
+                <p>De esta manera se pueden obtener resultados de un problema con solo definir los casos base y de ahí
+                  realizar las
+                  operaciones recursivamente.
+                </p>
+                <p>En un ámbito más matemático ésta idea puede ser utilizada para resolver operaciones sencillas como es
+                  el caso de las sumatorias o factoriales, en general cualquier operación que requiera información
+                  del resultado que generan valores inferiores al dado. Un ejemplo de ésto podría ser el hallar las
+                  potencias de dos dado el exponente en la función, lo cual puede ser hallado con el siguiente programa
+                  de Prolog.</p>
+                <p style=" display: flex; justify-content: center;"><img src="img/recurs.PNG" style="width: 45%;" />
+              </div>
+            </div>
+          </section>
+
+          <section id="ejemplo">
+            <div class="container">
+              <div class="text_cell_render border-box-sizing rendered_html">
+                <h3 class="title">Ejemplo</h3>
+                <p>Un conjunto de hechos constituye un programa (la forma más simple de programa lógico) que puede ser
+                  visto
+                  como una base de datos que describe una situación. Por ejemplo, el Programa 1 refleja la base de
+                  datos de las relaciones familiares que se muestran en el siguiente gráfico.
+                <p style=" display: flex; justify-content: center;"><img src="img/ej0011.PNG" style="width: 45%;"></p>
+                <p style=" display: flex; justify-content: center;"><img src="img/ej002.PNG" style="width: 45%;"></p>
+                </p>
+                <p>
+                  Todos los hechos de este programa son hechos de base (sin variables), pero también se pueden
+                  introducir hechos con variables
+                  como axiomas,por ejemplo: \(suma(0, X, X)\). En ellos, las variables se consideran cuantificadas
+                  universalmente.
+                  Es decir, &#8704;\(x\) \(suma(0, x, x)\).
+                </p>
+                <p>
+                  Al igual que el hecho es_mujer(sarah) establece la verdad de la sentencia "Sarah es mujer", el hecho
+                  \(suma(0, X, X)\) establece
+                  la verdad para cualquier valor que pueda tomar la variable, es decir, nos dice que "para todo término
+                  x, la suma de 0 con x es x" . Equivale a un conjunto de hechos de base como serían: \(suma(0, 1, 1)\),
+                  \(suma(0, 2, 2)\), etc.
+                </p>
+                <p>
+                  Una vez que se tiene el programa describiendo una situación, se pueden hacer consultas para obtener
+                  información acerca de
+                  él. Por ejemplo, podemos hacer consultas al Programa 1 del tipo siguiente:
+                </p>
+                <p style=" display: flex; justify-content: center;"><img src="img/ej003.PNG" style="width: 45%;"></p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <section id="ventajas" style="margin-top:50px; margin-bottom: 50px;">
+      <div class="container">
+        <div class="row about-container">
+          <div class="text_cell_render border-box-sizing rendered_html">
+            <h2 class="title"><strong>Ventajas y desventajas de este paradigma</strong></h2>
+          </div>
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h3>Ventajas</h3>
+            <li>Descripciones independientes de la implementación (unificación semántica).</li>
+            <li>Puede mejorarse la eficiencia modificando el componente de control sin tener que modificar la lógica
+              del algoritmo.</li>
+            <li>Base de conocimiento fácilmente escalable.</li>
+            <li>Relaciones multipropósito.</li>
+            <li>Expresión simple y precisa de los problemas.</li>
+            <li>Generación rápida de prototipos e ideas complejas.</li>
+            <li>Sencillez en la implementación de estructuras complejas.</li>
+            <li>Potencia.</li>
+          </div>
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h3>Desventajas</h3>
+            <li>Dependiendo del problema a solucionar, la implementación y el motor de inferencia,
+              puede llegar a ser extremadamente ineficiente.</li>
+            <li>Pocas y muy específicas áreas de aplicación.</li>
+            <li>Existen muy pocas herramientas de depuración, en su mayoría poco efectivas.</li>
+            <li>En problemas reales, es poco utilizado.</li>
+            <li>Si el programa no contiene suficiente información para responder una consulta
+              la respuesta puede ser una que se preste para malentendidos.</li>
+            <li>Inferencia limitada por su base de conocimiento.</li>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="container">
+      <div class="credits">
+        Creado por estudiantes del curso Lenguajes de Programación de la Universidad Nacional de Colombia.
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+  <!--Ajax script for math expressions-->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</body>
+
+</html>

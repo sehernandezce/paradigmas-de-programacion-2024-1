@@ -2,58 +2,146 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>Programación Lógica</title>
+    <meta charset="utf-8">
+    <title>Programación lógica UNAL</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- Favicons -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="custom-blue" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="introduccion.html" class="brand-logo">Prog.
-                Lógica</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="introduccion.html">Introducción</a></li>
-                <li><a href="lang.html">Programación Lógica</a></li>
-                <li><a href="lenguajes.html">Lenguajes Lógicos</a></li>
-                <li><a href="">Aplicaciones</a></li>
-                <li><a href="present.html">Presentaciones y referencias</a></li>
-            </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="introduccion.html">Introducción</a></li>
-                <li><a href="lang.html">Programación Lógica</a></li>
-                <li><a href="lenguajes.html">Lenguajes Lógicos</a></li>
-                <li><a href="">Aplicaciones</a></li>
-                <li><a href="present.html">Presentaciones y referencias</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-    <div class="main-content">
-        <div class="cell border-box-sizing text_cell rendered">
-            <div class="prompt input_prompt">
+
+    <!--==========================
+    Header
+    ============================-->
+    <header id="header">
+        <div class="container">
+
+            <div id="logo" class="pull-left">
+                <a><img src="img/logo.png" class="resize" /></img></a>
             </div>
-            <div class="inner_cell">
+
+            <nav>
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="index.html#hero">Paradigma de programación</a>
+                        <ul>
+                            <li><a href="index.html#about">Definición</a></li>
+                            <li><a href="index.html#comparacion">Imperativo vs Declarativo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="proglogica.html">Programación lógica</a>
+                        <ul>
+                            <li><a href="proglogica.html#filosofia">Filosofía del paradigma</a></li>
+                            <li><a href="proglogica.html#definicion">¿Qué es?</a></li>
+                            <li><a href="proglogica.html#historia">Historia</a></li>
+                            <li><a href="proglogica.html#logica">Lógica</a>
+                                <ul>
+                                    <li><a href="proglogica.html#logica_definicion">Definición</a>
+                                    <li><a href="proglogica.html#logica_cero">Lógica de orden cero</a>
+                                    <li><a href="proglogica.html#logica_uno">Lógica de primer orden</a>
+                                    <li><a href="proglogica.html#logica_dos">Lógica de segundo orden</a>
+                                </ul>
+                            </li>
+                            <li><a href="proglogica.html#conceptos">Conceptos claves</a>
+                                <ul>
+                                    <li><a href="proglogica.html#hechos">Hechos</a>
+                                    <li><a href="proglogica.html#l#reglas">Reglas</a>
+                                    <li><a href="proglogica.html#consultas">Consultas</a>
+                                    <li><a href="proglogica.html#recursion">Recursión</a>
+                                    <li><a href="proglogica.html#ejemplo">Ejemplo</a>
+                                </ul>
+                            </li>
+                            <li><a href="proglogica.html#ventajas">Ventajas y desventajas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="lenguaje.html">Lenguajes lógicos</a>
+                        <ul>
+                            <li><a href="lenguaje.html#prolog">Prolog</a></li>
+                            <li><a href="lenguaje.html#mercury">Mercury</a></li>
+                            <li><a href="lenguaje.html#clp">CLP (FD)</a></li>
+                            <li><a href="lenguaje.html#godel">Godel</a></li>
+                            <li><a href="lenguaje.html#minikanren">miniKanren</a></li>
+                            <li><a href="lenguaje.html#sequencel">SequenceL</a></li>
+                            <li><a href="lenguaje.html#datalog">Datalog</a></li>
+                            <li><a href="lenguaje.html#ejemplos">Ejemplos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="aplicaciones.html">Aplicaciones</a>
+                        <ul>
+                            <li><a href="aplicaciones.html#ai">Inteligencia artificial</a></li>
+                            <li><a href="aplicaciones.html#sist_experto">Sistemas Expertos</a></li>
+                            <li><a href="aplicaciones.html#demostracion">Demostración automática de problemas</a></li>
+                            <li><a href="aplicaciones.html#reconocimiento">Reconocimiento de lenguaje natural</a></li>
+                            <li><a href="aplicaciones.html#procesamiento">Procesamiento de lenguaje natural</a></li>
+                            <li><a href="aplicaciones.html#sist_admon">Sistemas de administración de bases de datosrelacionales</a></li>
+                            <li><a href="aplicaciones.html#resolucion">Resolución de ecuaciones simbólicas</a></li>
+                            <li><a href="aplicaciones.html#consultas">Consultas lógicas basadas en reglas</a></li>
+                            <li><a href="aplicaciones.html#creacion">Creación de prototipos</a></li>
+                            <li><a href="aplicaciones.html#simulacion">Simulación</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="presentaciones.html">Presentaciones y otros</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </header><!-- #header -->
+
+    <!--==========================
+        Hero Section
+    ============================-->
+    <section id="test">
+        <p style=" display: flex; justify-content: center;"><img src="img/hero-bg-short.jpg" style="width:100%;"></p>
+    </section><!-- #hero -->
+
+    <main id="main">
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="lista" style="margin-top:50px;">
+            <div class="container">
                 <div class="text_cell_render border-box-sizing rendered_html">
-                    <h2 id="Aplicaciones">Aplicaciones:</h2>
+                    <h2 class="title"><strong>Aplicaciones</strong></h2>
                     <p>Las siguientes son aplicaciones en las que se puede emplearla <b>programación lógica</b> para
                         resolver problemas.</p>
+                    <li><a href="#ai">Inteligencia artificial</a></li>
+                    <li><a href="#sist_experto">Sistemas Expertos</a></li>
+                    <li><a href="#demostracion">Demostración automática de problemas</a></li>
+                    <li><a href="#reconocimiento">Reconocimiento de lenguaje natural</a></li>
+                    <li><a href="#procesamiento">Procesamiento de lenguaje natural</a></li>
+                    <li><a href="#sist_admon">Sistemas de administración de bases de datos relacionales</a></li>
+                    <li><a href="#resolucion">Resolución de ecuaciones simbólicas</a></li>
+                    <li><a href="#consultas">Consultas lógicas basadas en reglas</a></li>
+                    <li><a href="#simulacion">Simulación</a></li>
+                    <li><a href="#creacion">Creación de prototipos</a></li>
+                </div>
+            </div>
+        </section><!-- #content -->
 
-                    <li><a href="#1">Inteligencia artificial</a></li>
-                    <li><a href="#2">Sistemas Expertos</a></li>
-                    <li><a href="#3">Demostración automática de problemas</a></li>
-                    <li><a href="#4">Reconocimiento de lenguaje natural</a></li>
-                    <li><a href="#5">Procesamiento de lenguaje natural</a></li>
-                    <li><a href="#6">Sistemas de administración de bases de datos relacionales</a></li>
-                    <li><a href="#7">Resolución de ecuaciones simbólicas</a></li>
-                    <li><a href="#8">Simulación</a></li>
-                    <li><a href="#9">Creación de prototipos</a></li>
-                    <li><a href="#10">Consultas lógicas basadas en reglas</a></li>
-                    <h3 id="1">Inteligencia artificial</h3>
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="ai" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Inteligencia artificial</strong></h2>
                     <p>La programación lógica es un método para tratar de permitir que las máquinas razonen: La lógica,
                         en este sentido, se usa para representar el conocimiento y la inferencia se usa para
                         manipularlo.
@@ -62,9 +150,19 @@
                         construir un sistema que aplica conceptos de machine learning usando lógica para establecer
                         conocimiento y por último formas causales
                     </p>
-                    <p><img src="imagenes/machineLearning.jpg" style="max-width:100%; width: 40%; max-width: none"></p>
+                    <p style=" display: flex; justify-content: center;"><img src="img/machineLearning.jpg"
+                            style="width: 60%;"></p>
+                </div>
+            </div>
+        </section><!-- #content -->
 
-                    <h3 id="2">Sistemas Expertos</h3>
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="sist_experto" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Sistemas expertos</strong></h2>
                     <p>Los sistemas expertos se pueden entender como un subconjunto de los sistemas de toma de
                         decisiones; es por esto que constituyen una aplicación interesante del paradigma de programación
                         lógica.
@@ -79,34 +177,90 @@
                         clasificación de <a
                             href="https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator">Myers–Briggs</a>) y
                         su correlación con generos músicales preferidos para cada arquetipo.</p>
-                    <p><img src="imagenes/personalityTypes.jpg" style="max-width:100%; width: 40%; max-width: none"></p>
+                    <p style=" display: flex; justify-content: center;"><img src="img/personalityTypes.jpg"
+                            style="width: 60%;"></p>
                     <p>Sobre la anterior tabla, por ejemplo, se pueden aplicar las siguientes normas de Inferencia</p>
-                    <p><img src="imagenes/personalityTypes2.jpg" style="max-width:100%; width: 40%; max-width: none">
+                    <p style=" display: flex; justify-content: center;"><img src="img/personalityTypes2.jpg"
+                            style="width: 60%;"></p>
                     </p>
+                </div>
+            </div>
+        </section><!-- #content -->
 
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="demostracion" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Demostración automática de problemas</strong></h2>
+                    <p>El razonamiento automático se dedica al desarrollo de programas de ordenador que sean capaces de
+                        demostrar que una <font color="red">conjetura</font> es una <font color="red">consecuencia
+                            lógica</font> de un conjunto de <font color="red">axiomas</font> o <font color="red">
+                            hipótesis</font>.</p>
+                    <ul>
+                        <li style="margin-left:3em">
+                            <p>El <font color="red">lenguaje</font> en el que la <font color="red">conjetura</font>, las
+                                hipótesis y los axiomas son escritos es una lógica, a menudo de primer orden, pero
+                                también puede ser no clásica o de orden superior.</p>
+                        </li>
+                        <li style="margin-left:3em">
+                            <p>Las <font color="red">pruebas</font> producidas por un sistema de razonamiento automático
+                                describen cómo y porqué la conjetura es una consecuencia de los axiomas y las
+                                hipótesis,utilizando para ello las <font color="red">reglas de derivación</font>.</p>
+                        </li>
+                    </ul>
 
-                    <h3 id="3">Demostración automática de problemas</h3>
-                    <p>El razonamiento automático se dedica al desarrollo de programas de ordenador que sean capaces de demostrar que una <font color="red">conjetura</font> es una <font color="red">consecuencia lógica</font> de un conjunto de <font color="red">axiomas</font> o <font color="red">hipótesis</font>.</p>
-                    <li style = "margin-left:3em"><p>El <font color="red">lenguaje</font> en el que la <font color="red">conjetura</font>, las hipótesis y los axiomas son escritos es una lógica, a menudo de primer orden, pero también puede ser no clásica o de orden superior.</p></li>
-                    <li style = "margin-left:3em"><p>Las <font color="red">pruebas</font> producidas por un sistema de razonamiento automático describen cómo y porqué la conjetura es una consecuencia de los axiomas y las hipótesis,utilizando para ello las <font color="red">reglas de derivación</font>.</p></li>
-                    </p>
+                </div>
+            </div>
+        </section><!-- #content -->
 
-
-                    <h3 id="4">Reconocimiento de lenguaje natural</h3>
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="reconocimiento" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Reconocimiento de lenguaje natural</strong></h2>
                     <p>La primera aplicación de procesamiento de lenguaje fue escrita por Alain Colmerauer (Grupo de
                         inteligencia Artificial - Universidad de Marsella - 1973). Fue además la primera aplicación de
                         programación lógica. Colmerauer desarrolló un formalismo gramatical que podría compilarse en
                         Prolog, llamado "Gramáticas de metamorfosis". Las gramáticas de metamorfosis, admiten reglas que
                         permiten reescribir símbolos(terminales y no terminales) que son términos lógicos.
                     </p>
-                    <h3 id="5">Procesamiento de lenguaje natural</h3>
-                    <p>La aplicación de procesamiento del lenguaje natural más explorada ha sido el análisis de
-                        oraciones individuales, para proporcionar interfaces de lenguaje natural a los sistemas basados ​​en el conocimiento (motor de inferencia).
-                        Dada una gramática y una supuesta oración (reglas de derivación) en el lenguaje definido por la misma, el
-                        el problema de análisis es obtener algunas estructuras representativas. El principal problema del análisis sintáctico es cómo describir las infinitas oraciones posibles de un
-                        lenguaje a través de un dispositivo finito, como una gramática, en forma concisa y regular de manera posible.</p>
+                </div>
+            </div>
+        </section><!-- #content -->
 
-                    <h3 id="6">Sistemas de administración de bases de datos relacionales</h3>
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="procesamiento" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Procesamiento de lenguaje natural</strong></h2>
+                    <p>La aplicación de procesamiento del lenguaje natural más explorada ha sido el análisis de
+                        oraciones individuales, para proporcionar interfaces de lenguaje natural a los sistemas basados
+                        ​​en el conocimiento (motor de inferencia).
+                        Dada una gramática y una supuesta oración (reglas de derivación) en el lenguaje definido por la
+                        misma, el
+                        el problema de análisis es obtener algunas estructuras representativas. El principal problema
+                        del análisis sintáctico es cómo describir las infinitas oraciones posibles de un
+                        lenguaje a través de un dispositivo finito, como una gramática, en forma concisa y regular de
+                        manera posible.</p>
+                        <p style=" display: flex; justify-content: center;"><img src="img/prolog005.PNG" style="width: 60%;"></p>
+                </div>
+            </div>
+        </section><!-- #content -->
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="sist_admon" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Sistemas de administración de bases de datos relacionales</strong></h2>
                     <p>Sistemas lógicos, como Prolog, se basan en una evaluación orientada a tuplas que utiliza la
                         unificación para unir variables con valores atómicos (tupla). Por otra parte, el modelo
                         relacional utiliza un mecanismo de evaluación orientado a conjuntos.
@@ -115,50 +269,113 @@
                     </p>
                     <p>Los elementos claves son: </p>
                     <li>Con el acoplamiento de una implementación de un sistema lógico existente a un sistema de
-                            gestión de base de datos relacional existente.
+                        gestión de base de datos relacional existente.
                     </li>
                     <li>Extender un sistema lógico existente con algunas funcionalidades de gestión de bases de datos
-                            relacionales.
+                        relacionales.
                     </li>
                     <li>Extender un sistema lógico existente con algunas funcionalidades de gestión de bases de datos
-                            relacionales.
+                        relacionales.
                     </li>
                     <li>Integrando estrechamente las técnicas de programación lógica con la de sistemas de gestión de
-                            bases de datos relacionales.
+                        bases de datos relacionales.
                     </li>
-
-                    <h3 id="7">Resolución de ecuaciones simbólicas</h3>
-                    <p> A travez de la programación simbolica se pueden desarrollar procesos complejos que pueden construir procesos aun mas complicados
-                         por medio de la combinacion de unidades (ecuaciones) logicas o funcionales mas pequeñas, así estos programas pueden modificarse asi mismos y
-                         aparentar que "aprenden", lo que los hace apropiados para aplicaciones a la inteligencia artificial, sistemas expertos, procesamiento
-                         de lenguaje natural y juegos de computadora. La computacion logica es componente fundamental de la computación simbolica.</p>
-                         <p><img src="imagenes/SimbolicC.png" style="max-width:50%; width: 20%; ">
-                         </p>
-
-                    <h3 id="8">Simulación</h3>
-                    <h3 id="9">Creación de prototipos</h3>
-                    <h3 id="10">Consultas lógicas basadas en reglas</h3>
-
-
-                   
                 </div>
             </div>
-        </div>
-    </div>
-    <footer class="page-footer custom-orange">
-        <div class="footer-copyright">
+        </section><!-- #content -->
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="resolucion" style="margin-top:50px;">
             <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Resolución de ecuaciones simbólicas</strong></h2>
+                    <p> A travez de la programación simbolica se pueden desarrollar procesos complejos que pueden
+                        construir procesos aun mas complicados
+                        por medio de la combinacion de unidades (ecuaciones) logicas o funcionales mas pequeñas, así
+                        estos programas pueden modificarse asi mismos y
+                        aparentar que "aprenden", lo que los hace apropiados para aplicaciones a la inteligencia
+                        artificial, sistemas expertos, procesamiento
+                        de lenguaje natural y juegos de computadora. La computacion logica es componente fundamental de
+                        la computación simbolica.</p>
+                    <p style=" display: flex; justify-content: center;"><img src="img/SimbolicC.png" style="width: 30%;"></p>
+                </div>
+            </div>
+        </section><!-- #content -->
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="consultas" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Consultas lógicas basadas en reglas</strong></h2>
+                    <ul>
+                        <li>Búsquedas en bases de datos.</li>
+                        <li>Sistemas de control de voz.</li>
+                    </ul>
+                </div>
+            </div>
+        </section><!-- #content -->
+        
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="creacion" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Creación de prototipos</strong></h2>
+                </div>
+            </div>
+        </section><!-- #content -->
+
+        <!--==========================
+        Content Section
+        ============================-->
+        <section id="simulacion" style="margin-top:50px;">
+            <div class="container">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 class="title"><strong>Simulacion</strong></h2>
+                </div>
+            </div>
+        </section><!-- #content -->
+
+    </main>
+
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer">
+        <div class="container">
+            <div class="credits">
                 Creado por estudiantes del curso Lenguajes de Programación de la Universidad Nacional de Colombia.
             </div>
         </div>
-    </footer>
+    </footer><!-- #footer -->
 
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!--  Scripts-->
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+
+    <!--Ajax script for math expressions-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
 
 </body>
 
