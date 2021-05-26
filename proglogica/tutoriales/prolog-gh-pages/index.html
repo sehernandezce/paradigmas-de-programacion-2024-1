@@ -75,12 +75,17 @@
   <li><a href="#11-ejemplo-grafos" aria-hidden="true">11.Ejemplos en prolog</a></li>
   <ul class="contenido">
     <li><a href="#11-ejemplo-grafos" aria-hidden="true">11.1 Ejemplo Grafos</a></li>
+    <ul class="contenido">    
+      <li><a href="#11-ejemplo-grafos1" aria-hidden="true">11.1.1 Representación mediante aristas </a></li>
+      <li><a href="#11-ejemplo-grafos2" aria-hidden="true">11.1.2 Otras representaciones de grafos </a></li>
+    </ul>
     <li><a href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true">11.2 Ejemplo Autómatas</a></li>
     <li><a href="#13-ejemplo-sistema-experto" aria-hidden="true">11.3 Ejemplo Sistema Experto</a></li>
     <li><a href="#14-ejemplo-quick-sort" aria-hidden="true">11.4 Ejemplo QuickSort</a></li>
     <li><a href="#15-ejemplo-compresor" aria-hidden="true">11.5 Ejemplo Compresor</a></li>
     <li><a href="#17-ejemplo-dcg" aria-hidden="true">11.6 Ejemplo DCG</a></li>
     <li><a href="#16-hanoi" aria-hidden="true">11.7 Problema de Torres de Hanoi</a></li>
+    <li><a href="#18-ejemplo-bubble" aria-hidden="true">11.8 Ejemplo Bubble Sort</a></li>
   </ul>
   <li><a href="#15-Aplicaciones" aria-hidden="true">16. Aplicaciones</a></li>
   <li><a href="#16-Des-Ven" aria-hidden="true">17. Desventajas / Ventajas</a></li>
@@ -849,12 +854,43 @@ de expresiones:</p>
 </tr>
 <tr>
 <td>display</td>
-<td>funciona exactamente igual que write, excepto que</td>
+<td>funciona exactamente igual que write, excepto que <br> pasa por alto las declaraciones de operadores.</p></td>
 </tr>
 </tbody>
 </table>
 
-<p>pasa por alto las declaraciones de operadores</p>
+<p> Predicados para modificacion de la base de conocimiento. </p>
+<p> <b>Los hechos de la base de conocimiento que se deseen cambiar, deben ser marcados como dinámicos antes de usarse. </b></p>
+<table>
+  <thead>
+  <tr>
+  <th>Predicado</th>
+  <th>Función</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>assertz</td>
+  <td>Inserta un hecho al final de la lista de hechos de un predicado.</td>
+  </tr>
+  <tr>
+  <td>asserta</td>
+  <td>Inserta un hecho al inicio de la lista de hechos de un predicado.</td>
+  </tr>
+  <tr>
+  <td>retract</td>
+  <td>Remueve un hecho de la base de conocimiento.</td>
+  </tr>
+  <tr>
+  <td>retractall</td>
+  <td>Remueve todos los hechos que coincidan con el argumento recibido.</td>
+  </tr>
+  </tbody>
+  </table>
+  <p> Algunos ejemplos: </p>
+  <p align="center">
+    <img src="images/ejemplosMBC.png">
+  </p>
 
 <h1>
 <a id="9-listas" class="anchor" href="#9-listas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9. Listas</h1>
@@ -1161,8 +1197,9 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 <h1>
 
 <a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. Ejemplos de Prolog</h1>
-<h2><a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.1 Ejemplo de Grafos </h2>
-<p>Implementar el siguiente grafo en Prolog y definir una regla para encontrar los caminos de un nodo.</p>
+<h2><a id="11-ejemplo-grafos" class="anchor" href="#11-ejemplo-grafos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.1 Ejemplos de Grafos </h2>
+<h3><a id="11-ejemplo-grafos1" class="anchor" href="#11-ejemplo-grafos1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.1.1 Representación mediante aristas </h3>
+<p>1. Implementar el siguiente grafo en Prolog y definir una regla para encontrar los caminos de un nodo.</p>
 
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/grafo.png?raw=true"></p>
@@ -1171,6 +1208,44 @@ Recorrido = [5, 8, 7, 9, 1.5, [hola, mundo], 3.3333, 10, 11, 1]</code></pre>
 
 <p align="center">
 <img src="https://github.com/mppinedav/prologtutorial/blob/master/grafo1.png?raw=true"></p>
+
+<p>2. Para determinar todos los caminos entre un nodo A y un nodo B en un grafo dirigido como el presentado a continuación, usando la representacion mediante sus aristas, es decir, sea G:</p>
+<center> <img src="images/grafo.png"> </center>
+<p>Y su representación dada por: </p>
+<center> <img src="images/aristasG.png"> </center>
+<p>Se sabe que un nodo A esta conectado con B si existe <b>arista(A,B) o arista(B,A)</b>.
+Los caminos están representados por la lista de nodos a través de los cuales se debe viajar para pasar del nodo A al nodo B, sin repetir nodos. <br>
+Luego, para encontrar los caminos de, por ejemplo, <b> e a d </b> se realiza: </p>
+<center> <img src="images/ejCamGrafos.png"> </center>
+<p>Obteniendo los caminos de e a d: </p>
+<center> <img src="images/resCaminos.png"> </center>
+
+
+<h3><a id="11-ejemplo-grafos2" class="anchor" href="#11-ejemplo-grafos2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.1.2 Otras representaciones de grafos </h3>
+<p>Además de la representación a partir de aristas, se puede representar los grafos en Prolog de formas diferentes como:</p>
+<ol> 
+   <li><b>Forma grafo-término:</b> Cada grafo es un objeto con dos tipos de conjuntos, nodos y aristas </li> 
+   <li><b>Forma lista de adyacencia:</b> Consiste de una lista de nodos donde se asocia cada nodo a los adyacentes a este.</li> 
+   <li><b>Forma aristas y nodos:</b> Lista que consiste de elementos de la forma X-Y donde X y Y son nodos y - representa una arista entre estos. Los nodos que no tienen aristas se representan como elementos solos. </li> 
+</ol>
+<p>Dependiendo del tipo de grafo (dirigido o no dirigido) la representación varía:</p>
+<ol> 
+  <li> Grafos no dirigidos:</li>
+  <p align="center"><br>
+    <img src="https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/graph1.gif">
+  </p>
+  <p>Para el grafo no dirigido presentado, su representación sería:</p>
+  <p align="center">
+    <img src="images/grafosNoDir.png">
+  </p>
+  <li> Grafos dirigidos:</li>
+  <p align="center"><br>
+    <img src="https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/graph2.gif">
+  </p></ol>
+  <p>Para el grafo dirigido presentado, su representación sería:</p>
+  <p align="center">
+    <img src="images/digrafos.png">
+  </p>
 
 <h2>
 <a id="12-ejemplo-autómatas" class="anchor" href="#12-ejemplo-aut%C3%B3matas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.2 Ejemplo Autómatas</h2>
@@ -1422,6 +1497,15 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
   encontrarás un tutorial completo de Prolog, que va desde sus estructuras más simples, hasta ejemplos avanzados como un sistema experto.
 </p>
 
+<h2><a id="18-ejemplo-bubble" class="anchor" href="#18-ejemplo-bubble" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.8 Ejemplo de Bubble Sort</h2>
+<p>En Prolog, para el algoritmo de Bubble Sort es necesario comparar los dos elementos de la lista restante en cada evaluación recursiva y hacer el intercambio de estos en una lista auxiliar, hasta obtener la lista ordenada. 
+  La implementación en Prolog se presenta a continuación:
+</p>
+<p align="center">
+  <img src="images/bubbleSort.png">
+</p>
+
+
 <h1><a id="15-Aplicaciones" class="anchor" href="#15-Aplicaciones" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>12. Aplicaciones</h1>
 <p align="center">
 <img src="images/Aplicaciones.png">
@@ -1454,7 +1538,13 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
     <a href="https://swish.swi-prolog.org/p/Tutorial%20de%20prolog.swinb">Tutorial de Prolog en Notebook de SWISH
     <br><br>
     <img src="images/TutorialProlog.PNG"></a>
-<hr>
+<hr/>
+<a href="https://swish.swi-prolog.org/p/ExpoPrologLP.swinb"> Tutorial de Prolog 2021-I, desarrollado en 
+  SWISH.</a>
+<p align="center">
+  <embed src="TutorialProlog2021.pdf" width="700" height="385"type='application/pdf'>
+</p>
+
 <h2>
 <a id="esperamos-que-el-tutorial-haya-sido-de-su-agrado-todos-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" class="anchor" href="#esperamos-que-el-tutorial-haya-sido-de-su-agrado-los-ejercicios-trabajados-pueden-encontrarlos-en-este-notebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Esperamos que el tutorial haya sido de su agrado. Los ejercicios trabajados pueden encontrarlos en este <a href="http://swish.swi-prolog.org/p/tutorialprolog.swinb">notebook</a>
 </h2>
@@ -1465,9 +1555,9 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
 <p>                Julián Esteban Salomón y Cristian David González</p>
 <p>                Cristian Laiton y David Hormaza.</p>
 <p>                Luis Castro y Wilson Piravaguen.</p>
-
 <p>                Andrés Fernando Román Arévalo.</p>
 <p>                Alci René Ramírez Soto.</p>
+<p>                Jonathan López Castellanos, Victor Barragán Páez y Wilson Arévalo Rodríguez</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mppinedav/prolog">Prolog</a> is maintained by <a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tree/gh-pages/proglogica/tutoriales/prolog-gh-pages">link</a>.</span>
