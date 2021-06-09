@@ -345,13 +345,28 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-4">
-                                <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/thumbnail.png" alt="" class="img-responsive img-thumbnail"></a>
-                            </div>
+                            <div class="col-md-12">
+                                <h4 id="line5_2">RxJS </h4>
+                                <p>A continuación veremos un ejemplo simple de reactividad en <strong>Javascript</strong><br>
+                                    Iniciamos definiendo dos funciones:
+                                    <li>UpdateNotifications: Encargada de notificarnos cuando el usuario fue actualizado</li>
+                                    <li>GetUsers: La cual nos genera un usuario aleatorio</li>
+                                    En este primer ejemplo el usuario se creara sin problemas y seguido de esto será actualizado mediante el bucle <strong>for</strong>.
+                                    <script src="https://gist.github.com/BryGuz/0e86a967944f3b44d9403bb6156ab2a0.js"></script>
+                                    Ahora bien, ¿Qué ocurriría si en vez de un cliente tenemos un flujo de clientes continuo?
+                                    <strong>¡Correcto!</strong>, Al no terminar de crear clientes, el bucle for jamás llega a ejecutarse.
+                                    <script src="https://gist.github.com/BryGuz/aa37f4b361730ebc42819016a7b5023e.js"></script>
+                                    Una forma de solucionar este problema puede ser obligar la ejecución del programa mediante otra sentencia <strong>SetInterval</strong> y mejorandolo un poco, como vemos a continuación; ajustando el index desde el que se recorrera la lista de usuarios.<br>
+                                    Sin embargo está solución puede ser implementada utilizando programación reactiva de manera más elegante y <strong>¡Menos código!</strong>
+                                    <script src="https://gist.github.com/BryGuz/89c1511eb138b985af75b5a1af291ec9.js"></script>
+                                    Como observamos a continuación debemos declarar un <strong>Observador</strong> que será el encargado de avisarnos cuando se crea un nuevo usuario y comunicarlo al <strong>Suscribe</strong>, el cual se ejecutará apenas el estado de la lista cambie.
+                                    <script src="https://gist.github.com/BryGuz/01e86ca59de45213615fd219058de169.js"></script>
+                                </p>
+                                
+                                
+                                
+                                
 
-                            <div class="col-md-8">
-                                <h4 id="line5_3">Header Options - </h4>
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. long established fact that a reader will English.</p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -424,7 +439,7 @@
                                 <p>These are the primary CSS files used for general front-end styling. Use these to customize your theme even further. All included JavaScript codes under <strong>yourthemename/css/</strong></p>
 
                                 <ul>
-                                    <li>1. style.css - Primary stylesheet</li>
+                                    <li>1. Programación Reactiva con JavaScript - Dev Education</li>
                                     <li>2. bootstrap.css - Bootstrap stylesheet</li>
                                     <li>3. owl-carousel.css - OWL Carousel</li>
                                     <li>4. fontawesome.css - FontAwesome Font Icons stylesheet</li>
