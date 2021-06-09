@@ -101,8 +101,8 @@
                     <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
                         <ul class="nav">
                             <li><a href="#line1">Introduccion</a></li>
-                            <li><a href="#line2">Conceptos Claves</a></li>
-                            <li><a href="#line3">Ventajas y Desventajas</a></li>
+                            <li><a href="#line2">Manifiesto reactivo</a></li>
+                            <li><a href="#line3">Ventajas </a></li>
                             <li><a href="#line4">Lenguajes de Programacion</a></li>
                             <li><a href="#line5">Ejemplos</a>
                                 <ul class="nav">
@@ -131,51 +131,14 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                <h3 class="dark-text">¿Qué es la programación reactiva?</h3>
+                                <p>Es un paradigma enfocado en el trabajo con flujos de datos finitos o infinitos de manera asíncrona, es decir que las aplicaciones reaccionan a los cambios ejecutando una serie de eventos.</p> 
+                                <p>Este paradigma esta enfocado principalmente en el manejo de flujos de datos asíncronos y en el uso eficiente de recursos. Los sistemas reactivos reaccionan a los datos que fluyen continuamente ejecutando una serie de eventos, esto es porque siguen el patrón de diseño Observer; 
+                                    cuando hay un cambio de estado en un objeto, los otros objetos son notificados y actualizados. Por lo tanto, en lugar de estar preguntando los cambios, los eventos se realizan de forma asíncrona para que los observadores puedan procesarlos.</p>
 
-                                <h4>Bootstrap Grid System</h4>
+                                <img src="images/Observer.svg" alt="" class="img-responsive img-thumbnail">
 
-                                <pre class="brush: html; highlight: [2,4]">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div></pre>
-
-                                <p>Our you can use the grid system with 2 columns like this;</p>
-
-                                <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
-
-                                <p>Our you can use the grid system with 3 columns like this;</p>
-
-                                <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
+                                
                             </div>
                             <!-- end col -->
                         </div>
@@ -188,32 +151,19 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Conceptos Claves <hr></h2>
+                                <h2 class="dark-text">Manifiesto reactivo <hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
                         <div class="intro2 clearfix">
-                            <p><i class="fa fa-wordpress"></i> Lorem the It is a long established fact that a reader will be distracted..
-                                <br> Please read more about WordPress here. <a href="#">WordPress Installation via FTP.</a> </p>
-                        </div>
-
-                        <hr>
-
-                        <h4>Upload via WordPress Admin</h4>
-
-                        <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-
-                        <a href="#" class="btn btn-primary">Get a Installation Service</a> <a href="#" class="btn btn-info">Ask a Question</a>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/snFzbPm_RUE" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            </div>
-
+                            <p>Los Sistemas Reactivos son:</p>
+                            <p>Responsivos: El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados rápidamente y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
+                            <p>Resilientes: El sistema permanece responsivo frente a fallos. Esto es aplicable no sólo a sistemas de alta disponibilidad o de misión crítica - cualquier sistema que no sea resiliente dejará de ser responsivo después de un fallo. La resiliencia es alcanzada con replicación, contención, aislamiento y delegación. Los fallos son manejados dentro de cada componente, aislando cada componente de los demás, y asegurando así que cualquier parte del sistema pueda fallar y recuperarse sin comprometer el sistema como un todo. La recuperación de cada componente se delega en otro componente (externo) y la alta disponibilidad se asegura con replicación allí donde sea necesario. El cliente de un componente no tiene que responsabilizarse del manejo sus fallos.</p>
+                            <p>Elásticos: El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
+                            <p>Orientados a Mensajes: Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un cluster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
+                            <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
                         </div>
 
                     </section>
@@ -223,41 +173,23 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Ventajas y Desventajas <hr></h2>
+                                <h2 class="dark-text">Ventajas<hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
-                        <h4>Upload via WordPress Admin</h4>
+                        <h4>Escalabilidad</h4>
 
-                        <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-
-                        <a href="#" class="btn btn-primary">Get a Installation Service</a> <a href="#" class="btn btn-info">Ask a Question</a>
+                        <p>A través de la Programación Reactiva, se obtiene una implementación que tiende a aislar los fallos a través de una escalabilidad horizontal, es decir, se obtiene una capacidad de escalar horizontalmente y de manera rápida.</p>
 
                         <hr>
 
-                        <h4>Upload via FTP Server</h4>
+                        <h4>Ahorro</h4>
 
-                        <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                        <p>Una consecuencia directa de utilizar de manera eficiente los recursos es invertir menos en servidores y centros de datos por lo que se puede realizar más con menos recursos y procesar cargas de trabajo mal altas con menos hilos.</p>
 
-                        <a href="#" class="btn btn-primary">Get a Installation Service</a> <a href="#" class="btn btn-info">Ask a Question</a>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/yQnQyI5WlKs" frameborder="0" allowfullscreen></iframe>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="media">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/z0kEVwJB_go" frameborder="0" allowfullscreen></iframe>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        
                     </section>
                     <!-- end section -->
 
