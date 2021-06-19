@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>Programacion Orientada a Aspectos</title>
+    <title>Programación Orientada a Aspectos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
 <body>
 
 <section class="page-header">
-    <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+    <h1 class="project-name">Programación Orientada a Aspectos</h1>
     <h2 class="project-tagline"></h2>
 
 	<a href="../index.html" class="btn">Inicio</a>
@@ -23,7 +23,7 @@
 	<a href="lenguajes.html" class="btn">Lenguajes</a>
 	<a href="aplicaciones.html" class="btn">Aplicaciones</a>
 	<a href="presentaciones.html" class="btn">Presentaciones</a>
-	<a href="practicas.html" class="btn">Practica</a>
+	<a href="practicas.html" class="btn">Práctica</a>
 	<a href="ejemplos.html" class="btn">Ejemplos</a>
 </section>
 
@@ -39,11 +39,11 @@
 </h3>
 
 <p align="justify">
-    Es un requerimiento específico que debe ser implementado para satifacer las necesidades del sistema [1].
+    Es un requerimiento específico que debe ser implementado para satisfacer las necesidades del sistema [1].
 </p>
 
 <p align="justify">
-    Así como en la ingeniería de software se propone una clasificiación para los requerimientos
+    Así como en la ingeniería de software se propone una clasificación para los requerimientos
     (funcionales y no funcionales), la POA también propone que los conceptos o <em>concerns</em> se pueden
      clasificar en
     <strong>componentes</strong> y <strong>aspectos</strong>.
@@ -89,7 +89,7 @@
 
 <p align="justify">
     A pesar de que la separación de conceptos no es exclusiva de la POA
-    (y aunque ya se haya hablado del tema en la filosfía del paradigma), la POA hace uso de este término
+    (y aunque ya se haya hablado del tema en la filosofía del paradigma), la POA hace uso de este término
     y señala la importancia de encapsular, abstraer y separar los componentes de los aspectos. Esto con
     el objetivo de hacer el código más mantenible y evitar el código enmarañado.
 </p>
@@ -123,12 +123,12 @@
 <a id="consejoadvice" class="anchor" href="#consejoadvice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>CONSEJO(Advice):</strong>
 </h3>
 
-<p align="justify">Es la implementación del aspecto, es decir, contiene el <strong>código que implementa la nueva funcionalidad</strong>. Se insertan en la aplicación en los Puntos de unión.
+<p align="justify">Es la implementación del aspecto, es decir, contiene el <strong>código que implementa la nueva funcionalidad</strong>. Se insertan en la aplicación en los puntos de unión.
 Dentro de ellos podemos encontrar:</p>
 
 <ul>
 <li>
-<strong>before</strong> : Esta anotación ejecuta un advice antes de la ejecución del punto de corte especificado. Ej: justo antes de entrar al getter, o al constructor etc.</li>
+<strong>before</strong> : Esta anotación ejecuta un advice antes de la ejecución del punto de corte especificado. Ej: justo antes de entrar al getter, o al constructor, etc.</li>
 <li>
 <strong>after returning</strong>: Esta anotación ejecuta un advice después de la ejecución del punto de corte especificado, siempre que el método del punto de corte retorne de forma correcta (sin generar errores).
 </li>
@@ -141,7 +141,7 @@ Dentro de ellos podemos encontrar:</p>
 <strong>around</strong>: Cuando el flujo llega a ejecutar el join-point, permite que nuestra lógica pueda determinar si proceder o no mediante el llamado al método proceed().</li>
 </ul>
 <p>A continuación se muestra un <strong>Consejo</strong> que fue declarado de manera <i>anónima</i>.
-  Esto siginifica que no se declaró un Pointcut o punto de corte antes del Consejo.
+  Esto significa que no se declaró un Pointcut o punto de corte antes del Consejo.
 </p>
 <p align = "center">
     <img src="../Images/advice.webp"/>
@@ -151,15 +151,15 @@ Dentro de ellos podemos encontrar:</p>
   <span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PUNTOS DE CORTE (Pointcut):</strong>
 </h3>
 
-<p align="justify">Define los Consejos que se aplicarán a cada Punto de Cruce. Un pointcut es un <strong>predicado o condición para la aplicación de un aspecto.</strong></p>
+<p align="justify">Define los consejos que se aplicarán a cada punto de cruce. Un pointcut es un <strong>predicado o condición para la aplicación de un aspecto.</strong></p>
 
-<p align="justify"><em>Se puede entender mas claramente en la siguiente imagen, en la que el programa hace un llamado a un advice,
+<p align="justify"><em>Se puede entender más claramente en la siguiente imagen, en la que el programa hace un llamado a un advice,
                        este advice se definirá a través de un pointcut que contará con diferentes joinpoints del cual podrá escoger uno o varios aspectos
-                       para ser ejecutados (Algo enredado, pero mas adelante se explica mejor esa diferenciación entre pointcut y joinpoint).</em></p>
+                       para ser ejecutados (Algo enredado, pero más adelante se explica mejor esa diferenciación entre pointcut y joinpoint).</em></p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/advice_pointcut.png?raw=true" alt=""></p>
 
-<p>A continuación un ejemplo de un <strong>Punto de Corte (Pointcut)</strong> y también un Consejo declarado por un Pointcut.</p>
+<p>A continuación un ejemplo de un <strong>Punto de Corte (Pointcut)</strong> y también un consejo declarado por un pointcut.</p>
 <p align = "center">
     <img src="../Images/punto_corte.webp"/>
 </p>
@@ -170,19 +170,19 @@ Dentro de ellos podemos encontrar:</p>
 <p align = "center">
     <img src="../Images/Joinpoint_tabla.webp"/>
 </p>
-<p align="justify"><strong>Algunos Pointcut importantes:</strong></p>
+<p align="justify"><strong>Algunos Pointcuts importantes:</strong></p>
 <p align = "center">
     <img src="../Images/Pointcut_tabla.webp"/>
 </p>
 <p align="justify"><em><strong>PUNTOS DE CORTE VS PUNTOS DE ENLACE. VAMOS CON EL EJEMPLO...</strong></em></p>
 
-<p align="justify"><em>Cuando sales a comer a un restaurante, estando en él, miras el menú y hay varias opciones que se pueden escoger de platos fuertes, ensaladas, postres, etc. Después de ver que hay en el menú escoges uno o mas de estos platos, pero hasta que estos no sean ordenados y el mesero no te los traiga son solo "oportunidades para cenar".</em></p>
+<p align="justify"><em>Cuando sales a comer a un restaurante, estando en él, miras el menú y hay varias opciones que se pueden escoger de platos fuertes, ensaladas, postres, etc. Después de ver que hay en el menú escoges uno o más de estos platos, pero hasta que estos no sean ordenados y el mesero no te los traiga son solo "oportunidades para cenar".</em></p>
 
 <p align="center"><img src="https://github.com/japrietov/POA_teoria-1/blob/gh-pages/Images/example_restaurant.png?raw=true" alt=""></p>
 
 <p align="justify"><em>Los <strong>joinpoints</strong> son las opciones que hay en el menu y los <strong>pointcuts</strong> son los platos que se ordenan.
                       Hablando dentro del ámbito de la programación, un <strong>joinpoint</strong> es una oportunidad dentro del código para la aplicación de un ASPECTO;
-                      Una vez se toma esa oportunidad y se selecciona uno o mas joinpoints, al aplicar un ASPECTO de ellos se tendrá un <strong>pointcut</strong>.</em></p>
+                      Una vez se toma esa oportunidad y se selecciona uno o más joinpoints, al aplicar un ASPECTO de ellos se tendrá un <strong>pointcut</strong>.</em></p>
 
 <h2>
   <span aria-hidden="true" class="octicon octicon-link"></span></a>De manera resumida:
@@ -198,7 +198,7 @@ Dentro de ellos podemos encontrar:</p>
 
 <hr>
 
-<p align="justify"><em>Pero bueno, a nosotros nos gusta ver como se verían todos estos conceptos aplicados ya en un programa. Supongamos que tenemos una tienda, la cual tendrá diferentes empleados. El administrador de la tienda va a tener todo el manejo de los empleados, incluyendo todas las operaciones CRUD (Create, Read, Update, Delete), hasta cómo sera el inicio de sesión a la aplicación por parte de los empleados. Este inicio de sesión o Loggin sera el Aspecto que tendrá nuestra aplicación.</em></p>
+<p align="justify"><em>Pero bueno, a nosotros nos gusta ver como se verían todos estos conceptos aplicados ya en un programa. Supongamos que tenemos una tienda, la cual tendrá diferentes empleados. El administrador de la tienda va a tener todo el manejo de los empleados, incluyendo todas las operaciones CRUD (Create, Read, Update, Delete), hasta cómo será el inicio de sesión a la aplicación por parte de los empleados. Este inicio de sesión o Loggin será el Aspecto que tendrá nuestra aplicación.</em></p>
 
 <p align="justify"><em>La imagen a continuación explicará claramente donde estarían cada uno de los conceptos anteriormente mencionados dentro de un programa. Este programa fue implementado utilizando <strong>Spring AOP + AspectJ</strong>.</em></p>
 
@@ -299,7 +299,7 @@ Dentro de ellos podemos encontrar:</p>
     <img width="500" height="300" src="../Images/tejedor1.webp?raw=true" hspace="150"> </img>
 </p>
 <p>
-En la anterior imagen se puede observar graficamente como funciona el tejedor. El tejedor tendria las siguientes repercusiones dentro del codigo final:
+En la anterior imagen se puede observar gráficamente cómo funciona el tejedor. El tejedor tendría las siguientes repercusiones dentro del código final:
 </p>
 <p align = "center">
     <img width="800" height="300" src="../Images/tejedor2.webp?raw=true"> </img>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Programacion Orientada a Aspectos</title>
+    <title>Programación Orientada a Aspectos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -14,7 +14,7 @@
 <body>
 
     <section class="page-header">
-        <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+        <h1 class="project-name">Programación Orientada a Aspectos</h1>
         <h2 class="project-tagline"></h2>
 
         <a href="../index.html" class="btn">Inicio</a>
@@ -25,7 +25,7 @@
         <a class="btn btn-actual">Lenguajes</a>
         <a href="aplicaciones.html" class="btn">Aplicaciones</a>
         <a href="presentaciones.html" class="btn">Presentaciones</a>
-        <a href="practicas.html" class="btn">Practica</a>
+        <a href="practicas.html" class="btn">Práctica</a>
         <a href="ejemplos.html" class="btn">Ejemplos</a>
 
     </section>
@@ -92,7 +92,7 @@
             de los componentes. Esto queda a libertad del programador.
         </p>
         <p align="justify">
-            Los LOA de dominio específico fuerzan a programar las tareas de aspectos dentro de éstos, ya que en el
+            Los LOA de dominio específico fuerzan a programar las tareas de aspectos dentro de estos, ya que en el
             lenguaje base se restringe el uso de las
             instrucciones que tienen relación con la funcionalidad de los aspectos.
         </p>
@@ -406,6 +406,48 @@
             Finalmente, se puede argumentar que es la extensión de lenguaje más usada en cuanto a POA, debido a que es
             una de las más desarrolladas y a que es particularmente fácil de entender y utilizar.
         </p>
+
+        <h3>
+            <a id="ProcesoCompilacionAspectJ" class="anchor" href="#AspectJ" aria-hidden="true"><span aria-hidden="true"
+                class="octicon octicon-link"></span></a>Proceso de compilación en AspectJ
+        </h3>
+
+        <p align="justify">
+            AspectJ utiliza un compilador diferente al compilador de Java, el cual es el <strong> ajc </strong> (AspectJ Compiler)
+            este compilador es bastante versátil ya que nos ofrece varias opciones al momento de crear el tejido.
+        </p>
+
+        <p align="justify">
+            Por un lado, tenemos el siguiente panorama: Tenemos el modelado de clases en java (archivos con extensión .java), Aspectos
+            con notación @aspect (También con extensión .java) y Aspectos usando el lenguaje AspectJ (estos con extensión .aj). El compilador <strong>ajc</strong>
+            nos permite compilar todos estos elementos en una sola pasada generando el archivo de bytecodes o tejido (extensión .class o .jar) el cual podrá ser 
+            interpretado haciendo uso de la Máquina Virtual de Java.
+        </p>
+        
+        <p align="justify">
+            En el siguiente diagrama se muestra como se realiza el proceso de compilación de un proyecto segun el paradigma de aspectos para AspectJ
+        </p>
+
+        <p align="center">
+            <img
+            src="../Images/ProcesoTejido1.webp?raw=true">
+        </p>
+        
+        <p align="justify">
+            Por otro lado, en caso en el cual contemos con código ya compilado o con proyectos muy grandes cuyo proceso de compilación sea bastante tardio, el
+            compilador <strong> ajc </strong> nos permite generar el tejido del proyecto usando archivos ya en bytecodes y archivos de código fuente. El ajc
+            puede recibir archivos con extensiones jar, class, java, aj para generar el tejido listo para la interpretación por parte de la Máquina Virtual de Java.
+        </p>
+
+        <p align="justify">
+            El proceso anterior se puede visualizar de la siguiente manera:
+        </p>
+    
+        <p align="center">
+            <img
+            src="../Images/ProcesoTejido2.webp?raw=true">
+        </p>
+    
         <h2>
             <a id="AspectS" class="anchor" href="#Aspects" aria-hidden="true"><span aria-hidden="true"
                     class="octicon octicon-link"></span></a>AspectS</h2>
@@ -789,7 +831,17 @@
                     sea posible y aún usar AspectJ para obtener soporte de aquellos JoinPoints que sean necesarios.</li>
             </ol>
             </p>
-
+            
+            <h3>
+                <a id="referencias" class="anchor" href="#referencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Referencias:</strong>
+            </h3>
+            <ul>
+                <li>
+                    [1]Libro <a href="https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-8/45" target= "_blank">AspectJ in action</a>, segunda edición.
+                </li>
+                            
+            </ul>
+            
             <footer class="site-footer">
                 <span class="site-footer-owner"><a
                         href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a

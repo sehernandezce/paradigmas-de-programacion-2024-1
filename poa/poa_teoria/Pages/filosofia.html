@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>Programacion Orientada a Aspectos</title>
+    <title>Programación Orientada a Aspectos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
 <body>
 
 <section class="page-header">
-    <h1 class="project-name">Programacion Orientada a Aspectos</h1>
+    <h1 class="project-name">Programación Orientada a Aspectos</h1>
     <h2 class="project-tagline"></h2>
 
 	<a href="../index.html" class="btn">Inicio</a>
@@ -23,7 +23,7 @@
 	<a href="lenguajes.html" class="btn">Lenguajes</a>
 	<a href="aplicaciones.html" class="btn">Aplicaciones</a>
 	<a href="presentaciones.html" class="btn">Presentaciones</a>
-	<a href="practicas.html" class="btn">Practica</a>
+	<a href="practicas.html" class="btn">Práctica</a>
 	<a href="ejemplos.html" class="btn">Ejemplos</a>
 </section>
 
@@ -238,6 +238,32 @@ lenguaje base a muchos lenguajes orientados a objetos.
 	Teniendo en cuenta esto, a su criterio propio ¿Es o no la POA un paradigma de programación?
 </p>
 
+<h3>
+<a id="msdoc" class="anchor" href="#mdsoc" aria-hidden="true">
+	<span aria-hidden="true" class="octicon octicon-link"></span></a>"Diagramas UML" en la programación orientada a aspectos.
+</h3>
+<p align="justify">
+	Los Diagramas UML son una herramienta muy buena para visualizar los modelos de programación orientada a objetos,
+	como ya se ha hablado anteriormente este paradigma va muy de la mano con los aspectos, ¿Como sería una aproximación de los 
+	aspectos en este tipo de diagramas?
+</p>
+<p align="justify">
+	Para mostrar esto, veamos un pequeño ejemplo: Tenemos el modelo de una aplicación de interfaz gráfica
+	donde podemos encontrar dos clases <strong> Rect </strong> y <strong> Circle</strong>, donde ambas heredan de una clase padre 
+	<strong> Figure </strong>, las clases hijas definen los métodos de <strong> Rotar</strong>, <strong> Trasladar </strong> y
+	<strong> Escalar </strong>.
+</p>
+<p align= "center">
+	<img width="280" height="247" src="../Images/DiagramaUML1.webp?raw=true" hspace="150"> </img>
+</p>
+<p align="justify">
+	Esta aplicación gráfica requiere de actualizar la interfaz gráfica al momento de ejecutar los correspondientes métodos que modifican las figuras,
+	esto se puede implementar con un aspecto que se ejecute junto con cada uno de los métodos, por lo que podemos asumir que el aspecto estará unido a 
+	los ya mencionados métodos. Por lo tanto una posible visualización de los aspectos en el diagrama de clases es la siguiente.
+</p>
+<p align= "center">
+	<img width="299" height="291" src="../Images/DiagramaUML2.webp?raw=true" hspace="150"> </img>
+</p>
 <footer class="site-footer">
 		<span class="site-footer-owner"><a href="https://github.com/ProgramacionOrientadaAspectos/POA_teoria">Programacion Orientada a Aspectos</a> is maintained by <a href="https://github.com/ProgramacionOrientadaAspectos">ProgramacionOrientadaAspectos</a>.</span>
 		<span class="site-footer-credits">This page was created by Diego Rojas, Gustavo Galvis y Dorian Tovar.</span>
