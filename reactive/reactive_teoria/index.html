@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <title>Programacion Reactiva</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stroke.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shThemeRDark.css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <link rel="stylesheet"
+    href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/styles/default.min.css">
+
+</head>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+
+    <script>
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        function topFunction() {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector('#mode').addEventListener('click',()=>{
+                document.querySelector('html').classList.toggle('dark');
+            })
+        });
+
+
+    </script>
+
+    <div id="wrapper">
+
+        <div id="mode" >
+            <div class="dark">
+                <svg aria-hidden="true" viewBox="0 0 512 512">
+                    <title>lightmode</title>
+                    <path fill="currentColor" d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"></path>
+                </svg>
+            </div>
+            <div class="light">
+                <svg aria-hidden="true" viewBox="0 0 512 512">
+                    <title>darkmode</title>
+                    <path fill="currentColor" d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <section id="top" class="section docs-heading">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="big-title text-center">
+                            <h1>Programacion Reactiva</h1>
+                        </div>
+                        <!-- end title -->
+                    </div>
+                    <!-- end 12 -->
+                </div>
+                <!-- end row -->
+
+                <hr>
+
+            </section>
+            <!-- end section -->
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+                        <ul class="nav">
+                            <li><a href="#line1">Introduccion</a></li>
+                            <li><a href="#line2">Manifiesto reactivo</a></li>
+                            <li><a href="#line3">Ventajas </a></li>
+                            <li><a href="#line4">Lenguajes de Programacion</a></li>
+                            <li><a href="#line5">Ejemplos</a>
+                                <ul class="nav">
+                                    <li><a href="#line5_1">RxPY</a></li>
+                                    <li><a href="#line5_2">RxJava</a></li>
+                                    <li><a href="#line5_3">RxJS</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line6">Aplicaciones</a></li>
+                            <li><a href="#line7">Referencias</a></li>
+                        </ul>
+                    </nav >
+                </div>
+                <div class="col-md-9">
+                 
+
+                    <section id="line1" class="section" style="padding: 0px;">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Introduccion <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="dark-text">¿Qué es la programación reactiva?</h3>
+                                <p>Es un paradigma enfocado en el trabajo con flujos de datos finitos o infinitos de manera asíncrona, es decir que las aplicaciones reaccionan a los cambios ejecutando una serie de eventos.</p> 
+                                <p>Este paradigma esta enfocado principalmente en el manejo de flujos de datos asíncronos y en el uso eficiente de recursos. Los sistemas reactivos reaccionan a los datos que fluyen continuamente ejecutando una serie de eventos, esto es porque siguen el patrón de diseño Observer; 
+                                    cuando hay un cambio de estado en un objeto, los otros objetos son notificados y actualizados. Por lo tanto, en lugar de estar preguntando los cambios, los eventos se realizan de forma asíncrona para que los observadores puedan procesarlos.</p>
+
+                                <img src="images/Observer.svg" alt="" class="img-responsive img-thumbnail">
+
+                                
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line2" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Manifiesto reactivo <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="intro2 clearfix">
+                            <p>Los Sistemas Reactivos son:</p>
+                            <p>Responsivos: El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados rápidamente y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
+                            <p>Resilientes: El sistema permanece responsivo frente a fallos. Esto es aplicable no sólo a sistemas de alta disponibilidad o de misión crítica - cualquier sistema que no sea resiliente dejará de ser responsivo después de un fallo. La resiliencia es alcanzada con replicación, contención, aislamiento y delegación. Los fallos son manejados dentro de cada componente, aislando cada componente de los demás, y asegurando así que cualquier parte del sistema pueda fallar y recuperarse sin comprometer el sistema como un todo. La recuperación de cada componente se delega en otro componente (externo) y la alta disponibilidad se asegura con replicación allí donde sea necesario. El cliente de un componente no tiene que responsabilizarse del manejo sus fallos.</p>
+                            <p>Elásticos: El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
+                            <p>Orientados a Mensajes: Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un cluster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
+                            <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
+                        </div>
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line3" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Ventajas<hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <h4>Escalabilidad</h4>
+
+                        <p>A través de la Programación Reactiva, se obtiene una implementación que tiende a aislar los fallos a través de una escalabilidad horizontal, es decir, se obtiene una capacidad de escalar horizontalmente y de manera rápida.</p>
+
+                        <hr>
+
+                        <h4>Ahorro</h4>
+
+                        <p>Una consecuencia directa de utilizar de manera eficiente los recursos es invertir menos en servidores y centros de datos por lo que se puede realizar más con menos recursos y procesar cargas de trabajo mal altas con menos hilos.</p>
+
+                        
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line4" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Lenguajes de Programacion <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>ReactiveX</strong>
+                                <p>Es un conjunto de herramientas que permiten que los lenguajes de programación imperativos operen en secuencias de datos independientemente de si los datos son síncronos o asincrónicos. Proporciona un conjunto de operadores de secuencia que operan en cada elemento de la secuencia. Es una implementación de programación reactiva y proporciona un modelo para que las herramientas se implementen en múltiples lenguajes de programación.
+                                </p>
+                                <p>ReactiveX es una combinación de las mejores ideas de
+                                    el patrón Observer, el patrón Iterator y la programación funcional Reactiva.</p>
+                                  
+                                    <img src="images/reactivex.png" alt="" class="img-responsive img-thumbnail">
+
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <strong>Lenguajes</strong>
+
+                                <p> Los siguientes lenguajes poseen una libreria basada en ReactiveX que les permite pertenecer al paradigma de la Programacion reactiva </p>
+                                <ul>
+                                    <li>Java: <a href="https://github.com/ReactiveX/RxJava">RxJava</a></li>
+                                    <li>JavaScript: <a href="https://github.com/ReactiveX/rxjs">RxJS</a></li>
+                                    <li>C#: <a href="https://github.com/Reactive-Extensions/Rx.NET">Rx.NET</a></li>
+                                    <li>C#(Unity): <a href="https://github.com/neuecc/UniRx">UniRx</a></li>
+                                    <li>Scala: <a href="https://github.com/ReactiveX/RxScala">RxScala</a></li>
+                                    <li>Clojure: <a href="https://github.com/ReactiveX/RxClojure">RxClojure</a></li>
+                                    <li>C++: <a href="https://github.com/Reactive-Extensions/RxCpp">RxCpp</a></li>
+                                    <li>Lua: <a href="https://github.com/bjornbytes/RxLua">RxLua</a></li>
+                                    <li>Ruby: <a href="https://github.com/Reactive-Extensions/Rx.rb">Rx.rb</a></li>
+                                    <li>Python: <a href="https://github.com/ReactiveX/RxPY">RxPY</a></li>
+                                    <li>Go: <a href="https://github.com/ReactiveX/RxGo">RxGo</a></li>
+                                    <li>Groovy: <a href="https://github.com/ReactiveX/RxGroovy">RxGroovy</a></li>
+                                    <li>JRuby: <a href="https://github.com/ReactiveX/RxJRuby">RxJRuby</a></li>
+                                    <li>Kotlin: <a href="https://github.com/ReactiveX/RxKotlin">RxKotlin</a></li>
+                                    <li>Swift: <a href="https://github.com/kzaher/RxSwift">RxSwift</a></li>
+                                    <li>PHP: <a href="https://github.com/ReactiveX/RxPHP">RxPHP</a></li>
+                                    <li>Elixir: <a href="https://github.com/alfert/reaxive">reaxive</a></li>
+                                    <li>Dart: <a href="https://github.com/ReactiveX/rxdart">RxDart</a></li>
+                                    </ul>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line5" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Ejemplos<hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line5_1">RxPY </h4>
+
+                                <script src="https://gist.github.com/juankg214/e0f5ed1550993577ea302edbf10e775a.js"></script>
+                                
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line5_2">RxJAVA </h4>
+
+                                <script src="https://gist.github.com/juankg214/8b2862d91b272338c2fed1ecc580f0eb.js"></script>
+                                <script src="https://gist.github.com/juankg214/a340b74659748cd55f194b67092ea6d6.js"></script>
+                                <script src="https://gist.github.com/juankg214/72b16f25698e603d329637bbb2cee74f.js"></script>
+                                
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line5_2">RxJS </h4>
+                                <p>A continuación veremos un ejemplo simple de reactividad en <strong>Javascript</strong><br>
+                                    Iniciamos definiendo dos funciones:
+                                    <li>UpdateNotifications: Encargada de notificarnos cuando el usuario fue actualizado</li>
+                                    <li>GetUsers: La cual nos genera un usuario aleatorio</li>
+                                    En este primer ejemplo el usuario se creara sin problemas y seguido de esto será actualizado mediante el bucle <strong>for</strong>.
+                                    <script src="https://gist.github.com/BryGuz/0e86a967944f3b44d9403bb6156ab2a0.js"></script>
+                                    Ahora bien, ¿Qué ocurriría si en vez de un cliente tenemos un flujo de clientes continuo?
+                                    <strong>¡Correcto!</strong>, Al no terminar de crear clientes, el bucle for jamás llega a ejecutarse.
+                                    <script src="https://gist.github.com/BryGuz/aa37f4b361730ebc42819016a7b5023e.js"></script>
+                                    Una forma de solucionar este problema puede ser obligar la ejecución del programa mediante otra sentencia <strong>SetInterval</strong> y mejorandolo un poco, como vemos a continuación; ajustando el index desde el que se recorrera la lista de usuarios.<br>
+                                    Sin embargo está solución puede ser implementada utilizando programación reactiva de manera más elegante y <strong>¡Menos código!</strong>
+                                    <script src="https://gist.github.com/BryGuz/89c1511eb138b985af75b5a1af291ec9.js"></script>
+                                    Como observamos a continuación debemos declarar un <strong>Observador</strong> que será el encargado de avisarnos cuando se crea un nuevo usuario y comunicarlo al <strong>Suscribe</strong>, el cual se ejecutará apenas el estado de la lista cambie.
+                                    <script src="https://gist.github.com/BryGuz/01e86ca59de45213615fd219058de169.js"></script>
+                                </p>
+                                
+                                
+                                
+                                
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line6" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Aplicaciones<hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <strong>Dominios de Aplicación:</strong>
+                                <p>Muchas empresas están utilizando esta forma de programación actuamente y con mucha razón. Como ya hemos señalado, permite crear aplicaciónes o sitios web de tal manera que ofrece una mejor experiencia de usuario. Resultados más suaves y rápidos provienen de este paradigma y hace que la interacción del usuario sea mucho mejor. Naturalmente, esto se traduce en clientes más felices y más ventas para el negocio.</p>
+
+                                <p>Compañías como <strong>Netflix</strong> llevan años aplicando la programación reactiva para mejorar el rendimiento de sus aplicaciones, superando las limitaciones nativas de multiples lenguajes. Reactivex y otras librerias les proporcionó la pieza que necesitaban para realizar la orquestación de microservicios, la implementación del patrón <a href="https://martinfowler.com/bliki/CircuitBreaker.html"><strong>circuit breaker</strong></a> y demás mecanismos que permiten a sus desarrollos adoptar los principios descritos por el manifiesto reactivo.</p>
+
+                                <p>La programación reactiva se ha aplicado durante varios años en el <a href="http://reactivex.io/"><strong>Front-end</strong></a> Mediante el uso de cambios de estado en los diferentes componentes <a href="https://dev.to/petyosi/reactive-programming-for-react-developers-the-absolute-beginner-guide-5eeg">Reactive Programming for React Developers</a></p>
+                                <center><a href="http://reactivex.io/" data-rel="frontend"><img src="images/frontend.PNG" alt="Frontend en Reactivex" class="img-responsive img-thumbnail"></a>
+                                    <figcaption>Uno de los principales usos de Recativex</figcaption>
+                                </center>
+                                
+                            
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <strong>Algunas compañias que hacen uso de este Paradigma en sus productos:</strong>
+                                <center><a href="http://reactivex.io/" data-rel="frontend"><img src="images/compañias.PNG" alt="Compañias que usan RecativeX" class="img-responsive img-thumbnail"></a>
+                                    <figcaption>Compañias como Netflix y Microsoft han apostado a este paradigma</figcaption>
+                                </center>
+
+                                <p><strong>Jafar Husain</strong>, Desarrollador Senior en el equipo de Interfaz de Usuario de TV en <strong> Netflix</strong> comenta lo siguiente:<br>
+                                    <cite>"Over the last year, Netflix has reinvented our client-server interaction model. One of the key building blocks of our platform is Microsoft’s open-source Reactive Extensions library (Rx). Netflix is a big believer in the Rx model, because Rx has made it much easier for us to build complex asynchronous programs."</cite>
+                                </p>
+                                <p>Husain Tambien menciona que actualmente Netflix es de las pocas compañias que que utiliza la programación reactiva tanto en el servidor como en el cliente, sin embargo no son la única: <strong> Felipe Lima</strong>, Miembro del equipos de desarrollo de Android en <strong>Airbnb</strong>, menciona el porque decidieron inclinarse hacia la programación reactiva mediante RxJava:<br> <cite >" It’s easy to switch back and forth between threads. It’s built right into the framework, Async can be very cumbersome and error-prone, and RxJava is one reason we you don’t need to do that anymore, and why you can compose different tasks together".</cite> </p>
+                                
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line7" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Referencias<hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                             
+                               
+                               
+                              
+                            
+                                <ul>
+                                    <li>1.    ReactiveX - http://reactivex.io/languages.html</li>
+                                    <li>2.  Codigo RxPY - https://colab.research.google.com/drive/19SeUjUM_AYaxhGB-qintY822lC9NO1La?usp=sharing</li>
+                                    <li>3.  Mas Ejemplos RxPy - https://www.tutorialspoint.com/rxpy/rxpy_quick_guide.htm</li>
+                                    <li>4.   RxJava - https://www.baeldung.com/rx-java</li>
+                                    <li>5.     RxJava Android - https://www.toptal.com/android/functional-reactive-android-rxjava</li>
+                                 
+                                </ul>
+
+                            </div>
+
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+
+                  
+                    <!-- end section -->
+                </div>
+                <!-- // end .col -->
+
+            </div>
+            <!-- // end .row -->
+
+        </div>
+        <!-- // end container -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <!-- CUSTOM PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/syntax-highlighter/scripts/shCore.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushXml.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+</body>
+
+</html>
