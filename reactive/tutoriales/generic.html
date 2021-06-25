@@ -1,0 +1,1078 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Svelte Tutorial: Tour por el lenguaje</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Lenguage Svelte</h1>
+						<p>En esta página encontrarás una guía para entender el lenguaje <em>Svelte</em>. En algunas secciones para más claridad
+						encontrás un vista de diferencia <em>(diff)</em> para apreciar mejor los conceptos. En otras, encontrarás el codigo en 
+						JavaScript plano para más simplicidad.</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img src="images/preview-dark.png" alt="" /></span>
+
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+
+<h1 id="reactividad">Reactividad</h1>
+<h2 id="asignaciones">Asignaciones</h2>
+<p>Un problema que buscan resolver los frameworks de front-end es la actualización de forma eficiente del DOM cuando el usuario interactúa con la interfáz.</p>
+<p>Hay un completo sistema de &#39;reactividad&#39; para mantener el DOM en sincronía con el estado de la aplicación, por ejemplo en respuesta a un evento.</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    let count = 0;
+
+    function handleClick() {
+<span class="gi">+        count += 1;</span>
+    }
+&lt;/script&gt;
+
+<span class="gd">-&lt;button&gt;</span>
+<span class="gi">+&lt;button on:click={handleClick}&gt;</span>
+    Clicked {count} {count === 1 ? &#39;time&#39; : &#39;times&#39;}
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="declaraciones">Declaraciones</h2>
+<p>Las declaraciones reactivas identifican el cambio valor de una variable para actualizar los componentes que hacen uso de este valor. El cambio de valor se detecta a través del operador asignación.</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    let count = 0;
+<span class="gd">-    let doubled = count * 2;</span>
+<span class="gi">+    $: doubled = count * 2;</span>
+
+    function handleClick() {
+        count += 1;
+    }
+&lt;/script&gt;
+
+&lt;button on:click={handleClick}&gt;
+    Clicked {count} {count === 1 ? &#39;time&#39; : &#39;times&#39;}
+&lt;/button&gt;
+
+&lt;p&gt;{count} doubled is {doubled}&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="proposiciones">Proposiciones</h2>
+<p>El uso de declaraciones reactivas se puede extender a bloques de código y  a expresiones condicionales. Recordar que para que la interfaz reaccione a la interacción del usuario la variable debe ser reasignada.</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    let count = 0;
+
+<span class="gi">+    $: if (count &gt;= 10) {</span>
+<span class="gi">+        alert(`count is dangerously high!`);</span>
+<span class="gi">+        count = 9;</span>
+<span class="gi">+    }</span>
+
+    function handleClick() {
+        count += 1;
+    }
+&lt;/script&gt;
+
+&lt;button on:click={handleClick}&gt;
+    Clicked {count} {count === 1 ? &#39;time&#39; : &#39;times&#39;}
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="actulizando-arreglos-y-objetos">Actulizando Arreglos y objetos</h2>
+<p>Los arreglos se manipulan a través de metodos como <code>slice</code>, <code>push</code> o <code>reduce</code> los cuales no modifican el arreglo o el objeto a través de un operador de asignación, por lo que la reactividad del framework no se dispara. Para solucionar esto se realiza la operación sobre el objeto usando la flexibilidad sintáctica de JavaScript e involucrando el operador de asignación:</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    let numbers = [1, 2, 3, 4];
+
+    function addNumber() {
+<span class="gd">-        numbers = [...numbers, numbers.length + 1];</span>
+<span class="gi">+        numbers.push(numbers.length + 1);</span>
+    }
+
+    $: sum = numbers.reduce((t, n) =&gt; t + n, 0);
+&lt;/script&gt;
+
+&lt;p&gt;{numbers.join(&#39; + &#39;)} = {sum}&lt;/p&gt;
+
+&lt;button on:click={addNumber}&gt;
+    Add a number
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<h1 id="props">Props</h1>
+<p>Props es el diminitivo de <em>Properties</em> y es un objeto que representa y almacena el estado interno de un <em>componente</em> de Svelte.<br>Recordar que las unidades escenciales de una aplicación escrita en Svelte son los <em>componentes</em>.<br>De esta manera una interfaz implementada con Svelte puede verse como un árbol de estados donde las aristas representan las interacciones entre componentes.<br>Se habla de árbol y no de un grafo de estados porque por la construcción modular de la interfáz o aplicación mediante la descomposición de unidades da paso a una estructura arbórea.<br>Por esta razón el estado o la información siempre se mueve de un componente padre a uno hijo. Si se desea que la propagación de la rección sea inversa, se debe aplicar otra técnica que también ofrece Svelte y se verá más adelante.   </p>
+<h2 id="declaraci-n-de-props-">Declaración de Props.</h2>
+<p>Para indicar que un atributo representa el estado interno del componente se usa la palabra <code>export</code>.</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import Nested from &#39;./Nested.svelte&#39;;
+&lt;/script&gt;
+
+<span class="gi">+ &lt;Nested answer={42}/&gt;</span>
+</pre></div>
+
+</code></pre>
+<p>Nested.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+<span class="gd">-    let answer;</span>
+<span class="gi">+    export let answer;</span>
+&lt;/script&gt;
+
+&lt;p&gt;The answer is {answer}&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="valores-por-defecto">Valores por defecto</h2>
+<p>Es recomendable trabajar con valores por defecto para evitar inconsistencias en el estado interno de la aplicación. Simplemente basta con inicializar el atributo que se exponen como <em>property</em>:</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import Nested from &#39;./Nested.svelte&#39;;
+&lt;/script&gt;
+
+&lt;Nested answer={42}/&gt;
+&lt;Nested/&gt;
+</pre></div>
+
+</code></pre>
+<p>Nested.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+<span class="gd">-    export let answer;</span>
+<span class="gi">+    export let answer = &#39;a mystery&#39;;</span>
+&lt;/script&gt;
+
+&lt;p&gt;The answer is {answer}&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="props-extendidos">Props extendidos</h2>
+<p>Como se mencionó antes los props son un objeto, y una forma convencional de hacerlo es pasando cada atributo al componente destino. Svelte provee la siguiente forma compacta para pasar un prop:</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import Info from &#39;./Info.svelte&#39;;
+
+    const pkg = {
+        name: &#39;svelte&#39;,
+        version: 3,
+        speed: &#39;blazing&#39;,
+        website: &#39;https://svelte.dev&#39;
+    };
+&lt;/script&gt;
+
+<span class="gd">- &lt;Info name={pkg.name} version={pkg.version} speed={pkg.speed} website={pkg.website}/&gt;</span>
+<span class="gi">+ &lt;Info {...pkg}/&gt;</span>
+</pre></div>
+
+</code></pre>
+<p>Info.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    export let name;
+    export let version;
+    export let speed;
+    export let website;
+&lt;/script&gt;
+
+&lt;p&gt;
+    The &lt;code&gt;{name}&lt;/code&gt; package is {speed} fast.
+    Download version {version} from &lt;a href=&quot;https://www.npmjs.com/package/{name}&quot;&gt;npm&lt;/a&gt;
+    and &lt;a href={website}&gt;learn more here&lt;/a&gt;
+&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<h1 id="stores"><em>Stores</em></h1>
+<p>Un <em>Store</em> provee una utilidad similar a la de un <em>Prop</em>. Como su nombre lo indica, un <em>Store</em> es un componente que almacena información y que puede ser accedida por cualquier componente de la aplicación.<br>Adicionalmente los <em>Stores</em> proveen un mecanismo <em>publish-subscribe</em> para notificar a los componentes en caso de un cambio de estado. Notar que esta propiedad de los <em>Stores</em> va alineada con la reactividad que ofrece el framework <em>Svelte</em> en general.<br>El ejemplo con varios componentes muestra que el <em>Store</em> se puede acceder desde varios componentes manteniendo integridad:</p>
+<h2 id="stores-escribibles"><em>Stores</em> escribibles</h2>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+    import Incrementer from &#39;./Incrementer.svelte&#39;;
+    import Decrementer from &#39;./Decrementer.svelte&#39;;
+    import Resetter from &#39;./Resetter.svelte&#39;;
+
+    let count_value;
+
+<span class="gd">-    count.subscribe(value =&gt; {</span>
+<span class="gi">+    const unsubscribe = count.subscribe(value =&gt; {</span>
+        count_value = value;
+    });
+&lt;/script&gt;
+
+&lt;h1&gt;The count is {count_value}&lt;/h1&gt;
+
+&lt;Incrementer/&gt;
+&lt;Decrementer/&gt;
+&lt;Resetter/&gt;
+</pre></div>
+
+</code></pre>
+<p>Decrementer.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function decrement() {
+<span class="gi">+        count.update(n =&gt; n - 1);</span>
+    }
+&lt;/script&gt;
+
+&lt;button on:click={decrement}&gt;
+    -
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>Incrementer.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function increment() {
+<span class="gi">+        count.update(n =&gt; n + 1);</span>
+    }
+&lt;/script&gt;
+
+&lt;button on:click={increment}&gt;
+    +
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>Resetter.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function reset() {
+<span class="gi">+       count.set(0);</span>
+    }
+&lt;/script&gt;
+
+&lt;button on:click={reset}&gt;
+    reset
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>store.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+
+export const count = writable(0);
+</pre></div>
+
+</code></pre>
+<h2 id="auto-subscripciones">Auto-subscripciones</h2>
+<p>El uso del <em>Store</em> que se mostré en la subsección anterior presenta un problema: nunca se desuscribe y en el caso de varias construcciones y destrucciones del componente puede dar paso a un <em>memory-leak</em>.<br>Para realizar una autosubscripción sólo basta con agregar el símbolo pesos <code>$</code> como prefijo al identificador del <em>Store</em>.</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+    import Incrementer from &#39;./Incrementer.svelte&#39;;
+    import Decrementer from &#39;./Decrementer.svelte&#39;;
+    import Resetter from &#39;./Resetter.svelte&#39;;
+
+<span class="gd">-    let count_value;</span>
+<span class="gd">-</span>
+<span class="gd">-    count.subscribe(value =&gt; {</span>
+<span class="gd">-        count_value = value;</span>
+<span class="gd">-    });</span>
+&lt;/script&gt;
+
+<span class="gd">- &lt;h1&gt;The count is {count_value}&lt;/h1&gt;</span>
+<span class="gi">+ &lt;h1&gt;The count is {$count}&lt;/h1&gt;</span>
+
+&lt;Incrementer/&gt;
+&lt;Decrementer/&gt;
+&lt;Resetter/&gt;
+</pre></div>
+
+</code></pre>
+<p>Decrementer.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function decrement() {
+        count.update(n =&gt; n - 1);
+    }
+&lt;/script&gt;
+
+&lt;button on:click={decrement}&gt;
+    -
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>Incrementer.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function increment() {
+        count.update(n =&gt; n + 1);
+    }
+&lt;/script&gt;
+
+&lt;button on:click={increment}&gt;
+    +
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>Resetter.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+
+    function reset() {
+        count.set(0);
+    }
+&lt;/script&gt;
+
+&lt;button on:click={reset}&gt;
+    reset
+&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>store.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+
+export const count = writable(0);
+</pre></div>
+
+</code></pre>
+<h2 id="stores-de-s-lo-lectura"><em>Stores</em> de sólo lectura</h2>
+<p>Para ello se usa la función <code>readable</code> que toma como entrada un valor inicial y una función cuyo único parámetro es un <em>callback</em> que se lanza cuando llega el primer subscriptor y que retorna una función cuando el último subscriptor termina la relación:</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { time } from &#39;./stores.js&#39;;
+
+    const formatter = new Intl.DateTimeFormat(&#39;en&#39;, {
+        hour12: true,
+        hour: &#39;numeric&#39;,
+        minute: &#39;2-digit&#39;,
+        second: &#39;2-digit&#39;
+    });
+&lt;/script&gt;
+
+&lt;h1&gt;The time is {formatter.format($time)}&lt;/h1&gt;
+</pre></div>
+
+</code></pre>
+<p>stores.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { readable } from &#39;svelte/store&#39;;
+
+<span class="gd">- export const time = readable(null, function start(set) {</span>
+<span class="gi">+ export const time = readable(new Date(), function start(set) {</span>
+<span class="gi">+    const interval = setInterval(() =&gt; {</span>
+<span class="gi">+        set(new Date());</span>
+<span class="gi">+    }, 1000);</span>
+
+    return function stop() {
+<span class="gi">+       clearInterval(interval);</span>
+    };
+});
+</pre></div>
+
+</code></pre>
+<h2 id="stores-derivados"><em>Stores</em> derivados</h2>
+<p>Se pueden crear <em>Stores</em> a partir de otros:</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { time, elapsed } from &#39;./stores.js&#39;;
+
+    const formatter = new Intl.DateTimeFormat(&#39;en&#39;, {
+        hour12: true,
+        hour: &#39;numeric&#39;,
+        minute: &#39;2-digit&#39;,
+        second: &#39;2-digit&#39;
+    });
+&lt;/script&gt;
+
+&lt;h1&gt;The time is {formatter.format($time)}&lt;/h1&gt;
+
+&lt;p&gt;
+    This page has been open for
+    {$elapsed} {$elapsed === 1 ? &#39;second&#39; : &#39;seconds&#39;}
+&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<p>stores.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { readable, derived } from &#39;svelte/store&#39;;
+
+export const time = readable(new Date(), function start(set) {
+    const interval = setInterval(() =&gt; {
+        set(new Date());
+    }, 1000);
+
+    return function stop() {
+        clearInterval(interval);
+    };
+});
+
+const start = new Date();
+
+export const elapsed = derived(
+    time,
+<span class="gd">-    $time =&gt; {}</span>
+<span class="gi">+    $time =&gt; Math.round(($time - start) / 1000)</span>
+);
+</pre></div>
+
+</code></pre>
+<h2 id="stores-personalizados"><em>Stores</em> Personalizados</h2>
+<p>En vez de <em>exportar</em> un <em>Store</em> como se ha venido haciendo, se puede crear un <em>Store</em> personalizdo siempre que se implemente la función <code>subscribe</code>. Con esta alternativa los ejemplos de esta sección quedan más compactos:</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import { count } from &#39;./stores.js&#39;;
+&lt;/script&gt;
+
+&lt;h1&gt;The count is {$count}&lt;/h1&gt;
+
+&lt;button on:click={count.increment}&gt;+&lt;/button&gt;
+&lt;button on:click={count.decrement}&gt;-&lt;/button&gt;
+&lt;button on:click={count.reset}&gt;reset&lt;/button&gt;
+</pre></div>
+
+</code></pre>
+<p>stores.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+
+function createCount() {
+    const { subscribe, set, update } = writable(0);
+
+    return {
+        subscribe,
+<span class="gd">-        increment: () =&gt; {},</span>
+<span class="gi">+        increment: () =&gt; update(n =&gt; n + 1),</span>
+<span class="gd">-        decrement: () =&gt; {},</span>
+<span class="gi">+        decrement: () =&gt; update(n =&gt; n - 1),</span>
+<span class="gd">-        reset: () =&gt; {}</span>
+<span class="gi">+        reset: () =&gt; set(0)</span>
+    };
+}
+
+export const count = createCount();
+</pre></div>
+
+</code></pre>
+<h1 id="logic-">Logic:</h1>
+<h2 id="if-">If:</h2>
+<p>Podemos usar un condicional if en el archivo .svelte. Las expresiones tienen la misma organización que se usa en javascript, por lo que se pueden usar los mismos operadores lógicos.</p>
+<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+        <span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">loggedIn</span><span class="o">:</span> <span class="kc">false</span> <span class="p">};</span>
+
+        <span class="kd">function</span> <span class="nx">toggle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">user</span><span class="p">.</span><span class="nx">loggedIn</span> <span class="o">=</span> <span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">loggedIn</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+    {#if user.loggedIn}
+        <span class="nt">&lt;button</span> <span class="na">on:click=</span><span class="s">{toggle}</span><span class="nt">&gt;</span>
+            Log out
+        <span class="nt">&lt;/button&gt;</span>
+    {/if}
+
+    {#if !user.loggedIn}
+        <span class="nt">&lt;button</span> <span class="na">on:click=</span><span class="s">{toggle}</span><span class="nt">&gt;</span>
+            Log in
+        <span class="nt">&lt;/button&gt;</span>
+    {/if}
+</pre></div>
+
+</code></pre>
+<h2 id="else-">Else:</h2>
+<p>Podemos añadir una condición else en lugar de dos o más condicionales:</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>  &lt;script&gt;
+        let user = { loggedIn: false };
+
+        function toggle() {
+        user.loggedIn = !user.loggedIn;
+        }
+    &lt;/script&gt;
+
+    {#if user.loggedIn}
+        &lt;button on:click={toggle}&gt;
+            Log out
+        &lt;/button&gt;
+<span class="gd">- {/if}</span>
+<span class="gd">- {#if !user.loggedIn}</span>
+<span class="gi">+ {:else}</span>
+        &lt;button on:click={toggle}&gt;
+            Log in
+        &lt;/button&gt;
+    {/if}
+</pre></div>
+
+</code></pre>
+<h2 id="else-if-">Else if:</h2>
+<p>Svelte permite el uso de else if, y similar al if, es posible usar operadores lóogicos de javascript:</p>
+<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+        <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+    {#if x &gt;= 10}
+        <span class="nt">&lt;p&gt;</span>{x} es mayor o igual a 10<span class="nt">&lt;/p&gt;</span>
+    {:else if x <span class="nt">&lt; 5</span> <span class="err">&amp;&amp;</span> <span class="na">x</span> <span class="nt">&gt;</span>= 0}
+        <span class="nt">&lt;p&gt;</span>{x} es menor a 5 y mayor o igual a 0<span class="nt">&lt;/p&gt;</span>
+    {:else if x &gt;= 5 <span class="err">&amp;&amp;</span> x <span class="nt">&lt; 10</span><span class="err">}</span>
+        <span class="err">&lt;</span><span class="na">p</span><span class="nt">&gt;</span>{x} estÃ¡ entre 5 y 10<span class="nt">&lt;/p&gt;</span>
+    {:else}
+        <span class="nt">&lt;p&gt;</span>{x} es negativo <span class="nt">&lt;/p&gt;</span>
+    {/if}
+
+    {#if x % 2 == 0}
+        <span class="nt">&lt;p&gt;</span>{x} es par <span class="nt">&lt;/p&gt;</span>
+    {:else}
+        <span class="nt">&lt;p&gt;</span>{x} es impar <span class="nt">&lt;/p&gt;</span>
+    {/if}
+</pre></div>
+
+</code></pre>
+<h2 id="each-">Each:</h2>
+<p>Podemos recorrer una lista usando la función Each. Se comporta similar a un ciclo for, y es posible añadir un índice que acompaña cada elemento recorrido de la lista:</p>
+<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+        <span class="kd">let</span> <span class="nx">cats</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;J---aiyznGQ&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Keyboard Cat&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;z_AbfPXTKms&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Maru&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;OUtn3pvWmpg&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Henri The Existential Cat&quot;</span> <span class="p">}</span>
+        <span class="p">];</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+    <span class="nt">&lt;h1&gt;</span>The Famous Cats of YouTube<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;ul&gt;</span>
+        {#each cats as cat, i}
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">href=</span><span class="s">&quot;https://www.youtube.com/watch?v={cat.id}&quot;</span><span class="nt">&gt;</span>
+                {i + 1}: {cat.name}
+            <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        {/each}
+    <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;ul&gt;</span>
+        {#each cats as {id,name}, i}
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">href=</span><span class="s">&quot;https://www.youtube.com/watch?v={id}&quot;</span><span class="nt">&gt;</span>
+                {i + 1}: {name}
+            <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        {/each}
+    <span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+</code></pre>
+<h2 id="await-">Await:</h2>
+<p>En caso de que la aplicación espere datos a partir de funciones asíncronas, podemos usar la función await que actúa según espera, recibe o falla la promesa:</p>
+<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+        <span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">getRandomNumber</span><span class="p">();</span>
+
+        <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getRandomNumber</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span>
+            <span class="err">`</span><span class="nx">https</span><span class="o">:</span><span class="c1">//www.random.org/integers/?num=1&amp;min=1&amp;max=6&amp;col=1&amp;base=10&amp;format=plain&amp;rnd=new`</span>
+        <span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">text</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">promise</span> <span class="o">=</span> <span class="nx">getRandomNumber</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">on:click=</span><span class="s">{handleClick}</span><span class="nt">&gt;</span>
+        Generar Ãºmero aleatorio
+    <span class="nt">&lt;/button&gt;</span>
+
+    {#await promise}
+        <span class="nt">&lt;p&gt;</span>...esperando a random.org<span class="nt">&lt;/p&gt;</span>
+    {:then number}
+        <span class="nt">&lt;p&gt;</span>NÃºmero: {number}<span class="nt">&lt;/p&gt;</span>
+    {:catch error}
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">&quot;color: red&quot;</span><span class="nt">&gt;</span>{error.message}<span class="nt">&lt;/p&gt;</span>
+    {/await}
+</pre></div>
+
+</code></pre>
+<h1 id="events-">Events:</h1>
+<p>Svelte nos facilita hacer uso y definir listeners hacia eventos en el DOM usando  </p>
+<pre><code class="lang-html"><div class="highlight"><pre>on:<span class="nt">&lt;event&gt;</span>
+</pre></div>
+
+</code></pre>
+<h2 id="mouse-move-">Mouse move:</h2>
+<p>Para este ejercicio capturamos la posicion del mouse haciendo uso de la funcion handleMousemove</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+    <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+
+    <span class="kd">function</span> <span class="nx">handleMousemove</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">clientX</span><span class="p">;</span>
+        <span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">clientY</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">on:mousemove=</span><span class="s">{handleMousemove}</span><span class="nt">&gt;</span>
+    The mouse position is {m.x} x {m.y}
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nt">div</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+
+</code></pre>
+<h2 id="inline-handlers-">Inline Handlers:</h2>
+<p>Por otro lado la misma aplicación se puede realizar declarando la funcion en la misma linea donde se ejecuta</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+    <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">on:mousemove=</span><span class="s">&quot;{e =&gt; m = { x: e.clientX, y: e.clientY }}&quot;</span><span class="nt">&gt;</span>
+    The mouse position is {m.x} x {m.y}
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nt">div</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div>
+
+</code></pre>
+<h2 id="event-modifiers-">Event modifiers:</h2>
+<p>Los eventos relacionados al DOM pueden tener modificaciones que alteran el comportamiento de este, como pueden ser: </p>
+<ul>
+<li>once: Elimina el controlador después de la primera vez que se ejecuta .</li>
+<li>self: Solo desencadena el controlador si event.target es el elemento en sí.</li>
+<li>capture: Dispara al manipulador durante la fase de captura en lugar de la fase de burbujeo.</li>
+<li>nonpassive: Configura passive:false<br>
+<pre>
+<code>&lt;script&gt; <br>  function handleClick() {<br>      alert(&#39;no more alerts&#39;)<br>  }<br>&lt;/script&gt;&lt;button on:click|once={handleClick}&gt;<br>    Click me<br>&lt;/button&gt;<br></code>
+</pre>
+</li>
+</ul>
+
+<h2 id="inline-handlers-"> Component events: </h2>
+Los componentes también pueden disparar eventos.
+
+`createEventDispatcher` debe ser llamado cuando el componente es iniciado por primera vez. Esto permite conectar el envio a donde el componente fue instanciado
+
+Inner.svelte
+<pre>
+<code>&lt;script&gt;<br>    import { createEventDispatcher } from &#39;svelte&#39;;<br><br>    const dispatch = createEventDispatcher();<br><br>    function sayHello() {<br>        dispatch(&#39;message&#39;, {<br>            text: &#39;Hello!&#39;<br>        });<br>    }<br>&lt;/script&gt;<br><br>&lt;button on:click={sayHello}&gt;<br>    Click to say hello<br>&lt;/button&gt;<br></code>
+</pre>
+
+<h2 id="inline-handlers-"> Event forwarding: </h2>
+A diferencia de los eventos DOM, los eventos de componentes no burbujean. Estos pueden ser escuchados sin importar que tan anidado este el componente.
+
+Para este caso el evento `on:message` sin un valor nos permite reenviar todos los eventos de mensajes 
+
+Outer.svelte
+<pre>
+<code>&lt;script&gt;<br>    import Inner from &#39;./Inner.svelte&#39;;<br>&lt;/script&gt;<br><br>&lt;Inner on:message/&gt;<br></code>
+</pre>
+
+<h1 id="inline-handlers-"> Bindings: </h1>
+Un binding es una propiedad de las etiquetas de Svelte que permite asignarla a un valor definido:
+
+<h2 id="inline-handlers-"> Text input: </h2>
+Podemos usar la etiqueta input y asociar un valor con una caja de texto:
+<pre>
+<code>&lt;script&gt;<br>      let text = &quot;&quot;;<br>  &lt;/script&gt;<br><br>  &lt;input bind:value={text} placeholder=&quot;Texto&quot;&gt;<br>  &lt;p&gt;{text || &#39;Texto&#39;}&lt;/p&gt;<br></code>
+</pre>
+<h2 id="inline-handlers-"> Numeric inputs: </h2>
+De forma similar a la entrada de texto, podemos tener una entrada numérica, tanto en una caja como en un slider:
+<pre>
+<code>&lt;script&gt;<br>      let a = 0;<br>      let b = 0;<br>  &lt;/script&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=number bind:value={a} min=0 max=10&gt;<br>      &lt;input type=range bind:value={a} min=0 max=10&gt;<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=number bind:value={b} min=0 max=10&gt;<br>      &lt;input type=range bind:value={b} min=0 max=10&gt;<br>  &lt;/label&gt;<br><br>  &lt;p&gt;{a} + {b} = {a + b}&lt;/p&gt;<br></code>
+</pre>
+
+<h2 id="inline-handlers-"> Checkbox: </h2>
+Podemos utilizar checkbox para tomar un valor booleano, y hacer que la aplicación reaccione de forma acorde:
+<pre>
+<code>&lt;script&gt;<br>      let accept = false;<br>  &lt;/script&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=checkbox bind:checked={accept}&gt;<br>      He leído y acepto los términos y condiciones de uso<br>  &lt;/label&gt;<br><br>  {#if accept}<br>      &lt;p/&gt;<br>  {:else}<br>      &lt;p&gt;Debes aceptar los términos y condiciones de uso para continuar&lt;/p&gt;<br>  {/if}<br><br>  &lt;button disabled={!accept}&gt;<br>      Continuar<br>  &lt;/button&gt;<br></code>
+</pre>
+
+<h2 id="inline-handlers-"> Multiple inputs with groups:</h2>
+Podemos crear diferentes entradas para un grupo de valores, y si usamos checkbox o radio  se puede hacer que estos sean mutuamente excluyentes o no:
+<pre>
+<code>&lt;script&gt;<br>      let size = &quot;&quot;;<br>      let flavours = [];<br><br>      let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];<br><br>      function join(flavours) {<br>        if (flavours.length === 1) return flavours[0];<br>        return${flavours.slice(0, -1).join(&quot;, &quot;)} y ${
+            flavours[flavours.length - 1]
+        };<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Tamaño&lt;/h2&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;<br>      Personal<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;<br>      Familiar<br>  &lt;/label&gt;<br><br>  &lt;h2&gt;Sabores&lt;/h2&gt;<br><br>  {#each menu as flavour}<br>      &lt;label&gt;<br>          &lt;input type=checkbox bind:group={flavours} value={flavour}&gt;<br>          {flavour}<br>      &lt;/label&gt;<br>  {/each}<br><br>  {#if flavours.length === 0}<br>      &lt;p&gt;Escoja uno o dos sabores&lt;/p&gt;<br>  {:else}<br>      &lt;p&gt;<br>          Pidió una pizza {join(flavours)} de tamaño {size}<br>      &lt;/p&gt;<br>  {/if}<br></code>
+</pre>
+
+<h2 id="inline-handlers-"> Files: </h2>
+Podemos asignar una etiqueta label a una etiqueta input, que tiene un bind asignado a los valores de los archivos que se suban, lo que permite subir una imagen, o varios archivos:
+<pre>
+<code>  &lt;script&gt;<br>      let files;<br>  &lt;/script&gt;<br><br>  &lt;label for=&quot;avatar&quot;&gt;Una imagen:&lt;/label&gt;<br>  &lt;input
+        accept=&quot;image/png, image/jpeg&quot;
+        bind:files
+        id=&quot;avatar&quot;
+        name=&quot;avatar&quot;
+        type=&quot;file&quot;
+    /&gt;<br><br>  &lt;label for=&quot;many&quot;&gt;Varios archivos:&lt;/label&gt;<br>  &lt;input
+        bind:files
+        id=&quot;many&quot;
+        multiple
+        type=&quot;file&quot;
+    /&gt;<br><br>  {#if files}<br>      &lt;h2&gt;Selected files:&lt;/h2&gt;<br>      {#each Array.from(files) as file}<br>          &lt;p&gt;{file.name} ({file.size} bytes) &lt;/p&gt;<br>      {/each}<br>  {/if}<br><br></code>
+</pre>
+<h2 id="inline-handlers-">  Select: </h2>
+Las etiquetas select permiten crear un bind también, y en este caso se muestran en una etiqueta form:
+<pre>
+<code>  &lt;script&gt;<br>      let questions = [<br>        { id: 1, text: ¿Qué sabor quiere? },<br>        { id: 2, text: ¿Qué tamaño quiere? }<br>      ];<br><br>      let selected;<br><br>      let answer = &quot;&quot;;<br><br>      function handleSubmit() {<br>        alert(Respondió a ${selected.text} con &quot;${answer}&quot;);<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Selección de pizza&lt;/h2&gt;<br><br>  &lt;form on:submit|preventDefault={handleSubmit}&gt;<br>      &lt;select bind:value={selected} on:blur=&quot;{() =&gt; answer = &#39;&#39;}&quot;&gt;<br>          {#each questions as question}<br>              &lt;option value={question}&gt;<br>                  {question.text}<br>              &lt;/option&gt;<br>          {/each}<br>      &lt;/select&gt;<br><br>      &lt;input bind:value={answer}&gt;<br><br>      &lt;button disabled={!answer} type=submit&gt;<br>          Continuar<br>      &lt;/button&gt;<br>  &lt;/form&gt;<br><br>  &lt;p&gt;Escogió la pregunta {selected ? selected.id : &#39;[cargando...]&#39;}&lt;/p&gt;<br><br>  &lt;style&gt;<br>      input {<br>        display: block;<br>        width: 500px;<br>        max-width: 100%;<br>      }<br>  &lt;/style&gt;<br></code>
+</pre>
+
+<h2 id="inline-handlers-">  Multiple select: </h2>
+De igual forma, podemos hacer que el bind no sea mutuamente excluyente en la etiqueta select:
+<pre>
+<code>  &lt;script&gt;<br>      let size = &quot;&quot;;<br>      let flavours = [];<br><br>      let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];<br><br>      function join(flavours) {<br>        if (flavours.length === 1) return flavours[0];<br>        return ${flavours.slice(0, -1).join(&quot;, &quot;)} and ${
+            flavours[flavours.length - 1]
+        };<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Tamaño&lt;/h2&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;<br>      Personal<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;<br>      Familiar<br>  &lt;/label&gt;<br><br>  &lt;h2&gt;Sabor&lt;/h2&gt;<br><br>  &lt;select multiple bind:value={flavours}&gt;<br>      {#each menu as flavour}<br>          &lt;option value={flavour}&gt;<br>              {flavour}<br>          &lt;/option&gt;<br>      {/each}<br>  &lt;/select&gt;<br><br>  {#if flavours.length === 0}<br>      &lt;p&gt;Please select at least one flavour&lt;/p&gt;<br>  {:else if flavours.length &gt; size}<br>      &lt;p&gt;Can&#39;t order more flavours than scoops!&lt;/p&gt;<br>  {:else}<br>      &lt;p&gt;<br>          Pidió una pizza {join(flavours)} de tamaño {size}<br>      &lt;/p&gt;<br>  {/if}<br><br></code>
+</pre>
+
+<h2 id="inline-handlers-">  Bindings con bloques Each: </h2>
+Podemos crear bindings en inputs para cada elemento de una lista que se recorre, y así crear varias entradas con un recorrido:
+<pre>
+<code> &lt;script&gt;<br>    let list = [];<br><br>    function add() {<br>      list = list.concat({ done: false, text: &quot;&quot; });<br>    }<br><br>    function clear() {<br>      list = list.filter(t =&gt; !t.done);<br>    }<br><br>    $: remaining = list.filter(t =&gt; !t.done).length;<br>  &lt;/script&gt;<br><br>  &lt;h1&gt;Lista de tareas&lt;/h1&gt;<br><br>  {#each list as item}<br>    &lt;div&gt;<br>      &lt;input
+        type=checkbox
+        bind:checked={item.done}
+        &gt;<br><br>      &lt;input
+        placeholder=&quot;&quot;
+        bind:value={item.text}
+        disabled={item.done}
+        &gt;<br>    &lt;/div&gt;<br>  {/each}<br><br>  &lt;p&gt;{remaining} tareas pendientes&lt;/p&gt;<br><br>  &lt;button on:click={add}&gt;<br>    Añadir tarea<br>  &lt;/button&gt;
+ &lt;button on:click={clear}&gt;<br>    Eliminar completadas<br>  &lt;/button&gt;<br></p></code>
+</pre>
+
+
+<h2 id="inline-handlers-">  Dimensiones: </h2>
+Como se hizo anteriormente, es posible tener entradas numéricas con bindings en inputs, pero también crear bindings con los mismos valores en una etiqueta div:
+<pre>
+<code>  &lt;script&gt;<br>    let w;<br>    let h;<br>    let size = 42;<br>    let text = &quot;Texto&quot;;<br>  &lt;/script&gt;<br><br>  &lt;input type=range bind:value={size}&gt;<br>  &lt;input bind:value={text}&gt;<br><br>  &lt;p&gt;Tamaño: {w}px x {h}px&lt;/p&gt;<br><br>  &lt;div bind:clientWidth={w} bind:clientHeight={h}&gt;<br>    &lt;span style=&quot;font-size: {size}px&quot;&gt;{text}&lt;/span&gt;<br>  &lt;/div&gt;<br><br>  &lt;style&gt;<br>    input {<br>      display: block;<br>    }<br>    div {<br>      display: inline-block;<br>    }<br>  &lt;/style&gt;<br></code>
+</pre>
+
+<h2 id="inline-handlers-"> Bindings con componentes: </h2>
+En caso de tener un componente externo .svelte, es posible usar un binding con un valor que exporta, como en este ejemplo que usa el valor pin, y lo asigna al valor value de Keypad.svelte:
+<pre>
+<code>  &lt;script&gt;<br>    import Keypad from &quot;./Keypad.svelte&quot;;<br><br>    let pin;<br>    $: view = pin ? pin.replace(/\d(?!$)/g, &quot;•&quot;) : &quot;Pin&quot;;<br><br>    function handleSubmit() {<br>      alert(submitted ${pin});<br>    }<br>  &lt;/script&gt;<br><br>  &lt;h1 style=&quot;color: {pin ? &#39;#333&#39; : &#39;#ccc&#39;}&quot;&gt;{view}&lt;/h1&gt;<br><br>  &lt;Keypad bind:value={pin} on:submit={handleSubmit}/&gt;<br></code>
+</pre>
+
+Así se ve Keypad.svelte:
+<pre>
+<code>    &lt;script&gt;<br>        import { createEventDispatcher } from &quot;svelte&quot;;<br><br>        export let value = &quot;&quot;;<br><br>        const dispatch = createEventDispatcher();<br><br>        const select = num =&gt; () =&gt; (value += num);<br>        const clear = () =&gt; (value = &quot;&quot;);<br>        const submit = () =&gt; dispatch(&quot;submit&quot;);<br>    &lt;/script&gt;<br><br>    &lt;div class=&quot;keypad&quot;&gt;<br>        &lt;button on:click={select(1)}&gt;1&lt;/button&gt;<br>        &lt;button on:click={select(2)}&gt;2&lt;/button&gt;<br>        &lt;button on:click={select(3)}&gt;3&lt;/button&gt;<br>        &lt;button on:click={select(4)}&gt;4&lt;/button&gt;<br>        &lt;button on:click={select(5)}&gt;5&lt;/button&gt;<br>        &lt;button on:click={select(6)}&gt;6&lt;/button&gt;<br>        &lt;button on:click={select(7)}&gt;7&lt;/button&gt;<br>        &lt;button on:click={select(8)}&gt;8&lt;/button&gt;<br>        &lt;button on:click={select(9)}&gt;9&lt;/button&gt;<br>        &lt;button disabled={!value}on:click={clear}&gt;clear&lt;/button&gt;
+    <span class="o">    &lt;</span><span class="nx">button</span> <span class="nx">on</span><span class="o">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">select</span><span class="p">(</span><span class="mi">0</span><span class="p">)}</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+    <span class="o">    &lt;</span><span class="nx">button</span> <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="o">!</span><span class="nx">value</span><span class="p">}</span> <span class="nx">on</span><span class="o">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">submit</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">submit</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="o">    &lt;</span><span class="err">/div&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+    <span class="p">.</span><span class="nx">keypad</span> <span class="p">{</span>
+        <span class="nx">display</span><span class="o">:</span> <span class="nx">grid</span><span class="p">;</span>
+        <span class="nx">grid</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">columns</span><span class="o">:</span> <span class="nx">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="nx">em</span><span class="p">);</span>
+        <span class="nx">grid</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">rows</span><span class="o">:</span> <span class="nx">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="nx">em</span><span class="p">);</span>
+        <span class="nx">grid</span><span class="o">-</span><span class="nx">gap</span><span class="o">:</span> <span class="mf">0.5</span><span class="nx">em</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">button</span> <span class="p">{</span>
+        <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code>
+</pre>
+
+
+
+
+<h1 id="inline-handlers-"> Lifecycle </h1>
+Cada componente tiene un ciclo de vida que comienza cuando es creado y se acaba cuando es destruido. Hay muchas funciones que permiten correr codigo en ciertos momentos durante el ciclo de vida.
+Las funciones del ciclo de vida se deben llamar mientras el componente se está inicializando para que la devolución de llamada esté vinculada a la instancia del componente.
+<h2 id="inline-handlers-"> Lifecycle </h2>
+Corre despues de que el componente es renderizado primero en el DOM.
+
+Si la llamada de onMount devuelve una función, esa función se llamará cuando se destruya el componente 
+<pre>
+<code>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kr">import</span> <span class="p">{</span> <span class="nx">onMount</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;svelte&#39;</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">photos</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="nx">onMount</span><span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="err">`</span><span class="nx">https</span><span class="o">:</span><span class="c1">//jsonplaceholder.typicode.com/photos?_limit=20`);</span>
+        <span class="nx">photos</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Photo</span> <span class="nx">album</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;photos&quot;</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="err">#</span><span class="nx">each</span> <span class="nx">photos</span> <span class="nx">as</span> <span class="nx">photo</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">figure</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">photo</span><span class="p">.</span><span class="nx">thumbnailUrl</span><span class="p">}</span> <span class="nx">alt</span><span class="o">=</span><span class="p">{</span><span class="nx">photo</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">figcaption</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">photo</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/figcaption&gt;</span>
+        <span class="o">&lt;</span><span class="err">/figure&gt;</span>
+    <span class="p">{</span><span class="o">:</span><span class="k">else</span><span class="p">}</span>
+        <span class="c">&lt;!--</span> <span class="k">this</span> <span class="nx">block</span> <span class="nx">renders</span> <span class="nx">when</span> <span class="nx">photos</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">--&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+    <span class="p">{</span><span class="err">/each}</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+    <span class="p">.</span><span class="nx">photos</span> <span class="p">{</span>
+        <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+        <span class="nx">display</span><span class="o">:</span> <span class="nx">grid</span><span class="p">;</span>
+        <span class="nx">grid</span><span class="o">-</span><span class="nx">template</span><span class="o">-</span><span class="nx">columns</span><span class="o">:</span> <span class="nx">repeat</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="nx">fr</span><span class="p">);</span>
+        <span class="nx">grid</span><span class="o">-</span><span class="nx">gap</span><span class="o">:</span> <span class="mi">8</span><span class="nx">px</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">figure</span><span class="p">,</span> <span class="nx">img</span> <span class="p">{</span>
+        <span class="nx">width</span><span class="o">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+        <span class="nx">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="err">/style&gt;</span>
+</code>
+</pre>
+
+
+
+
+
+<h2 id="ondestroy-">onDestroy:</h2>
+<p>Es necesario cuando se quiere ejecutar codigo cuando el componente es destruido.</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+<span class="gd">-     import { onDestroy } from &#39;svelte&#39;;</span>
+<span class="gi">+     import { onInterval } from &#39;./utils.js&#39;;</span>
+
+    let seconds = 0;
+<span class="gi">+    onInterval(() =&gt; seconds += 1, 1000);</span>
+&lt;/script&gt;
+
+&lt;p&gt;
+    The page has been open for
+    {seconds} {seconds === 1 ? &#39;second&#39; : &#39;seconds&#39;}
+&lt;/p&gt;
+</pre></div>
+
+</code></pre>
+<p>utils.js</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>import { onDestroy } from &#39;svelte&#39;;
+
+export function onInterval(callback, milliseconds) {
+    // implementation goes here
+<span class="gi">+    const interval = setInterval(callback, milliseconds);</span>
+
+<span class="gi">+    onDestroy(() =&gt; {</span>
+<span class="gi">+        clearInterval(interval);</span>
+<span class="gi">+        });    </span>
+}
+</pre></div>
+
+</code></pre>
+<h2 id="beforeupdate-and-afterupdate-">beforeUpdate and afterUpdate:</h2>
+<p>Son sus contrapartes, la funcion <code>beforeUpdate</code> programa trabajo para ejecutarse antes de que el DOM sea actualizado y el <code>afterUpdate</code> para correr codigo una vez el DOM es sincronizado con la informacion</p>
+<p>App.svelte</p>
+<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+    import Eliza from &#39;elizabot&#39;;
+    import { beforeUpdate, afterUpdate } from &#39;svelte&#39;;
+
+    let div;
+<span class="gi">+     let autoscroll;    </span>
+
+    beforeUpdate(() =&gt; {
+        // determine whether we should auto-scroll
+        // once the DOM is updated...
+<span class="gi">+    autoscroll = div &amp;&amp; (div.offsetHeight + div.scrollTop) &gt; (div.scrollHeight - 20);</span>
+    });
+
+    afterUpdate(() =&gt; {
+        // ...the DOM is now in sync with the data
+<span class="gi">+    if (autoscroll) div.scrollTo(0, div.scrollHeight);</span>
+    });
+
+    const eliza = new Eliza();
+
+    let comments = [
+        { author: &#39;eliza&#39;, text: eliza.getInitial() }
+    ];
+
+    function handleKeydown(event) {
+        if (event.key === &#39;Enter&#39;) {
+            const text = event.target.value;
+            if (!text) return;
+
+            comments = comments.concat({
+                author: &#39;user&#39;,
+                text
+            });
+
+            event.target.value = &#39;&#39;;
+
+            const reply = eliza.transform(text);
+
+            setTimeout(() =&gt; {
+                comments = comments.concat({
+                    author: &#39;eliza&#39;,
+                    text: &#39;...&#39;,
+                    placeholder: true
+                });
+
+                setTimeout(() =&gt; {
+                    comments = comments.filter(comment =&gt; !comment.placeholder).concat({
+                        author: &#39;eliza&#39;,
+                        text: reply
+                    });
+                }, 500 + Math.random() * 500);
+            }, 200 + Math.random() * 200);
+        }
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+    .chat {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        max-width: 320px;
+    }
+
+    .scrollable {
+        flex: 1 1 auto;
+        border-top: 1px solid #eee;
+        margin: 0 0 0.5em 0;
+        overflow-y: auto;
+    }
+
+    article {
+        margin: 0.5em 0;
+    }
+
+    .user {
+        text-align: right;
+    }
+
+    span {
+        padding: 0.5em 1em;
+        display: inline-block;
+    }
+
+    .eliza span {
+        background-color: #eee;
+        border-radius: 1em 1em 1em 0;
+    }
+
+    .user span {
+        background-color: #0074D9;
+        color: white;
+        border-radius: 1em 1em 0 1em;
+        word-break: break-all;
+    }
+&lt;/style&gt;
+
+&lt;div class=&quot;chat&quot;&gt;
+    &lt;h1&gt;Eliza&lt;/h1&gt;
+
+    &lt;div class=&quot;scrollable&quot; bind:this={div}&gt;
+        {#each comments as comment}
+            &lt;article class={comment.author}&gt;
+                &lt;span&gt;{comment.text}&lt;/span&gt;
+            &lt;/article&gt;
+        {/each}
+    &lt;/div&gt;
+
+    &lt;input on:keydown={handleKeydown}&gt;
+&lt;/div&gt;
+</pre></div>
+
+</code></pre>
+<h2 id="tick-">Tick:</h2>
+<p>Retorna una promesa que se resuelve tan pronto cualquier cambio de estado pendiente ha sido aplicado al DOM. Esto ocurre porque al actualizar el estado de un componente no se actualiza el DOM de manera inmediata sino que espera hasta la siguiente microtarea para mirar si hay algun cambio que aplicar lo que evita trabajo innecesario.</p>
+<p>App.svelte</p>
+<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+    <span class="kr">import</span> <span class="p">{</span> <span class="nx">tick</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;svelte&#39;</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Select</span> <span class="nx">some</span> <span class="nx">text</span> <span class="nx">and</span> <span class="nx">hit</span> <span class="nx">the</span> <span class="nx">tab</span> <span class="nx">key</span> <span class="nx">to</span> <span class="nx">toggle</span> <span class="nx">uppercase</span><span class="err">`</span><span class="p">;</span>
+
+    <span class="nx">async</span> <span class="kd">function</span> <span class="nx">handleKeydown</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span> <span class="o">!==</span> <span class="s1">&#39;Tab&#39;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">selectionStart</span><span class="p">,</span> <span class="nx">selectionEnd</span><span class="p">,</span> <span class="nx">value</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="kr">const</span> <span class="nx">selection</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">selectionStart</span><span class="p">,</span> <span class="nx">selectionEnd</span><span class="p">);</span>
+
+        <span class="kr">const</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="sr">/[a-z]/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">selection</span><span class="p">)</span>
+            <span class="o">?</span> <span class="nx">selection</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+            <span class="o">:</span> <span class="nx">selection</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+
+        <span class="nx">text</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nx">value</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">selectionStart</span><span class="p">)</span> <span class="o">+</span>
+            <span class="nx">replacement</span> <span class="o">+</span>
+            <span class="nx">value</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">selectionEnd</span><span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="nx">await</span> <span class="nx">tick</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">selectionStart</span> <span class="o">=</span> <span class="nx">selectionStart</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">selectionEnd</span> <span class="o">=</span> <span class="nx">selectionEnd</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nt">textarea</span> <span class="p">{</span>
+        <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+        <span class="k">height</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;textarea</span> <span class="na">value=</span><span class="s">{text}</span> <span class="na">on:keydown=</span><span class="s">{handleKeydown}</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+</pre></div>
+
+</code></pre>
+                                
+
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+								
+								
+							</section>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+            <script>hljs.highlightAll();</script>            
+	</body>
+</html>
