@@ -666,7 +666,7 @@ export const count = createCount();
 <li>capture: Dispara al manipulador durante la fase de captura en lugar de la fase de burbujeo.</li>
 <li>nonpassive: Configura passive:false<br>
 <pre>
-<code>&lt;script&gt; <br>  function handleClick() {<br>      alert(&#39;no more alerts&#39;)<br>  }<br>&lt;/script&gt;&lt;button on:click|once={handleClick}&gt;<br>    Click me<br>&lt;/button&gt;<br></code>
+<code>&lt;script&gt; <br />  function handleClick() {<br  />      alert(&#39;no more alerts&#39;)<br  />  }<br  />&lt;/script&gt;&lt;button on:click|once={handleClick}&gt;<br  />    Click me<br />&lt;/button&gt;<br /></code>
 </pre>
 </li>
 </ul>
@@ -678,7 +678,7 @@ Los componentes también pueden disparar eventos.
 
 Inner.svelte
 <pre>
-<code>&lt;script&gt;<br>    import { createEventDispatcher } from &#39;svelte&#39;;<br><br>    const dispatch = createEventDispatcher();<br><br>    function sayHello() {<br>        dispatch(&#39;message&#39;, {<br>            text: &#39;Hello!&#39;<br>        });<br>    }<br>&lt;/script&gt;<br><br>&lt;button on:click={sayHello}&gt;<br>    Click to say hello<br>&lt;/button&gt;<br></code>
+<code>&lt;script&gt;<br />    import { createEventDispatcher } from &#39;svelte&#39;;<br /><br />    const dispatch = createEventDispatcher();<br /><br />    function sayHello() {<br />        dispatch(&#39;message&#39;, {<br />            text: &#39;Hello!&#39;<br />        });<br />    }<br />&lt;/script&gt;<br /><br />&lt;button on:click={sayHello}&gt;<br />    Click to say hello<br />&lt;/button&gt;<br /></code>
 </pre>
 
 <h2 id="inline-handlers-"> Event forwarding: </h2>
