@@ -125,7 +125,8 @@
 
 </code></pre>
 <h1 id="props">Props</h1>
-<p>Props es el diminitivo de <em>Properties</em> y es un objeto que representa y almacena el estado interno de un <em>componente</em> de Svelte.<br>Recordar que las unidades escenciales de una aplicación escrita en Svelte son los <em>componentes</em>.<br>De esta manera una interfaz implementada con Svelte puede verse como un árbol de estados donde las aristas representan las interacciones entre componentes.<br>Se habla de árbol y no de un grafo de estados porque por la construcción modular de la interfáz o aplicación mediante la descomposición de unidades da paso a una estructura arbórea.<br>Por esta razón el estado o la información siempre se mueve de un componente padre a uno hijo. Si se desea que la propagación de la rección sea inversa, se debe aplicar otra técnica que también ofrece Svelte y se verá más adelante.   </p>
+<p>Props es el diminitivo de <em>Properties</em> y es un objeto que representa y almacena el estado interno de un <em>componente</em> de Svelte.
+    Recordar que las unidades escenciales de una aplicación escrita en Svelte son los <em>componentes</em>.<br>De esta manera una interfaz implementada con Svelte puede verse como un árbol de estados donde las aristas representan las interacciones entre componentes.<br>Se habla de árbol y no de un grafo de estados porque por la construcción modular de la interfáz o aplicación mediante la descomposición de unidades da paso a una estructura arbórea.<br>Por esta razón el estado o la información siempre se mueve de un componente padre a uno hijo. Si se desea que la propagación de la rección sea inversa, se debe aplicar otra técnica que también ofrece Svelte y se verá más adelante.   </p>
 <h2 id="declaraci-n-de-props-">Declaración de Props.</h2>
 <p>Para indicar que un atributo representa el estado interno del componente se usa la palabra <code>export</code>.</p>
 <p>App.svelte</p>
@@ -666,7 +667,14 @@ export const count = createCount();
 <li>capture: Dispara al manipulador durante la fase de captura en lugar de la fase de burbujeo.</li>
 <li>nonpassive: Configura passive:false<br>
 <pre>
-<code><p>&lt;script&gt; &nbsp;  function handleClick() {&nbsp;      alert(&#39;no more alerts&#39;)&nbsp;  }&nbsp;&lt;/script&gt;&lt;button on:click|once={handleClick}&gt;&nbsp;    Click me&nbsp;&lt;/button&gt;&nbsp;</p></code>
+<code><p>&lt;script&gt;
+    function handleClick() {
+        alert(&#39;no more alerts&#39;)
+    }
+&lt;/script&gt;
+&lt;button on:click|once={handleClick}&gt;
+    Click me
+&lt;/button&gt;</p></code>
 </pre>
 </li>
 </ul>
@@ -678,7 +686,18 @@ Los componentes también pueden disparar eventos.
 
 Inner.svelte
 <pre>
-<code>&lt;script&gt;<br />    import { createEventDispatcher } from &#39;svelte&#39;;<br /><br />    const dispatch = createEventDispatcher();<br /><br />    function sayHello() {<br />        dispatch(&#39;message&#39;, {<br />            text: &#39;Hello!&#39;<br />        });<br />    }<br />&lt;/script&gt;<br /><br />&lt;button on:click={sayHello}&gt;<br />    Click to say hello<br />&lt;/button&gt;<br /></code>
+<code>&lt;script&gt;
+    import { createEventDispatcher } from &#39;svelte&#39;;
+    const dispatch = createEventDispatcher();
+    function sayHello() {
+            dispatch(&#39;message&#39;, {
+                    text: &#39;Hello!&#39;
+            });
+    }
+&lt;/script&gt;
+&lt;button on:click={sayHello}&gt;
+    Click to say Hello
+&lt;/button&gt;</code>
 </pre>
 
 <h2 id="inline-handlers-"> Event forwarding: </h2>
@@ -688,7 +707,10 @@ Para este caso el evento `on:message` sin un valor nos permite reenviar todos lo
 
 Outer.svelte
 <pre>
-<code>&lt;script&gt;<br>    import Inner from &#39;./Inner.svelte&#39;;<br>&lt;/script&gt;<br><br>&lt;Inner on:message/&gt;<br></code>
+<code>&lt;script&gt;
+    import Inner from &#39;./Inner.svelte&#39;;
+&lt;/script&gt;
+&lt;Inner on:message/&gt;</code>
 </pre>
 
 <h1 id="inline-handlers-"> Bindings: </h1>
@@ -697,92 +719,344 @@ Un binding es una propiedad de las etiquetas de Svelte que permite asignarla a u
 <h2 id="inline-handlers-"> Text input: </h2>
 Podemos usar la etiqueta input y asociar un valor con una caja de texto:
 <pre>
-<code>&lt;script&gt;<br>      let text = &quot;&quot;;<br>  &lt;/script&gt;<br><br>  &lt;input bind:value={text} placeholder=&quot;Texto&quot;&gt;<br>  &lt;p&gt;{text || &#39;Texto&#39;}&lt;/p&gt;<br></code>
+<code>&lt;script&gt;
+    let text = &quot;&quot;;
+&lt;/script&gt;
+&lt;input bind:value={text} placeholder=&quot;Texto&quot;&gt;
+&lt;p&gt;{text || &#39;Texto&#39;}&lt;/p&gt;
+</code>
 </pre>
 <h2 id="inline-handlers-"> Numeric inputs: </h2>
 De forma similar a la entrada de texto, podemos tener una entrada numérica, tanto en una caja como en un slider:
 <pre>
-<code>&lt;script&gt;<br>      let a = 0;<br>      let b = 0;<br>  &lt;/script&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=number bind:value={a} min=0 max=10&gt;<br>      &lt;input type=range bind:value={a} min=0 max=10&gt;<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=number bind:value={b} min=0 max=10&gt;<br>      &lt;input type=range bind:value={b} min=0 max=10&gt;<br>  &lt;/label&gt;<br><br>  &lt;p&gt;{a} + {b} = {a + b}&lt;/p&gt;<br></code>
+<code>&lt;script&gt;
+    let a = 0;
+    let b = 0;
+&lt;/script&gt;
+&lt;label&gt;
+    &lt;input type=number bind:value={a} min=0 max=10&gt;
+    &lt;input type=range bind:value={a} min=0 max=10&gt;
+&lt;/label&gt;
+&lt;label&gt;
+    &lt;input type=number bind:value={b} min=0 max=10&gt;
+    &lt;input type=range bind:value={b} min=0 max=10&gt;
+&lt;/label&gt;
+&lt;p&gt;{a} + {b} = {a + b}&lt;/p&gt;</code>
 </pre>
 
 <h2 id="inline-handlers-"> Checkbox: </h2>
 Podemos utilizar checkbox para tomar un valor booleano, y hacer que la aplicación reaccione de forma acorde:
 <pre>
-<code>&lt;script&gt;<br>      let accept = false;<br>  &lt;/script&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=checkbox bind:checked={accept}&gt;<br>      He leído y acepto los términos y condiciones de uso<br>  &lt;/label&gt;<br><br>  {#if accept}<br>      &lt;p/&gt;<br>  {:else}<br>      &lt;p&gt;Debes aceptar los términos y condiciones de uso para continuar&lt;/p&gt;<br>  {/if}<br><br>  &lt;button disabled={!accept}&gt;<br>      Continuar<br>  &lt;/button&gt;<br></code>
+<code>&lt;script&gt;
+    let accept = false;
+&lt;/script&gt;
+&lt;label&gt;
+    &lt;input type=checkbox bind:checked={accept}&gt;
+        He leído y acepto los términos y condiciones de uso
+&lt;/label&gt;
+{#if accept}
+    &lt;p/&gt;
+{:else}
+    &lt;p&gt;Debes aceptar los términos y condiciones de uso para continuar&lt;/p&gt;
+{/if}  
+&lt;button disabled={!accept}&gt;
+    Continuar  &lt;/button&gt;</code>
 </pre>
 
 <h2 id="inline-handlers-"> Multiple inputs with groups:</h2>
 Podemos crear diferentes entradas para un grupo de valores, y si usamos checkbox o radio  se puede hacer que estos sean mutuamente excluyentes o no:
 <pre>
-<code>&lt;script&gt;<br>      let size = &quot;&quot;;<br>      let flavours = [];<br><br>      let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];<br><br>      function join(flavours) {<br>        if (flavours.length === 1) return flavours[0];<br>        return${flavours.slice(0, -1).join(&quot;, &quot;)} y ${
+<code>&lt;script&gt;
+    let size = &quot;&quot;;
+    let flavours = [];
+    let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];
+    function join(flavours) {
+        if (flavours.length === 1) return flavours[0];
+            return${flavours.slice(0, -1).join(&quot;, &quot;)} y ${
             flavours[flavours.length - 1]
-        };<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Tamaño&lt;/h2&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;<br>      Personal<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;<br>      Familiar<br>  &lt;/label&gt;<br><br>  &lt;h2&gt;Sabores&lt;/h2&gt;<br><br>  {#each menu as flavour}<br>      &lt;label&gt;<br>          &lt;input type=checkbox bind:group={flavours} value={flavour}&gt;<br>          {flavour}<br>      &lt;/label&gt;<br>  {/each}<br><br>  {#if flavours.length === 0}<br>      &lt;p&gt;Escoja uno o dos sabores&lt;/p&gt;<br>  {:else}<br>      &lt;p&gt;<br>          Pidió una pizza {join(flavours)} de tamaño {size}<br>      &lt;/p&gt;<br>  {/if}<br></code>
+        };
+    }
+&lt;/script&gt;
+        
+&lt;h2&gt;Tamaño&lt;/h2&gt;
+        
+&lt;label&gt;
+    &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;
+    Personal
+&lt;/label&gt;
+        
+&lt;label&gt;
+    &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;
+    Familiar
+&lt;/label&gt;
+        
+&lt;h2&gt;Sabores&lt;/h2&gt;
+        
+{#each menu as flavour}
+    &lt;label&gt;
+        &lt;input type=checkbox bind:group={flavours} value={flavour}&gt;
+        {flavour}
+    &lt;/label&gt;
+{/each}
+        
+{#if flavours.length === 0}
+    &lt;p&gt;Escoja uno o dos sabores&lt;/p&gt;
+{:else}
+    &lt;p&gt;
+        Pidió una pizza {join(flavours)} de tamaño {size}
+    &lt;/p&gt;
+{/if}</code>
 </pre>
 
 <h2 id="inline-handlers-"> Files: </h2>
 Podemos asignar una etiqueta label a una etiqueta input, que tiene un bind asignado a los valores de los archivos que se suban, lo que permite subir una imagen, o varios archivos:
 <pre>
-<code>  &lt;script&gt;<br>      let files;<br>  &lt;/script&gt;<br><br>  &lt;label for=&quot;avatar&quot;&gt;Una imagen:&lt;/label&gt;<br>  &lt;input
-        accept=&quot;image/png, image/jpeg&quot;
-        bind:files
-        id=&quot;avatar&quot;
-        name=&quot;avatar&quot;
-        type=&quot;file&quot;
-    /&gt;<br><br>  &lt;label for=&quot;many&quot;&gt;Varios archivos:&lt;/label&gt;<br>  &lt;input
-        bind:files
-        id=&quot;many&quot;
-        multiple
-        type=&quot;file&quot;
-    /&gt;<br><br>  {#if files}<br>      &lt;h2&gt;Selected files:&lt;/h2&gt;<br>      {#each Array.from(files) as file}<br>          &lt;p&gt;{file.name} ({file.size} bytes) &lt;/p&gt;<br>      {/each}<br>  {/if}<br><br></code>
+<code>&lt;script&gt;
+    let files;
+&lt;/script&gt;
+    
+&lt;label for=&quot;avatar&quot;&gt;Una imagen:&lt;/label&gt;
+&lt;input
+    accept=&quot;image/png, image/jpeg&quot;
+    bind:files
+    id=&quot;avatar&quot;
+    name=&quot;avatar&quot;
+    type=&quot;file&quot;
+/&gt;
+    
+&lt;label for=&quot;many&quot;&gt;Varios archivos:&lt;/label&gt;
+&lt;input
+    bind:files
+    id=&quot;many&quot;
+    multiple
+    type=&quot;file&quot;
+/&gt;
+    
+{#if files}
+    &lt;h2&gt;Selected files:&lt;/h2&gt;
+    {#each Array.from(files) as file}
+        &lt;p&gt;{file.name} ({file.size} bytes) &lt;/p&gt;
+    {/each}
+{/if}</code>
 </pre>
 <h2 id="inline-handlers-">  Select: </h2>
 Las etiquetas select permiten crear un bind también, y en este caso se muestran en una etiqueta form:
 <pre>
-<code>  &lt;script&gt;<br>      let questions = [<br>        { id: 1, text: ¿Qué sabor quiere? },<br>        { id: 2, text: ¿Qué tamaño quiere? }<br>      ];<br><br>      let selected;<br><br>      let answer = &quot;&quot;;<br><br>      function handleSubmit() {<br>        alert(Respondió a ${selected.text} con &quot;${answer}&quot;);<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Selección de pizza&lt;/h2&gt;<br><br>  &lt;form on:submit|preventDefault={handleSubmit}&gt;<br>      &lt;select bind:value={selected} on:blur=&quot;{() =&gt; answer = &#39;&#39;}&quot;&gt;<br>          {#each questions as question}<br>              &lt;option value={question}&gt;<br>                  {question.text}<br>              &lt;/option&gt;<br>          {/each}<br>      &lt;/select&gt;<br><br>      &lt;input bind:value={answer}&gt;<br><br>      &lt;button disabled={!answer} type=submit&gt;<br>          Continuar<br>      &lt;/button&gt;<br>  &lt;/form&gt;<br><br>  &lt;p&gt;Escogió la pregunta {selected ? selected.id : &#39;[cargando...]&#39;}&lt;/p&gt;<br><br>  &lt;style&gt;<br>      input {<br>        display: block;<br>        width: 500px;<br>        max-width: 100%;<br>      }<br>  &lt;/style&gt;<br></code>
+<code>&lt;script&gt;
+    let questions = [
+        { id: 1, text: ¿Qué sabor quiere? },
+        { id: 2, text: ¿Qué tamaño quiere? }
+    ];
+    
+    let selected;
+    
+    let answer = &quot;&quot;;
+    
+    function handleSubmit() {
+        alert(Respondió a ${selected.text} con &quot;${answer}&quot;);
+    }
+&lt;/script&gt;
+    
+&lt;h2&gt;Selección de pizza&lt;/h2&gt;
+    
+&lt;form on:submit|preventDefault={handleSubmit}&gt;
+    &lt;select bind:value={selected} on:blur=&quot;{() =&gt; answer = &#39;&#39;}&quot;&gt;
+        {#each questions as question}
+            &lt;option value={question}&gt;
+                {question.text}
+            &lt;/option&gt;
+        {/each}
+    &lt;/select&gt;
+    
+    &lt;input bind:value={answer}&gt;
+    
+    &lt;button disabled={!answer} type=submit&gt;
+        Continuar
+    &lt;/button&gt;
+&lt;/form&gt;
+    
+&lt;p&gt;Escogió la pregunta {selected ? selected.id : &#39;[cargando...]&#39;}&lt;/p&gt;
+    
+&lt;style&gt;
+    input {
+        display: block;
+        width: 500px;
+        max-width: 100%;
+    }
+&lt;/style&gt;</code>
 </pre>
 
 <h2 id="inline-handlers-">  Multiple select: </h2>
 De igual forma, podemos hacer que el bind no sea mutuamente excluyente en la etiqueta select:
 <pre>
-<code>  &lt;script&gt;<br>      let size = &quot;&quot;;<br>      let flavours = [];<br><br>      let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];<br><br>      function join(flavours) {<br>        if (flavours.length === 1) return flavours[0];<br>        return ${flavours.slice(0, -1).join(&quot;, &quot;)} and ${
+<code>&lt;script&gt;
+    let size = &quot;&quot;;
+    let flavours = [];
+    
+    let menu = [&quot;Hawaiana&quot;, &quot;Napolitana&quot;];
+    
+    function join(flavours) {
+        if (flavours.length === 1) return flavours[0];
+            return ${flavours.slice(0, -1).join(&quot;, &quot;)} and ${
             flavours[flavours.length - 1]
-        };<br>      }<br>  &lt;/script&gt;<br><br>  &lt;h2&gt;Tamaño&lt;/h2&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;<br>      Personal<br>  &lt;/label&gt;<br><br>  &lt;label&gt;<br>      &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;<br>      Familiar<br>  &lt;/label&gt;<br><br>  &lt;h2&gt;Sabor&lt;/h2&gt;<br><br>  &lt;select multiple bind:value={flavours}&gt;<br>      {#each menu as flavour}<br>          &lt;option value={flavour}&gt;<br>              {flavour}<br>          &lt;/option&gt;<br>      {/each}<br>  &lt;/select&gt;<br><br>  {#if flavours.length === 0}<br>      &lt;p&gt;Please select at least one flavour&lt;/p&gt;<br>  {:else if flavours.length &gt; size}<br>      &lt;p&gt;Can&#39;t order more flavours than scoops!&lt;/p&gt;<br>  {:else}<br>      &lt;p&gt;<br>          Pidió una pizza {join(flavours)} de tamaño {size}<br>      &lt;/p&gt;<br>  {/if}<br><br></code>
+        };
+    }
+&lt;/script&gt;
+        
+&lt;h2&gt;Tamaño&lt;/h2&gt;
+        
+&lt;label&gt;
+    &lt;input type=radio bind:group={size} value={&quot;personal&quot;}&gt;
+    Personal
+&lt;/label&gt;
+        
+&lt;label&gt;
+    &lt;input type=radio bind:group={size} value={&quot;familiar&quot;}&gt;
+    Familiar
+&lt;/label&gt;
+        
+&lt;h2&gt;Sabor&lt;/h2&gt;
+        
+&lt;select multiple bind:value={flavours}&gt;
+    {#each menu as flavour}
+        &lt;option value={flavour}&gt;
+            {flavour}
+        &lt;/option&gt;
+    {/each}
+&lt;/select&gt;
+        
+{#if flavours.length === 0}
+    &lt;p&gt;Please select at least one flavour&lt;/p&gt;
+{:else if flavours.length &gt; size}
+    &lt;p&gt;Can&#39;t order more flavours than scoops!&lt;/p&gt;
+{:else}
+    &lt;p&gt;
+        Pidió una pizza {join(flavours)} de tamaño {size}
+    &lt;/p&gt;
+{/if}</code>
 </pre>
 
 <h2 id="inline-handlers-">  Bindings con bloques Each: </h2>
 Podemos crear bindings en inputs para cada elemento de una lista que se recorre, y así crear varias entradas con un recorrido:
 <pre>
-<code> &lt;script&gt;<br>    let list = [];<br><br>    function add() {<br>      list = list.concat({ done: false, text: &quot;&quot; });<br>    }<br><br>    function clear() {<br>      list = list.filter(t =&gt; !t.done);<br>    }<br><br>    $: remaining = list.filter(t =&gt; !t.done).length;<br>  &lt;/script&gt;<br><br>  &lt;h1&gt;Lista de tareas&lt;/h1&gt;<br><br>  {#each list as item}<br>    &lt;div&gt;<br>      &lt;input
-        type=checkbox
-        bind:checked={item.done}
-        &gt;<br><br>      &lt;input
-        placeholder=&quot;&quot;
-        bind:value={item.text}
-        disabled={item.done}
-        &gt;<br>    &lt;/div&gt;<br>  {/each}<br><br>  &lt;p&gt;{remaining} tareas pendientes&lt;/p&gt;<br><br>  &lt;button on:click={add}&gt;<br>    Añadir tarea<br>  &lt;/button&gt;
- &lt;button on:click={clear}&gt;<br>    Eliminar completadas<br>  &lt;/button&gt;<br></p></code>
+<code>&lt;script&gt;
+    let list = [];
+    
+    function add() {
+        list = list.concat({ done: false, text: &quot;&quot; });
+    }
+    
+    function clear() {
+        list = list.filter(t =&gt; !t.done);
+    }
+    
+    $: remaining = list.filter(t =&gt; !t.done).length;
+&lt;/script&gt;
+    
+&lt;h1&gt;Lista de tareas&lt;/h1&gt;
+    
+{#each list as item}
+    &lt;div&gt;
+        &lt;input
+            type=checkbox
+            bind:checked={item.done}
+        &gt;
+            
+        &lt;input
+            placeholder=&quot;&quot;
+            bind:value={item.text}
+            disabled={item.done}
+        &gt;
+    &lt;/div&gt;
+{/each}
+        
+&lt;p&gt;{remaining} tareas pendientes&lt;/p&gt;
+        
+&lt;button on:click={add}&gt;
+    Añadir tarea
+&lt;/button&gt;
+&lt;button on:click={clear}&gt;
+    Eliminar completadas
+&lt;/button&gt;</code>
 </pre>
 
 
 <h2 id="inline-handlers-">  Dimensiones: </h2>
 Como se hizo anteriormente, es posible tener entradas numéricas con bindings en inputs, pero también crear bindings con los mismos valores en una etiqueta div:
 <pre>
-<code>  &lt;script&gt;<br>    let w;<br>    let h;<br>    let size = 42;<br>    let text = &quot;Texto&quot;;<br>  &lt;/script&gt;<br><br>  &lt;input type=range bind:value={size}&gt;<br>  &lt;input bind:value={text}&gt;<br><br>  &lt;p&gt;Tamaño: {w}px x {h}px&lt;/p&gt;<br><br>  &lt;div bind:clientWidth={w} bind:clientHeight={h}&gt;<br>    &lt;span style=&quot;font-size: {size}px&quot;&gt;{text}&lt;/span&gt;<br>  &lt;/div&gt;<br><br>  &lt;style&gt;<br>    input {<br>      display: block;<br>    }<br>    div {<br>      display: inline-block;<br>    }<br>  &lt;/style&gt;<br></code>
+<code>&lt;script&gt;
+    let w;
+    let h;
+    let size = 42;
+    let text = &quot;Texto&quot;;
+&lt;/script&gt;
+    
+&lt;input type=range bind:value={size}&gt;
+&lt;input bind:value={text}&gt;
+    
+&lt;p&gt;Tamaño: {w}px x {h}px&lt;/p&gt;
+    
+&lt;div bind:clientWidth={w} bind:clientHeight={h}&gt;
+    &lt;span style=&quot;font-size: {size}px&quot;&gt;{text}&lt;/span&gt;
+&lt;/div&gt;
+    
+&lt;style&gt;
+    input {
+        display: block;
+    }
+    div {
+        display: inline-block;
+    }
+&lt;/style&gt;</code>
 </pre>
 
 <h2 id="inline-handlers-"> Bindings con componentes: </h2>
 En caso de tener un componente externo .svelte, es posible usar un binding con un valor que exporta, como en este ejemplo que usa el valor pin, y lo asigna al valor value de Keypad.svelte:
 <pre>
-<code>  &lt;script&gt;<br>    import Keypad from &quot;./Keypad.svelte&quot;;<br><br>    let pin;<br>    $: view = pin ? pin.replace(/\d(?!$)/g, &quot;•&quot;) : &quot;Pin&quot;;<br><br>    function handleSubmit() {<br>      alert(submitted ${pin});<br>    }<br>  &lt;/script&gt;<br><br>  &lt;h1 style=&quot;color: {pin ? &#39;#333&#39; : &#39;#ccc&#39;}&quot;&gt;{view}&lt;/h1&gt;<br><br>  &lt;Keypad bind:value={pin} on:submit={handleSubmit}/&gt;<br></code>
+<code>&lt;script&gt;
+    import Keypad from &quot;./Keypad.svelte&quot;;
+    
+    let pin;
+    $: view = pin ? pin.replace(/\d(?!$)/g, &quot;•&quot;) : &quot;Pin&quot;;
+    
+    function handleSubmit() {
+        alert(submitted ${pin});
+    }
+&lt;/script&gt;
+    
+&lt;h1 style=&quot;color: {pin ? &#39;#333&#39; : &#39;#ccc&#39;}&quot;&gt;{view}&lt;/h1&gt;
+    
+&lt;Keypad bind:value={pin} on:submit={handleSubmit}/&gt;</code>
 </pre>
 
 Así se ve Keypad.svelte:
 <pre>
-<code>    &lt;script&gt;<br>        import { createEventDispatcher } from &quot;svelte&quot;;<br><br>        export let value = &quot;&quot;;<br><br>        const dispatch = createEventDispatcher();<br><br>        const select = num =&gt; () =&gt; (value += num);<br>        const clear = () =&gt; (value = &quot;&quot;);<br>        const submit = () =&gt; dispatch(&quot;submit&quot;);<br>    &lt;/script&gt;<br><br>    &lt;div class=&quot;keypad&quot;&gt;<br>        &lt;button on:click={select(1)}&gt;1&lt;/button&gt;<br>        &lt;button on:click={select(2)}&gt;2&lt;/button&gt;<br>        &lt;button on:click={select(3)}&gt;3&lt;/button&gt;<br>        &lt;button on:click={select(4)}&gt;4&lt;/button&gt;<br>        &lt;button on:click={select(5)}&gt;5&lt;/button&gt;<br>        &lt;button on:click={select(6)}&gt;6&lt;/button&gt;<br>        &lt;button on:click={select(7)}&gt;7&lt;/button&gt;<br>        &lt;button on:click={select(8)}&gt;8&lt;/button&gt;<br>        &lt;button on:click={select(9)}&gt;9&lt;/button&gt;<br>        &lt;button disabled={!value}on:click={clear}&gt;clear&lt;/button&gt;
-    <span class="o">    &lt;</span><span class="nx">button</span> <span class="nx">on</span><span class="o">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">select</span><span class="p">(</span><span class="mi">0</span><span class="p">)}</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
-    <span class="o">    &lt;</span><span class="nx">button</span> <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="o">!</span><span class="nx">value</span><span class="p">}</span> <span class="nx">on</span><span class="o">:</span><span class="nx">click</span><span class="o">=</span><span class="p">{</span><span class="nx">submit</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">submit</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
-<span class="o">    &lt;</span><span class="err">/div&gt;</span>
-
+<code>&lt;script&gt;
+    import { createEventDispatcher } from &quot;svelte&quot;;
+    export let value = &quot;&quot;;
+    
+    const dispatch = createEventDispatcher();
+    
+    const select = num =&gt; () =&gt; (value += num);
+    const clear = () =&gt; (value = &quot;&quot;);
+    const submit = () =&gt; dispatch(&quot;submit&quot;);
+&lt;/script&gt;
+    
+&lt;div class=&quot;keypad&quot;&gt;
+    &lt;button on:click={select(1)}&gt;1&lt;/button&gt;
+    &lt;button on:click={select(2)}&gt;2&lt;/button&gt;
+    &lt;button on:click={select(3)}&gt;3&lt;/button&gt;
+    &lt;button on:click={select(4)}&gt;4&lt;/button&gt;
+    &lt;button on:click={select(5)}&gt;5&lt;/button&gt;
+    &lt;button on:click={select(6)}&gt;6&lt;/button&gt;
+    &lt;button on:click={select(7)}&gt;7&lt;/button&gt;
+    &lt;button on:click={select(8)}&gt;8&lt;/button&gt;
+    &lt;button on:click={select(9)}&gt;9&lt;/button&gt;
+    &lt;button disabled={!value} on:click={clear}&gt;clear&lt;/button&gt;
+    &lt;button on:click={select(0)}&gt;0&lt;/button&gt;
+    &lt;button on:click={select(0)}&gt;0&lt;/button&gt;
+    &lt;button disabled={!value} on:click={submit}&gt;submit&lt;/button&gt;
+&lt;/div&gt;
 <span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
     <span class="p">.</span><span class="nx">keypad</span> <span class="p">{</span>
         <span class="nx">display</span><span class="o">:</span> <span class="nx">grid</span><span class="p">;</span>
