@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Svelte Tutorial</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/Svelte_Logo.svg" width="200" alt="" /></span>
+						<h1>Svelte Tutorial</h1>
+						<p><br />Bienvenido al tutorial de Svelte, una guía para un novedoso framework de Front-End.<br /><br /><br /><br /><br />
+
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introducción</a></li>
+							<li><a href="#first">Tour por el lenguaje</a></li>
+							<li><a href="#second">Características</a></li>
+							<li><a href="#third">Instalación</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>¿Qué es Svelte?</h2>
+										</header>
+										<p>
+											<ul>
+												<li>Es un traductor (compilador) para crear interfaces gráficas para aplicaciones web</li>
+												<li>Su lenguaje está compuesto por todos los elementos sintácticos de JavaScript, HTML y CSS.</li>
+												<li>Es una solución al problema de construcción de interfaces de usuario usando lenguajes para finalidades diferentes:</li>
+												<ul>
+													<li>HTML, CSS: Descripción de forma</li>
+													<li>Javascript: Descripción de comportamiento</li>
+												</ul>
+											</ul>
+										</p>
+										<ul class="actions">
+											<li><a href="docs/SvelteTutorial.pdf" class="button">Presentación</a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="images/sveltesrc.png" alt="" /></span>
+								</div>
+							</section>
+
+							<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Tour por el lenguaje</h2>
+									<p>
+										En la siguiente página encontras un markdown con los comentarios sobre las características que ofrece este framework.
+										Se resaltan las diferencias dentro de cada recorte de código para apreciar mejor los conceptos.
+									</p>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">Muéstrame el tour</a></li>
+									</ul>
+								</footer>
+							</section>
+
+							<!-- Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Características</h2>
+									<h3>En esta sección se mostrarán las principales carácteristicas que componen el lenguaje <em>Svelte</em></h3>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon solid major style1 fa-code"></span>
+										<h3>Simplicidad semántica</h3>
+										<p>Lo que logra Svelte en términos de simplicidad semántica (lo que quiero que mi interfaz haga) es lo que ha estado buscando Vue o React.</p>
+									</li>
+									<li>
+										<span class="icon major style3 fa-copy"></span>
+										<h3>Ahorra tiempo</h3>
+										<p>Se observa que es una buena herramienta pues facilita muchas tareas al programador, que finalmente se traduce en menores tiempos de desarrollo</p>
+									</li>
+									<li>
+										<span class="icon major style5 fa-gem"></span>
+										<h3>No olvidar</h3>
+										<p>Que Svelte más que un lenguaje, es un sistema de traducción de lenguaje Svelte <em>(JavaScript + HTML + CSS) a JavaScript</em></p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="https://github.com/sveltejs/svelte/blob/master/site/content/tutorial/01-introduction/01-basics/text.md" class="button">Aprende más</a></li>
+									</ul>
+								</footer>
+							</section>
+							<section id="third" class="main">
+								<header class="major">
+									<h2>Instalación y uso</h2>
+								</header>
+									
+									<h3>Requisitos</h3>
+									<p>Lo primero que necesitamos es tener instalado <a href="https://nodejs.org">Node.js.</a> Teniéndolo instalado podemos instalar un module bundler llamado rollup con: <br>
+										<code> npm i -D rollup </code> <br> <br> 
+									Ésta herramienta nos va a ayudar a organizar todo el código Javascript del proyecto en un solo archivo. Ahora podemos instalar Svelte con el comando: <br>
+										<code> npm i -D svelte rollup-plugin-svelte @rollup/plugin-node-resolve </code> <br> 
+									</p>
+									<h3>Configuración inicial</h3>
+									<p>
+										Ya podemos crear un nuevo proyecto, y cuando esté creado necesitaremos un archivo llamado rollup.config.js. Este archivo es usado por rollup para saber qué archivos 
+										javascript usar y dónde organizarlos. En este caso va a usar todo lo que encuentre en main.js y lo va a organizar en bundle.js.
+										<pre>
+											<code>import resolve from '@rollup/plugin-node-resolve';
+import svelte from 'rollup-plugin-svelte';
+export default {
+	input: 'src/main.js',
+	output: {
+		file: 'public/build/bundle.js',
+		format: 'esm',
+		sourcemap: true
+	},
+	plugins: [
+		resolve(),
+		svelte({
+			css: result => result.write('public/bundle/bundle.css')
+		})
+	]
+};</code>
+										</pre>
+										Nuestro index.html va a usar únicamente el archivo bundle.js resultante, con el bundle.css, usando estas líneas:
+										<pre>
+											<code>&lt; link rel="stylesheet" href="/build/bundle.css"&gt; <br>&lt; script type="module" src='/build/bundle.js'&gt; &lt;/script&gt;</code>
+										</pre>
+										El archivo main.js se va a ver más o menos así:
+										<pre>
+											<code>import App from './App.svelte';
+new App({
+	target: document.body,
+	props: {
+		name: 'world'
+	}
+});</code>
+										</pre>
+									</p>
+									En él podemos ver que se importa un archivo App.svelte, y precisamente este archivo termina siendo procesado por rollup y almacenado en bundle.js también.
+									Éste se puede ver en un inicio así:
+									<pre>
+										<code>&lt;script&gt;
+	let name = 'world';
+&lt;/script&gt;
+&lt;h1&gt;Hello {name}!&lt;/h1&gt;</code>
+									</pre>
+									<h3>Uso</h3>
+									<p>Para crear una aplicación con Svelte, podemos editar uno o varios archivos .svelte como el que acabamos de ver, o como los ejemplos vistos en el tour por el lenguaje:
+									</p>
+									<footer class="major">
+										<ul class="actions special">
+											<li><a href="generic.html" class="button">Muéstrame el tour</a></li>
+										</ul>
+									</footer>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+							<h4>Tutorial hecho por:</h4>
+							<p>
+								Juan Camilo Florez Vanegas<br>
+								Jonathan Andrés Jiménez Trujillo<br>
+								Diego Alejandro Rodriguez Morales<br>
+							</p>
+							<h3>Universidad Nacional de Colombia</h3>
+							<h3>Curso de Lenguajes de programación</h3>
+							<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
