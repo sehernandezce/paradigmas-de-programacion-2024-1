@@ -324,6 +324,86 @@
                     <div class="col-md-4 text-justify">
                         <img class="block img-responsive " src="images\logoFuncional.png" alt="Photo" id="logo">
                     </div>
+
+                    <div class="col-md-12 text-justify">
+                        <p>
+                            Estas reglas se pueden evidenciar de la siguiente manera:
+                        </p>
+                        <img class="center-block img-responsive" style="width: 80%;"
+                            src="images/CalculoLambda_lambdaTermino.png" alt="Photo" id="lambda-termino">
+                        <br>
+                        <p>
+                            Cada una de las partes de la expresión tiene un respectivo significado:
+                        </p>
+                        <p>
+                            <b>Variables: </b>Son la representación abstracta de un objeto, se pueden nombrar con
+                            distintas letras.
+                        </p>
+                        <p>
+                            <b>Abstracción o función: </b>Es la definición de una función donde:
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_funcionbody.png" alt="Photo"
+                            id="lambda-termino">
+
+                        <br>
+                        <p>
+                            Como las funciones pueden tener una expresión como cuerpo, la siguiente sería una expresión
+                            válida:
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_funcionfuncion.png"
+                            style="width:15%;" alt="Photo" id="lambda-funcfunc">
+                        <br>
+                        <p>
+                            Debido a que en el cálculo lambda formal una función solamente pueden recibir un único
+                            parámetro, es necesario utilizar la <strong>currificación</strong>. El ejemplo anterior
+                            evidencia como una función con un parámatro X, tiene como cuerpo otra función con parámetro
+                            Y, la cual tiene como cuerpo una expresión E.
+                        </p>
+                        <p>
+                            <b>Aplicación: </b>Una expresión seguida de otra.
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_aplicacion.png" style="width:9%; border-style: solid;
+                            border-width: 3px; color:rgb(75, 75, 75);" alt="Photo" id="lambda-funcfunc">
+                        <br>
+                        <p>
+                            Uno de los aspectos fundamentales del cálculo lambda es la <b>(β-reducción)</b>.
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_reduccion.png" style="width:14%; border-style: solid;
+                            border-width: 3px; color:rgb(75, 75, 75);" alt="Photo" id="lambda-funcfunc">
+                        <br>
+                        <p>
+                            Al aplicar <b>(β-reducción)</b>, se reemplazan las apariciones libres de <b>X</b> en el
+                            cuerpo <b>E1</b> con la expresión <b>E2</b>.
+                        </p>
+                        <br>
+                        <p>
+                            <b>Ejemplo de β-reducción utilizando cálculo lambda formal: </b>
+                        </p>
+                        <p>
+                            El siguiente ejemplo muestra cómo realizar la suma de dos numeros utilizando cálculo lambda.
+                        </p>
+                        <p>
+                            Suponga que tenemos la función <b>f(x,y) = x+y</b>, a continuación se muestra un gráfico que
+                            representa las entradas de la función y la respectiva salida.
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_example.png" style="width:40%; border-style: solid;
+                            border-width: 3px; color:rgb(75, 75, 75);" alt="Photo" id="lambda-funcfunc">
+                        <br>
+                        <p>
+                            Se puede evidenciar como hay 2 funciones, la más externa recibe X como parámetro y tiene como cuerpo otra
+                            función que recibe Y como parámetro, el cuerpo de esta función interna es X+Y. Se va a realizar β-reducción
+                            con los parámetros 4 y 2. Se empieza resolviendo la función que esté más a la izquierda, para esto se reemplaza
+                            cada aparición de X en el cuerpo de la función con 4. Una vez reducida esa función, se realiza el mismo procedimiento
+                            con el otro parámetro.
+                        </p>
+                        <img class="center-block img-responsive" src="images/CalculoLambda_example_red.png" style="width:20%; border-style: solid;
+                            border-width: 3px; color:rgb(75, 75, 75);" alt="Photo" id="lambda-funcfunc">
+                        <br>
+                        <p>
+                            El resultado final de reducir la expresión es <b>4+2</b> obteniendo como resultado <b>6</b>. 
+                        </p>
+                        <br>
+                    </div>
                     <div class="col-md-12 text-center">
                         <p class="text-justify">
                             Con estas simples reglas se pueden formular los operadores lógicos más
