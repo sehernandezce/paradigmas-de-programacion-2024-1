@@ -86,9 +86,10 @@
     <li><a href="#17-ejemplo-dcg" aria-hidden="true">11.6 Ejemplo DCG</a></li>
     <li><a href="#16-hanoi" aria-hidden="true">11.7 Problema de Torres de Hanoi</a></li>
     <li><a href="#18-ejemplo-bubble" aria-hidden="true">11.8 Ejemplo Bubble Sort</a></li>
+    <li><a href="#19-ejemplo-analizador" aria-hidden="true">11.9 Ejemplo Doomie de Analizador Sintáctico del Inglés</a></li>
   </ul>
-  <li><a href="#15-Aplicaciones" aria-hidden="true">16. Aplicaciones</a></li>
-  <li><a href="#16-Des-Ven" aria-hidden="true">17. Desventajas / Ventajas</a></li>
+  <li><a href="#15-Aplicaciones" aria-hidden="true">12. Aplicaciones</a></li>
+  <li><a href="#16-Des-Ven" aria-hidden="true">13. Desventajas / Ventajas</a></li>
 
 </ul>
 <h1>
@@ -1503,6 +1504,186 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
 </p>
 <p align="center">
   <img src="images/bubbleSort.png">
+</p>
+
+<h2><a id="19-ejemplo-analizador" class="anchor" href="#19-ejemplo-analizador" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.9 Ejemplo Doomie de Analizador Sintáctico del Inglés</h2>
+<p>
+  El modelo del lenguaje inglés consta de siete categorías o tipos de lexema : </p>
+<ul>
+  <li>Sustantivo</li>
+  <li>Verbo</li>
+  <li>Adjetivo</li>
+  <li>Adverbio</li>
+  <li>Artículo</li>
+  <li>Conjunción</li>
+  <li>Preposición</li>
+</ul>
+<p>
+  La gramática es sensible al contexto en tanto que obliga que haya coherencia cuantitativa entre sustantivos y verbos, así como entre sustantivos y artículos 
+  — e.g., a man likes a dog (es coherente) ; a man likes a dogs (no es coherente).
+</p>
+<h3>Axiomas</h3>
+<p>
+  Las reglas sintácticas del inglés están pensadas en términos de los tipos de lexema propios del lenguaje, que en la práctica deben ser reemplazados por lexemas particulares. 
+  Por esa razón se construye la estructura axiomática del sistema formal que modela la gramática del inglés con un arbol que progresa desde las categorías más generales hasta los lexemas particulares — en términos formales, 
+  se progresa desde los símbolos de la gramática hasta los valores terminales.
+</p>
+<p>
+  En la siguiente celda de código, el conjunto de instancias del predicado <strong>isa(X, Y)</strong> implementa esta estructura arbórea :
+</p>
+<ul>
+  <li><strong>Primer Nivel:</strong>
+    <ul>
+      <li>word → noun | verb | article</li>
+    </ul>
+  </li>
+  <li><strong>Segundo Nivel:</strong>
+    <ul>
+      <li>noun → singular_noun | plural_noun</li>
+      <li>verb → singular_verb | plural_verb</li>
+      <li>article → singular_article | plural_article | neutral_article</li>
+    </ul>
+  </li>
+  <li><strong>Tercer Nivel:</strong>
+    <ul>
+      <li>singular_noun → man | dog | woman | leg</li>
+      <li>plural_noun → men | dogs | women | legs</li>
+      <li>singular_verb → bites | likes</li>
+      <li>plural_verb → bite | like</li>
+      <li>singular_article → a</li>
+      <li>neutral_article → the</li>
+    </ul>
+  </li>
+</ul>
+<p align="center">
+  <img src="images/analizador1.PNG">
+</p>
+<p>
+  La siguiente celda termina de definir el carácter de los lexemas del lenguaje:
+</p>
+<p align="center">
+  <img src="images/analizador2.PNG">
+</p>
+<p>
+  ¿Por qué no se les implementó, deberá preguntarse el lector, de manera afín a como se implementó a sus predecesores, los sustantivos, verbos y artículos? 
+  Porque, como se verá en breve, mientras que conviene a la implementación del analizador sintáctico abstraer tipos de lexema en ciertos casos, 
+  en otros casos es del todo innecesario.
+</p>
+<p>
+  Para el caso de los terminales de la penúltima celda es esencial no solamente poder atribuirles su carácter como sustantivo, verbo o artículo, sino también como singular o plural.
+  En esta implementación se optó, con fines educativos, por implementar dichas atribuciones por medio de la herencia : se entiende que si un nodo padre, 
+  en la estructur arbórea antes descrita, posee ciertas propiedades, los nodos que se desprendan de él también las tendrán. Esto es algo del todo innecesario en la consideración de otras clases de lexema, 
+  los adjetivos, adverbios, etc. de ahí que no se les implemente con el predicado <strong>isa(X, Y)</strong>, y sí con predicados más simples : al no ser de interés atribuirles más propiedad que la que su mismo predicado les atribuye, 
+  tampoco es de interés implementar para ellos ninguna forma de herencia.
+</p>
+<p>
+  Las atribuciones hechas a los terminales de la penúltima celda están implementadas en esta:
+</p>
+<p align="center">
+  <img src="images/analizador3.PNG">
+</p>
+<p>
+  Y la herencia de dichas atribuciones está implementada en esta:
+</p>
+<p align="center">
+  <img src="images/analizador4.PNG">
+</p>
+<h3>Reglas de Inferencia</h3>
+<p>
+  La anterior celda de código ya definía ambas cláusulas de la regla <strong>hasproperty(Object, Property, Value)</strong>. 
+  En lo que sigue se presentará otras reglas de inferencia, a partir de las que se construirá incrementalmente el analizador sintáctico.
+</p>
+<p>
+  La primera regla, para la verificación de frases nominales, 
+  es <strong>nounphrase(...)</strong>, y cuenta con varias cláusulas :
+</p>
+<ul>
+  <li><strong>La primera cláusula</strong> estipula que un sustantivo es una frase nominal.</li>
+  <li><strong>La segunda cláusula</strong> estipula que un artículo seguido por un sustantivo es una frase nominal.</li>
+  <li><strong>La tercera cláusula</strong> estipula que un sustantivo seguido por un adjetivo es una frase nominal.</li>
+  <li><strong>La cuarta cláusula</strong> estipula que un artículo, seguido por un adjetivo, seguido por un sustantivo, es una frase nominal.</li>
+  <li><strong>La quinta cláusula</strong> estipula que un adverbio adjetival, seguido por un adjetivo, seguido por un sustantivo, es una frase nominal.</li>
+  <li><strong>La sexta cláusula</strong> estipula que un artículo, seguido por un adverbio adjetival, seguido por un adjetivo, seguido por un sustantivo, es una frase nominal.</li>
+  <li><strong>La séptima cláusula</strong> estipula que una preposición seguida por una frase nominal es una frase nominal.</li>
+</ul>
+<p>
+  Nótese que las cláusulas 2, 4 y 6, al contener sustantivos y artículos, obligan que ambos sean singulares o plurales (puesto que ambos deben tener el mismo valor de <strong>Number</strong>) :
+</p>
+<p align="center">
+  <img src="images/analizador5.PNG">
+</p>
+<p align="center">
+  <img src="images/analizador6.PNG">
+</p>
+<p>
+  La segunda regla, para la verificación de frases verbales, es <strong>verbphrase(...)</strong>, y cuenta con varias cláusulas:
+</p>
+<ul>
+  <li><strong>La primera cláusula</strong> estipula que un verbo es una frase verbal.</li>
+  <li><strong>La segunda cláusula</strong>  estipula que un verbo seguido por una frase nominal es una frase verbal.</li>
+  <li><strong>La tercera cláusula</strong> estipula que un adverbio seguido por un verbo, seguido por una frase nominal, es una frase verbal.</li>
+  <li><strong>La cuarta cláusula</strong> estipula que un adverbio seguido por otro adverbio, seguido por un verbo, seguido por una frase nominal, es una frase verbal.</li>
+</ul>
+<p>
+  Nótese que, por un lado, si el verbo y la frase nominal que le sigue tienen ambos el mismo número gramatical es irrelevante, 
+  por lo que el valor de <strong>Number</strong> en <strong>nounphrase(..., Number)</strong> es <strong>_</strong>, y que, por otro lado, el axioma anteriormente declarado <strong>ad_adverb(quite)</strong>. 
+  significa que la palabra inglesa 'quite' es un adverbio que puede modificar a otro adverbio.
+</p>
+<p>
+  El código que implementa esta segunda regla:
+</p>
+<p align="center">
+  <img src="images/analizador7.PNG">
+</p>
+<p>
+  La tercera regla, para la verificación de frases preposicionales, es <strong>prepphrase(...)</strong>, y estipula que una preposición seguida por una frase nominal es una frase preposicional:
+</p>
+<p align="center">
+  <img src="images/analizador8.PNG">
+</p>
+<p>
+  La cuarta regla, para la detección de conectores, es <strong>connector(...)</strong>, y retorna si el primer lexema de una secuencia de lexemas dada es un conector o no:
+</p>
+<p align="center">
+  <img src="images/analizador9.PNG">
+</p>
+<p>
+  La quinta regla, para la verificación de oraciones, es <strong>sentence(...)</strong>, y tiene varias cláusulas:
+</p>
+<ul>
+  <li><strong>La primera</strong> estipula que una frase nominal seguida por una frase verbal es una oración.</li>
+  <li><strong>La segunda</strong> estipula que una frase nominal seguida por una frase verbal, seguida por una frase preposicional, es una oración.</li>
+</ul>
+<p>
+  Nótese que el número gramatical de la frase nominal debe ser el mismo de la frase verbal que la sigue:
+</p>
+<p align="center">
+  <img src="images/analizador10.PNG">
+</p>
+<p>
+  La sexta y última regla, para la verificación de articulaciones (las estructuras sintácticas más generales, 
+  análogas a lo que sería el programa si se tratara d eun lenguaje de programación), es <strong>utterance(...)</strong>, y tiene varias cláusulas:
+</p>
+<ul>
+  <li><strong>La primera</strong> estipula que una oración es una articulación.</li>
+  <li><strong>La segunda</strong> estipula que una oración seguida por un conector, seguido por una frase preposicional, es una articulación.</li>
+  <li><strong>La tercera</strong> estipula que una oración seguida por un conector, seguido por una articulación, es una articulación.</li>
+</ul>
+<p>
+  El código que implementa la regla:
+</p>
+<p align="center">
+  <img src="images/analizador11.PNG">
+</p>
+<p>
+  Una anotación final es pertinente: la variable <strong>Rest</strong> actúa como una variable de retorno, y adquiere su valor cuando, 
+  en la cabecera de distintas reglas de inferencia, se designa la cola de una lista como <strong>Rest</strong> (véase las reglas <strong>nounphrase(...)</strong>, por ejemplo). 
+  En ocasiones la variable <strong>End</strong> actúa de forma similar, solo que mientras que <strong>Rest</strong> denota lo que falta por procesar de la lista de lexemas, 
+  <strong>End</strong> denota lo último que se va a procesar. <strong>LastBit</strong> en la regla de inferencia <strong>sentence(...)</strong> representa lo que sería un punto intermedio entre <strong>Rest</strong> y <strong>End</strong>, y 
+  <strong>Next_phrase</strong> en la regla de inferencia <strong>utterance(...)</strong> representa lo que sería <strong>Rest</strong> antes de <strong>Rest</strong> mismo.
+</p>
+<p>
+  <a target="_blank" href="https://swish.swi-prolog.org/p/TUTORIAL%20PROLOG.swinb">Notebook del Ejemplo Doomie de Analizador Sintáctico del Inglés implementado.</a> 
 </p>
 
 
