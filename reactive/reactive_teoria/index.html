@@ -336,6 +336,12 @@
 
                                 <p>Compañías como <strong>Netflix</strong> llevan años aplicando la programación reactiva para mejorar el rendimiento de sus aplicaciones, superando las limitaciones nativas de multiples lenguajes. Reactivex y otras librerias les proporcionó la pieza que necesitaban para realizar la orquestación de microservicios, la implementación del patrón <a href="https://martinfowler.com/bliki/CircuitBreaker.html"><strong>circuit breaker</strong></a> y demás mecanismos que permiten a sus desarrollos adoptar los principios descritos por el manifiesto reactivo.</p>
 
+                                <p> <strong>Capital One</strong> rediseñó su aplicación de préstamos para automóviles en torno a los principios Reactivos para simplificar la compra y financiación de automóviles en línea. Los clientes pueden navegar por más de cuatro millones de automóviles de más de 12.000 concesionarios y precalificar el financiamiento en segundos, sin afectar las puntuaciones de crédito.</p>
+                                <p> <strong>LinkedIn</strong> recurrió a los principios Reactivos para crear indicadores de presencia en tiempo real (indicadores en línea) para los medio billón de usuarios de su red social.</p>
+                                <p> <strong>Verizon Wireless</strong>, operadores de la red 4G LTE más grande en Estados Unidos, redujo los tiempos de respuesta a la mitad utilizando los principios de Reactive en la actualización de su sitio web de comercio electrónico que soporta 146 millones de suscriptores que manejan 2.500 millones de transacciones al año.</p>
+                                <p> <strong>Walmart Canada</strong> reconstruyó toda su aplicación web y pila móvil como un sistema Reactivo y vió un aumento del 20 por ciento en la conversión a ventas de tráfico web y un aumento del 98 por ciento en los pedidos móviles recortando los tiempos de carga de páginas en más de un tercio. </p>
+                                <p>En <strong>Tenea</strong>, empresa que se dedica a implantar soluciones de negocio a través de las nuevas tecnologías, están trabajando hace más de 5 años con tecnologías como ActiveMQ, RabittMQ, Fuse Enterprise (componentes OSGI), mongoDB, ElasticSearch o Solr y, por supuesto, en orientación a eventos y en programación reactiva. Concretamente, en su motor de reglas IoT TeneaRules, que han miniaturizado para que corra sobre hardware de dominio público low cost (TP-Llink, Xiaomi), sobre el open source OpenWrt y cuya sintaxis declarativa y funcional les permite programar comportamientos asociados a los eventos del entorno: ES_DE(NOCHE)= , ALARMA(ON)= ; PUERTA,PRINCIPAL(ABIERTA)=, etc. </p>
+
                                 <p>La programación reactiva se ha aplicado durante varios años en el <a href="http://reactivex.io/"><strong>Front-end</strong></a> Mediante el uso de cambios de estado en los diferentes componentes <a href="https://dev.to/petyosi/reactive-programming-for-react-developers-the-absolute-beginner-guide-5eeg">Reactive Programming for React Developers</a></p>
                                 <center><a href="http://reactivex.io/" data-rel="frontend"><img src="images/frontend.PNG" alt="Frontend en Reactivex" class="img-responsive img-thumbnail"></a>
                                     <figcaption>Uno de los principales usos de Recativex</figcaption>
@@ -356,6 +362,24 @@
                                 </p>
                                 <p>Husain Tambien menciona que actualmente Netflix es de las pocas compañias que que utiliza la programación reactiva tanto en el servidor como en el cliente, sin embargo no son la única: <strong> Felipe Lima</strong>, Miembro del equipos de desarrollo de Android en <strong>Airbnb</strong>, menciona el porque decidieron inclinarse hacia la programación reactiva mediante RxJava:<br> <cite >" It’s easy to switch back and forth between threads. It’s built right into the framework, Async can be very cumbersome and error-prone, and RxJava is one reason we you don’t need to do that anymore, and why you can compose different tasks together".</cite> </p>
                                 
+                                <strong>Fase monolito y evolución en la industria</strong>
+
+                                <p>Tras un periodo de desarrollo de software, la empresa dispondrá de una plataforma que crecerá hasta donde el éxito le acompañe, incrementando la complejidad del ya sofisticado entorno. Tanto si la plataforma es Java, C#, PHP, Python o Perl, el desarrollo corre el riesgo de convertirse en un monolito difícil de mantener y evolucionar. Los procesos inicialmente simples tienden a cubrir cada vez más variantes, en función de las necesidades definidas por Dirección, Marketing o el propio Product Owner.</p>
+
+                                <p>En una situación como esta la solución más adoptada por los Arquitectos de Desarrollo es la de evolucionar hacia una arquitectura:</p>
+
+                                <ul>
+                                    <li>    1.  Orientada a servicios. Cada servicio es una función sin estado que recibe una llamada y devuelve una respuesta.</li>
+
+                                    <li>    2.  Orientada a microservicios. Es una evolución de la orientación a servicios. Como en el caso anterior los microservicios están coordinados a través de la ORQUESTACIÓN.</li>
+
+                                    <li>    3.  Reactiva, funcional y orientada a microservicios pero coordinados por COREOGRAFIA, y con la inferencia basada en eventos de negocio.</li>
+                                </ul>
+
+                                <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a micro servicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
+
+                                <p>En definitiva, ya estamos en el momento de marcar el rumbo hacia estas nuevas herramientas y entornos de desarrollo.</p>
+
                             </div>
                         </div>
                         <!-- end row -->
@@ -386,7 +410,12 @@
                                     <li>3.  Mas Ejemplos RxPy - https://www.tutorialspoint.com/rxpy/rxpy_quick_guide.htm</li>
                                     <li>4.   RxJava - https://www.baeldung.com/rx-java</li>
                                     <li>5.     RxJava Android - https://www.toptal.com/android/functional-reactive-android-rxjava</li>
-                                 
+                                    <li>6. Front-End Reactive Architectures de Luca Mezzalira</li>
+                                    <li>7. Reactive Microservices Architecture de Jonas Bonér</li>
+                                    <li>8. Reactive Systems Architecture de Jan Machacek, Martin Zapletal, Michal Janousek , Anirvan Chakraborty</li>
+                                    <li>9. GSAS: Reactive Architecture Patterns Debate</li>
+                                    <li>10. What is a Reactive Application? • Panel Debate</li>
+                                    <li>11. Reactive Systems: 21st Architecture for 21st Century Systems by Dave Farley</li>
                                 </ul>
 
                             </div>
