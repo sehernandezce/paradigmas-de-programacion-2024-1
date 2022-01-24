@@ -101,12 +101,13 @@
                 <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
                     <ul class="nav">
                         <li><a href="#line1">Introducción</a></li>
-                        <li><a href="#line2">Manifiesto reactivo</a></li>
                         <li><a href="#line3">Características </a></li>
                         <li><a href="#line4">Patrón de Diseño <i>Observer</i> </a></li>
                         <li><a href="#line5">Ventajas </a></li>
                         <li><a href="#line6">Desventajas </a></li>
-                        <li><a href="#line7">Lenguajes de Programacion</a></li>
+                        <li><a href="#lineB1">Evolución del paradigma</a></li>
+                        <li><a href="#lineB2">El término "Reactive"</a></li>
+                        <li><a href="#line7">Lenguajes de Programación</a></li>
                         <li><a href="#line8">Ejemplos</a>
                             <ul class="nav">
                                 <li><a href="#line8_1">RxPY</a></li>
@@ -148,28 +149,6 @@
                         <!-- end col -->
                     </div>
                     <!-- end row -->
-
-                </section>
-                <!-- end section -->
-
-                <section id="line2" class="section">
-
-                    <div class="row">
-                        <div class="col-md-12 left-align">
-                            <h2 class="dark-text">Manifiesto reactivo <hr></h2>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-
-                    <div class="intro2 clearfix">
-                        <p>Los Sistemas Reactivos son:</p>
-                        <p>Responsivos: El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados rápidamente y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
-                        <p>Resilientes: El sistema permanece responsivo frente a fallos. Esto es aplicable no sólo a sistemas de alta disponibilidad o de misión crítica - cualquier sistema que no sea resiliente dejará de ser responsivo después de un fallo. La resiliencia es alcanzada con replicación, contención, aislamiento y delegación. Los fallos son manejados dentro de cada componente, aislando cada componente de los demás, y asegurando así que cualquier parte del sistema pueda fallar y recuperarse sin comprometer el sistema como un todo. La recuperación de cada componente se delega en otro componente (externo) y la alta disponibilidad se asegura con replicación allí donde sea necesario. El cliente de un componente no tiene que responsabilizarse del manejo sus fallos.</p>
-                        <p>Elásticos: El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
-                        <p>Orientados a Mensajes: Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un cluster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
-                        <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
-                    </div>
 
                 </section>
                 <!-- end section -->
@@ -259,7 +238,9 @@
                         <li>Normalmente, los suscriptores necesitan cierta información contextual para manejar correctamente la actualización. Por este motivo, a menudo los notificadores pasan cierta información de contexto como argumentos del método de notificación. El notificador puede pasarse a sí mismo como argumento, dejando que los suscriptores extraigan la información necesaria directamente.</li>
                         <li>El <b>Cliente</b> crea objetos tipo notificador y suscriptor por separado y después registra a los suscriptores para las actualizaciones del notificador.</li>
                     </ol>
-                    <img src="images/structure.png">
+                    <div class="text-center">
+                        <img class="img-responsive img-thumbnail" src="images/structure.png" alt="">
+                    </div>
 
 
                 </section>
@@ -314,11 +295,216 @@
                 </section>
                 <!-- end section -->
 
+                <section id="lineB1" class="section">
+
+                    <div class="row">
+                        <div class="col-md-12 left-align">
+                            <h2 class="dark-text">Evolución del paradigma<hr></h2>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <p>
+                        Los orígenes de la programación reactiva se remontan, probablemente, a la década de 1970,
+                        pero esta empezó a resonar en la década del 2010, al mismo tiempo que comenzó el auge de
+                        los microservicios y los procesadores multinúcleo.
+                        <br><br>
+                        Desde entonces, dicho paradigma ha evolucionado de manera significativa y, por este motivo,
+                        las librerías que lo implementan pueden clasificarse en generaciones de acuerdo a su grado
+                        de madurez, según la categorización propuesta por el autor
+                        <a href="https://hu.linkedin.com/in/david-karnok-725b3189">
+                            David Karnok</a> en el año 2016, la cual se describe a continuación:
+                    </p>
+
+                    <hr>
+
+                    <h4>Generación 0</h4>
+
+                    <p>
+                        Consiste, principalmente, de la API <b>java.util.Observable</b> y de otras API basadas en
+                        <i>callbacks</i>, tal como <b>addXXXListener</b> en Swing, AWT y Android. <br><br>
+                        Los inconvenientes que presentaban las herramientas de esta generación eran las
+                        deficiencias de composición y el hecho de que, por sí mismas, resultaban bastante limitadas.
+                    </p>
+
+                    <hr>
+
+                    <h4>Primera generación</h4>
+
+                    <p>
+                        Una vez que Erik Meijer y el equipo de Microsoft reconocieron y abordaron las deficiencias,
+                        nació la primera generación de bibliotecas de programación reactiva: Rx.NET alrededor de
+                        2010, Reactive4Java en 2011 y las primeras versiones de RxJava en 2013.
+                        <br><br>
+                        Algunos de los inconvenientes encontrados consistieron en que, al implementar las interfaces
+                        <b>IObservable/IObserver</b> no se podían cancelar las secuencias en ejecución usando
+                        el operador <b>take()</b>, además del problema de la falta de <i>backpressure</i>.
+                    </p>
+
+                    <hr>
+
+                    <h4>Segunda generación</h4>
+
+                    <img src="images/subscribe.png" alt="" class="img-responsive img-thumbnail">
+
+                    <p>
+                        El equipo de RxJava identificó estas deficiencias y se diseñó una nueva arquitectura. En
+                        esta se introdujo: la clase <b>Subscriber</b>, la cual puede decir si está interesada
+                        en más eventos o no; la interfaz <b>Producer</b>, para señalar la cantidad de elementos
+                        que un <i>Subscriber</i> puede procesar a la vez, y el método <b>lift()</b>, que permite una
+                        transformación funcional entre <i>Subscribers</i>.
+                        <br><br>
+                        No obstante, esta solución era un poco torpe y limitaba algunas optimizaciones, además
+                        de que era incompatible con los puntos de vista de otras bibliotecas reactivas que
+                        comenzarían a surgir más adelanate.
+                    </p>
+
+                    <hr>
+
+                    <h4>Tercera generación</h4>
+
+                    <p>
+                        Ingenieros de varias compañías se juntaron y crearon la especificación <b>Reactive
+                        Streams</b>. Algunos ejemplos de librerías que pertenecen a esta generación son
+                        RxJava 2.x, Project Reactor y Akka-Streams.
+                    </p>
+
+                    <hr>
+
+                    <h4>Cuarta generación</h4>
+
+                    <p>
+                        Algunas de estas librerías se reimplementaron, lo cual condujo al establecimiento de
+                        la libería <i>reactive-streams-commons</i>, a la construcción de ciertos operadores
+                        fundacionales y al diseño de componentes de optimización que pasaron a recibir el nombre
+                        de <b>operator-fusion</b>. Comparada con la generación anterior, aunque lucen similares
+                        en el exterior, en el interior poseen cambios significativos que permitieron una
+                        reducción aún mayor de los gastos generales.
+                    </p>
+
+                    <hr><br>
+
+                    <p>
+                        Adicionalmente, este autor especula que de la quinta generación en adelante, la arquitectura
+                        de <i>Reactive-Streams</i> requeriría ciertas extensiones para soportar operaciones
+                        reactivas de entrada y salida en la forma de secuencias bidireccionales, entre otros
+                        cambios que, en ese punto, estaban abiertos a discusión.
+                    </p>
+
+
+                </section>
+                <!-- end section -->
+
+                <section id="lineB2" class="section">
+
+                    <div class="row">
+                        <div class="col-md-12 left-align">
+                            <h2 class="dark-text">El término "Reactive"<hr></h2>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <p>
+                        La programación reactiva, al tratarse de un paradigma emergente que está en constante
+                        actualización, suele confundirse con otros conceptos que también llevan la partícula
+                        "reactive" en su nombre. Este término es muy amplio y, aunque algunas personas pueden
+                        creer que las extensiones reactivas, los <i>streams</i> reactivos, los sistemas reactivos,
+                        y la programación funcional reactiva (entre otras muchas) sean lo mismo, la verdad es
+                        que existen diferencias importantes a considerar en todas ellas.
+                    </p>
+
+                    <hr>
+
+                    <h4>Programación Funcional Reactiva (FRP)</h4>
+
+                    <p>
+                        Fue definida en 1997 por <a href="http://conal.net/">Conal Elliott</a> y Paul Hudak. De
+                        acuerdo con una presentación que Elliott dio en el año 2015, titulada "The essence and
+                        origins of FRP", el término había sido empleado incorrectamente para describir sistemas
+                        como Elm, Bacon y extensiones reactivas. La diferencia principal entre la FRP y la
+                        programación reactiva es que la primera opera en valores que cambian continuamente a
+                        través del tiempo, mientras que la segunda opera en valores discretos que se emiten a
+                        través del tiempo. La conferencia puede verse a continuación:
+                    </p>
+
+                    <video class="img-responsive img-thumbnail" src="https://vod-progressive.akamaized.net/exp=1642988475~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1844%2F5%2F134223272%2F395828977.mp4~hmac=6265b1468e2174bceb3fbc2ec8c6f79cca230503d3abd79b8ab5a7437fccd296/vimeo-prod-skyfire-std-us/01/1844/5/134223272/395828977.mp4?filename=frp+final.mp4" controls></video>
+
+                    <hr>
+
+                    <h4>Extensiones y Streams Reactivos</h4>
+
+                    <p>
+                        Las extensiones reactivas, mejor conocidas como <b>"ReactiveX"</b> son un conjunto de
+                        herramientas que implementan el paradigma de la programación reactiva (estas se cubrirán
+                        a detalle <a href="#line4">más adelante</a>). <br><br>
+                        Sin embargo, debido a que estas contienen una gran variedad de librerías y a la falta
+                        de interoperabilidad entre ellas, surgieron los <i>Reactive Streams</i>. Esta fue una
+                        iniciativa creada para proveer un estándar que unificara las extensiones reactivas y
+                        que lidiara con el procesamiento de flujo (<i>stream</i>) asincrónico con contrapresión
+                        sin bloqueo (<i>non-blocking backpressure</i>); es decir, se buscó estandarizar las
+                        librerías ya existentes.
+                    </p>
+
+                    <hr>
+
+                    <h4>Sistemas reactivos</h4>
+
+                    <p>
+                        Los sistemas reactivos son un conjunto de principios de diseño arquitectónico para construir
+                        sistemas modernos que estén bien preparados para satisfacer las crecientes demandas que
+                        enfrentan las aplicaciones hoy en día. Sus especificaciones se pueden encontrar en línea
+                        bajo el nombre de "Manifiesto Reactivo", tal como sigue a continuación:
+                    </p>
+
+                    <div class="intro2 clearfix">
+                        <p>Los Sistemas Reactivos son:</p>
+                        <p><b>Responsivos:</b> El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados rápidamente y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
+                        <p><b>Resilientes:</b> El sistema permanece responsivo frente a fallos. Esto es aplicable no sólo a sistemas de alta disponibilidad o de misión crítica - cualquier sistema que no sea resiliente dejará de ser responsivo después de un fallo. La resiliencia es alcanzada con replicación, contención, aislamiento y delegación. Los fallos son manejados dentro de cada componente, aislando cada componente de los demás, y asegurando así que cualquier parte del sistema pueda fallar y recuperarse sin comprometer el sistema como un todo. La recuperación de cada componente se delega en otro componente (externo) y la alta disponibilidad se asegura con replicación allí donde sea necesario. El cliente de un componente no tiene que responsabilizarse del manejo sus fallos.</p>
+                        <p><b>Elásticos:</b> El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
+                        <p><b>Orientados a Mensajes:</b> Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un cluster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
+                        <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
+                    </div>
+
+                    <p>
+                        Esta es uno de los conceptos que suele causar más confusiones, debido al hecho de que <b>usar
+                        programación reactiva no necesariamente conduce a la formación de sistemas reactivos</b>. Aunque
+                        el paradigma sí es útil para satisfacer ciertos requerimientos enunciados en el manifiesto, hace
+                        falta considerar algunos puntos: <br><br>
+                        De acuerdo al <i>white paper</i> "Reactive Programming versus Reactive Systems", escrito por
+                        <a href="http://jonasboner.com/">Jonas Bonér</a> y <a href="https://viktorklang.com/">Viktor Clang</a>,
+                        la programación reactiva es, generalmente, dirigida por eventos, mientras que los sistemas
+                        reactivos son dirigidos por mensajes. La principal diferencia entre ambos consiste en que los
+                        mensajes son inherentemente dirigidos (siempre tienen un destino), mientras que los eventos no:
+                        estos son tan solo señales emitidas por un componente al alcanzar cierto estado.
+                    </p>
+
+                    <img src="images/soapbox.jpg" class="img-responsive img-thumbnail">
+
+                    <p>
+                        En un sistema dirigido por mensajes, los receptores esperan por la llegada de estos y reaccionan
+                        a ellos, de lo contrario permanecen inactivos. Por otra parte, en un sistema dirigido por eventos,
+                        los detectores de notificaciones están anclados a las fuentes de dichos eventos, de tal forma que
+                        son invocados cuando el evento es emitido. En síntesis, un sistema dirigido por mensajes se centra
+                        en los destinatarios, mientras que uno dirigido por eventos se enfoca en los emisores. <br><br>
+                        De este modo, el uso exclusivo de programación reactiva puede hacer que la resiliencia sea más
+                        difícil de lograr, pues las <i>callbacks</i> suelen ser anónimas y, por ende, no direccionables.
+                        Es decir que si falla una de las cadenas del flujo de datos, entonces se debe reiniciar la cadena
+                        y el cliente debe ser notificado (algo que no ocurre en un sistema dirigido por mensajes, que
+                        tendría la capacidad de autorecuperarse sin involucrar al cliente). Sin embargo, si se integra
+                        este paradigma con una arquitectura reactiva, este termina siendo de gran utilidad a la hora
+                        de construir sistemas reactivos.
+                    </p>
+
+                </section>
+                <!-- end section -->
+
                 <section id="line7" class="section">
 
                     <div class="row">
                         <div class="col-md-12 left-align">
-                            <h2 class="dark-text">Lenguajes de Programacion <hr></h2>
+                            <h2 class="dark-text">Lenguajes de Programación <hr></h2>
                         </div>
                         <!-- end col -->
                     </div>
@@ -339,7 +525,7 @@
                         <div class="col-md-6">
                             <strong>Lenguajes</strong>
 
-                            <p> Los siguientes lenguajes poseen una libreria basada en ReactiveX que les permite pertenecer al paradigma de la Programacion reactiva </p>
+                            <p> Los siguientes lenguajes poseen una libreria basada en ReactiveX que les permite pertenecer al paradigma de la Programación reactiva </p>
                             <ul>
                                 <li>Java: <a href="https://github.com/ReactiveX/RxJava">RxJava</a></li>
                                 <li>JavaScript: <a href="https://github.com/ReactiveX/rxjs">RxJS</a></li>
@@ -493,14 +679,13 @@
                                 <li>    3.  Reactiva, funcional y orientada a microservicios pero coordinados por COREOGRAFIA, y con la inferencia basada en eventos de negocio.</li>
                             </ul>
 
-
                             <strong>Arquitectura Reactiva Funcional</strong>
 
                             <p>La arquitectura reactiva funcional es aquella en la que la inferencia son los EVENTOS. En este caso no hablamos de eventos de sistema, como los subsistemas de ventanas de los entornos gráficos (X11, Windows o Gnome), sino por eventos de negocio.</p>
                             <p>La reactividad ha aparecido no solo en la parte servidora: Spring, Vert.x, ya que afecta a la arquitectura de ejecución sino que ha entrado para instalarse de forma definitiva en la parte cliente con implementaciones en Javascript: Reactjsliberada por Facebook al mundo open, Bacon.js o RxJS.</p>
                             <p>La importancia para las empresas radica en que se puede crear funcionalidad a partir de cualquier evento que se genere: alta_cliente, baja_cliente, venta_producto, así como la gestión de las operaciones: rotura_stock, paquetes_fuera_stock_minimo, alta_empleado, fin_promocion, envio_urgente, etc.</p>
                             <p>Esto permitirá interceptar el flujo de datos, crear bases de datos/registros y/o funcionalidades que multiplican las capacidades digitales de la empresa, creando una nueva especie de empresas más flexibles, más adaptadas a los nuevos escenarios y, por tanto, más competitivas.</p>
-                            
+
                             <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a micro servicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
 
                             <p>En definitiva, ya estamos en el momento de marcar el rumbo hacia estas nuevas herramientas y entornos de desarrollo.</p>
