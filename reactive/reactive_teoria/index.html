@@ -583,7 +583,12 @@
                             <script src="https://gist.github.com/juankg214/8b2862d91b272338c2fed1ecc580f0eb.js"></script>
                             <script src="https://gist.github.com/juankg214/a340b74659748cd55f194b67092ea6d6.js"></script>
                             <script src="https://gist.github.com/juankg214/72b16f25698e603d329637bbb2cee74f.js"></script>
-
+                            <p>El siguiente ejemplo muestra una implementación pura en Java que busca simular un caso de programación reactiva,
+                                en el que en un hilo se simula el envío de un correo a una dirección de correo aleatoria y en otro hilo se simula
+                                la confirmación de la recepción de dicho email</p>
+                            <iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@Jaider_AndresAn/ExampleWithOutRXJava?embed=true"></iframe>
+                            <p>Ahora, el mismo ejemplo pero usando RxJava</p>
+                            <iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@Jaider_AndresAn/RxJava?embed=true"></iframe>
                         </div>
                         <!-- end col -->
                     </div>
@@ -613,6 +618,35 @@
 
 
 
+
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="line8_4">RxRuby </h4>
+                            <p>El siguiente ejemplo crea un observable que emite números secuenciales, uno cada 2 segundos, luego estos son capturados
+                                por el suscriptor y ejecutada la función según el caso</p>
+                            <iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@Jaider_AndresAn/RXRuby?embed=true"></iframe>
+
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 id="line8_5">Rx.NET </h4>
+                            <p>El siguiente ejemplo crea 2 Observables, cada uno de un único elemento, luego los combina realizando la suma de los
+                                valores y selecciona la respuesta como String en caso de que la suma sea par, esta combinación se muestra
+                                tanto haciendo uso de sintaxis basada en Queries como en sintaxis fluida</p>
+                            <iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@Jaider_AndresAn/RxNET?embed=true"></iframe>
 
                         </div>
                         <!-- end col -->
