@@ -20,8 +20,8 @@
 				<!-- Header -->
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/Svelte_Logo.svg" width="200" alt="" /></span>
-						<h1>Svelte Tutorial</h1>
-						<p><br />Bienvenido al tutorial de Svelte, una guía para un novedoso framework de Front-End.<br /><br /><br /><br /><br />
+						<h1>Tutorial de Svelte</h1>
+						<p><br />Bienvenido al tutorial de Svelte, una guía de cómo es compilador nos permite construir interfaces web<br /><br /><br /><br /><br />
 
 					</header>
 
@@ -45,19 +45,18 @@
 										<header class="major">
 											<h2>¿Qué es Svelte?</h2>
 										</header>
+										<p>En términos simples, Svelte es un compilador que genera código Javascript altamente optimizado y de reducido tamaño. Entre sus características encontramos:</p>
 										<p>
 											<ul>
-												<li>Es un traductor (compilador) para crear interfaces gráficas para aplicaciones web</li>
-												<li>Su lenguaje está compuesto por todos los elementos sintácticos de JavaScript, HTML y CSS.</li>
-												<li>Es una solución al problema de construcción de interfaces de usuario usando lenguajes para finalidades diferentes:</li>
-												<ul>
-													<li>HTML, CSS: Descripción de forma</li>
-													<li>Javascript: Descripción de comportamiento</li>
-												</ul>
+												<li>Convierte el codigo escrito por el desarrollador/a en <em>build time</em></li>
+												<li>Su escritura comprende los elementos sintácticos de JavaScript, HTML y CSS.</li>
+												<li>Es una solución al problema de construcción de interfaces interactivas (desde el punto de vista de la experiencia de usuario)</li>
+												<li>Es aún prematuro. Sin embargo, varias <a href="#surveys">encuestas</a> lo proyectan como una herramienta que será muy usada y aceptada</li>
 											</ul>
 										</p>
 										<ul class="actions">
-											<li><a href="docs/SvelteTutorial.pdf" class="button">Presentación</a></li>
+											<li><a href="docs/SvelteTutorial.pdf" class="button">Presentación 1</a></li>
+											<li><a href="docs/SvelteTutorial2.pdf" class="button">Presentación 2</a></li>
 										</ul>
 									</div>
 									<span class="image"><img src="images/sveltesrc.png" alt="" /></span>
@@ -115,38 +114,25 @@
 								</header>
 									
 									<h3>Requisitos</h3>
-									<p>Lo primero que necesitamos es tener instalado <a href="https://nodejs.org">Node.js.</a> Teniéndolo instalado podemos instalar un module bundler llamado rollup con: <br>
-										<code> npm i -D rollup </code> <br> <br> 
-									Ésta herramienta nos va a ayudar a organizar todo el código Javascript del proyecto en un solo archivo. Ahora podemos instalar Svelte con el comando: <br>
-										<code> npm i -D svelte rollup-plugin-svelte @rollup/plugin-node-resolve </code> <br> 
+									<p>Lo primero que necesitamos es tener instalado <a href="https://nodejs.org">Node.js</a> (un runtime de Javascript que nos permite ejecutar código escrito en éste lenguaje pero por fuera del navegador)
+										Una vez cumplido éste requisito, se procede a installar <a href="https://www.npmjs.com/package/npx">npx</a> (un ejecutador de código) con el siguiente comando (npm viene incluido con Node.js) que
+										debe escribirse en consola <br><br>
+										<code> npm i -g npx </code> <br> <br> 
+									Y listo, ya podemos crear nuestro primer proyecto de Svelte. Para hacerlo, escribimos el siguiente comando en consola (posicionándonos en el directorio d preferencia) <br><br>
+										<code> npx degit sveltejs/template nombre-de-la-app </code> <br><br>
+										Una vez hecho esto, veremos que fue creado un directorio (carpeta) con el nombre "nombre-de-la-app".
 									</p>
-									<h3>Configuración inicial</h3>
-									<p>
-										Ya podemos crear un nuevo proyecto, y cuando esté creado necesitaremos un archivo llamado rollup.config.js. Este archivo es usado por rollup para saber qué archivos 
-										javascript usar y dónde organizarlos. En este caso va a usar todo lo que encuentre en main.js y lo va a organizar en bundle.js.
-										<pre>
-											<code>import resolve from '@rollup/plugin-node-resolve';
-import svelte from 'rollup-plugin-svelte';
-export default {
-	input: 'src/main.js',
-	output: {
-		file: 'public/build/bundle.js',
-		format: 'esm',
-		sourcemap: true
-	},
-	plugins: [
-		resolve(),
-		svelte({
-			css: result => result.write('public/bundle/bundle.css')
-		})
-	]
-};</code>
-										</pre>
-										Nuestro index.html va a usar únicamente el archivo bundle.js resultante, con el bundle.css, usando estas líneas:
-										<pre>
-											<code>&lt; link rel="stylesheet" href="/build/bundle.css"&gt; <br>&lt; script type="module" src='/build/bundle.js'&gt; &lt;/script&gt;</code>
-										</pre>
-										El archivo main.js se va a ver más o menos así:
+									<p>Para ejecutar el proyecto, simplemente (estando dentro del directorio "nombre-de-la-app") ejecutamos el comando <br><br>
+										<code>
+											npm run dev
+										</code> <br><br>
+										Hecho lo anterior, aparecerá un mensaje en consola como el siguiente
+									</p>
+									<img src="images/svelte-run-project.PNG" alt="svelte-run-project">
+									<p>Como en este caso la dirección es http://localhost:8080, vamos a nuestro navegador de preferencia e ingresamos ésta dirección. ¡Perfecto! El navegador debería mostrarnos lo siguiente</p>
+									<img src="images/hello-world.PNG" alt="hellow-world-svelte">
+								
+										<p>El archivo main.js se va a ver más o menos así:</p>
 										<pre>
 											<code>import App from './App.svelte';
 new App({
@@ -157,13 +143,13 @@ new App({
 });</code>
 										</pre>
 									</p>
-									En él podemos ver que se importa un archivo App.svelte, y precisamente este archivo termina siendo procesado por rollup y almacenado en bundle.js también.
-									Éste se puede ver en un inicio así:
+									En él podemos ver que se importa un archivo App.svelte, el cual tiene una estructura básica inicial de este tipo
 									<pre>
 										<code>&lt;script&gt;
-	let name = 'world';
+export let name;
 &lt;/script&gt;
-&lt;h1&gt;Hello {name}!&lt;/h1&gt;</code>
+&lt;h1&gt;Hello {name}!&lt;/h1&gt;
+</code>
 									</pre>
 									<h3>Uso</h3>
 									<p>Para crear una aplicación con Svelte, podemos editar uno o varios archivos .svelte como el que acabamos de ver, o como los ejemplos vistos en el tour por el lenguaje:
@@ -173,8 +159,14 @@ new App({
 											<li><a href="generic.html" class="button">Muéstrame el tour</a></li>
 										</ul>
 									</footer>
-							</section>
-
+									<h2>Encuestas</h2>
+									<aside id="surveys">
+										<ol>
+											<li><em>Front-end Frameworks Ranking</em>. State of Js. <br><a href="https://2020.stateofjs.com/en-US/technologies/front-end-frameworks">https://2020.stateofjs.com/en-US/technologies/front-end-frameworks</a></li>
+											<li><em>Most Loved vs Dreaded Frameworks</em>. Stack Overflow Developer Survey. <br><a href="https://insights.stackoverflow.com/survey/2021#most-loved-dreaded-and-wanted-webframe-love-dread">https://insights.stackoverflow.com/survey/2021#most-loved-dreaded-and-wanted-webframe-love-dread</a></li>
+										</ol>
+									</aside>
+							</section>		
 					</div>
 
 				<!-- Footer -->
