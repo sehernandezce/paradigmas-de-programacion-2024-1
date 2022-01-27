@@ -61,6 +61,7 @@
         <li class="nav-item"><a class="nav-link" href="#definición">Definición</a></li>
         <li class="nav-item"><a class="nav-link" href="#CvP">Concurrencia VS Paralelismo</a></li>
         <li class="nav-item"><a class="nav-link" href="#conceptos">Conceptos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ejecucion-concurrente">Ejecución concurrente</a></li>
         <li class="nav-item"><a class="nav-link" href="#aplicaciones">Aplicaciones</a></li>
         <li class="nav-item"><a class="nav-link" href="#ventajas">Ventajas</a></li>
         <li class="nav-item"><a class="nav-link" href="#desventajas">Desventajas</a></li>
@@ -109,7 +110,14 @@
               construcciones de más alto nivel y más restrictivas. Por lo tanto, ahora vemos una plétora de diferentes
               técnicas para proporcionar programación concurrente controlada, muchas de las cuales examinaremos con
               mayor detalle en los últimos capítulos de este libro</p>
-
+            <p>
+              La computación concurrente se desarrolló a partir de trabajos anteriores sobre ferrocarriles y telegrafía,
+              del siglo XIX y principios del XX, y algunos términos datan de este período, como semáforos. Estos 
+              surgieron para abordar la cuestión de cómo manejar múltiples trenes en el mismo sistema ferroviario 
+              (evitando colisiones y maximizando la eficiencia) y cómo manejar múltiples transmisiones a través de 
+              un conjunto determinado de cables (mejorando la eficiencia), como a través de multiplexación por división 
+              de tiempo (década de 1870). ).
+            </p>
           </div>
 
           <div id="filosofía">
@@ -139,10 +147,17 @@
             <!--
 <img src="https://s3.postimg.org/435ixtj2r/definicion.jpg" style="margin-left: 30px"> -->
 
-            <img src="images/concurrentProcess.png" style="margin-left: 30px">
-
+            <img src="images/concurrentProcess.png" style="margin-left: 30px; margin-bottom: 20px">
+            <p>
+              La programación concurrente no es más que la forma en la cual podemos
+              resolver ciertas problemáticas de forma concurrente, es decir, ejecutando múltiples tareas a la misma vez 
+              y no de forma secuencial.En un programa concurrente las tareas puede continuar sin la necesidad que otras 
+              comiencen o finalicen. <br>
+              Si bien es cierto que la programación concurrente acarrea ciertos problemas, principalmente al momento de 
+              compartir información entre tareas, también es cierto que si se implementa de forma correcta, podremos, en 
+              casos puntuales, mejorar significativamente el performance de nuestras aplicaciones. 
+            </p>
           </div>
-
           <div id="CvP">
             <br> <br>
             <h1>
@@ -455,6 +470,30 @@
             <h3>Ejemplo Algoritmos de Calendarización</h3>
             <p>En la figura se puede ver cómo son atendidos 5 procesos según cada algoritmo.</p>
             <img src="images/concurrentAl.png" style="margin-left: 30px">
+            <div id="ejecucion-concurrente" href="#ejecucion-concurrente">
+              <br> <br>
+              <h1>¿Qué se puede ejecutar concurrentemente?</h1>
+              No todas las partes de un programa se pueden ejecutar concurrentemente:
+              <br><img src="images/tabla.png" style="margin-top: 10px">
+              <ul>
+                <li>En la primera columna está claro que la primera sentencia se debe ejecutar antes que la segunda</li>
+                <li>En la segunda columna, el orden en que se ejecuten no tiene importancia</li>
+              </ul>
+              En general existen unas condiciones para saber que se puede ejecutar concurrentemente:
+                <strong>Condiciones de Bernstein.</strong><br><br>
+              <h2>Condiciones de Bernstein</h2>
+              Para poder determinar si dos conjuntos de instrucciones se pueden ejecutar concurrentemente, sea Sk un conjunto
+              de instrucciones a ejecutar, llamamos:
+              <ul>
+                <li>L(Sk) = {a1, a2, ...an} al conjunto de lectura, formado por todas las variables cuyos valores son referenciados
+                  (se leen) durante la ejecución de las instrucciones Sk.</li>
+                <li>E(Sk) = {b1, b2, ...bm} al conjunto de escritura, formado por todas las variables cuyos valores son actualizados
+                  durante la ejecución.</li>
+              </ul>
+              Para que se puedan ejecutar concurrentemente dos conjuntos de instrucciones Si y Sj se debe cumplir que ninguno escriba
+              lo que el otro lee o escribe:
+              <br><img src="images/condiciones.png" style="margin-top: 10px">
+            </div>
             <h1>
               <a id="programacion-paralela-y-concurrente" class="anchor" href="#programacion-paralela-y-concurrente"
                 aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programacion
@@ -1544,7 +1583,9 @@ procedure consumer() {
             <p>En estos ejemplos, utilizamos la programación concurrente para :<br />
               - Los videos juegos o se usará para la recuperación de claves, la interfaz gráfica y el procesamiento de
               datos recibidos por el servidor para juegos en línea.<br />
-              - Servicios web, donde el servidor tendrá que lidiar con muchas solicitudes al mismo tiempo.<br />
+              - Servicios web, donde el servidor tendrá que lidiar con muchas solicitudes al mismo tiempo. En  este  contexto,  
+              se  vuelve interesante  tener  múltiples  hilos  de  ejecución,  permitiendo  que  cada uno  de  ellos  atienda
+                una solicitud;  de  esta  manera,  habilita  la paralelización de la gestión de múltiples tareas.  <br />
               - Bases de datos, o ésta, una vez más, tendrá que atender solicitudes al mismo tiempo.<br />
               - Y, finalmente, cualquier interacción con una interfaz gráfica: de hecho, cuando realiza una acción que
               se mostrará en la pantalla, el programa tendrá que continuar mientras que la interfaz gráfica mostrará los
@@ -1603,7 +1644,8 @@ procedure consumer() {
             está construido sobre la MV de Erlang y aprovecha esto para construir sistemas distribuidos y tolerantes a
             fallos con baja latencia. Es utilizado para construcción de API's y para optimización en el desarrollo web.
             Es utilizado en muchos frameworks como Hedwig, para la implementación de chatbots en distntas redes sociales y
-            demás.
+            demás. Elixir presenta ejecución por hilos (referida como procesos) en un ambiente en el cuál múltiples 
+            procesos pueden comunicarse unos con otros vía mensajes. 
 
             <ul>
               <li><strong>Ada</strong></li>
@@ -1650,7 +1692,10 @@ procedure consumer() {
             </ul>
             <center><img src="images/haskell.png" width="150px" height="150px"></center>
             Haskell es un lenguaje polimórficamente tipificado, perezoso, puramente funcional, muy diferente a la
-            mayoría de los otros lenguajes de programación.
+            mayoría de los otros lenguajes de programación. La concurrencia es "ligera", lo que significa que tanto la 
+            creación de hilos como los gastos generales de cambio de contexto son extremadamente bajos. La programación 
+            de los hilos de Haskell se hace internamente y no hace uso de ningún paquete de hilos suministrado por el 
+            sistema operativo.
 
             <ul>
               <li><strong>Crystal</strong></li>
@@ -1663,6 +1708,10 @@ procedure consumer() {
             - Estáticamente tipado<br />
             - Compilado<br />
             - Self-hosted (Crystal está escrito en… crystal)
+
+            <br /><br />
+            Crystal viene con una primitiva de concurrencia llamada fibras, que son básicamente una versión más ligera de hilos.
+            Las otras primitivas de concurrencia son canales. Si ha hecho algo de Golang, esta es básicamente la misma idea.
 
             <ul>
               <li><strong>Java</strong></li>
@@ -1690,8 +1739,11 @@ procedure consumer() {
 
             Python es el lenguaje más utilizado a nivel mundial (según revista IEEE), es un lenguaje de sintaxis simple y cuyas
             aplicaciones cubren una gran cantidad de áreas del conocimiento como lo son inteligencia artificial, ciencia de datos,
-            entre otras. En cuanto a programación concurrente, cuenta con varias librerías para la implementación d eesta y su respectivo
+            entre otras. En cuanto a programación concurrente, cuenta con varias librerías para la implementación de esta y su respectivo
             control, como lo son la librería "Thread" y "Multiprocessing", que provee de herramientas como semáforos, monitores, entre otros.
+            Específicamente la librería "Thread" incluye una interfaz de alto nivel orientada a objetos para trabajar con concurrencia desde
+            Python. Los objetos Thread se ejecutan al mismo tiempo dentro del mismo proceso y comparten memoria.
+
 
             <ul>
               <li><strong>C</strong></li>
@@ -1702,7 +1754,15 @@ procedure consumer() {
             En cuanto a programación concurrente, usa la librería pthread.h para la creación de hlos y métodos de control muy básicos como la implementación
             de un semáforo.
             
-
+            <ul>
+              <li><strong>C++</strong></li>
+            </ul>
+            <center><img src="images/cpp.png" width="96px" height="96px"></center>
+            <br>
+            Fue diseñado a mediados de los años 80 por el danés Bjarne Stroustrup. Su intención fue la de extender el lenguaje de programación C 
+            para que tuviese los mecanismos necesarios para manipular objetos. Por lo tanto C++ contiene los paradigmas de la programación estructurada 
+            y orientada a objetos. Se puede usar una librería  thread que es básicamente una sección de código independiente que el procesador puede ejecutar 
+            de forma concurrente junto a otros threads o hilos de ejecución.
 
           </div>
           <div id="ejemplos">
@@ -3106,7 +3166,16 @@ TotalMilliseconds : 832,8442
               </li>
               <li><a style="background-color: #FFFFFF;color: blue; text-align: left;"
                 href="https://www.youtube.com/watch?v=3atNYmqXyV4">Ejemplo Go Concurrencia</a>
-            </li>
+              </li>
+              <li><a style="background-color: #FFFFFF;color: blue; text-align: left;"
+                href="https://www.dlsi.ua.es/asignaturas/pc/teoria/t01.pdf">Conceptos fundamentales Programación Concurrente</a>
+              </li>
+              <li><a style="background-color: #FFFFFF;color: blue; text-align: left;"
+                href="https://www.researchgate.net/publication/268289930_Programacion_concurrente">Programación concurrente</a>
+              </li>
+              <li><a style="background-color: #FFFFFF;color: blue; text-align: left;"
+                href="https://platzi.com/clases/1984-servidores-rust/35177-creacion-de-hilos-con-rust/">Creación de hilos con Rust</a>
+              </li>
             </ul>
           </div>
 
@@ -3148,6 +3217,10 @@ TotalMilliseconds : 832,8442
             <li>Juan Camilo Acosta Rojas</li>
             <li>Cristian Santiago Vargas Ortiz</li>
             <li>Juan Esteban Rozo Urbina</li>
+            <li>Camilo Andres Carranza Carvajal</li>
+            <li>Julio Javier Muñoz</li>
+            <li>Elkin Mauricio Mendez</li>
+            <li>Santiago Morales Pulido</li>
           </ul>
         </div>
       </section>
