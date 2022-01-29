@@ -1,53 +1,62 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Stellar by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Svelte Tutorial: Tour por el lenguaje</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Svelte Tutorial: Tour por el lenguaje</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css"
+    />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1>Lenguage Svelte</h1>
+        <p>
+          En esta página encontrarás una guía para entender el lenguaje <em>Svelte</em>. En algunas
+          secciones para más claridad encontrás un vista de diferencia <em>(diff)</em> para apreciar
+          mejor los conceptos. En otras, encontrarás el codigo en JavaScript plano para más
+          simplicidad.
+        </p>
+      </header>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <!-- Content -->
+        <section id="content" class="main">
+          <span class="image main"><img src="images/preview-dark.png" alt="" /></span>
 
-				<!-- Header -->
-					<header id="header">
-						<h1>Lenguage Svelte</h1>
-						<p>En esta página encontrarás una guía para entender el lenguaje <em>Svelte</em>. En algunas secciones para más claridad
-						encontrás un vista de diferencia <em>(diff)</em> para apreciar mejor los conceptos. En otras, encontrarás el codigo en 
-						JavaScript plano para más simplicidad.</p>
-					</header>
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Content -->
-							<section id="content" class="main">
-								<span class="image main"><img src="images/preview-dark.png" alt="" /></span>
-
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-
-<h1 id="reactividad">Reactividad</h1>
-<h2 id="asignaciones">Asignaciones</h2>
-<p>Un problema que buscan resolver los frameworks de front-end es la actualización de forma eficiente del DOM cuando el usuario interactúa con la interfáz.</p>
-<p>Hay un completo sistema de &#39;reactividad&#39; para mantener el DOM en sincronía con el estado de la aplicación, por ejemplo en respuesta a un evento.</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h1 id="reactividad">Reactividad</h1>
+          <h2 id="asignaciones">Asignaciones</h2>
+          <p>
+            Un problema que buscan resolver los frameworks de front-end es la actualización de forma
+            eficiente del DOM cuando el usuario interactúa con la interfáz.
+          </p>
+          <p>
+            Hay un completo sistema de &#39;reactividad&#39; para mantener el DOM en sincronía con
+            el estado de la aplicación, por ejemplo en respuesta a un evento.
+          </p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     let count = 0;
 
     function handleClick() {
@@ -62,9 +71,13 @@
 </pre></div>
 
 </code></pre>
-<h2 id="declaraciones">Declaraciones</h2>
-<p>Las declaraciones reactivas identifican el cambio valor de una variable para actualizar los componentes que hacen uso de este valor. El cambio de valor se detecta a través del operador asignación.</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="declaraciones">Declaraciones</h2>
+          <p>
+            Las declaraciones reactivas identifican el cambio valor de una variable para actualizar
+            los componentes que hacen uso de este valor. El cambio de valor se detecta a través del
+            operador asignación.
+          </p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     let count = 0;
 <span class="gd">-    let doubled = count * 2;</span>
 <span class="gi">+    $: doubled = count * 2;</span>
@@ -82,9 +95,13 @@
 </pre></div>
 
 </code></pre>
-<h2 id="proposiciones">Proposiciones</h2>
-<p>El uso de declaraciones reactivas se puede extender a bloques de código y  a expresiones condicionales. Recordar que para que la interfaz reaccione a la interacción del usuario la variable debe ser reasignada.</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="proposiciones">Proposiciones</h2>
+          <p>
+            El uso de declaraciones reactivas se puede extender a bloques de código y a expresiones
+            condicionales. Recordar que para que la interfaz reaccione a la interacción del usuario
+            la variable debe ser reasignada.
+          </p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     let count = 0;
 
 <span class="gi">+    $: if (count &gt;= 10) {</span>
@@ -103,9 +120,15 @@
 </pre></div>
 
 </code></pre>
-<h2 id="actulizando-arreglos-y-objetos">Actulizando Arreglos y objetos</h2>
-<p>Los arreglos se manipulan a través de metodos como <code>slice</code>, <code>push</code> o <code>reduce</code> los cuales no modifican el arreglo o el objeto a través de un operador de asignación, por lo que la reactividad del framework no se dispara. Para solucionar esto se realiza la operación sobre el objeto usando la flexibilidad sintáctica de JavaScript e involucrando el operador de asignación:</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="actulizando-arreglos-y-objetos">Actulizando Arreglos y objetos</h2>
+          <p>
+            Los arreglos se manipulan a través de metodos como <code>slice</code>,
+            <code>push</code> o <code>reduce</code> los cuales no modifican el arreglo o el objeto a
+            través de un operador de asignación, por lo que la reactividad del framework no se
+            dispara. Para solucionar esto se realiza la operación sobre el objeto usando la
+            flexibilidad sintáctica de JavaScript e involucrando el operador de asignación:
+          </p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     let numbers = [1, 2, 3, 4];
 
     function addNumber() {
@@ -124,13 +147,26 @@
 </pre></div>
 
 </code></pre>
-<h1 id="props">Props</h1>
-<p>Props es el diminitivo de <em>Properties</em> y es un objeto que representa y almacena el estado interno de un <em>componente</em> de Svelte.
-    Recordar que las unidades escenciales de una aplicación escrita en Svelte son los <em>componentes</em>.<br>De esta manera una interfaz implementada con Svelte puede verse como un árbol de estados donde las aristas representan las interacciones entre componentes.<br>Se habla de árbol y no de un grafo de estados porque por la construcción modular de la interfáz o aplicación mediante la descomposición de unidades da paso a una estructura arbórea.<br>Por esta razón el estado o la información siempre se mueve de un componente padre a uno hijo. Si se desea que la propagación de la rección sea inversa, se debe aplicar otra técnica que también ofrece Svelte y se verá más adelante.   </p>
-<h2 id="declaraci-n-de-props-">Declaración de Props.</h2>
-<p>Para indicar que un atributo representa el estado interno del componente se usa la palabra <code>export</code>.</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h1 id="props">Props</h1>
+          <p>
+            Props es el diminitivo de <em>Properties</em> y es un objeto que representa y almacena
+            el estado interno de un <em>componente</em> de Svelte. Recordar que las unidades
+            escenciales de una aplicación escrita en Svelte son los <em>componentes</em>.<br />De
+            esta manera una interfaz implementada con Svelte puede verse como un árbol de estados
+            donde las aristas representan las interacciones entre componentes.<br />Se habla de
+            árbol y no de un grafo de estados porque por la construcción modular de la interfáz o
+            aplicación mediante la descomposición de unidades da paso a una estructura arbórea.<br />Por
+            esta razón el estado o la información siempre se mueve de un componente padre a uno
+            hijo. Si se desea que la propagación de la rección sea inversa, se debe aplicar otra
+            técnica que también ofrece Svelte y se verá más adelante.
+          </p>
+          <h2 id="declaraci-n-de-props-">Declaración de Props.</h2>
+          <p>
+            Para indicar que un atributo representa el estado interno del componente se usa la
+            palabra <code>export</code>.
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import Nested from &#39;./Nested.svelte&#39;;
 &lt;/script&gt;
 
@@ -138,8 +174,8 @@
 </pre></div>
 
 </code></pre>
-<p>Nested.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Nested.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
 <span class="gd">-    let answer;</span>
 <span class="gi">+    export let answer;</span>
 &lt;/script&gt;
@@ -148,10 +184,14 @@
 </pre></div>
 
 </code></pre>
-<h2 id="valores-por-defecto">Valores por defecto</h2>
-<p>Es recomendable trabajar con valores por defecto para evitar inconsistencias en el estado interno de la aplicación. Simplemente basta con inicializar el atributo que se exponen como <em>property</em>:</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="valores-por-defecto">Valores por defecto</h2>
+          <p>
+            Es recomendable trabajar con valores por defecto para evitar inconsistencias en el
+            estado interno de la aplicación. Simplemente basta con inicializar el atributo que se
+            exponen como <em>property</em>:
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import Nested from &#39;./Nested.svelte&#39;;
 &lt;/script&gt;
 
@@ -160,8 +200,8 @@
 </pre></div>
 
 </code></pre>
-<p>Nested.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Nested.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
 <span class="gd">-    export let answer;</span>
 <span class="gi">+    export let answer = &#39;a mystery&#39;;</span>
 &lt;/script&gt;
@@ -170,10 +210,14 @@
 </pre></div>
 
 </code></pre>
-<h2 id="props-extendidos">Props extendidos</h2>
-<p>Como se mencionó antes los props son un objeto, y una forma convencional de hacerlo es pasando cada atributo al componente destino. Svelte provee la siguiente forma compacta para pasar un prop:</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="props-extendidos">Props extendidos</h2>
+          <p>
+            Como se mencionó antes los props son un objeto, y una forma convencional de hacerlo es
+            pasando cada atributo al componente destino. Svelte provee la siguiente forma compacta
+            para pasar un prop:
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import Info from &#39;./Info.svelte&#39;;
 
     const pkg = {
@@ -189,8 +233,8 @@
 </pre></div>
 
 </code></pre>
-<p>Info.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Info.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     export let name;
     export let version;
     export let speed;
@@ -205,11 +249,71 @@
 </pre></div>
 
 </code></pre>
-<h1 id="stores"><em>Stores</em></h1>
-<p>Un <em>Store</em> provee una utilidad similar a la de un <em>Prop</em>. Como su nombre lo indica, un <em>Store</em> es un componente que almacena información y que puede ser accedida por cualquier componente de la aplicación.<br>Adicionalmente los <em>Stores</em> proveen un mecanismo <em>publish-subscribe</em> para notificar a los componentes en caso de un cambio de estado. Notar que esta propiedad de los <em>Stores</em> va alineada con la reactividad que ofrece el framework <em>Svelte</em> en general.<br>El ejemplo con varios componentes muestra que el <em>Store</em> se puede acceder desde varios componentes manteniendo integridad:</p>
-<h2 id="stores-escribibles"><em>Stores</em> escribibles</h2>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h1 id="slots"><em>Slots</em></h1>
+          <p>
+            Un <em>Slot</em> es un elemento que permite ser usado como "placeholder" y de ésta forma
+            ser reemplazado por el marcado HTML que deseemos. Un ejemplo: Supongamos que se tiene
+            código dentro de un componente llamado Card.svelte <br /><br />
+            <code> &lt;div&gt; &lt;slot/&gt; &lt;/div&gt; </code> <br /><br />
+            Entonces, por ejemplo, si al usarlo se realiza lo siguiente <br /><br />
+            <pre>
+<code class="lang-diff">
+<div class="highlight">
+<pre>
+&lt;Card&gt; 
+&lt;h3&gt; Inside the slot &lt;/h3&gt;
+&lt;p&gt; This is goint to be inside the slot, too&lt;/p&gt;
+&lt;/Card&gt;
+</pre>
+</div>
+</code>
+        </pre>
+            <br /><br />
+            el marcado HTML (en este caso los elementos h3 y p) serán colocados dentro del elemento
+            div definido en Card.svelte. Ésta técnica es extremadamente cuando se quiere inyectar
+            marcado HTML en un elemento con estilos predefinidos y que van a ser comunes sin
+            importar el marcado que le insertemos. Un muy buen ejemplo ex un e-commerce, que al
+            mostrar sus productos se quiere que cada uno de éstos esté con cierto borde o cierto
+            borde que sea acorde a los colores y estética del negocio.
+          </p>
+          <h2 id="slots-nombrados"><em>Slots</em> nombrados</h2>
+
+          <p>
+              Los <em>Slots</em> nombrados permiten asignar marcado HTML (como los slots corrientes) pero en un específico lugar que el desarrollador/a defina.
+              Por ejemplo, si se modifica el ejemplo anterior y se agregan los siguientes atributos <em>name</em><br><br>
+
+              <code> &lt;div&gt; &lt;slot name="slot-1"/&gt; &lt;p&gt; In the middle &lt;/p&gt; &lt;slot name="slot-2"/&gt; &lt;/div&gt; </code> <br /><br />
+
+<pre>
+<code class="lang-diff">
+<div class="highlight">
+<pre>
+&lt;Card&gt; 
+&lt;h3 slot="slot-1"&gt; Inside the slot 1&lt;/h3&gt;
+&lt;p slot="slot-2"&gt; This is goint to be inside the slot 2&lt;/p&gt;
+&lt;/Card&gt;
+</pre>
+</div>
+</code>
+</pre>
+<br><br>
+Entonces, el elemento h3 y p (con atributos slot="slot-1" y slot="slot-2", respectivamente) serán colocados en el lugar de los slots con atributos name="slot-1" y name="slot-2", respectivamente.
+          </p>
+        
+          <h1 id="stores"><em>Stores</em></h1>
+          <p>
+            Un <em>Store</em> provee una utilidad similar a la de un <em>Prop</em>. Como su nombre
+            lo indica, un <em>Store</em> es un componente que almacena información y que puede ser
+            accedida por cualquier componente de la aplicación.<br />Adicionalmente los
+            <em>Stores</em> proveen un mecanismo <em>publish-subscribe</em> para notificar a los
+            componentes en caso de un cambio de estado. Notar que esta propiedad de los
+            <em>Stores</em> va alineada con la reactividad que ofrece el framework
+            <em>Svelte</em> en general.<br />El ejemplo con varios componentes muestra que el
+            <em>Store</em> se puede acceder desde varios componentes manteniendo integridad:
+          </p>
+          <h2 id="stores-escribibles"><em>Stores</em> escribibles</h2>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
     import Incrementer from &#39;./Incrementer.svelte&#39;;
     import Decrementer from &#39;./Decrementer.svelte&#39;;
@@ -231,8 +335,8 @@
 </pre></div>
 
 </code></pre>
-<p>Decrementer.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Decrementer.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function decrement() {
@@ -246,8 +350,8 @@
 </pre></div>
 
 </code></pre>
-<p>Incrementer.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Incrementer.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function increment() {
@@ -261,8 +365,8 @@
 </pre></div>
 
 </code></pre>
-<p>Resetter.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Resetter.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function reset() {
@@ -276,17 +380,23 @@
 </pre></div>
 
 </code></pre>
-<p>store.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+          <p>store.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
 
 export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<h2 id="auto-subscripciones">Auto-subscripciones</h2>
-<p>El uso del <em>Store</em> que se mostré en la subsección anterior presenta un problema: nunca se desuscribe y en el caso de varias construcciones y destrucciones del componente puede dar paso a un <em>memory-leak</em>.<br>Para realizar una autosubscripción sólo basta con agregar el símbolo pesos <code>$</code> como prefijo al identificador del <em>Store</em>.</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="auto-subscripciones">Auto-subscripciones</h2>
+          <p>
+            El uso del <em>Store</em> que se mostré en la subsección anterior presenta un problema:
+            nunca se desuscribe y en el caso de varias construcciones y destrucciones del componente
+            puede dar paso a un <em>memory-leak</em>.<br />Para realizar una autosubscripción sólo
+            basta con agregar el símbolo pesos <code>$</code> como prefijo al identificador del
+            <em>Store</em>.
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
     import Incrementer from &#39;./Incrementer.svelte&#39;;
     import Decrementer from &#39;./Decrementer.svelte&#39;;
@@ -308,8 +418,8 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>Decrementer.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Decrementer.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function decrement() {
@@ -323,8 +433,8 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>Incrementer.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Incrementer.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function increment() {
@@ -338,8 +448,8 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>Resetter.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <p>Resetter.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 
     function reset() {
@@ -353,17 +463,22 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>store.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+          <p>store.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
 
 export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<h2 id="stores-de-s-lo-lectura"><em>Stores</em> de sólo lectura</h2>
-<p>Para ello se usa la función <code>readable</code> que toma como entrada un valor inicial y una función cuyo único parámetro es un <em>callback</em> que se lanza cuando llega el primer subscriptor y que retorna una función cuando el último subscriptor termina la relación:</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="stores-de-s-lo-lectura"><em>Stores</em> de sólo lectura</h2>
+          <p>
+            Para ello se usa la función <code>readable</code> que toma como entrada un valor inicial
+            y una función cuyo único parámetro es un <em>callback</em> que se lanza cuando llega el
+            primer subscriptor y que retorna una función cuando el último subscriptor termina la
+            relación:
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { time } from &#39;./stores.js&#39;;
 
     const formatter = new Intl.DateTimeFormat(&#39;en&#39;, {
@@ -378,8 +493,8 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>stores.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { readable } from &#39;svelte/store&#39;;
+          <p>stores.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { readable } from &#39;svelte/store&#39;;
 
 <span class="gd">- export const time = readable(null, function start(set) {</span>
 <span class="gi">+ export const time = readable(new Date(), function start(set) {</span>
@@ -394,10 +509,10 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<h2 id="stores-derivados"><em>Stores</em> derivados</h2>
-<p>Se pueden crear <em>Stores</em> a partir de otros:</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="stores-derivados"><em>Stores</em> derivados</h2>
+          <p>Se pueden crear <em>Stores</em> a partir de otros:</p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { time, elapsed } from &#39;./stores.js&#39;;
 
     const formatter = new Intl.DateTimeFormat(&#39;en&#39;, {
@@ -417,8 +532,8 @@ export const count = writable(0);
 </pre></div>
 
 </code></pre>
-<p>stores.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { readable, derived } from &#39;svelte/store&#39;;
+          <p>stores.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { readable, derived } from &#39;svelte/store&#39;;
 
 export const time = readable(new Date(), function start(set) {
     const interval = setInterval(() =&gt; {
@@ -440,10 +555,15 @@ export const elapsed = derived(
 </pre></div>
 
 </code></pre>
-<h2 id="stores-personalizados"><em>Stores</em> Personalizados</h2>
-<p>En vez de <em>exportar</em> un <em>Store</em> como se ha venido haciendo, se puede crear un <em>Store</em> personalizdo siempre que se implemente la función <code>subscribe</code>. Con esta alternativa los ejemplos de esta sección quedan más compactos:</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="stores-personalizados"><em>Stores</em> Personalizados</h2>
+          <p>
+            En vez de <em>exportar</em> un <em>Store</em> como se ha venido haciendo, se puede crear
+            un <em>Store</em> personalizdo siempre que se implemente la función
+            <code>subscribe</code>. Con esta alternativa los ejemplos de esta sección quedan más
+            compactos:
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import { count } from &#39;./stores.js&#39;;
 &lt;/script&gt;
 
@@ -455,8 +575,8 @@ export const elapsed = derived(
 </pre></div>
 
 </code></pre>
-<p>stores.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
+          <p>stores.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { writable } from &#39;svelte/store&#39;;
 
 function createCount() {
     const { subscribe, set, update } = writable(0);
@@ -476,10 +596,14 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h1 id="logic-">Logic:</h1>
-<h2 id="if-">If:</h2>
-<p>Podemos usar un condicional if en el archivo .svelte. Las expresiones tienen la misma organización que se usa en javascript, por lo que se pueden usar los mismos operadores lógicos.</p>
-<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+          <h1 id="logic-">Logic:</h1>
+          <h2 id="if-">If:</h2>
+          <p>
+            Podemos usar un condicional if en el archivo .svelte. Las expresiones tienen la misma
+            organización que se usa en javascript, por lo que se pueden usar los mismos operadores
+            lógicos.
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
         <span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">loggedIn</span><span class="o">:</span> <span class="kc">false</span> <span class="p">};</span>
 
         <span class="kd">function</span> <span class="nx">toggle</span><span class="p">()</span> <span class="p">{</span>
@@ -501,9 +625,9 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="else-">Else:</h2>
-<p>Podemos añadir una condición else en lugar de dos o más condicionales:</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>  &lt;script&gt;
+          <h2 id="else-">Else:</h2>
+          <p>Podemos añadir una condición else en lugar de dos o más condicionales:</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>  &lt;script&gt;
         let user = { loggedIn: false };
 
         function toggle() {
@@ -525,9 +649,12 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="else-if-">Else if:</h2>
-<p>Svelte permite el uso de else if, y similar al if, es posible usar operadores lóogicos de javascript:</p>
-<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+          <h2 id="else-if-">Else if:</h2>
+          <p>
+            Svelte permite el uso de else if, y similar al if, es posible usar operadores lóogicos
+            de javascript:
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
         <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nt">&lt;/script&gt;</span>
 
@@ -549,9 +676,12 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="each-">Each:</h2>
-<p>Podemos recorrer una lista usando la función Each. Se comporta similar a un ciclo for, y es posible añadir un índice que acompaña cada elemento recorrido de la lista:</p>
-<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+          <h2 id="each-">Each:</h2>
+          <p>
+            Podemos recorrer una lista usando la función Each. Se comporta similar a un ciclo for, y
+            es posible añadir un índice que acompaña cada elemento recorrido de la lista:
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
         <span class="kd">let</span> <span class="nx">cats</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;J---aiyznGQ&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Keyboard Cat&quot;</span> <span class="p">},</span>
         <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;z_AbfPXTKms&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Maru&quot;</span> <span class="p">},</span>
@@ -579,9 +709,13 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="await-">Await:</h2>
-<p>En caso de que la aplicación espere datos a partir de funciones asíncronas, podemos usar la función await que actúa según espera, recibe o falla la promesa:</p>
-<pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
+          <h2 id="await-">Await:</h2>
+          <p>
+            En caso de que la aplicación espere datos a partir de funciones asíncronas, podemos usar
+            la función await que actúa según espera, recibe o falla la promesa. La palabra reservada <em>await</em> es usada cuando la promesa esté en estado <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"><em>resolved</em></a>,
+            o, en este caso, cuando la respuesta del servidor haya sido recibida por nuestro programa. A su vez, la palabra reservada <em>async</em> se coloca en una función siempre que ésta contenga la palagra <em>await</em> en ella. 
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre>  <span class="nt">&lt;script&gt;</span>
         <span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">getRandomNumber</span><span class="p">();</span>
 
         <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getRandomNumber</span><span class="p">()</span> <span class="p">{</span>
@@ -616,15 +750,18 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h1 id="events-">Events:</h1>
-<p>Svelte nos facilita hacer uso y definir listeners hacia eventos en el DOM usando  </p>
-<pre><code class="lang-html"><div class="highlight"><pre>on:<span class="nt">&lt;event&gt;</span>
+          <h1 id="events-">Events:</h1>
+          <p>Svelte nos facilita hacer uso y definir listeners hacia eventos en el DOM usando</p>
+          <pre><code class="lang-html"><div class="highlight"><pre>on:<span class="nt">&lt;event&gt;</span>
 </pre></div>
 
 </code></pre>
-<h2 id="mouse-move-">Mouse move:</h2>
-<p>Para este ejercicio capturamos la posicion del mouse haciendo uso de la funcion handleMousemove</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+          <h2 id="mouse-move-">Mouse move:</h2>
+          <p>
+            Para este ejercicio capturamos la posicion del mouse haciendo uso de la funcion
+            handleMousemove
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
     <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
 
     <span class="kd">function</span> <span class="nx">handleMousemove</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
@@ -643,9 +780,12 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="inline-handlers-">Inline Handlers:</h2>
-<p>Por otro lado la misma aplicación se puede realizar declarando la funcion en la misma linea donde se ejecuta</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+          <h2 id="inline-handlers-">Inline Handlers:</h2>
+          <p>
+            Por otro lado la misma aplicación se puede realizar declarando la funcion en la misma
+            linea donde se ejecuta
+          </p>
+          <pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
     <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
 
@@ -659,14 +799,21 @@ export const count = createCount();
 </pre></div>
 
 </code></pre>
-<h2 id="event-modifiers-">Event modifiers:</h2>
-<p>Los eventos relacionados al DOM pueden tener modificaciones que alteran el comportamiento de este, como pueden ser: </p>
-<ul>
-<li>once: Elimina el controlador después de la primera vez que se ejecuta .</li>
-<li>self: Solo desencadena el controlador si event.target es el elemento en sí.</li>
-<li>capture: Dispara al manipulador durante la fase de captura en lugar de la fase de burbujeo.</li>
-<li>nonpassive: Configura passive:false<br>
-<pre>
+          <h2 id="event-modifiers-">Event modifiers:</h2>
+          <p>
+            Los eventos relacionados al DOM pueden tener modificaciones que alteran el
+            comportamiento de este, como pueden ser:
+          </p>
+          <ul>
+            <li>once: Permite la emisión del evento por una única vez; por lo tanto, su callback asociado se ejecutará también una única vez.</li>
+            <li>self: Solo desencadena el controlador si event.target es el mismo elemento que emite el evento.</li>
+            <li>
+              capture: Dispara al manipulador durante la fase de captura en lugar de la fase de
+              burbujeo.
+            </li>
+            <li>
+              nonpassive: Configura passive:false<br />
+              <pre>
 <code><p>&lt;script&gt;
     function handleClick() {
         alert(&#39;no more alerts&#39;)
@@ -676,16 +823,14 @@ export const count = createCount();
     Click me
 &lt;/button&gt;</p></code>
 </pre>
-</li>
-</ul>
+            </li>
+          </ul>
 
-<h2 id="inline-handlers-"> Component events: </h2>
-Los componentes también pueden disparar eventos.
-
-`createEventDispatcher` debe ser llamado cuando el componente es iniciado por primera vez. Esto permite conectar el envio a donde el componente fue instanciado
-
-Inner.svelte
-<pre>
+          <h2 id="inline-handlers-">Component events:</h2>
+          Los componentes también pueden disparar eventos. `createEventDispatcher` debe ser llamado
+          cuando el componente es iniciado por primera vez. Esto permite conectar el envio a donde
+          el componente fue instanciado Inner.svelte
+          <pre>
 <code>&lt;script&gt;
     import { createEventDispatcher } from &#39;svelte&#39;;
     const dispatch = createEventDispatcher();
@@ -700,25 +845,29 @@ Inner.svelte
 &lt;/button&gt;</code>
 </pre>
 
-<h2 id="inline-handlers-"> Event forwarding: </h2>
-A diferencia de los eventos DOM, los eventos de componentes no burbujean. Estos pueden ser escuchados sin importar que tan anidado este el componente.
-
-Para este caso el evento `on:message` sin un valor nos permite reenviar todos los eventos de mensajes 
-
-Outer.svelte
-<pre>
+          <h2 id="inline-handlers-">Event forwarding:</h2>
+          A diferencia de los eventos DOM, los eventos de componentes no burbujean (un evento "burbujea" en el sentido de que es emitido por el elemento en cuestión y viaja
+          al padre, al padre del padre y así hasta llegar a la raiz del DOM). Éstos pueden ser
+          escuchados sin importar que tan anidado este el componente. Para este caso, si dentro del elemento Inner se asocia un callback al evento on:message y además se quiere que quien lo use pueda
+          hacer que siga "burbujeando" hacia "arriba" (hacia el padre) es necesario que se especifique el evento
+          on:message (sin asociarle un callback). En este caso, quien usa Inner es el componnente Outer a continuación. De ésta manera, quien use a Outer podrá de igual ó asociar un callback al evento
+          on:message o hacer que siga "burbujeando" a un nivel superior adicional. <br><br>
+          <pre>
 <code>&lt;script&gt;
     import Inner from &#39;./Inner.svelte&#39;;
 &lt;/script&gt;
 &lt;Inner on:message/&gt;</code>
 </pre>
 
-<h1 id="inline-handlers-"> Bindings: </h1>
-Un binding es una propiedad de las etiquetas de Svelte que permite asignarla a un valor definido:
+          <h1 id="inline-handlers-">Bindings:</h1>
+          Un binding es una propiedad de las etiquetas de Svelte que permite asignarla a un valor
+          definido:
 
-<h2 id="inline-handlers-"> Text input: </h2>
-Podemos usar la etiqueta input y asociar un valor con una caja de texto:
-<pre>
+          <h2 id="inline-handlers-">Text input:</h2>
+          Podemos usar la etiqueta input y asociar un valor con una caja de texto. Esto es lo que se conoce como <a href="https://stackoverflow.com/questions/13504906/what-is-two-way-binding#:~:text=Two%2Dway%20binding%20means%20that,does%20the%20UI%2C%20and%20conversely."><em>two way binding</em></a>
+          dado que, en este caso, la variable <em>text</em> declarada en el componente se inyectará como valor en el input (one way, en un sentido), pero a su vez cualquier cambio en el 
+          elemento input se reflejará en la variable <em>text</em> del componente (two way, en el sentido opuesto). <br><br>
+          <pre>
 <code>&lt;script&gt;
     let text = &quot;&quot;;
 &lt;/script&gt;
@@ -726,9 +875,10 @@ Podemos usar la etiqueta input y asociar un valor con una caja de texto:
 &lt;p&gt;{text || &#39;Texto&#39;}&lt;/p&gt;
 </code>
 </pre>
-<h2 id="inline-handlers-"> Numeric inputs: </h2>
-De forma similar a la entrada de texto, podemos tener una entrada numérica, tanto en una caja como en un slider:
-<pre>
+          <h2 id="inline-handlers-">Numeric inputs:</h2>
+          De forma similar a la entrada de texto, podemos tener una entrada numérica, tanto en una
+          caja como en un slider:
+          <pre>
 <code>&lt;script&gt;
     let a = 0;
     let b = 0;
@@ -744,9 +894,10 @@ De forma similar a la entrada de texto, podemos tener una entrada numérica, tan
 &lt;p&gt;{a} + {b} = {a + b}&lt;/p&gt;</code>
 </pre>
 
-<h2 id="inline-handlers-"> Checkbox: </h2>
-Podemos utilizar checkbox para tomar un valor booleano, y hacer que la aplicación reaccione de forma acorde:
-<pre>
+          <h2 id="inline-handlers-">Checkbox:</h2>
+          Podemos utilizar checkbox para tomar un valor booleano, y hacer que la aplicación
+          reaccione de forma acorde:
+          <pre>
 <code>&lt;script&gt;
     let accept = false;
 &lt;/script&gt;
@@ -763,9 +914,10 @@ Podemos utilizar checkbox para tomar un valor booleano, y hacer que la aplicaci�
     Continuar  &lt;/button&gt;</code>
 </pre>
 
-<h2 id="inline-handlers-"> Multiple inputs with groups:</h2>
-Podemos crear diferentes entradas para un grupo de valores, y si usamos checkbox o radio  se puede hacer que estos sean mutuamente excluyentes o no:
-<pre>
+          <h2 id="inline-handlers-">Multiple inputs with groups:</h2>
+          Podemos crear diferentes entradas para un grupo de valores, y si usamos checkbox o radio
+          se puede hacer que estos sean mutuamente excluyentes o no:
+          <pre>
 <code>&lt;script&gt;
     let size = &quot;&quot;;
     let flavours = [];
@@ -808,9 +960,10 @@ Podemos crear diferentes entradas para un grupo de valores, y si usamos checkbox
 {/if}</code>
 </pre>
 
-<h2 id="inline-handlers-"> Files: </h2>
-Podemos asignar una etiqueta label a una etiqueta input, que tiene un bind asignado a los valores de los archivos que se suban, lo que permite subir una imagen, o varios archivos:
-<pre>
+          <h2 id="inline-handlers-">Files:</h2>
+          Podemos asignar una etiqueta label a una etiqueta input, que tiene un bind asignado a los
+          valores de los archivos que se suban, lo que permite subir una imagen, o varios archivos:
+          <pre>
 <code>&lt;script&gt;
     let files;
 &lt;/script&gt;
@@ -839,9 +992,10 @@ Podemos asignar una etiqueta label a una etiqueta input, que tiene un bind asign
     {/each}
 {/if}</code>
 </pre>
-<h2 id="inline-handlers-">  Select: </h2>
-Las etiquetas select permiten crear un bind también, y en este caso se muestran en una etiqueta form:
-<pre>
+          <h2 id="inline-handlers-">Select:</h2>
+          Las etiquetas select permiten crear un bind también, y en este caso se muestran en una
+          etiqueta form:
+          <pre>
 <code>&lt;script&gt;
     let questions = [
         { id: 1, text: ¿Qué sabor quiere? },
@@ -886,9 +1040,10 @@ Las etiquetas select permiten crear un bind también, y en este caso se muestran
 &lt;/style&gt;</code>
 </pre>
 
-<h2 id="inline-handlers-">  Multiple select: </h2>
-De igual forma, podemos hacer que el bind no sea mutuamente excluyente en la etiqueta select:
-<pre>
+          <h2 id="inline-handlers-">Multiple select:</h2>
+          De igual forma, podemos hacer que el bind no sea mutuamente excluyente en la etiqueta
+          select:
+          <pre>
 <code>&lt;script&gt;
     let size = &quot;&quot;;
     let flavours = [];
@@ -936,9 +1091,10 @@ De igual forma, podemos hacer que el bind no sea mutuamente excluyente en la eti
 {/if}</code>
 </pre>
 
-<h2 id="inline-handlers-">  Bindings con bloques Each: </h2>
-Podemos crear bindings en inputs para cada elemento de una lista que se recorre, y así crear varias entradas con un recorrido:
-<pre>
+          <h2 id="inline-handlers-">Bindings con bloques Each:</h2>
+          Podemos crear bindings en inputs para cada elemento de una lista que se recorre, y así
+          crear varias entradas con un recorrido:
+          <pre>
 <code>&lt;script&gt;
     let list = [];
     
@@ -980,10 +1136,10 @@ Podemos crear bindings en inputs para cada elemento de una lista que se recorre,
 &lt;/button&gt;</code>
 </pre>
 
-
-<h2 id="inline-handlers-">  Dimensiones: </h2>
-Como se hizo anteriormente, es posible tener entradas numéricas con bindings en inputs, pero también crear bindings con los mismos valores en una etiqueta div:
-<pre>
+          <h2 id="inline-handlers-">Dimensiones:</h2>
+          Como se hizo anteriormente, es posible tener entradas numéricas con bindings en inputs,
+          pero también crear bindings con los mismos valores en una etiqueta div:
+          <pre>
 <code>&lt;script&gt;
     let w;
     let h;
@@ -1010,9 +1166,11 @@ Como se hizo anteriormente, es posible tener entradas numéricas con bindings en
 &lt;/style&gt;</code>
 </pre>
 
-<h2 id="inline-handlers-"> Bindings con componentes: </h2>
-En caso de tener un componente externo .svelte, es posible usar un binding con un valor que exporta, como en este ejemplo que usa el valor pin, y lo asigna al valor value de Keypad.svelte:
-<pre>
+          <h2 id="inline-handlers-">Bindings con componentes:</h2>
+          En caso de tener un componente externo .svelte, es posible usar un binding con un valor
+          que exporta, como en este ejemplo que usa el valor pin, y lo asigna al valor value de
+          Keypad.svelte:
+          <pre>
 <code>&lt;script&gt;
     import Keypad from &quot;./Keypad.svelte&quot;;
     
@@ -1029,8 +1187,8 @@ En caso de tener un componente externo .svelte, es posible usar un binding con u
 &lt;Keypad bind:value={pin} on:submit={handleSubmit}/&gt;</code>
 </pre>
 
-Así se ve Keypad.svelte:
-<pre>
+          Así se ve Keypad.svelte:
+          <pre>
 <code>&lt;script&gt;
     import { createEventDispatcher } from &quot;svelte&quot;;
     export let value = &quot;&quot;;
@@ -1072,17 +1230,16 @@ Así se ve Keypad.svelte:
 </code>
 </pre>
 
-
-
-
-<h1 id="inline-handlers-"> Lifecycle </h1>
-Cada componente tiene un ciclo de vida que comienza cuando es creado y se acaba cuando es destruido. Hay muchas funciones que permiten correr codigo en ciertos momentos durante el ciclo de vida.
-Las funciones del ciclo de vida se deben llamar mientras el componente se está inicializando para que la devolución de llamada esté vinculada a la instancia del componente.
-<h2 id="inline-handlers-"> Lifecycle </h2>
-Corre despues de que el componente es renderizado primero en el DOM.
-
-Si la llamada de onMount devuelve una función, esa función se llamará cuando se destruya el componente 
-<pre>
+          <h1 id="inline-handlers-">Lifecycle</h1>
+          Cada componente tiene un ciclo de vida que comienza cuando es creado y se acaba cuando es
+          destruido. Hay muchas funciones que permiten correr codigo en ciertos momentos durante el
+          ciclo de vida. Las funciones del ciclo de vida se deben llamar mientras el componente se
+          está inicializando para que la devolución de llamada esté vinculada a la instancia del
+          componente.
+          <h2 id="inline-handlers-">Lifecycle</h2>
+          Corre despues de que el componente es renderizado primero en el DOM. Si la llamada de
+          onMount devuelve una función, esa función se llamará cuando se destruya el componente
+          <pre>
 <code>
 <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
     <span class="kr">import</span> <span class="p">{</span> <span class="nx">onMount</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;svelte&#39;</span><span class="p">;</span>
@@ -1125,14 +1282,10 @@ Si la llamada de onMount devuelve una función, esa función se llamará cuando 
 </code>
 </pre>
 
-
-
-
-
-<h2 id="ondestroy-">onDestroy:</h2>
-<p>Es necesario cuando se quiere ejecutar codigo cuando el componente es destruido.</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="ondestroy-">onDestroy:</h2>
+          <p>Es necesario cuando se quiere ejecutar codigo cuando el componente es destruido.</p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
 <span class="gd">-     import { onDestroy } from &#39;svelte&#39;;</span>
 <span class="gi">+     import { onInterval } from &#39;./utils.js&#39;;</span>
 
@@ -1147,8 +1300,8 @@ Si la llamada de onMount devuelve una función, esa función se llamará cuando 
 </pre></div>
 
 </code></pre>
-<p>utils.js</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>import { onDestroy } from &#39;svelte&#39;;
+          <p>utils.js</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>import { onDestroy } from &#39;svelte&#39;;
 
 export function onInterval(callback, milliseconds) {
     // implementation goes here
@@ -1161,10 +1314,14 @@ export function onInterval(callback, milliseconds) {
 </pre></div>
 
 </code></pre>
-<h2 id="beforeupdate-and-afterupdate-">beforeUpdate and afterUpdate:</h2>
-<p>Son sus contrapartes, la funcion <code>beforeUpdate</code> programa trabajo para ejecutarse antes de que el DOM sea actualizado y el <code>afterUpdate</code> para correr codigo una vez el DOM es sincronizado con la informacion</p>
-<p>App.svelte</p>
-<pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
+          <h2 id="beforeupdate-and-afterupdate-">beforeUpdate and afterUpdate:</h2>
+          <p>
+            Son sus contrapartes, la funcion <code>beforeUpdate</code> programa trabajo para
+            ejecutarse antes de que el DOM sea actualizado y el <code>afterUpdate</code> para correr
+            codigo una vez el DOM es sincronizado con la informacion
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-diff"><div class="highlight"><pre>&lt;script&gt;
     import Eliza from &#39;elizabot&#39;;
     import { beforeUpdate, afterUpdate } from &#39;svelte&#39;;
 
@@ -1277,10 +1434,15 @@ export function onInterval(callback, milliseconds) {
 </pre></div>
 
 </code></pre>
-<h2 id="tick-">Tick:</h2>
-<p>Retorna una promesa que se resuelve tan pronto cualquier cambio de estado pendiente ha sido aplicado al DOM. Esto ocurre porque al actualizar el estado de un componente no se actualiza el DOM de manera inmediata sino que espera hasta la siguiente microtarea para mirar si hay algun cambio que aplicar lo que evita trabajo innecesario.</p>
-<p>App.svelte</p>
-<pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+          <h2 id="tick-">Tick:</h2>
+          <p>
+            Retorna una promesa que se resuelve tan pronto cualquier cambio de estado pendiente ha
+            sido aplicado al DOM. Esto ocurre porque al actualizar el estado de un componente no se
+            actualiza el DOM de manera inmediata sino que espera hasta la siguiente microtarea para
+            mirar si hay algun cambio que aplicar lo que evita trabajo innecesario.
+          </p>
+          <p>App.svelte</p>
+          <pre><code class="lang-html"><div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
     <span class="kr">import</span> <span class="p">{</span> <span class="nx">tick</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;svelte&#39;</span><span class="p">;</span>
 
     <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Select</span> <span class="nx">some</span> <span class="nx">text</span> <span class="nx">and</span> <span class="nx">hit</span> <span class="nx">the</span> <span class="nx">tab</span> <span class="nx">key</span> <span class="nx">to</span> <span class="nx">toggle</span> <span class="nx">uppercase</span><span class="err">`</span><span class="p">;</span>
@@ -1320,33 +1482,31 @@ export function onInterval(callback, milliseconds) {
 </pre></div>
 
 </code></pre>
-                                
 
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								<!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
-								
-								
-							</section>
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+          <!-- CODIGO GENERADO CON https://www.npmjs.com/package/markdown-to-html -->
+        </section>
+      </div>
+    </div>
 
-					</div>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
-            <script>hljs.highlightAll();</script>            
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll()
+    </script>
+  </body>
 </html>
