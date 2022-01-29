@@ -127,4 +127,10 @@ jQuery(document).ready(function ($) {
 
   // custom code
 
+  // Toggle hide & show in the Timeline
+
+  $(".inner-circle").hover(function () {
+    $(this).siblings(".toggle").toggleClass("hide");
+  });
+
 });
