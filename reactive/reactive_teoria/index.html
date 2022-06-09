@@ -144,7 +144,14 @@
                                 el sobreuso de memoria (enormes thread pools) y la ineficiencia de las interacciones bloqueantes.</p>
 
                             <img src="images/Observer.svg" alt="" class="img-responsive img-thumbnail">
-
+                            <p> Para el año 2018, la programación reactiva y la programación basada en eventos
+                                no eran paradigmas de programación, como la programación imperativa u orientada a objetos, sino que
+                                eran ortogonales a ellos. La programación dirigida por eventos se implementa dentro de un paradigma
+                                paradigma existente. Por lo tanto, se puede utilizar la programación orientada a eventos con un lenguaje orientado a objetos o
+                                un lenguaje funcional. La programación reactiva es un caso específico de la programación de eventos que con el paso de los años ha ido ganando importancia. Esto se puede ver en la siguiente figura:</p>
+                            <div class="text-center">
+                                <img class="img-responsive img-thumbnail" src="images/diagrama de paradigmas.PNG" alt="">
+                            </div>
 
                         </div>
                         <!-- end col -->
@@ -224,6 +231,10 @@
                     <!-- end row -->
 
                     <p>En este patrón, tenemos un objeto Observable al que podemos suscribirnos, y cada vez que haya un cambio en su valor seremos informados. A esto se le conoce como Publicador-Suscriptor. </p>
+                    <div class="text-center">
+                        <img class="img-responsive img-thumbnail" src="images/patroobserver.png" alt="">
+                        <p>Analogía del patrón observador de la vida cotidiana: suscripción al boletín de un portal técnico</p>
+                    </div>
 
                     <h4> Finalidad </h4>
 
@@ -285,7 +296,7 @@
                     <p>Se pueden dar situaciones donde un Notificador genere más elementos de los que un Suscriptor puede consumir. Lo cual genera que el proceso de convertir esa entrada en salida se resista de alguna manera. En la mayoría de los casos esa resistencia es la velocidad de cálculo.</p>
 
                     <p>Para manejar estas situaciones en la programación reactiva se han establecido los siguientes mecanismos: Los suscriptores pueden indicar el número de datos que quieren o pueden procesar, de manera que el notificador nunca les enviará más de n cantidad de elementos. Los notificadores pueden aplicar diferentes operaciones como buffers o descartar algunos datos, para evitar saturar a los suscriptores lentos.</p>
-                
+
                 </section>
                 <!-- end section -->
 
@@ -494,6 +505,7 @@
                         <p><b>Elásticos:</b> El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
                         <p><b>Orientados a Mensajes:</b> Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un clúster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
                         <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
+
                     </div>
 
                     <p>
@@ -543,8 +555,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3>ReactiveX</h3>
-                            <p>Es un conjunto de herramientas que permiten que los 
-                                programación imperativos operen en secuencias de datos independientemente de si los datos son síncronos o asincrónicos. Proporciona un conjunto de operadores de secuencia que operan en cada elemento de la secuencia. Es una implementación de programación reactiva y proporciona un modelo para que las herramientas se implementen en múltiples 
+                            <p>Es un conjunto de herramientas que permiten que los
+                                programación imperativos operen en secuencias de datos independientemente de si los datos son síncronos o asincrónicos. Proporciona un conjunto de operadores de secuencia que operan en cada elemento de la secuencia. Es una implementación de programación reactiva y proporciona un modelo para que las herramientas se implementen en múltiples
                                 programación.
                             </p>
                             <p>ReactiveX es una combinación de las mejores ideas del patrón Observer, el patrón Iterator y la programación funcional Reactiva.</p>
@@ -609,7 +621,7 @@
                         Spring 5 incluye Spring WebFlux, que proporciona soporte de programación reactiva para aplicaciones web.
                     </p>
                     <p>
-                        Spring WebFlux permitirá construir un servicio REST no bloqueante, de tal forma que se puedan hacer varias 
+                        Spring WebFlux permitirá construir un servicio REST no bloqueante, de tal forma que se puedan hacer varias
                         peticiones simultáneas y estas se procesen en paralelo.
                     </p>
 
@@ -809,6 +821,27 @@
                             <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a microservicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
 
                             <p>En definitiva, ya estamos en el momento de marcar el rumbo hacia estas nuevas herramientas y entornos de desarrollo.</p>
+
+                            <strong>Aplicación en el backend: manejo de back-pressure</strong>
+
+                            <p>Se dice que existe <strong>back-pressure</strong> cuando una aplicación no es capaz de soportar una gran cantidad de datos por falta de recursos, la mayoria de veces este problema esta relacionado a la velocidad computacional (Se procesando las entradas mas rapido que las salidas), la programación reactiva ayuda a manejar este problema notificando al servicio que nos esta enviando datos cuando el servicio que los recibe se queda sin recursos.</p>
+
+                            <strong>¿Cuando usar la programación reactiva?</strong>
+
+                            <p>De manera general, la programación reactiva se implementa cuando una aplicación maneje un gran flujo de datos o tenga muchas fuentes de datos y que requiera de alguna manera la propagación de cambio en datos modulos y eventos., sin la programación reactiva estas aplicaciones pueden tener problemas relacionados a la sincronización de los datos y como se muestran en la interfaz grafica. Es comun usar la programación reactiva a la par con la programación orientada a objetos en casos donde la programación asincróna se vuelve dificil de entender y mantener. Es importante mencionar la concurrencia, tema en el cual partes de un programa son ejecutadas con cierta regularidad en desorden o en un orden parcial, estos se pueden comunicar entre ellos mientras se estan ejecutando, con la programación reactiva se mejora la concurrencia de las aplicaciones creando modelos asíncrono, no bloqueantes.</p>
+
+                            <strong>Algunos casos de uso moderno</strong>
+
+                            <ul>
+                                <li>    - Aplicaciones de IOT en donde se crean eventos que luego controlan procesos reales o transacciones de negocios.</li>
+
+                                <li>    - Aplicaciones que recogen y monitorean elementos de datos o actividades de una red.</li>
+
+                                <li>    - Aplicaciones que requieran alta interacción usuario-a-usuario donde cada acción debe ser procesada e interpretada como lo son los videojuegos o las redes sociales.</li>
+
+                                <li>    - Counicación entre aplicaciones, particularmente que realicen analisis estadistico que monitoreé cambios y realize eventos al detectare estos cambios.</li>
+
+                            </ul>
 
                         </div>
                     </div>
