@@ -709,7 +709,7 @@
                         <div class="col-md-6">
 
                             <strong>Dominios de Aplicación:</strong>
-                            <p>Muchas empresas están utilizando esta forma de programación actuamente y con mucha razón. Como ya hemos señalado, permite crear aplicaciónes o sitios web de tal manera que ofrece una mejor experiencia de usuario. Resultados más suaves y rápidos provienen de este paradigma y hace que la interacción del usuario sea mucho mejor. Naturalmente, esto se traduce en clientes más felices y más ventas para el negocio.</p>
+                            <p>La programación reactiva muchas veces suele ser consumida por el termino de interfaz de usuario o frontend, pero esta tiene muchos mas beneficios para el backend de las aplicaciones. Multiples empresas están utilizando esta forma de programación actuamente y con mucha razón. Como ya hemos señalado, permite crear aplicaciónes o sitios web de tal manera que ofrece una mejor experiencia de usuario. Resultados más suaves y rápidos provienen de este paradigma y hace que la interacción del usuario sea mucho mejor. Naturalmente, esto se traduce en clientes más felices y más ventas para el negocio.</p>
 
                             <p>Compañías como <strong>Netflix</strong> llevan años aplicando la programación reactiva para mejorar el rendimiento de sus aplicaciones, superando las limitaciones nativas de multiples lenguajes. Reactivex y otras librerias les proporcionó la pieza que necesitaban para realizar la orquestación de microservicios, la implementación del patrón <a href="https://martinfowler.com/bliki/CircuitBreaker.html"><strong>circuit breaker</strong></a> y demás mecanismos que permiten a sus desarrollos adoptar los principios descritos por el manifiesto reactivo.</p>
 
@@ -760,6 +760,27 @@
                             <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a micro servicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
 
                             <p>En definitiva, ya estamos en el momento de marcar el rumbo hacia estas nuevas herramientas y entornos de desarrollo.</p>
+
+                            <strong>Aplicación en el backend: manejo de back-pressure</strong>
+
+                            <p>Se dice que existe <strong>back-pressure</strong> cuando una aplicación no es capaz de soportar una gran cantidad de datos por falta de recursos, la mayoria de veces este problema esta relacionado a la velocidad computacional (Se procesando las entradas mas rapido que las salidas), la programación reactiva ayuda a manejar este problema notificando al servicio que nos esta enviando datos cuando el servicio que los recibe se queda sin recursos.</p>
+                            
+                            <strong>¿Cuando usar la programación reactiva?</strong>
+
+                            <p>De manera general, la programación reactiva se implementa cuando una aplicación maneje un gran flujo de datos o tenga muchas fuentes de datos y que requiera de alguna manera la propagación de cambio en datos modulos y eventos., sin la programación reactiva estas aplicaciones pueden tener problemas relacionados a la sincronización de los datos y como se muestran en la interfaz grafica. Es comun usar la programación reactiva a la par con la programación orientada a objetos en casos donde la programación asincróna se vuelve dificil de entender y mantener. Es importante mencionar la concurrencia, tema en el cual partes de un programa son ejecutadas con cierta regularidad en desorden o en un orden parcial, estos se pueden comunicar entre ellos mientras se estan ejecutando, con la programación reactiva se mejora la concurrencia de las aplicaciones creando modelos asíncrono, no bloqueantes.</p>
+
+                            <strong>Algunos casos de uso moderno</strong>
+
+                            <ul>
+                                <li>    - Aplicaciones de IOT en donde se crean eventos que luego controlan procesos reales o transacciones de negocios.</li>
+
+                                <li>    - Aplicaciones que recogen y monitorean elementos de datos o actividades de una red.</li>
+
+                                <li>    - Aplicaciones que requieran alta interacción usuario-a-usuario donde cada acción debe ser procesada e interpretada como lo son los videojuegos o las redes sociales.</li>
+
+                                <li>    - Counicación entre aplicaciones, particularmente que realicen analisis estadistico que monitoreé cambios y realize eventos al detectare estos cambios.</li>
+                            
+                            </ul>
 
                         </div>
                     </div>
