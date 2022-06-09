@@ -158,6 +158,12 @@
 
                 </div>
                 <div class="col-md-6">
+                    <h4>Haskell</h4>
+                    <p>
+                        En este ejemplo demostrativo de recursión se calcula el interés compuesto recursivamente.
+                    </p>
+                    <iframe src="https://paiza.io/projects/e/d-OVYU-bMeYRr4QRTr4eUQ?theme=tomorrow_night_eighties" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
+                    <h4>Java</h4>
                     <script src="https://gist.github.com/anonymous/71553ee47bd9e61789fed5cad402ce8d.js"></script>
 
                 </div>
@@ -339,21 +345,38 @@
                 <h2>Composición de funciones</h2>
                 <div class="col-md-6 text-justify">
                     <p>
-                        La composición de funciones es el proceso de combinar dos o más funciones, teniendo como
-                        finalidad ejecutar cada una de estas funciones en secuencia para obtener un resultado en
-                        concreto.
-                        Básicamente funciona igual a la composición de funciones en matemáticas
+                        La composición de funciones es la imagen resultado de la aplicación sucesiva de dos o más 
+                        funciones sobre un mismo elemento x.
+                    </p>
+                    <p>
+                        En esencia funciona igual a la composición de funciones en matemáticas, así:
+                    </p>
+                    <p>
+                        La composición de funciones se realiza aplicando dichas funciones en orden de derecha a izquierda, 
+                        de manera que en (g o f)(x) primero actua la función f y luego la g sobre f(x).
+                       
                     </p>
 
                 </div>
                 <div class="col-md-6">
                     <h4>Ejemplos de composición en lenguajes funcionales</h4>
-                    <p>Haskell</p>
-                    <script src="https://pastebin.com/embed_js/UNyHHUQ7"></script>
-                    <br>
-                    <p>Scala</p>
-                    <script src="https://pastebin.com/embed_js/hF4YuZg1"></script>
+                    <h4>Haskell</h4>
+                    <p> Siguiendo con el ejemplo de g(x) y f(x), y usando la sintaxis de Haskell, la composición 
+                        de funciones se excribiría de la siguiente manera: (g.f)(x).
+                    </p>
+                    <p>
+                        En el siguiente snippet de Haskell se hace una composición de las funciones  sumarUno y multDiez.
+                        Siguinedo el orden de ejecución de derecha a izquierda, primero se ejecutará multDiez usando como parámetro de 12, 
+                        acto seguido el resultado de esta función (12*10 = 120) será tomado como parámetro en la función sumarUno, dando como resultado 120 + 1 = 121. 
+                    
+                    </p>
+                    <iframe src="https://paiza.io/projects/e/ooZgGI_NaMqPM3upHj3jMg?theme=tomorrow_night_eighties" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
 
+                    <br>
+                     <h4>Scala</h4>
+                    <p> En el caso de Scala la composición de funciones se hace usando la palabra clave compose, que con el ejemplo inicial quedaría (g compose f)(x).
+                    </p>
+                    <script src="https://pastebin.com/embed_js/hF4YuZg1"></script>
 
                 </div>
             </div>
@@ -401,10 +424,17 @@
                 </div>
                 <div class="col-md-6 text-justify">
                     <h4>Ejemplo de una función de orden superior que no es de primera clase</h4>
-                    <p>Ruby</p>
-                    <script src="https://pastebin.com/embed_js/5e6H50KL"></script>
-                    <br>
-                    <p>En Ruby no se pueden pasar métodos como parámetros de otros métodos, pero si objetos,
+                    <h4>Haskell</h4>
+                    <p> 
+                        En este ejemplo demostrativo de haskell la función applyTwice toma una función de números enteros como primer argumento y la aplica dos veces a su segundo argumento.
+
+                        Los paréntesis aclaran que el primer conjunto Int debe leerse en conjunto para significar una función Int en lugar de dos valores Int independientes.
+                        
+                        En el siguiente snippet se crean algunas funciones de muestra: "double" y "next" para pasar a nuestra función de orden superior "applyTwice".
+                    </p>
+                    <iframe src="https://paiza.io/projects/e/MtzvMDPhBMB-2cbcQrFq7w?theme=tomorrow_night_eighties" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
+                    <h4>Ruby</h4>
+                     <p>En Ruby no se pueden pasar métodos como parámetros de otros métodos, pero si objetos,
                         por ello cuando se quiera hacer algo similar, se tiene que convertir el método que se quiere
                         pasar a un objeto.
                         Esto se puede realizar gracias al método lambda. Este es un claro ejemplo de una función de
@@ -412,7 +442,11 @@
                         no de primera clase, ya que para poder pasar el método "hola" como parámetro del método
                         "metod1", fue necesario
                         hacerle algún tipo de parseo o transformación
-                    </p>
+                    </p><iframe src="https://paiza.io/projects/e/jXgCoX7uwt2GuFu7tH095w?theme=tomorrow_night_eighties" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
+                    <br>
+                   <h4>JavaScript</h4>
+                   <p>En contraste con Ruby, Javascript permite que una función sin tratar pueda ser pasada como parámetro de otra función. Como ocurre en el siguiente ejemplo donde una función notada de manera original (no como una función anónima  o lambda) puede ser pasada como paramétro de cualquier otra función, en este caso como parámetro de la función map() de un arreglo.</p>
+                   <iframe src="https://paiza.io/projects/e/TlXk_VLZF9PyLWfmJXPSvQ?theme=tomorrow_night_eighties" width="100%" height="550" scrolling="no" seamless="seamless"></iframe>
                     <br>
                     <h4>Ejemplo de una función de orden superior y de primera clase</h4>
                     <p>Haskell</p>
@@ -446,9 +480,39 @@
                         proceso inverso
                         de descurrificación.
                     </p>
+                    <h4>Ventajas de la Currificación</h4>
+                    <p>
+                        <ul>
+                            <li>Podemos crear funciones nuevas simplemente pasando nuestras funciones de base con algunos parámetros.</li>
+                            <li>Podemos transformar cualquier función que trabaje con un solo elemento en una que trabaje con una lista envolviéndola en un map.</li>
+                            <li>Se pueden escribir pequeñas piezas de código que sean más fácil de reutilizar.</li>
+                            <li>Es fácil de razonar sobre ellas.</li>
+                            <li>Escribir funciones currificadas nos permitirá componer funciones.</li>
+                        </ul>
+                    </p>
+                    
                 </div>
                 <div class="col-md-6 text-justify">
                     <script src="https://gist.github.com/Heldeg/eadadedfee1d98950cdefb95bfc76beb.js"></script>
+                    <h4>JavaScript</h4>
+                    <p>
+                        Se ejemplificará este concepto clave de currificación haciendo uso de Javascript.
+                    </p>
+                    <p>
+                        Javascript permite definir las funciones de manera estandar o como funciones anónimas. De la misma manera una función currificada puede estar definida como función estandar o como función anónima.
+                    </p>
+                    <p>
+                        Al momento de ejecutar una función currifcada se puede hacer de 2 maneras: 
+                        <ul>
+                            <li>
+                                Ejecutando la función que contiene a las demás n-1 funciones con n listas de argumentos (una lista por cada función) con la siguiente sintáxis: customFunction(argF1)(argF2)...(argFn)
+                            </li>
+                            <li>
+                                Pasar un argumento y recibir la siguiente función en el stack de currificación. 
+                            </li>
+                        </ul>
+                    </p>
+                    <iframe src="https://paiza.io/projects/e/0K85peR95sLy4-vHDNk_Ug?theme=tomorrow_night_eighties" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
                 </div>
             </div>
             <div class="row">
