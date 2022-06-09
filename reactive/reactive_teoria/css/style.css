@@ -27,7 +27,9 @@ body {
     padding: 0;
 }
 
-h1,
+h1 {
+    color: #fff;
+}
 h2,
 h3,
 h4,
@@ -56,6 +58,7 @@ h3 {
 
 h4 {
     font-size: 21px;
+    color:dodgerblue;
 }
 
 h5 {
@@ -216,6 +219,7 @@ strong {
     font-size: 4.125rem;
     line-height: 4.063rem;
     font-weight: 300;
+    color: #2187BB;
 }
 
 h4 a {
@@ -234,7 +238,7 @@ h4 a {
     margin-left: 0;
     margin-top: 40px;
     border-width: 1px;
-    border-color: #030303;
+    border-color: #2187BB;
 }
 
 .intro {
@@ -389,4 +393,9 @@ a:hover {
 
 #myBtn:hover {
   background-color: #404040;
+}
+
+#top {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("../images/head.jpg");
+    background-repeat: no-repeat;
 }

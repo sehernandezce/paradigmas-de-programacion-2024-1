@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head style="color: #AAAA;">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,7 +107,8 @@
                         <li><a href="#line6">Desventajas </a></li>
                         <li><a href="#lineB1">Evolución del paradigma</a></li>
                         <li><a href="#lineB2">El término "Reactive"</a></li>
-                        <li><a href="#line7">Lenguajes de Programación</a></li>
+                        <li><a href="#line7">
+                            Programación</a></li>
                         <li><a href="#line8">Ejemplos</a>
                             <ul class="nav">
                                 <li><a href="#line8_1">RxPY</a></li>
@@ -137,7 +138,7 @@
                         <div class="col-md-12">
                             <h3 class="dark-text">¿Qué es la programación reactiva?</h3>
                             <p>Es un paradigma enfocado en el trabajo con flujos de datos finitos o infinitos de manera asíncrona, es decir que las aplicaciones reaccionan a los cambios ejecutando una serie de eventos.</p>
-                            <p>Este paradigma esta enfocado principalmente en el manejo de flujos de datos asíncronos y en el uso eficiente de recursos. Los sistemas reactivos reaccionan a los datos que fluyen continuamente ejecutando una serie de eventos, esto es porque siguen el patrón de diseño Observer;
+                            <p>Este paradigma está enfocado principalmente en el manejo de flujos de datos asíncronos y en el uso eficiente de recursos. Los sistemas reactivos reaccionan a los datos que fluyen continuamente ejecutando una serie de eventos, esto es porque siguen el patrón de diseño Observer;
                                 cuando hay un cambio de estado en un objeto, los otros objetos son notificados y actualizados. Por lo tanto, en lugar de estar preguntando los cambios, los eventos se realizan de forma asíncrona para que los observadores puedan procesarlos.</p>
                             <p>La motivación detrás de este nuevo paradigma procede de la necesidad de responder a las limitaciones de escalado presentes en los modelos de desarrollo actuales, que se caracterizan por su desaprovechamiento del uso de la CPU debido al I/O,
                                 el sobreuso de memoria (enormes thread pools) y la ineficiencia de las interacciones bloqueantes.</p>
@@ -259,11 +260,11 @@
 
                     <h4>Uso eficiente de recursos</h4>
 
-                    <p>En la programación asíncrona clásica, un hilo que se ejecuta pasa la mayor parte de su tiempo esperando. El hilo que se ejecuta envía una petición, por ejemplo a la base de datos, luego espera durante un periodo de tiempo la respuesta con los datos, cuando finalmente obtiene una respuesta, continúa trabajando y al finalizar vuelve a estar disponible para otra ejecución. Lo que hace que este recurso se esté usando de forma ineficiente.</p>
+                    <p>En la programación asíncrona clásica, un hilo que se ejecuta pasa la mayor parte de su tiempo esperando. El hilo que se ejecuta envía una petición, por ejemplo, a la base de datos, luego espera durante un periodo de tiempo la respuesta con los datos, cuando finalmente obtiene una respuesta, continúa trabajando y al finalizar vuelve a estar disponible para otra ejecución. Lo que hace que este recurso se esté usando de forma ineficiente.</p>
 
                     <p>En la programación reactiva cada hilo se centra en enviar la solicitud, y luego vuelve a estar disponible para otra ejecución. Cuando la respuesta llega, este mismo hilo, u otro, puede recoger y procesar la respuesta. En pocas palabras: trata de asegurarse de que todos los hilos estén siempre trabajando en algo, y no esperando.</p>
 
-                    <p>La utilización eficiente de los recursos, deriva en gastar menos dinero en servidores y centros de datos. La promesa de la programación reactiva es que se puede hacer más con menos. Específicamente se puede procesar cargas de trabajo más altas con menos hilos.</p>
+                    <p>La utilización eficiente de los recursos deriva en gastar menos dinero en servidores y centros de datos. La promesa de la programación reactiva es que se puede hacer más con menos. Específicamente se puede procesar cargas de trabajo más altas con menos hilos.</p>
 
                     <hr>
 
@@ -275,7 +276,7 @@
 
                     <h4>Escalabilidad</h4>
 
-                    <p>Usando programación reactiva se obtiene una implementación débilmente acoplada , que tiende a aislar los fallos y que tiene la capacidad de escalar horizontalmente y de forma rápida, permitiendo el manejo de grandes cantidades de eventos, que pueden ser millones o billones de eventos, muy útil para “Big Data”.</p>
+                    <p>Usando programación reactiva se obtiene una implementación débilmente acoplada, que tiende a aislar los fallos y que tiene la capacidad de escalar horizontalmente y de forma rápida, permitiendo el manejo de grandes cantidades de eventos, que pueden ser millones o billones de eventos, muy útil para “Big Data”.</p>
 
                     <hr>
 
@@ -306,7 +307,7 @@
 
                     <h4>Curva de aprendizaje</h4>
 
-                    <p>La curva de aprendizaje es grande para dominar la programación reactiva. No sólo se está expuesto a un ecosistema completamente nuevo con nuevas APIs, sino que también se necesita tiempo para procesar este paradigma diferente de programación con streams, que puede ser bastante diferente de un estilo de código de escritura tradicional (por ejemplo, en comparación con la programación imperativa). También puede que se necesite aprender de nuevas herramientas para las pruebas unitarias y dominar conceptos adicionales como los diagramas de mármol, que ayudan a modelar adecuadamente los flujos de datos. Además hay una falta de recursos buenos y sencillos para aprender.</p>
+                    <p>La curva de aprendizaje es grande para dominar la programación reactiva. No sólo se está expuesto a un ecosistema completamente nuevo con nuevas APIs, sino que también se necesita tiempo para procesar este paradigma diferente de programación con streams, que puede ser bastante diferente de un estilo de código de escritura tradicional (por ejemplo, en comparación con la programación imperativa). También puede que se necesite aprender de nuevas herramientas para las pruebas unitarias y dominar conceptos adicionales como los diagramas de mármol, que ayudan a modelar adecuadamente los flujos de datos. Además, hay una falta de recursos buenos y sencillos para aprender.</p>
 
                     <hr>
 
@@ -385,7 +386,7 @@
                         <br><br>
                         No obstante, esta solución era un poco torpe y limitaba algunas optimizaciones, además
                         de que era incompatible con los puntos de vista de otras bibliotecas reactivas que
-                        comenzarían a surgir más adelanate.
+                        comenzarían a surgir más adelante.
                     </p>
 
                     <hr>
@@ -404,7 +405,7 @@
 
                     <p>
                         Algunas de estas librerías se reimplementaron, lo cual condujo al establecimiento de
-                        la libería <i>reactive-streams-commons</i>, a la construcción de ciertos operadores
+                        la librería <i>reactive-streams-commons</i>, a la construcción de ciertos operadores
                         fundacionales y al diseño de componentes de optimización que pasaron a recibir el nombre
                         de <b>operator-fusion</b>. Comparada con la generación anterior, aunque lucen similares
                         en el exterior, en el interior poseen cambios significativos que permitieron una
@@ -414,7 +415,7 @@
                     <hr><br>
 
                     <p>
-                        Adicionalmente, este autor especula que de la quinta generación en adelante, la arquitectura
+                        Adicionalmente, este autor especula que, de la quinta generación en adelante, la arquitectura
                         de <i>Reactive-Streams</i> requeriría ciertas extensiones para soportar operaciones
                         reactivas de entrada y salida en la forma de secuencias bidireccionales, entre otros
                         cambios que, en ese punto, estaban abiertos a discusión.
@@ -488,10 +489,10 @@
 
                     <div class="intro2 clearfix">
                         <p>Los Sistemas Reactivos son:</p>
-                        <p><b>Responsivos:</b> El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados rápidamente y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
+                        <p><b>Responsivos:</b> El sistema responde a tiempo en la medida de lo posible. La responsividad es la piedra angular de la usabilidad y la utilidad, pero más que esto, responsividad significa que los problemas pueden ser detectados con rapidez y tratados efectivamente. Los sistemas responsivos se enfocan en proveer tiempos de respuesta rápidos y consistentes, estableciendo límites superiores confiables para así proporcionar una calidad de servicio consistente. Este comportamiento consistente, a su vez, simplifica el tratamiento de errores, aporta seguridad al usuario final y fomenta una mayor interacción.</p>
                         <p><b>Resilientes:</b> El sistema permanece responsivo frente a fallos. Esto es aplicable no sólo a sistemas de alta disponibilidad o de misión crítica - cualquier sistema que no sea resiliente dejará de ser responsivo después de un fallo. La resiliencia es alcanzada con replicación, contención, aislamiento y delegación. Los fallos son manejados dentro de cada componente, aislando cada componente de los demás, y asegurando así que cualquier parte del sistema pueda fallar y recuperarse sin comprometer el sistema como un todo. La recuperación de cada componente se delega en otro componente (externo) y la alta disponibilidad se asegura con replicación allí donde sea necesario. El cliente de un componente no tiene que responsabilizarse del manejo sus fallos.</p>
                         <p><b>Elásticos:</b> El sistema se mantiene responsivo bajo variaciones en la carga de trabajo. Los Sistemas Reactivos pueden reaccionar a cambios en la frecuencia de peticiones incrementando o reduciendo los recursos asignados para servir dichas peticiones. Esto implica diseños que no tengan puntos de contención o cuellos de botella centralizados, resultando en la capacidad de dividir o replicar componentes y distribuir las peticiones entre ellos. Los Sistemas Reactivos soportan algoritmos de escalado predictivos, así como Reactivos, al proporcionar relevantes medidas de rendimiento en tiempo real. La elasticidad se consigue de forma rentable haciendo uso de plataformas con hardware y software genéricos.</p>
-                        <p><b>Orientados a Mensajes:</b> Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un cluster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
+                        <p><b>Orientados a Mensajes:</b> Los Sistemas Reactivos confían en el intercambio de mensajes asíncrono para establecer fronteras entre componentes, lo que asegura bajo acoplamiento, aislamiento y transparencia de ubicación. Estas fronteras también proporcionan los medios para delegar fallos como mensajes. El uso del intercambio de mensajes explícito posibilita la gestión de la carga, la elasticidad, y el control de flujo, gracias al modelado y monitorización de las colas de mensajes en el sistema, y la aplicación de back-pressure cuando sea necesario. La mensajería basada en ubicaciones transparentes como medio de comunicación permite que la gestión de fallos pueda trabajar con los mismos bloques y semánticas a través de un clúster o dentro de un solo nodo. La comunicación No-bloqueante permite a los destinatarios consumir recursos sólo mientras estén activos, llevando a una menor sobrecarga del sistema.</p>
                         <p><br> Publicado en septiembre 16 2014. (v2.0) <a href="https://www.reactivemanifesto.org/es" target="_blank">El Manifiesto de Sistemas Reactivos.</a> </p>
                     </div>
 
@@ -518,9 +519,9 @@
                         en los destinatarios, mientras que uno dirigido por eventos se enfoca en los emisores. <br><br>
                         De este modo, el uso exclusivo de programación reactiva puede hacer que la resiliencia sea más
                         difícil de lograr, pues las <i>callbacks</i> suelen ser anónimas y, por ende, no direccionables.
-                        Es decir que si falla una de las cadenas del flujo de datos, entonces se debe reiniciar la cadena
+                        Es decir que, si falla una de las cadenas del flujo de datos, entonces se debe reiniciar la cadena
                         y el cliente debe ser notificado (algo que no ocurre en un sistema dirigido por mensajes, que
-                        tendría la capacidad de autorecuperarse sin involucrar al cliente). Sin embargo, si se integra
+                        tendría la capacidad de autorrecuperarse sin involucrar al cliente). Sin embargo, si se integra
                         este paradigma con una arquitectura reactiva, este termina siendo de gran utilidad a la hora
                         de construir sistemas reactivos.
                     </p>
@@ -532,7 +533,8 @@
 
                     <div class="row">
                         <div class="col-md-12 left-align">
-                            <h2 class="dark-text">Lenguajes de Programación <hr></h2>
+                            <h2 class="dark-text">
+                                Programación <hr></h2>
                         </div>
                         <!-- end col -->
                     </div>
@@ -540,20 +542,21 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <strong>ReactiveX</strong>
-                            <p>Es un conjunto de herramientas que permiten que los lenguajes de programación imperativos operen en secuencias de datos independientemente de si los datos son síncronos o asincrónicos. Proporciona un conjunto de operadores de secuencia que operan en cada elemento de la secuencia. Es una implementación de programación reactiva y proporciona un modelo para que las herramientas se implementen en múltiples lenguajes de programación.
+                            <h3>ReactiveX</h3>
+                            <p>Es un conjunto de herramientas que permiten que los 
+                                programación imperativos operen en secuencias de datos independientemente de si los datos son síncronos o asincrónicos. Proporciona un conjunto de operadores de secuencia que operan en cada elemento de la secuencia. Es una implementación de programación reactiva y proporciona un modelo para que las herramientas se implementen en múltiples 
+                                programación.
                             </p>
-                            <p>ReactiveX es una combinación de las mejores ideas de
-                                el patrón Observer, el patrón Iterator y la programación funcional Reactiva.</p>
+                            <p>ReactiveX es una combinación de las mejores ideas del patrón Observer, el patrón Iterator y la programación funcional Reactiva.</p>
 
                             <img src="images/reactivex.png" alt="" class="img-responsive img-thumbnail">
 
                         </div>
 
                         <div class="col-md-6">
-                            <strong>Lenguajes</strong>
+                            <h3>Lenguajes con librería ReactiveX</h3>
 
-                            <p> Los siguientes lenguajes poseen una libreria basada en ReactiveX que les permite pertenecer al paradigma de la Programación reactiva </p>
+                            <p> Los siguientes lenguajes poseen una librería basada en ReactiveX que les permite pertenecer al paradigma de la Programación reactiva </p>
                             <ul>
                                 <li>Java: <a href="https://github.com/ReactiveX/RxJava">RxJava</a></li>
                                 <li>JavaScript: <a href="https://github.com/ReactiveX/rxjs">RxJS</a></li>
@@ -586,6 +589,52 @@
                         </div>
                     </div>
                     <!-- end row -->
+
+                    <hr>
+
+                    <div class="col-md-2 right-align">
+                        <img src="images/spring.png" class="img-responsive img-thumbnail" alt="">
+                    </div>
+                    <!-- end col -->
+
+                    <div class="row">
+                        <div style="margin-top: 30px;" class="col-md-4 left-align">
+                            <h4>Spring framework 5.0</h4>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <p>
+                        Spring 5 incluye Spring WebFlux, que proporciona soporte de programación reactiva para aplicaciones web.
+                    </p>
+                    <p>
+                        Spring WebFlux permitirá construir un servicio REST no bloqueante, de tal forma que se puedan hacer varias 
+                        peticiones simultáneas y estas se procesen en paralelo.
+                    </p>
+
+                    <hr>
+
+                    <div class="col-md-2 right-align">
+                        <img src="images/svelte.png" class="img-responsive img-thumbnail" alt="">
+                    </div>
+                    <!-- end col -->
+
+                    <div class="row">
+                        <div style="margin-top: 45px;" class="col-md-4 left-align">
+                            <h4>Svelte</h4>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <p>
+                        Svelte presenta un enfoque nuevo para crear interfaces de usuario. Mientras los frameworks tradicionales como React y Vue hacen la mayor parte de su trabajo en el navegador, Svelte cambia ese trabajo a un paso de compilación que ocurre cuando se construye la aplicación.
+                    </p>
+
+                    <p>
+                        Se podría decir que Svelte es un compilador que toma el código y genera JavaScript nativo que interactúa con el DOM directamente sin necesidad de un intermediario.
+                    </p>
 
                 </section>
                 <!-- end section -->
@@ -636,16 +685,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h4 id="line8_3">RxJS </h4>
-                            <p>A continuación veremos un ejemplo simple de reactividad en <strong>Javascript</strong><br>
+                            <p>A continuación, veremos un ejemplo simple de reactividad en <strong>Javascript</strong><br>
                                 Iniciamos definiendo dos funciones:
                             <li>UpdateNotifications: Encargada de notificarnos cuando el usuario fue actualizado</li>
                             <li>GetUsers: La cual nos genera un usuario aleatorio</li>
-                            En este primer ejemplo el usuario se creara sin problemas y seguido de esto será actualizado mediante el bucle <strong>for</strong>.
+                            En este primer ejemplo el usuario se creará sin problemas y seguido de esto será actualizado mediante el bucle <strong>for</strong>.
                             <script src="https://gist.github.com/BryGuz/0e86a967944f3b44d9403bb6156ab2a0.js"></script>
                             Ahora bien, ¿Qué ocurriría si en vez de un cliente tenemos un flujo de clientes continuo?
                             <strong>¡Correcto!</strong>, Al no terminar de crear clientes, el bucle for jamás llega a ejecutarse.
                             <script src="https://gist.github.com/BryGuz/aa37f4b361730ebc42819016a7b5023e.js"></script>
-                            Una forma de solucionar este problema puede ser obligar la ejecución del programa mediante otra sentencia <strong>SetInterval</strong> y mejorandolo un poco, como vemos a continuación; ajustando el index desde el que se recorrera la lista de usuarios.<br>
+                            Una forma de solucionar este problema puede ser obligar la ejecución del programa mediante otra sentencia <strong>SetInterval</strong> y mejorándolo un poco, como vemos a continuación; ajustando el index desde el que se recorrerá la lista de usuarios.<br>
                             Sin embargo está solución puede ser implementada utilizando programación reactiva de manera más elegante y <strong>¡Menos código!</strong>
                             <script src="https://gist.github.com/BryGuz/89c1511eb138b985af75b5a1af291ec9.js"></script>
                             Como observamos a continuación debemos declarar un <strong>Observador</strong> que será el encargado de avisarnos cuando se crea un nuevo usuario y comunicarlo al <strong>Suscribe</strong>, el cual se ejecutará apenas el estado de la lista cambie.
@@ -709,19 +758,19 @@
                         <div class="col-md-6">
 
                             <strong>Dominios de Aplicación:</strong>
-                            <p>Muchas empresas están utilizando esta forma de programación actuamente y con mucha razón. Como ya hemos señalado, permite crear aplicaciónes o sitios web de tal manera que ofrece una mejor experiencia de usuario. Resultados más suaves y rápidos provienen de este paradigma y hace que la interacción del usuario sea mucho mejor. Naturalmente, esto se traduce en clientes más felices y más ventas para el negocio.</p>
+                            <p>Muchas empresas están utilizando esta forma de programación actualmente y con mucha razón. Como ya hemos señalado, permite crear aplicaciónes o sitios web de tal manera que ofrece una mejor experiencia de usuario. Resultados más suaves y rápidos provienen de este paradigma y hace que la interacción del usuario sea mucho mejor. Naturalmente, esto se traduce en clientes más felices y más ventas para el negocio.</p>
 
-                            <p>Compañías como <strong>Netflix</strong> llevan años aplicando la programación reactiva para mejorar el rendimiento de sus aplicaciones, superando las limitaciones nativas de multiples lenguajes. Reactivex y otras librerias les proporcionó la pieza que necesitaban para realizar la orquestación de microservicios, la implementación del patrón <a href="https://martinfowler.com/bliki/CircuitBreaker.html"><strong>circuit breaker</strong></a> y demás mecanismos que permiten a sus desarrollos adoptar los principios descritos por el manifiesto reactivo.</p>
+                            <p>Compañías como <strong>Netflix</strong> llevan años aplicando la programación reactiva para mejorar el rendimiento de sus aplicaciones, superando las limitaciones nativas de múltiples lenguajes. Reactivex y otras librerías les proporcionó la pieza que necesitaban para realizar la orquestación de microservicios, la implementación del patrón <a href="https://martinfowler.com/bliki/CircuitBreaker.html"><strong>circuit breaker</strong></a> y demás mecanismos que permiten a sus desarrollos adoptar los principios descritos por el manifiesto reactivo.</p>
 
                             <p> <strong>Capital One</strong> rediseñó su aplicación de préstamos para automóviles en torno a los principios Reactivos para simplificar la compra y financiación de automóviles en línea. Los clientes pueden navegar por más de cuatro millones de automóviles de más de 12.000 concesionarios y precalificar el financiamiento en segundos, sin afectar las puntuaciones de crédito.</p>
-                            <p> <strong>LinkedIn</strong> recurrió a los principios Reactivos para crear indicadores de presencia en tiempo real (indicadores en línea) para los medio billón de usuarios de su red social.</p>
+                            <p> <strong>LinkedIn</strong> recurrió a los principios Reactivos para crear indicadores de presencia en tiempo real (indicadores en línea) para el medio billón de usuarios de su red social.</p>
                             <p> <strong>Verizon Wireless</strong>, operadores de la red 4G LTE más grande en Estados Unidos, redujo los tiempos de respuesta a la mitad utilizando los principios de Reactive en la actualización de su sitio web de comercio electrónico que soporta 146 millones de suscriptores que manejan 2.500 millones de transacciones al año.</p>
-                            <p> <strong>Walmart Canada</strong> reconstruyó toda su aplicación web y pila móvil como un sistema Reactivo y vió un aumento del 20 por ciento en la conversión a ventas de tráfico web y un aumento del 98 por ciento en los pedidos móviles recortando los tiempos de carga de páginas en más de un tercio. </p>
+                            <p> <strong>Walmart Canada</strong> reconstruyó toda su aplicación web y pila móvil como un sistema Reactivo y vio un aumento del 20 por ciento en la conversión a ventas de tráfico web y un aumento del 98 por ciento en los pedidos móviles recortando los tiempos de carga de páginas en más de un tercio. </p>
                             <p>En <strong>Tenea</strong>, empresa que se dedica a implantar soluciones de negocio a través de las nuevas tecnologías, están trabajando hace más de 5 años con tecnologías como ActiveMQ, RabittMQ, Fuse Enterprise (componentes OSGI), mongoDB, ElasticSearch o Solr y, por supuesto, en orientación a eventos y en programación reactiva. Concretamente, en su motor de reglas IoT TeneaRules, que han miniaturizado para que corra sobre hardware de dominio público low cost (TP-Llink, Xiaomi), sobre el open source OpenWrt y cuya sintaxis declarativa y funcional les permite programar comportamientos asociados a los eventos del entorno: ES_DE(NOCHE)= , ALARMA(ON)= ; PUERTA,PRINCIPAL(ABIERTA)=, etc. </p>
                             <p><strong>Jafar Husain</strong>, Desarrollador Senior en el equipo de Interfaz de Usuario de TV en <strong> Netflix</strong> comenta lo siguiente:<br>
                                 <cite>"Over the last year, Netflix has reinvented our client-server interaction model. One of the key building blocks of our platform is Microsoft’s open-source Reactive Extensions library (Rx). Netflix is a big believer in the Rx model, because Rx has made it much easier for us to build complex asynchronous programs."</cite>
                             </p>
-                            <p>Husain Tambien menciona que actualmente Netflix es de las pocas compañias que que utiliza la programación reactiva tanto en el servidor como en el cliente, sin embargo no son la única: <strong> Felipe Lima</strong>, Miembro del equipos de desarrollo de Android en <strong>Airbnb</strong>, menciona el porque decidieron inclinarse hacia la programación reactiva mediante RxJava:<br> <cite >" It’s easy to switch back and forth between threads. It’s built right into the framework, Async can be very cumbersome and error-prone, and RxJava is one reason we you don’t need to do that anymore, and why you can compose different tasks together".</cite> </p>
+                            <p>Husain También menciona que actualmente Netflix es de las pocas compañías que utiliza la programación reactiva tanto en el servidor como en el cliente, sin embargo, no son la única: <strong> Felipe Lima</strong>, Miembro del equipos de desarrollo de Android en <strong>Airbnb</strong>, menciona por qué decidieron inclinarse hacia la programación reactiva mediante RxJava:<br> <cite >" It’s easy to switch back and forth between threads. It’s built right into the framework, Async can be very cumbersome and error-prone, and RxJava is one reason we you don’t need to do that anymore, and why you can compose different tasks together".</cite> </p>
 
                             <p>La programación reactiva se ha aplicado durante varios años en el <a href="http://reactivex.io/"><strong>Front-end</strong></a> Mediante el uso de cambios de estado en los diferentes componentes <a href="https://dev.to/petyosi/reactive-programming-for-react-developers-the-absolute-beginner-guide-5eeg">Reactive Programming for React Developers</a></p>
                             <center><a href="http://reactivex.io/" data-rel="frontend"><img src="images/frontend.PNG" alt="Frontend en Reactivex" class="img-responsive img-thumbnail"></a>
@@ -731,9 +780,9 @@
 
                         </div>
                         <div class="col-md-6">
-                            <strong>Algunas compañias que hacen uso de este Paradigma en sus productos:</strong>
+                            <strong>Algunas compañías que hacen uso de este Paradigma en sus productos:</strong>
                             <center><a href="http://reactivex.io/" data-rel="frontend"><img src="images/compañias.PNG" alt="Compañias que usan RecativeX" class="img-responsive img-thumbnail"></a>
-                                <figcaption>Compañias como Netflix y Microsoft han apostado a este paradigma</figcaption>
+                                <figcaption>Compañías como Netflix y Microsoft han apostado a este paradigma</figcaption>
                             </center>
 
                             <strong>Fase monolito y evolución en la industria</strong>
@@ -747,17 +796,17 @@
 
                                 <li>    2.  Orientada a microservicios. Es una evolución de la orientación a servicios. Como en el caso anterior los microservicios están coordinados a través de la ORQUESTACIÓN.</li>
 
-                                <li>    3.  Reactiva, funcional y orientada a microservicios pero coordinados por COREOGRAFIA, y con la inferencia basada en eventos de negocio.</li>
+                                <li>    3.  Reactiva, funcional y orientada a microservicios, pero coordinados por COREOGRAFIA, y con la inferencia basada en eventos de negocio.</li>
                             </ul>
 
                             <strong>Arquitectura Reactiva Funcional</strong>
 
                             <p>La arquitectura reactiva funcional es aquella en la que la inferencia son los EVENTOS. En este caso no hablamos de eventos de sistema, como los subsistemas de ventanas de los entornos gráficos (X11, Windows o Gnome), sino por eventos de negocio.</p>
-                            <p>La reactividad ha aparecido no solo en la parte servidora: Spring, Vert.x, ya que afecta a la arquitectura de ejecución sino que ha entrado para instalarse de forma definitiva en la parte cliente con implementaciones en Javascript: Reactjsliberada por Facebook al mundo open, Bacon.js o RxJS.</p>
+                            <p>La reactividad ha aparecido no solo en la parte servidora: Spring, Vert.x, ya que afecta a la arquitectura de ejecución, sino que ha entrado para instalarse de forma definitiva en la parte cliente con implementaciones en Javascript: Reactjs liberada por Facebook al mundo open, Bacon.js o RxJS.</p>
                             <p>La importancia para las empresas radica en que se puede crear funcionalidad a partir de cualquier evento que se genere: alta_cliente, baja_cliente, venta_producto, así como la gestión de las operaciones: rotura_stock, paquetes_fuera_stock_minimo, alta_empleado, fin_promocion, envio_urgente, etc.</p>
                             <p>Esto permitirá interceptar el flujo de datos, crear bases de datos/registros y/o funcionalidades que multiplican las capacidades digitales de la empresa, creando una nueva especie de empresas más flexibles, más adaptadas a los nuevos escenarios y, por tanto, más competitivas.</p>
 
-                            <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a micro servicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
+                            <p>La solución, que ya documentan empresas como <strong>Nginx</strong> y otros fabricantes, es evolucionar de aplicaciones MONOLITO a microservicios reactivos y funcionales con un roadmap bien definido, que acople el día a día de la empresa con la introducción de la arquitectura reactiva que ya usan empresas como <strong>Netflix</strong> u otras muchas.</p>
 
                             <p>En definitiva, ya estamos en el momento de marcar el rumbo hacia estas nuevas herramientas y entornos de desarrollo.</p>
 
