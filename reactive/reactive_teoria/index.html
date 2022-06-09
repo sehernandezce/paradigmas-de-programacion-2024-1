@@ -257,17 +257,34 @@
                     </div>
                     <!-- end row -->
 
-                    <h4>Escalabilidad</h4>
+                    <h4>Uso eficiente de recursos</h4>
 
-                    <p>A través de la Programación Reactiva, se obtiene una implementación que tiende a aislar los fallos a través de una escalabilidad horizontal, es decir, se obtiene una capacidad de escalar horizontalmente y de manera rápida.</p>
+                    <p>En la programación asíncrona clásica, un hilo que se ejecuta pasa la mayor parte de su tiempo esperando. El hilo que se ejecuta envía una petición, por ejemplo a la base de datos, luego espera durante un periodo de tiempo la respuesta con los datos, cuando finalmente obtiene una respuesta, continúa trabajando y al finalizar vuelve a estar disponible para otra ejecución. Lo que hace que este recurso se esté usando de forma ineficiente.</p>
+
+                    <p>En la programación reactiva cada hilo se centra en enviar la solicitud, y luego vuelve a estar disponible para otra ejecución. Cuando la respuesta llega, este mismo hilo, u otro, puede recoger y procesar la respuesta. En pocas palabras: trata de asegurarse de que todos los hilos estén siempre trabajando en algo, y no esperando.</p>
+
+                    <p>La utilización eficiente de los recursos, deriva en gastar menos dinero en servidores y centros de datos. La promesa de la programación reactiva es que se puede hacer más con menos. Específicamente se puede procesar cargas de trabajo más altas con menos hilos.</p>
 
                     <hr>
 
-                    <h4>Ahorro</h4>
+                    <h4>Mantenibilidad</h4>
 
-                    <p>Una consecuencia directa de utilizar de manera eficiente los recursos es invertir menos en servidores y centros de datos por lo que se puede realizar más con menos recursos y procesar cargas de trabajo mal altas con menos hilos.</p>
+                    <p>La combinación de flujos con potentes operadores resuelve problemas complejos de una manera muy declarativa. El código parecerá conciso y directo; en lugar de ramificaciones verbales y lógica imperativa, se tienen combinaciones de operadores que facilitan hacerse una imagen mental del funcionamiento. Lo cuál, hace más sencillo que cualquier persona diferente al desarrollador original, pueda modificar o mejorar algún aspecto en el código más rápido.</p>
 
+                    <hr>
 
+                    <h4>Escalabilidad</h4>
+
+                    <p>Usando programación reactiva se obtiene una implementación débilmente acoplada , que tiende a aislar los fallos y que tiene la capacidad de escalar horizontalmente y de forma rápida, permitiendo el manejo de grandes cantidades de eventos, que pueden ser millones o billones de eventos, muy útil para “Big Data”.</p>
+
+                    <hr>
+
+                    <h4>Facilidad en el manejo del backpressure</h4>
+
+                    <p>Se pueden dar situaciones donde un Notificador genere más elementos de los que un Suscriptor puede consumir. Lo cual genera que el proceso de convertir esa entrada en salida se resista de alguna manera. En la mayoría de los casos esa resistencia es la velocidad de cálculo.</p>
+
+                    <p>Para manejar estas situaciones en la programación reactiva se han establecido los siguientes mecanismos: Los suscriptores pueden indicar el número de datos que quieren o pueden procesar, de manera que el notificador nunca les enviará más de n cantidad de elementos. Los notificadores pueden aplicar diferentes operaciones como buffers o descartar algunos datos, para evitar saturar a los suscriptores lentos.</p>
+                
                 </section>
                 <!-- end section -->
 
@@ -281,16 +298,27 @@
                     </div>
                     <!-- end row -->
 
-                    <h4>Modificación</h4>
+                    <h4>Mayor costo en memoria</h4>
 
-                    <p>Se modifica el estilo de la programación clásica.</p>
+                    <p>Este paradigma es más costoso en memoria, porque requiere mayor espacio en memoria para almacenar los flujos de datos (ya que se basa en flujos a lo largo del tiempo).</p>
 
                     <hr>
 
-                    <h4>Riesgos y dificultades</h4>
+                    <h4>Curva de aprendizaje</h4>
 
-                    <p>Dada la falta de experiencia en este campo, se pueden generar riesgos a fallos y problemas a la hora de depurar los errores, así como problemas en el entendimiento clásico del concepto.</p>
+                    <p>La curva de aprendizaje es grande para dominar la programación reactiva. No sólo se está expuesto a un ecosistema completamente nuevo con nuevas APIs, sino que también se necesita tiempo para procesar este paradigma diferente de programación con streams, que puede ser bastante diferente de un estilo de código de escritura tradicional (por ejemplo, en comparación con la programación imperativa). También puede que se necesite aprender de nuevas herramientas para las pruebas unitarias y dominar conceptos adicionales como los diagramas de mármol, que ayudan a modelar adecuadamente los flujos de datos. Además hay una falta de recursos buenos y sencillos para aprender.</p>
 
+                    <hr>
+
+                    <h4>Depurar no es más fácil</h4>
+
+                    <p>Del mismo modo que en la programación clásica donde nos podemos encontrar con un espagueti de funciones. En la programación reactiva también se puede encontrar un espagueti de flujos y no saber qué camino tomar. Con las funciones simples suele ser más sencillo hacer una depuración del código, dado que se componen secuencialmente. Con los flujos, puede que no sea tan sencillo porque no existe tal cosa como un flujo que invoca a otro flujo. En su lugar, se tiene un flujo que se conecta con otros flujos de maneras mixtas dependiendo de los operadores que los unen.</p>
+
+                    <hr>
+
+                    <h4>Acumulación de delay</h4>
+
+                    <p>Los sistemas reactivos pueden acumular fácilmente retrasos debido a un número excesivo de procesos vinculados al flujo.</p>
 
                 </section>
                 <!-- end section -->
@@ -545,6 +573,15 @@
                                 <li>PHP: <a href="https://github.com/ReactiveX/RxPHP">RxPHP</a></li>
                                 <li>Elixir: <a href="https://github.com/alfert/reaxive">reaxive</a></li>
                                 <li>Dart: <a href="https://github.com/ReactiveX/rxdart">RxDart</a></li>
+                            </ul>
+
+                            <strong>ReactiveX para plataformas y frameworks</strong>
+                            <br/>
+                            <ul>
+                                <li>Netty: <a href="https://github.com/ReactiveX/RxNetty">RxNetty</a></li>
+                                <li>Android: <a href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a></li>
+                                <li>Cocoa: <a href="https://github.com/ReactiveX/RxSwift">RxCocoa</a></li>
+                                <li>ROS: <a href="https://github.com/rosin-project/rxros">RxROS</a></li>
                             </ul>
                         </div>
                     </div>

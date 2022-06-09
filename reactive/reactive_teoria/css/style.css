@@ -81,6 +81,7 @@ p {
     line-height: 26px;
     letter-spacing: 0;
     margin-top: 15px;
+    text-align: justify;
 }
 
 img.aligncenter {
