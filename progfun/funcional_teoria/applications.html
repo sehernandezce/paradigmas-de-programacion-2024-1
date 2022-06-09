@@ -267,9 +267,6 @@
                         </p>
 
                     </div>
-
-                </div>                
-                <div class="row text-justify">
     
                     <div class="col-md-8">
                         <h2 class="text-center">
@@ -293,10 +290,175 @@
     
                     </div>
                 </div>
-                <hr>
-            </div>
+    
+                <div class="row text-justify">
+                    <h2 class="text-center">
+                        10. AWS Lambda
+                    </h2>
+                    <p>
+                        Es un servicio ofrecido por Amazon Web Services que permite ejecutar código sin necesidad de un servidor.
+                        Se puede usar en los siguientes escenarios:
+                    </p>
 
-            
+                    <ol>
+                        <li>
+                            Operar sitios web sin servidor
+                            
+                        </li>
+                        <img src="images/aws_lambda-aplicaciones_web.jpeg"
+                            alt="Despliegue de aplicaciones web en AWS lambda."
+                            class="aws_lambda-image">
+                        <p>
+                        <p>
+                            Este es uno de los mejores casos de uso para aprovechar el modelo de precios de los sitios web estáticos 
+                            alojados en Lambda y S3.
+                        </p>
+                        <p>
+                            Considere alojar la interfaz web en S3 y acelerar la entrega de contenido con el almacenamiento en caché 
+                            de Cloudfront.
+                        </p>
+                        <p>
+                            Este es uno de los mejores casos de uso para aprovechar el modelo de precios de los sitios web estáticos 
+                            alojados en Lambda y S3.
+                        </p>
+                        <p>
+                            La interfaz web puede enviar solicitudes a las funciones de Lambda a través de puntos finales HTTPS de 
+                            API Gateway . Lambda puede manejar la lógica de la aplicación y conservar los datos en un servicio de base 
+                            de datos completamente administrado (RDS para una base de datos relacional o DynamoDB para una base de datos 
+                            no relacional). 
+                        </p>
+                        <p>
+                            Puede alojar sus funciones y bases de datos de Lambda dentro de una VPC para aislarlas de otras redes. 
+                            En cuanto a Lambda, API Gateway y S3, solo paga después del tráfico incurrido, el único costo fijo será ejecutar 
+                            el servicio de la base de datos.
+                        </p>
+
+                        <li>
+                            Conversión rápida de documentos
+                        </li>
+                        <p>
+                            Si proporciona documentos (por ejemplo, especificaciones, manuales o registros de transacciones) a sus usuarios, 
+                            es posible que no siempre los quieran en un formato estándar. Si bien muchos usuarios pueden estar contentos con 
+                            una página HTML, otros pueden querer descargar un PDF o pueden necesitar el documento en un formato más 
+                            especializado.
+                        </p>
+                        <p>
+                            Por supuesto, podría almacenar copias de cada documento en todos los formatos que probablemente se soliciten. 
+                            Pero el almacenamiento de documentos estáticos puede ocupar una cantidad considerable de espacio y no es práctico 
+                            si el contenido de los documentos cambia con frecuencia o en respuesta a las entradas del usuario. A menudo es 
+                            mucho más fácil generar los documentos sobre la marcha. Este es exactamente el tipo de tarea que una aplicación 
+                            de AWS Lambda puede manejar rápida y fácilmente: recuperar el contenido requerido, formatearlo y convertirlo, 
+                            y servirlo para mostrarlo en una página web o descargarlo.
+                        </p>
+
+                        <li>
+                            Representación de página predictiva
+                        </li>
+                        <p>
+                            Sin embargo, puede usar AWS Lambda para hacer algo más que simplemente limpiar datos. Si está utilizando la representación 
+                            predictiva de páginas para preparar las páginas web para su visualización, en función de la probabilidad de que el 
+                            usuario las seleccione, AWS Lambda puede desempeñar un papel de apoyo importante.
+                        </p>
+                        <p>
+                            Puede, por ejemplo, usar una aplicación basada en Lambda para recuperar documentos y archivos multimedia, que pueden 
+                            usarse en la siguiente página solicitada, y para realizar las etapas iniciales de representación para su visualización. 
+                            Si una fuente externa, como YouTube, proporciona archivos multimedia, la aplicación Lambda puede verificar su 
+                            disponibilidad e intentar usar fuentes alternativas si no están disponibles.
+                        </p>
+
+                        <li>
+                            Trabajar con servicios externos
+                        </li>
+                        <img src="images/aws_lambda-iot.jpg"
+                            alt="Proceso de redimensionamiento de solicitud de repuestos para un tractor mediante sensores y AWS lambda."
+                            class="aws_lambda-image">
+                        <p>
+                            Si su sitio web o aplicación necesita solicitar servicios de un proveedor externo, generalmente no hay razón por la cual 
+                            el código del sitio o la aplicación principal deba manejar los detalles de la solicitud y la respuesta. De hecho, esperar 
+                            una respuesta de una fuente externa es una de las principales causas de la ralentización de los servicios basados en web.
+                        </p>
+                        <p>
+                            Si entrega solicitudes para cosas tales como autorización de crédito o controles de inventario a una aplicación que se 
+                            ejecuta en AWS Lambda, su programa principal puede continuar con otros elementos de la transacción mientras espera una 
+                            respuesta de la función Lambda. Esto significa que, en muchos casos, una respuesta lenta del proveedor quedará oculta para 
+                            sus clientes, ya que verán la transacción en curso, con los datos requeridos llegando y siendo procesados antes de que 
+                            se cierre.
+                        </p>
+
+                        <li>
+                            Análisis de registro sobre la marcha                            
+                        </li>
+                        <p>
+                            Puede crear fácilmente una función Lambda para comprobar los archivos de registro de Cloudtrail o Cloudwatch.
+                        </p>
+                        <p>
+                            Lambda puede buscar en los registros eventos específicos o entradas de registro a medida que ocurren y enviar 
+                            notificaciones a través de SNS. También puede implementar fácilmente ganchos de notificación personalizados en 
+                            Slack, Zendesk u otros sistemas llamando a su punto final de API dentro de Lambda.
+                        </p>
+
+                        <li>
+                            Backups automatizados en trabajos del dia a dia
+                        </li>
+                        <p>
+                            Los eventos lambda programados son útiles para el trabajo domestico dentro de la cuentras AWS. Creando backups, 
+                            revisando recursos disponibles, generando reportes y otras tareas que frecuentemente ocurren pueden ser implementadas 
+                            en poco tiempo con la libreria de Python boto3 y almacenandolas en AWS lambda.
+                        </p>
+
+                        <li>
+                            Procesar archivos dentro de S3
+                        </li>
+                        <p>
+                            Usando notificaciones de eventos de objetos se puede empezar el procesamiento de archivos automáticamente mediante 
+                            una función lambda, una vez los archivos se encuentran en un bucket S3. La generación de miniaturas de imágenes con 
+                            AWS Lambda es un gran ejemplo para este caso de uso, la solución será rentable y no necesita preocuparse por la 
+                            escalabilidad. Lambda puede manejar cualquier carga.
+                        </p>
+                        <img src="images/aws_lambda-procesamiento_archivos.png"
+                            alt="Proceso de redimensionamiento de una imagen con AWS lambda y AWS S3"
+                            class="aws_lambda-image">
+
+                        <li>
+                            Limpieza de backend
+                        </li>
+                        <p>
+                            Las tareas de back-end no deben ser una fuente de retraso en la respuesta a las solicitudes de front-end. Si necesita 
+                            analizar la entrada del usuario para almacenarla en una base de datos, o si hay otras tareas de procesamiento de entrada 
+                            que no son necesarias para representar la página siguiente, puede enviar los datos a un proceso de AWS Lambda, que a su vez 
+                            puede no solo limpia esos datos, sino que también los envía a la base de datos o aplicación que los usará.
+                        </p>
+
+                        <li>
+                            Procesamiento de grandes volúmenes de datos en tiempo real.
+                        </li>
+                        <p>
+                            En una aplicación que opere con datos en tiempo real, estos pueden fluir desde los dispositivos de comunicación y los 
+                            periféricos que interactúan con el mundo físico o desde los dispositivos de entrada del usuario. En la mayoría de los 
+                            casos, es probable que estos datos lleguen en ráfagas cortas, o incluso unos pocos bytes a la vez, en formatos que se 
+                            pueden analizar fácilmente. Sin embargo, hay momentos en los que su aplicación puede necesitar manejar grandes volúmenes 
+                            de transmisión de datos de entrada, y mover esos datos a un almacenamiento temporal para su posterior procesamiento puede 
+                            no ser una solución adecuada.
+                        </p>
+                        <p>
+                            Es posible que necesite, por ejemplo, seleccionar valores específicos en un flujo rápido de datos desde un dispositivo de 
+                            telemetría remoto, a medida que ingresa. Si envía el flujo de datos a una aplicación AWS Lambda diseñada para extraer y 
+                            procesar rápidamente la información requerida , puede manejar las tareas necesarias en tiempo real sin ralentizar su 
+                            aplicación principal.
+                        </p>
+                        <img src="images/aws_lambda-procesamiento_flujos.jpg"
+                            alt="Flujo de información entre la publicación de un estado y la notificación a los interesados."
+                            class="aws_lambda-image"> <br/>
+                        <img src="images/aws_lambda-backends_moviles.jpeg"
+                            alt="Flujo de información entre la publicación de un estado y la notificación a los interesados."
+                            class="aws_lambda-image">
+                    </ol>
+
+                    <p>
+                        <br>--->más información <a href="https://docs.aws.amazon.com/es_es/lambda/latest/dg/welcome.html">aquí</a><---
+                    </p>
+                </div>
+            </div>            
             <hr>
         </div>
     </div>

@@ -61,3 +61,9 @@ li {
 li ul li {
     padding: 2px 0;
 }
+
+.aws_lambda-image {
+    display: flex;
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
