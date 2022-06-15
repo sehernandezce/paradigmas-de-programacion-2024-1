@@ -142,7 +142,7 @@ https://templatemo.com/tm-529-ramayana
 <!--              Semantica De Declaración-->
               <h1 class="sub">Semantica De Declaración</h1>
               <code>
-                [ privileged ] Modifiers aspect Id [ extends Type ] [ implements TypeList ] [ Per Clause ] { Body }
+                [ privileged ] aspect Id [ extends Type ] [ implements TypeList ] [ Per Clause ] { Body }
               </code>
               <div class="row">
                 <div class="col-md-12">
@@ -275,37 +275,52 @@ https://templatemo.com/tm-529-ramayana
                               <li>after()</li>
                               <li>around()</li>
                             </ul>
-
-                            <h4>Before</h4>
-                                <p>Se ejecuta  antes de cada join point.</p>
-                                <img src="assets/images/Before.png">
-                                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/d0e82cce382b65f47bf03b4b75b55696.js"></script></div>
-
-                            <h4>After</h4>
-                                <p>Se ejecuta después de cada join point.
-                                  Puede de tres tipos:</p>
-
-                                <ul>
-                                  <li><b>Defecto:</b> el cual retorna sin importar el resultado.</li>
-                                  <img src="assets/images/After.png">
-                                  <li><b>Returning:</b> Me realiza la acción únicamente si finalizó correctamente y/o me retornó el valor (Este Advice también puede servir con JointPoints que sean voids). Este returning me permite también utilizar los valores retornados por los JoinPoints para utilizarlos en los advices.</li>
-                                  <img src="assets/images/AfterRet.png">
-                                  <li><b>Throwing:</b> Me realiza la acción únicamente si la acción del PointCut finalizó lanzando una acción o un resultado como una excepción.</li>
-                                  <img src="assets/images/AfterThrow.png">
-                                </ul>
-
-                                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/9fedc1f65aba5b11413b2ca9e6c7ab11.js"></script></div>
-
-                            <h4>Around</h4>
-                                <p>Se ejecuta en lugar de el join point.
-                                  Debe ser declarado con un tipo de retorno.
-                                  <img src="assets/images/Around.png"></p>
-                                <p>El código del join point se puede ejecutar usando la palabra
-                                  <code>proceed();</code></p>
-                                <br>
-                                <img src="assets/images/AroundProceed.png">
-                                <br>
-                                <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/4bb16a1acef32187012dbb6d44612394.js"></script></div>
+                            <button class="accordion"><strong>Before</strong></button>
+                            <div class="panel">
+                              <h4>Before</h4>
+                                  <p>Se ejecuta  antes de cada join point.</p>
+                                  <img src="assets/images/Before.png">
+                                  <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/d0e82cce382b65f47bf03b4b75b55696.js"></script></div>
+                              
+                            </div>
+                            <button class="accordion"><strong>After</strong></button>
+                            <div class="panel">
+                              <h4>After</h4>
+                                  <p>Se ejecuta después de cada join point.
+                                    Puede de tres tipos:</p>
+                                  <ul>
+                                    <button class="accordion"><strong>Default</strong></button>
+                                    <div class="panel">
+                                      <li><b>Defecto:</b> el cual retorna sin importar el resultado.</li>
+                                      <img src="assets/images/After.png">
+                                    </div>
+                                    
+                                    <button class="accordion"><strong>Returning</strong></button>
+                                    <div class="panel">
+                                      <li><b>Returning:</b> Me realiza la acción únicamente si finalizó correctamente y/o me retornó el valor (Este Advice también puede servir con JointPoints que sean voids). Este returning me permite también utilizar los valores retornados por los JoinPoints para utilizarlos en los advices.</li>
+                                      <img src="assets/images/AfterRet.png">
+                                    </div>
+                                    <button class="accordion"><strong>Throwing</strong></button>
+                                    <div class="panel">
+                                      <li><b>Throwing:</b> Me realiza la acción únicamente si la acción del PointCut finalizó lanzando una acción o un resultado como una excepción.</li>
+                                      <img src="assets/images/AfterThrow.png">
+                                    </div>
+                                  </ul>
+                                  <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/9fedc1f65aba5b11413b2ca9e6c7ab11.js"></script></div>
+                            </div>
+                            <button class="accordion"><strong>Around</strong></button>
+                            <div class="panel">
+                              <h4>Around</h4>
+                                  <p>Se ejecuta en lugar de el join point.
+                                    Debe ser declarado con un tipo de retorno.
+                                    <img src="assets/images/Around.png"></p>
+                                  <p>El código del join point se puede ejecutar usando la palabra
+                                    <code>proceed();</code></p>
+                                  <br>
+                                  <img src="assets/images/AroundProceed.png">
+                                  <br>
+                                  <div class="highlight highlight-source-aspectj"><script src="https://gist.github.com/jsbecerrab/4bb16a1acef32187012dbb6d44612394.js"></script></div>
+                            </div>
 
                             <h4>Atributos de los advice</h4>
 
@@ -313,68 +328,23 @@ https://templatemo.com/tm-529-ramayana
                                   <code>thisJoinPointStaticPart</code> : equivalente a <code>thisJoinPoint.getStaticPart()</code> pero consume menos recursos.
                                   <code>thisEnclosingJoinPointStaticPart</code> : la parte estatica de la dinamica que encierra el join point.</p>
 
-                        <div id="#sintaxisNotaciones">
-                            <h3 class="h3sub">Sintaxis de las notaciones</h3>
+                        <h1 class="sub">Particularidades</h1>
+                        <button class="accordion"><strong>AspectJ Syntax vs Java AspectJ Package</strong></button>
+                        <div class="panel">
+                          <div id="#sintaxisNotaciones">
+                              <h3 class="h3sub">Sintaxis de las notaciones</h3>
+                          </div>
+                                    <h4>Aspect</h4>
+                                    <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/aspect.png" alt="aspect"></p>
+                                    <h4>PointCut</h4>
+                                    <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/pointcut.png" alt="pointcut"></p>
+                                    <h4>Advice before</h4>
+                                    <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/before.png" alt="before"></p>
+                                    <h4>Advice after</h4>
+                                    <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/after.png" alt="after"></p>
+                                    <h4>Advice around</h4>
+                                    <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
                         </div>
-
-                                  <h4>Aspect</h4>
-                                  <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/aspect.png" alt="aspect"></p>
-
-                                  <h4>PointCut</h4>
-                                  <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/pointcut.png" alt="pointcut"></p>
-
-                                  <h4>Advice before</h4>
-                                  <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/before.png" alt="before"></p>
-
-                                  <h4>Advice after</h4>
-                                  <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/after.png" alt="after"></p>
-
-                                  <h4>Advice around</h4>
-                                  <p><img src="https://raw.githubusercontent.com/seradiazpin/paradigmas-de-programacion/master/poa/tutorial/images/around.png" alt="aspect"></p>
-                        <div id="#java8">
-                            <h3 class="h3sub">Java 8</h3>
-                        </div>
-
-                                  <h4>Streams </h4>
-                                  <p>Estos son nuevas abtracciones que nos permiten tener flujos de datos sobre los cuales aplicaremos diversas operaciones, ya sea desde filtros hasta operaciones complejas como implementar un Map-Reduce</p>
-                                  <div><script src="https://gist.github.com/jsbecerrab/284015e9dd458b198875b07d157e8d43.js"></script></div>
-                                  <p>En este caso dado un stream de lineas de texto <code>jm.getLines()</code> mapeamos cada linea como un mapa de la palabra y su frecuencia
-                                    para la reduccion o la operacion de agregacion usamos una expresion lambda que hace referencia a una interfaz funcional donde definimos la operacion
-                                    de agregacion: <code>(m1, m2) -> JavaMethods.fussion(m1, m2)</code> la cual fusiona 2 mapas en uno solo, finalmente imprimirmos
-                                    las llaves y valores encontrados usando el <code>forEach</code> de los mapas en vez de usar el tradicional <code>Entry&lt;K,V&gt;</code>
-                                  </p>
-                                  <p>muestra de la funcion Fussion</p>
-                                  <div><script src="https://gist.github.com/jsbecerrab/f86b12926c08710059f29d0a16935c14.js"></script></div>
-                                  <p>Observamos el uso de una interfaz funcional en <code>Long::sum</code> la cual llamamos haciendo uso del ::</p>
-                                  <h4>Muestra de Streams Infinitos</h4>
-                                  <div><script src="https://gist.github.com/jsbecerrab/1b8d56ada15ee405449e72060a404d49.js"></script></div>
-                                  <p>Para mas informacion consulta el siguiente <a class="pl-k" href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">enlace</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Left Image -->
-            <section class="left-image">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="assets/images/left-image.jpg" alt="">
-                  </div>
-                  <div class="col-md-6">
-                    <div class="right-content">
-                      <h4>Ante Interdum Raclette</h4>
-                      <p>Lorem ipsum dolor amet raclette chambray bitters, hammock celiac slow-carb flexitarian four dollar toast food truck health goth. Air plant brunch food truck vegan scenester organic crucifix irony pour-over pop-up austin hexagon kitsch swag. Godard literally humblebrag cloud bread vice master cleanse chambray typewriter put a bird on it brooklyn forage.<br><br>Air plant brunch food truck vegan scenester organic crucifix irony pour-over pop-up austin hexagon kitsch swag. Godard literally humblebrag cloud bread vice master cleanse chambray typewriter put bird brooklyn</p>
-                      <div class="primary-button">
-                        <a href="#">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             <!-- Right Image -->
             <section class="right-image">
               <div id="tutoriales">
@@ -383,7 +353,9 @@ https://templatemo.com/tm-529-ramayana
 
               <div class="row">
                 <div class="col-md-12">
-                  <div class="down-content">
+                <button class="accordion"><strong>Banco con LOGS y LOGIN</strong></button>
+
+                  <div class="down-content panel">
 
                     <p>A partir de una aplicación de un banco se desea implementar un Log de transacciones y un
                       sistema de login mediante programación orientada a aspectos. Para esto se tienen las siguientes
@@ -458,12 +430,15 @@ https://templatemo.com/tm-529-ramayana
                     <p>Finalmente este código nos agrega la funcionalidad de un login antes de las transacciones y un registro
                       de sus actividades en un archivo.</p>
 
+                    </div>
+                    <button class="accordion"><strong>Sistema de inventario con log</strong></button>
+                    <div class="panel">
 
                     <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true">
                       <h1 id="Tutorial-Sistema-de-inventario-con-log" data-id="Tutorial-Sistema-de-inventario-con-log">
                         <a class="anchor hidden-xs" href="#Tutorial-Sistema-de-inventario-con-log" title="Tutorial-Sistema-de-inventario-con-log">
                           <span class="octicon octicon-link"></span>
-                        </a><span>Tutorial: Sistema de inventario con log</span></h1>
+                        </a><span>Sistema de inventario con log</span></h1>
                       <p>
                         <span>En este tutorial vamos a ver el paso a paso de cómo subir a la nube un servidor para el control
                           de inventarios. Es una API Rest y se utiliza el entorno de trabajo Spring. Vamos a ver la estructura
@@ -586,13 +561,34 @@ https://templatemo.com/tm-529-ramayana
                         Send para enviar la petición al servidor.</span></p><p>
                       <img src="https://i.imgur.com/JafDxOw.png" alt=""></p><p><span>Log del servidor.</span></p><p><img src="https://i.imgur.com/lbclRXb.png" alt=""></p><p><span>Ahora agregamos otra petición de tipo POST para agregar productos al inventario. Ingresamos la misma ruta cambiando lo que va depués del “/” por save. En la pestaña </span><em><span>Body</span></em><span> seleccionamos </span><em><span>raw</span></em><span> y </span><em><span>JSON</span></em><span> para escribir el cuerpo de la petición (los artículos que vamos a agregar). Enviamos la petición son </span><em><span>Send</span></em></p><p><img src="https://i.imgur.com/SmVZe9W.png" alt=""></p><p><span>Log del servidor</span></p><p><img src="https://i.imgur.com/UD20Vlb.png" alt=""></p><p><span>Luego hacemos otro GET para obtener la lista de productos actualizada.</span></p><p><img src="https://i.imgur.com/MC0SFb5.png" alt=""></p><p><span>Log del servidor</span><br>
                       <img src="https://i.imgur.com/V8q2eOC.png" alt=""></p></div>
-                  </div>
-                </div>
-              </div>
-
+                  
+                    </div>
+                    <button class="accordion"><strong>CRUD Estudiantes | Logging y Auditoria </strong></button>
+                    <div class="panel">
+                      Queremos hacer un CRUD de estudiantes en donde se pueda mostrar Logs dependiendo de que función llamemos en el main.<br>
+                      Todo el codigo presentado esta en el Siguiente <a href="https://github.com/angegonzalez/Spring-AOP">Github</a> <br>
+                      <b>Main</b>
+                      <script src="https://gist.github.com/Rguarnizo/d00bd4fa92127639c2af5fc0a51d4b01.js"></script>
+                      Vamos a hacer distintos puntos de corte para: <br>
+                      <ol>
+                        <li> Funciones de la clase Repository, Service y RestController</li>
+                        <li>Spring Beans</li>
+                      </ol>
+                      Vamos a realizar advices para cuando:
+                      <ol>
+                        <li> Se lance una ecepción en cualquiera de los metodos propuestos</li>
+                        <li> Se entre a una función </li>
+                        <li> Se salga de una función </li>
+                        <li> Se entre a una función con parametros invalidos</li>
+                      </ol>
+                      <script src="https://gist.github.com/Rguarnizo/7608a3b95bb2762fa6dcf4780f9d77d5.js"></script>
+                      </script>
+                    </div>
+                    
+              </section>
             </section>
+            
 
-            </section>
             <!-- Top Image -->
             <section class="top-image">
               <div>
@@ -603,31 +599,56 @@ https://templatemo.com/tm-529-ramayana
                   <div class="col-md-12">
                     <!-- img src="assets/images/HOW_IS_FORMED.png" alt=""-->
                     <div class="down-content">
-                      <h4 id = "helloworld">Hello World</h4>
-                      <p>Ejemplo más sencillo de AspectJ.</p>
-                      <script src="https://gist.github.com/ejariasm/360ebce37e07ac720c05c2962fbdcc3c.js"></script>
-                      <h4 id = "clasetestasp">Clase TestAsp</h4>
-                      <p>La clase en la cual tenemos unos cuantos metodos y un main.</p>
-                      <script src="https://gist.github.com/jsbecerrab/2fb3b9a1a93000c377d095a922e41cff.js"></script>
-                      <h4 id = "aspectaspect">Aspect Aspect</h4>
-                      <p>Nuestro aspecto con algunos puntos de corte para ver su funcion.</p>
-                      <script src="https://gist.github.com/jsbecerrab/99b924d154c69f1e840b59af4bd120c6.js"></script>
-                      <h4 id = "comodines">Comodines</h4>
-                      <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
-                      <h4 id = "callsyexecution">Calls y Execution</h4>
-                      <script src="https://gist.github.com/ejariasm/87b44157a293c8c72ec4cad282da328b.js"></script>
-                      <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
-                      <h4 id = "callsvsexecution">Calls vs Execution</h4>
-                      <script src="https://gist.github.com/ejariasm/7f9c0189640343ce8911260535df87b6.js"></script>
-                      <h4 id = "contextpassing">Context Passing</h4>
-                      <script src="https://gist.github.com/ejariasm/53e2469cf1d7102971836da96db4e8ae.js"></script>
-                      <h4 id = "aspectbehaviours">Aspect Behaviours</h4>
-                      <script src="https://gist.github.com/ejariasm/2a85f9b5273e68c496ee1c72a4405372.js"></script>
+                      <button class="accordion"><strong>Hello Word AspectJ</strong></button>
+                      <div class="panel">
+                        <h4 id = "helloworld">Hello World</h4>
+                        <p>Ejemplo más sencillo de AspectJ.</p>
+                        <script src="https://gist.github.com/ejariasm/360ebce37e07ac720c05c2962fbdcc3c.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Ejemplo con una Clase de Java</strong></button>
+                      <div class="panel">
+                        <h4 id = "clasetestasp">Clase TestAsp</h4>
+                        <p>La clase en la cual tenemos unos cuantos metodos y un main.</p>
+                        <script src="https://gist.github.com/jsbecerrab/2fb3b9a1a93000c377d095a922e41cff.js"></script>
+                        <h4 id = "aspectaspect">Aspect Aspect</h4>
+                        <p>Nuestro aspecto con algunos puntos de corte para ver su funcion.</p>
+                        <script src="https://gist.github.com/jsbecerrab/99b924d154c69f1e840b59af4bd120c6.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Comodines "*"</strong></button>
+                      <div class="panel">
+                        <h4 id = "comodines">Comodines</h4>
+                        <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Call y Execution </strong></button>
+                      <div class="panel">
+                        <h4 id = "callsyexecution">Calls y Execution</h4>
+                        <script src="https://gist.github.com/ejariasm/87b44157a293c8c72ec4cad282da328b.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Demo</strong></button>
+                      <div class="panel">
+                        <script src="https://gist.github.com/ejariasm/00bfd14d62b7e366e2a910e71a6c562f.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Calls vs Executions</strong></button>
+                      <div class="panel">
+                        <h4 id = "callsvsexecution">Calls vs Execution</h4>
+                        <script src="https://gist.github.com/ejariasm/7f9c0189640343ce8911260535df87b6.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Context Passing</strong></button>
+                      <div class="panel">
+                        <h4 id = "contextpassing">Context Passing</h4>
+                        <script src="https://gist.github.com/ejariasm/53e2469cf1d7102971836da96db4e8ae.js"></script>
+                      </div>
+                      <button class="accordion"><strong>Aspect Behaviours</strong></button>
+                      <div class="panel">
+                        <h4 id = "aspectbehaviours">Aspect Behaviours</h4>
+                        <script src="https://gist.github.com/ejariasm/2a85f9b5273e68c496ee1c72a4405372.js"></script>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
+            
 
             <!-- Top Image -->
             <section class="top-image">
@@ -715,6 +736,13 @@ https://templatemo.com/tm-529-ramayana
                         <li>Verbo Sebastián Camacho Silva</li>
                         <li>Miguel Alejandro Peña Hurtado</li>
                         <li>Diego Fernando Pastás</li>
+                      </ul>
+                      <h4>2022-1</h4>
+                      <ul>
+                        <li>Ángel Mateo González​</li>
+                        <li>Rubén Darío Guarnizo​</li>
+                        <li>Lorraine Rojas Parra​</li>
+                        <li>Alejandra Superlano Esquibel​</li>
                       </ul>
                     </div>
                   </div>
@@ -812,8 +840,6 @@ https://templatemo.com/tm-529-ramayana
 <!--                </li>-->
                 <!-- <li><a href="https://www.google.com">External Link</a></li> -->
                 <li><a href="https://github.com/ferestrepoca/paradigmas-de-programacion">View on GitHub</a></li>
-                <li><a href="https://github.com/ferestrepoca/paradigmas-de-programacion/zipball/master">Download .zip</a></li>
-                <li><a href="https://github.com/ferestrepoca/paradigmas-de-programacion/tarball/master">Download .tar.gz</a></li>
               </ul>
             </nav>
 
@@ -823,15 +849,39 @@ https://templatemo.com/tm-529-ramayana
                 <h2>Presentaciones Aspectj</h2>
               </div>
               <div class="owl-carousel owl-theme">
-                <a href="#">
-                  <div class="featured-item">
-                    <img src="assets/images/Aspectj1.png" alt="featured one">
-                    <p>Presentacion Tutorial AspectJ 2020-2.</p>
+                <a href="./assets/presentaciones/presentacion2022-1.pdf">
+                  <div>
+                    <iframe
+                      src="./assets/presentaciones/presentacion2022-1.pdf"
+                      seamless
+                      webkitallowfullscreen
+                      mozallowfullscreen
+                      allowfullscreen
+                    ></iframe>
+                    <p>Presentacion Tutorial AspectJ 2022-1.</p>
                   </div>
                 </a>
-                <a href="#">
-                  <div class="featured-item">
-                    <img src="assets/images/Aspectj2.png" alt="featured two">
+                <a href="./assets/presentaciones/presentacion2020-2.pdf">
+                  <div>
+                    <iframe
+                      src="./assets/presentaciones/presentacion2020-2.pdf"
+                      seamless
+                      webkitallowfullscreen
+                      mozallowfullscreen
+                      allowfullscreen
+                    ></iframe>
+                    <p>Presentacion Tutorial AspectJ 2022-1.</p>
+                  </div>
+                </a>
+                <a href="./assets/presentaciones/presentacion2021-1.pdf">
+                  <div>
+                    <iframe
+                      src="./assets/presentaciones/presentacion2021-1.pdf"
+                      seamless
+                      webkitallowfullscreen
+                      mozallowfullscreen
+                      allowfullscreen
+                    ></iframe>
                     <p>Presentacion Tutorial AspectJ 2021-1.</p>
                   </div>
                 </a>
