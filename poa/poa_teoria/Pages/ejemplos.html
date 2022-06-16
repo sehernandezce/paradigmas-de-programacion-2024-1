@@ -150,7 +150,20 @@
     Para este ejemplo se crea una clase Hello la cual va a tener un método sayHello() que simplemente imprime Hola con un espacio al final.
   </p>
 
-	<script src="https://gist.github.com/cdtafurd/338698e2db12aa73b5b74051ba7d8cca.js"></script>
+  <pre>
+    <code>
+      public class Hello {
+
+        public static void main(String[] args) {
+            sayHello();
+        }
+    
+        public static void sayHello() {
+            System.out.print("Hola ");
+        }
+      }
+    </code>
+  </pre>
 
   <p align="justify">
     También necesitamos el aspecto AspectHello, el cual define un punto de corte greeting(). Se aplican los consejos after y returning para imprimir 
@@ -158,7 +171,22 @@
     del saludo.
   </p>
 
-  <script src="https://gist.github.com/cdtafurd/4e418f10e04cc19d5a818a4d8fc820d5.js"></script>
+  <pre>
+    <code>
+      public aspect AspectHello {
+
+        pointcut greeting() : execution (* Hello.sayHello(..));
+    
+        before(): greeting() {
+            System.out.println("Bienvenidos a POA");
+        }
+    
+        after() returning() : greeting() {
+            System.out.println("clase de lenguajes de programacion 2022-1");
+        }
+      }
+    </code>
+  </pre>
 
   <p align="justify">
     Al ejecutar la clase Hello obtendremos como resultado
