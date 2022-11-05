@@ -1691,48 +1691,47 @@ Definitive Clauses Grammar o por sus siglas en inglés DCG</p>
 <h2><a id="20-ejemplo-sistema-experto-animales" class="anchor" href="#20-ejemplo-sistema-experto-animales" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11.10 Ejemplo Sistema Experto Animales</h2>
 
 
-<p align="justify">Implementacion de un Sistema Experto en prolog que identifique un animal de un conjunto de animales definidos por características:</p>
-
-<p align="justify">Un sistema experto es un sistema computacional que emula la capacidad de tomar decisiones de un humano experto. Está compuesto por una base de conocimiento y un motor de inferencia, el cual recibe las caracteristicas de una entidad o un problema. Comparando el conocimiento previo existente en la base de conocimientos con las caracteristicas de la entidad es posible identificarlo y, por consecuencia, producir un diagnostico o deduccion.
+<p align="justify">En este ejemplo se lleva a cabo la implementación de un Sistema Experto en prolog que permite identificar un animal dentro de un conjunto de animales definidos por características.</p>
+<p align="justify">Un sistema experto es un sistema computacional que emula la capacidad de tomar decisiones de un humano experto. Está compuesto por una base de conocimiento y un motor de inferencia, el cual recibe las características de una entidad o un problema. Comparando el conocimiento previo existente en la base de conocimientos con las características de la entidad es posible identificarlo y, en consecuencia, producir un diagnóstico o deducción.
 </p>
 
 <p>Las siguientes son las partes del sistema:</p>
 
-<p>Primero se define la regla, con la cual se inicia el proceso, que llama a las hipotesis, que hace el proceso para evaluar las hipotesis y luego escribir en consola la solucion final </p>
+<p>Primero se define la regla, con la cual se inicia el proceso. Esta regla llama a las hipótesis, luego realiza el proceso para evaluarlas y, finalmente, escribe en consola la solución final.</p>
 <p align="center">
 <img src="images/Sistema Animales 1.png">
 </p>
 
-<p align="justify">Se definen una lista de hipotesis que van a ser puestas a prueba, estas hipotesis son excluyentes entre ellas ( el animal no puede ser un tigre y una jirafa al mismo tiempo) </p>
+<p align="justify">Se define una lista con las hipótesis que van a ser puestas a prueba. Estas hipótesis son excluyentes entre ellas (por ejemplo, el animal no puede ser un tigre y una jirafa al mismo tiempo). </p>
 
 <p align="center">
 <img src="images/Sistema Animales 2.png">
 </p>
 
-<p>Luego identificamos las caracteristicas que tiene cada animal por las cuales se puede diferenciar</p>
+<p>Luego, se identifican las características por las cuales se puede diferenciar cada animal.</p>
 <p align="center">
 <img src="images/Sistema Animales 3.png">
 </p>
-<p>Cada caracteristica de animal llama a verificar para preguntar al usuario si el animal que busca tiene la caracteristica que pregunta, con esta información para alimentar a la base de conocimiento</p>
+<p>Se puede ver que cada una de ellas llama a "verificar"; de esta manera, se le preguntará al usuario si el animal que busca tiene una característica en particular. Con esta información se alimenta la base de conocimiento.</p>
 <p align="center">
 <img src="images/Sistema Animales 4.png">
 </p>
-<p align="justify">La regla auxiliar "ask" sirve para recibir los datos del usuario, esta hace uso de la regla assert que trae prolog por defecto para poder añadir nuevos hechos a la base de conocimiento del sistema</p>
+<p align="justify">La regla auxiliar "ask" sirve para recibir los datos del usuario: esta hace uso de la regla "assert" que trae prolog por defecto, la cual permite añadir nuevos hechos a la base de conocimiento del sistema.</p>
 <p align="center">
 <img src="images/Sistema Animales 5.png">
 </p>
 
 
 
-<p>Ejemplos de la salida del sistema:</p>
+<h3>Ejemplos de la salida del sistema</h3>
 
-<p>Resultado de busqueda de jaguar</p>
+<p>Resultado de búsqueda de <strong>jaguar</strong>:</p>
 <p align="center">
 <img src="images/Sistema Animales 6.png">
 </p>
 
 
-<p>Resultado de busqueda de zebra</p>
+<p>Resultado de búsqueda de <strong>zebra<strong>:</p>
 <p align="center">
   <img src="images/Sistema Animales 7.png">
   </p>
