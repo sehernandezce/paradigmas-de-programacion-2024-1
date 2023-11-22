@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
 
-  <title>AspectJ tutoriall</title>
+  <title>AspectJ tutorial</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -961,6 +961,20 @@ https://templatemo.com/tm-529-ramayana
                   <button class="accordion"><strong>Calls vs Executions</strong></button>
                   <div class="panel">
                     <h4 id="callsvsexecution">Calls vs Execution</h4>
+                    <p>
+                      La diferencia entre calls y execution es que calls se refiere al acto de llamar a una función, mientras que execution se refiere al acto de ejecutar el código de una función.
+                    </p>
+                    <p>En otras palabras, calls es el evento de pasar el control a una función, mientras que execution es el proceso de ejecutar las instrucciones de una función.</p>
+                    <p>
+                      Por ejemplo, la siguiente línea de código:
+                    </p>
+                    <p style="font-style: italic; color: black;">int x = add(1, 2);</p>
+                    <p>contiene una llamada a la función add(). Cuando se ejecuta esta línea de código, el control se pasa a la función add(). La función add() entonces ejecuta sus instrucciones, que en este caso son:</p>
+                    <p style="font-style: italic; color: black;">int sum = x + y;</p>
+                    <p style="font-style: italic; color: black;">return sum;</p>
+                    <p>
+                      El proceso de ejecutar las instrucciones de la función add() se conoce como ejecución.
+                    </p>
                     <script src="https://gist.github.com/ejariasm/7f9c0189640343ce8911260535df87b6.js"></script>
                   </div>
                   <button class="accordion"><strong>Context Passing</strong></button>
@@ -1021,6 +1035,19 @@ https://templatemo.com/tm-529-ramayana
                         <h4 id="aspectaspect">Aspecto Verifica Stock</h4>
                         <p>Aspecto se encarga de revisar si existe suficiente stock del producto</p>
                         <script src="https://gist.github.com/Nicolnegg/36237a5dd941fbe151206cb3d7aa32a2.js"></script>
+                      </div>
+
+                      <button class="accordion"><strong> Calculadora con Logs </strong></button>
+                      <div class="panel">
+                        <h4 id="calculadora_log"> Clase Calculadora </h4>
+                        <p>A continuación se presenta la clase calculadora con los métodos básicos.</p>
+                        <script src="https://gist.github.com/DR200131/cab525aecf5fc1106cfbbc3771204bbf.js"></script>
+                        <h4 id="calculadora_log"> Aspecto LogCal </h4>
+                        <p>Aspecto que realiza los logs respectivos.</p>
+                        <script src="https://gist.github.com/DR200131/07f257575323b4b715762a1150aa188b.js"></script>
+                        <h4 id="calculadora_log"> Clase Main </h4>
+                        <p>Clase Main de la calculadora.</p>
+                        <script src="https://gist.github.com/DR200131/ea73196dfea3d09814487d26f815bc33.js"></script>
                       </div>
                 </div>
               </div>
@@ -1131,17 +1158,18 @@ https://templatemo.com/tm-529-ramayana
                     <li>Andres Yohany Velasquez Martinez</li>
                     <li>Valentina Viafara Esteban</li>
                   </ul>
-                  <ul>
-                    <li>Kevin Leonardo Alvarez Mora</li>
-                    <li>Jose Francisco Lugo Nomesque</li>
-                    <li>Andres Yohany Velasquez Martinez</li>
-                    <li>Valentina Viafara Esteban</li>
-                  </ul>
                   <h4>2023-1</h4>
                   <ul>
                     <li>Angel Guillermo Peñarredonda Silva</li>
                     <li>Manuel David Maya Rosero</li>
                     <li>Nicol Estefania Guerrero Gutierrez</li>
+                  </ul>
+                  <h4>2023-2</h4>
+                  <ul>
+                    <li>Juan Pablo Garzon Parra</li>
+                    <li>Brayan Sebastián Yepes Garcia</li>
+                    <li>Diego Sebastián Rubiano Ballén</li>
+                    <li>Joe Zafir Mendez Leon</li>
                   </ul>
                   <ul>
                 </div>
@@ -1181,6 +1209,9 @@ https://templatemo.com/tm-529-ramayana
                       http://e-ghost.deusto.es/docs/2007/cursillos/aop/curso_aop.pdf</li>
                     <li>Lorente Lopez, M., Asteasuain, F., & Contreras, E. B. (2005). Programemos en AspectJ.
                       programemos.</li>
+                    <li>Colyer, A., Clement, A., Harley, G., & Webster, M. (2004). Eclipse AspectJ: Aspect-Oriented Programming with AspectJ and the Eclipse AspectJ Development Tools. Addison Wesley Professional</li>.
+                    <li>Eclipse Foundation. (Año). AspectJ Documentation. Recuperado de https://eclipse.dev/aspectj/sample-code.html#declares-exceptionSpelunking</li>
+                    <li>Laddad, R. (2009). Aspectj in action: enterprise AOP with spring applications. Simon and Schuster.</li>
                   </ul>
                 </div>
               </div>
@@ -1229,6 +1260,7 @@ https://templatemo.com/tm-529-ramayana
                 <li><a href="#callsvsexecution">Calls vs Execution</a></li>
                 <li><a href="#contextpassing">Context Passing</a></li>
                 <li><a href="#aspectbehaviours">Aspect Behaviours</a></li>
+                <li><a href="#calculadora_log">Calculadora con Logs</a></li>
               </ul>
             </li>
             <li><a href="#tutoriales">Tutoriales</a></li>
@@ -1257,6 +1289,13 @@ https://templatemo.com/tm-529-ramayana
             <h2>Presentaciones Aspectj</h2>
           </div>
           <div class="owl-carousel owl-theme">
+            <a href="./assets/presentaciones/presentacion2023-2.pdf">
+              <div>
+                <iframe src="./assets/presentaciones/presentacion2023-2.pdf" seamless webkitallowfullscreen
+                  mozallowfullscreen allowfullscreen></iframe>
+                <p>Presentacion Tutorial AspectJ 2023-2.</p>
+              </div>
+            </a>
              <div>
                   <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
                                      padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
