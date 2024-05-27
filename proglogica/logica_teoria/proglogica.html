@@ -216,6 +216,25 @@
               <p>
                 La programación lógica se utiliza para la inferencia de datos, que es el proceso de deducir nuevos conocimientos a partir de los datos existentes mediante la aplicación de reglas lógicas.
               </p>
+              <li><strong>Variables lógicas</strong></li>
+              <p>
+                Las variables pueden actuar como variables de entrada y de salida. 
+                A continuación veremos un ejemplo en Prolog:
+              </p>
+                <pre>
+                  ?- es_par(4). % Actua como variable de entrada 
+                  ?- pares_en_lista([1, 2, 3, 4, 5, 6], L). % devuelve en L los números pares de la lista
+                </pre>
+
+              <li><strong>Inversibilidad</strong></li>
+              <p>
+                Las variables lógicas permiten usar un predicado para extraer información o para validarlo.
+                A continuación veremos un ejemplo en Prolog:
+              </p>
+                <pre>
+                  ?- abuelo(juan, ana). % ¿Es Juan abuelo de Ana?
+                  ?- abuelo(juan, Y). % ¿Quienes son los nietos de Juan?
+                </pre>
               <li><strong>Resolución de problemas</strong></li>
               <p>
                 La programación lógica se utiliza para la resolución de problemas en áreas como la inteligencia artificial, la representación del conocimiento, la inferencia de datos, la planificación y la resolución de problemas en general.
@@ -227,6 +246,10 @@
               <li><strong>Recursiva</strong></li>
               <p>
                 La programación lógica se basa en la recursividad, lo que significa que una regla puede invocarse a sí misma para resolver un problema de forma repetida hasta que se alcance la solución final.
+              </p>
+              <li><strong>Múltiples soluciones (Backtracking)</strong></li>
+              <p>
+                Es posible que la invocación de un predicado devuelva múltiples soluciones, una por cada rama de éxito en el árbol de resolución SLD.
               </p>
             </ul>
         </div>
@@ -658,6 +681,43 @@
                   deducimos que <i>Pepito es mortal</i>.
                 </p>
                 <p style=" display: flex; justify-content: center;"><img src="img/consulta.PNG" style="width: 90%; max-width: 560px;"></p>
+                  <h4>Tipo de consultas</h4>
+                    <h5>1) Consultas de Verificación</h5>
+                    <p>
+                        Comprueban si ciertos hechos o relaciones son verdaderos según la base de conocimientos.
+                    </p>
+                    <pre>
+                        ?- padre(juan, maria). % ¿Es Juan padre de Maria?
+                    </pre>
+                    <h5>2) Consultas de Búsqueda de Variables</h5>
+                    <p>
+                        Buscan los valores que hacen verdadera una relación dada, resolviendo para las variables implicadas.
+                    </p>
+                    <pre>
+                       ?- padre(juan, X). % ¿De quién es padre Juan? 
+                    </pre>
+                    <h5>3) Consultas de Regla Compleja</h5>
+                    <p>
+                        Implican múltiples relaciones y reglas, buscando comprobar hechos derivados de reglas más complejas.
+                    </p>
+                    <pre>
+                       abuelo(X, Y) :- padre(X, Z), padre(Z, Y)
+                       ?- abuelo(juan, Y). % ¿De quién es abuelo Juan?
+                    </pre>
+                    <h5>4) Consultas con Condiciones</h5>
+                    <p>
+                      Se pueden hacer consultas con condiciones adicionales para restringir los resultados.
+                    </p>
+                    <pre>
+                       ?- padre(X, Y), madre(Y, Z). % Busca pares de valores X y Y donde X es padre de Y y Y es madre de Z
+                    </pre>
+                    <h5>5) Consultas de Existencia</h5>
+                    <p>
+                      Estas consultas verifican si existe al menos un conjunto de valores que satisfaga una condición.
+                    </p>
+                    <pre>
+                       ?- existe(abuelo(juan, Y)). % Verifica si existe algún Y tal que Juan sea su abuelo.
+                    </pre>
               </div>
           </section>
 
