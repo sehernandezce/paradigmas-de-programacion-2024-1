@@ -80,6 +80,7 @@
               <li><a href="lenguaje.html#godel">Godel</a></li>
               <li><a href="lenguaje.html#minikanren">miniKanren</a></li>
               <li><a href="lenguaje.html#sequencel">SequenceL</a></li>
+              <li><a href="lenguaje.html#curry">Curry</a></li>
               <li><a href="lenguaje.html#datalog">Datalog</a></li>
               <li><a href="lenguaje.html#ejemplos">Ejemplos</a></li>
               <li><a href="lenguaje.html#ejemplo_comparativo">Ejemplo comparativo</a></li>
@@ -139,7 +140,10 @@
           </ul>
           <p><a href="http://swish.swi-prolog.org/p/Paradigma%20Programacion%20Logica.swinb">Ejemplos en SWI-Prolog
               listos para ejecutar.</a></p>
-          <p>Ejemplo en Jupyter Notebook, utilizando kernel Calysto_prolog (<a href="docs/EjemplosProlog.ipynb">Descarga</a>)(<a href="https://colab.research.google.com/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/proglogica/logica_teoria/docs/EjemplosProlog.ipynb">Colab</a>).</p>
+          <p>Ejemplo en Jupyter Notebook, utilizando kernel Calysto_prolog (<a
+              href="docs/EjemplosProlog.ipynb">Descarga</a>)(<a
+              href="https://colab.research.google.com/github/ferestrepoca/paradigmas-de-programacion/blob/gh-pages/proglogica/logica_teoria/docs/EjemplosProlog.ipynb">Colab</a>).
+          </p>
         </div>
       </div>
     </section><!-- #content -->
@@ -164,7 +168,8 @@
             mas de una solución, Prolog hace un barrido para encontrar soluciones distintas. El propio sistema
             es el que deduce las respuestas a las preguntas que se le plantean, dichas respuestas las deduce
             del conocimiento obtenido por el conjunto de reglas dadas.</p>
-          <p style=" display: flex; justify-content: center;"><img src="img/prologhw.PNG" style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/prologhw.PNG"
+              style="width: 90%; max-width: 600px;"></p>
           <ul>
             <li>Alain Colmerauer y Philippe Roussel (Finales de los 70’s).</li>
             <li>Proviene del francés PROgrammation en LOGique.</li>
@@ -177,13 +182,15 @@
           </ul>
           <br>
           <strong>Ejemplos de aplicación</strong>
-          <ul><li><strong>Genexus y Linx:</strong> plataformas Low-code desarrolladas utilizando Prolog. <br>
-            Low-code es una modalidad de desarrollo de software que permite que los programadores diseñen aplicaciones
-            rápidamente y con un mínimo de codificación manual por medio de un sistema de arrastrar y soltar. 
-            Funciona a través de una interfaz visual con lógica simple, en donde se abstrae el código de las 
-            acciones y comandos, haciendo el proceso mucho más sencillo.
-            </li></ul>
-          
+          <ul>
+            <li><strong>Genexus y Linx:</strong> plataformas Low-code desarrolladas utilizando Prolog. <br>
+              Low-code es una modalidad de desarrollo de software que permite que los programadores diseñen aplicaciones
+              rápidamente y con un mínimo de codificación manual por medio de un sistema de arrastrar y soltar.
+              Funciona a través de una interfaz visual con lógica simple, en donde se abstrae el código de las
+              acciones y comandos, haciendo el proceso mucho más sencillo.
+            </li>
+          </ul>
+
         </div>
       </div>
     </section><!-- #content -->
@@ -215,11 +222,13 @@
               como salida el nuevo estado del “mundo” además de otros resultados específicos.</li>
             <li>
               La declaración de tipos en Mercury se hace de manera lógica:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/mer001.PNG" style="width: 70%; max-width: 400px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/mer001.PNG"
+                  style="width: 70%; max-width: 400px;"></p>
             </li>
             <li>
               Se puede predeterminar el número de veces que se va a llamar a un predicado dentro del programa.<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/mer002.PNG" style="width: 90%; max-width: 540px;"></p> “det”
+              <p style=" display: flex; justify-content: center;"><img src="img/mer002.PNG"
+                  style="width: 90%; max-width: 540px;"></p> “det”
               indica
               una vez, “semidet” como mucho una vez, “multi” al menos una vez y “nondet” un número arbitrario de
               veces El compilador comprobará que se cumple y, en caso contrario, rechazará el programa.
@@ -231,7 +240,8 @@
               locales al módulo.</li>
             <li>El compilador genera código muy eficiente.</li>
           </ul>
-          <p style=" display: flex; justify-content: center;"><img src="img/mer003.PNG" style="width: 70%; max-width: 400px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/mer003.PNG"
+              style="width: 70%; max-width: 400px;"></p>
 
           <ul>
             <li>Fergus Henderson, Thomas Conway y Zoltan Somogyi (1995).</li>
@@ -258,7 +268,8 @@
             variables) y “labeling”, donde se instancian las variables por enumeración.
           </p>
           <b>Ejemplo:</b> SEND MORE MONEY puzzle:<br><br>
-          <p style=" display: flex; justify-content: center;"><img src="img/clp.PNG" style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/clp.PNG"
+              style="width: 90%; max-width: 600px;"></p>
         </div>
       </div>
     </section><!-- #content -->
@@ -271,16 +282,16 @@
         <div class="text_cell_render border-box-sizing rendered_html">
           <h2 class="title"><strong>CycL</strong></h2>
           <p>
-            CycL es el lenguaje de programación lógica asociado con el sistema Cyc, que es una base de conocimiento 
-            de inteligencia artificial y un proyecto de investigación con el objetivo de codificar conocimientos 
-            generales en forma computable. El sistema Cyc utiliza CycL para representar la información y las reglas 
+            CycL es el lenguaje de programación lógica asociado con el sistema Cyc, que es una base de conocimiento
+            de inteligencia artificial y un proyecto de investigación con el objetivo de codificar conocimientos
+            generales en forma computable. El sistema Cyc utiliza CycL para representar la información y las reglas
             que permiten a la máquina razonar acerca de ese conocimiento de una manera que imita el razonamiento humano.
           </p>
           <p>
-            CycL es un lenguaje extremadamente expresivo y permite la representación de conocimientos muy detallados 
+            CycL es un lenguaje extremadamente expresivo y permite la representación de conocimientos muy detallados
             y sutiles sobre el mundo. Permite declarar hechos, reglas, y realizar consultas complejas. También puede
-             manejar excepciones y tiene la capacidad de representar el conocimiento contextual, lo que significa que 
-             puede entender cuándo ciertas reglas o hechos se aplican y cuándo no, basándose en el contexto dado.
+            manejar excepciones y tiene la capacidad de representar el conocimiento contextual, lo que significa que
+            puede entender cuándo ciertas reglas o hechos se aplican y cuándo no, basándose en el contexto dado.
           </p>
         </div>
       </div>
@@ -306,7 +317,8 @@
             destacar que este lenguaje no funciona en un entorno Windows.
           </p>
           <b>Ejemplo:</b> Máximo Común Divisor:<br><br>
-          <p style=" display: flex; justify-content: center;"><img src="img/godel.PNG" style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/godel.PNG"
+              style="width: 90%; max-width: 600px;"></p>
         </div>
       </div>
     </section><!-- #content -->
@@ -329,11 +341,14 @@
           <p>
             A continuaccion un ejemplo de la implementacion de esta libreria en python con un enfoque de pade hijo.
           </p>
-          <p style=" display: flex; justify-content: center;"><img src="img/pykanren4.PNG" style="width: 80%; max-width: 480px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/pykanren4.PNG"
+              style="width: 80%; max-width: 480px;"></p>
           <p>Ahora tratemos de obtener un padre de Bart.</p>
-          <p style=" display: flex; justify-content: center;"><img src="img/pykanren5.PNG" style="width: 80%; max-width: 480px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/pykanren5.PNG"
+              style="width: 80%; max-width: 480px;"></p>
           <p>Ahora los dos hijos de homero.</p>
-          <p style=" display: flex; justify-content: center;"><img src="img/pykanren6.PNG" style="width: 80%; max-width: 480px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/pykanren6.PNG"
+              style="width: 80%; max-width: 480px;"></p>
         </div>
       </div>
     </section><!-- #content -->
@@ -359,7 +374,37 @@
           <p> A continuación, una pequeña tabla que muestra las diferencias entre SequenceL y
             otro lenguaje popular, Java, permitiendonos ver la facilidad de escritura de código:
           </p>
-          <p style=" display: flex; justify-content: center;"><img src="img/sequenceL001.PNG" style="width: 100%; max-width: 840px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/sequenceL001.PNG"
+              style="width: 100%; max-width: 840px;"></p>
+        </div>
+      </div>
+    </section><!-- #content -->
+
+    <!--==========================
+        Content Section
+        ============================-->
+    <section id="curry" style="margin-top:50px;">
+      <div class="container">
+        <div class="text_cell_render border-box-sizing rendered_html">
+          <h2 class="title"><strong>Curry</strong></h2>
+          <p>
+            Curry, como lenguaje de programación en el paradigma lógico, se destaca por su capacidad para integrar la
+            programación lógica con la programación funcional. En el contexto de la programación lógica, Curry utiliza
+            variables lógicas y estructuras de datos parciales para resolver problemas complejos de manera eficiente.
+            Es con esa conjunción de metodologías que Curry se apoya en técnicas avanzadas como la <em>residuación</em> y el
+            <em>narrowing</em>, que permiten una evaluación determinista y más eficiente de funciones, diferenciándose así de
+            otros lenguajes lógicos tradicionales como Prolog. 
+          </p>
+          <p>
+            El beneficio intrínseco que viene arraigado a este lenguaje, parte de su capacidad para manejar datos
+            parcialmente conocidos o desconocidos a través de variables lógicas y estructuras de datos parciales, en
+            términos de su enfoque lógico. El método de <em>residuación</em> anteriormente mencionado maximiza el rendimiento
+            del programa al mantener expresiones parcialmente evaluadas para su finalización posterior. Por otro
+            lado, la <em>reducción</em> combina la unificación y la evaluación, lo que proporciona un mecanismo efectivo para
+            resolver ecuaciones y encontrar soluciones en espacios de datos extensos y complejos.
+          </p>
+          <b>Ejemplo:</b> Ordenamiento por Mezcla (Merge Sort) <br><br>
+          <p style=" display: flex; justify-content: center;"><img src="img/mergeSortCurry.PNG" style="width: 100%; max-width: 540px;"></p>
         </div>
       </div>
     </section><!-- #content -->
@@ -383,10 +428,14 @@
             tan simple como una fórmula en una hoja de cálculo.
           </p>
           <b>Ejemplo:</b>
-          <p style=" display: flex; justify-content: center;"><img src="img/DatalogExample.jpg" style="width: 90%; max-width: 600px;"></p>
-          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut1.jpg" style="width: 90%; max-width: 600px;"></p>
-          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut2.jpg" style="width: 90%; max-width: 600px;"></p>
-          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut3.jpg" style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/DatalogExample.jpg"
+              style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut1.jpg"
+              style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut2.jpg"
+              style="width: 90%; max-width: 600px;"></p>
+          <p style=" display: flex; justify-content: center;"><img src="img/DatalogOut3.jpg"
+              style="width: 90%; max-width: 600px;"></p>
         </div>
       </div>
     </section><!-- #content -->
@@ -400,20 +449,26 @@
           <h2 class="title"><strong>Otros ejemplos</strong></h2>
           <ul>
             <li> Grafos dirigidos en Prolog, busqueda de caminos:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/prolog001.PNG" style="width: 100%; max-width: 1000px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/prolog001.PNG"
+                  style="width: 100%; max-width: 1000px;"></p>
             </li>
             <li> Serie Fibonacci en Prolog:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/prolog002.PNG" style="width: 100%; max-width: 1000px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/prolog002.PNG"
+                  style="width: 100%; max-width: 1000px;"></p>
             </li>
             <li> Serie Fibonacci en Mercury:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/prolog003.PNG" style="width: 100%; max-width: 1000px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/prolog003.PNG"
+                  style="width: 100%; max-width: 1000px;"></p>
             </li>
             <li> Juego de ahorcado en ProLog:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/prolog004.PNG" style="width: 100%; max-width: 1000px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/prolog004.PNG"
+                  style="width: 100%; max-width: 1000px;"></p>
             </li>
             <li> Algoritmo merge sort en ProLog:<br><br>
-              <p style=" display: flex; justify-content: center;"><img src="img/merge3.PNG" style="width: 100%; max-width: 1000px;"></p>
-              <p style=" display: flex; justify-content: center;"><img src="img/sol.PNG" style="width: 50%; max-width: 300px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/merge3.PNG"
+                  style="width: 100%; max-width: 1000px;"></p>
+              <p style=" display: flex; justify-content: center;"><img src="img/sol.PNG"
+                  style="width: 50%; max-width: 300px;"></p>
             </li>
           </ul>
         </div>
@@ -424,11 +479,14 @@
       <div class="container">
         <div class="text_cell_render border-box-sizing rendered_html">
           <h2 class="title"><strong>Ejemplo comparativo</strong></h2>
-          <p>Implementación de un árbol familiar o genealógico por medio de tres lenguajes de programación lógica diferentes.
-            El objetivo es descubrir las similitudes y diferencias entre algunos de los lenguajes más populares de la programación lógica.
+          <p>Implementación de un árbol familiar o genealógico por medio de tres lenguajes de programación lógica
+            diferentes.
+            El objetivo es descubrir las similitudes y diferencias entre algunos de los lenguajes más populares de la
+            programación lógica.
             Supongamos que tenemos el siguiente árbol familiar:
           </p>
-          <p class="p-4" style=" display: flex; justify-content: center; background-color: #333333;"><img src="img/arbol.png" style="width: 100%; max-width: 600px;"></p>
+          <p class="p-4" style=" display: flex; justify-content: center; background-color: #333333;"><img
+              src="img/arbol.png" style="width: 100%; max-width: 600px;"></p>
 
           <p>Primero, veremos la implementación y modelado del ejemplo en Prolog:</p>
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>% Hechos<br>
@@ -558,7 +616,8 @@
           </p>
 
           <h3>Comparación</h3>
-          <p>Cada uno de los lenguajes define primero un conjunto de hechos estableciendo reglas entre los elementos involucrados.
+          <p>Cada uno de los lenguajes define primero un conjunto de hechos estableciendo reglas entre los elementos
+            involucrados.
             Para el caso de Prolog y CycL, se definen tuplas que establecen una relación entre los elementos listados.
             Con Prolog, se da el nombre a la relación y se pasan como parámetros los elementos de dicha relación:
           </p>
@@ -577,8 +636,10 @@
             madre(isabel, sofia).
             </code>
           </p>
-          <p>De esta manera, con la sentencia <code>padre(X, Y).</code> establecemos que el elemento X es el padre del elemento Y; 
-            de manera análoga, con la sentencia <code>madre(X, Y).</code> establecemos que el elemento X es la madre del elemento Y.<br>
+          <p>De esta manera, con la sentencia <code>padre(X, Y).</code> establecemos que el elemento X es el padre del
+            elemento Y;
+            de manera análoga, con la sentencia <code>madre(X, Y).</code> establecemos que el elemento X es la madre del
+            elemento Y.<br>
             Para CycL la estructura es similar:
           </p>
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>; Definición de relaciones familiares<br>
@@ -605,11 +666,15 @@
             (#$madreDe #$Isabel #$Sofia)
             </code>
           </p>
-          <p>En este caso, en CycL primero establecemos relaciones para definir que ciertos elementos son Padre o Madre de otros elementos, 
-            mediante el uso de las sentencias <code>(#$isa #$X #$Padre)</code> y <code>(#$isa #$Y #$Madre)</code>. Posteriormente, se establecen
-            las relaciones con los demás elementos por medio de las sentencias <code>(#$padreDe #$X #$Y)</code> y <code>(#$madreDe #$P #$Q)</code>,
+          <p>En este caso, en CycL primero establecemos relaciones para definir que ciertos elementos son Padre o Madre
+            de otros elementos,
+            mediante el uso de las sentencias <code>(#$isa #$X #$Padre)</code> y <code>(#$isa #$Y #$Madre)</code>.
+            Posteriormente, se establecen
+            las relaciones con los demás elementos por medio de las sentencias <code>(#$padreDe #$X #$Y)</code> y
+            <code>(#$madreDe #$P #$Q)</code>,
             que indican que X es padre de Y y P es madre de Q, respectivamente.<br>
-            Mercury define primero tipos para luego establecer las relaciones de una forma similar a los otros lenguajes:
+            Mercury define primero tipos para luego establecer las relaciones de una forma similar a los otros
+            lenguajes:
           </p>
 
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>
@@ -633,11 +698,15 @@
                 ].</code>
           </p>
 
-          <p>Las sentencias <code>type</code> definen los tipos de elementos del problema, e incluso definen la estructura de las relaciones padre y madre.
-            Para establecer las relaciones concretas, se define una función que construye un listado con las tuplas de elementos para cada relación.
+          <p>Las sentencias <code>type</code> definen los tipos de elementos del problema, e incluso definen la
+            estructura de las relaciones padre y madre.
+            Para establecer las relaciones concretas, se define una función que construye un listado con las tuplas de
+            elementos para cada relación.
           </p>
-          <p>Luego de establecer los hechos, cada lenguaje se encarga de definir las reglas del problema. Vamos a comparar la manera en la que se define la 
-            regla "hermano" (se entiende que dos personas son hermanas si tienen el mismo padre y la misma madre). Prolog implementa la regla de la siguiente manera:
+          <p>Luego de establecer los hechos, cada lenguaje se encarga de definir las reglas del problema. Vamos a
+            comparar la manera en la que se define la
+            regla "hermano" (se entiende que dos personas son hermanas si tienen el mismo padre y la misma madre).
+            Prolog implementa la regla de la siguiente manera:
           </p>
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>
               hermano(X, Y) :-<br>
@@ -648,13 +717,18 @@
                 &emsp;X \= Y.
             </code>
           </p>
-          <p>La regla "hermano" recibe dos parámetros, X y Y. Las dos primeras sentencias de la regla, <code>padre(Z, X)</code> y <code>padre(Z, Y)</code>,
-            verifican que exista una relación que establezca que Z es el padre tanto de X como de Y. Las siguientes dos reglas, <code>madre(W, X)</code> y <code>madre(W, Y)</code>,
-            verifican que otro elemento W sea la madre de X y, al mismo tiempo, la madre de Y. Aunque en teoría ya se podría deducir que X es hermano de Y, aún queda el caso
-            en el que X y Y sean la misma persona. La última sentencia de la regla, <code>X \= Y.</code>, descarta esta posibilidad, indicando que X y Y deben ser personas
+          <p>La regla "hermano" recibe dos parámetros, X y Y. Las dos primeras sentencias de la regla,
+            <code>padre(Z, X)</code> y <code>padre(Z, Y)</code>,
+            verifican que exista una relación que establezca que Z es el padre tanto de X como de Y. Las siguientes dos
+            reglas, <code>madre(W, X)</code> y <code>madre(W, Y)</code>,
+            verifican que otro elemento W sea la madre de X y, al mismo tiempo, la madre de Y. Aunque en teoría ya se
+            podría deducir que X es hermano de Y, aún queda el caso
+            en el que X y Y sean la misma persona. La última sentencia de la regla, <code>X \= Y.</code>, descarta esta
+            posibilidad, indicando que X y Y deben ser personas
             diferentes para que la regla "hermano" finalmente se cumpla.
           </p>
-          <p>Aunque la sintaxis varía un poco en los lenguajes Mercury y CycL, las reglas se definen de manera muy similar:
+          <p>Aunque la sintaxis varía un poco en los lenguajes Mercury y CycL, las reglas se definen de manera muy
+            similar:
           </p>
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>
             :- func hermano(persona, persona) = bool.<br>
@@ -663,7 +737,7 @@
                 &emsp;madre(W, X), madre(W, Y),<br>
                 &emsp;X \= Y.</code>
           </p>
-          
+
           <p class="mx-5 py-3 px-4" style="background-color: #F8F9FA;"><code>
             (#$and<br>
               &emsp;(#$hermanoDe ?X ?Y)<br>
